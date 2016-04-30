@@ -6,8 +6,8 @@ bin/
 target/
 
 # ignore Eclipse settings
-# .project
-# .classpath
+.project
+.classpath
 .settings
 
 # ignore all files ending with ~
