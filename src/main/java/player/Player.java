@@ -26,17 +26,16 @@ public class Player {
 	 * 
 	 * @param nickname	nickname chosen by the player
 	 * @param color		color chosen by the player
-	 * @param hand		first n political cards given to the player
 	 */
-	public Player(String nickname, Color color, Hand hand) {
+	public Player(String nickname, Color color) {
 		this.nickname = nickname;
 		this.color = color;
-		this.hand = hand;
 		
-		coins = new Coins();
-		nobility = new Nobility();
-		score = new Score();
-		assistants = new Assistants();
+		this.hand = new Hand();
+		this.coins = new Coins();
+		this.nobility = new Nobility();
+		this.score = new Score();
+		this.assistants = new Assistants();
 	}
 	
 
