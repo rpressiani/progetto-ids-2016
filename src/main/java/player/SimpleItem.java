@@ -1,6 +1,10 @@
 package player;
 
 
+/**
+ * @author Riccardo Pressiani
+ *
+ */
 public abstract class SimpleItem {
 	
 	private Integer items;

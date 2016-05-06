@@ -1,5 +1,9 @@
 package player;
 
+/**
+ * @author Riccardo Pressiani
+ *
+ */
 
 class Coins extends SimpleItem {
 	
