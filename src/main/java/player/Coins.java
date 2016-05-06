@@ -18,5 +18,9 @@ class Coins extends SimpleItem {
 		this.setItems(Integer.sum(this.getItems(), -items));
 		
 	}
+	
+	public void add(Integer items){
+		this.setItems(Integer.sum(this.getItems(), items));
+	}
 
 }

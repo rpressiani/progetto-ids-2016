@@ -1,8 +1,8 @@
 package bonusItem;
 import player.Player;
 
-public class BonusToken extends BonusItem {
-
+public class BonusCoins extends BonusItem {
+	
 	public void giveBonus(Player player){
 		
 	}
