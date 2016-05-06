@@ -1,5 +1,5 @@
 package politicalDeck;
 
-public class Garbage extends politicalDeck {
+public class Garbage extends PoliticalDeck {
 
 }

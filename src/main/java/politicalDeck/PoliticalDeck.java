@@ -9,9 +9,9 @@ public class PoliticalDeck {
 	private static final int nJolly = 12; //li trascuro un attimo
 	private int cardsUsed; 
 	private final String[] colors = {"Orange", "Pink", "Black", "Grey", "White", "Blue", "Jolly"};
-	private final ArrayList<PoliticalCard> cards; 
+	//private final ArrayList<PoliticalCard> cards; 
 	
-	public politicalDeck() {
+	/*public PoliticalDeck() {
 		cards = new ArrayList<PoliticalCard>();
 		for(int i=1; i<=nColor; i++) { //Builds 13 cards per color
 			for(int j=1; j<=nCards; j++) {
@@ -30,16 +30,17 @@ public class PoliticalDeck {
 			}
 		}
 		
-	}
-	public void shuffle(PoliticalDeck deck) {
+	}*/
+	
+	/*public void shuffle(PoliticalDeck deck) {
 		for ( int i = deck.length-1; i > 0; i-- ) {
             int rand = (int)(Math.random()*(i+1));
             PoliticalCard temp = deck[i];
             deck[i] = deck[rand];
             deck[rand] = temp;
         }
-        cardsUsed = 0;
 	} 
+	*/
 	public void dealCards() {
 		
 	}

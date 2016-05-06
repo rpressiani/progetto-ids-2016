@@ -27,9 +27,10 @@ public class Color {
 	public int getB() {
 		return b;
 	}
-	public String getColorAsString(Color color) {
+	
+	/*public String getColorAsString(Color color) {
 		
-	}
+	}*/
 	
 
 }
