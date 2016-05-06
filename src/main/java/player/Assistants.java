@@ -17,9 +17,6 @@ public class Assistants extends SimpleItem {
 		if (items < 0) throw new IllegalArgumentException("Argument must be greater than zero");
 		this.setItems(Integer.sum(this.getItems(), -items));
 	}
-	
-	public void add(Integer items){
-		this.setItems(Integer.sum(this.getItems(), items));
-	}
+
 
 }
