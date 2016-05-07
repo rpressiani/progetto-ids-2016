@@ -11,9 +11,9 @@ public class Hand extends PoliticalDeck {
 	public void pickRandomCard(PoliticalDeck deck) {
 		
 	}
-	public PoliticalCard getCard(int position) { //guardare Javadoc
+	/*public PoliticalCard getCard(int position) { //guardare Javadoc
         hand.get(position);
-    }
+    }*/			//messo tra commenti per togliere errore di compilazione
 	public void clear() {
 		hand.clear();
 	}

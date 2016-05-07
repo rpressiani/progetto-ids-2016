@@ -8,7 +8,7 @@ public class PoliticalDeck {
 
 	private PoliticalCard[] deck;  
 
-	public PoliticalDeck() {
+	/*public PoliticalDeck() {
 		deck = new PoliticalCard[7]; 
 		for(int i=1; i<=7; i++) {
 			if(i==1) {
@@ -33,7 +33,7 @@ public class PoliticalDeck {
 				deck[i] = new PoliticalCard(new Color(1, 2, 3), 12);
 			}
 		}
-	}
+	}*/
 	
 	public boolean isEmpty() {
 		return deck==null;
