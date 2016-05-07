@@ -8,11 +8,11 @@ public class Hand extends PoliticalDeck {
 		hand = new ArrayList<PoliticalCard>();
 		
 	}
-	public PoliticalCard getCard(int position) {
-        if (position < 0 || position >= hand.size())
-            throw new IllegalArgumentException("Position does not exist in hand: "
-                    + position);
-        return hand.get(position);
+	public void pickRandomCard(PoliticalDeck deck) {
+		
+	}
+	public PoliticalCard getCard(int position) { //guardare Javadoc
+        hand.get(position);
     }
 	public void clear() {
 		hand.clear();
@@ -30,7 +30,8 @@ public class Hand extends PoliticalDeck {
 			throw new IllegalArgumentException("Position does not exist in hand: " + position);
 	        hand.remove(position);
 	}
-	public void sortByColor() {
+	
+	public void sortByColor() { // Look for "Comparator"
        /* ArrayList<Card> newHand = new ArrayList<Card>();
         while (hand.size() > 0) {
             int pos = 0;  // Position of minimal card.
@@ -48,8 +49,7 @@ public class Hand extends PoliticalDeck {
         }
         hand = newHand; */
     }
-	
-	
+		
 	
 	
 
