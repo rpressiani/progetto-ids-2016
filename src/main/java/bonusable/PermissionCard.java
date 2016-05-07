@@ -2,8 +2,10 @@ package bonusable;
 
 import java.util.ArrayList;
 import bonusItem.BonusItem;
+import market.Marketable;
+import player.Player;
 
-public class PermissionCard extends Bonusable {
+public class PermissionCard extends Bonusable implements Marketable {
 	
 	/**
 	 * used=true if PermissionCard has been used to build an emporium
@@ -17,6 +19,18 @@ public class PermissionCard extends Bonusable {
 		idCard=counter;
 		counter++;
 		this.used=false;
+	}
+	
+	@Override
+	public void makeExchange(Player fromPlayer, Player toPlayer) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public boolean verifyAdd(Player player) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 	/**
