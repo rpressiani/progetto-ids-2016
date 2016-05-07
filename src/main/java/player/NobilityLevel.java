@@ -4,13 +4,13 @@ package player;
  * @author Riccardo Pressiani
  *
  */
-public class Score extends SimpleItem {
+public class NobilityLevel extends SimpleItem {
 	
 	/**
 	 * Constructor
 	 * Call SimpleItem constructor
 	 */
-	public Score(){
+	public NobilityLevel(){
 		super();
 	}
 
