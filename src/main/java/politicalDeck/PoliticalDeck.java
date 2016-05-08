@@ -1,3 +1,5 @@
+package politicalDeck;
+
 import java.util.ArrayList;
 import java.util.Random; 
 
@@ -35,13 +37,13 @@ public class PoliticalDeck {
 		}			*/
 	}
 
-	public void pickRandomCard() {
+	/*public void pickRandomCard() {
 		Random rnd = new Random();
 		int tmp = (int)rnd.nextInt(7); 
 		PoliticalCard card = deck[tmp];
 		deck[tmp].numCards-=1; 
 		
-	}
+	}*/
 	
 }
 
