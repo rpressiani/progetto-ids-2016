@@ -22,6 +22,7 @@ public class PermissionDeck {
 	public PermissionCard drawCard(ArrayList<PermissionCard> visibleCards, int index){
 		return visibleCards.get(index);
 	}
+	
 	/**
 	 * @return the deck
 	 */
