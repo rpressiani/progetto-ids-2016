@@ -2,9 +2,9 @@ package bonusItem;
 import player.Player;
 
 public class BonusAssistants implements BonusItem {
-	private final Integer items;
+	private final int items;
 	
-	public BonusAssistants(Integer items) {
+	public BonusAssistants(int items) {
 		this.items = items;
 	}
 
