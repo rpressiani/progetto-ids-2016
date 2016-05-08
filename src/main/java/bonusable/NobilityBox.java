@@ -5,18 +5,18 @@ import bonusItem.BonusItem;
 
 public class NobilityBox extends Bonusable {
 
-	private final int index;
+	private final int level;
 	
-	public NobilityBox(ArrayList<BonusItem> bonuses, int index) {
+	public NobilityBox(ArrayList<BonusItem> bonuses, int level) {
 		super(bonuses);
-		this.index=index;
+		this.level=level;
 	}
 	
 	/**
 	 * @return the index
 	 */
-	public int getIndex() {
-		return index;
+	public int getLevel() {
+		return level;
 	}
 
 }

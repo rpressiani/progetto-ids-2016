@@ -6,6 +6,8 @@ public class City {
 		this.name = name; 
 	}
 	
-	public boolean kingPresence() {}
+	public boolean kingPresence() {
+		return false;
+	}
 
 }

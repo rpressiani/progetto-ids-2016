@@ -2,10 +2,9 @@ package bonusItem;
 import player.Player;
 
 public class BonusScore implements BonusItem {
-	private final Integer items;
+	private final int items;
 	
-	public BonusScore(Integer items) {
-		super();
+	public BonusScore(int items) {
 		this.items = items;
 	}
 

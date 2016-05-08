@@ -1,4 +1,4 @@
-package politicalDeck;
+/*package politicalDeck;
 import java.util.ArrayList; 
 public class Garbage extends PoliticalDeck {
 	private PoliticalDeck garbageDeck; 
@@ -17,4 +17,4 @@ public class Garbage extends PoliticalDeck {
 		
 	}
 
-}
+}*/
