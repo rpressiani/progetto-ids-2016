@@ -3,7 +3,7 @@
  */
 package council;
 
-import politicalDeck.Color;
+import utilities.Color;
 
 /**
  * @author Riccardo Pressiani

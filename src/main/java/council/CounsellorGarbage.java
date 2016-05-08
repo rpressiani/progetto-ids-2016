@@ -6,7 +6,7 @@ package council;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import politicalDeck.Color;
+import utilities.Color;
 
 /**
  * @author Riccardo Pressiani

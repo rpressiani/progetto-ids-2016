@@ -1,6 +1,6 @@
 package player;
 
-import politicalDeck.Color;
+import utilities.Color;
 import politicalDeck.Hand;
 
 /**
