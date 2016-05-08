@@ -1,6 +1,7 @@
-package bonusable;
+package sharedObjects;
 
 import java.util.ArrayList;
+import bonusable.NobilityBox;
 
 public class Nobility {
 	
@@ -9,4 +10,13 @@ public class Nobility {
 	public Nobility(){
 		boxes=new ArrayList<NobilityBox>();
 	}
+
+	/**
+	 * @return the boxes
+	 */
+	public ArrayList<NobilityBox> getBoxes() {
+		return boxes;
+	}
+	
 }
+
