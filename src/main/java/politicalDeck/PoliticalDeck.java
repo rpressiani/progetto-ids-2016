@@ -1,49 +1,47 @@
-package politicalDeck;
-import java.awt.Color;
-import java.awt.color.*; 
+import java.util.ArrayList;
 import java.util.Random; 
-import java.util.ArrayList; 
 
 public class PoliticalDeck {
 
 	private PoliticalCard[] deck;  
 
-	/*public PoliticalDeck() {
+	private final String[] colors = {"Orange", "Pink", "Black", "Grey", "White", "Blue", "Jolly"};
+	//private final ArrayList<PoliticalCard> cards; 
+
+	public PoliticalDeck() {
 		deck = new PoliticalCard[7]; 
-		for(int i=1; i<=7; i++) {
+		/*for(int i=1; i<=7; i++) {
 			if(i==1) {
-				deck[i] = new PoliticalCard(new Color(0,0,0), 13); 
+				deck[i] = new PoliticalCard("Orange", 13); 
 			}
 			if(i==2) {
-				deck[i] = new PoliticalCard(new Color(255,255,255), 13); 
+				deck[i] = new PoliticalCard("Pink", 13); 
 			}
 			if(i==3) {
-				deck[i] = new PoliticalCard(new Color(10, 10, 10), 13);
+				deck[i] = new PoliticalCard("Black", 13);
 			}
 			if(i==4) {
-				deck[i] = new PoliticalCard(new Color(20, 20, 20), 13);
+				deck[i] = new PoliticalCard("Grey", 13);
 			}
 			if(i==5) {
-				deck[i] = new PoliticalCard(new Color(30, 30, 30), 13);
+				deck[i] = new PoliticalCard("White", 13);
 			}
 			if(i==6) {
-				deck[i] = new PoliticalCard(new Color(40, 40, 40), 13);
+				deck[i] = new PoliticalCard("Blue", 13);
 			}
 			if(i==7) {
-				deck[i] = new PoliticalCard(new Color(1, 2, 3), 12);
+				deck[i] = new PoliticalCard("Jolly", 12);
 			}
-		}
-	}*/
-	
-	public boolean isEmpty() {
-		return deck==null;
+		}			*/
 	}
-	//estrai una carta a caso
-	public void pickRandomCard() {
-		Random rand = new Random();
-		PoliticalCard card = deck[rand.nextInt(7)];
-		
 
+	public void pickRandomCard() {
+		Random rnd = new Random();
+		int tmp = (int)rnd.nextInt(7); 
+		PoliticalCard card = deck[tmp];
+		deck[tmp].numCards-=1; 
+		
 	}
+	
 }
 

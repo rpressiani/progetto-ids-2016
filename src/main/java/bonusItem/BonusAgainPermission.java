@@ -1,7 +1,7 @@
 package bonusItem;
 import player.Player;
 
-public class BonusAgainPermission implements BonusItem {
+public class BonusAgainPermission extends BonusItem {
 
 	public void giveBonus(Player player){
 		

@@ -1,7 +1,9 @@
 package bonusItem;
 import player.Player;
 
-public interface BonusItem {
+public abstract class BonusItem {
 
-	public void giveBonus(Player player);
+	public void giveBonus(Player player){
+		
+	}
 }

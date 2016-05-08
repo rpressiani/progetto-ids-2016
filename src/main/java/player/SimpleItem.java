@@ -7,7 +7,7 @@ package player;
  */
 public abstract class SimpleItem {
 	
-	Integer items;
+	private Integer items;
 	
 	/**
 	 * Constructor
@@ -36,14 +36,12 @@ public abstract class SimpleItem {
 	public Integer getItems() {
 		return items;
 	}
-	
-	
 
-//	/**
-//	 * @param items	number of items to set
-//	 */
-//	void setItems(Integer items) {
-//		this.items = items;
-//	}
+	/**
+	 * @param items	number of items to set
+	 */
+	void setItems(Integer items) {
+		this.items = items;
+	}
 
 }
