@@ -1,15 +1,16 @@
-import java.util.ArrayList;
-import java.util.Random; 
+package politicalDeck;
 
+import java.util.ArrayList;
+ 
 public class PoliticalDeck {
 
-	private PoliticalCard[] deck;  
-
+	private ArrayList<PoliticalCard> deck; 
+	protected final int numColors; //for parser
 	private final String[] colors = {"Orange", "Pink", "Black", "Grey", "White", "Blue", "Jolly"};
 	//private final ArrayList<PoliticalCard> cards; 
 
 	public PoliticalDeck() {
-		deck = new PoliticalCard[7]; 
+		deck = new ArrayList<PoliticalCard>(); 
 		/*for(int i=1; i<=7; i++) {
 			if(i==1) {
 				deck[i] = new PoliticalCard("Orange", 13); 
@@ -33,15 +34,11 @@ public class PoliticalDeck {
 				deck[i] = new PoliticalCard("Jolly", 12);
 			}
 		}			*/
-	}
-
-	public void pickRandomCard() {
-		Random rnd = new Random();
-		int tmp = (int)rnd.nextInt(7); 
-		PoliticalCard card = deck[tmp];
-		deck[tmp].numCards-=1; 
 		
 	}
+	public ArrayList<PoliticalCard> getDeck() {
+		return deck; 
+	}
+
 	
 }
-
