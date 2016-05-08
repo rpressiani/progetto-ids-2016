@@ -1,7 +1,7 @@
 package player;
 
-import politicalDeck.Color;
 import politicalDeck.Hand;
+import utilities.Color;
 
 /**
  * @author Riccardo Pressiani
@@ -37,6 +37,53 @@ public class Player {
 		this.score = new Score();
 		this.assistants = new Assistants();
 	}
-	
+
+	/**
+	 * @return the nickname
+	 */
+	public String getNickname() {
+		return nickname;
+	}
+
+	/**
+	 * @return the coins
+	 */
+	public Coins getCoins(){
+		return coins;
+	}
+	/**
+	 * @return the nobility
+	 */
+	public Nobility getNobility() {
+		return nobility;
+	}
+
+	/**
+	 * @return the score
+	 */
+	public Score getScore() {
+		return score;
+	}
+
+	/**
+	 * @return the assistants
+	 */
+	public Assistants getAssistants() {
+		return assistants;
+	}
+
+	/**
+	 * @return the color
+	 */
+	public Color getColor() {
+		return color;
+	}
+
+	/**
+	 * @return the hand
+	 */
+	public Hand getHand() {
+		return hand;
+	}
 
 }

@@ -5,7 +5,7 @@ package player;
  *
  */
 
-class Coins extends SimpleItem {
+public class Coins extends SimpleItem {
 	
 	/**
 	 * Subtract n-items from the total
@@ -16,7 +16,6 @@ class Coins extends SimpleItem {
 	public void sub(Integer items){
 		if (items < 0) throw new IllegalArgumentException("Argument must be greater than zero");
 		this.setItems(Integer.sum(this.getItems(), -items));
-		
 	}
 
 }

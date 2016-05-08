@@ -33,7 +33,7 @@ public abstract class SimpleItem {
 	/**
 	 * @return the items
 	 */
-	Integer getItems() {
+	public Integer getItems() {
 		return items;
 	}
 
@@ -43,9 +43,5 @@ public abstract class SimpleItem {
 	void setItems(Integer items) {
 		this.items = items;
 	}
-
-	
-	
-	
 
 }

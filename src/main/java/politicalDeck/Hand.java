@@ -1,36 +1,37 @@
 package politicalDeck;
-import java.util.ArrayList; 
+import java.util.ArrayList;
+import java.util.Random; 
 
 public class Hand extends PoliticalDeck {
 	private ArrayList<PoliticalCard> hand; 
+	private int numCards;
+	PoliticalDeck deck; 
 	
 	public Hand() {
 		hand = new ArrayList<PoliticalCard>();
 		
 	}
-	public void pickRandomCard(PoliticalDeck deck) {
-		
-	}
+
 	public PoliticalCard getCard(int position) { //guardare Javadoc
         hand.get(position);
     }
 	public void clear() {
-		hand.clear();
+		for(int i=1; i<=numCards; i++) {
+			 
+		}
 	}
 	public void addCard(PoliticalCard c) {
-        if (c == null)
-            throw new NullPointerException("Can't add a null card to a hand.");
-        hand.add(c);
+        
     }
-	public void removeCard(PoliticalCard c) {
-		hand.remove(c); 
-	}
 	public void removeCard(int position) {
-		if (position < 0 || position >= hand.size())
-			throw new IllegalArgumentException("Position does not exist in hand: " + position);
-	        hand.remove(position);
+		
 	}
 	
+	public boolean isDeckEmpty(PoliticalDeck deck) {
+		for(int i=1; i<=deck.numCards; i++) {
+			
+		}
+	}
 	public void sortByColor() { // Look for "Comparator"
        /* ArrayList<Card> newHand = new ArrayList<Card>();
         while (hand.size() > 0) {
