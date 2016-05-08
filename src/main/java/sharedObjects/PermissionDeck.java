@@ -1,25 +1,29 @@
 package sharedObjects;
 
-import java.util.Collection;
-import java.util.concurrent.LinkedBlockingQueue;
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.Queue;
+
 import bonusable.PermissionCard;
 
 public class PermissionDeck {
 	
-	private final int capacity=45; //read by parser
-	private LinkedBlockingQueue<PermissionCard> deck;
-
+	private Queue<PermissionCard> deck;
+	
 	public PermissionDeck(){
-		this.deck=new LinkedBlockingQueue<PermissionCard>(capacity);
+		this.deck=new LinkedList<PermissionCard>();
+	}
+
+	public void shuffleDeck(LinkedList<PermissionCard> deck){
+		Collections.shuffle(deck);
 	}
 	
-	public void shuffleDeck(){
-		//Collection.shuffle()
-	}
 	/**
 	 * @return the deck
 	 */
-	public LinkedBlockingQueue<PermissionCard> getDeck() {
+	public Queue<PermissionCard> getDeck() {
 		return deck;
 	}
+	
+	
 }
