@@ -7,6 +7,8 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Random;
 
+import javax.xml.bind.JAXBContext;
+
 import politicalDeck.Color;
 
 /**
@@ -32,7 +34,7 @@ public class Balcony {
 	}
 	
 	public void electCounsellor(Color color, CounsellorGarbage garbage){
-		garbage.add(this.balcony.peek().getColor());
+		garbage.add(this.balcony.element().getColor());
 		this.balcony.remove();
 		garbage.remove(color);
 		this.balcony.add(new Counsellor(color));
