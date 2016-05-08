@@ -1,7 +1,7 @@
 package player;
 
-import politicalDeck.Hand;
 import utilities.Color;
+import politicalDeck.Hand;
 
 /**
  * @author Riccardo Pressiani
@@ -11,7 +11,7 @@ public class Player {
 	
 	private String nickname;
 	private Coins coins;
-	private Nobility nobility;
+	private NobilityLevel nobilityLevel;
 	private Score score;
 	private Assistants assistants;
 	private Color color;
@@ -33,7 +33,7 @@ public class Player {
 		
 		this.hand = new Hand();
 		this.coins = new Coins();
-		this.nobility = new Nobility();
+		this.nobilityLevel = new NobilityLevel();
 		this.score = new Score();
 		this.assistants = new Assistants();
 	}
@@ -51,11 +51,20 @@ public class Player {
 	public Coins getCoins(){
 		return coins;
 	}
+	
 	/**
 	 * @return the nobility
 	 */
-	public Nobility getNobility() {
-		return nobility;
+	public NobilityLevel getNobilityLevel() {
+		return nobilityLevel;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return nickname;
 	}
 
 	/**

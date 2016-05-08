@@ -1,7 +1,7 @@
 package bonusItem;
 import player.Player;
 
-public class BonusNobility extends BonusItem {
+public class BonusNobility implements BonusItem {
 	
 	public void giveBonus(Player player){
 		
