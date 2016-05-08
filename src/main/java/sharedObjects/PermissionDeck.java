@@ -1,15 +1,16 @@
 package sharedObjects;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
-import java.util.Queue;
 
 import bonusable.PermissionCard;
 
 public class PermissionDeck {
 	
-	private Queue<PermissionCard> deck;
-	
+	private LinkedList<PermissionCard> deck;
+	private ArrayList<PermissionCard> visibleCards;
+
 	public PermissionDeck(){
 		this.deck=new LinkedList<PermissionCard>();
 	}
@@ -18,12 +19,21 @@ public class PermissionDeck {
 		Collections.shuffle(deck);
 	}
 	
+	public PermissionCard drawCard(ArrayList<PermissionCard> visibleCards, int index){
+		return visibleCards.get(index);
+	}
 	/**
 	 * @return the deck
 	 */
-	public Queue<PermissionCard> getDeck() {
+	public LinkedList<PermissionCard> getDeck() {
 		return deck;
 	}
 	
+	/**
+	 * @return the visibleCards
+	 */
+	public ArrayList<PermissionCard> getVisibleCards() {
+		return visibleCards;
+	}
 	
 }
