@@ -17,8 +17,11 @@ public class PoliticalCard {
 	public int getNumCards() {
 		return numCards; 
 	}
-	public void addCards() {
-			this.numCards++; 
+	public void setNumCards(int c) {
+		this.numCards = c; 
+	}
+	public void addCards(int c) {
+		this.numCards+=c; 
 	}
 	public void removeCards() {
 		this.numCards--; 
