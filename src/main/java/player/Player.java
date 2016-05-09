@@ -5,6 +5,7 @@ import java.util.Set;
 import utilities.Color;
 import politicalDeck.PoliticalHand;
 import bonusable.PermissionCard;
+import map.City;
 
 /**
  * @author Riccardo Pressiani
@@ -20,6 +21,7 @@ public class Player {
 	private Color color;
 	private PoliticalHand politicalHand;
 	private Set<PermissionCard> permissionHand;
+	private Set<City> builtCities; 
 	
 //	Waiting for permission card to be implemented
 //	private Set<PermissionCard> permissionCards;
@@ -104,6 +106,9 @@ public class Player {
 	 */
 	public Set<PermissionCard> getPermissionHand() {
 		return permissionHand;
+	}
+	public Set<City> getBuiltCities() {
+		return builtCities; 
 	}
 
 }
