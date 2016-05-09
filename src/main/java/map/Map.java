@@ -35,8 +35,12 @@ public class Map {
 		int distance = (int) pathFinder.getPathLength();
 		return distance; 
 	}
-	public void setCities() {
-		
+	public Set<City> getCities() {
+		return cities; 
+	}
+	public Set<City> allVertexes(UndirectedGraph<City, DefaultEdge> map, Set<City> cities) {
+		cities = map.vertexSet(); 
+		return cities; 
 	}
 	
 } 
