@@ -1,4 +1,4 @@
-ackage politicalDeck;
+package politicalDeck;
 
 
 public class PoliticalCard {
