@@ -7,5 +7,9 @@ import java.util.Set;
 
 public class PoliticalRealDeck extends PoliticalDeck {
 	
+	public void refill(PoliticalGarbage garbageDeck) {
+		
+	}
+	
 	
 }

@@ -14,7 +14,7 @@
         <xsd:complexType name="CFGCouncil">
             <xsd:sequence>
                 <xsd:element name="balconyNum" type="xsd:integer"/>
-                <xsd:element name="nCounsellors" type="xsd:integer"/>
+                <xsd:element name="nCounsellorsPerBalcony" type="xsd:integer"/>
                 <xsd:element name="nInitialGroupReserve" type="xsd:integer"/>
             </xsd:sequence>
         </xsd:complexType>

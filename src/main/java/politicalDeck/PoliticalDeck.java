@@ -40,6 +40,7 @@ public class PoliticalDeck {
 	public ArrayList<PoliticalCard> getDeck() {
 		return deck; 
 	}
+	
 
 	
 }
