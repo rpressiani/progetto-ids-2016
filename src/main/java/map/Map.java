@@ -9,6 +9,8 @@ import org.jgrapht.alg.DijkstraShortestPath;
 import org.jgrapht.graph.SimpleGraph;
 import org.jgrapht.graph.builder.UndirectedGraphBuilder;
 
+import player.Player;
+
 public class Map {
 	UndirectedGraph<City, DefaultEdge> map; 
 	
@@ -33,6 +35,10 @@ public class Map {
 		List<DefaultEdge> path = pathFinder.getPathEdgeList();
 		return path;
 	}
-	
+	/*public List<City> hasBuiltThere(Player player) {
+		
+		 List<City> conqueredCities = new BreadthFirstIterator<>(); ?
+		 should need a boolean "hasBuiltThere in class City.java"
+	}*/
 	
 } 
