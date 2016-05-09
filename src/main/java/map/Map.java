@@ -34,11 +34,11 @@ public class Map {
 		List<DefaultEdge> path = pathFinder.getPathEdgeList();
 		return path;
 	}
-	/*public List<City> hasBuiltThere(Player player) {
-		
-		 List<City> conqueredCities = new BreadthFirstIterator<>(); ?
-		 should need a boolean "hasBuiltThere in class City.java"
-	}*/
+	public int numericDistance(UndirectedGraph<City, DefaultEdge> map, City c1, City c2) { 
+		DijkstraShortestPath<City, DefaultEdge> pathFinder = new DijkstraShortestPath<City, DefaultEdge>(map, c1, c2);
+		int distance = (int) pathFinder.getPathLength();
+		return distance; 
+	}
 	
 } 
 
