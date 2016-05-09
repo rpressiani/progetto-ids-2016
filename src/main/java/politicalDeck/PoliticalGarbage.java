@@ -11,16 +11,11 @@ public class PoliticalGarbage extends PoliticalDeck {
 		
 	}
 	//puts garbage deck indexes to zero. Helpful for "refill" method
-	public void toZero(PoliticalRealDeck deck) {
+	public void toZero() {
 		for(int i=0; i<numColors; i++) {
 			//gives numCards for each index
-			int index = garbage.getDeck().get(i).getNumCards(); 
-			while(index>0) {
-				index--; //puts each garbage index to zero
-			}
-			
+			garbage.getDeck().get(i).setNumCards(0); 
 		}
 	}
-	
+}	
 
-}

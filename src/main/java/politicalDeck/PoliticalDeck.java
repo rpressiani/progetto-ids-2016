@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class PoliticalDeck {
 
 	private ArrayList<PoliticalCard> deck; 
-	protected final int numColors; //for parser
+	private final int numColors; //for parser
 	private final String[] colors = {"Orange", "Pink", "Black", "Grey", "White", "Blue", "Jolly"};
 	//private final ArrayList<PoliticalCard> cards; 
 
@@ -40,7 +40,14 @@ public class PoliticalDeck {
 	public ArrayList<PoliticalCard> getDeck() {
 		return deck; 
 	}
-	
-
-	
+	public int getNumColors() {
+		return numColors; 
+	}
+	public boolean isEmpty() {
+		for(int i=0; i<numColors; i++) {
+			if(deck.get(i).getNumCards()!=0)
+				return false; 
+		}
+		return true; 
+	}
 }

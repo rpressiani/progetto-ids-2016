@@ -16,12 +16,12 @@ public class PoliticalHand extends PoliticalDeck {
 		} while ( deck.getDeck().get(temp).getNumCards() == 0 );
 		
 		deck.getDeck().get(temp).removeCards();
-		hand.getDeck().get(temp).addCards();
+		hand.getDeck().get(temp).addCards(1);
 	}
 	//given the index, it discards a card. No random needed here
 	public void discardCard(PoliticalRealDeck deck, int index) {
 		hand.getDeck().get(index).removeCards();
-		deck.getDeck().get(index).addCards();
+		deck.getDeck().get(index).addCards(1);
 		
 	}
 
