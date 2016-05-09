@@ -47,8 +47,8 @@
         
         <xsd:complexType name="CFGPermissionCard">
             <xsd:sequence>
-                <xsd:element name="cities" type="bks:CFGCities" minOccurs="1" maxOccurs="unbounded"/>
-                <xsd:element name="bonuses" type="bks:CFGBonuses" minOccurs="1" maxOccurs="unbounded"/>
+                <xsd:element name="cities" type="bks:CFGCities" minOccurs="1" maxOccurs="1"/>
+                <xsd:element name="bonuses" type="bks:CFGBonuses" minOccurs="1" maxOccurs="1"/>
             </xsd:sequence>
         </xsd:complexType>
         

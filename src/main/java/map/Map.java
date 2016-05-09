@@ -39,8 +39,8 @@ public class Map {
 	public Set<City> getCities() {
 		return cities; 
 	}
-	public Set<City> allVertexes(UndirectedGraph<City, DefaultEdge> map, Set<City> cities) {
-		cities = map.vertexSet(); 
+	public Set<City> allVertexes() {
+		Set<City> cities = this.map.vertexSet(); 
 		return cities; 
 	}
 	
