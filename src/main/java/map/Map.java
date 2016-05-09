@@ -2,9 +2,9 @@ package map;
 import java.util.List;
 import java.util.Set;
 
-import org.jgraph.JGraph;
-import org.jgraph.graph.DefaultEdge;
-import org.jgraph.graph.DefaultGraphCell;
+import org.jgrapht.JGraph;
+import org.jgrapht.graph.DefaultEdge;
+import org.jgrapht.graph.DefaultGraphCell;
 import org.jgrapht.UndirectedGraph;
 import org.jgrapht.alg.DijkstraShortestPath;
 import org.jgrapht.graph.SimpleGraph;
