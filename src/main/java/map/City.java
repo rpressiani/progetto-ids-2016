@@ -1,9 +1,7 @@
 package map;
 
-import java.util.Collection;
-
+import java.util.HashSet;
 import bonusItem.BonusItem;
-
 import java.util.ArrayList; 
 import bonusable.Bonusable;
 import player.Player;
@@ -11,7 +9,7 @@ import player.Player;
 public class City extends Bonusable{
 	private String name; 
 	private Region region; 
-	private Collection<City> nearCities; // File!
+	private HashSet<City> nearCities; // File!
 	public City(String name, ArrayList<BonusItem> bonuses) {
 		super(bonuses);
 		this.name = name; 
@@ -27,9 +25,10 @@ public class City extends Bonusable{
 	public Region getRegion() {
 		return region; 
 	}
-	public Collection<City> getNearCities() {
+	public HashSet<City> getNearCities() {
 		return nearCities; 
 	}
+	//checks if a given player has built in a determined city
 	public boolean hasBuiltThere(Player player) {
 		for(City c : player.getBuiltCities()) {
 			if(player.getBuiltCities().contains(c))
@@ -37,5 +36,6 @@ public class City extends Bonusable{
 		}
 		return false; 
 	}
+	
 
 }

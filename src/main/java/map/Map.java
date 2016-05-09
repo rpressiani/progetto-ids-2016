@@ -1,7 +1,8 @@
 package map;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
-import org.jgraph.graph.DefaultEdge;
+import org.jgrapht.graph.DefaultEdge;
 import org.jgrapht.UndirectedGraph;
 import org.jgrapht.alg.DijkstraShortestPath;
 import org.jgrapht.graph.SimpleGraph;
@@ -35,11 +36,11 @@ public class Map {
 		int distance = (int) pathFinder.getPathLength();
 		return distance; 
 	}
-	public Set<City> getCities() {
+	public Set<City> allVertexes(UndirectedGraph<City, DefaultEdge> map) {
+		cities = map.vertexSet(); 
 		return cities; 
 	}
-	public Set<City> allVertexes(UndirectedGraph<City, DefaultEdge> map, Set<City> cities) {
-		cities = map.vertexSet(); 
+	public Set<City> getCities() {
 		return cities; 
 	}
 	
