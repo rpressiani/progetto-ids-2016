@@ -22,7 +22,6 @@ public class Balcony {
 	private BalconyState balconyState;
 	private final Integer nCounsellorsPerBalcony;
 	private final Integer nColors;
-	private final Integer nInitialReserveGroup;
 	
 //	Inserire una struttura per gestire la quantità di consiglieri
 //	di un dato colore allo stesso modo di come sono gestite le carte politica
@@ -30,10 +29,9 @@ public class Balcony {
 	public Balcony(GarbageState garbage, Parser parser) {
 		this.nCounsellorsPerBalcony = parser.getCFGCouncil().getNCounsellorsPerBalcony().intValue();
 		this.balcony = new LinkedBlockingQueue<Counsellor>(nCounsellorsPerBalcony);
-		this.nInitialReserveGroup = parser.getCFGCouncil().getNInitialGroupReserve().intValue();
 		this.nColors = parser.getCFGPoliticalDeck().getColor().size();
 		
-		for (int i = 0; i < nInitialReserveGroup; i++) {
+		for (int i = 0; i < nCounsellorsPerBalcony; i++) {
 			Color randomColor = getRandomCounsellor(garbage);
 //			Color randomColor = new Color("red");
 			this.balcony.add(new Counsellor(randomColor));
