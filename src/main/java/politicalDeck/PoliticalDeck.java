@@ -11,6 +11,7 @@ public class PoliticalDeck {
 
 	public PoliticalDeck() {
 		deck = new ArrayList<PoliticalCard>(); 
+		this.numColors = 1;
 		/*for(int i=1; i<=7; i++) {
 			if(i==1) {
 				deck[i] = new PoliticalCard("Orange", 13); 
