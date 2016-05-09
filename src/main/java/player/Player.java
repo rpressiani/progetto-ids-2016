@@ -1,5 +1,6 @@
 package player;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import utilities.Color;
@@ -39,6 +40,7 @@ public class Player {
 		this.nobilityLevel = new NobilityLevel();
 		this.score = new Score();
 		this.assistants = new Assistants();
+		this.builtCities = new HashSet<City>();
 	}
 
 	/**
