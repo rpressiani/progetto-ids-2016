@@ -5,7 +5,11 @@ import java.util.Iterator;
 import java.util.Random;
 import java.util.Set;
 
-public class RealDeck extends PoliticalDeck {
+public class PoliticalRealDeck extends PoliticalDeck {
+	
+	public void refill(PoliticalGarbage garbageDeck) {
+		
+	}
 	
 	
 }

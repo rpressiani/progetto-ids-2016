@@ -39,7 +39,7 @@ public class Balcony {
 		}
 	}
 	
-	public void electCounsellor(Color color, CounsellorGarbage garbage){
+	public void putCounsellor(Color color, CounsellorGarbage garbage){
 		garbage.add(this.balcony.element().getColor());
 		this.balcony.remove();
 		garbage.remove(color);
