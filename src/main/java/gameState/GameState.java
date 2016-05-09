@@ -1,0 +1,82 @@
+package gameState;
+
+import java.util.Set;
+
+import council.Balcony;
+import council.CounsellorGarbage;
+import council.CounsellorGroup;
+import map.Map;
+import map.Region;
+import politicalDeck.PoliticalGarbage;
+import politicalDeck.PoliticalRealDeck;
+import sharedObjects.Nobility;
+import sharedObjects.PermissionDeck;
+
+public class GameState {
+	private Map map;
+	private Set<Region> regions;
+	private Nobility nobility;
+	private PoliticalRealDeck politicalDeck;
+	private PoliticalGarbage garbage;
+	private Balcony balcony;
+	private CounsellorGroup counsellorGroup;
+	private CounsellorGarbage counsellorGarbage;
+	
+	/**
+	 * @return the map
+	 */
+	public Map getMap() {
+		return map;
+	}
+	
+	/**
+	 * @return the regions
+	 */
+	public Set<Region> getRegions() {
+		return regions;
+	}
+	
+	/**
+	 * @return the nobility
+	 */
+	public Nobility getNobility() {
+		return nobility;
+	}
+	
+	/**
+	 * @return the politicalDeck
+	 */
+	public PoliticalRealDeck getPoliticalDeck() {
+		return politicalDeck;
+	}
+	
+	/**
+	 * @return the garbage
+	 */
+	public PoliticalGarbage getGarbage() {
+		return garbage;
+	}
+	
+	/**
+	 * @return the balcony
+	 */
+	public Balcony getBalcony() {
+		return balcony;
+	}
+	
+	/**
+	 * @return the counsellorGroup
+	 */
+	public CounsellorGroup getCounsellorGroup() {
+		return counsellorGroup;
+	}
+	
+	/**
+	 * @return the counsellorGarbage
+	 */
+	public CounsellorGarbage getCounsellorGarbage() {
+		return counsellorGarbage;
+	}
+	
+	
+}
