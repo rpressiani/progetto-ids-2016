@@ -1,7 +1,11 @@
 package bonusable;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
+
 import bonusItem.BonusItem;
+import map.City;
 import market.Marketable;
 import player.Player;
 
@@ -13,12 +17,14 @@ public class PermissionCard extends Bonusable implements Marketable {
 	private static int counter=0;
 	private final int idCard;
 	private boolean used;
+	private Set<City> possibleCities;
 	
-	public PermissionCard(ArrayList<BonusItem> bonuses) {
+	public PermissionCard(ArrayList<BonusItem> bonuses, HashSet<City> cities) {
 		super(bonuses);
-		idCard=counter;
+		this.idCard=counter;
 		counter++;
 		this.used=false;
+		this.possibleCities = cities;
 	}
 	
 	@Override
@@ -52,6 +58,20 @@ public class PermissionCard extends Bonusable implements Marketable {
 	 */
 	public void setUsed(boolean used) {
 		this.used = used;
+	}
+
+	/**
+	 * @return the counter
+	 */
+	public static int getCounter() {
+		return counter;
+	}
+
+	/**
+	 * @return the possibleCities
+	 */
+	public Set<City> getPossibleCities() {
+		return possibleCities;
 	}
 	
 }

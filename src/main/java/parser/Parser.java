@@ -48,6 +48,13 @@ public class Parser {
 		}
 	}
 	
+	/**
+	 * @return the cfgRoot
+	 */
+	public CFGRoot getCFGRoot() {
+		return cfgRoot;
+	}
+
 	public CFGCouncil getCFGCouncil(){
 		return cfgRoot.getCouncil();
 	}

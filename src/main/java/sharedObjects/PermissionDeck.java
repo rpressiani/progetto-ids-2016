@@ -2,10 +2,22 @@ package sharedObjects;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
 
+import javax.print.attribute.HashAttributeSet;
+
+import bonusItem.BonusItem;
 import bonusable.PermissionCard;
+import jaxb.CFGPermissionCard;
+import jaxb.CFGPermissionCards;
+import jaxb.CFGPermissionDeck;
+import jaxb.CFGPermissionDecks;
+import map.City;
+import parser.Parser;
 
 public class PermissionDeck {
 	
@@ -13,15 +25,37 @@ public class PermissionDeck {
 	private ArrayList<PermissionCard> visibleCards;
 	private final int visibleLenght;
 
-	public PermissionDeck(ArrayList<PermissionCard> cards/*Parser parser, File file*/){
+	public PermissionDeck(Parser parser, String region){
 		this.deck=new LinkedList<PermissionCard>();
 		this.visibleCards=new ArrayList<PermissionCard>();
 		this.visibleLenght=2; //read by parser
 
-		Iterator<PermissionCard> itr= cards.iterator();
-		while(itr.hasNext()){
-			deck.add(itr.next());
+//		Iterator<PermissionCard> itr= cards.iterator();
+//		while(itr.hasNext()){
+//			deck.add(itr.next());
+//		}
+		
+		List<CFGPermissionDeck> permissionDeckList = parser.getCFGRoot().getPermissionDecks().getPermissionDeck();
+		CFGPermissionDeck cfgPermissionDeck = new CFGPermissionDeck();
+		Integer index = new Integer(0);
+		for (Iterator<CFGPermissionDeck> iterator = permissionDeckList.iterator(); iterator.hasNext();) {
+			cfgPermissionDeck = iterator.next();
+			index++;
+			if (cfgPermissionDeck.getRegion() == region){
+				break;
+			}
 		}
+		
+		List<CFGPermissionCard> cfgPermissionCards = cfgPermissionDeck.getPermissionCards().get(index).getPermissionCard();
+		for (Iterator<CFGPermissionCard> iterator = cfgPermissionCards.iterator(); iterator.hasNext();) {
+			CFGPermissionCard cfgPermissionCard = iterator.next();
+			ArrayList<BonusItem> bonuses = new ArrayList<BonusItem>();
+			HashSet<City> cities = new HashSet<City>();
+			
+			
+			this.deck.add(new PermissionCard(bonuses, cities));
+		}
+//		cfgPermissionDeck.getPermissionCards().get(index)
 		
 		shuffleDeck(deck);
 		
