@@ -18,14 +18,42 @@ import utilities.Color;
  */
 public class Balcony {
 	
+	/**
+	 * @return the balcony
+	 */
+	public Queue<Counsellor> getBalcony() {
+		return balcony;
+	}
+
+
+	/**
+	 * @return the balconyState
+	 */
+	public BalconyState getBalconyState() {
+		return balconyState;
+	}
+
+
+	/**
+	 * @return the nCounsellorsPerBalcony
+	 */
+	public Integer getnCounsellorsPerBalcony() {
+		return nCounsellorsPerBalcony;
+	}
+
+
+	/**
+	 * @return the nColors
+	 */
+	public Integer getnColors() {
+		return nColors;
+	}
+
 	private Queue<Counsellor> balcony;
 	private BalconyState balconyState;
 	private final Integer nCounsellorsPerBalcony;
 	private final Integer nColors;
 	private final Integer nInitialReserveGroup;
-	
-//	Inserire una struttura per gestire la quantità di consiglieri
-//	di un dato colore allo stesso modo di come sono gestite le carte politica
 	
 	public Balcony(GarbageState garbage, Parser parser) {
 		this.nCounsellorsPerBalcony = parser.getCFGCouncil().getNCounsellorsPerBalcony().intValue();

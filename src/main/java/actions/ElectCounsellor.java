@@ -13,6 +13,7 @@ public class ElectCounsellor extends PrimaryAction {
 	@Override
 	public void doAction(Player player, GameState gameState) {
 		region.getBalcony().putCounsellor(color, gameState.getCounsellorGarbage());
+		player.getCoins().add(4);
 	}
 
 	/**
