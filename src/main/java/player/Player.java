@@ -1,7 +1,10 @@
 package player;
 
+import java.util.Set;
+
 import utilities.Color;
 import politicalDeck.Hand;
+import bonusable.PermissionCard;
 
 /**
  * @author Riccardo Pressiani
@@ -15,7 +18,8 @@ public class Player {
 	private Score score;
 	private Assistants assistants;
 	private Color color;
-	private Hand hand;
+	private Hand politicalHand;
+	private Set<PermissionCard> permissionHand;
 	
 //	Waiting for permission card to be implemented
 //	private Set<PermissionCard> permissionCards;
@@ -31,7 +35,7 @@ public class Player {
 		this.nickname = nickname;
 		this.color = color;
 		
-		this.hand = new Hand();
+		this.politicalHand = new Hand();
 		this.coins = new Coins();
 		this.nobilityLevel = new NobilityLevel();
 		this.score = new Score();
@@ -92,7 +96,14 @@ public class Player {
 	 * @return the hand
 	 */
 	public Hand getHand() {
-		return hand;
+		return politicalHand;
+	}
+
+	/**
+	 * @return the permissionHand
+	 */
+	public Set<PermissionCard> getPermissionHand() {
+		return permissionHand;
 	}
 
 }
