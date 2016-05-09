@@ -7,6 +7,7 @@ import java.util.Queue;
 import java.util.Random;
 import java.util.concurrent.LinkedBlockingQueue;
 
+import parser.Parser;
 import utilities.Color;
 
 
@@ -18,21 +19,23 @@ public class Balcony {
 	
 	private Queue<Counsellor> balcony;
 	private final Integer nCounsellors;
+	private final Integer nColors;
+	private final Integer nInitialReserveGroup;
 	
 //	Inserire una struttura per gestire la quantità di consiglieri
 //	di un dato colore allo stesso modo di come sono gestite le carte politica
 	
-	public Balcony(CounsellorGarbage garbage /*, Parser parser, File file*/ ) {
-		this.nCounsellors = 0 /*nCouncellor will be something like:
-					parser.nCounsellors(file);*/;
+	public Balcony(CounsellorGarbage garbage, Parser parser ) {
+		this.nCounsellors = parser.getCFGCouncil().getNCounsellors().intValue();
 		this.balcony = new LinkedBlockingQueue<Counsellor>(nCounsellors);
+		this.nInitialReserveGroup = parser.getCFGCouncil().getNInitialGroupReserve().intValue();
+		this.nColors = parser.getCFGPoliticalDeck().getColor().size();
 		
-		for (int i = 0; i < nCounsellors; i++) {
-			
-			Color randomColor = getRandomCounsellor(garbage, nCounsellors);
-			garbage.remove(randomColor);
+		for (int i = 0; i < nInitialReserveGroup; i++) {
+			Color randomColor = getRandomCounsellor(garbage);
+//			Color randomColor = new Color("red");
 			this.balcony.add(new Counsellor(randomColor));
-			
+			garbage.remove(randomColor);
 		}
 	}
 	
@@ -43,10 +46,10 @@ public class Balcony {
 		this.balcony.add(new Counsellor(color));
 	}
 	
-	private Color getRandomCounsellor(CounsellorGarbage garbage, Integer nCounsellors){
+	private Color getRandomCounsellor(CounsellorGarbage garbage){
 		Random rn = new Random();
-		int selectedIndex = rn.nextInt(nCounsellors);
-		for (int i = 0; i < nCounsellors; i++) {
+		int selectedIndex = rn.nextInt(this.nColors);
+		for (int i = 0; i < nColors; i++) {
 			int groupCounter = garbage.getReserve().get(selectedIndex).getCounter();
 			if (groupCounter > 0) {
 				break;
@@ -55,6 +58,14 @@ public class Balcony {
 		}
 		
 		return garbage.getReserve().get(selectedIndex).getColor();
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Balcony [balcony=" + balcony + ", nCounsellors=" + nCounsellors + "]";
 	}
 
 }

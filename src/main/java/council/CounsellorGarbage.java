@@ -6,6 +6,7 @@ package council;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import parser.Parser;
 import utilities.Color;
 
 /**
@@ -15,22 +16,23 @@ import utilities.Color;
 public class CounsellorGarbage {
 	
 	private ArrayList<CounsellorGroup> reserve;
+	private Integer nColors;
 	
-	public CounsellorGarbage(/*Parser parser, File file*/){
+	public CounsellorGarbage(Parser parser){
 		this.reserve = new ArrayList<CounsellorGroup>();
-//		Something like:
-		
-//		parser.initCounsellorGarbage(this.counsellorGarbage, file);
-		
-//		The instruction above will add to the counsellorGarbage the CounsellorGroup,
-//		initialized with the data provided by the config file. 
+		this.nColors = parser.getCFGPoliticalDeck().getColor().size();
+		for (int i = 0; i < nColors; i++) {
+			reserve.add(new CounsellorGroup(new Color(parser.getCFGPoliticalDeck().getColor().get(i)),
+											parser.getCFGCouncil().getNInitialGroupReserve().intValue()));
+		}
 	}
 	
 	public void add(Color color){
 		Iterator<CounsellorGroup> itr = reserve.iterator();
 		while(itr.hasNext()){
-			if (itr.next().getColor().equals(color)) {
-				itr.next().add();
+			CounsellorGroup counsellorGroupItr = itr.next();
+			if (counsellorGroupItr.getColor().equals(color)) {
+				counsellorGroupItr.add();
 			}
 		}
 	}
@@ -38,8 +40,9 @@ public class CounsellorGarbage {
 	public void remove(Color color){
 		Iterator<CounsellorGroup> itr = reserve.iterator();
 		while(itr.hasNext()){
-			if (itr.next().getColor().equals(color)) {
-				itr.next().remove();
+			CounsellorGroup counsellorGroupItr = itr.next();
+			if (counsellorGroupItr.getColor().equals(color)) {
+				counsellorGroupItr.remove();
 			}
 		}
 	}
@@ -49,6 +52,14 @@ public class CounsellorGarbage {
 	 */
 	public ArrayList<CounsellorGroup> getReserve() {
 		return reserve;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "CounsellorGarbage [reserve=" + reserve + ", nColors=" + nColors + "]";
 	}
 
 }
