@@ -12,20 +12,21 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for CFGPoliticalDeck complex type.
+ * <p>Java class for CFGBonuses complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="CFGPoliticalDeck">
+ * &lt;complexType name="CFGBonuses">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="color" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="bonus" type="{urn:co4}CFGBonus" maxOccurs="unbounded"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -35,40 +36,41 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "CFGPoliticalDeck", propOrder = {
-    "color"
+@XmlType(name = "CFGBonuses", propOrder = {
+    "bonus"
 })
-public class CFGPoliticalDeck {
+public class CFGBonuses {
 
-    protected List<String> color;
+    @XmlElement(required = true)
+    protected List<CFGBonus> bonus;
 
     /**
-     * Gets the value of the color property.
+     * Gets the value of the bonus property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the color property.
+     * This is why there is not a <CODE>set</CODE> method for the bonus property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getColor().add(newItem);
+     *    getBonus().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link String }
+     * {@link CFGBonus }
      * 
      * 
      */
-    public List<String> getColor() {
-        if (color == null) {
-            color = new ArrayList<String>();
+    public List<CFGBonus> getBonus() {
+        if (bonus == null) {
+            bonus = new ArrayList<CFGBonus>();
         }
-        return this.color;
+        return this.bonus;
     }
 
 }

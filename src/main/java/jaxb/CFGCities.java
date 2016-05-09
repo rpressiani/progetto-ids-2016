@@ -12,20 +12,21 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for CFGPoliticalDeck complex type.
+ * <p>Java class for CFGCities complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="CFGPoliticalDeck">
+ * &lt;complexType name="CFGCities">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="color" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="city" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -35,26 +36,27 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "CFGPoliticalDeck", propOrder = {
-    "color"
+@XmlType(name = "CFGCities", propOrder = {
+    "city"
 })
-public class CFGPoliticalDeck {
+public class CFGCities {
 
-    protected List<String> color;
+    @XmlElement(required = true)
+    protected List<String> city;
 
     /**
-     * Gets the value of the color property.
+     * Gets the value of the city property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the color property.
+     * This is why there is not a <CODE>set</CODE> method for the city property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getColor().add(newItem);
+     *    getCity().add(newItem);
      * </pre>
      * 
      * 
@@ -64,11 +66,11 @@ public class CFGPoliticalDeck {
      * 
      * 
      */
-    public List<String> getColor() {
-        if (color == null) {
-            color = new ArrayList<String>();
+    public List<String> getCity() {
+        if (city == null) {
+            city = new ArrayList<String>();
         }
-        return this.color;
+        return this.city;
     }
 
 }
