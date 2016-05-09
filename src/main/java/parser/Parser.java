@@ -9,6 +9,8 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 
+import jaxb.CFGCouncil;
+import jaxb.CFGPoliticalDeck;
 import jaxb.CFGRoot;
 
 /**
@@ -22,9 +24,9 @@ public class Parser {
 	private Unmarshaller jabxUnmarshaller;
 	private CFGRoot cfgRoot; 
 	
-	public Parser(File file){
+	public Parser(){
 		try {
-			this.file = new File("src/main/resources/co4_config.xsd");
+			this.file = new File("src/main/resources/co4_config.xml");
 			this.jaxbContext = JAXBContext.newInstance(CFGRoot.class);
 			this.jabxUnmarshaller = jaxbContext.createUnmarshaller();
 			this.cfgRoot = (CFGRoot) this.jabxUnmarshaller.unmarshal(file);
@@ -32,7 +34,26 @@ public class Parser {
 		catch (JAXBException e){
 			e.printStackTrace();
 		}
-		
+	}
+	
+	public Parser(File file){
+		try {
+			this.file = file;
+			this.jaxbContext = JAXBContext.newInstance(CFGRoot.class);
+			this.jabxUnmarshaller = jaxbContext.createUnmarshaller();
+			this.cfgRoot = (CFGRoot) this.jabxUnmarshaller.unmarshal(file);
+		}
+		catch (JAXBException e){
+			e.printStackTrace();
+		}
+	}
+	
+	public CFGCouncil getCFGCouncil(){
+		return cfgRoot.getCouncil();
+	}
+	
+	public CFGPoliticalDeck getCFGPoliticalDeck(){
+		return cfgRoot.getPoliticalDeck();
 	}
 
 }

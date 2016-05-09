@@ -41,6 +41,14 @@ public class CounsellorGroup {
 	public Integer getCounter() {
 		return counter;
 	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "CounsellorGroup [color=" + color + ", counter=" + counter + "]";
+	}
 	
 	
 

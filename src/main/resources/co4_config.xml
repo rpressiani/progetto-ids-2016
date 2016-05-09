@@ -4,9 +4,14 @@
     <council>
         <balconyNum>4</balconyNum>
         <nCounsellors>4</nCounsellors>
+        <nInitialGroupReserve>4</nInitialGroupReserve>
     </council>
-    <council>
-        <balconyNum>128</balconyNum>
-        <nCounsellors>64</nCounsellors>
-    </council>
+    <politicalDeck>
+        <color>red</color>
+        <color>yellow</color>
+        <color>green</color>
+        <color>blue</color>
+        <color>black</color>
+        <color>white</color>
+    </politicalDeck>
 </x:root>
