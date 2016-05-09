@@ -8,6 +8,7 @@
             <xsd:sequence>
                 <xsd:element name="council" type="bks:CFGCouncil" minOccurs="0" maxOccurs="1"/>
                 <xsd:element name="politicalDeck" type="bks:CFGPoliticalDeck" minOccurs="1" maxOccurs="1"/>
+                <xsd:element name="permissionDecks" type="bks:CFGPermissionDecks" minOccurs="1" maxOccurs="1"/>
             </xsd:sequence>
         </xsd:complexType>
         
@@ -22,6 +23,51 @@
         <xsd:complexType name="CFGPoliticalDeck">
             <xsd:sequence>
                 <xsd:element name="color" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+            </xsd:sequence>
+        </xsd:complexType>
+        
+        <xsd:complexType name="CFGPermissionDecks">
+            <xsd:sequence>
+                <xsd:element name="permissionDeck" type="bks:CFGPermissionDeck" minOccurs="1" maxOccurs="unbounded"/>
+            </xsd:sequence>
+        </xsd:complexType>
+        
+        <xsd:complexType name="CFGPermissionDeck">
+            <xsd:sequence>
+                <xsd:element name="region" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+                <xsd:element name="permissionCards" type="bks:CFGPermissionCards" minOccurs="1" maxOccurs="unbounded"/>
+            </xsd:sequence>
+        </xsd:complexType>
+        
+        <xsd:complexType name="CFGPermissionCards">
+            <xsd:sequence>
+                <xsd:element name="permissionCard" type="bks:CFGPermissionCard" minOccurs="1" maxOccurs="unbounded"/>
+            </xsd:sequence>
+        </xsd:complexType>
+        
+        <xsd:complexType name="CFGPermissionCard">
+            <xsd:sequence>
+                <xsd:element name="cities" type="bks:CFGCities" minOccurs="1" maxOccurs="1"/>
+                <xsd:element name="bonuses" type="bks:CFGBonuses" minOccurs="1" maxOccurs="1"/>
+            </xsd:sequence>
+        </xsd:complexType>
+        
+        <xsd:complexType name="CFGCities">
+            <xsd:sequence>
+                <xsd:element name="city" type="xsd:string" minOccurs="1" maxOccurs="unbounded"/>
+            </xsd:sequence>
+        </xsd:complexType>
+        
+        <xsd:complexType name="CFGBonuses">
+            <xsd:sequence>
+                <xsd:element name="bonus" type="bks:CFGBonus" minOccurs="1" maxOccurs="unbounded"/>
+            </xsd:sequence>
+        </xsd:complexType>
+        
+        <xsd:complexType name="CFGBonus">
+            <xsd:sequence>
+                <xsd:element name="bonusItem" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+                <xsd:element name="quantity" type="xsd:integer" minOccurs="0" maxOccurs="1"/>
             </xsd:sequence>
         </xsd:complexType>
         

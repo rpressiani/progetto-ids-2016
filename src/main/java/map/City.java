@@ -1,6 +1,8 @@
 package map;
 
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 import bonusItem.BonusItem;
 
@@ -11,10 +13,12 @@ import player.Player;
 public class City extends Bonusable{
 	private String name; 
 	private Region region; 
-	private Collection<City> nearCities; // File!
+	private Set<City> nearCities; // File!
+	
 	public City(String name, ArrayList<BonusItem> bonuses) {
 		super(bonuses);
 		this.name = name; 
+		this.nearCities = new HashSet<City>();
 		//it should read near cities from configuration file!
 	}
 	
