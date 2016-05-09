@@ -2,6 +2,7 @@ package politicalDeck;
 
 import java.util.Random;
 
+
 public class Hand {
 	private PoliticalDeck hand = new PoliticalDeck(); 
 	private PoliticalDeck politicalDeck;  //points to the "real" political deck
@@ -14,8 +15,14 @@ public class Hand {
 			temp = rnd.nextInt(6);
 		} while ( politicalDeck.getDeck().get(temp).getNumCards() == 0 );
 		
-		politicalDeck.getDeck().get(temp).addCards();
-		hand.getDeck().get(temp).removeCards();
+		politicalDeck.getDeck().get(temp).removeCards();
+		hand.getDeck().get(temp).addCards();
+	}
+	//given the index, it discards a card. No random needed here
+	public void discardCard(int index) {
+		hand.getDeck().get(index).removeCards();
+		politicalDeck.getDeck().get(index).addCards();
+		
 	}
 
 }

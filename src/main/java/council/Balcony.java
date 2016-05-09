@@ -3,9 +3,9 @@
  */
 package council;
 
-import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Random;
+import java.util.concurrent.LinkedBlockingQueue;
 
 import utilities.Color;
 
@@ -19,10 +19,14 @@ public class Balcony {
 	private Queue<Counsellor> balcony;
 	private final Integer nCounsellors;
 	
+//	Inserire una struttura per gestire la quantità di consiglieri
+//	di un dato colore allo stesso modo di come sono gestite le carte politica
+	
 	public Balcony(CounsellorGarbage garbage /*, Parser parser, File file*/ ) {
-		this.balcony = new LinkedList<Counsellor>();
 		this.nCounsellors = 0 /*nCouncellor will be something like:
-		 						parser.nCounsellors(file);*/;
+					parser.nCounsellors(file);*/;
+		this.balcony = new LinkedBlockingQueue<Counsellor>(nCounsellors);
+		
 		for (int i = 0; i < nCounsellors; i++) {
 			
 			Color randomColor = getRandomCounsellor(garbage, nCounsellors);
@@ -47,7 +51,7 @@ public class Balcony {
 			if (groupCounter > 0) {
 				break;
 			}
-			else selectedIndex = (selectedIndex++) % 4;
+			else selectedIndex = (selectedIndex++) % garbage.getReserve().size();
 		}
 		
 		return garbage.getReserve().get(selectedIndex).getColor();

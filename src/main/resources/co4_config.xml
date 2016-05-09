@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--<x:books xmlns:x="urn:books">-->
+<x:root xmlns:x="urn:co4">
+    <council>
+        <balconyNum>4</balconyNum>
+        <nCounsellors>4</nCounsellors>
+    </council>
+    <council>
+        <balconyNum>128</balconyNum>
+        <nCounsellors>64</nCounsellors>
+    </council>
+</x:root>
