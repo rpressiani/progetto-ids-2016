@@ -21,9 +21,6 @@ public class Player {
 	private PoliticalHand politicalHand;
 	private Set<PermissionCard> permissionHand;
 	
-//	Waiting for permission card to be implemented
-//	private Set<PermissionCard> permissionCards;
-	
 	/**
 	 * Constructor
 	 * Set nickname, color, hand and create the other objects.
@@ -95,7 +92,7 @@ public class Player {
 	/**
 	 * @return the hand
 	 */
-	public PoliticalHand getHand() {
+	public PoliticalHand getPoliticalHand() {
 		return politicalHand;
 	}
 
