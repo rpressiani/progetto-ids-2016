@@ -13,22 +13,18 @@ import utilities.Color;
  * @author Riccardo Pressiani
  *
  */
-public class CounsellorGarbage {
+public abstract class CouncilState {
 	
-	private ArrayList<CounsellorGroup> reserve;
+	private ArrayList<CounsellorGroup> state;
 	private Integer nColors;
 	
-	public CounsellorGarbage(Parser parser){
-		this.reserve = new ArrayList<CounsellorGroup>();
+	public CouncilState(Parser parser){
+		this.state = new ArrayList<CounsellorGroup>();
 		this.nColors = parser.getCFGPoliticalDeck().getColor().size();
-		for (int i = 0; i < nColors; i++) {
-			reserve.add(new CounsellorGroup(new Color(parser.getCFGPoliticalDeck().getColor().get(i)),
-											parser.getCFGCouncil().getNInitialGroupReserve().intValue()));
-		}
 	}
 	
 	public void add(Color color){
-		Iterator<CounsellorGroup> itr = reserve.iterator();
+		Iterator<CounsellorGroup> itr = state.iterator();
 		while(itr.hasNext()){
 			CounsellorGroup counsellorGroupItr = itr.next();
 			if (counsellorGroupItr.getColor().equals(color)) {
@@ -38,7 +34,7 @@ public class CounsellorGarbage {
 	}
 
 	public void remove(Color color){
-		Iterator<CounsellorGroup> itr = reserve.iterator();
+		Iterator<CounsellorGroup> itr = state.iterator();
 		while(itr.hasNext()){
 			CounsellorGroup counsellorGroupItr = itr.next();
 			if (counsellorGroupItr.getColor().equals(color)) {
@@ -50,8 +46,15 @@ public class CounsellorGarbage {
 	/**
 	 * @return the reserve
 	 */
-	public ArrayList<CounsellorGroup> getReserve() {
-		return reserve;
+	public ArrayList<CounsellorGroup> getState() {
+		return state;
+	}
+
+	/**
+	 * @return the nColors
+	 */
+	public Integer getnColors() {
+		return nColors;
 	}
 
 	/* (non-Javadoc)
@@ -59,7 +62,7 @@ public class CounsellorGarbage {
 	 */
 	@Override
 	public String toString() {
-		return "CounsellorGarbage [reserve=" + reserve + ", nColors=" + nColors + "]";
+		return "CouncilState [reserve=" + state + ", nColors=" + nColors + "]";
 	}
 
 }

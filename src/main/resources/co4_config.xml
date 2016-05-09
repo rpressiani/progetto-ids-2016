@@ -3,7 +3,7 @@
 <x:root xmlns:x="urn:co4">
     <council>
         <balconyNum>4</balconyNum>
-        <nCounsellors>4</nCounsellors>
+        <nCounsellorsPerBalcony>4</nCounsellorsPerBalcony>
         <nInitialGroupReserve>4</nInitialGroupReserve>
     </council>
     <politicalDeck>
