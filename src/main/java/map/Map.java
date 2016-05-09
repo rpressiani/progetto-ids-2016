@@ -2,17 +2,14 @@ package map;
 import java.util.List;
 import java.util.Set;
 
-import org.jgrapht.JGraph;
 import org.jgrapht.graph.DefaultEdge;
-import org.jgrapht.graph.DefaultGraphCell;
 import org.jgrapht.UndirectedGraph;
 import org.jgrapht.alg.DijkstraShortestPath;
 import org.jgrapht.graph.SimpleGraph;
-import org.jgrapht.graph.builder.UndirectedGraphBuilder;
-import player.Player;
 
 public class Map {
 	private UndirectedGraph<City, DefaultEdge> map;  
+	private Set<City> cities; 
 	public Map() {
 		this.map = new SimpleGraph<City, DefaultEdge>(DefaultEdge.class);
 	}
@@ -38,6 +35,13 @@ public class Map {
 		DijkstraShortestPath<City, DefaultEdge> pathFinder = new DijkstraShortestPath<City, DefaultEdge>(map, c1, c2);
 		int distance = (int) pathFinder.getPathLength();
 		return distance; 
+	}
+	public Set<City> getCities() {
+		return cities; 
+	}
+	public Set<City> allVertexes(UndirectedGraph<City, DefaultEdge> map, Set<City> cities) {
+		cities = map.vertexSet(); 
+		return cities; 
 	}
 	
 } 
