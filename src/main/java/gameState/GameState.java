@@ -3,8 +3,8 @@ package gameState;
 import java.util.Set;
 
 import council.Balcony;
-import council.CounsellorGarbage;
 import council.CounsellorGroup;
+import council.GarbageState;
 import map.Map;
 import map.Region;
 import politicalDeck.PoliticalGarbage;
@@ -20,7 +20,7 @@ public class GameState {
 	private PoliticalGarbage garbage;
 	private Balcony balcony;
 	private CounsellorGroup counsellorGroup;
-	private CounsellorGarbage counsellorGarbage;
+	private GarbageState counsellorGarbage;
 	
 	/**
 	 * @return the map
@@ -74,7 +74,7 @@ public class GameState {
 	/**
 	 * @return the counsellorGarbage
 	 */
-	public CounsellorGarbage getCounsellorGarbage() {
+	public GarbageState getCounsellorGarbage() {
 		return counsellorGarbage;
 	}
 	
