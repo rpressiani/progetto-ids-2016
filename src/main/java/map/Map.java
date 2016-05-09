@@ -38,9 +38,6 @@ public class Map {
 	public void setCities() {
 		
 	}
-	public getCities() {
-		
-	}
 	
 } 
 
