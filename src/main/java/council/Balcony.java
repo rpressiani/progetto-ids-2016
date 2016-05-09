@@ -43,7 +43,8 @@ public class Balcony {
 		this.initBalconyState();
 	}
 	
-	public void electCounsellor(Color color, CouncilState garbage){
+
+	public void putCounsellor(Color color, GarbageState garbage){
 		garbage.add(this.balcony.element().getColor());
 		this.balconyState.remove(this.balcony.element().getColor());
 		this.balcony.remove();
