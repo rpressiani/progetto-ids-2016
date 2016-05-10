@@ -18,7 +18,7 @@ public class PoliticalHand extends PoliticalDeck {
 	}
 	//given the index, it discards a card. No random needed here
 	public void discardCard(PoliticalRealDeck deck, int index) {
-		hand.getDeck().get(index).removeCards(1);
+		hand.getDeck().get(index).removeCards(1); 
 		deck.getDeck().get(index).addCards(1);
 		
 	}

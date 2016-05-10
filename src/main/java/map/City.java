@@ -25,15 +25,28 @@ public class City extends Bonusable{
 	/*public boolean kingPresence() {
 		return false;
 	}*/
+	/**
+	 * @return name of the city
+	 */
 	public String getName() {
 		return name; 
 	}
+	/**
+	 * @return name of the region
+	 */
 	public Region getRegion() {
 		return region; 
 	}
+	/**
+	 * @return all the cities near to a given one (read from file)
+	 */
 	public Collection<City> getNearCities() {
 		return nearCities; 
 	}
+	/**
+	 * @param player
+	 * @return true if the player has built in a determined city
+	 */
 	public boolean hasBuiltThere(Player player) {
 		for(City c : player.getBuiltCities()) {
 			if(player.getBuiltCities().contains(c))
