@@ -39,7 +39,7 @@ public class PoliticalCard {
 	}
 	/**
 	 * @param c
-	 * removes a card
+	 * removes c card
 	 */
 	public void removeCards(int c) {
 		this.numCards-=c; 

@@ -7,7 +7,10 @@ public class PoliticalGarbage extends PoliticalDeck {
 	public PoliticalGarbage() {
 		
 	}
-	//puts garbage deck indexes to zero. Helpful for "refill" method
+	/**
+	 * sets all numCards parameters of deck to zero
+	 * useful for refill
+	 */
 	public void toZero() {
 		for(int i=0; i<numColors; i++) {
 			//gives numCards for each index
