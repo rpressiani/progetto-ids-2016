@@ -41,6 +41,7 @@ public class Player {
 		this.score = new Score();
 		this.assistants = new Assistants();
 		this.builtCities = new HashSet<City>();
+		this.permissionHand= new HashSet<PermissionCard>();
 	}
 
 	/**
