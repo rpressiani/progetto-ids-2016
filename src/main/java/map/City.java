@@ -1,9 +1,5 @@
 package map;
 
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
-
 import bonusItem.BonusItem;
 
 import java.util.ArrayList; 
@@ -13,6 +9,7 @@ import player.Player;
 public class City extends Bonusable{
 	private String name; 
 //	private Set<City> nearCities; // File!
+
 	
 	public City(String name, ArrayList<BonusItem> bonuses) {
 		super(bonuses);
@@ -27,7 +24,6 @@ public class City extends Bonusable{
 	public String getName() {
 		return name; 
 	}
-
 
 //	public Collection<City> getNearCities() {
 //		return nearCities; 

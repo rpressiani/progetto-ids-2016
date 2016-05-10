@@ -32,7 +32,6 @@ public class Region {
 			if (cfgRegion.getName() == this.name) break;
 		}
 		
-//		for (Iterator<String> iteratorRegionCity = cfgRegion.getCities().getCity().iterator(); iteratorRegionCity.hasNext();) {
 		for (Iterator<CFGCity> iteratorRegionCity = cfgRegion.getCities().getCity().iterator(); iteratorRegionCity.hasNext();) {
 			String cityString =  iteratorRegionCity.next().getName();
 			for (Iterator<City> iteratorAllCities = allCities.iterator(); iteratorAllCities.hasNext();) {
@@ -45,6 +44,7 @@ public class Region {
 		}
 		
 		this.permissionDeck = new PermissionDeck(parser, this);
+
 	}
 	
 	/**

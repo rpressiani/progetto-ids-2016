@@ -1,10 +1,5 @@
 package politicalDeck;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Random;
-import java.util.Set;
-
 public class PoliticalRealDeck extends PoliticalDeck {
 	private PoliticalRealDeck realDeck; 
 	public PoliticalRealDeck() { //parser
@@ -21,6 +16,7 @@ public class PoliticalRealDeck extends PoliticalDeck {
 		}
 		garbageDeck.toZero();
 	}
+	
 	
 	
 }

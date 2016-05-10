@@ -6,7 +6,7 @@ public class PoliticalDeck {
 
 	private ArrayList<PoliticalCard> deck; 
 	private final int numColors; //for parser
-	private final String[] colors = {"Orange", "Pink", "Black", "Grey", "White", "Blue", "Jolly"};
+	//private final String[] colors = {"Orange", "Pink", "Black", "Grey", "White", "Blue", "Jolly"};
 	//private final ArrayList<PoliticalCard> cards; 
 
 	public PoliticalDeck() {
@@ -37,17 +37,21 @@ public class PoliticalDeck {
 		}			*/
 		
 	}
-	public ArrayList<PoliticalCard> getDeck() {
-		return deck; 
-	}
-	public int getNumColors() {
-		return numColors; 
-	}
+
 	public boolean isEmpty() {
 		for(int i=0; i<numColors; i++) {
 			if(deck.get(i).getNumCards()!=0)
 				return false; 
 		}
 		return true; 
+	}
+	
+	public ArrayList<PoliticalCard> getDeck() {
+		return deck; 
+	}
+
+	
+	public int getNumColors() {
+		return numColors; 
 	}
 }

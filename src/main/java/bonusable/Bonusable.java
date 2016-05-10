@@ -2,14 +2,8 @@ package bonusable;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 
-import bonusItem.BonusAssistants;
-import bonusItem.BonusCoins;
 import bonusItem.BonusItem;
-import bonusItem.BonusNobility;
-import bonusItem.BonusScore;
-import jaxb.CFGBonus;
 import player.Player;
 
 public abstract class Bonusable {

@@ -5,7 +5,6 @@ package parser;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 
@@ -19,11 +18,9 @@ import bonusItem.BonusItem;
 import bonusItem.BonusNobility;
 import bonusItem.BonusScore;
 import jaxb.CFGBonus;
-import jaxb.CFGCity;
 import jaxb.CFGCouncil;
 import jaxb.CFGPoliticalDeck;
 import jaxb.CFGRoot;
-import map.City;
 
 /**
  * @author Riccardo Pressiani
