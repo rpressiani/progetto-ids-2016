@@ -1,6 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--<x:books xmlns:x="urn:books">-->
 <x:root xmlns:x="urn:co4">
+    <map>
+        <region>
+            <name>mare</name>
+            <cities>
+                <city>A</city>
+                <city>B</city>
+                <city>C</city>
+                <city>D</city>
+                <city>E</city>
+            </cities>
+        </region>
+        <region>
+            <name>pianura</name>
+            <cities>
+                <city>F</city>
+                <city>G</city>
+                <city>H</city>
+                <city>I</city>
+                <city>J</city>
+            </cities>
+        </region>
+        <region>
+            <name>montagna</name>
+            <cities>
+                <city>K</city>
+                <city>L</city>
+                <city>M</city>
+                <city>N</city>
+                <city>O</city>
+            </cities>
+        </region>
+    </map>
     <council>
         <balconyNum>4</balconyNum>
         <nCounsellorsPerBalcony>4</nCounsellorsPerBalcony>

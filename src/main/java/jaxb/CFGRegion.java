@@ -8,7 +8,6 @@
 
 package jaxb;
 
-import java.math.BigInteger;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -16,17 +15,17 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for CFGBonus complex type.
+ * <p>Java class for CFGRegion complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="CFGBonus">
+ * &lt;complexType name="CFGRegion">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="bonusItem" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="quantity" type="{http://www.w3.org/2001/XMLSchema}integer" minOccurs="0"/>
+ *         &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="cities" type="{urn:co4}CFGCities"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -36,62 +35,63 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "CFGBonus", propOrder = {
-    "bonusItem",
-    "quantity"
+@XmlType(name = "CFGRegion", propOrder = {
+    "name",
+    "cities"
 })
-public class CFGBonus {
+public class CFGRegion {
 
     @XmlElement(required = true)
-    protected String bonusItem;
-    protected BigInteger quantity;
+    protected String name;
+    @XmlElement(required = true)
+    protected CFGCities cities;
 
     /**
-     * Gets the value of the bonusItem property.
+     * Gets the value of the name property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getBonusItem() {
-        return bonusItem;
+    public String getName() {
+        return name;
     }
 
     /**
-     * Sets the value of the bonusItem property.
+     * Sets the value of the name property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setBonusItem(String value) {
-        this.bonusItem = value;
+    public void setName(String value) {
+        this.name = value;
     }
 
     /**
-     * Gets the value of the quantity property.
+     * Gets the value of the cities property.
      * 
      * @return
      *     possible object is
-     *     {@link BigInteger }
+     *     {@link CFGCities }
      *     
      */
-    public BigInteger getQuantity() {
-        return quantity;
+    public CFGCities getCities() {
+        return cities;
     }
 
     /**
-     * Sets the value of the quantity property.
+     * Sets the value of the cities property.
      * 
      * @param value
      *     allowed object is
-     *     {@link BigInteger }
+     *     {@link CFGCities }
      *     
      */
-    public void setQuantity(BigInteger value) {
-        this.quantity = value;
+    public void setCities(CFGCities value) {
+        this.cities = value;
     }
 
 }
