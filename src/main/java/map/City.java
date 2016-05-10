@@ -47,16 +47,14 @@ public class City extends Bonusable{
 		return false; 
 	}
 	//returns all the connected cities "conquered" by a player
-	/*public Set<City> linkedCities(UndirectedGraph<City, DefaultEdge> map, Player player) {
+	public Set<City> linkedCities(UndirectedGraph<City, DefaultEdge> map, Player player, City c) {
 		Set<City> linkedCities; 
 		//player must have built somewhere
-		if(player.getBuiltCities()!=null) {
-			for(City c : player.getBuiltCities()) {
-				
-			}
+		if(player.getBuiltCities()!=null && player.getBuiltCities().contains(c) ) {
+			
 		}
 		return nearCities; 
-	}*/
+	}
 	
 
 }
