@@ -12,7 +12,6 @@ import player.Player;
 
 public class City extends Bonusable{
 	private String name; 
-	private Region region; 
 	private Set<City> nearCities; // File!
 	
 	public City(String name, ArrayList<BonusItem> bonuses) {
@@ -28,9 +27,7 @@ public class City extends Bonusable{
 	public String getName() {
 		return name; 
 	}
-	public Region getRegion() {
-		return region; 
-	}
+
 	public Collection<City> getNearCities() {
 		return nearCities; 
 	}

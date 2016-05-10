@@ -107,6 +107,7 @@ public class Player {
 	public Set<PermissionCard> getPermissionHand() {
 		return permissionHand;
 	}
+	
 	public Set<City> getBuiltCities() {
 		return builtCities; 
 	}

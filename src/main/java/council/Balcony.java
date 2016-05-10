@@ -17,38 +17,6 @@ import utilities.Color;
  *
  */
 public class Balcony {
-	
-	/**
-	 * @return the balcony
-	 */
-	public Queue<Counsellor> getBalcony() {
-		return balcony;
-	}
-
-
-	/**
-	 * @return the balconyState
-	 */
-	public BalconyState getBalconyState() {
-		return balconyState;
-	}
-
-
-	/**
-	 * @return the nCounsellorsPerBalcony
-	 */
-	public Integer getnCounsellorsPerBalcony() {
-		return nCounsellorsPerBalcony;
-	}
-
-
-	/**
-	 * @return the nColors
-	 */
-	public Integer getnColors() {
-		return nColors;
-	}
-
 	private Queue<Counsellor> balcony;
 	private BalconyState balconyState;
 	private final Integer nCounsellorsPerBalcony;
@@ -61,7 +29,6 @@ public class Balcony {
 		
 		for (int i = 0; i < nCounsellorsPerBalcony; i++) {
 			Color randomColor = getRandomCounsellor(garbage);
-//			Color randomColor = new Color("red");
 			this.balcony.add(new Counsellor(randomColor));
 			garbage.remove(randomColor);
 		}
@@ -100,6 +67,37 @@ public class Balcony {
 			Counsellor counsellorItr = itr.next();
 			this.balconyState.add(counsellorItr.getColor());
 		}
+	}
+	
+	/**
+	 * @return the balcony
+	 */
+	public Queue<Counsellor> getBalcony() {
+		return balcony;
+	}
+
+
+	/**
+	 * @return the balconyState
+	 */
+	public BalconyState getBalconyState() {
+		return balconyState;
+	}
+
+
+	/**
+	 * @return the nCounsellorsPerBalcony
+	 */
+	public Integer getnCounsellorsPerBalcony() {
+		return nCounsellorsPerBalcony;
+	}
+
+
+	/**
+	 * @return the nColors
+	 */
+	public Integer getnColors() {
+		return nColors;
 	}
 
 	/* (non-Javadoc)
