@@ -6,7 +6,6 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
 
 import bonusItem.BonusAssistants;
 import bonusItem.BonusCoins;
@@ -18,7 +17,7 @@ import jaxb.CFGBonus;
 import jaxb.CFGPermissionCard;
 import jaxb.CFGPermissionDeck;
 import map.City;
-import map.Map;
+import map.Region;
 import parser.Parser;
 
 public class PermissionDeck {
@@ -27,7 +26,7 @@ public class PermissionDeck {
 	private ArrayList<PermissionCard> visibleCards;
 	private final int visibleLenght;
 
-	public PermissionDeck(Parser parser, String region, Map map){
+	public PermissionDeck(Parser parser, Region region){
 		this.deck=new LinkedList<PermissionCard>();
 		this.visibleCards=new ArrayList<PermissionCard>();
 		this.visibleLenght=2; //read by parser
@@ -38,7 +37,7 @@ public class PermissionDeck {
 		for (Iterator<CFGPermissionDeck> iterator = permissionDeckList.iterator(); iterator.hasNext();) {
 			cfgPermissionDeck = iterator.next();
 			index++;
-			if (cfgPermissionDeck.getRegion() == region){
+			if (cfgPermissionDeck.getRegion() == region.getName()){
 				break;
 			}
 		}
@@ -85,16 +84,18 @@ public class PermissionDeck {
 				}
 			}
 			
-			Set<City> allCities = map.allVertexes();
 			for (Iterator<String> iteratorCities = cfgPermissionCard.getCities().getCity().iterator(); iteratorCities.hasNext();) {
 				String cityName = iteratorCities.next();
-				City cityToAdd;
-				
+				for (Iterator<City> iteratorMatchCity = region.getRegionCities().iterator(); iteratorMatchCity.hasNext();) {
+					City cityToAdd = iteratorMatchCity.next();
+					if (cityToAdd.getName() == cityName) {
+						cities.add(cityToAdd);
+						break;
+					}
+				}
 			}
-			
 			this.deck.add(new PermissionCard(bonuses, cities));
 		}
-//		cfgPermissionDeck.getPermissionCards().get(index)
 		
 		shuffleDeck(deck);
 		
