@@ -5,6 +5,10 @@ public class PoliticalRealDeck extends PoliticalDeck {
 	public PoliticalRealDeck() { //parser
 		
 	}
+	/**
+	 * @param garbageDeck
+	 * it fills the political deck with garbage deck when the main deck is empty
+	 */
 	public void refill(PoliticalGarbage garbageDeck) {
 		if(!garbageDeck.isEmpty() && realDeck.isEmpty()) {
 			int numGarbage = garbageDeck.getNumColors();  
