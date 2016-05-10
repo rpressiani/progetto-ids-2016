@@ -23,7 +23,7 @@ public class PoliticalCard {
 	public void addCards(int c) {
 		this.numCards+=c; 
 	}
-	public void removeCards() {
+	public void removeCards(int c) {
 		this.numCards--; 
 	}
 	
