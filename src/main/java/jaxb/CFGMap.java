@@ -17,17 +17,16 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for CFGPermissionDeck complex type.
+ * <p>Java class for CFGMap complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="CFGPermissionDeck">
+ * &lt;complexType name="CFGMap">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="region" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="permissionCards" type="{urn:co4}CFGPermissionCards" maxOccurs="unbounded"/>
+ *         &lt;element name="region" type="{urn:co4}CFGRegion" maxOccurs="unbounded"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -37,68 +36,41 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "CFGPermissionDeck", propOrder = {
-    "region",
-    "permissionCards"
+@XmlType(name = "CFGMap", propOrder = {
+    "region"
 })
-public class CFGPermissionDeck {
+public class CFGMap {
 
     @XmlElement(required = true)
-    protected String region;
-    @XmlElement(required = true)
-    protected List<CFGPermissionCards> permissionCards;
+    protected List<CFGRegion> region;
 
     /**
      * Gets the value of the region property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getRegion() {
-        return region;
-    }
-
-    /**
-     * Sets the value of the region property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setRegion(String value) {
-        this.region = value;
-    }
-
-    /**
-     * Gets the value of the permissionCards property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the permissionCards property.
+     * This is why there is not a <CODE>set</CODE> method for the region property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getPermissionCards().add(newItem);
+     *    getRegion().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link CFGPermissionCards }
+     * {@link CFGRegion }
      * 
      * 
      */
-    public List<CFGPermissionCards> getPermissionCards() {
-        if (permissionCards == null) {
-            permissionCards = new ArrayList<CFGPermissionCards>();
+    public List<CFGRegion> getRegion() {
+        if (region == null) {
+            region = new ArrayList<CFGRegion>();
         }
-        return this.permissionCards;
+        return this.region;
     }
 
 }
