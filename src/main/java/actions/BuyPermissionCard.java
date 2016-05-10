@@ -1,6 +1,6 @@
 package actions;
 
-import council.BalconyState;
+import council.Balcony;
 import gameState.GameState;
 import map.Region;
 import player.Player;
@@ -13,14 +13,18 @@ public class BuyPermissionCard extends PrimaryAction {
 	
 	@Override
 	public void doAction(Player player, GameState gameState) {
-		
+	
 	}
 	
-	public boolean checkProposal(PoliticalHand hand, BalconyState state){
-		int sum;
+	public boolean checkProposal(PoliticalHand hand, Balcony balcony){
+		int sum=0;
 		
-		//for(PoliticalCard card : hand.getDeck())
-		return false;
+		for(PoliticalCard card : hand.getDeck()){
+			sum=sum+card.getNumCards();
+		}
+		
+		if (sum>=balcony.getnCounsellorsPerBalcony()) return false;
+		else return true;
 	}
 	
 	/**

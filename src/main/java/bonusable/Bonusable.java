@@ -8,7 +8,7 @@ import player.Player;
 public abstract class Bonusable {
 	private final ArrayList<BonusItem> bonuses;
 	
-	public Bonusable(ArrayList<BonusItem> bonuses /*,Parser parser, File file*/) {
+	public Bonusable(ArrayList<BonusItem> bonuses) {
 		this.bonuses = bonuses;
 	}
 	

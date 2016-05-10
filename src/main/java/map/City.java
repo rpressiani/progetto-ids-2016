@@ -2,6 +2,9 @@ package map;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 import bonusItem.BonusItem;
 import java.util.ArrayList; 
 import bonusable.Bonusable;
@@ -15,10 +18,11 @@ import org.jgrapht.graph.SimpleGraph;
 public class City extends Bonusable{
 	private String name; 
 	private Region region; 
-	private Set<City> nearCities; // File!
+	private Set<City> nearCities; // File
 	public City(String name, ArrayList<BonusItem> bonuses) {
 		super(bonuses);
 		this.name = name; 
+		this.nearCities = new HashSet<City>();
 		//it should read near cities from configuration file!
 	}
 	

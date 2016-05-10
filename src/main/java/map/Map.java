@@ -2,6 +2,7 @@ package map;
 
 import java.util.List;
 import java.util.Set;
+
 import org.jgrapht.graph.DefaultEdge;
 import org.jgrapht.UndirectedGraph;
 import org.jgrapht.alg.DijkstraShortestPath;
@@ -40,7 +41,13 @@ public class Map {
 		cities = map.vertexSet(); 
 		return cities; 
 	}
+
 	public Set<City> getCities() {
+		return cities; 
+	}
+
+	public Set<City> allVertexes() {
+		Set<City> cities = this.map.vertexSet(); 
 		return cities; 
 	}
 	
