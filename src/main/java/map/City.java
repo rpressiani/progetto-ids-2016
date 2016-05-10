@@ -2,18 +2,10 @@ package map;
 
 import java.util.HashSet;
 import java.util.Set;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
 import bonusItem.BonusItem;
 import java.util.ArrayList; 
 import bonusable.Bonusable;
 import player.Player;
-import org.jgrapht.graph.DefaultEdge;
-import org.jgrapht.UndirectedGraph;
-import org.jgrapht.alg.DijkstraShortestPath;
-import org.jgrapht.graph.SimpleGraph;
-
 
 public class City extends Bonusable{
 	private String name; 
@@ -46,15 +38,5 @@ public class City extends Bonusable{
 		}
 		return false; 
 	}
-	//returns all the connected cities "conquered" by a player
-	public Set<City> linkedCities(UndirectedGraph<City, DefaultEdge> map, Player player, City c) {
-		Set<City> linkedCities; 
-		//player must have built somewhere
-		if(player.getBuiltCities()!=null && player.getBuiltCities().contains(c) ) {
-			
-		}
-		return nearCities; 
-	}
 	
-
 }
