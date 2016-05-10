@@ -15,17 +15,18 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for CFGRegion complex type.
+ * <p>Java class for CFGCity complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="CFGRegion">
+ * &lt;complexType name="CFGCity">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="cities" type="{urn:co4}CFGCities4Map"/>
+ *         &lt;element name="bonuses" type="{urn:co4}CFGBonuses"/>
+ *         &lt;element name="links" type="{urn:co4}CFGLinks"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -35,16 +36,19 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "CFGRegion", propOrder = {
+@XmlType(name = "CFGCity", propOrder = {
     "name",
-    "cities"
+    "bonuses",
+    "links"
 })
-public class CFGRegion {
+public class CFGCity {
 
     @XmlElement(required = true)
     protected String name;
     @XmlElement(required = true)
-    protected CFGCities4Map cities;
+    protected CFGBonuses bonuses;
+    @XmlElement(required = true)
+    protected CFGLinks links;
 
     /**
      * Gets the value of the name property.
@@ -71,27 +75,51 @@ public class CFGRegion {
     }
 
     /**
-     * Gets the value of the cities property.
+     * Gets the value of the bonuses property.
      * 
      * @return
      *     possible object is
-     *     {@link CFGCities4Map }
+     *     {@link CFGBonuses }
      *     
      */
-    public CFGCities4Map getCities() {
-        return cities;
+    public CFGBonuses getBonuses() {
+        return bonuses;
     }
 
     /**
-     * Sets the value of the cities property.
+     * Sets the value of the bonuses property.
      * 
      * @param value
      *     allowed object is
-     *     {@link CFGCities4Map }
+     *     {@link CFGBonuses }
      *     
      */
-    public void setCities(CFGCities4Map value) {
-        this.cities = value;
+    public void setBonuses(CFGBonuses value) {
+        this.bonuses = value;
+    }
+
+    /**
+     * Gets the value of the links property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link CFGLinks }
+     *     
+     */
+    public CFGLinks getLinks() {
+        return links;
+    }
+
+    /**
+     * Sets the value of the links property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link CFGLinks }
+     *     
+     */
+    public void setLinks(CFGLinks value) {
+        this.links = value;
     }
 
 }

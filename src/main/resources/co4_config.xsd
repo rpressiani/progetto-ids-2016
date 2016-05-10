@@ -81,9 +81,31 @@
         <xsd:complexType name="CFGRegion">
             <xsd:sequence>
                 <xsd:element name="name" type="xsd:string" minOccurs="1" maxOccurs="1"/>                
-                <xsd:element name="cities" type="bks:CFGCities" minOccurs="1" maxOccurs="1"/>
+                <xsd:element name="cities" type="bks:CFGCities4Map" minOccurs="1" maxOccurs="1"/>
             </xsd:sequence>
         </xsd:complexType>
+        
+        <xsd:complexType name="CFGCities4Map">
+            <xsd:sequence>
+                <xsd:element name="city" type="bks:CFGCity" minOccurs="1" maxOccurs="unbounded"/>                
+            </xsd:sequence>
+        </xsd:complexType>
+        
+        <xsd:complexType name="CFGCity">
+            <xsd:sequence>
+                <xsd:element name="name" type="xsd:string" minOccurs="1" maxOccurs="1"/>                
+                <xsd:element name="bonuses" type="bks:CFGBonuses" minOccurs="1" maxOccurs="1"/>
+                <xsd:element name="links" type="bks:CFGLinks" minOccurs="1" maxOccurs="1"/>
+            </xsd:sequence>
+        </xsd:complexType>
+        
+        <xsd:complexType name="CFGLinks">
+            <xsd:sequence>
+                <xsd:element name="cityName" type="xsd:string" minOccurs="1" maxOccurs="unbounded"/>                
+            </xsd:sequence>
+        </xsd:complexType>
+        
+        
         
 
 </xsd:schema>

@@ -17,17 +17,16 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for CFGPermissionDeck complex type.
+ * <p>Java class for CFGLinks complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="CFGPermissionDeck">
+ * &lt;complexType name="CFGLinks">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="region" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="permissionCards" type="{urn:co4}CFGPermissionCards" maxOccurs="unbounded"/>
+ *         &lt;element name="cityName" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -37,68 +36,41 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "CFGPermissionDeck", propOrder = {
-    "region",
-    "permissionCards"
+@XmlType(name = "CFGLinks", propOrder = {
+    "cityName"
 })
-public class CFGPermissionDeck {
+public class CFGLinks {
 
     @XmlElement(required = true)
-    protected String region;
-    @XmlElement(required = true)
-    protected List<CFGPermissionCards> permissionCards;
+    protected List<String> cityName;
 
     /**
-     * Gets the value of the region property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getRegion() {
-        return region;
-    }
-
-    /**
-     * Sets the value of the region property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setRegion(String value) {
-        this.region = value;
-    }
-
-    /**
-     * Gets the value of the permissionCards property.
+     * Gets the value of the cityName property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the permissionCards property.
+     * This is why there is not a <CODE>set</CODE> method for the cityName property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getPermissionCards().add(newItem);
+     *    getCityName().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link CFGPermissionCards }
+     * {@link String }
      * 
      * 
      */
-    public List<CFGPermissionCards> getPermissionCards() {
-        if (permissionCards == null) {
-            permissionCards = new ArrayList<CFGPermissionCards>();
+    public List<String> getCityName() {
+        if (cityName == null) {
+            cityName = new ArrayList<String>();
         }
-        return this.permissionCards;
+        return this.cityName;
     }
 
 }

@@ -7,13 +7,8 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-import bonusItem.BonusAssistants;
-import bonusItem.BonusCoins;
 import bonusItem.BonusItem;
-import bonusItem.BonusNobility;
-import bonusItem.BonusScore;
 import bonusable.PermissionCard;
-import jaxb.CFGBonus;
 import jaxb.CFGPermissionCard;
 import jaxb.CFGPermissionDeck;
 import map.City;
@@ -48,41 +43,7 @@ public class PermissionDeck {
 			ArrayList<BonusItem> bonuses = new ArrayList<BonusItem>();
 			HashSet<City> cities = new HashSet<City>();
 			
-			for (Iterator<CFGBonus> iteratorBonuses = cfgPermissionCard.getBonuses().getBonus().iterator(); iteratorBonuses.hasNext();) {
-				CFGBonus bonus = iteratorBonuses.next();
-				BonusItem bonusItem;
-				switch (bonus.getBonusItem()) {
-				case "coins":
-					bonusItem = new BonusCoins(bonus.getQuantity().intValue());
-					bonuses.add(bonusItem);
-					break;
-				case "assistants":
-					bonusItem = new BonusAssistants(bonus.getQuantity().intValue());
-					bonuses.add(bonusItem);
-				case "score":
-					bonusItem = new BonusScore(bonus.getQuantity().intValue());
-					bonuses.add(bonusItem);
-				case "nobility":
-					bonusItem = new BonusNobility(bonus.getQuantity().intValue());
-				case "politicalCard":
-//					To be implemented
-					break;
-				case "additionalAction":
-//					To be implemented
-					break;
-				case "againPermission":
-//					To be implemented
-					break;
-				case "freePermission":
-//					To be implemented
-					break;
-				case "token":
-//					To be implemented
-					break;
-				default:
-					break;
-				}
-			}
+			bonuses = parser.getBonusesFromParser(cfgPermissionCard.getBonuses().getBonus());
 			
 			for (Iterator<String> iteratorCities = cfgPermissionCard.getCities().getCity().iterator(); iteratorCities.hasNext();) {
 				String cityName = iteratorCities.next();

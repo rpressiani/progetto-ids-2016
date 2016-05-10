@@ -5,31 +5,84 @@
         <region>
             <name>mare</name>
             <cities>
-                <city>A</city>
-                <city>B</city>
-                <city>C</city>
-                <city>D</city>
-                <city>E</city>
+                <city>
+                    <name>A</name>
+                    <bonuses>
+                        <bonus>
+                            <bonusItem>score</bonusItem>
+                            <quantity>2</quantity>
+                        </bonus>
+                        <bonus>
+                            <bonusItem>coins</bonusItem>
+                            <quantity>3</quantity>
+                        </bonus>
+                    </bonuses>
+                    <links>
+                        <cityName>B</cityName>
+                        <cityName>C</cityName>
+                    </links>
+                </city>
+                <city>
+                    <name>B</name>
+                    <bonuses>
+                        <bonus>
+                            <bonusItem>score</bonusItem>
+                            <quantity>2</quantity>
+                        </bonus>
+                        <bonus>
+                            <bonusItem>coins</bonusItem>
+                            <quantity>3</quantity>
+                        </bonus>
+                    </bonuses>
+                    <links>
+                        <cityName>A</cityName>
+                        <cityName>C</cityName>
+                        <cityName>D</cityName>
+                    </links>
+                </city>
+                <city>
+                    <name>C</name>
+                    <bonuses>
+                        <bonus>
+                            <bonusItem>score</bonusItem>
+                            <quantity>2</quantity>
+                        </bonus>
+                        <bonus>
+                            <bonusItem>coins</bonusItem>
+                            <quantity>3</quantity>
+                        </bonus>
+                    </bonuses>
+                    <links>
+                        <cityName>A</cityName>
+                        <cityName>B</cityName>
+                    </links>
+                </city>
+                <city>
+                    <name>D</name>
+                    <bonuses>
+                        <bonus>
+                            <bonusItem>score</bonusItem>
+                            <quantity>2</quantity>
+                        </bonus>
+                        <bonus>
+                            <bonusItem>coins</bonusItem>
+                            <quantity>3</quantity>
+                        </bonus>
+                    </bonuses>
+                    <links>
+                        <cityName>B</cityName>
+                    </links>
+                </city>
             </cities>
         </region>
         <region>
             <name>pianura</name>
             <cities>
-                <city>F</city>
-                <city>G</city>
-                <city>H</city>
-                <city>I</city>
-                <city>J</city>
             </cities>
         </region>
         <region>
             <name>montagna</name>
             <cities>
-                <city>K</city>
-                <city>L</city>
-                <city>M</city>
-                <city>N</city>
-                <city>O</city>
             </cities>
         </region>
     </map>
@@ -52,9 +105,9 @@
             <permissionCards>
                 <permissionCard>
                     <cities>
-                        <city>a</city>
-                        <city>b</city>
-                        <city>c</city>
+                        <city>A</city>
+                        <city>B</city>
+                        <city>C</city>
                     </cities>
                     <bonuses>
                         <bonus>
@@ -69,9 +122,9 @@
                 </permissionCard>
                 <permissionCard>
                     <cities>
-                        <city>a</city>
-                        <city>b</city>
-                        <city>c</city>
+                        <city>A</city>
+                        <city>B</city>
+                        <city>C</city>
                     </cities>
                     <bonuses>
                         <bonus>
@@ -86,9 +139,9 @@
                 </permissionCard>
                 <permissionCard>
                     <cities>
-                        <city>a</city>
-                        <city>b</city>
-                        <city>c</city>
+                        <city>A</city>
+                        <city>B</city>
+                        <city>C</city>
                     </cities>
                     <bonuses>
                         <bonus>

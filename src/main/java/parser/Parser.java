@@ -4,14 +4,26 @@
 package parser;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 
+import bonusItem.BonusAssistants;
+import bonusItem.BonusCoins;
+import bonusItem.BonusItem;
+import bonusItem.BonusNobility;
+import bonusItem.BonusScore;
+import jaxb.CFGBonus;
+import jaxb.CFGCity;
 import jaxb.CFGCouncil;
 import jaxb.CFGPoliticalDeck;
 import jaxb.CFGRoot;
+import map.City;
 
 /**
  * @author Riccardo Pressiani
@@ -61,6 +73,47 @@ public class Parser {
 	
 	public CFGPoliticalDeck getCFGPoliticalDeck(){
 		return cfgRoot.getPoliticalDeck();
+	}
+	
+	public ArrayList<BonusItem> getBonusesFromParser(List<CFGBonus> cfgBonuses){
+		ArrayList<BonusItem> bonuses = new ArrayList<BonusItem>();
+		
+		for (Iterator<CFGBonus> iteratorBonuses = cfgBonuses.iterator(); iteratorBonuses.hasNext();) {
+			CFGBonus bonus = iteratorBonuses.next();
+			BonusItem bonusItem;
+			switch (bonus.getBonusItem()) {
+			case "coins":
+				bonusItem = new BonusCoins(bonus.getQuantity().intValue());
+				bonuses.add(bonusItem);
+				break;
+			case "assistants":
+				bonusItem = new BonusAssistants(bonus.getQuantity().intValue());
+				bonuses.add(bonusItem);
+			case "score":
+				bonusItem = new BonusScore(bonus.getQuantity().intValue());
+				bonuses.add(bonusItem);
+			case "nobility":
+				bonusItem = new BonusNobility(bonus.getQuantity().intValue());
+			case "politicalCard":
+//				To be implemented
+				break;
+			case "additionalAction":
+//				To be implemented
+				break;
+			case "againPermission":
+//				To be implemented
+				break;
+			case "freePermission":
+//				To be implemented
+				break;
+			case "token":
+//				To be implemented
+				break;
+			default:
+				break;
+			}
+		}
+		return bonuses;
 	}
 
 }
