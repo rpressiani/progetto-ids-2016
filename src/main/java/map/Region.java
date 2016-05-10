@@ -7,6 +7,7 @@ import java.util.Set;
 
 import council.Balcony;
 import council.GarbageState;
+import jaxb.CFGCity;
 import jaxb.CFGRegion;
 import parser.Parser;
 import sharedObjects.PermissionDeck;
@@ -31,9 +32,8 @@ public class Region {
 			if (cfgRegion.getName() == this.name) break;
 		}
 		
-
-		for (Iterator<String> iteratorRegionCity = cfgRegion.getCities().getCity().iterator(); iteratorRegionCity.hasNext();) {
-			String cityString =  iteratorRegionCity.next();
+		for (Iterator<CFGCity> iteratorRegionCity = cfgRegion.getCities().getCity().iterator(); iteratorRegionCity.hasNext();) {
+			String cityString =  iteratorRegionCity.next().getName();
 			for (Iterator<City> iteratorAllCities = allCities.iterator(); iteratorAllCities.hasNext();) {
 				City cityToAdd = iteratorAllCities.next(); 
 				if (cityToAdd.getName() == cityString) {
