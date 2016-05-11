@@ -38,6 +38,9 @@ public class PoliticalDeck {
 		
 	}
 
+	/**
+	 * @return true if political deck is empty --> need refill
+	 */
 	public boolean isEmpty() {
 		for(int i=0; i<numColors; i++) {
 			if(deck.get(i).getNumCards()!=0)
@@ -46,11 +49,17 @@ public class PoliticalDeck {
 		return true; 
 	}
 	
+	/**
+	 * @return the deck
+	 */
 	public ArrayList<PoliticalCard> getDeck() {
 		return deck; 
 	}
 
 	
+	/**
+	 * @return number of colors
+	 */
 	public int getNumColors() {
 		return numColors; 
 	}

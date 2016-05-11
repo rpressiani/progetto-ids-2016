@@ -10,7 +10,6 @@ import map.Region;
 import politicalDeck.PoliticalGarbage;
 import politicalDeck.PoliticalRealDeck;
 import sharedObjects.Nobility;
-import sharedObjects.PermissionDeck;
 
 public class GameState {
 	private Map map;
