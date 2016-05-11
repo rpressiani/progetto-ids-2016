@@ -93,12 +93,21 @@ public class Map {
 		return path;
 	}
 	
+	/**
+	 * @param map
+	 * @param c1
+	 * @param c2
+	 * @return numeric distance between two cities
+	 */
 	public int numericDistance(UndirectedGraph<City, DefaultEdge> map, City c1, City c2) { 
 		DijkstraShortestPath<City, DefaultEdge> pathFinder = new DijkstraShortestPath<City, DefaultEdge>(map, c1, c2);
 		int distance = (int) pathFinder.getPathLength();
 		return distance; 
 	}
 
+	/**
+	 * @return all cities of the map
+	 */
 	public Set<City> allVertexes() {
 		Set<City> cities = this.map.vertexSet(); 
 		return cities; 
