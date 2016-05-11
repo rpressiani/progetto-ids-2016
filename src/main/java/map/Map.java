@@ -1,5 +1,7 @@
 package map;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
@@ -17,10 +19,14 @@ import parser.Parser;
 
 public class Map {
 	
-	private UndirectedGraph<City, DefaultEdge> map;  
+	private UndirectedGraph<City, DefaultEdge> map;
+	private HashMap<String, CFGCity> allCitiesFromParser;
+	private HashMap<String, City> allCitiesHashMap;
 	
 	public Map(Parser parser) {
 		this.map = new SimpleGraph<City, DefaultEdge>(DefaultEdge.class);
+		this.allCitiesFromParser = new HashMap<String, CFGCity>();
+		this.allCitiesHashMap = new HashMap<String, City>();
 		
 //		public City(String name, ArrayList<BonusItem> bonuses, HashSet<City> nearCities);
 		
@@ -29,11 +35,21 @@ public class Map {
 		for (Iterator<CFGRegion> iterator = cfgRegions.iterator(); iterator.hasNext();) {
 			List<CFGCity> citiesToAdd = iterator.next().getCities().getCity();
 			for (CFGCity cfgCity : citiesToAdd) {
+				this.allCitiesFromParser.put(cfgCity.getName(), cfgCity);
 				List<CFGBonus> cfgCityBonuses = cfgCity.getBonuses().getBonus();
 				ArrayList<BonusItem> bonuses = parser.getBonusesFromParser(cfgCityBonuses);
-				this.map.addVertex(new City(cfgCity.getName(), bonuses));
+				City cityToAdd = new City(cfgCity.getName(), bonuses);
+				this.allCitiesHashMap.put(cityToAdd.getName(), cityToAdd);
+				this.map.addVertex(cityToAdd);
+			}	
+		}
+		
+		for (City city : this.allVertexes()) {
+			for (Iterator<String> iterator = allCitiesFromParser.get(city.getName()).getLinks().getCityName().iterator();
+					iterator.hasNext();) {
+				String linkToAdd = iterator.next();
+				this.addLink(city, allCitiesHashMap.get(linkToAdd));
 			}
-			
 		}
 		
 	}
