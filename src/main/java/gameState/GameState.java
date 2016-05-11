@@ -9,6 +9,7 @@ import map.Map;
 import map.Region;
 import politicalDeck.PoliticalGarbage;
 import politicalDeck.PoliticalRealDeck;
+import sharedObjects.KingBonuses;
 import sharedObjects.Nobility;
 
 public class GameState {
@@ -20,7 +21,8 @@ public class GameState {
 	private Balcony balcony;
 	private CounsellorGroup counsellorGroup;
 	private GarbageState counsellorGarbage;
-	
+	private KingBonuses kingBonuses;
+
 	/**
 	 * @return the map
 	 */
@@ -77,5 +79,10 @@ public class GameState {
 		return counsellorGarbage;
 	}
 	
-	
+	/**
+	 * @return the kingBonuses
+	 */
+	public KingBonuses getKingBonuses() {
+		return kingBonuses;
+	}
 }

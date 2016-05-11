@@ -11,11 +11,12 @@ import player.Player;
 
 public class PermissionCard extends Bonusable implements Marketable {
 	
+	private static int counter=0;
+	private final int idCard;
+	
 	/**
 	 * used=true if PermissionCard has been used to build an emporium
 	 */
-	private static int counter=0;
-	private final int idCard;
 	private boolean used;
 	private Set<City> possibleCities;
 	

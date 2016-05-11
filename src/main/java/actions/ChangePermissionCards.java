@@ -8,6 +8,10 @@ public class ChangePermissionCards extends SecondaryAction {
 
 	private Region region;
 	
+	public ChangePermissionCards(Region region){
+		this.region=region;
+	}
+	
 	public void doAction(Player player, GameState gameState){
 		if(player.getAssistants().getItems()>=1) 
 			region.getPermissionDeck().substituteCards(region.getPermissionDeck().getDeck(), region.getPermissionDeck().getVisibleCards());
@@ -15,10 +19,4 @@ public class ChangePermissionCards extends SecondaryAction {
 		player.getAssistants().sub(1);
 	}
 
-	/**
-	 * @param region the region to set
-	 */
-	public void setRegion(Region region) {
-		this.region = region;
-	}
 }
