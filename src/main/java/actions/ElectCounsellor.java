@@ -21,18 +21,4 @@ public class ElectCounsellor extends PrimaryAction {
 		player.getCoins().add(4);
 	}
 
-	/**
-	 * @param region the region to set
-	 */
-	public void setRegion(Region region) {
-		this.region = region;
-	}
-	
-	/**
-	 * @param color the color to set
-	 */
-	public void setColor(Color color) {
-		this.color = color;
-	}
-	
 }

@@ -19,10 +19,4 @@ public class ChangePermissionCards extends SecondaryAction {
 		player.getAssistants().sub(1);
 	}
 
-	/**
-	 * @param region the region to set
-	 */
-	public void setRegion(Region region) {
-		this.region = region;
-	}
 }

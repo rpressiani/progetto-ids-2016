@@ -22,19 +22,4 @@ public class ElectCounsellorWithAssistant extends SecondaryAction {
 		player.getAssistants().sub(1);
 	}
 
-	/**
-	 * @param region the region to set
-	 */
-	public void setRegion(Region region) {
-		this.region = region;
-	}
-
-	/**
-	 * @param color the color to set
-	 */
-	public void setColor(Color color) {
-		this.color = color;
-	}
-	
-	
 }
