@@ -5,6 +5,10 @@ import java.util.Random;
 public class PoliticalHand extends PoliticalDeck {
 	private PoliticalDeck hand = new PoliticalDeck(); 
 	
+	/**
+	 * @param deck
+	 * draws a card from deck and puts it in a hand
+	 */
 	public void drawCard(PoliticalRealDeck deck) {
 		Random rnd;
 		int temp;
@@ -16,10 +20,14 @@ public class PoliticalHand extends PoliticalDeck {
 		deck.getDeck().get(temp).removeCards(1);
 		hand.getDeck().get(temp).addCards(1);
 	}
-	//given the index, it discards a card. No random needed here
-	public void discardCard(PoliticalRealDeck deck, int index) {
-		hand.getDeck().get(index).removeCards(1);
-		deck.getDeck().get(index).addCards(1);
+	/**
+	 * @param deck
+	 * @param index
+	 * discards a card from the hand and puts it in the garbage deck
+	 */
+	public void discardCard(PoliticalGarbage garbageDeck, int index) {
+		hand.getDeck().get(index).removeCards(1); 
+		garbageDeck.getDeck().get(index).addCards(1);
 		
 	}
 

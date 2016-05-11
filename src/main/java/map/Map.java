@@ -11,11 +11,11 @@ import org.jgrapht.UndirectedGraph;
 import org.jgrapht.alg.DijkstraShortestPath;
 import org.jgrapht.graph.SimpleGraph;
 
-import bonusItem.BonusItem;
 import jaxb.CFGBonus;
 import jaxb.CFGCity;
 import jaxb.CFGRegion;
 import parser.Parser;
+import bonusItem.BonusItem;
 
 public class Map {
 	
@@ -23,6 +23,9 @@ public class Map {
 	private HashMap<String, CFGCity> allCitiesFromParser;
 	private HashMap<String, City> allCitiesHashMap;
 	
+	/**
+	 * constructor for Map
+	 */
 	public Map(Parser parser) {
 		this.map = new SimpleGraph<City, DefaultEdge>(DefaultEdge.class);
 		this.allCitiesFromParser = new HashMap<String, CFGCity>();
@@ -51,22 +54,35 @@ public class Map {
 				this.addLink(city, allCitiesHashMap.get(linkToAdd));
 			}
 		}
-		
+
 	}
-	
+	/**
+	 * @param c adds a city to the map 
+	 */
 	public void addCity(City c) {
 		map.addVertex(c);
 	}
-	
+	/**
+	 * @param c1
+	 * @param c2 adds a link between 2 cities
+	 */
 	public void addLink(City c1, City c2) {
 		map.addEdge(c1, c2);
 	}
-	
+	/**
+	 * @return the map
+	 */
 	public UndirectedGraph<City, DefaultEdge> getGraph() {
         return map;
 	}
-	
 	//Dijkstra's algorithm, even if it's more of a BFS
+	/**
+	 * @param map
+	 * @param c1
+	 * @param c2
+	 * @return shortest path between two input cities
+	 */
+	
 	public List<DefaultEdge> shortestPath(UndirectedGraph<City, DefaultEdge> map, City c1, City c2) {
 		if(map==null) {
 			return null; 
@@ -81,11 +97,10 @@ public class Map {
 		int distance = (int) pathFinder.getPathLength();
 		return distance; 
 	}
-	
+
 	public Set<City> allVertexes() {
 		Set<City> cities = this.map.vertexSet(); 
 		return cities; 
 	}
 	
 } 
-
