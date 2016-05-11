@@ -31,6 +31,7 @@ public class City extends Bonusable{
 	public Collection<City> getNearCities() {
 		return nearCities; 
 	}
+	
 	public boolean hasBuiltThere(Player player) {
 		for(City c : player.getBuiltCities()) {
 			if(player.getBuiltCities().contains(c))
