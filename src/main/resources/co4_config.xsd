@@ -87,7 +87,7 @@
         
         <xsd:complexType name="CFGCities4Map">
             <xsd:sequence>
-                <xsd:element name="city" type="bks:CFGCity" minOccurs="1" maxOccurs="unbounded"/>                
+                <xsd:element name="city" type="bks:CFGCity" minOccurs="1" maxOccurs="unboundedq"/>                
             </xsd:sequence>
         </xsd:complexType>
         
