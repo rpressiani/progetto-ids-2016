@@ -10,6 +10,11 @@ public class ElectCounsellor extends PrimaryAction {
 	private Region region;
 	private Color color;
 	
+	public ElectCounsellor(Region region, Color color) {
+		this.region=region;
+		this.color=color;
+	}
+	
 	@Override
 	public void doAction(Player player, GameState gameState) {
 		region.getBalcony().putCounsellor(color, gameState.getCounsellorGarbage());

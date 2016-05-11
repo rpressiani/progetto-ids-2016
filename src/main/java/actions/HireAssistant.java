@@ -5,6 +5,10 @@ import player.Player;
 
 public class HireAssistant extends SecondaryAction {
 	
+	public HireAssistant(){
+		
+	}
+	
 	public void doAction(Player player, GameState gameState){
 		if(player.getCoins().getItems()>=3){
 			player.getAssistants().add(1);

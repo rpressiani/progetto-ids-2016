@@ -15,6 +15,12 @@ public class BuyPermissionCard extends PrimaryAction {
 	private PoliticalDeck proposal;
 	private int index;
 
+	public BuyPermissionCard(Region region, PoliticalDeck proposal, int index) {
+		this.region=region;
+		this.proposal=proposal;
+		this.index=index;
+	}
+	
 	@Override
 	public void doAction(Player player, GameState gameState) {
 		int numCards, sumToPay, sumJolly;
@@ -70,27 +76,6 @@ public class BuyPermissionCard extends PrimaryAction {
 		for(int i=0; i<hand.getDeck().size(); i++){
 			hand.getDeck().get(i).removeCards(proposal.getDeck().get(i).getNumCards());
 		}
-	}
-	
-	/**
-	 * @param region the region to set
-	 */
-	public void setRegion(Region region) {
-		this.region = region;
-	}
-	
-	/**
-	 * @param proposal the proposal to set
-	 */
-	public void setProposal(PoliticalDeck proposal) {
-		this.proposal = proposal;
-	}
-	
-	/**
-	 * @param index the index to set
-	 */
-	public void setIndex(int index) {
-		this.index = index;
 	}
 	
 }

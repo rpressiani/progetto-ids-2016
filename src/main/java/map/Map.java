@@ -83,6 +83,7 @@ public class Map {
 	 * @return shortest path between two input cities
 	 */
 	
+	//maybe we need to return the ordered list of cities instead of edges, to see the path that king does
 	public List<DefaultEdge> shortestPath(UndirectedGraph<City, DefaultEdge> map, City c1, City c2) {
 		if(map==null) {
 			return null; 

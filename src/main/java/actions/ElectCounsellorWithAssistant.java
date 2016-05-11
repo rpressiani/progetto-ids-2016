@@ -7,6 +7,11 @@ import utilities.Color;
 
 public class ElectCounsellorWithAssistant extends SecondaryAction {
 	
+	public ElectCounsellorWithAssistant(Region region, Color color) {
+		this.region = region;
+		this.color = color;
+	}
+
 	private Region region;
 	private Color color;
 	
