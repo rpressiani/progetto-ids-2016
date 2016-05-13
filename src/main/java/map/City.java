@@ -4,7 +4,10 @@ import java.util.ArrayList;
 import java.util.Set;
 
 import org.jgrapht.graph.DefaultEdge;
+import org.jgrapht.graph.Subgraph;
+import org.jgrapht.Graph;
 import org.jgrapht.UndirectedGraph;
+import org.jgrapht.alg.ConnectivityInspector;
 
 import bonusable.Bonusable;
 
@@ -56,8 +59,7 @@ public class City extends Bonusable{
 	public void setKingPresence(boolean kingPresence) {
 		this.kingPresence = kingPresence;
 	}
-	// controllo città adiacenti
-	//
+	
 	/**
 	 * @param map
 	 * @param player
@@ -65,17 +67,9 @@ public class City extends Bonusable{
 	 */
 	public Set<City> linkedCities(Map map, Player player) {
 		Set<City> linkedCities = null;
-		Set<City> builtCities = player.getBuiltCities(); 
-		//Set<City> notBuiltCities = map.allVertexes(); 
-		int counter = 1; 
-		linkedCities.add(this);
-		//assuming controller already knows that "this" is contained in builtCities
-		for(City c : builtCities) {
-			if(map.numericDistance((UndirectedGraph<City, DefaultEdge>)map, this, c)==counter) {
-				linkedCities.add(c); 
-			}
-			c = this; 
-		}
+		Subgraph sg = new Subgraph((UndirectedGraph<City, DefaultEdge>) map, player.getBuiltCities()); 
+		ConnectivityInspector<City, DefaultEdge> inspector = new ConnectivityInspector<City, DefaultEdge>((UndirectedGraph<City, DefaultEdge>) sg);
+		linkedCities = inspector.connectedSetOf(this); 
 		return linkedCities; 
 	}
 
