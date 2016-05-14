@@ -16,18 +16,18 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for CFGCouncil complex type.
+ * <p>Java class for CFGPlayer complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="CFGCouncil">
+ * &lt;complexType name="CFGPlayer">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="balconyNum" type="{http://www.w3.org/2001/XMLSchema}integer"/>
- *         &lt;element name="nCounsellorsPerBalcony" type="{http://www.w3.org/2001/XMLSchema}integer"/>
- *         &lt;element name="nInitialGroupReserve" type="{http://www.w3.org/2001/XMLSchema}integer"/>
+ *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}integer"/>
+ *         &lt;element name="coins" type="{http://www.w3.org/2001/XMLSchema}integer"/>
+ *         &lt;element name="assistants" type="{http://www.w3.org/2001/XMLSchema}integer"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -37,90 +37,90 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "CFGCouncil", propOrder = {
-    "balconyNum",
-    "nCounsellorsPerBalcony",
-    "nInitialGroupReserve"
+@XmlType(name = "CFGPlayer", propOrder = {
+    "id",
+    "coins",
+    "assistants"
 })
-public class CFGCouncil {
+public class CFGPlayer {
 
     @XmlElement(required = true)
-    protected BigInteger balconyNum;
+    protected BigInteger id;
     @XmlElement(required = true)
-    protected BigInteger nCounsellorsPerBalcony;
+    protected BigInteger coins;
     @XmlElement(required = true)
-    protected BigInteger nInitialGroupReserve;
+    protected BigInteger assistants;
 
     /**
-     * Gets the value of the balconyNum property.
+     * Gets the value of the id property.
      * 
      * @return
      *     possible object is
      *     {@link BigInteger }
      *     
      */
-    public BigInteger getBalconyNum() {
-        return balconyNum;
+    public BigInteger getId() {
+        return id;
     }
 
     /**
-     * Sets the value of the balconyNum property.
+     * Sets the value of the id property.
      * 
      * @param value
      *     allowed object is
      *     {@link BigInteger }
      *     
      */
-    public void setBalconyNum(BigInteger value) {
-        this.balconyNum = value;
+    public void setId(BigInteger value) {
+        this.id = value;
     }
 
     /**
-     * Gets the value of the nCounsellorsPerBalcony property.
+     * Gets the value of the coins property.
      * 
      * @return
      *     possible object is
      *     {@link BigInteger }
      *     
      */
-    public BigInteger getNCounsellorsPerBalcony() {
-        return nCounsellorsPerBalcony;
+    public BigInteger getCoins() {
+        return coins;
     }
 
     /**
-     * Sets the value of the nCounsellorsPerBalcony property.
+     * Sets the value of the coins property.
      * 
      * @param value
      *     allowed object is
      *     {@link BigInteger }
      *     
      */
-    public void setNCounsellorsPerBalcony(BigInteger value) {
-        this.nCounsellorsPerBalcony = value;
+    public void setCoins(BigInteger value) {
+        this.coins = value;
     }
 
     /**
-     * Gets the value of the nInitialGroupReserve property.
+     * Gets the value of the assistants property.
      * 
      * @return
      *     possible object is
      *     {@link BigInteger }
      *     
      */
-    public BigInteger getNInitialGroupReserve() {
-        return nInitialGroupReserve;
+    public BigInteger getAssistants() {
+        return assistants;
     }
 
     /**
-     * Sets the value of the nInitialGroupReserve property.
+     * Sets the value of the assistants property.
      * 
      * @param value
      *     allowed object is
      *     {@link BigInteger }
      *     
      */
-    public void setNInitialGroupReserve(BigInteger value) {
-        this.nInitialGroupReserve = value;
+    public void setAssistants(BigInteger value) {
+        this.assistants = value;
     }
 
 }

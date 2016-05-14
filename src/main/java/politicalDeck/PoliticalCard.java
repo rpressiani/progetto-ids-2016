@@ -44,6 +44,13 @@ public class PoliticalCard {
 	public void removeCards(int c) {
 		this.numCards-=c; 
 	}
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "PoliticalCard [color=" + color + ", numCards=" + numCards + "]";
+	}
 	
 
 }

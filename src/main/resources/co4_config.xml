@@ -92,12 +92,35 @@
         <nInitialGroupReserve>4</nInitialGroupReserve>
     </council>
     <politicalDeck>
-        <color>red</color>
-        <color>yellow</color>
-        <color>green</color>
-        <color>blue</color>
-        <color>black</color>
-        <color>white</color>
+        <numColors>6</numColors> <!-- numColors DOESN'T include jolly -->
+        <politicalCard>
+            <color>red</color>
+            <quantity>13</quantity>
+        </politicalCard>
+        <politicalCard>
+            <color>yellow</color>
+            <quantity>13</quantity>
+        </politicalCard>
+        <politicalCard>
+            <color>green</color>
+            <quantity>13</quantity>
+        </politicalCard>
+        <politicalCard>
+            <color>blue</color>
+            <quantity>13</quantity>
+        </politicalCard>
+        <politicalCard>
+            <color>black</color>
+            <quantity>13</quantity>
+        </politicalCard>
+        <politicalCard>
+            <color>white</color>
+            <quantity>13</quantity>
+        </politicalCard>
+        <politicalCard>
+            <color>jolly</color>
+            <quantity>12</quantity>
+        </politicalCard>
     </politicalDeck>
     <permissionDecks>
         <permissionDeck>
@@ -194,4 +217,28 @@
             </permissionCards>
         </permissionDeck>
     </permissionDecks>
+    <players>
+        <nInitPoliticalCards>6</nInitPoliticalCards>
+<!--        player ID must start from 0 and be incremental (e.g. 0, 1, 2, 3, ...) -->
+        <player>
+            <id>0</id>
+            <coins>10</coins>
+            <assistants>1</assistants>
+        </player>
+        <player>
+            <id>1</id>
+            <coins>11</coins>
+            <assistants>2</assistants>
+        </player>
+        <player>
+            <id>2</id>
+            <coins>12</coins>
+            <assistants>3</assistants>
+        </player>
+        <player>
+            <id>3</id>
+            <coins>13</coins>
+            <assistants>4</assistants>
+        </player>
+    </players>
 </x:root>

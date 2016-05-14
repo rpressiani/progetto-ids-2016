@@ -16,17 +16,17 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for CFGBonus complex type.
+ * <p>Java class for CFGPoliticalCard complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="CFGBonus">
+ * &lt;complexType name="CFGPoliticalCard">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="bonusItem" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="quantity" type="{http://www.w3.org/2001/XMLSchema}integer" minOccurs="0"/>
+ *         &lt;element name="color" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="quantity" type="{http://www.w3.org/2001/XMLSchema}integer"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -36,38 +36,39 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "CFGBonus", propOrder = {
-    "bonusItem",
+@XmlType(name = "CFGPoliticalCard", propOrder = {
+    "color",
     "quantity"
 })
-public class CFGBonus {
+public class CFGPoliticalCard {
 
     @XmlElement(required = true)
-    protected String bonusItem;
+    protected String color;
+    @XmlElement(required = true)
     protected BigInteger quantity;
 
     /**
-     * Gets the value of the bonusItem property.
+     * Gets the value of the color property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getBonusItem() {
-        return bonusItem;
+    public String getColor() {
+        return color;
     }
 
     /**
-     * Sets the value of the bonusItem property.
+     * Sets the value of the color property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setBonusItem(String value) {
-        this.bonusItem = value;
+    public void setColor(String value) {
+        this.color = value;
     }
 
     /**

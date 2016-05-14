@@ -20,7 +20,7 @@ public abstract class CouncilState {
 	
 	public CouncilState(Parser parser){
 		this.state = new ArrayList<CounsellorGroup>();
-		this.nColors = parser.getCFGPoliticalDeck().getColor().size();
+		this.nColors = parser.getCFGPoliticalDeck().getNumColors().intValue();
 	}
 	
 	public void add(Color color){
