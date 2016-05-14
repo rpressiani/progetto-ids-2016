@@ -92,12 +92,35 @@
         <nInitialGroupReserve>4</nInitialGroupReserve>
     </council>
     <politicalDeck>
-        <color>red</color>
-        <color>yellow</color>
-        <color>green</color>
-        <color>blue</color>
-        <color>black</color>
-        <color>white</color>
+        <numColors>6</numColors> <!-- numColors DOESN'T include jolly -->
+        <politicalCard>
+            <color>red</color>
+            <quantity>13</quantity>
+        </politicalCard>
+        <politicalCard>
+            <color>yellow</color>
+            <quantity>13</quantity>
+        </politicalCard>
+        <politicalCard>
+            <color>green</color>
+            <quantity>13</quantity>
+        </politicalCard>
+        <politicalCard>
+            <color>blue</color>
+            <quantity>13</quantity>
+        </politicalCard>
+        <politicalCard>
+            <color>black</color>
+            <quantity>13</quantity>
+        </politicalCard>
+        <politicalCard>
+            <color>white</color>
+            <quantity>13</quantity>
+        </politicalCard>
+        <politicalCard>
+            <color>jolly</color>
+            <quantity>12</quantity>
+        </politicalCard>
     </politicalDeck>
     <permissionDecks>
         <permissionDeck>

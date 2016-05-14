@@ -31,8 +31,6 @@ public class Map {
 		this.allCitiesFromParser = new HashMap<String, CFGCity>();
 		this.allCitiesHashMap = new HashMap<String, City>();
 		
-//		public City(String name, ArrayList<BonusItem> bonuses, HashSet<City> nearCities);
-		
 		List<CFGRegion> cfgRegions = parser.getCFGRoot().getMap().getRegion();
 		
 		for (Iterator<CFGRegion> iterator = cfgRegions.iterator(); iterator.hasNext();) {
@@ -83,7 +81,6 @@ public class Map {
 	 * @return shortest path between two input cities
 	 */
 	
-	//maybe we need to return the ordered list of cities instead of edges, to see the path that king does
 	public List<DefaultEdge> shortestPath(UndirectedGraph<City, DefaultEdge> map, City c1, City c2) {
 		if(map==null) {
 			return null; 
@@ -93,21 +90,12 @@ public class Map {
 		return path;
 	}
 	
-	/**
-	 * @param map
-	 * @param c1
-	 * @param c2
-	 * @return numeric distance between two cities
-	 */
 	public int numericDistance(UndirectedGraph<City, DefaultEdge> map, City c1, City c2) { 
 		DijkstraShortestPath<City, DefaultEdge> pathFinder = new DijkstraShortestPath<City, DefaultEdge>(map, c1, c2);
 		int distance = (int) pathFinder.getPathLength();
 		return distance; 
 	}
 
-	/**
-	 * @return all cities of the map
-	 */
 	public Set<City> allVertexes() {
 		Set<City> cities = this.map.vertexSet(); 
 		return cities; 

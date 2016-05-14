@@ -5,6 +5,7 @@ import java.util.Set;
 
 import utilities.Color;
 import politicalDeck.PoliticalHand;
+import politicalDeck.PoliticalRealDeck;
 import bonusable.PermissionCard;
 import map.City;
 
@@ -34,14 +35,16 @@ public class Player {
 	public Player(String nickname, Color color) {
 		this.nickname = nickname;
 		this.color = color;
-		
-		this.politicalHand = new PoliticalHand();
+		this.builtCities = new HashSet<City>();
+		this.permissionHand= new HashSet<PermissionCard>();
+	}
+	
+	public void initPlayer(PoliticalRealDeck deck){
+		this.politicalHand = new PoliticalHand(deck);
 		this.coins = new Coins();
 		this.nobilityLevel = new NobilityLevel();
 		this.score = new Score();
 		this.assistants = new Assistants();
-		this.builtCities = new HashSet<City>();
-		this.permissionHand= new HashSet<PermissionCard>();
 	}
 
 	/**

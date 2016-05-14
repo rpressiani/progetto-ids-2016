@@ -25,7 +25,7 @@ public class Balcony {
 	public Balcony(GarbageState garbage, Parser parser) {
 		this.nCounsellorsPerBalcony = parser.getCFGCouncil().getNCounsellorsPerBalcony().intValue();
 		this.balcony = new LinkedBlockingQueue<Counsellor>(nCounsellorsPerBalcony);
-		this.nColors = parser.getCFGPoliticalDeck().getColor().size();
+		this.nColors = parser.getCFGPoliticalDeck().getNumColors().intValue();
 		
 		for (int i = 0; i < nCounsellorsPerBalcony; i++) {
 			Color randomColor = getRandomCounsellor(garbage);

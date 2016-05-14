@@ -8,6 +8,7 @@
 
 package jaxb;
 
+import java.math.BigInteger;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -15,17 +16,17 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for CFGPermissionCard complex type.
+ * <p>Java class for CFGPoliticalCard complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="CFGPermissionCard">
+ * &lt;complexType name="CFGPoliticalCard">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="cities" type="{urn:co4}CFGCities"/>
- *         &lt;element name="bonuses" type="{urn:co4}CFGBonuses"/>
+ *         &lt;element name="color" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="quantity" type="{http://www.w3.org/2001/XMLSchema}integer"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -35,63 +36,63 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "CFGPermissionCard", propOrder = {
-    "cities",
-    "bonuses"
+@XmlType(name = "CFGPoliticalCard", propOrder = {
+    "color",
+    "quantity"
 })
-public class CFGPermissionCard {
+public class CFGPoliticalCard {
 
     @XmlElement(required = true)
-    protected CFGCities cities;
+    protected String color;
     @XmlElement(required = true)
-    protected CFGBonuses bonuses;
+    protected BigInteger quantity;
 
     /**
-     * Gets the value of the cities property.
+     * Gets the value of the color property.
      * 
      * @return
      *     possible object is
-     *     {@link CFGCities }
+     *     {@link String }
      *     
      */
-    public CFGCities getCities() {
-        return cities;
+    public String getColor() {
+        return color;
     }
 
     /**
-     * Sets the value of the cities property.
+     * Sets the value of the color property.
      * 
      * @param value
      *     allowed object is
-     *     {@link CFGCities }
+     *     {@link String }
      *     
      */
-    public void setCities(CFGCities value) {
-        this.cities = value;
+    public void setColor(String value) {
+        this.color = value;
     }
 
     /**
-     * Gets the value of the bonuses property.
+     * Gets the value of the quantity property.
      * 
      * @return
      *     possible object is
-     *     {@link CFGBonuses }
+     *     {@link BigInteger }
      *     
      */
-    public CFGBonuses getBonuses() {
-        return bonuses;
+    public BigInteger getQuantity() {
+        return quantity;
     }
 
     /**
-     * Sets the value of the bonuses property.
+     * Sets the value of the quantity property.
      * 
      * @param value
      *     allowed object is
-     *     {@link CFGBonuses }
+     *     {@link BigInteger }
      *     
      */
-    public void setBonuses(CFGBonuses value) {
-        this.bonuses = value;
+    public void setQuantity(BigInteger value) {
+        this.quantity = value;
     }
 
 }
