@@ -8,6 +8,7 @@ import politicalDeck.PoliticalHand;
 import politicalDeck.PoliticalRealDeck;
 import bonusable.PermissionCard;
 import map.City;
+import parser.Parser;
 
 /**
  * @author Riccardo Pressiani
@@ -15,6 +16,7 @@ import map.City;
  */
 public class Player {
 	
+	private Integer id;
 	private String nickname;
 	private Coins coins;
 	private NobilityLevel nobilityLevel;
@@ -35,16 +37,30 @@ public class Player {
 	public Player(String nickname, Color color) {
 		this.nickname = nickname;
 		this.color = color;
+		this.nobilityLevel = new NobilityLevel();
+		this.score = new Score();
 		this.builtCities = new HashSet<City>();
 		this.permissionHand= new HashSet<PermissionCard>();
 	}
 	
-	public void initPlayer(PoliticalRealDeck deck){
+	/**
+	 * initPlayer conclude the setting of the player after he has joined a specific match. An ID is set, coins and assistants
+	 * are set based on the content of the configuration file and the PoliticalHand of the player is instantiated.
+	 * 
+	 * @param deck							PoliticalRealDeck in use during the match
+	 * @param id							the order of the players, it must start from 0 (zero)and be incremental (e.g 0, 1, 2, 3, ...)
+	 * @param parser						Parser in use during the match
+	 * 
+	 * @throws IlleagalArgumentException	if id is lower of zero
+	 */
+	public void initPlayer(PoliticalRealDeck deck, Integer id, Parser parser) throws IllegalArgumentException {
+		if (id < 0) throw new IllegalArgumentException("id must be grater than zero");
+		
+		this.id = id;	//as a player register to a match this ID attribute has to increment, basically it'll represent the order
+						//of the players in a match
 		this.politicalHand = new PoliticalHand(deck);
-		this.coins = new Coins();
-		this.nobilityLevel = new NobilityLevel();
-		this.score = new Score();
-		this.assistants = new Assistants();
+		this.coins = new Coins(parser.getCFGRoot().getPlayers().getPlayer().get(this.id).getCoins().intValue());
+		this.assistants = new Assistants(parser.getCFGRoot().getPlayers().getPlayer().get(this.id).getAssistants().intValue());
 	}
 
 	/**
@@ -73,7 +89,9 @@ public class Player {
 	 */
 	@Override
 	public String toString() {
-		return nickname;
+		return "Player [id=" + id + ", nickname=" + nickname + ", coins=" + coins + ", nobilityLevel=" + nobilityLevel
+				+ ", score=" + score + ", assistants=" + assistants + ", color=" + color + ", politicalHand="
+				+ politicalHand + "]";
 	}
 
 	/**

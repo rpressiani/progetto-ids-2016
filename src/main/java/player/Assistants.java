@@ -35,14 +35,21 @@ public class Assistants extends SimpleItem implements Marketable {
 	@Override
 	public void makeExchange(Player fromPlayer, Player toPlayer) {
 		fromPlayer.getCoins().sub(this.getItems());
-		toPlayer.getCoins().add(this.getItems());
-		
+		toPlayer.getCoins().add(this.getItems());	
 	}
 
 	@Override
 	public boolean verifyAdd(Player player) {
 		if (Integer.compare(player.getAssistants().getItems(), this.getItems()) < 0) return false;
 		else return true;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Assistants [items=" + items + "]";
 	}
 
 

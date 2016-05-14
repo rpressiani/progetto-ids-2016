@@ -8,6 +8,7 @@
 
 package jaxb;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -17,16 +18,17 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for CFGBonuses complex type.
+ * <p>Java class for CFGPlayers complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="CFGBonuses">
+ * &lt;complexType name="CFGPlayers">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="bonus" type="{urn:co4}CFGBonus" maxOccurs="unbounded"/>
+ *         &lt;element name="nInitPoliticalCards" type="{http://www.w3.org/2001/XMLSchema}integer"/>
+ *         &lt;element name="player" type="{urn:co4}CFGPlayer" maxOccurs="unbounded" minOccurs="2"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -36,41 +38,68 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "CFGBonuses", propOrder = {
-    "bonus"
+@XmlType(name = "CFGPlayers", propOrder = {
+    "nInitPoliticalCards",
+    "player"
 })
-public class CFGBonuses {
+public class CFGPlayers {
 
     @XmlElement(required = true)
-    protected List<CFGBonus> bonus;
+    protected BigInteger nInitPoliticalCards;
+    @XmlElement(required = true)
+    protected List<CFGPlayer> player;
 
     /**
-     * Gets the value of the bonus property.
+     * Gets the value of the nInitPoliticalCards property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link BigInteger }
+     *     
+     */
+    public BigInteger getNInitPoliticalCards() {
+        return nInitPoliticalCards;
+    }
+
+    /**
+     * Sets the value of the nInitPoliticalCards property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link BigInteger }
+     *     
+     */
+    public void setNInitPoliticalCards(BigInteger value) {
+        this.nInitPoliticalCards = value;
+    }
+
+    /**
+     * Gets the value of the player property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the bonus property.
+     * This is why there is not a <CODE>set</CODE> method for the player property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getBonus().add(newItem);
+     *    getPlayer().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link CFGBonus }
+     * {@link CFGPlayer }
      * 
      * 
      */
-    public List<CFGBonus> getBonus() {
-        if (bonus == null) {
-            bonus = new ArrayList<CFGBonus>();
+    public List<CFGPlayer> getPlayer() {
+        if (player == null) {
+            player = new ArrayList<CFGPlayer>();
         }
-        return this.bonus;
+        return this.player;
     }
 
 }

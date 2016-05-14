@@ -14,4 +14,12 @@ public class NobilityLevel extends SimpleItem {
 		super();
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "NobilityLevel [items=" + items + "]";
+	}
+
 }

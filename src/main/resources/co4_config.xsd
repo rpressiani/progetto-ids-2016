@@ -10,6 +10,7 @@
                 <xsd:element name="politicalDeck" type="bks:CFGPoliticalDeck" minOccurs="1" maxOccurs="1"/>
                 <xsd:element name="permissionDecks" type="bks:CFGPermissionDecks" minOccurs="1" maxOccurs="1"/>
                 <xsd:element name="map" type="bks:CFGMap" minOccurs="1" maxOccurs="1"/>
+                <xsd:element name="players" type="bks:CFGPlayers" minOccurs="1" maxOccurs="1"/>
             </xsd:sequence>
         </xsd:complexType>
         
@@ -112,6 +113,23 @@
                 <xsd:element name="quantity" type="xsd:integer" minOccurs="1" maxOccurs="1"/>
             </xsd:sequence>
         </xsd:complexType>
+        
+        <xsd:complexType name="CFGPlayers">
+            <xsd:sequence>
+                <xsd:element name="nInitPoliticalCards" type="xsd:integer" minOccurs="1" maxOccurs="1"/>
+                <xsd:element name="player" type="bks:CFGPlayer" minOccurs="2" maxOccurs="unbounded"/>
+            </xsd:sequence>
+        </xsd:complexType>
+        
+        <xsd:complexType name="CFGPlayer">
+            <xsd:sequence>
+                <!-- player ID must start from 0 and be incremental (e.g. 0, 1, 2, 3, ...) -->
+                <xsd:element name="id" type="xsd:integer" minOccurs="1" maxOccurs="1"/>
+                <xsd:element name="coins" type="xsd:integer" minOccurs="1" maxOccurs="1"/>
+                <xsd:element name="assistants" type="xsd:integer" minOccurs="1" maxOccurs="1"/>
+            </xsd:sequence>
+        </xsd:complexType>
+        
         
         
         
