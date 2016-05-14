@@ -84,6 +84,7 @@
             <xsd:sequence>
                 <xsd:element name="name" type="xsd:string" minOccurs="1" maxOccurs="1"/>                
                 <xsd:element name="cities" type="bks:CFGCities4Map" minOccurs="1" maxOccurs="1"/>
+                <xsd:element name="bonuses" type="bks:CFGBonuses" minOccurs="1" maxOccurs="1"/>
             </xsd:sequence>
         </xsd:complexType>
         

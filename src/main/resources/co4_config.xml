@@ -74,6 +74,12 @@
                     </links>
                 </city>
             </cities>
+            <bonuses>
+                <bonus>
+                    <bonusItem>score</bonusItem>
+                    <quantity>15</quantity>
+                </bonus>
+            </bonuses>
         </region>
         <region>
             <name>pianura</name>
