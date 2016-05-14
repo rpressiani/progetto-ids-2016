@@ -5,7 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
-import bonusable.KingCard;
+import bonusable.RegionCard;
 import council.Balcony;
 import council.GarbageState;
 import jaxb.CFGCity;
@@ -18,7 +18,7 @@ public class Region {
 	private PermissionDeck permissionDeck;
 	private Balcony balcony;
 	private Set<City> regionCities;
-	private KingCard regionBonus;
+	private RegionCard regionBonus;
 	
 	public Region(String name, GarbageState garbage, Parser parser, Map map){
 		this.name = name;
@@ -80,7 +80,7 @@ public class Region {
 	/**
 	 * @return the regionBonus
 	 */
-	public KingCard getRegionBonus() {
+	public RegionCard getRegionBonus() {
 		return regionBonus;
 	}
 	
