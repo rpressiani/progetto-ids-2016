@@ -16,12 +16,14 @@ import player.Player;
 
 public class City extends Bonusable{
 	private String name; 
-	private Region region; 
+	private Region region;
+	private String ancestry;
 	private boolean kingPresence;
 	
-	public City(String name, ArrayList<BonusItem> bonuses) {
+	public City(String name, ArrayList<BonusItem> bonuses, String ancestry) {
 		super(bonuses);
-		this.name = name; 
+		this.name = name;
+		this.ancestry = ancestry;
 	}
 	
 	/**
@@ -71,6 +73,13 @@ public class City extends Bonusable{
 		ConnectivityInspector<City, DefaultEdge> inspector = new ConnectivityInspector<City, DefaultEdge>((UndirectedGraph<City, DefaultEdge>) sg);
 		linkedCities = inspector.connectedSetOf(this); 
 		return linkedCities; 
+	}
+
+	/**
+	 * @return the ancestry
+	 */
+	public String getAncestry() {
+		return ancestry;
 	}
 
 }
