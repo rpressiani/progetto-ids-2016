@@ -37,13 +37,18 @@ public class PoliticalHand extends PoliticalDeck {
 			deck.refill();
 		}
 	}
+	
 	/**
-	 * @param deck
-	 * @param index
-	 * discards a card from the hand and puts it in the garbage deck
+	 * Discard a card from the hand and put it in the garbage deck
+	 * 
+	 * @param garbageDeck				the garbage deck that collects the discarded cards
+	 * @param index						the index of the card color the player want to discard
+	 * 
+	 * @throws IllegalAccessException	throws an exception if the player tries to discard a card he doesn't have
 	 */
-	public void discardCard(PoliticalGarbage garbageDeck, int index) {
-		this.getDeck().get(index).removeCards(1); 
+	public void discardCard(PoliticalGarbage garbageDeck, int index) throws IllegalAccessException {
+		if (this.getDeck().get(index).getNumCards() == 0) throw new IllegalAccessException("Cannot discard a card if you don't have it");
+		this.getDeck().get(index).removeCards(1);
 		garbageDeck.getDeck().get(index).addCards(1);
 		
 	}
