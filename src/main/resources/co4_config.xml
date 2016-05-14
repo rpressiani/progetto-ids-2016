@@ -223,6 +223,38 @@
             </permissionCards>
         </permissionDeck>
     </permissionDecks>
+    <kingBonuses>
+        <bonuses>
+            <bonus>
+                <bonusItem>score</bonusItem>
+                <quantity>25</quantity>
+            </bonus>
+        </bonuses>
+        <bonuses>
+            <bonus>
+                <bonusItem>score</bonusItem>
+                <quantity>15</quantity>
+            </bonus>
+        </bonuses>
+        <bonuses>
+            <bonus>
+                <bonusItem>score</bonusItem>
+                <quantity>10</quantity>
+            </bonus>
+        </bonuses>
+        <bonuses>
+            <bonus>
+                <bonusItem>score</bonusItem>
+                <quantity>5</quantity>
+            </bonus>
+        </bonuses>
+        <bonuses>
+            <bonus>
+                <bonusItem>score</bonusItem>
+                <quantity>2</quantity>
+            </bonus>
+        </bonuses>
+    </kingBonuses>
     <players>
         <nInitPoliticalCards>6</nInitPoliticalCards>
 <!--        player ID must start from 0 and be incremental (e.g. 0, 1, 2, 3, ...) -->

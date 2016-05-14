@@ -17,16 +17,16 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for CFGMap complex type.
+ * <p>Java class for CFGKingBonuses complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="CFGMap">
+ * &lt;complexType name="CFGKingBonuses">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="region" type="{urn:co4}CFGRegion" maxOccurs="unbounded"/>
+ *         &lt;element name="bonuses" type="{urn:co4}CFGBonuses" maxOccurs="unbounded"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -36,41 +36,41 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "CFGMap", propOrder = {
-    "region"
+@XmlType(name = "CFGKingBonuses", propOrder = {
+    "bonuses"
 })
-public class CFGMap {
+public class CFGKingBonuses {
 
     @XmlElement(required = true)
-    protected List<CFGRegion> region;
+    protected List<CFGBonuses> bonuses;
 
     /**
-     * Gets the value of the region property.
+     * Gets the value of the bonuses property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the region property.
+     * This is why there is not a <CODE>set</CODE> method for the bonuses property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getRegion().add(newItem);
+     *    getBonuses().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link CFGRegion }
+     * {@link CFGBonuses }
      * 
      * 
      */
-    public List<CFGRegion> getRegion() {
-        if (region == null) {
-            region = new ArrayList<CFGRegion>();
+    public List<CFGBonuses> getBonuses() {
+        if (bonuses == null) {
+            bonuses = new ArrayList<CFGBonuses>();
         }
-        return this.region;
+        return this.bonuses;
     }
 
 }

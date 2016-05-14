@@ -26,5 +26,13 @@ public abstract class Bonusable {
 	public ArrayList<BonusItem> getBonuses() {
 		return bonuses;
 	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Bonusable [bonuses=" + bonuses + "]";
+	}
 	
 }

@@ -11,4 +11,12 @@ public class BonusScore implements BonusItem {
 	public void giveBonus(Player player){
 		player.getScore().add(items);
 	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "BonusScore [items=" + items + "]";
+	}
 }
