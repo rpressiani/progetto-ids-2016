@@ -26,6 +26,9 @@ public class PoliticalHand extends PoliticalDeck {
 	public void drawCard(PoliticalRealDeck deck) {
 		Random rnd;
 		int temp;
+		if(deck.isEmpty()) {
+			throw new IllegalArgumentException("Can't draw a card if deck is empty"); 
+		}
 		do {
 			rnd = new Random();
 			temp = rnd.nextInt(this.getDeck().size());

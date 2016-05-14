@@ -129,6 +129,9 @@ public class Player {
 		return permissionHand;
 	}
 	
+	/**
+	 * @return the cities where a player has already built at least one emporium
+	 */
 	public Set<City> getBuiltCities() {
 		return builtCities; 
 	}

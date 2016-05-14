@@ -13,6 +13,10 @@ import jaxb.CFGRegion;
 import parser.Parser;
 import sharedObjects.PermissionDeck;
 
+/**
+ * @author Alessandro Pezzotta
+ *
+ */
 public class Region {
 	private String name;
 	private PermissionDeck permissionDeck;
@@ -20,6 +24,13 @@ public class Region {
 	private Set<City> regionCities;
 	private RegionCard regionBonus;
 	
+	/**
+	 * @param name
+	 * @param garbage
+	 * @param parser
+	 * @param map
+	 * constructor for object Region
+	 */
 	public Region(String name, GarbageState garbage, Parser parser, Map map){
 		this.name = name;
 		this.balcony = new Balcony(garbage, parser);
