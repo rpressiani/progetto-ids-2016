@@ -23,6 +23,7 @@ public class City extends Bonusable{
 	public City(String name, ArrayList<BonusItem> bonuses, String ancestry) {
 		super(bonuses);
 		this.name = name;
+		this.region = null;
 		this.ancestry = ancestry;
 	}
 	
