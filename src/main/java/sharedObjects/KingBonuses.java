@@ -1,13 +1,24 @@
 package sharedObjects;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 
+import bonusItem.BonusItem;
 import bonusable.KingCard;
+import parser.Parser;
 
 public class KingBonuses {
 	private LinkedList<KingCard> kingBonuses;
 
-	public KingBonuses(){
+	public KingBonuses(Parser parser){
+		this.kingBonuses = new LinkedList<KingCard>();
+		
+		for (int i = 0; i < parser.getCFGRoot().getKingBonuses().getBonuses().size(); i++) {
+			ArrayList<BonusItem> bonuses = new ArrayList<BonusItem>();
+			bonuses = parser.getBonusesFromParser(parser.getCFGRoot().getKingBonuses().getBonuses().get(i).getBonus());
+			KingCard kingCardToAdd = new KingCard(bonuses);
+			this.kingBonuses.add(kingCardToAdd);
+		}
 		
 	}
 	
@@ -16,6 +27,14 @@ public class KingBonuses {
 	 */
 	public LinkedList<KingCard> getKingbonuses() {
 		return kingBonuses;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "KingBonuses [kingBonuses=" + kingBonuses + "]";
 	}
 	
 }

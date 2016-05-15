@@ -83,6 +83,13 @@ public class Color {
 			return false;
 		return true;
 	}
+
+	/**
+	 * @return the stringID
+	 */
+	public String getStringID() {
+		return stringID;
+	}
 	
 }
 

@@ -2,11 +2,50 @@
 <!--<x:books xmlns:x="urn:books">-->
 <x:root xmlns:x="urn:co4">
     <map>
+        <ancestries>
+            <ancestry>
+                <color>platinum</color>
+                <bonuses>
+                    <bonus>
+                        <bonusItem>score</bonusItem>
+                        <quantity>15</quantity>
+                    </bonus>
+                </bonuses>
+            </ancestry>
+            <ancestry>
+                <color>gold</color>
+                <bonuses>
+                    <bonus>
+                        <bonusItem>score</bonusItem>
+                        <quantity>15</quantity>
+                    </bonus>
+                </bonuses>
+            </ancestry>
+            <ancestry>
+                <color>silver</color>
+                <bonuses>
+                    <bonus>
+                        <bonusItem>score</bonusItem>
+                        <quantity>15</quantity>
+                    </bonus>
+                </bonuses>
+            </ancestry>
+            <ancestry>
+                <color>bronze</color>
+                <bonuses>
+                    <bonus>
+                        <bonusItem>score</bonusItem>
+                        <quantity>15</quantity>
+                    </bonus>
+                </bonuses>
+            </ancestry>
+        </ancestries>
         <region>
             <name>mare</name>
             <cities>
                 <city>
                     <name>A</name>
+                    <ancestry>platinum</ancestry>
                     <bonuses>
                         <bonus>
                             <bonusItem>score</bonusItem>
@@ -24,6 +63,7 @@
                 </city>
                 <city>
                     <name>B</name>
+                    <ancestry>gold</ancestry>
                     <bonuses>
                         <bonus>
                             <bonusItem>score</bonusItem>
@@ -42,6 +82,7 @@
                 </city>
                 <city>
                     <name>C</name>
+                    <ancestry>silver</ancestry>
                     <bonuses>
                         <bonus>
                             <bonusItem>score</bonusItem>
@@ -59,6 +100,7 @@
                 </city>
                 <city>
                     <name>D</name>
+                    <ancestry>bronze</ancestry>
                     <bonuses>
                         <bonus>
                             <bonusItem>score</bonusItem>
@@ -74,6 +116,12 @@
                     </links>
                 </city>
             </cities>
+            <bonuses>
+                <bonus>
+                    <bonusItem>score</bonusItem>
+                    <quantity>15</quantity>
+                </bonus>
+            </bonuses>
         </region>
         <region>
             <name>pianura</name>
@@ -217,6 +265,38 @@
             </permissionCards>
         </permissionDeck>
     </permissionDecks>
+    <kingBonuses>
+        <bonuses>
+            <bonus>
+                <bonusItem>score</bonusItem>
+                <quantity>25</quantity>
+            </bonus>
+        </bonuses>
+        <bonuses>
+            <bonus>
+                <bonusItem>score</bonusItem>
+                <quantity>15</quantity>
+            </bonus>
+        </bonuses>
+        <bonuses>
+            <bonus>
+                <bonusItem>score</bonusItem>
+                <quantity>10</quantity>
+            </bonus>
+        </bonuses>
+        <bonuses>
+            <bonus>
+                <bonusItem>score</bonusItem>
+                <quantity>5</quantity>
+            </bonus>
+        </bonuses>
+        <bonuses>
+            <bonus>
+                <bonusItem>score</bonusItem>
+                <quantity>2</quantity>
+            </bonus>
+        </bonuses>
+    </kingBonuses>
     <players>
         <nInitPoliticalCards>6</nInitPoliticalCards>
 <!--        player ID must start from 0 and be incremental (e.g. 0, 1, 2, 3, ...) -->

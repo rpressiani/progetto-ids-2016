@@ -1,11 +1,13 @@
 package map;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
 import bonusable.RegionCard;
+import bonusItem.BonusItem;
 import council.Balcony;
 import council.GarbageState;
 import jaxb.CFGCity;
@@ -35,7 +37,6 @@ public class Region {
 		this.name = name;
 		this.balcony = new Balcony(garbage, parser);
 		
-		//To be implemented with the data received by the parser
 		this.regionCities = new HashSet<City>();
 		Set<City> allCities = map.allVertexes();
 		List<CFGRegion> cfgRegions = parser.getCFGRoot().getMap().getRegion();
@@ -56,6 +57,10 @@ public class Region {
 			}
 		}
 		
+		ArrayList<BonusItem> bonuses = new ArrayList<BonusItem>();
+		bonuses = parser.getBonusesFromParser(cfgRegion.getBonuses().getBonus());
+		
+		this.regionBonus = new RegionCard(bonuses, this);
 		this.permissionDeck = new PermissionDeck(parser, this);
 
 	}

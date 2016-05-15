@@ -11,6 +11,7 @@
                 <xsd:element name="permissionDecks" type="bks:CFGPermissionDecks" minOccurs="1" maxOccurs="1"/>
                 <xsd:element name="map" type="bks:CFGMap" minOccurs="1" maxOccurs="1"/>
                 <xsd:element name="players" type="bks:CFGPlayers" minOccurs="1" maxOccurs="1"/>
+                <xsd:element name="kingBonuses" type="bks:CFGKingBonuses" minOccurs="1" maxOccurs="1"/>
             </xsd:sequence>
         </xsd:complexType>
         
@@ -76,6 +77,7 @@
         
         <xsd:complexType name="CFGMap">
             <xsd:sequence>
+                <xsd:element name="ancestries" type="bks:CFGAncestries" minOccurs="1" maxOccurs="1"/>
                 <xsd:element name="region" type="bks:CFGRegion" minOccurs="1" maxOccurs="unbounded"/>
             </xsd:sequence>
         </xsd:complexType>
@@ -84,6 +86,7 @@
             <xsd:sequence>
                 <xsd:element name="name" type="xsd:string" minOccurs="1" maxOccurs="1"/>                
                 <xsd:element name="cities" type="bks:CFGCities4Map" minOccurs="1" maxOccurs="1"/>
+                <xsd:element name="bonuses" type="bks:CFGBonuses" minOccurs="1" maxOccurs="1"/>
             </xsd:sequence>
         </xsd:complexType>
         
@@ -95,7 +98,8 @@
         
         <xsd:complexType name="CFGCity">
             <xsd:sequence>
-                <xsd:element name="name" type="xsd:string" minOccurs="1" maxOccurs="1"/>                
+                <xsd:element name="name" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+                <xsd:element name="ancestry" type="xsd:string" minOccurs="1" maxOccurs="1"/>
                 <xsd:element name="bonuses" type="bks:CFGBonuses" minOccurs="1" maxOccurs="1"/>
                 <xsd:element name="links" type="bks:CFGLinks" minOccurs="1" maxOccurs="1"/>
             </xsd:sequence>
@@ -130,6 +134,24 @@
             </xsd:sequence>
         </xsd:complexType>
         
+        <xsd:complexType name="CFGKingBonuses">
+            <xsd:sequence>
+                <xsd:element name="bonuses" type="bks:CFGBonuses" minOccurs="1" maxOccurs="unbounded"/>
+            </xsd:sequence>
+        </xsd:complexType>
+        
+        <xsd:complexType name="CFGAncestries">
+            <xsd:sequence>
+                <xsd:element name="ancestry" type="bks:CFGAncestry" minOccurs="1" maxOccurs="unbounded"/>
+            </xsd:sequence>
+        </xsd:complexType>
+        
+        <xsd:complexType name="CFGAncestry">
+            <xsd:sequence>
+                <xsd:element name="color" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+                <xsd:element name="bonuses" type="bks:CFGBonuses" minOccurs="1" maxOccurs="1"/>
+            </xsd:sequence>
+        </xsd:complexType>
         
         
         

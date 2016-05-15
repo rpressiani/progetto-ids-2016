@@ -10,4 +10,12 @@ public class KingCard extends Bonusable {
 		super(bonuses);
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "KingCard [toString()=" + super.toString() + "]";
+	}
+
 }

@@ -8,7 +8,6 @@
 
 package jaxb;
 
-import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -18,17 +17,16 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for CFGPlayers complex type.
+ * <p>Java class for CFGAncestries complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="CFGPlayers">
+ * &lt;complexType name="CFGAncestries">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="nInitPoliticalCards" type="{http://www.w3.org/2001/XMLSchema}integer"/>
- *         &lt;element name="player" type="{urn:co4}CFGPlayer" maxOccurs="unbounded" minOccurs="2"/>
+ *         &lt;element name="ancestry" type="{urn:co4}CFGAncestry" maxOccurs="unbounded"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -38,68 +36,41 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "CFGPlayers", propOrder = {
-    "nInitPoliticalCards",
-    "player"
+@XmlType(name = "CFGAncestries", propOrder = {
+    "ancestry"
 })
-public class CFGPlayers {
+public class CFGAncestries {
 
     @XmlElement(required = true)
-    protected BigInteger nInitPoliticalCards;
-    @XmlElement(required = true)
-    protected List<CFGPlayer> player;
+    protected List<CFGAncestry> ancestry;
 
     /**
-     * Gets the value of the nInitPoliticalCards property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link BigInteger }
-     *     
-     */
-    public BigInteger getNInitPoliticalCards() {
-        return nInitPoliticalCards;
-    }
-
-    /**
-     * Sets the value of the nInitPoliticalCards property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link BigInteger }
-     *     
-     */
-    public void setNInitPoliticalCards(BigInteger value) {
-        this.nInitPoliticalCards = value;
-    }
-
-    /**
-     * Gets the value of the player property.
+     * Gets the value of the ancestry property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the player property.
+     * This is why there is not a <CODE>set</CODE> method for the ancestry property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getPlayer().add(newItem);
+     *    getAncestry().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link CFGPlayer }
+     * {@link CFGAncestry }
      * 
      * 
      */
-    public List<CFGPlayer> getPlayer() {
-        if (player == null) {
-            player = new ArrayList<CFGPlayer>();
+    public List<CFGAncestry> getAncestry() {
+        if (ancestry == null) {
+            ancestry = new ArrayList<CFGAncestry>();
         }
-        return this.player;
+        return this.ancestry;
     }
 
 }
