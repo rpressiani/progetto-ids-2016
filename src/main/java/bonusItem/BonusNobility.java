@@ -1,4 +1,5 @@
 package bonusItem;
+import gameState.GameState;
 import player.Player;
 
 public class BonusNobility implements BonusItem {
@@ -9,7 +10,7 @@ public class BonusNobility implements BonusItem {
 		this.items=items;
 	}
 	
-	public void giveBonus(Player player){
+	public void giveBonus(Player player, GameState gameState){
 		player.getNobilityLevel().add(items);
 	}
 }

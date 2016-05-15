@@ -5,7 +5,7 @@ import gameState.GameState;
 import map.City;
 import player.Player;
 
-public class BuildEmporiumWithCard extends PrimaryAction {
+public class BuildEmporiumWithCard extends MainAction {
 
 	private PermissionCard cardChosed;
 	private City cityChosed;

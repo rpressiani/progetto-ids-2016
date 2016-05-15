@@ -5,7 +5,7 @@ import map.Region;
 import player.Player;
 import utilities.Color;
 
-public class ElectCounsellor extends PrimaryAction {
+public class ElectCounsellor extends MainAction {
 	
 	private Region region;
 	private Color color;

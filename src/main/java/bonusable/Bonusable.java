@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import bonusItem.BonusItem;
+import gameState.GameState;
 import player.Player;
 
 public abstract class Bonusable {
@@ -13,10 +14,10 @@ public abstract class Bonusable {
 		this.bonuses = bonuses;
 	}
 	
-	public void assignBonuses(Player player){
+	public void assignBonuses(Player player, GameState gameState){
 		Iterator<BonusItem> itr=bonuses.iterator();
 		while(itr.hasNext()){
-			itr.next().giveBonus(player);
+			itr.next().giveBonus(player, gameState);
 		}
 	}
 	

@@ -1,4 +1,5 @@
 package bonusItem;
+import gameState.GameState;
 import player.Player;
 
 public class BonusCoins implements BonusItem {
@@ -8,7 +9,7 @@ public class BonusCoins implements BonusItem {
 		this.items = items;
 	}
 
-	public void giveBonus(Player player){
+	public void giveBonus(Player player, GameState gameState){
 		player.getCoins().add(items);
 	}
 	
