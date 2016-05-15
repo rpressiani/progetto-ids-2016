@@ -14,12 +14,22 @@ import bonusable.Bonusable;
 import bonusItem.BonusItem;
 import player.Player;
 
+/**
+ * @author Alessandro Pezzotta
+ *
+ */
 public class City extends Bonusable{
 	private String name; 
 	private Region region;
 	private String ancestry;
 	private boolean kingPresence;
 	
+	/**
+	 * @param name
+	 * @param bonuses
+	 * constructor for object City
+	 */
+
 	public City(String name, ArrayList<BonusItem> bonuses, String ancestry) {
 		super(bonuses);
 		this.name = name;
@@ -75,12 +85,12 @@ public class City extends Bonusable{
 		linkedCities = inspector.connectedSetOf(this); 
 		return linkedCities; 
 	}
-
 	/**
 	 * @return the ancestry
 	 */
 	public String getAncestry() {
 		return ancestry;
 	}
+
 
 }

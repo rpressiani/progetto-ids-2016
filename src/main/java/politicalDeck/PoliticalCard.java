@@ -1,11 +1,20 @@
 package politicalDeck;
 
 
+/**
+ * @author Alessandro Pezzotta
+ *
+ */
 public class PoliticalCard {
 	
 	private final String color;
 	private int numCards;
 	
+	/**
+	 * @param color
+	 * @param numCards
+	 * constructor
+	 */
 	public PoliticalCard(String color, int numCards) {
 		this.color = color; 
 		this.numCards = numCards; 
