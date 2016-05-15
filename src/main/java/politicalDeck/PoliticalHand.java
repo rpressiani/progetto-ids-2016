@@ -25,22 +25,23 @@ public class PoliticalHand extends PoliticalDeck {
 	 */
 	public void drawCard(PoliticalRealDeck deck) {
 		Random rnd;
-		int temp;
 		if(deck.isEmpty()) {
 			throw new IllegalArgumentException("Can't draw a card if deck is empty"); 
 		}
-		do {
-			rnd = new Random();
-			temp = rnd.nextInt(this.getDeck().size());
-		} while ( deck.getDeck().get(temp).getNumCards() == 0 );
-		
-		deck.getDeck().get(temp).removeCards(1);
-		this.getDeck().get(temp).addCards(1);
+		rnd = new Random(); 
+		int selectedIndex = rnd.nextInt(this.getDeck().size());
+		for(int i=0; i<this.getNumColors(); i++) {
+			if(deck.getDeck().get(selectedIndex).getNumCards()!=0) {
+			deck.getDeck().get(selectedIndex).removeCards(1);
+			this.getDeck().get(selectedIndex).addCards(1);
+		} else {
+			selectedIndex = (selectedIndex++)%deck.getDeck().size(); 
+		}			
 		if (deck.isEmpty()) {
 			deck.refill();
 		}
 	}
-	
+}	
 	/**
 	 * Discard a card from the hand and put it in the garbage deck
 	 * 
