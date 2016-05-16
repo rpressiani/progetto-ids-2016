@@ -7,7 +7,6 @@ public class BonusCoins implements BonusItem {
 	public BonusCoins(int items) {
 		this.items = items;
 	}
-
 	public void giveBonus(Player player){
 		player.getCoins().add(items);
 	}
