@@ -100,7 +100,7 @@ public class Map {
 	 * @param c2
 	 * @return numeric distance (#edges) between two cities 
 	 */
-	public int numericDistance(UndirectedGraph<City, DefaultEdge> map, City c1, City c2) { 
+	public int numericDistance(City c1, City c2) { 
 		DijkstraShortestPath<City, DefaultEdge> pathFinder = new DijkstraShortestPath<City, DefaultEdge>(map, c1, c2);
 		int distance = (int) pathFinder.getPathLength();
 		return distance; 
@@ -113,5 +113,5 @@ public class Map {
 		Set<City> cities = this.map.vertexSet(); 
 		return cities; 
 	}
-	
+		
 } 

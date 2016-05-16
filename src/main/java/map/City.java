@@ -4,9 +4,7 @@ import java.util.ArrayList;
 import java.util.Set;
 
 import org.jgrapht.graph.DefaultEdge;
-import org.jgrapht.graph.Subgraph;
-import org.jgrapht.Graph;
-import org.jgrapht.UndirectedGraph;
+import org.jgrapht.graph.UndirectedSubgraph;
 import org.jgrapht.alg.ConnectivityInspector;
 
 import bonusable.Bonusable;
@@ -79,8 +77,8 @@ public class City extends Bonusable{
 	 */
 	public Set<City> linkedCities(Map map, Player player) {
 		Set<City> linkedCities = null;
-		Subgraph sg = new Subgraph((UndirectedGraph<City, DefaultEdge>) map, player.getBuiltCities()); 
-		ConnectivityInspector<City, DefaultEdge> inspector = new ConnectivityInspector<City, DefaultEdge>((UndirectedGraph<City, DefaultEdge>) sg);
+		UndirectedSubgraph<City, DefaultEdge> sg = new UndirectedSubgraph<City, DefaultEdge>(map.getGraph(), player.getBuiltCities(), null); 
+		ConnectivityInspector<City, DefaultEdge> inspector = new ConnectivityInspector<City, DefaultEdge>(sg);
 		linkedCities = inspector.connectedSetOf(this); 
 		return linkedCities; 
 	}
