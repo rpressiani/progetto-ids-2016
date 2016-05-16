@@ -16,7 +16,7 @@ import parser.Parser;
  */
 public class Player {
 	
-	private Integer id;
+	private int id;
 	private String nickname;
 	private Coins coins;
 	private NobilityLevel nobilityLevel;
@@ -26,6 +26,7 @@ public class Player {
 	private PoliticalHand politicalHand;
 	private Set<PermissionCard> permissionHand;
 	private Set<City> builtCities; 
+	private int state;
 	
 	/**
 	 * Constructor
@@ -136,4 +137,24 @@ public class Player {
 		return builtCities; 
 	}
 
+	/**
+	 * @return the id
+	 */
+	public int getId() {
+		return id;
+	}
+
+	/**
+	 * @return the currentState
+	 */
+	public int getState() {
+		return state;
+	}
+
+	/**
+	 * @param state the state to set
+	 */
+	public void setState(int state) {
+		this.state = state;
+	}
 }

@@ -5,7 +5,7 @@ import map.Region;
 import player.Player;
 import utilities.Color;
 
-public class ElectCounsellorWithAssistant extends SecondaryAction {
+public class ElectCounsellorWithAssistant extends QuickAction {
 	
 	public ElectCounsellorWithAssistant(Region region, Color color) {
 		this.region = region;

@@ -3,7 +3,7 @@ package actions;
 import gameState.GameState;
 import player.Player;
 
-public class HireAssistant extends SecondaryAction {
+public class HireAssistant extends QuickAction {
 	
 	public HireAssistant(){
 		

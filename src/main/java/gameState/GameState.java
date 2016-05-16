@@ -1,5 +1,6 @@
 package gameState;
 
+import java.util.ArrayList;
 import java.util.Set;
 
 import council.Balcony;
@@ -7,6 +8,7 @@ import council.CounsellorGroup;
 import council.GarbageState;
 import map.Map;
 import map.Region;
+import player.Player;
 import politicalDeck.PoliticalGarbage;
 import politicalDeck.PoliticalRealDeck;
 import sharedObjects.KingBonuses;
@@ -22,6 +24,8 @@ public class GameState {
 	private CounsellorGroup counsellorGroup;
 	private GarbageState counsellorGarbage;
 	private KingBonuses kingBonuses;
+	private ArrayList<Player> players;
+	private Player currentPlayer;
 
 	/**
 	 * @return the map
@@ -84,5 +88,19 @@ public class GameState {
 	 */
 	public KingBonuses getKingBonuses() {
 		return kingBonuses;
+	}
+	
+	/**
+	 * @return the players
+	 */
+	public ArrayList<Player> getPlayers() {
+		return players;
+	}
+	
+	/**
+	 * @return the currentPlayer
+	 */
+	public Player getCurrentPlayer() {
+		return currentPlayer;
 	}
 }
