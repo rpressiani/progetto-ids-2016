@@ -4,7 +4,7 @@ import gameState.GameState;
 import map.Region;
 import player.Player;
 
-public class ChangePermissionCards extends SecondaryAction {
+public class ChangePermissionCards extends QuickAction {
 
 	private Region region;
 	

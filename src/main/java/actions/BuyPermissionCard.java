@@ -9,7 +9,7 @@ import politicalDeck.PoliticalCard;
 import politicalDeck.PoliticalDeck;
 import politicalDeck.PoliticalHand;
 
-public class BuyPermissionCard extends PrimaryAction {
+public class BuyPermissionCard extends MainAction {
 	
 	private Region region;
 	private PoliticalDeck proposal;
@@ -41,7 +41,7 @@ public class BuyPermissionCard extends PrimaryAction {
 			if(sumToPay<=player.getCoins().getItems()) {
 				player.getCoins().sub(sumToPay);
 				drawedCard=region.getPermissionDeck().drawCard(region.getPermissionDeck().getDeck(), region.getPermissionDeck().getVisibleCards(), index);
-				drawedCard.assignBonuses(player);
+				drawedCard.assignBonuses(player, gameState);
 				player.getPermissionHand().add(drawedCard);
 			}
 		}

@@ -21,10 +21,18 @@ public class Market {
 		this.contractSet = new HashSet<Contract>();
 	}
 	
+	/**
+	 * @param contract
+	 * adds a contract to contractSet
+	 */
 	public void addContract(Contract contract){
 		contractSet.add(contract);
 	}
 	
+	/**
+	 * @param contract
+	 * @param buyer
+	 */
 	public void acceptContract(Contract contract, Player buyer){
 		Iterator<Marketable> sellBagItr = contract.getSellBag().iterator();
 		while(sellBagItr.hasNext()){
