@@ -20,7 +20,7 @@ public class Ancestry {
 		for (int i = 0; i < parser.getCFGRoot().getMap().getAncestries().getAncestry().size(); i++) {
 			checkAncestryColor.add(parser.getCFGRoot().getMap().getAncestries().getAncestry().get(i).getColor());
 		}
-		if (!checkAncestryColor.contains(color)) throw new IllegalArgumentException("This ancestry color is not defined in the configuration file");
+		if (!checkAncestryColor.contains(color.getStringID())) throw new IllegalArgumentException("This ancestry color is not defined in the configuration file");
 		this.color = color;
 		
 		for (City city : map.allVertexes()) {
