@@ -9,10 +9,6 @@ public abstract class MainAction implements GeneralAction{
 		
 	}
 	
-	public boolean acceptMove(Player player){
-		return true;
-	}
-	
 	public void doAction(Player player, GameState gameState) {
 		// TODO Auto-generated method stub
 		
