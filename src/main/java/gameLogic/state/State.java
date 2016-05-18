@@ -1,4 +1,4 @@
-package controller.state;
+package gameLogic.state;
 
 import actions.MainAction;
 import actions.NullAction;
@@ -22,4 +22,6 @@ public interface State {
 		System.out.println("You can't do a NullAction now");
 		return this;
 	}
+	
+	public void printOut(State state);
 }
