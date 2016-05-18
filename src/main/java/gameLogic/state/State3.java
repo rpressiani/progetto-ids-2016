@@ -9,15 +9,9 @@ public class State3 implements State {
 	@Override
 	public State transition(Player player, MainAction action, GameState gameState){
 		//action.doAction(player, gameState);
-		if(action.acceptMove(player, gameState)==true){
-			System.out.println(player.getNickname()+" did a MainAction");
-			return new State4();
-		}
+		if(action.acceptMove(player, gameState)==true) return new State4();
 		
-		else{
-			System.out.println("It's not your turn "+player.getNickname());
-			return this;
-		}
+		else return this;
 	}
 	
 	@Override

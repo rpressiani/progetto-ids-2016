@@ -10,29 +10,17 @@ public class State2 implements State {
 	@Override
 	public State transition(Player player, QuickAction action, GameState gameState){
 		//action.doAction(player, gameState);
-		if(action.acceptMove(player, gameState)==true){
-			System.out.println(player.getNickname()+" did a QuickAction");
-			return new State4();
-		}
+		if(action.acceptMove(player, gameState)==true) return new State4();
 		
-		else{
-			System.out.println("It's not your turn "+player.getNickname());
-			return this;
-		}
+		else return this;
 	}
 	
 	@Override
 	public State transition(Player player, NullAction action, GameState gameState){
 		//action.doAction(player, gameState);
-		if(action.acceptMove(player, gameState)==true){
-			System.out.println(player.getNickname()+" passed the turn");
-			return new State4();
-		}
+		if(action.acceptMove(player, gameState)==true) return new State4();
 		
-		else{
-			System.out.println("It's not your turn "+player.getNickname());
-			return this;
-		}
+		else return this;
 	}
 	
 	@Override
