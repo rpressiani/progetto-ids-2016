@@ -4,7 +4,7 @@ import gameState.GameState;
 import player.Player;
 
 public abstract class MainAction implements GeneralAction{
-
+	
 	public MainAction(){
 		
 	}

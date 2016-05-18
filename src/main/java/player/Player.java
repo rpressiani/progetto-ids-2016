@@ -7,6 +7,7 @@ import utilities.Color;
 import politicalDeck.PoliticalHand;
 import politicalDeck.PoliticalRealDeck;
 import bonusable.PermissionCard;
+import gameLogic.state.State;
 import map.City;
 import parser.Parser;
 
@@ -26,7 +27,7 @@ public class Player {
 	private PoliticalHand politicalHand;
 	private Set<PermissionCard> permissionHand;
 	private Set<City> builtCities; 
-	private int state;
+	private State state;
 	
 	/**
 	 * Constructor
@@ -42,6 +43,10 @@ public class Player {
 		this.score = new Score();
 		this.builtCities = new HashSet<City>();
 		this.permissionHand= new HashSet<PermissionCard>();
+	}
+	
+	public Player(String nickname){
+		this.nickname=nickname;
 	}
 	
 	/**
@@ -147,14 +152,14 @@ public class Player {
 	/**
 	 * @return the currentState
 	 */
-	public int getState() {
+	public State getState() {
 		return state;
 	}
 
 	/**
 	 * @param state the state to set
 	 */
-	public void setState(int state) {
+	public void setState(State state) {
 		this.state = state;
 	}
 }

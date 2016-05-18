@@ -15,6 +15,10 @@ public class BuyPermissionCard extends MainAction {
 	private PoliticalDeck proposal;
 	private int index;
 
+	public BuyPermissionCard(){
+		
+	}
+	
 	public BuyPermissionCard(Region region, PoliticalDeck proposal, int index) {
 		this.region=region;
 		this.proposal=proposal;

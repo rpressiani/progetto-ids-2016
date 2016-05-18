@@ -4,7 +4,7 @@ import gameState.GameState;
 import player.Player;
 
 public abstract class QuickAction implements GeneralAction {
-	
+
 	public QuickAction(){
 		
 	}
