@@ -44,11 +44,7 @@ public class Player {
 		this.builtCities = new HashSet<City>();
 		this.permissionHand= new HashSet<PermissionCard>();
 	}
-	
-	public Player(String nickname){
-		this.nickname=nickname;
-	}
-	
+
 	/**
 	 * initPlayer conclude the setting of the player after he has joined a specific match. An ID is set, coins and assistants
 	 * are set based on the content of the configuration file and the PoliticalHand of the player is instantiated.

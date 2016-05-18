@@ -23,5 +23,5 @@ public interface State {
 		return this;
 	}
 	
-	public void printOut(State state);
+	public void printOut(Player player, State state);
 }

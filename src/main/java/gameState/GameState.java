@@ -24,7 +24,6 @@ public class GameState {
 	private CounsellorGroup counsellorGroup;
 	private GarbageState counsellorGarbage;
 	private KingBonuses kingBonuses;
-
 	private ArrayList<Player> players;
 	private Player currentPlayer;
 
@@ -89,6 +88,13 @@ public class GameState {
 	 */
 	public KingBonuses getKingBonuses() {
 		return kingBonuses;
+	}
+	
+	/**
+	 * @param players the players to set
+	 */
+	public void setPlayers(ArrayList<Player> players) {
+		this.players = players;
 	}
 	
 	/**
