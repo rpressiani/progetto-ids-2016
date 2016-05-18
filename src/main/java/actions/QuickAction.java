@@ -13,6 +13,11 @@ public abstract class QuickAction implements GeneralAction {
 		// TODO Auto-generated constructor stub
 	}
 
+	public boolean acceptMove(Player player, GameState gameState){
+		if(gameState.getCurrentPlayer()!=player) return false;
+		else return true;
+	}
+	
 	public void doAction(Player player, GameState gameState) {
 		// TODO Auto-generated method stub
 		
