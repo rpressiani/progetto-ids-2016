@@ -7,11 +7,11 @@ import player.Player;
 public class State3 implements State {
 	
 	@Override
-	public State transition(Player player, MainAction action, GameState gameState){
+	public void transition(Player player, MainAction action, GameState gameState){
 		//action.doAction(player, gameState);
-		if(action.acceptMove(player, gameState)==true) return new State4();
+		if(action.acceptMove(player, gameState)==true) player.setState(new State4());
 		
-		else return this;
+		else player.setState(this);
 	}
 	
 	@Override

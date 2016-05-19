@@ -8,19 +8,19 @@ import player.Player;
 public class State2 implements State {
 	
 	@Override
-	public State transition(Player player, QuickAction action, GameState gameState){
+	public void transition(Player player, QuickAction action, GameState gameState){
 		//action.doAction(player, gameState);
-		if(action.acceptMove(player, gameState)==true) return new State4();
+		if(action.acceptMove(player, gameState)==true) player.setState(new State4());
 		
-		else return this;
+		else player.setState(this);
 	}
 	
 	@Override
-	public State transition(Player player, NullAction action, GameState gameState){
+	public void transition(Player player, NullAction action, GameState gameState){
 		//action.doAction(player, gameState);
-		if(action.acceptMove(player, gameState)==true) return new State4();
+		if(action.acceptMove(player, gameState)==true) player.setState(new State4());
 		
-		else return this;
+		else player.setState(this);
 	}
 	
 	@Override

@@ -117,4 +117,11 @@ public class GameState {
 	public void setCurrentPlayer(Player currentPlayer) {
 		this.currentPlayer = currentPlayer;
 	}
+	
+	public void nextPlayer(Player player){
+		int i=this.getPlayers().indexOf(player);
+		if((i+1)!=this.getPlayers().size()) this.setCurrentPlayer(this.getPlayers().get(i+1));
+		else this.setCurrentPlayer(this.getPlayers().get(0));
+	}
+	
 }
