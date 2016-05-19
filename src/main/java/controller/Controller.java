@@ -16,6 +16,7 @@ public class Controller implements Observer<GeneralAction> {
 	@Override
 	public void update(GeneralAction action) {
 		Observer.super.update(action);
+		//should I do a check with acceptMove? 
 		action.doAction(game.getCurrentPlayer(), game);
 	}
 	

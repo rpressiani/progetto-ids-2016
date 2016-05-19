@@ -122,7 +122,6 @@ public class GameState extends Observable<Change>{
 		this.currentPlayer = currentPlayer;
 		this.notifyObserver(new CurrentPlayerChange(currentPlayer));
 	}
-	
 	public void nextPlayer(Player player){
 		int i=this.getPlayers().indexOf(player);
 		if((i+1)!=this.getPlayers().size()) this.setCurrentPlayer(this.getPlayers().get(i+1));
