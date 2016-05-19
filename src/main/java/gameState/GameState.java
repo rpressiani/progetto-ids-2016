@@ -1,20 +1,24 @@
 package gameState;
-
+//going to be used as the Model
 import java.util.ArrayList;
 import java.util.Set;
 
+import controller.Change;
+import controller.CurrentPlayerChange;
+//import controller.PlayerChange;
 import council.Balcony;
 import council.CounsellorGroup;
 import council.GarbageState;
 import map.Map;
 import map.Region;
+import observer.Observable;
 import player.Player;
 import politicalDeck.PoliticalGarbage;
 import politicalDeck.PoliticalRealDeck;
 import sharedObjects.KingBonuses;
 import sharedObjects.Nobility;
 
-public class GameState {
+public class GameState extends Observable<Change>{
 	private Map map;
 	private Set<Region> regions;
 	private Nobility nobility;
@@ -116,6 +120,7 @@ public class GameState {
 	 */
 	public void setCurrentPlayer(Player currentPlayer) {
 		this.currentPlayer = currentPlayer;
+		this.notifyObserver(new CurrentPlayerChange(currentPlayer));
 	}
 	
 	public void nextPlayer(Player player){
@@ -123,5 +128,10 @@ public class GameState {
 		if((i+1)!=this.getPlayers().size()) this.setCurrentPlayer(this.getPlayers().get(i+1));
 		else this.setCurrentPlayer(this.getPlayers().get(0));
 	}
-	
 }
+
+	/* still not sure if we need it 
+	 * public void addNewPlayer(Player newPlayer) {
+		players.add(newPlayer); 
+		this.notifyObserver(new PlayerChange(newPlayer));
+	}*/
