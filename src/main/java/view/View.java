@@ -1,7 +1,7 @@
 package view;
 
 import actions.GeneralAction;
-import observer.Change;
+import controller.Change;
 import observer.Observable;
 import observer.Observer;
 
