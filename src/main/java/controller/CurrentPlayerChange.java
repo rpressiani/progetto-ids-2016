@@ -1,6 +1,6 @@
 package controller;
 
-import player.Player;
+import model.player.Player;
 
 public class CurrentPlayerChange extends Change {
 
@@ -12,6 +12,9 @@ public class CurrentPlayerChange extends Change {
 	
 	public CurrentPlayerChange(Player newCurrentPlayer) {
 		this.newCurrentPlayer = newCurrentPlayer; 
+	}
+	public Player getNewCurrentPlayer() {
+		return newCurrentPlayer;
 	}
 	@Override
 	public String toString() {

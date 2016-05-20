@@ -1,7 +1,7 @@
 package controller;
 
-import actions.GeneralAction;
-import gameState.GameState;
+import model.GameState;
+import model.actions.GeneralAction;
 import observer.Observer;
 //import player.Player;
 
@@ -16,6 +16,7 @@ public class Controller implements Observer<GeneralAction> {
 	@Override
 	public void update(GeneralAction action) {
 		Observer.super.update(action);
+		//should I do a check with acceptMove? 
 		action.doAction(game.getCurrentPlayer(), game);
 	}
 	
