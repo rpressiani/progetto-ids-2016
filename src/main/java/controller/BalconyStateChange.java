@@ -13,7 +13,9 @@ public class BalconyStateChange extends Change {
 	public BalconyStateChange(BalconyState balconyState) {
 		this.balconyState = balconyState; 
 	}
-
+	public BalconyState getBalconyStateChange() {
+		return balconyState; 
+	}
 	@Override
 	public String toString() {
 		return "BalconyStateChange [balconyState=" + balconyState + "]";
