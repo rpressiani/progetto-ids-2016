@@ -24,7 +24,7 @@ public class GameState extends Observable<Change>{
 	private Nobility nobility;
 	private PoliticalRealDeck politicalDeck;
 	private PoliticalGarbage garbage;
-	private Balcony balcony;
+	private Balcony kingBalcony;
 	private CounsellorGroup counsellorGroup;
 	private GarbageState counsellorGarbage;
 	private KingBonuses kingBonuses;
@@ -69,8 +69,8 @@ public class GameState extends Observable<Change>{
 	/**
 	 * @return the balcony
 	 */
-	public Balcony getBalcony() {
-		return balcony;
+	public Balcony getKingBalcony() {
+		return kingBalcony;
 	}
 	
 	/**
@@ -130,8 +130,8 @@ public class GameState extends Observable<Change>{
 		//this.notifyObserver(new CurrentPlayerChange(player));
 	}
 	
-	public void setNewBalcony(Balcony balcony) {
+	/*public void setNewBalcony(Balcony balcony) {
 		this.balcony = balcony; 
 		this.notifyObserver(new BalconyStateChange(balcony));
-	}
+	}*/
 }

@@ -1,9 +1,6 @@
 package controller;
 
-import model.council.BalconyState;
-
 import model.council.Balcony;
-
 
 public class BalconyStateChange extends Change {
 
