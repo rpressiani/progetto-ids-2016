@@ -3,6 +3,7 @@ package gameState;
 import java.util.ArrayList;
 import java.util.Set;
 
+import controller.BalconyStateChange;
 import controller.Change;
 import controller.CurrentPlayerChange;
 //import controller.PlayerChange;
@@ -18,7 +19,7 @@ import politicalDeck.PoliticalRealDeck;
 import sharedObjects.KingBonuses;
 import sharedObjects.Nobility;
 
-public class GameState extends Observable<Change>{
+public class GameState extends Observable<Change> {
 	private Map map;
 	private Set<Region> regions;
 	private Nobility nobility;
@@ -114,6 +115,10 @@ public class GameState extends Observable<Change>{
 	public Player getCurrentPlayer() {
 		return currentPlayer;
 	}
+	public void setNewBalcony(Balcony balcony) {
+		this.balcony = balcony; 
+		this.notifyObserver(new BalconyStateChange(balcony));
+	}
 	
 	/**
 	 * @param currentPlayer the currentPlayer to set
@@ -126,6 +131,7 @@ public class GameState extends Observable<Change>{
 		int i=this.getPlayers().indexOf(player);
 		if((i+1)!=this.getPlayers().size()) this.setCurrentPlayer(this.getPlayers().get(i+1));
 		else this.setCurrentPlayer(this.getPlayers().get(0));
+		//this.notifyObserver(new CurrentPlayerChange(player));
 	}
 }
 
