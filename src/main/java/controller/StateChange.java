@@ -1,6 +1,6 @@
 package controller;
 
-import gameState.GameState;
+import model.GameState;
 
 public class StateChange extends Change {
 

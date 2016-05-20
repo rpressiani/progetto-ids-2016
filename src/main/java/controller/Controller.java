@@ -1,7 +1,7 @@
 package controller;
 
-import actions.GeneralAction;
-import gameState.GameState;
+import model.GameState;
+import model.actions.GeneralAction;
 import observer.Observer;
 //import player.Player;
 

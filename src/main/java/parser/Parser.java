@@ -12,15 +12,15 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 
-import bonusItem.BonusAssistants;
-import bonusItem.BonusCoins;
-import bonusItem.BonusItem;
-import bonusItem.BonusNobility;
-import bonusItem.BonusScore;
 import jaxb.CFGBonus;
 import jaxb.CFGCouncil;
 import jaxb.CFGPoliticalDeck;
 import jaxb.CFGRoot;
+import model.bonusItem.BonusAssistants;
+import model.bonusItem.BonusCoins;
+import model.bonusItem.BonusItem;
+import model.bonusItem.BonusNobility;
+import model.bonusItem.BonusScore;
 
 /**
  * @author Riccardo Pressiani

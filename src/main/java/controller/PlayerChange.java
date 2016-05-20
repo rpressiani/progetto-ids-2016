@@ -1,6 +1,6 @@
 package controller;
 
-import player.Player;
+import model.player.Player;
 
 public class PlayerChange extends Change {
 
