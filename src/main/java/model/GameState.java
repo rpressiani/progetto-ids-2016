@@ -3,6 +3,7 @@ package model;
 import java.util.ArrayList;
 import java.util.Set;
 
+import controller.BalconyStateChange;
 import controller.Change;
 import controller.CurrentPlayerChange;
 import model.council.Balcony;
@@ -126,5 +127,11 @@ public class GameState extends Observable<Change>{
 		int i=this.getPlayers().indexOf(player);
 		if((i+1)!=this.getPlayers().size()) this.setCurrentPlayer(this.getPlayers().get(i+1));
 		else this.setCurrentPlayer(this.getPlayers().get(0));
+		//this.notifyObserver(new CurrentPlayerChange(player));
+	}
+	
+	public void setNewBalcony(Balcony balcony) {
+		this.balcony = balcony; 
+		this.notifyObserver(new BalconyStateChange(balcony));
 	}
 }

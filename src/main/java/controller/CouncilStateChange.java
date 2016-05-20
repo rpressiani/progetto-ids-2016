@@ -13,6 +13,9 @@ public class CouncilStateChange extends Change {
 	public CouncilStateChange(CouncilState councilState) {
 		this.councilState = councilState; 
 	}
+	public CouncilState getCouncilStateChange() {
+		return councilState; 
+	}
 	@Override
 	public String toString() {
 		return "CouncilStateChange [councilState=" + councilState + "]";
