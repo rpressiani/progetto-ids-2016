@@ -13,6 +13,9 @@ public class PlayerChange extends Change {
 	public PlayerChange(Player newPlayer) {
 		this.newPlayer = newPlayer; 
 	}
+	public Player getNewPlayer() {
+		return newPlayer; 
+	}
 	@Override
 	public String toString() {
 		return "PlayerChange [newPlayer=" + newPlayer + "]";
