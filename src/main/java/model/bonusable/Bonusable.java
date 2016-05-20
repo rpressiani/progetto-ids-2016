@@ -14,6 +14,11 @@ public abstract class Bonusable {
 		this.bonuses = bonuses;
 	}
 	
+	/**
+	 * @param player
+	 * @param gameState
+	 * assigns bonus to a given player
+	 */
 	public void assignBonuses(Player player, GameState gameState){
 		Iterator<BonusItem> itr=bonuses.iterator();
 		while(itr.hasNext()){

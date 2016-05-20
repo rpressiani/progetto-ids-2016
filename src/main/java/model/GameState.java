@@ -128,9 +128,3 @@ public class GameState extends Observable<Change>{
 		else this.setCurrentPlayer(this.getPlayers().get(0));
 	}
 }
-
-	/* still not sure if we need it 
-	 * public void addNewPlayer(Player newPlayer) {
-		players.add(newPlayer); 
-		this.notifyObserver(new PlayerChange(newPlayer));
-	}*/

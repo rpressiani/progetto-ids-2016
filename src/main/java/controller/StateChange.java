@@ -13,7 +13,9 @@ public class StateChange extends Change {
 	public StateChange(GameState newState) {
 		this.newState = newState; 
 	}
-
+	public GameState getNewState() {
+		return newState; 
+	}
 	@Override
 	public String toString() {
 		return "StateChange [newState=" + newState + "]";
