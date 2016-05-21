@@ -12,6 +12,14 @@ public class BonusCoins implements BonusItem {
 	public void giveBonus(Player player, GameState gameState){
 		player.getCoins().add(items);
 	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "BonusCoins [items=" + items + "]";
+	}
 	
 
 }

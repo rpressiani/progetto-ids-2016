@@ -12,4 +12,12 @@ public class BonusAssistants implements BonusItem {
 	public void giveBonus(Player player, GameState gameState){
 		player.getAssistants().add(items);
 	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "BonusAssistants [items=" + items + "]";
+	}
 }
