@@ -15,6 +15,7 @@ import jaxb.CFGBonus;
 import jaxb.CFGCity;
 import jaxb.CFGRegion;
 import model.bonusItem.BonusItem;
+import model.council.GarbageState;
 import parser.Parser;
 
 /**
@@ -26,11 +27,12 @@ public class Map {
 	private UndirectedGraph<City, DefaultEdge> map;
 	private HashMap<String, CFGCity> allCitiesFromParser;
 	private HashMap<String, City> allCitiesHashMap;
+	private HashMap<String, Region> regions;
 	
 	/**
 	 * constructor for Map
 	 */
-	public Map(Parser parser) {
+	public Map(Parser parser, GarbageState garbage) {
 		this.map = new SimpleGraph<City, DefaultEdge>(DefaultEdge.class);
 		this.allCitiesFromParser = new HashMap<String, CFGCity>();
 		this.allCitiesHashMap = new HashMap<String, City>();
@@ -55,6 +57,10 @@ public class Map {
 				String linkToAdd = iterator.next();
 				this.addLink(city, allCitiesHashMap.get(linkToAdd));
 			}
+		}
+		
+		for (CFGRegion cfgRegion : cfgRegions) {
+			this.regions.put(cfgRegion.getName(), new Region(cfgRegion.getName(), garbage, parser, this));
 		}
 
 	}
