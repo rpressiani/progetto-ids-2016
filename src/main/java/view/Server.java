@@ -3,20 +3,29 @@ package view;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayList;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import controller.Controller;
 import model.GameState;
+import model.player.Player;
+import parser.Parser;
 
 public class Server {
 	
 	private final static int PORT = 1111; //load from file!
 	private GameState gameState; 
-	private Controller controller; 
+	private Controller controller;
+	private Parser parser;
+	
+	//players and GameState presence in Server need to be verified!! 
+	private ArrayList<Player> players;
 	
 	public Server() {
-		this.gameState = new GameState(); 
+		this.parser = new Parser();
+		this.players = new ArrayList<Player>();
+		this.gameState = new GameState(parser, players); 
 		this.controller = new Controller(gameState); 
 	}
 	private void startSocket() throws IOException {

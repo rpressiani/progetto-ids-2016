@@ -1,16 +1,13 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.Set;
 
 //import controller.BalconyStateChange;
 import controller.Change;
 import controller.CurrentPlayerChange;
 import model.council.Balcony;
-import model.council.CounsellorGroup;
 import model.council.GarbageState;
 import model.map.Map;
-import model.map.Region;
 import model.player.Player;
 import model.politicalDeck.PoliticalGarbage;
 import model.politicalDeck.PoliticalRealDeck;
@@ -18,33 +15,43 @@ import model.sharedObjects.King;
 import model.sharedObjects.KingBonuses;
 import model.sharedObjects.Nobility;
 import observer.Observable;
+import parser.Parser;
 
 public class GameState extends Observable<Change>{
 	private Map map;
-	private Set<Region> regions;
 	private Nobility nobility;
 	private PoliticalRealDeck politicalDeck;
-	private PoliticalGarbage garbage;
+	private PoliticalGarbage politicalGarbage;
 	private Balcony kingBalcony;
-	private CounsellorGroup counsellorGroup;
+//	private CounsellorGroup counsellorGroup; 
 	private GarbageState counsellorGarbage;
 	private KingBonuses kingBonuses;
 	private King king;
 	private ArrayList<Player> players;
 	private Player currentPlayer;
+	
+	public GameState(Parser parser, ArrayList<Player> players) {
+		
+		this.counsellorGarbage = new GarbageState(parser);
+		this.map = new Map(parser, this.counsellorGarbage);
+		this.king = new King(parser, this.map);
+		this.kingBalcony = new Balcony(this.counsellorGarbage, parser);
+		this.kingBonuses = new KingBonuses(parser);
+		this.nobility = new Nobility(); //NEED TO BE CONSTRUCTED VIA PARSER
+		this.politicalGarbage = new PoliticalGarbage(parser);
+		this.politicalDeck = new PoliticalRealDeck(parser, this.politicalGarbage);
+		this.players = players;
+		
+		//Players sorting still to be decided
+		this.currentPlayer = this.players.get(0);
+		
+	}
 
 	/**
 	 * @return the map
 	 */
 	public Map getMap() {
 		return map;
-	}
-	
-	/**
-	 * @return the regions
-	 */
-	public Set<Region> getRegions() {
-		return regions;
 	}
 	
 	/**
@@ -65,7 +72,7 @@ public class GameState extends Observable<Change>{
 	 * @return the garbage
 	 */
 	public PoliticalGarbage getGarbage() {
-		return garbage;
+		return politicalGarbage;
 	}
 	
 	/**
@@ -75,12 +82,12 @@ public class GameState extends Observable<Change>{
 		return kingBalcony;
 	}
 	
-	/**
-	 * @return the counsellorGroup
-	 */
-	public CounsellorGroup getCounsellorGroup() {
-		return counsellorGroup;
-	}
+//	/**
+//	 * @return the counsellorGroup
+//	 */
+//	public CounsellorGroup getCounsellorGroup() {
+//		return counsellorGroup;
+//	}
 	
 	/**
 	 * @return the counsellorGarbage
