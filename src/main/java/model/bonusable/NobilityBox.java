@@ -20,4 +20,12 @@ public class NobilityBox extends Bonusable {
 		return level;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "NobilityBox [level=" + level + ", toString()=" + super.toString() + "]\n";
+	}
+
 }

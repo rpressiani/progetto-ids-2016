@@ -9,6 +9,7 @@ import model.actions.MainAction;
 //import model.actions.NullAction;
 import model.actions.QuickAction;
 import model.player.Player;
+import model.sharedObjects.Nobility;
 import model.stateMachine.state.State1;
 import parser.Parser;
 
@@ -28,7 +29,12 @@ public class ClientLogic {
 		Player player3=new Player("player3", null);
 		Player player4=new Player("player4", null);
 		
-		GameState gameState= new GameState(parser, players);
+		
+		
+		
+
+		
+		
 		
 		player1.setState(new State1());
 		player2.setState(new State1());
@@ -40,7 +46,9 @@ public class ClientLogic {
 		players.add(player3);
 		players.add(player4);
 		
-		gameState.setPlayers(players);
+		GameState gameState= new GameState(parser, players);
+		
+//		gameState.setPlayers(players);
 		gameState.setCurrentPlayer(player1);
 
 		player1.getState().printOut(player1, player1.getState());

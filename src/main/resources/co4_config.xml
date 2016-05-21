@@ -124,16 +124,16 @@
                 </bonus>
             </bonuses>
         </region>
-        <region>
+        <!--<region>
             <name>pianura</name>
             <cities>
             </cities>
-        </region>
-        <region>
+        </region>-->
+        <!--<region>
             <name>montagna</name>
             <cities>
             </cities>
-        </region>
+        </region>-->
     </map>
     <council>
         <balconyNum>4</balconyNum>
@@ -217,9 +217,6 @@
                     </cities>
                     <bonuses>
                         <bonus>
-                            <bonusItem>doubleAction</bonusItem>
-                        </bonus>
-                        <bonus>
                             <bonusItem>score</bonusItem>
                             <quantity>1</quantity>
                         </bonus>
@@ -227,7 +224,7 @@
                 </permissionCard>
             </permissionCards>
         </permissionDeck>
-        <permissionDeck>
+        <!--<permissionDeck>
             <region>pianura</region>
             <permissionCards>
                 <permissionCard>
@@ -264,7 +261,7 @@
                     </bonuses>
                 </permissionCard>
             </permissionCards>
-        </permissionDeck>
+        </permissionDeck>-->
     </permissionDecks>
     <kingBonuses>
         <bonuses>
@@ -298,6 +295,43 @@
             </bonus>
         </bonuses>
     </kingBonuses>
+    <nobility>
+        <nobilityBox>
+            <level>1</level>
+            <bonuses>
+                <bonus>
+                    <bonusItem>score</bonusItem>
+                    <quantity>2</quantity>
+                </bonus>
+                <bonus>
+                    <bonusItem>coins</bonusItem>
+                    <quantity>3</quantity>
+                </bonus>
+            </bonuses>
+        </nobilityBox>
+        <nobilityBox>
+            <level>2</level>
+            <bonuses>
+                <bonus>
+                    <bonusItem>assistants</bonusItem>
+                    <quantity>1</quantity>
+                </bonus>
+                <bonus>
+                    <bonusItem>score</bonusItem>
+                    <quantity>4</quantity>
+                </bonus>
+            </bonuses>
+        </nobilityBox>
+        <nobilityBox>
+            <level>3</level>
+            <bonuses>
+                <bonus>
+                    <bonusItem>coins</bonusItem>
+                    <quantity>5</quantity>
+                </bonus>
+            </bonuses>
+        </nobilityBox>
+    </nobility>
     <players>
         <nInitPoliticalCards>6</nInitPoliticalCards>
 <!--        player ID must start from 0 and be incremental (e.g. 0, 1, 2, 3, ...) -->

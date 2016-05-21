@@ -1,35 +1,48 @@
 package model.sharedObjects;
 
-import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.HashMap;
 
+import jaxb.CFGNobilityBox;
 import model.GameState;
 import model.bonusable.NobilityBox;
 import model.player.Player;
+import parser.Parser;
 
 public class Nobility {
 	
-	private ArrayList<NobilityBox> boxes;
+	private HashMap<Integer,NobilityBox> boxes;
 	
-	public Nobility(){
-		boxes=new ArrayList<NobilityBox>();
+	public Nobility(Parser parser){
+		this.boxes = new HashMap<Integer,NobilityBox>();
+		
+		for (CFGNobilityBox nobilityBox : parser.getCFGRoot().getNobility().getNobilityBox()) {
+			NobilityBox tmp = new NobilityBox(
+					parser.getBonusesFromParser(nobilityBox.getBonuses().getBonus()),
+					nobilityBox.getLevel().intValue());
+			this.boxes.put(tmp.getLevel(), tmp);
+		}
 	}
 	
 	public void checkNobility(Player player, GameState gameState){
-		Iterator<NobilityBox> itr=boxes.iterator();
-		while(itr.hasNext()){
-			if(itr.next().getLevel()==player.getNobilityLevel().getItems().intValue())
-			{
-				itr.next().assignBonuses(player, gameState);
-			}
+		System.out.println(this.getBoxes().get(1));
+		if (this.getBoxes().get(player.getNobilityLevel().getItems()) != null) {
+			this.getBoxes().get(player.getNobilityLevel().getItems()).assignBonuses(player, gameState);
 		}
 	}
 
 	/**
 	 * @return the boxes
 	 */
-	public ArrayList<NobilityBox> getBoxes() {
+	public HashMap<Integer,NobilityBox> getBoxes() {
 		return boxes;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Nobility [boxes=" + boxes + "]";
 	}
 	
 }

@@ -12,6 +12,7 @@
                 <xsd:element name="map" type="bks:CFGMap" minOccurs="1" maxOccurs="1"/>
                 <xsd:element name="players" type="bks:CFGPlayers" minOccurs="1" maxOccurs="1"/>
                 <xsd:element name="kingBonuses" type="bks:CFGKingBonuses" minOccurs="1" maxOccurs="1"/>
+                <xsd:element name="nobility" type="bks:CFGNobility" minOccurs="1" maxOccurs="1"/>
             </xsd:sequence>
         </xsd:complexType>
         
@@ -39,7 +40,7 @@
         <xsd:complexType name="CFGPermissionDeck">
             <xsd:sequence>
                 <xsd:element name="region" type="xsd:string" minOccurs="1" maxOccurs="1"/>
-                <xsd:element name="permissionCards" type="bks:CFGPermissionCards" minOccurs="1" maxOccurs="unbounded"/>
+                <xsd:element name="permissionCards" type="bks:CFGPermissionCards" minOccurs="1" maxOccurs="1"/>
             </xsd:sequence>
         </xsd:complexType>
         
@@ -154,7 +155,18 @@
             </xsd:sequence>
         </xsd:complexType>
         
+        <xsd:complexType name="CFGNobility">
+            <xsd:sequence>
+                <xsd:element name="nobilityBox" type="bks:CFGNobilityBox" minOccurs="1" maxOccurs="unbounded"/>
+            </xsd:sequence>
+        </xsd:complexType>
         
+        <xsd:complexType name="CFGNobilityBox">
+            <xsd:sequence>
+                <xsd:element name="level" type="xsd:integer" minOccurs="1" maxOccurs="1"/>
+                <xsd:element name="bonuses" type="bks:CFGBonuses" minOccurs="1" maxOccurs="1"/>
+            </xsd:sequence>
+        </xsd:complexType>
         
 
 </xsd:schema>

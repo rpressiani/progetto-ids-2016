@@ -8,6 +8,7 @@
 
 package jaxb;
 
+import java.math.BigInteger;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -15,19 +16,17 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for CFGCity complex type.
+ * <p>Java class for CFGNobilityBox complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="CFGCity">
+ * &lt;complexType name="CFGNobilityBox">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="ancestry" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="level" type="{http://www.w3.org/2001/XMLSchema}integer"/>
  *         &lt;element name="bonuses" type="{urn:co4}CFGBonuses"/>
- *         &lt;element name="links" type="{urn:co4}CFGLinks"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -37,69 +36,39 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "CFGCity", propOrder = {
-    "name",
-    "ancestry",
-    "bonuses",
-    "links"
+@XmlType(name = "CFGNobilityBox", propOrder = {
+    "level",
+    "bonuses"
 })
-public class CFGCity {
+public class CFGNobilityBox {
 
     @XmlElement(required = true)
-    protected String name;
-    @XmlElement(required = true)
-    protected String ancestry;
+    protected BigInteger level;
     @XmlElement(required = true)
     protected CFGBonuses bonuses;
-    @XmlElement(required = true)
-    protected CFGLinks links;
 
     /**
-     * Gets the value of the name property.
+     * Gets the value of the level property.
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link BigInteger }
      *     
      */
-    public String getName() {
-        return name;
+    public BigInteger getLevel() {
+        return level;
     }
 
     /**
-     * Sets the value of the name property.
+     * Sets the value of the level property.
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link BigInteger }
      *     
      */
-    public void setName(String value) {
-        this.name = value;
-    }
-
-    /**
-     * Gets the value of the ancestry property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getAncestry() {
-        return ancestry;
-    }
-
-    /**
-     * Sets the value of the ancestry property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setAncestry(String value) {
-        this.ancestry = value;
+    public void setLevel(BigInteger value) {
+        this.level = value;
     }
 
     /**
@@ -124,30 +93,6 @@ public class CFGCity {
      */
     public void setBonuses(CFGBonuses value) {
         this.bonuses = value;
-    }
-
-    /**
-     * Gets the value of the links property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link CFGLinks }
-     *     
-     */
-    public CFGLinks getLinks() {
-        return links;
-    }
-
-    /**
-     * Sets the value of the links property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link CFGLinks }
-     *     
-     */
-    public void setLinks(CFGLinks value) {
-        this.links = value;
     }
 
 }
