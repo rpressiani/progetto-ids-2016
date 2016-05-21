@@ -2,6 +2,7 @@
 <!--<x:books xmlns:x="urn:books">-->
 <x:root xmlns:x="urn:co4">
     <map>
+        <kingInitLocation>C</kingInitLocation>
         <ancestries>
             <ancestry>
                 <color>platinum</color>
