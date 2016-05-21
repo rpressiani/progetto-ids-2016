@@ -172,6 +172,7 @@
         </politicalCard>
     </politicalDeck>
     <permissionDecks>
+        <visibleCards>2</visibleCards>
         <permissionDeck>
             <region>mare</region>
             <permissionCards>

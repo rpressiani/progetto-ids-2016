@@ -33,6 +33,7 @@
         
         <xsd:complexType name="CFGPermissionDecks">
             <xsd:sequence>
+                <xsd:element name="visibleCards" type="xsd:integer" minOccurs="1" maxOccurs="1"/>
                 <xsd:element name="permissionDeck" type="bks:CFGPermissionDeck" minOccurs="1" maxOccurs="unbounded"/>
             </xsd:sequence>
         </xsd:complexType>

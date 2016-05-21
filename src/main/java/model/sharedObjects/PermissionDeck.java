@@ -24,7 +24,7 @@ public class PermissionDeck {
 	public PermissionDeck(Parser parser, Region region){
 		this.deck=new LinkedList<PermissionCard>();
 		this.visibleCards=new ArrayList<PermissionCard>();
-		this.visibleLenght=2; //read by parser
+		this.visibleLenght = parser.getCFGRoot().getPermissionDecks().getVisibleCards().intValue();
 
 		List<CFGPermissionDeck> permissionDeckList = parser.getCFGRoot().getPermissionDecks().getPermissionDeck();
 		CFGPermissionDeck cfgPermissionDeck = new CFGPermissionDeck();
