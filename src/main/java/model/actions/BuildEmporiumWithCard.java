@@ -17,7 +17,20 @@ public class BuildEmporiumWithCard extends MainAction {
 	}
 
 	public void doAction(Player player, GameState gameState) {
-		if(cityChosed.hasBuiltHere(player)==false) player.getBuiltCities().add(cityChosed);
+		int assistantsToPay=checkOtherEmporium(cityChosed, gameState);
+		
+		if(cityChosed.hasBuiltHere(player)==false && 
+			assistantsToPay<=player.getAssistants().getItems()) player.getBuiltCities().add(cityChosed);
 		if(cardChosed.isUsed()==false) cardChosed.setUsed(true);
+	}
+	
+	public int checkOtherEmporium(City city, GameState gameState){
+		int res=0;
+		
+		for(Player player : gameState.getPlayers()){
+			if(player.getBuiltCities().contains(city)) res++;
+		}
+		
+		return res;
 	}
 }

@@ -1,9 +1,9 @@
 package model;
-//going to be used as the Model
+
 import java.util.ArrayList;
 import java.util.Set;
 
-import controller.BalconyStateChange;
+//import controller.BalconyStateChange;
 import controller.Change;
 import controller.CurrentPlayerChange;
 import model.council.Balcony;
@@ -14,6 +14,7 @@ import model.map.Region;
 import model.player.Player;
 import model.politicalDeck.PoliticalGarbage;
 import model.politicalDeck.PoliticalRealDeck;
+import model.sharedObjects.King;
 import model.sharedObjects.KingBonuses;
 import model.sharedObjects.Nobility;
 import observer.Observable;
@@ -28,6 +29,7 @@ public class GameState extends Observable<Change>{
 	private CounsellorGroup counsellorGroup;
 	private GarbageState counsellorGarbage;
 	private KingBonuses kingBonuses;
+	private King king;
 	private ArrayList<Player> players;
 	private Player currentPlayer;
 
@@ -92,6 +94,13 @@ public class GameState extends Observable<Change>{
 	 */
 	public KingBonuses getKingBonuses() {
 		return kingBonuses;
+	}
+	
+	/**
+	 * @return the king
+	 */
+	public King getKing() {
+		return king;
 	}
 	
 	/**
