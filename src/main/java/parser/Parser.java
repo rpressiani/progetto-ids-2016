@@ -74,7 +74,6 @@ public class Parser {
 	
 	public ArrayList<BonusItem> getBonusesFromParser(List<CFGBonus> cfgBonuses){
 		ArrayList<BonusItem> bonuses = new ArrayList<BonusItem>();
-		
 		for (Iterator<CFGBonus> iteratorBonuses = cfgBonuses.iterator(); iteratorBonuses.hasNext();) {
 			CFGBonus bonus = iteratorBonuses.next();
 			BonusItem bonusItem;
@@ -86,11 +85,15 @@ public class Parser {
 			case "assistants":
 				bonusItem = new BonusAssistants(bonus.getQuantity().intValue());
 				bonuses.add(bonusItem);
+				break;
 			case "score":
 				bonusItem = new BonusScore(bonus.getQuantity().intValue());
 				bonuses.add(bonusItem);
+				break;
 			case "nobility":
 				bonusItem = new BonusNobility(bonus.getQuantity().intValue());
+				bonuses.add(bonusItem);
+				break;
 			case "politicalCard":
 //				To be implemented
 				break;

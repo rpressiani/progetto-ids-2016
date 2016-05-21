@@ -43,10 +43,13 @@ public class Region {
 		CFGRegion cfgRegion = new CFGRegion();
 		for (Iterator<CFGRegion> iterator = cfgRegions.iterator(); iterator.hasNext();) {
 			cfgRegion = iterator.next();
-			if (cfgRegion.getName() == this.name) break;
+			if (cfgRegion.getName() == this.name) {
+				break;
+			}
 		}
 		
 		for (Iterator<CFGCity> iteratorRegionCity = cfgRegion.getCities().getCity().iterator(); iteratorRegionCity.hasNext();) {
+			
 			String cityString =  iteratorRegionCity.next().getName();
 			for (Iterator<City> iteratorAllCities = allCities.iterator(); iteratorAllCities.hasNext();) {
 				City cityToAdd = iteratorAllCities.next(); 
@@ -62,7 +65,6 @@ public class Region {
 		
 		this.regionBonus = new RegionCard(bonuses, this);
 		this.permissionDeck = new PermissionDeck(parser, this);
-
 	}
 	
 	/**

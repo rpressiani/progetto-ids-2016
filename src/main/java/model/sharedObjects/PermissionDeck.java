@@ -37,7 +37,8 @@ public class PermissionDeck {
 			}
 		}
 		
-		List<CFGPermissionCard> cfgPermissionCards = cfgPermissionDeck.getPermissionCards().get(index).getPermissionCard();
+		List<CFGPermissionCard> cfgPermissionCards = cfgPermissionDeck.getPermissionCards().getPermissionCard();
+		
 		for (Iterator<CFGPermissionCard> iterator = cfgPermissionCards.iterator(); iterator.hasNext();) {
 			CFGPermissionCard cfgPermissionCard = iterator.next();
 			ArrayList<BonusItem> bonuses = new ArrayList<BonusItem>();

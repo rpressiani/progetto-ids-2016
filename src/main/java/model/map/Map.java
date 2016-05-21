@@ -36,6 +36,7 @@ public class Map {
 		this.map = new SimpleGraph<City, DefaultEdge>(DefaultEdge.class);
 		this.allCitiesFromParser = new HashMap<String, CFGCity>();
 		this.allCitiesHashMap = new HashMap<String, City>();
+		this.regions = new HashMap<String, Region>();
 		
 		List<CFGRegion> cfgRegions = parser.getCFGRoot().getMap().getRegion();
 		
@@ -62,7 +63,6 @@ public class Map {
 		for (CFGRegion cfgRegion : cfgRegions) {
 			this.regions.put(cfgRegion.getName(), new Region(cfgRegion.getName(), garbage, parser, this));
 		}
-
 	}
 	/**
 	 * @return the allCitiesHashMap
