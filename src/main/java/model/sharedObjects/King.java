@@ -9,13 +9,7 @@ public class King {
 	private City kingCity;
 	
 	public King(Parser parser, Map map){
-		
-		for (City city : map.allVertexes()) {
-			if (city.getName() == parser.getCFGRoot().getMap().getKingInitLocation()) {
-				this.kingCity = city;
-				break;
-			}
-		}
+		this.kingCity = map.getAllCitiesHashMap().get(parser.getCFGRoot().getMap().getKingInitLocation());
 	}
 
 	public City getKingCity() {

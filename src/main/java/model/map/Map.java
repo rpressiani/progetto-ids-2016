@@ -59,6 +59,12 @@ public class Map {
 
 	}
 	/**
+	 * @return the allCitiesHashMap
+	 */
+	public HashMap<String, City> getAllCitiesHashMap() {
+		return allCitiesHashMap;
+	}
+	/**
 	 * @param c adds a city to the map 
 	 */
 	public void addCity(City c) {
