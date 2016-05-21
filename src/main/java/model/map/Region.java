@@ -55,6 +55,7 @@ public class Region {
 				City cityToAdd = iteratorAllCities.next(); 
 				if (cityToAdd.getName() == cityString) {
 					this.regionCities.add(cityToAdd);
+					cityToAdd.setRegion(this);
 					break;
 				}
 			}

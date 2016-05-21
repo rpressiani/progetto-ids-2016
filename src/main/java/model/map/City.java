@@ -73,5 +73,12 @@ public class City extends Bonusable{
 		return ancestry;
 	}
 
+	/**
+	 * @param region the region to set
+	 */
+	public void setRegion(Region region) {
+		this.region = region;
+	}
+
 
 }
