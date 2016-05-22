@@ -17,12 +17,17 @@ public abstract class Observable<C> {
 	
 	public void unregisterObserver(Observer<C> o ){
 		this.observers.remove(o);
-		
 	}
 	
 	public void notifyObserver(C c){
 		for(Observer<C> o: this.observers){
 			o.update(c);
+		}
+	}
+	
+	public void notifyObserver(C c1, C c2){
+		for(Observer<C> o: this.observers){
+			o.update(c1, c2);
 		}
 	}
 }
