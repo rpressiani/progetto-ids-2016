@@ -66,8 +66,14 @@ public class ServerSocketView extends View implements Runnable {
 							String string = (String) msgIn.getMessage();
 							System.out.println("SERVER VIEW: received String " + string);
 							
-							this.socketOut.writeObject("SERVER: Hello World!");
-							this.socketOut.flush();
+							if (string.equals("ping")) {
+								StringBuilder ping = new StringBuilder();
+								ping.append("\n[SERVER] Ping received\n");
+								ping.append("[SERVER] Client connected\n");
+								ping.append("[SERVER] Server is responding\n");
+								this.socketOut.writeObject(ping.toString());
+								this.socketOut.flush();
+							}
 						}
 						
 						if (msgIn.getMessage() instanceof Query) {
@@ -81,7 +87,7 @@ public class ServerSocketView extends View implements Runnable {
 					} else {
 						StringBuilder userNotFound = new StringBuilder();
 						userNotFound.append("\n[ERROR] User not found!\n");
-						userNotFound.append("[ERROR] Remember that the user input is case sensitive\n\n");
+						userNotFound.append("[ERROR] Remember that the user input is case sensitive\n");
 						this.socketOut.writeObject(userNotFound.toString());
 						this.socketOut.flush();
 					}

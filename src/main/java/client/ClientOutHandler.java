@@ -32,11 +32,19 @@ public class ClientOutHandler implements Runnable {
 				ClientMessage msg;
 				
 				switch (inputList.get(1)) {
-				case "hello":
-					msg = new ClientMessage(inputList.get(0), "HELLO");
+				
+					/*----- GENERAL-----*/
+				case "ping":
+					msg = new ClientMessage(inputList.get(0), "ping");
 					socketOut.writeObject(msg);
 					socketOut.flush();
 					break;
+					
+					/*----- ACTIONS -----*/
+					
+					
+					
+					/*----- QUERIES -----*/
 				case "getscores":
 					Query<String> queryScores = new GetScores();
 					msg = new ClientMessage(inputList.get(0), queryScores);
