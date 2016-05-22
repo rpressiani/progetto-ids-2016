@@ -18,6 +18,7 @@ public class Controller implements Observer<GeneralAction> {
 		Observer.super.update(action);
 		//should I do a check with acceptMove? 
 		action.doAction(game.getCurrentPlayer(), game);
+//		System.out.println(action);
 	}
 	
 

@@ -23,7 +23,6 @@ public class GameState extends Observable<Change>{
 	private PoliticalRealDeck politicalDeck;
 	private PoliticalGarbage politicalGarbage;
 	private Balcony kingBalcony;
-//	private CounsellorGroup counsellorGroup; 
 	private GarbageState counsellorGarbage;
 	private KingBonuses kingBonuses;
 	private King king;
@@ -37,14 +36,14 @@ public class GameState extends Observable<Change>{
 		this.king = new King(parser, this.map);
 		this.kingBalcony = new Balcony(this.counsellorGarbage, parser);
 		this.kingBonuses = new KingBonuses(parser);
-		this.nobility = new Nobility(parser); //NEED TO BE CONSTRUCTED VIA PARSER
+		this.nobility = new Nobility(parser);
 		this.politicalGarbage = new PoliticalGarbage(parser);
 		this.politicalDeck = new PoliticalRealDeck(parser, this.politicalGarbage);
 		this.players = players;
 		
 		
 		//Players sorting still to be decided
-//		this.currentPlayer = this.players.get(0);
+		this.currentPlayer = this.players.get(0);
 		
 	}
 

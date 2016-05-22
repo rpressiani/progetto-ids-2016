@@ -15,8 +15,14 @@ public class ClientInHandler implements Runnable {
 	public void run() {
 		while(true) {
 			try {
-				Change line; 
-				line = (Change) socketIn.readObject();
+				Object obj = socketIn.readObject();
+				
+				if (obj instanceof Change) {
+					Change line = (Change) obj;
+					System.out.println(line);
+				}
+				
+				System.out.println(obj);
 			} catch (ClassNotFoundException | IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

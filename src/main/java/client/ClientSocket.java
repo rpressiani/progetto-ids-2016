@@ -8,9 +8,9 @@ import java.net.UnknownHostException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class Client {
+public class ClientSocket {
 	
-	private final static int PORT = 1111; //file!
+	private final static int PORT = 29999; //file!
 	private final static String IP = "127.0.0.1"; 
 	
 	public void startClient() throws UnknownHostException, IOException {
@@ -21,7 +21,7 @@ public class Client {
 		executor.submit(new ClientInHandler(new ObjectInputStream(socket.getInputStream()))); 
 	}
 	public static void main(String[] args) throws UnknownHostException, IOException {
-		Client client = new Client(); 
+		ClientSocket client = new ClientSocket(); 
 		client.startClient();
 	}
 

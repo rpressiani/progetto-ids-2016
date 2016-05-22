@@ -12,27 +12,34 @@ public class ClientOutHandler implements Runnable {
 		this.socketOut = socketOut; 
 	}
 	public void run() {
-		/*System.out.println("Running");
-		Scanner stdIn = new Scanner(System.in); 
-		while(true) {
-			String inputLine = stdIn.nextLine(); 
-			Action action; 
-			if(inputLine.equals(Switch.ON.toString())) {
-				action = new TurnOn(); 
-			} else {
-				if(inputLine.equals(Switch.OFF.toString())) {
-					action = new TurnOff(); 
-				} else {
-					action = new Scommetti(); 
-				}
-			} 
-			System.out.println("Sending Action");
+		
+		System.out.println("ClientOutHandler is RUNNING");
+		Scanner stdIn = new Scanner(System.in);
+		
+		while (true) {
+			
+			String inputLine = stdIn.nextLine();
+			
 			try {
-				socketOut.writeObject(action);
-			} catch(IOException e) {
+				
+				switch (inputLine) {
+				case "HELLO":
+					socketOut.writeObject("HELLO");
+					socketOut.flush();
+					break;
+					
+				default:
+					break;
+				}
+				
+			} catch (IOException e) {
+				// TODO: handle exception
 				e.printStackTrace();
 			}
-		}*/
+			
+			
+		}
+
 	}
 
 }

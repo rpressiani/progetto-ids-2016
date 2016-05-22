@@ -8,7 +8,7 @@ public abstract class Observable<C> {
 	private List<Observer<C>> observers;
 	
 	public Observable() {
-		this.observers =new ArrayList<Observer<C>>();
+		this.observers = new ArrayList<Observer<C>>();
 	}
 	
 	public void registerObserver(Observer<C> o){
@@ -21,7 +21,7 @@ public abstract class Observable<C> {
 	}
 	
 	public void notifyObserver(C c){
-		for(Observer<C> o:this.observers){
+		for(Observer<C> o: this.observers){
 			o.update(c);
 		}
 	}
