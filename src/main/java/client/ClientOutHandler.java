@@ -24,7 +24,8 @@ public class ClientOutHandler implements Runnable {
 				
 				switch (inputLine) {
 				case "HELLO":
-					socketOut.writeObject("HELLO");
+					ClientMessage clientMessage = new ClientMessage(null, "HELLO");
+					socketOut.writeObject(clientMessage);
 					socketOut.flush();
 					break;
 					

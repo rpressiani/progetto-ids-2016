@@ -1,11 +1,11 @@
 package view;
 
+import client.ClientMessage;
 import controller.Change;
-import model.actions.GeneralAction;
 import observer.Observable;
 import observer.Observer;
 
-public abstract class View extends Observable<GeneralAction> implements Observer<Change> {
+public abstract class View extends Observable<ClientMessage> implements Observer<Change> {
 	
 	@Override
 	public void update(Change o) {

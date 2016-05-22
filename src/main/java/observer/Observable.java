@@ -24,10 +24,4 @@ public abstract class Observable<C> {
 			o.update(c);
 		}
 	}
-	
-	public void notifyObserver(C c1, C c2){
-		for(Observer<C> o: this.observers){
-			o.update(c1, c2);
-		}
-	}
 }

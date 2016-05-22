@@ -44,7 +44,7 @@ public class Server {
 		while(true) {
 			Socket socket = serverSocket.accept();
 			System.out.println("NEW CLIENTSOCKET ACCEPTED");
-			ServerSocketView view = new ServerSocketView(socket); 
+			ServerSocketView view = new ServerSocketView(socket, this.gameState); 
 			this.gameState.registerObserver(view);
 			view.registerObserver(this.controller);
 			executor.submit(view);
