@@ -8,6 +8,7 @@ import java.net.Socket;
 import client.ClientMessage;
 import model.GameState;
 import model.actions.GeneralAction;
+import model.player.Player;
 import model.query.Query;
 import controller.Change;
 
@@ -44,29 +45,40 @@ public class ServerSocketView extends View implements Runnable {
 				Object obj = socketIn.readObject();
 				if (obj instanceof ClientMessage) {
 					
-					ClientMessage msg = (ClientMessage) obj;
+					ClientMessage msgIn = (ClientMessage) obj;
 					
-					if (msg.getMessage() instanceof GeneralAction) {
-						GeneralAction action = (GeneralAction) msg.getMessage();
-						System.out.println("SERVER VIEW: received GeneralAction " + action);
+					if (game.getPlayersHashMap().containsKey(msgIn.getNickname())) {
 						
-						this.notifyObserver(msg);
-					}
-					
-					if (msg.getMessage() instanceof String) {
-						String string = (String) msg.getMessage();
-						System.out.println("SERVER VIEW: received String " + string);
+						System.out.println(game.getPlayersHashMap());
+						System.out.println(msgIn);
+						Player player = game.getPlayersHashMap().get(msgIn.getNickname());
+						ClientMessage msgOut;
 						
-						this.socketOut.writeObject("SERVER: Hello World!");
-						this.socketOut.flush();
-					}
-					
-					if (msg.getMessage() instanceof Query) {
-						Query query = (Query) msg.getMessage();
-						System.out.println("SERVER VIEW: received query " + query);
+						if (msgIn.getMessage() instanceof GeneralAction) {
+							GeneralAction action = (GeneralAction) msgIn.getMessage();
+							System.out.println("SERVER VIEW: received GeneralAction " + action);
+							
+							msgOut = new ClientMessage(player, msgIn.getMessage());
+							
+							this.notifyObserver(msgOut);
+						}
 						
-						this.socketOut.writeObject(query.perform(this.game));
-						this.socketOut.flush();
+						if (msgIn.getMessage() instanceof String) {
+							String string = (String) msgIn.getMessage();
+							System.out.println("SERVER VIEW: received String " + string);
+							
+							this.socketOut.writeObject("SERVER: Hello World!");
+							this.socketOut.flush();
+						}
+						
+						if (msgIn.getMessage() instanceof Query) {
+							Query query = (Query) msgIn.getMessage();
+							System.out.println("SERVER VIEW: received query " + query);
+							
+							this.socketOut.writeObject(query.perform(player, this.game));
+							this.socketOut.flush();
+						}
+						
 					}
 					
 				}
