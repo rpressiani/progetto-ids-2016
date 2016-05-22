@@ -9,7 +9,6 @@ import model.actions.MainAction;
 //import model.actions.NullAction;
 import model.actions.QuickAction;
 import model.player.Player;
-import model.sharedObjects.Nobility;
 import model.stateMachine.state.State1;
 import parser.Parser;
 
