@@ -32,18 +32,18 @@ public class ClientOutHandler implements Runnable {
 				ClientMessage msg;
 				
 				switch (inputList.get(1)) {
-				case "HELLO":
+				case "hello":
 					msg = new ClientMessage(inputList.get(0), "HELLO");
 					socketOut.writeObject(msg);
 					socketOut.flush();
 					break;
-				case "GETSCORES":
+				case "getscores":
 					Query<String> queryScores = new GetScores();
 					msg = new ClientMessage(inputList.get(0), queryScores);
 					socketOut.writeObject(msg);
 					socketOut.flush();
 					break;
-				case "GETCOINS":
+				case "getcoins":
 					Query<String> queryCoins = new GetCoins();
 					msg = new ClientMessage(inputList.get(0), queryCoins);
 					socketOut.writeObject(msg);
@@ -51,6 +51,11 @@ public class ClientOutHandler implements Runnable {
 					break;
 					
 				default:
+					StringBuilder cmdNotFound = new StringBuilder();
+					cmdNotFound.append("\n[ERROR] Command not found!\n");
+					cmdNotFound.append("[ERROR] Insert legal commands following the instruction below:\n");
+					cmdNotFound.append("[ERROR] <nickname> <command>\n");
+					System.out.println(cmdNotFound.toString());
 					break;
 				}
 				

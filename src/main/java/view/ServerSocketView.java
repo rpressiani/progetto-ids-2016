@@ -46,11 +46,10 @@ public class ServerSocketView extends View implements Runnable {
 				if (obj instanceof ClientMessage) {
 					
 					ClientMessage msgIn = (ClientMessage) obj;
+					System.out.println("RECEIVED MSG: " + msgIn);
 					
 					if (game.getPlayersHashMap().containsKey(msgIn.getNickname())) {
 						
-						System.out.println(game.getPlayersHashMap());
-						System.out.println(msgIn);
 						Player player = game.getPlayersHashMap().get(msgIn.getNickname());
 						ClientMessage msgOut;
 						
@@ -79,8 +78,13 @@ public class ServerSocketView extends View implements Runnable {
 							this.socketOut.flush();
 						}
 						
+					} else {
+						StringBuilder userNotFound = new StringBuilder();
+						userNotFound.append("\n[ERROR] User not found!\n");
+						userNotFound.append("[ERROR] Remember that the user input is case sensitive\n\n");
+						this.socketOut.writeObject(userNotFound.toString());
+						this.socketOut.flush();
 					}
-					
 				}
 				
 			} catch (ClassNotFoundException | IOException e) {
