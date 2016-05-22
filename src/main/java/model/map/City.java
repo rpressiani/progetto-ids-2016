@@ -17,6 +17,7 @@ import model.player.Player;
  */
 public class City extends Bonusable{
 	private String name; 
+	private String nameLong;
 	private Region region;
 	private String ancestry;
 	
@@ -25,11 +26,12 @@ public class City extends Bonusable{
 	 * @param bonuses
 	 * constructor for object City
 	 */
-	public City(String name, ArrayList<BonusItem> bonuses, String ancestry) {
+	public City(String name, String nameLong, ArrayList<BonusItem> bonuses, String ancestry) {
 		super(bonuses);
 		this.name = name;
 		this.region = null;
 		this.ancestry = ancestry;
+		this.nameLong = nameLong;
 	}
 	
 	/**
