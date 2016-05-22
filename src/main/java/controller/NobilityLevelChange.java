@@ -12,15 +12,6 @@ public class NobilityLevelChange extends ItemChange {
 	
 	public NobilityLevelChange() {
 		super(newNobilityLevel); 
-	}
-	public NobilityLevel getNobilityLevel() {
-		return newNobilityLevel; 
-	}
-	@Override
-	public String toString() {
-		return "NobilityLevelChange []";
-	}
-	
-	
+	}	
 
 }
