@@ -82,5 +82,14 @@ public class City extends Bonusable{
 		this.region = region;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "City [name=" + name + ", nameLong=" + nameLong + ", region=" + region + ", ancestry=" + ancestry
+				+ ", toString()=" + super.toString() + "]";
+	}
+
 
 }
