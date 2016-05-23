@@ -348,15 +348,11 @@
     <politicalDeck>
         <numColors>6</numColors> <!-- numColors DOESN'T include jolly -->
         <politicalCard>
-            <color>red</color>
+            <color>black</color>
             <quantity>13</quantity>
         </politicalCard>
         <politicalCard>
-            <color>yellow</color>
-            <quantity>13</quantity>
-        </politicalCard>
-        <politicalCard>
-            <color>green</color>
+            <color>orange</color>
             <quantity>13</quantity>
         </politicalCard>
         <politicalCard>
@@ -364,11 +360,15 @@
             <quantity>13</quantity>
         </politicalCard>
         <politicalCard>
-            <color>black</color>
+            <color>pink</color>
             <quantity>13</quantity>
         </politicalCard>
         <politicalCard>
             <color>white</color>
+            <quantity>13</quantity>
+        </politicalCard>
+        <politicalCard>
+            <color>purple</color>
             <quantity>13</quantity>
         </politicalCard>
         <politicalCard>
@@ -379,22 +379,151 @@
     <permissionDecks>
         <visibleCards>2</visibleCards>
         <permissionDeck>
-            <region>mare</region>
+            <region>seaside</region>
             <permissionCards>
                 <permissionCard>
                     <cities>
                         <city>A</city>
+                    </cities>
+                    <bonuses>
+                        <bonus>
+                            <bonusItem>score</bonusItem>
+                            <quantity>4</quantity>
+                        </bonus>
+                        <bonus>
+                            <bonusItem>coins</bonusItem>
+                            <quantity>3</quantity>
+                        </bonus>
+                    </bonuses>
+                </permissionCard>
+                <permissionCard>
+                    <cities>
+                        <city>B</city>
+                    </cities>
+                    <bonuses>
+                        <bonus>
+                            <bonusItem>politicalCard</bonusItem>
+                            <quantity>3</quantity>
+                        </bonus>
+                        <bonus>
+                            <bonusItem>assistants</bonusItem>
+                            <quantity>1</quantity>
+                        </bonus>
+                    </bonuses>
+                </permissionCard>
+                <permissionCard>
+                    <cities>
+                        <city>C</city>
+                    </cities>
+                    <bonuses>
+                        <bonus>
+                            <bonusItem>assistants</bonusItem>
+                            <quantity>2</quantity>
+                        </bonus>
+                        <bonus>
+                            <bonusItem>coins</bonusItem>
+                            <quantity>3</quantity>
+                        </bonus>
+                    </bonuses>
+                </permissionCard>
+                <permissionCard>
+                    <cities>
+                        <city>D</city>
+                    </cities>
+                    <bonuses>
+                        <bonus>
+                            <bonusItem>score</bonusItem>
+                            <quantity>7</quantity>
+                        </bonus>
+                    </bonuses>
+                </permissionCard>
+                <permissionCard>
+                    <cities>
+                        <city>E</city>
+                    </cities>
+                    <bonuses>
+                        <bonus>
+                            <bonusItem>additionalAction</bonusItem>
+                        </bonus>
+                        <bonus>
+                            <bonusItem>coins</bonusItem>
+                            <quantity>2</quantity>
+                        </bonus>
+                    </bonuses>
+                </permissionCard>
+                <permissionCard>
+                    <cities>
+                        <city>A</city>
+                        <city>B</city>
+                    </cities>
+                    <bonuses>
+                        <bonus>
+                            <bonusItem>politicalCard</bonusItem>
+                            <quantity>1</quantity>
+                        </bonus>
+                        <bonus>
+                            <bonusItem>coins</bonusItem>
+                            <quantity>3</quantity>
+                        </bonus>
+                    </bonuses>
+                </permissionCard>
+                <permissionCard>
+                    <cities>
                         <city>B</city>
                         <city>C</city>
                     </cities>
                     <bonuses>
                         <bonus>
-                            <bonusItem>coins</bonusItem>
-                            <quantity>2</quantity>
+                            <bonusItem>score</bonusItem>
+                            <quantity>3</quantity>
                         </bonus>
                         <bonus>
+                            <bonusItem>coins</bonusItem>
+                            <quantity>3</quantity>
+                        </bonus>
+                    </bonuses>
+                </permissionCard>
+                <permissionCard>
+                    <cities>
+                        <city>C</city>
+                        <city>D</city>
+                    </cities>
+                    <bonuses>
+                        <bonus>
                             <bonusItem>score</bonusItem>
+                            <quantity>3</quantity>
+                        </bonus>
+                        <bonus>
+                            <bonusItem>assistants</bonusItem>
                             <quantity>1</quantity>
+                        </bonus>
+                    </bonuses>
+                </permissionCard>
+                <permissionCard>
+                    <cities>
+                        <city>D</city>
+                        <city>E</city>
+                    </cities>
+                    <bonuses>
+                        <bonus>
+                            <bonusItem>score</bonusItem>
+                            <quantity>3</quantity>
+                        </bonus>
+                        <bonus>
+                            <bonusItem>assistants</bonusItem>
+                            <quantity>1</quantity>
+                        </bonus>
+                    </bonuses>
+                </permissionCard>
+                <permissionCard>
+                    <cities>
+                        <city>A</city>
+                        <city>E</city>
+                    </cities>
+                    <bonuses>
+                        <bonus>
+                            <bonusItem>nobility</bonusItem>
+                            <quantity>2</quantity>
                         </bonus>
                     </bonuses>
                 </permissionCard>
@@ -406,8 +535,21 @@
                     </cities>
                     <bonuses>
                         <bonus>
-                            <bonusItem>coins</bonusItem>
+                            <bonusItem>assistants</bonusItem>
                             <quantity>2</quantity>
+                        </bonus>
+                    </bonuses>
+                </permissionCard>
+                <permissionCard>
+                    <cities>
+                        <city>B</city>
+                        <city>C</city>
+                        <city>D</city>
+                    </cities>
+                    <bonuses>
+                        <bonus>
+                            <bonusItem>assistants</bonusItem>
+                            <quantity>1</quantity>
                         </bonus>
                         <bonus>
                             <bonusItem>score</bonusItem>
@@ -417,11 +559,45 @@
                 </permissionCard>
                 <permissionCard>
                     <cities>
-                        <city>A</city>
-                        <city>B</city>
                         <city>C</city>
+                        <city>D</city>
+                        <city>E</city>
                     </cities>
                     <bonuses>
+                        <bonus>
+                            <bonusItem>politicalCard</bonusItem>
+                            <quantity>1</quantity>
+                        </bonus>
+                        <bonus>
+                            <bonusItem>nobility</bonusItem>
+                            <quantity>1</quantity>
+                        </bonus>
+                    </bonuses>
+                </permissionCard>
+                <permissionCard>
+                    <cities>
+                        <city>A</city>
+                        <city>B</city>
+                        <city>E</city>
+                    </cities>
+                    <bonuses>
+                        <bonus>
+                            <bonusItem>coins</bonusItem>
+                            <quantity>3</quantity>
+                        </bonus>
+                    </bonuses>
+                </permissionCard>
+                <permissionCard>
+                    <cities>
+                        <city>A</city>
+                        <city>D</city>
+                        <city>E</city>
+                    </cities>
+                    <bonuses>
+                        <bonus>
+                            <bonusItem>coins</bonusItem>
+                            <quantity>1</quantity>
+                        </bonus>
                         <bonus>
                             <bonusItem>score</bonusItem>
                             <quantity>1</quantity>
@@ -430,44 +606,462 @@
                 </permissionCard>
             </permissionCards>
         </permissionDeck>
-        <!--<permissionDeck>
-            <region>pianura</region>
+        <permissionDeck>
+            <region>hillside</region>
             <permissionCards>
                 <permissionCard>
                     <cities>
-                        <city>a</city>
-                        <city>b</city>
-                        <city>c</city>
+                        <city>F</city>
                     </cities>
                     <bonuses>
-                        <bonus quantity="2">coins</bonus>
-                        <bonus>score</bonus>
+                        <bonus>
+                            <bonusItem>politicalCard</bonusItem>
+                            <quantity>2</quantity>
+                        </bonus>
+                        <bonus>
+                            <bonusItem>coins</bonusItem>
+                            <quantity>4</quantity>
+                        </bonus>
                     </bonuses>
                 </permissionCard>
                 <permissionCard>
                     <cities>
-                        <city>a</city>
-                        <city>b</city>
-                        <city>c</city>
+                        <city>G</city>
                     </cities>
                     <bonuses>
-                        <bonus>coins</bonus>
-                        <bonus>score</bonus>
+                        <bonus>
+                            <bonusItem>assistants</bonusItem>
+                            <quantity>2</quantity>
+                        </bonus>
+                        <bonus>
+                            <bonusItem>score</bonusItem>
+                            <quantity>2</quantity>
+                        </bonus>
+                        <bonus>
+                            <bonusItem>nobility</bonusItem>
+                            <quantity>1</quantity>
+                        </bonus>
                     </bonuses>
                 </permissionCard>
                 <permissionCard>
                     <cities>
-                        <city>a</city>
-                        <city>b</city>
-                        <city>c</city>
+                        <city>H</city>
                     </cities>
                     <bonuses>
-                        <bonus>coins</bonus>
-                        <bonus>score</bonus>
+                        <bonus>
+                            <bonusItem>assistants</bonusItem>
+                            <quantity>4</quantity>
+                        </bonus>
+                    </bonuses>
+                </permissionCard>
+                <permissionCard>
+                    <cities>
+                        <city>I</city>
+                    </cities>
+                    <bonuses>
+                        <bonus>
+                            <bonusItem>politicalCard</bonusItem>
+                            <quantity>2</quantity>
+                        </bonus>
+                        <bonus>
+                            <bonusItem>assistants</bonusItem>
+                            <quantity>2</quantity>
+                        </bonus>
+                    </bonuses>
+                </permissionCard>
+                <permissionCard>
+                    <cities>
+                        <city>J</city>
+                    </cities>
+                    <bonuses>
+                        <bonus>
+                            <bonusItem>additionalAction</bonusItem>
+                        </bonus>
+                        <bonus>
+                            <bonusItem>score</bonusItem>
+                            <quantity>2</quantity>
+                        </bonus>
+                    </bonuses>
+                </permissionCard>
+                <permissionCard>
+                    <cities>
+                        <city>F</city>
+                        <city>G</city>
+                    </cities>
+                    <bonuses>
+                        <bonus>
+                            <bonusItem>coins</bonusItem>
+                            <quantity>5</quantity>
+                        </bonus>
+                    </bonuses>
+                </permissionCard>
+                <permissionCard>
+                    <cities>
+                        <city>H</city>
+                        <city>G</city>
+                    </cities>
+                    <bonuses>
+                        <bonus>
+                            <bonusItem>assistants</bonusItem>
+                            <quantity>3</quantity>
+                        </bonus>
+                    </bonuses>
+                </permissionCard>
+                <permissionCard>
+                    <cities>
+                        <city>H</city>
+                        <city>I</city>
+                    </cities>
+                    <bonuses>
+                        <bonus>
+                            <bonusItem>score</bonusItem>
+                            <quantity>5</quantity>
+                        </bonus>
+                    </bonuses>
+                </permissionCard>
+                <permissionCard>
+                    <cities>
+                        <city>I</city>
+                        <city>J</city>
+                    </cities>
+                    <bonuses>
+                        <bonus>
+                            <bonusItem>politicalCard</bonusItem>
+                            <quantity>2</quantity>
+                        </bonus>
+                        <bonus>
+                            <bonusItem>nobility</bonusItem>
+                            <quantity>1</quantity>
+                        </bonus>
+                    </bonuses>
+                </permissionCard>
+                <permissionCard>
+                    <cities>
+                        <city>F</city>
+                        <city>J</city>
+                    </cities>
+                    <bonuses>
+                        <bonus>
+                            <bonusItem>assistants</bonusItem>
+                            <quantity>2</quantity>
+                        </bonus>
+                        <bonus>
+                            <bonusItem>coins</bonusItem>
+                            <quantity>1</quantity>
+                        </bonus>
+                    </bonuses>
+                </permissionCard>
+                <permissionCard>
+                    <cities>
+                        <city>F</city>
+                        <city>G</city>
+                        <city>H</city>
+                    </cities>
+                    <bonuses>
+                        <bonus>
+                            <bonusItem>nobility</bonusItem>
+                            <quantity>1</quantity>
+                        </bonus>
+                        <bonus>
+                            <bonusItem>coins</bonusItem>
+                            <quantity>1</quantity>
+                        </bonus>
+                    </bonuses>
+                </permissionCard>
+                <permissionCard>
+                    <cities>
+                        <city>G</city>
+                        <city>H</city>
+                        <city>I</city>
+                    </cities>
+                    <bonuses>
+                        <bonus>
+                            <bonusItem>politicalCard</bonusItem>
+                            <quantity>1</quantity>
+                        </bonus>
+                        <bonus>
+                            <bonusItem>assistants</bonusItem>
+                            <quantity>1</quantity>
+                        </bonus>
+                    </bonuses>
+                </permissionCard>
+                <permissionCard>
+                    <cities>
+                        <city>I</city>
+                        <city>J</city>
+                        <city>H</city>
+                    </cities>
+                    <bonuses>
+                        <bonus>
+                            <bonusItem>politicalCard</bonusItem>
+                            <quantity>2</quantity>
+                        </bonus>
+                    </bonuses>
+                </permissionCard>
+                <permissionCard>
+                    <cities>
+                        <city>F</city>
+                        <city>G</city>
+                        <city>J</city>
+                    </cities>
+                    <bonuses>
+                        <bonus>
+                            <bonusItem>coins</bonusItem>
+                            <quantity>2</quantity>
+                        </bonus>
+                        <bonus>
+                            <bonusItem>score</bonusItem>
+                            <quantity>1</quantity>
+                        </bonus>
+                    </bonuses>
+                </permissionCard>
+                <permissionCard>
+                    <cities>
+                        <city>F</city>
+                        <city>I</city>
+                        <city>J</city>
+                    </cities>
+                    <bonuses>
+                        <bonus>
+                            <bonusItem>assistants</bonusItem>
+                            <quantity>1</quantity>
+                        </bonus>
+                        <bonus>
+                            <bonusItem>nobility</bonusItem>
+                            <quantity>1</quantity>
+                        </bonus>
+                        <bonus>
+                            <bonusItem>score</bonusItem>
+                            <quantity>1</quantity>
+                        </bonus>
                     </bonuses>
                 </permissionCard>
             </permissionCards>
-        </permissionDeck>-->
+        </permissionDeck>
+        <permissionDeck>
+            <region>mountain</region>
+            <permissionCards>
+                <permissionCard>
+                    <cities>
+                        <city>K</city>
+                    </cities>
+                    <bonuses>
+                        <bonus>
+                            <bonusItem>politicalCard</bonusItem>
+                            <quantity>4</quantity>
+                        </bonus>
+                    </bonuses>
+                </permissionCard>
+                <permissionCard>
+                    <cities>
+                        <city>L</city>
+                    </cities>
+                    <bonuses>
+                        <bonus>
+                            <bonusItem>coins</bonusItem>
+                            <quantity>1</quantity>
+                        </bonus>
+                        <bonus>
+                            <bonusItem>assistants</bonusItem>
+                            <quantity>3</quantity>
+                        </bonus>
+                    </bonuses>
+                </permissionCard>
+                <permissionCard>
+                    <cities>
+                        <city>M</city>
+                    </cities>
+                    <bonuses>
+                        <bonus>
+                            <bonusItem>score</bonusItem>
+                            <quantity>5</quantity>
+                        </bonus>
+                        <bonus>
+                            <bonusItem>nobility</bonusItem>
+                            <quantity>1</quantity>
+                        </bonus>
+                    </bonuses>
+                </permissionCard>
+                <permissionCard>
+                    <cities>
+                        <city>N</city>
+                    </cities>
+                    <bonuses>
+                        <bonus>
+                            <bonusItem>coins</bonusItem>
+                            <quantity>7</quantity>
+                        </bonus>
+                    </bonuses>
+                </permissionCard>
+                <permissionCard>
+                    <cities>
+                        <city>O</city>
+                    </cities>
+                    <bonuses>
+                        <bonus>
+                            <bonusItem>politicalCard</bonusItem>
+                            <quantity>3</quantity>
+                        </bonus>
+                        <bonus>
+                            <bonusItem>nobility</bonusItem>
+                            <quantity>1</quantity>
+                        </bonus>
+                    </bonuses>
+                </permissionCard>
+                <permissionCard>
+                    <cities>
+                        <city>K</city>
+                        <city>L</city>
+                    </cities>
+                    <bonuses>
+                        <bonus>
+                            <bonusItem>politicalCard</bonusItem>
+                            <quantity>1</quantity>
+                        </bonus>
+                        <bonus>
+                            <bonusItem>assistants</bonusItem>
+                            <quantity>2</quantity>
+                        </bonus>
+                    </bonuses>
+                </permissionCard>
+                <permissionCard>
+                    <cities>
+                        <city>M</city>
+                        <city>L</city>
+                    </cities>
+                    <bonuses>
+                        <bonus>
+                            <bonusItem>politicalCards</bonusItem>
+                            <quantity>3</quantity>
+                        </bonus>
+                    </bonuses>
+                </permissionCard>
+                <permissionCard>
+                    <cities>
+                        <city>M</city>
+                        <city>N</city>
+                    </cities>
+                    <bonuses>
+                        <bonus>
+                            <bonusItem>additionalAction</bonusItem>
+                        </bonus>
+                    </bonuses>
+                </permissionCard>
+                <permissionCard>
+                    <cities>
+                        <city>N</city>
+                        <city>O</city>
+                    </cities>
+                    <bonuses>
+                        <bonus>
+                            <bonusItem>politicalCard</bonusItem>
+                            <quantity>2</quantity>
+                        </bonus>
+                        <bonus>
+                            <bonusItem>score</bonusItem>
+                            <quantity>2</quantity>
+                        </bonus>
+                    </bonuses>
+                </permissionCard>
+                <permissionCard>
+                    <cities>
+                        <city>O</city>
+                        <city>K</city>
+                    </cities>
+                    <bonuses>
+                        <bonus>
+                            <bonusItem>politicalCard</bonusItem>
+                            <quantity>2</quantity>
+                        </bonus>
+                        <bonus>
+                            <bonusItem>nobility</bonusItem>
+                            <quantity>1</quantity>
+                        </bonus>
+                    </bonuses>
+                </permissionCard>
+                <permissionCard>
+                    <cities>
+                        <city>K</city>
+                        <city>L</city>
+                        <city>M</city>
+                    </cities>
+                    <bonuses>
+                        <bonus>
+                            <bonusItem>assistants</bonusItem>
+                            <quantity>1</quantity>
+                        </bonus>
+                        <bonus>
+                            <bonusItem>coins</bonusItem>
+                            <quantity>1</quantity>
+                        </bonus>
+                    </bonuses>
+                </permissionCard>
+                <permissionCard>
+                    <cities>
+                        <city>M</city>
+                        <city>N</city>
+                        <city>O</city>
+                    </cities>
+                    <bonuses>
+                        <bonus>
+                            <bonusItem>nobility</bonusItem>
+                            <quantity>1</quantity>
+                        </bonus>
+                        <bonus>
+                            <bonusItem>score</bonusItem>
+                            <quantity>1</quantity>
+                        </bonus>
+                    </bonuses>
+                </permissionCard>
+                <permissionCard>
+                    <cities>
+                        <city>K</city>
+                        <city>L</city>
+                        <city>O</city>
+                    </cities>
+                    <bonuses>
+                        <bonus>
+                            <bonusItem>politicalCard</bonusItem>
+                            <quantity>1</quantity>
+                        </bonus>
+                        <bonus>
+                            <bonusItem>coins</bonusItem>
+                            <quantity>1</quantity>
+                        </bonus>
+                    </bonuses>
+                </permissionCard>
+                <permissionCard>
+                    <cities>
+                        <city>L</city>
+                        <city>M</city>
+                        <city>N</city>
+                    </cities>
+                    <bonuses>
+                        <bonus>
+                            <bonusItem>score</bonusItem>
+                            <quantity>3</quantity>
+                        </bonus>
+                    </bonuses>
+                </permissionCard>
+                <permissionCard>
+                    <cities>
+                        <city>K</city>
+                        <city>N</city>
+                        <city>O</city>
+                    </cities>
+                    <bonuses>
+                        <bonus>
+                            <bonusItem>politicalCard</bonusItem>
+                            <quantity>1</quantity>
+                        </bonus>
+                        <bonus>
+                            <bonusItem>score</bonusItem>
+                            <quantity>1</quantity>
+                        </bonus>
+                    </bonuses>
+                </permissionCard>
+            </permissionCards>
+        </permissionDeck>
     </permissionDecks>
     <kingBonuses>
         <bonuses>
@@ -503,7 +1097,7 @@
     </kingBonuses>
     <nobility>
         <nobilityBox>
-            <level>1</level>
+            <level>2</level>
             <bonuses>
                 <bonus>
                     <bonusItem>score</bonusItem>
@@ -511,29 +1105,102 @@
                 </bonus>
                 <bonus>
                     <bonusItem>coins</bonusItem>
-                    <quantity>3</quantity>
+                    <quantity>2</quantity>
                 </bonus>
             </bonuses>
         </nobilityBox>
         <nobilityBox>
-            <level>2</level>
+            <level>4</level>
             <bonuses>
+                <bonus>
+                    <bonusItem>token</bonusItem>
+                    <quantity>1</quantity>
+                </bonus>
+            </bonuses>
+        </nobilityBox>
+        <nobilityBox>
+            <level>6</level>
+            <bonuses>
+                <bonus>
+                    <bonusItem>additionalAction</bonusItem>
+                </bonus>
+            </bonuses>
+        </nobilityBox>
+        <nobilityBox>
+            <level>8</level>
+            <bonuses>
+                <bonus>
+                    <bonusItem>score</bonusItem>
+                    <quantity>3</quantity>
+                </bonus>
+                <bonus>
+                    <bonusItem>politicalCard</bonusItem>
+                    <quantity>1</quantity>
+                </bonus>
+            </bonuses>
+        </nobilityBox>
+        <nobilityBox>
+            <level>10</level>
+            <bonuses>
+                <bonus>
+                    <bonusItem>freePermission</bonusItem>
+                </bonus>
+            </bonuses>
+        </nobilityBox>
+        <nobilityBox>
+            <level>12</level>
+            <bonuses>
+                <bonus>
+                    <bonusItem>score</bonusItem>
+                    <quantity>5</quantity>
+                </bonus>
                 <bonus>
                     <bonusItem>assistants</bonusItem>
                     <quantity>1</quantity>
                 </bonus>
+            </bonuses>
+        </nobilityBox>
+        <nobilityBox>
+            <level>14</level>
+            <bonuses>
                 <bonus>
-                    <bonusItem>score</bonusItem>
-                    <quantity>4</quantity>
+                    <bonusItem>againPermission</bonusItem>
                 </bonus>
             </bonuses>
         </nobilityBox>
         <nobilityBox>
-            <level>3</level>
+            <level>16</level>
             <bonuses>
                 <bonus>
-                    <bonusItem>coins</bonusItem>
-                    <quantity>5</quantity>
+                    <bonusItem>token</bonusItem>
+                    <quantity>2</quantity>
+                </bonus>
+            </bonuses>
+        </nobilityBox>
+        <nobilityBox>
+            <level>18</level>
+            <bonuses>
+                <bonus>
+                    <bonusItem>score</bonusItem>
+                    <quantity>8</quantity>
+                </bonus>
+            </bonuses>
+        </nobilityBox>
+        <nobilityBox>
+            <level>19</level>
+            <bonuses>
+                <bonus>
+                    <bonusItem>score</bonusItem>
+                    <quantity>2</quantity>
+                </bonus>
+            </bonuses>
+        </nobilityBox>
+        <nobilityBox>
+            <level>20</level>
+            <bonuses>
+                <bonus>
+                    <bonusItem>score</bonusItem>
+                    <quantity>3</quantity>
                 </bonus>
             </bonuses>
         </nobilityBox>
