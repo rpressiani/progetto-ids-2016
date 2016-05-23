@@ -30,6 +30,7 @@ public class GameState extends Observable<Change>{
 	private ArrayList<Player> players;
 	private HashMap<String, Player> playersHashMap;
 	private Player currentPlayer;
+	private boolean marketStarted;
 	
 	public GameState(Parser parser, ArrayList<Player> players) {
 		
@@ -42,11 +43,15 @@ public class GameState extends Observable<Change>{
 		this.politicalGarbage = new PoliticalGarbage(parser);
 		this.politicalDeck = new PoliticalRealDeck(parser, this.politicalGarbage);
 		this.players = players;
+
+		this.setMarketStarted(false);
+
 		this.playersHashMap = new HashMap<String, Player>();
 		
 		for (Player player : players) {
 			this.playersHashMap.put(player.getNickname(), player);
 		}
+
 		
 		//Players sorting still to be decided
 		this.currentPlayer = this.players.get(0);
@@ -87,14 +92,7 @@ public class GameState extends Observable<Change>{
 	public Balcony getKingBalcony() {
 		return kingBalcony;
 	}
-	
-//	/**
-//	 * @return the counsellorGroup
-//	 */
-//	public CounsellorGroup getCounsellorGroup() {
-//		return counsellorGroup;
-//	}
-	
+
 	/**
 	 * @return the counsellorGarbage
 	 */
@@ -152,11 +150,20 @@ public class GameState extends Observable<Change>{
 		//this.notifyObserver(new CurrentPlayerChange(player));
 	}
 
+
+	public boolean isMarketStarted() {
+		return marketStarted;
+	}
+
+	public void setMarketStarted(boolean marketStarted) {
+		this.marketStarted = marketStarted;
+	}
 	/**
 	 * @return the playersHashMap
 	 */
 	public HashMap<String, Player> getPlayersHashMap() {
 		return playersHashMap;
+
 	}
 	
 	/*public void setNewBalcony(Balcony balcony) {
