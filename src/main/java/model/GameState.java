@@ -144,10 +144,12 @@ public class GameState extends Observable<Change>{
 	}
 	
 	public void nextPlayer(Player player){
-		int i=this.getPlayers().indexOf(player);
-		if((i+1)!=this.getPlayers().size()) this.setCurrentPlayer(this.getPlayers().get(i+1));
-		else this.setCurrentPlayer(this.getPlayers().get(0));
-		//this.notifyObserver(new CurrentPlayerChange(player));
+		if(player==this.getCurrentPlayer()){
+			int i=this.getPlayers().indexOf(player);
+			if((i+1)!=this.getPlayers().size()) this.setCurrentPlayer(this.getPlayers().get(i+1));
+			else this.setCurrentPlayer(this.getPlayers().get(0));
+			//this.notifyObserver(new CurrentPlayerChange(player));
+		}
 	}
 
 
@@ -158,6 +160,7 @@ public class GameState extends Observable<Change>{
 	public void setMarketStarted(boolean marketStarted) {
 		this.marketStarted = marketStarted;
 	}
+	
 	/**
 	 * @return the playersHashMap
 	 */
@@ -165,7 +168,7 @@ public class GameState extends Observable<Change>{
 		return playersHashMap;
 
 	}
-	
+
 	/*public void setNewBalcony(Balcony balcony) {
 		this.balcony = balcony; 
 		this.notifyObserver(new BalconyStateChange(balcony));

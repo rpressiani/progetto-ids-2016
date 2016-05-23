@@ -44,35 +44,51 @@ public class ClientLogic {
 		players.add(player4);
 		
 		GameState gameState= new GameState(parser, players);
-
-		player1.printState();
 		
 		player1.move(action1, gameState);
-		player1.printState();
 		
 		player2.move(action1, gameState);
-		player2.printState();
 		
 		player1.move(action3, gameState);
-		player1.printState();
-		
-		System.out.println("Current player: " + gameState.getCurrentPlayer().getNickname());
-		
+
 		player1.move(action1, gameState);
-		player1.printState();
 		
-		/*player2.move(action1, gameState);
-		player2.printState();
+		player2.move(action1, gameState);
 		
-		System.out.println("Current player: " + gameState.getCurrentPlayer().getNickname());
+		player2.move(action2, gameState);
 		
 		player3.move(action1, gameState);
-		player3.printState();
 		
 		player3.move(action2, gameState);
-		player3.printState();
 		
-		System.out.println("Current player: " + gameState.getCurrentPlayer().getNickname());*/
+		player2.move(action2, gameState);
+		
+		player4.move(action2, gameState);
+		
+		player4.move(action1, gameState);
+		
+		System.out.println("MARKET STARTED");
+		
+		player1.move(action4, gameState);
+		
+		player2.move(action4, gameState);
+		
+		player3.move(action4, gameState);
+		
+		player4.move(action4, gameState);
+		
+		System.out.println("ALL SOLD ITEMS");
+		
+		player1.move(action5, gameState);
+		
+		player2.move(action5, gameState);
+		
+		player3.move(action5, gameState);
+		
+		player4.move(action5, gameState);
+		
+		System.out.println("MARKET FINISHED");
+		
 	}
 
 }

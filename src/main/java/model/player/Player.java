@@ -96,7 +96,6 @@ public class Player {
 		
 		if(action instanceof BuyAction){
 			this.getState().transition(this, (BuyAction)action, gameState);
-			this.getState().checkTurn(this, gameState);
 		}
 	}
 	

@@ -43,6 +43,7 @@ public class Server {
 		
 		this.controller = new Controller(gameState); 
 	}
+	
 	private void startSocket() throws IOException {
 		ExecutorService executor = Executors.newCachedThreadPool(); 
 		ServerSocket serverSocket = new ServerSocket(PORT); 
@@ -56,6 +57,7 @@ public class Server {
 			executor.submit(view);
 		}
 	}
+	
 	public static void main(String[] args) throws IOException {
 		Server server = new Server();
 		

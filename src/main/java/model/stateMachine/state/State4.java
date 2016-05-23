@@ -10,7 +10,7 @@ public class State4 implements State {
 		
 		if(action.acceptMove(player, gameState)==true){
 			System.out.println(player.getNickname()+" decided what to sell");
-			player.setState(new State6());
+			player.setState(new State5());
 		}
 		
 		else player.setState(this);
