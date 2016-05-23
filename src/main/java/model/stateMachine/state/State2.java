@@ -10,7 +10,10 @@ public class State2 implements State {
 	@Override
 	public void transition(Player player, QuickAction action, GameState gameState){
 	
-		if(action.acceptMove(player, gameState)==true) player.setState(new State4());
+		if(action.acceptMove(player, gameState)==true){
+			System.out.println(player.getNickname()+" did a QuickAction");
+			player.setState(new State4());
+		}
 		
 		else player.setState(this);
 	}
@@ -18,7 +21,10 @@ public class State2 implements State {
 	@Override
 	public void transition(Player player, NullAction action, GameState gameState){
 		
-		if(action.acceptMove(player, gameState)==true) player.setState(new State4());
+		if(action.acceptMove(player, gameState)==true){
+			System.out.println(player.getNickname()+" did a NullAction");
+			player.setState(new State4());
+		}
 		
 		else player.setState(this);
 	}

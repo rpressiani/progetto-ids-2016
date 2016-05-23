@@ -5,9 +5,12 @@ import java.util.Set;
 
 import utilities.Color;
 import model.GameState;
+import model.actions.BuyAction;
+import model.actions.GeneralAction;
 import model.actions.MainAction;
 import model.actions.NullAction;
 import model.actions.QuickAction;
+import model.actions.SellAction;
 import model.bonusable.PermissionCard;
 import model.map.City;
 import model.politicalDeck.PoliticalHand;
@@ -69,7 +72,35 @@ public class Player {
 		this.assistants = new Assistants(parser.getCFGRoot().getPlayers().getPlayer().get(this.id).getAssistants().intValue());
 	}
 	
-	public void move(MainAction action, GameState gameState){
+	public void move(GeneralAction action, GameState gameState){
+		
+		if(action instanceof MainAction){
+			this.getState().transition(this, (MainAction)action, gameState);
+			this.getState().checkTurn(this, gameState);
+		}
+		
+		if(action instanceof QuickAction){
+			this.getState().transition(this, (QuickAction)action, gameState);
+			this.getState().checkTurn(this, gameState);
+		}
+		
+		if(action instanceof NullAction){
+			this.getState().transition(this, (NullAction)action, gameState);
+			this.getState().checkTurn(this, gameState);
+		}
+		
+		if(action instanceof SellAction){
+			this.getState().transition(this, (SellAction)action, gameState);
+			this.getState().checkTurn(this, gameState);
+		}
+		
+		if(action instanceof BuyAction){
+			this.getState().transition(this, (BuyAction)action, gameState);
+			this.getState().checkTurn(this, gameState);
+		}
+	}
+	
+	/*public void move(MainAction action, GameState gameState){
 		this.getState().transition(this, action, gameState);
 	}
 	
@@ -79,8 +110,12 @@ public class Player {
 	
 	public void move(NullAction action, GameState gameState){
 		this.getState().transition(this, action, gameState);
-	}
+	}*/
 
+	public void printState(){
+		this.getState().printOut(this, this.state);
+	}
+	
 	/**
 	 * @return the nickname
 	 */

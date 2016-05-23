@@ -13,10 +13,10 @@ public class ChangePermissionCards extends QuickAction {
 	}
 	
 	public void doAction(Player player, GameState gameState){
-		if(player.getAssistants().getItems()>=1) 
+		if(player.getAssistants().getItems()>=1){
 			region.getPermissionDeck().substituteCards(region.getPermissionDeck().getDeck(), region.getPermissionDeck().getVisibleCards());
-		
-		player.getAssistants().sub(1);
+			player.getAssistants().sub(1);
+		}
 	}
 
 }

@@ -28,6 +28,7 @@ public class GameState extends Observable<Change>{
 	private King king;
 	private ArrayList<Player> players;
 	private Player currentPlayer;
+	private boolean MarketStarted;
 	
 	public GameState(Parser parser, ArrayList<Player> players) {
 		
@@ -40,7 +41,7 @@ public class GameState extends Observable<Change>{
 		this.politicalGarbage = new PoliticalGarbage(parser);
 		this.politicalDeck = new PoliticalRealDeck(parser, this.politicalGarbage);
 		this.players = players;
-		
+		this.setMarketStarted(false);
 		
 		//Players sorting still to be decided
 		this.currentPlayer = this.players.get(0);
@@ -81,14 +82,7 @@ public class GameState extends Observable<Change>{
 	public Balcony getKingBalcony() {
 		return kingBalcony;
 	}
-	
-//	/**
-//	 * @return the counsellorGroup
-//	 */
-//	public CounsellorGroup getCounsellorGroup() {
-//		return counsellorGroup;
-//	}
-	
+
 	/**
 	 * @return the counsellorGarbage
 	 */
@@ -144,6 +138,14 @@ public class GameState extends Observable<Change>{
 		if((i+1)!=this.getPlayers().size()) this.setCurrentPlayer(this.getPlayers().get(i+1));
 		else this.setCurrentPlayer(this.getPlayers().get(0));
 		//this.notifyObserver(new CurrentPlayerChange(player));
+	}
+
+	public boolean isMarketStarted() {
+		return MarketStarted;
+	}
+
+	public void setMarketStarted(boolean marketStarted) {
+		MarketStarted = marketStarted;
 	}
 	
 	/*public void setNewBalcony(Balcony balcony) {

@@ -1,7 +1,6 @@
 package model.actions;
 
 import model.GameState;
-import model.bonusable.PermissionCard;
 import model.council.Balcony;
 import model.map.City;
 import model.player.Player;
