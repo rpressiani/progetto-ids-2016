@@ -17,16 +17,16 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for CFGCities complex type.
+ * <p>Java class for CFGBonusCityTiles complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="CFGCities">
+ * &lt;complexType name="CFGBonusCityTiles">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="city" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded"/>
+ *         &lt;element name="bonusTile" type="{urn:co4}CFGBonusTile" maxOccurs="unbounded"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -36,41 +36,41 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "CFGCities", propOrder = {
-    "city"
+@XmlType(name = "CFGBonusCityTiles", propOrder = {
+    "bonusTile"
 })
-public class CFGCities {
+public class CFGBonusCityTiles {
 
     @XmlElement(required = true)
-    protected List<String> city;
+    protected List<CFGBonusTile> bonusTile;
 
     /**
-     * Gets the value of the city property.
+     * Gets the value of the bonusTile property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the city property.
+     * This is why there is not a <CODE>set</CODE> method for the bonusTile property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getCity().add(newItem);
+     *    getBonusTile().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link String }
+     * {@link CFGBonusTile }
      * 
      * 
      */
-    public List<String> getCity() {
-        if (city == null) {
-            city = new ArrayList<String>();
+    public List<CFGBonusTile> getBonusTile() {
+        if (bonusTile == null) {
+            bonusTile = new ArrayList<CFGBonusTile>();
         }
-        return this.city;
+        return this.bonusTile;
     }
 
 }
