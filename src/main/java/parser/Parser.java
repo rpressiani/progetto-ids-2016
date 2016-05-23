@@ -16,11 +16,16 @@ import jaxb.CFGBonus;
 import jaxb.CFGCouncil;
 import jaxb.CFGPoliticalDeck;
 import jaxb.CFGRoot;
+import model.bonusItem.BonusAddictionalAction;
+import model.bonusItem.BonusAgainPermission;
 import model.bonusItem.BonusAssistants;
 import model.bonusItem.BonusCoins;
+import model.bonusItem.BonusFreePermission;
 import model.bonusItem.BonusItem;
 import model.bonusItem.BonusNobility;
+import model.bonusItem.BonusPoliticalCards;
 import model.bonusItem.BonusScore;
+import model.bonusItem.BonusToken;
 
 /**
  * @author Riccardo Pressiani
@@ -95,19 +100,24 @@ public class Parser {
 				bonuses.add(bonusItem);
 				break;
 			case "politicalCard":
-//				To be implemented
+				bonusItem = new BonusPoliticalCards(); //correct constructor
+				bonuses.add(bonusItem);
 				break;
 			case "additionalAction":
-//				To be implemented
+				bonusItem = new BonusAddictionalAction();
+				bonuses.add(bonusItem);
 				break;
 			case "againPermission":
-//				To be implemented
+				bonusItem = new BonusAgainPermission();
+				bonuses.add(bonusItem);
 				break;
 			case "freePermission":
-//				To be implemented
+				bonusItem = new BonusFreePermission();
+				bonuses.add(bonusItem);
 				break;
 			case "token":
-//				To be implemented
+				bonusItem = new BonusToken(); //correct constructor
+				bonuses.add(bonusItem);
 				break;
 			default:
 				break;

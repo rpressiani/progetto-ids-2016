@@ -8,7 +8,6 @@
 
 package jaxb;
 
-import java.math.BigInteger;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -16,16 +15,15 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for CFGNobilityBox complex type.
+ * <p>Java class for CFGBonusTile complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="CFGNobilityBox">
+ * &lt;complexType name="CFGBonusTile">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="level" type="{http://www.w3.org/2001/XMLSchema}integer"/>
  *         &lt;element name="bonuses" type="{urn:co4}CFGBonuses"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
@@ -36,40 +34,13 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "CFGNobilityBox", propOrder = {
-    "level",
+@XmlType(name = "CFGBonusTile", propOrder = {
     "bonuses"
 })
-public class CFGNobilityBox {
+public class CFGBonusTile {
 
-    @XmlElement(required = true)
-    protected BigInteger level;
     @XmlElement(required = true)
     protected CFGBonuses bonuses;
-
-    /**
-     * Gets the value of the level property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link BigInteger }
-     *     
-     */
-    public BigInteger getLevel() {
-        return level;
-    }
-
-    /**
-     * Sets the value of the level property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link BigInteger }
-     *     
-     */
-    public void setLevel(BigInteger value) {
-        this.level = value;
-    }
 
     /**
      * Gets the value of the bonuses property.

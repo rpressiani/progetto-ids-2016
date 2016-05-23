@@ -1,6 +1,7 @@
 package model.map;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -11,7 +12,7 @@ import org.jgrapht.UndirectedGraph;
 import org.jgrapht.alg.DijkstraShortestPath;
 import org.jgrapht.graph.SimpleGraph;
 
-import jaxb.CFGBonus;
+import jaxb.CFGBonusTile;
 import jaxb.CFGCity;
 import jaxb.CFGRegion;
 import model.bonusItem.BonusItem;
@@ -38,15 +39,38 @@ public class Map {
 		this.allCitiesHashMap = new HashMap<String, City>();
 		this.regions = new HashMap<String, Region>();
 		
+		ArrayList<ArrayList<BonusItem>> bonusesList = new ArrayList<ArrayList<BonusItem>>();
+		
+		for (CFGBonusTile cfgBonusTile : parser.getCFGRoot().getMap().getBonusCityTiles().getBonusTile()) {
+			ArrayList<BonusItem> tile = parser.getBonusesFromParser(cfgBonusTile.getBonuses().getBonus());
+			bonusesList.add(tile);
+		}
+		
+		System.out.println(bonusesList);
+//		ArrayList<BonusItem> bonusesArray = parser.getBonusesFromParser(parser.getCFGRoot().getMap().getBonusCityTiles().getBonusTile().get)
+		
 		List<CFGRegion> cfgRegions = parser.getCFGRoot().getMap().getRegion();
 		
 		for (Iterator<CFGRegion> iterator = cfgRegions.iterator(); iterator.hasNext();) {
 			List<CFGCity> citiesToAdd = iterator.next().getCities().getCity();
 			for (CFGCity cfgCity : citiesToAdd) {
 				this.allCitiesFromParser.put(cfgCity.getName(), cfgCity);
-				List<CFGBonus> cfgCityBonuses = cfgCity.getBonuses().getBonus();
-				ArrayList<BonusItem> bonuses = parser.getBonusesFromParser(cfgCityBonuses);
-				City cityToAdd = new City(cfgCity.getName(), cfgCity.getNameLong(), bonuses, cfgCity.getAncestry());
+				City cityToAdd;
+				if (!cfgCity.getName().equals(parser.getCFGRoot().getMap().getKingInitLocation())) {
+					Collections.shuffle(bonusesList);
+					System.out.println("ciao "+ bonusesList.size() + "\t"+ parser.getCFGRoot().getMap().getKingInitLocation()+"\t"+cfgCity.getName() + bonusesList);
+					
+					if (bonusesList.get(0) == null)
+						throw new NullPointerException();
+					
+					ArrayList<BonusItem> bonuses = bonusesList.get(0);
+					bonusesList.remove(0);
+					cityToAdd = new City(cfgCity.getName(), cfgCity.getNameLong(), bonuses, cfgCity.getAncestry());
+				} else {
+					cityToAdd = new City(cfgCity.getName(), cfgCity.getNameLong(), new ArrayList<BonusItem>(), cfgCity.getAncestry());
+					System.out.println("STICAZZI");
+				}
+				
 				this.allCitiesHashMap.put(cityToAdd.getName(), cityToAdd);
 				this.map.addVertex(cityToAdd);
 			}	
@@ -124,6 +148,12 @@ public class Map {
 	public Set<City> allVertexes() {
 		Set<City> cities = this.map.vertexSet(); 
 		return cities; 
+	}
+	/**
+	 * @return the regions
+	 */
+	public HashMap<String, Region> getRegions() {
+		return regions;
 	}
 	
 	
