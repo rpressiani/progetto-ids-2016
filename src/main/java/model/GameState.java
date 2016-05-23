@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 //import controller.BalconyStateChange;
 import controller.Change;
@@ -27,8 +28,9 @@ public class GameState extends Observable<Change>{
 	private KingBonuses kingBonuses;
 	private King king;
 	private ArrayList<Player> players;
+	private HashMap<String, Player> playersHashMap;
 	private Player currentPlayer;
-	private boolean MarketStarted;
+	private boolean marketStarted;
 	
 	public GameState(Parser parser, ArrayList<Player> players) {
 		
@@ -41,7 +43,15 @@ public class GameState extends Observable<Change>{
 		this.politicalGarbage = new PoliticalGarbage(parser);
 		this.politicalDeck = new PoliticalRealDeck(parser, this.politicalGarbage);
 		this.players = players;
+
 		this.setMarketStarted(false);
+
+		this.playersHashMap = new HashMap<String, Player>();
+		
+		for (Player player : players) {
+			this.playersHashMap.put(player.getNickname(), player);
+		}
+
 		
 		//Players sorting still to be decided
 		this.currentPlayer = this.players.get(0);
@@ -140,12 +150,20 @@ public class GameState extends Observable<Change>{
 		//this.notifyObserver(new CurrentPlayerChange(player));
 	}
 
+
 	public boolean isMarketStarted() {
-		return MarketStarted;
+		return marketStarted;
 	}
 
 	public void setMarketStarted(boolean marketStarted) {
-		MarketStarted = marketStarted;
+		this.marketStarted = marketStarted;
+	}
+	/**
+	 * @return the playersHashMap
+	 */
+	public HashMap<String, Player> getPlayersHashMap() {
+		return playersHashMap;
+
 	}
 	
 	/*public void setNewBalcony(Balcony balcony) {

@@ -17,7 +17,6 @@ public abstract class Observable<C> {
 	
 	public void unregisterObserver(Observer<C> o ){
 		this.observers.remove(o);
-		
 	}
 	
 	public void notifyObserver(C c){

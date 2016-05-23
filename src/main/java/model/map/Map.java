@@ -46,7 +46,7 @@ public class Map {
 				this.allCitiesFromParser.put(cfgCity.getName(), cfgCity);
 				List<CFGBonus> cfgCityBonuses = cfgCity.getBonuses().getBonus();
 				ArrayList<BonusItem> bonuses = parser.getBonusesFromParser(cfgCityBonuses);
-				City cityToAdd = new City(cfgCity.getName(), bonuses, cfgCity.getAncestry());
+				City cityToAdd = new City(cfgCity.getName(), cfgCity.getNameLong(), bonuses, cfgCity.getAncestry());
 				this.allCitiesHashMap.put(cityToAdd.getName(), cityToAdd);
 				this.map.addVertex(cityToAdd);
 			}	

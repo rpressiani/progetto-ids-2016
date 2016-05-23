@@ -34,7 +34,13 @@ public class Server {
 		this.players.add(new Player("player3", new Color("YELLOW")));
 		this.players.add(new Player("player4", new Color("BLUE")));
 		
-		this.gameState = new GameState(parser, players); 
+		this.gameState = new GameState(parser, players);
+		
+		players.get(0).initPlayer(this.gameState.getPoliticalDeck(), 0, this.parser);
+		players.get(1).initPlayer(this.gameState.getPoliticalDeck(), 1, this.parser);
+		players.get(2).initPlayer(this.gameState.getPoliticalDeck(), 2, this.parser);
+		players.get(3).initPlayer(this.gameState.getPoliticalDeck(), 3, this.parser);
+		
 		this.controller = new Controller(gameState); 
 	}
 	private void startSocket() throws IOException {
@@ -44,7 +50,7 @@ public class Server {
 		while(true) {
 			Socket socket = serverSocket.accept();
 			System.out.println("NEW CLIENTSOCKET ACCEPTED");
-			ServerSocketView view = new ServerSocketView(socket); 
+			ServerSocketView view = new ServerSocketView(socket, this.gameState); 
 			this.gameState.registerObserver(view);
 			view.registerObserver(this.controller);
 			executor.submit(view);
