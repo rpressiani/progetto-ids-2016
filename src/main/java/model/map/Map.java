@@ -99,6 +99,9 @@ public class Map {
 	 * adds a city to the map 
 	 */
 	public void addCity(City c) {
+		if(c==null) {
+			throw new NullPointerException("A city cannot be null"); 
+		}
 		map.addVertex(c);
 	}
 	/**
@@ -107,6 +110,9 @@ public class Map {
 	 * adds a link between 2 cities
 	 */
 	public void addLink(City c1, City c2) {
+		if(c1==null || c2==null) {
+			throw new NullPointerException("Cities cannot be null"); 
+		}
 		map.addEdge(c1, c2);
 	}
 	/**
