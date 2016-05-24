@@ -46,7 +46,7 @@ public class Map {
 			bonusesList.add(tile);
 		}
 		
-		System.out.println(bonusesList);
+//		System.out.println(bonusesList);
 //		ArrayList<BonusItem> bonusesArray = parser.getBonusesFromParser(parser.getCFGRoot().getMap().getBonusCityTiles().getBonusTile().get)
 		
 		List<CFGRegion> cfgRegions = parser.getCFGRoot().getMap().getRegion();
@@ -58,7 +58,7 @@ public class Map {
 				City cityToAdd;
 				if (!cfgCity.getName().equals(parser.getCFGRoot().getMap().getKingInitLocation())) {
 					Collections.shuffle(bonusesList);
-					System.out.println("ciao "+ bonusesList.size() + "\t"+ parser.getCFGRoot().getMap().getKingInitLocation()+"\t"+cfgCity.getName() + bonusesList);
+//					System.out.println("ciao "+ bonusesList.size() + "\t"+ parser.getCFGRoot().getMap().getKingInitLocation()+"\t"+cfgCity.getName() + bonusesList);
 					
 					if (bonusesList.get(0) == null)
 						throw new NullPointerException();
@@ -68,7 +68,6 @@ public class Map {
 					cityToAdd = new City(cfgCity.getName(), cfgCity.getNameLong(), bonuses, cfgCity.getAncestry());
 				} else {
 					cityToAdd = new City(cfgCity.getName(), cfgCity.getNameLong(), new ArrayList<BonusItem>(), cfgCity.getAncestry());
-					System.out.println("STICAZZI");
 				}
 				
 				this.allCitiesHashMap.put(cityToAdd.getName(), cityToAdd);

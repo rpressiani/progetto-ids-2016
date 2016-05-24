@@ -19,5 +19,13 @@ public class King {
 	public void setKingCity(City kingCity) {
 		this.kingCity = kingCity;
 	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "King [kingCity=" + kingCity + "]";
+	}
 	
 }
