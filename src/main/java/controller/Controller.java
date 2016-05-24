@@ -15,6 +15,9 @@ public class Controller implements Observer<ClientMessage> {
 	private final GameState game; 
 	
 	public Controller(GameState game) {
+		if(game==null) {
+			throw new NullPointerException("game should not be null"); 
+		}
 		this.game = game; 
 	}
 	
