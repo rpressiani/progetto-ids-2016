@@ -19,6 +19,9 @@ public class PoliticalGarbage extends PoliticalDeck {
 	 * useful for refill
 	 */
 	public void toZero() {
+		if(this.getDeck()==null) {
+			throw new IllegalArgumentException("deck should not be null"); 
+		}
 		for(int i=0; i<this.getNumColors(); i++) {
 			//gives numCards for each index
 			this.getDeck().get(i).setNumCards(0); 

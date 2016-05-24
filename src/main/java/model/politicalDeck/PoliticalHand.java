@@ -24,6 +24,9 @@ public class PoliticalHand extends PoliticalDeck {
 	 * draws a card from deck and puts it in a hand
 	 */
 	public void drawCard(PoliticalRealDeck deck) {
+		if(deck==null) {
+			throw new NullPointerException("Cannot have a null deck"); 
+		}
 		Random rnd;
 		if(deck.isEmpty()) {
 			throw new IllegalArgumentException("Can't draw a card if deck is empty"); 
@@ -52,6 +55,9 @@ public class PoliticalHand extends PoliticalDeck {
 	 */
 	public void discardCard(PoliticalGarbage garbageDeck, int index) throws IllegalAccessException {
 		if (this.getDeck().get(index).getNumCards() == 0) throw new IllegalAccessException("Cannot discard a card if you don't have it");
+		if(garbageDeck.getDeck()==null) {
+			throw new IllegalArgumentException("garbage deck should not be null"); 
+		}
 		this.getDeck().get(index).removeCards(1);
 		garbageDeck.getDeck().get(index).addCards(1);
 		

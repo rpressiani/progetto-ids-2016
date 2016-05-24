@@ -11,8 +11,8 @@ public class PoliticalCard {
 	private int numCards;
 	
 	/**
-	 * @param color
-	 * @param numCards
+	 * @param color can't be null
+	 * @param numCards >0
 	 * constructor
 	 */
 	public PoliticalCard(String color, int numCards) {

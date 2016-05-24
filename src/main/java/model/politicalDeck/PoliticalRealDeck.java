@@ -23,6 +23,9 @@ public class PoliticalRealDeck extends PoliticalDeck {
 	 * it fills the political deck with garbage deck when the main deck is empty
 	 */
 	public void refill() {
+		if(this.getDeck()==null) {
+			throw new IllegalArgumentException("deck should not be null"); 
+		}
 		if(!this.garbage.isEmpty() && this.getDeck().isEmpty()) {
 			int numGarbage = this.garbage.getNumColors();  
 			for(int i=0; i<numGarbage; i++) {
