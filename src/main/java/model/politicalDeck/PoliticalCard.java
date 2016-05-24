@@ -42,6 +42,7 @@ public class PoliticalCard {
 	}
 	/**
 	 * @param c numbers of cards to set for Card object
+	 * @throws IllegalArgumentException if c<=0
 	 */
 	public void setNumCards(int c) {
 		if(c<=0) {
@@ -52,6 +53,7 @@ public class PoliticalCard {
 	/**
 	 * @param c 
 	 * adds c card
+	 * @throws IllegalArgumentException if c<=0
 	 */
 	public void addCards(int c) {
 		if(c<=0) {
@@ -62,6 +64,7 @@ public class PoliticalCard {
 	/**
 	 * @param c
 	 * removes c card
+	 * @throws IllegalArgumentException if c<=0
 	 */
 	public void removeCards(int c) {
 		if(c<=0) {
