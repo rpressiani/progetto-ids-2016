@@ -13,13 +13,14 @@ public class PermissionCard extends Bonusable implements Marketable {
 	
 	private static int counter=0;
 	private final int idCard;
-	
-	/**
-	 * used=true if PermissionCard has been used to build an emporium
-	 */
-	private boolean used;
+	private boolean used;	//true if used
 	private Set<City> possibleCities;
 	
+	/**
+	 * create the permission cards
+	 * @param bonuses can't be null
+	 * @param cities can't be null
+	 */
 	public PermissionCard(ArrayList<BonusItem> bonuses, HashSet<City> cities) {
 		super(bonuses);
 		this.idCard=counter;

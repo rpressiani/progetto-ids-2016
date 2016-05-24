@@ -10,14 +10,18 @@ import model.player.Player;
 public abstract class Bonusable {
 	private final ArrayList<BonusItem> bonuses;
 	
+	/**
+	 * create the set of bonuses for a bonusable object
+	 * @param bonuses can't be null
+	 */
 	public Bonusable(ArrayList<BonusItem> bonuses) {
 		this.bonuses = bonuses;
 	}
 	
 	/**
-	 * @param player
-	 * @param gameState
-	 * assigns bonus to a given player
+	 * check all bonuses to give to the player
+	 * @param player can't be null
+	 * @param gameState can't be null
 	 */
 	public void assignBonuses(Player player, GameState gameState){
 		Iterator<BonusItem> itr=bonuses.iterator();

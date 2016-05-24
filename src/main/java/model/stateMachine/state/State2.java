@@ -11,22 +11,24 @@ public class State2 implements State {
 	public void transition(Player player, QuickAction action, GameState gameState){
 	
 		if(action.acceptMove(player, gameState)==true){
+			//action.doAction(player, gameState);
 			System.out.println(player.getNickname()+" did a QuickAction");
 			player.setState(new State4());
+			player.getState().checkTurn(player, gameState);
 		}
 		
-		else player.setState(this);
 	}
 	
 	@Override
 	public void transition(Player player, NullAction action, GameState gameState){
 		
 		if(action.acceptMove(player, gameState)==true){
+			//action.doAction(player, gameState);
 			System.out.println(player.getNickname()+" did a NullAction");
 			player.setState(new State4());
+			player.getState().checkTurn(player, gameState);
 		}
 		
-		else player.setState(this);
 	}
 	
 	@Override

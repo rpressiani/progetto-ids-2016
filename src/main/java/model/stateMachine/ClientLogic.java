@@ -18,7 +18,7 @@ import parser.Parser;
 public class ClientLogic {
 
 	public static void main(String[] args) {
-		Parser parser = new Parser();
+		//Parser parser = new Parser();
 
 		ArrayList<Player> players=new ArrayList<Player>();
 		
@@ -43,14 +43,15 @@ public class ClientLogic {
 		players.add(player3);
 		players.add(player4);
 		
-		GameState gameState= new GameState(parser, players);
+		//GameState gameState= new GameState(parser, players);
+		GameState gameState= new GameState(players);
 		
 		player1.move(action1, gameState);
 		
 		player2.move(action1, gameState);
 		
 		player1.move(action3, gameState);
-
+	
 		player1.move(action1, gameState);
 		
 		player2.move(action1, gameState);
@@ -70,15 +71,15 @@ public class ClientLogic {
 		System.out.println("MARKET STARTED");
 		
 		player1.move(action4, gameState);
-		
+	
 		player2.move(action4, gameState);
 		
 		player3.move(action4, gameState);
 		
 		player4.move(action4, gameState);
-		
+
 		System.out.println("ALL SOLD ITEMS");
-		
+
 		player1.move(action5, gameState);
 		
 		player2.move(action5, gameState);

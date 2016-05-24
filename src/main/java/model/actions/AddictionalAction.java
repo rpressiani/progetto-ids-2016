@@ -3,11 +3,11 @@ package model.actions;
 import model.GameState;
 import model.player.Player;
 
-public class OneMoreMainAction extends QuickAction {
+public class AddictionalAction extends QuickAction {
 	
 	MainAction action;
 	
-	public OneMoreMainAction(MainAction action){
+	public AddictionalAction(MainAction action){
 		this.action=action;
 	}
 	

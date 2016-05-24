@@ -9,6 +9,11 @@ public class RegionCard extends Bonusable {
 
 	private Region region;
 	
+	/**
+	 * create the region card
+	 * @param bonuses can't be null
+	 * @param region can't be null
+	 */
 	public RegionCard(ArrayList<BonusItem> bonuses, Region region) {
 		super(bonuses);
 		this.region=region;

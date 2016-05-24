@@ -76,22 +76,18 @@ public class Player {
 		
 		if(action instanceof MainAction){
 			this.getState().transition(this, (MainAction)action, gameState);
-			this.getState().checkTurn(this, gameState);
 		}
 		
 		if(action instanceof QuickAction){
 			this.getState().transition(this, (QuickAction)action, gameState);
-			this.getState().checkTurn(this, gameState);
 		}
 		
 		if(action instanceof NullAction){
 			this.getState().transition(this, (NullAction)action, gameState);
-			this.getState().checkTurn(this, gameState);
 		}
 		
 		if(action instanceof SellAction){
 			this.getState().transition(this, (SellAction)action, gameState);
-			this.getState().checkTurn(this, gameState);
 		}
 		
 		if(action instanceof BuyAction){

@@ -24,6 +24,8 @@ public class City extends Bonusable{
 	/**
 	 * @param name
 	 * @param bonuses
+	 * @param ancestry
+	 * @param nameLong
 	 * constructor for object City
 	 */
 	public City(String name, String nameLong, ArrayList<BonusItem> bonuses, String ancestry) {
