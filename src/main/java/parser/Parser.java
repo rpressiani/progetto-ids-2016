@@ -100,8 +100,8 @@ public class Parser {
 				bonuses.add(bonusItem);
 				break;
 			case "politicalCard":
-				bonusItem = new BonusPoliticalCards(); //correct constructor
-				bonuses.add(bonusItem);
+				//bonusItem = new BonusPoliticalCards(); //correct constructor
+				//bonuses.add(bonusItem);
 				break;
 			case "additionalAction":
 				bonusItem = new BonusAddictionalAction();

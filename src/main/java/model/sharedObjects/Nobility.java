@@ -12,6 +12,10 @@ public class Nobility {
 	
 	private HashMap<Integer,NobilityBox> boxes;
 	
+	/**
+	 * create game's nobility
+	 * @param parser
+	 */
 	public Nobility(Parser parser){
 		this.boxes = new HashMap<Integer,NobilityBox>();
 		
@@ -23,6 +27,11 @@ public class Nobility {
 		}
 	}
 	
+	/**
+	 * check player's nobility level to give bonus
+	 * @param player can't be null
+	 * @param gameState can't be null
+	 */
 	public void checkNobility(Player player, GameState gameState){
 		System.out.println(this.getBoxes().get(1));
 		if (this.getBoxes().get(player.getNobilityLevel().getItems()) != null) {

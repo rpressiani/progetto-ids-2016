@@ -21,6 +21,11 @@ public class PermissionDeck {
 	private ArrayList<PermissionCard> visibleCards;
 	private final int visibleLenght;
 
+	/**
+	 * create PermissionDeck for each region
+	 * @param parser can't be null
+	 * @param region can't be null
+	 */
 	public PermissionDeck(Parser parser, Region region){
 		this.deck=new LinkedList<PermissionCard>();
 		this.visibleCards=new ArrayList<PermissionCard>();
@@ -66,16 +71,32 @@ public class PermissionDeck {
 		}
 	}
 
+	/**
+	 * shuffle the deck
+	 * @param deck can'tt be null
+	 */
 	public void shuffleDeck(LinkedList<PermissionCard> deck){
 		Collections.shuffle(deck);
 	}
 	
+	/**
+	 * 
+	 * @param deck can'tt be null
+	 * @param visibleCards can't be null 
+	 * @param index can't be negative
+	 * @return the drawed card
+	 */
 	public PermissionCard drawCard(LinkedList<PermissionCard> deck, ArrayList<PermissionCard> visibleCards, int index){
 		PermissionCard drawedCard=visibleCards.remove(index);
 		visibleCards.add(index, deck.remove());
 		return drawedCard;
 	}
 	
+	/**
+	 * substitute visible cards
+	 * @param deck can't be null
+	 * @param visibleCards can't be null
+	 */
 	public void substituteCards(LinkedList<PermissionCard> deck, ArrayList<PermissionCard> visibleCards){
 		for(int i=0, temp=visibleLenght; i<temp; temp--){
 			deck.add(visibleCards.remove(i));	//better with iterator?
