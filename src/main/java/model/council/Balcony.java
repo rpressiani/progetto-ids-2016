@@ -40,10 +40,12 @@ public class Balcony {
 	/**
 	 * @param color of the garbage
 	 * @param garbage counsellors not in the game 
+	 * @throws NullPointerException if color is null
+	 * @throws NullPointerException is garbage is null
 	 */
 	public void putCounsellor(Color color, GarbageState garbage){
 		if(color==null) {
-			throw new IllegalArgumentException("counsellor color cannot be null"); 
+			throw new NullPointerException("counsellor color cannot be null"); 
 		}
 		if(garbage==null) {
 			throw new NullPointerException("we should 'take' the counsellor from an existing garbage"); 

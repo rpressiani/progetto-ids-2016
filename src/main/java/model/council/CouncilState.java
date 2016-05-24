@@ -23,7 +23,14 @@ public abstract class CouncilState {
 		this.nColors = parser.getCFGPoliticalDeck().getNumColors().intValue();
 	}
 	
+	/**
+	 * @param color of the counsellor to add
+	 * @throws NullPointerException if color is null
+	 */
 	public void add(Color color){
+		if(color==null) {
+			throw new NullPointerException("can't pass a null color"); 
+		}
 		Iterator<CounsellorGroup> itr = state.iterator();
 		while(itr.hasNext()){
 			CounsellorGroup counsellorGroupItr = itr.next();
@@ -33,7 +40,14 @@ public abstract class CouncilState {
 		}
 	}
 
+	/**
+	 * @param color of the counsellor to remove
+	 * @throws NullPointerException if color is null
+	 */
 	public void remove(Color color){
+		if(color==null) {
+			throw new NullPointerException("can't remove with a null color"); 
+		}
 		Iterator<CounsellorGroup> itr = state.iterator();
 		while(itr.hasNext()){
 			CounsellorGroup counsellorGroupItr = itr.next();
