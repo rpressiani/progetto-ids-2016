@@ -35,12 +35,51 @@ public class TestPoliticalCard {
 	@Test
 	public void testCardsWithNegativeIndexThrowException() {
 		boolean thrown = false; 
+		PoliticalCard card; 
 		try {
-			PoliticalCard card = new PoliticalCard("Red", -18); 
+			card = new PoliticalCard("Red", -18); 
 		} catch (IllegalArgumentException e) {
 			thrown = true; 
 		}
 		assertTrue(thrown); 
+	}
+	@Test
+	public void testAddCardsWithNegativeIndexThrowException() {
+		boolean thrown = false; 
+		PoliticalCard card = new PoliticalCard("Green", 25); 
+		try {
+			card.addCards(-23);
+		} catch(IllegalArgumentException e) {
+			thrown = true; 
+		}
+		assertTrue(thrown); 
+	}
+	@Test
+	public void testRemoveCardsWithNegativeIndexThrowException() {
+		boolean thrown = false; 
+		PoliticalCard card = new PoliticalCard("Red", 22);
+		try {
+			card.removeCards(-2);
+		} catch(IllegalArgumentException e) {
+			thrown = true; 
+		}
+		assertTrue(thrown); 
+	}
+	@Test
+	public void testConstructorWithNullStringThrowsException() {
+		boolean thrown = false; 
+		PoliticalCard card; 
+		try {
+			card = new PoliticalCard(null, 23); 
+		} catch(NullPointerException e) {
+			thrown = true; 
+		}
+		assertTrue(thrown); 
+	}
+	@Test
+	public void TestGetStringColor() {
+		PoliticalCard card = new PoliticalCard("Red", 28); 
+		assertTrue(card.getColor()=="Red"); 
 	}
 
 }
