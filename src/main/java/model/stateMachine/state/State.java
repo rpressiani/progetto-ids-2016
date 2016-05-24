@@ -12,22 +12,18 @@ public interface State {
 	
 	public default void transition(Player player, MainAction action, GameState gameState){
 		if(action.acceptMove(player, gameState)==true) System.out.println("You can't do a MainAction now");
-		//player.setState(this);
 	}
 	
 	public default void transition(Player player, QuickAction action, GameState gameState){
 		if(action.acceptMove(player, gameState)==true) System.out.println("You can't do a QuickAction now"); 
-		//player.setState(this);
 	}
 	
 	public default void transition(Player player, NullAction action, GameState gameState){
 		if(action.acceptMove(player, gameState)==true) System.out.println("You can't do a NullAction now");
-		//player.setState(this);
 	}
 	
 	public default void transition(Player player, SellAction action, GameState gameState){
 		if(action.acceptMove(player, gameState)==true) System.out.println("You can't sell items now");
-		//player.setState(this);
 	}
 	
 	public default void transition(Player player, BuyAction action, GameState gameState){

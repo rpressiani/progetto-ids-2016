@@ -30,7 +30,6 @@ public class GameState extends Observable<Change>{
 	private ArrayList<Player> players;
 	private HashMap<String, Player> playersHashMap;
 	private Player currentPlayer;
-	private boolean marketStarted;
 	
 	public GameState(Parser parser, ArrayList<Player> players) {
 		
@@ -43,8 +42,6 @@ public class GameState extends Observable<Change>{
 		this.politicalGarbage = new PoliticalGarbage(parser);
 		this.politicalDeck = new PoliticalRealDeck(parser, this.politicalGarbage);
 		this.players = players;
-
-		this.setMarketStarted(false);
 
 		this.playersHashMap = new HashMap<String, Player>();
 		
@@ -62,7 +59,6 @@ public class GameState extends Observable<Change>{
 	public GameState(ArrayList<Player> players2) {
 		this.players=players2;
 		this.currentPlayer=this.players.get(0);
-		this.setMarketStarted(false);
 	}
 
 	/**
@@ -157,15 +153,6 @@ public class GameState extends Observable<Change>{
 			else this.setCurrentPlayer(this.getPlayers().get(0));
 			//this.notifyObserver(new CurrentPlayerChange(player));
 		}
-	}
-
-
-	public boolean isMarketStarted() {
-		return marketStarted;
-	}
-
-	public void setMarketStarted(boolean marketStarted) {
-		this.marketStarted = marketStarted;
 	}
 	
 	/**

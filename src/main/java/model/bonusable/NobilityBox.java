@@ -8,6 +8,11 @@ public class NobilityBox extends Bonusable {
 
 	private final int level;
 	
+	/**
+	 * create the nobility box with its level
+	 * @param bonuses can't be null
+	 * @param level can't be <=0
+	 */
 	public NobilityBox(ArrayList<BonusItem> bonuses, int level) {
 		super(bonuses);
 		this.level=level;

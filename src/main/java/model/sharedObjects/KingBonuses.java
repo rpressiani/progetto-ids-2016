@@ -10,6 +10,10 @@ import parser.Parser;
 public class KingBonuses {
 	private LinkedList<KingCard> kingBonuses;
 
+	/**
+	 * create kingBonus cards
+	 * @param parser can't be null
+	 */
 	public KingBonuses(Parser parser){
 		this.kingBonuses = new LinkedList<KingCard>();
 		
