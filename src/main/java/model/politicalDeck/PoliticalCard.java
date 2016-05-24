@@ -16,6 +16,9 @@ public class PoliticalCard {
 	 * constructor
 	 */
 	public PoliticalCard(String color, int numCards) {
+		if(numCards<0) {
+			throw new IllegalArgumentException("numCards cannot be less than zero"); 
+		}
 		this.color = color; 
 		this.numCards = numCards; 
 		
@@ -37,6 +40,9 @@ public class PoliticalCard {
 	 * assigns a numeric value to numCards
 	 */
 	public void setNumCards(int c) {
+		if(c<=0) {
+			throw new IllegalArgumentException("c must be >0"); 
+		}
 		this.numCards = c; 
 	}
 	/**
@@ -44,6 +50,9 @@ public class PoliticalCard {
 	 * add c cards to numCards
 	 */
 	public void addCards(int c) {
+		if(c<=0) {
+			throw new IllegalArgumentException("c must be greater than 0"); 
+		}
 		this.numCards+=c; 
 	}
 	/**
@@ -51,6 +60,9 @@ public class PoliticalCard {
 	 * removes c card
 	 */
 	public void removeCards(int c) {
+		if(c<=0) {
+			throw new IllegalArgumentException("c must be greater than 0"); 
+		}
 		this.numCards-=c; 
 	}
 	/* (non-Javadoc)

@@ -95,14 +95,16 @@ public class Map {
 		return allCitiesHashMap;
 	}
 	/**
-	 * @param c adds a city to the map 
+	 * @param c 
+	 * adds a city to the map 
 	 */
 	public void addCity(City c) {
 		map.addVertex(c);
 	}
 	/**
 	 * @param c1
-	 * @param c2 adds a link between 2 cities
+	 * @param c2 
+	 * adds a link between 2 cities
 	 */
 	public void addLink(City c1, City c2) {
 		map.addEdge(c1, c2);

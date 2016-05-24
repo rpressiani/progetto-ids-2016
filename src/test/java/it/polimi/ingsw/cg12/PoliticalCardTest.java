@@ -1,7 +1,5 @@
 package it.polimi.ingsw.cg12;
 
-import static org.junit.Assert.*;
-
 import org.junit.Before;
 import org.junit.Test;
 
@@ -13,12 +11,15 @@ public class PoliticalCardTest extends TestCase {
 	private PoliticalCard card; 
 	@Before
 	public void setUp() throws Exception {
-		card = new PoliticalCard("Red", 13); 
 	}
-
-	@Test
-	public void isColorOk() {
-		assertEquals(card.getColor()=="Red", true); 
+	@Test 
+	public void isAddCardsMethodOkTest() {
+		card = new PoliticalCard("Red", 8); 
+		card.addCards(4);
+		assertTrue(card.getNumCards()==12); 
+		
 	}
+	
+	
 
 }
