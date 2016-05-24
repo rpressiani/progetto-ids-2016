@@ -14,7 +14,7 @@ public class PoliticalCard {
 	 * @param color can't be null
 	 * @param numCards number of cards for each color
 	 * @throws IllegalArgumentException if numCards<0
-	 * @throws IllegalArgumentException if String==null
+	 * @throws NullPointerException if String==null
 	 * constructor
 	 */
 	public PoliticalCard(String color, int numCards) {
@@ -22,7 +22,7 @@ public class PoliticalCard {
 			throw new IllegalArgumentException("numCards cannot be less than zero"); 
 		}
 		if(color==null) {
-			throw new IllegalArgumentException("color can't be null"); 
+			throw new NullPointerException("color can't be null"); 
 		}
 		this.color = color; 
 		this.numCards = numCards; 
