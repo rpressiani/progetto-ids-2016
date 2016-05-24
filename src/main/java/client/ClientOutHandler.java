@@ -15,6 +15,9 @@ public class ClientOutHandler implements Runnable {
 	private ObjectOutputStream socketOut; 
 	
 	public ClientOutHandler(ObjectOutputStream socketOut) {
+		if(socketOut==null) {
+			throw new IllegalArgumentException("socketOut cannot be null"); 
+		}
 		this.socketOut = socketOut; 
 	}
 	public void run() {
