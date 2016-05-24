@@ -124,14 +124,17 @@ public class Map {
 	//Dijkstra's algorithm, even if it's more of a BFS
 	/**
 	 * @param map
-	 * @param c1
-	 * @param c2
+	 * @param c1 city 1
+	 * @param c2 city 2
 	 * @return shortest path between two input cities
 	 */
 	
 	public List<DefaultEdge> shortestPath(UndirectedGraph<City, DefaultEdge> map, City c1, City c2) {
 		if(map==null) {
-			return null; 
+			throw new NullPointerException("map cannot be null");  
+		}
+		if(c1==null || c2==null) {
+			throw new NullPointerException("cities cannot be null"); 
 		}
 		DijkstraShortestPath<City, DefaultEdge> pathFinder = new DijkstraShortestPath<City, DefaultEdge>(map, c1, c2);
 		List<DefaultEdge> path = pathFinder.getPathEdgeList();
@@ -145,6 +148,9 @@ public class Map {
 	 * @return numeric distance (#edges) between two cities 
 	 */
 	public int numericDistance(City c1, City c2) { 
+		if(c1==null || c2==null) {
+			throw new NullPointerException("cities cannot be null"); 
+		}
 		DijkstraShortestPath<City, DefaultEdge> pathFinder = new DijkstraShortestPath<City, DefaultEdge>(map, c1, c2);
 		int distance = (int) pathFinder.getPathLength();
 		return distance; 

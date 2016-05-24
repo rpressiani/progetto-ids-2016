@@ -55,6 +55,9 @@ public class City extends Bonusable{
 	 * @return true if a player has built in a determined city
 	 */
 	public boolean hasBuiltHere(Player player) {
+		if(player==null) {
+			throw new NullPointerException("player cannot be null"); 
+		}
 		return player.getBuiltCities().contains(this);
 	}
 	
@@ -64,6 +67,12 @@ public class City extends Bonusable{
 	 * @return all the connected cities where a player has built
 	 */
 	public Set<City> linkedCities(Map map, Player player) {
+		if(player==null) {
+			throw new NullPointerException("player cannot be null"); 
+		}
+		if(map==null) {
+			throw new IllegalArgumentException("cannot have a null map"); 
+		}
 		Set<City> linkedCities = null;
 		UndirectedSubgraph<City, DefaultEdge> sg = new UndirectedSubgraph<City, DefaultEdge>(map.getGraph(), player.getBuiltCities(), null); 
 		ConnectivityInspector<City, DefaultEdge> inspector = new ConnectivityInspector<City, DefaultEdge>(sg);
