@@ -102,5 +102,13 @@ public class Region {
 	public RegionCard getRegionBonus() {
 		return regionBonus;
 	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Region [name=" + name + "]";
+	}
 	
 }
