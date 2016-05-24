@@ -58,6 +58,13 @@ public class GameState extends Observable<Change>{
 		
 	}
 
+	//temporary for ClientLogic
+	public GameState(ArrayList<Player> players2) {
+		this.players=players2;
+		this.currentPlayer=this.players.get(0);
+		this.setMarketStarted(false);
+	}
+
 	/**
 	 * @return the map
 	 */

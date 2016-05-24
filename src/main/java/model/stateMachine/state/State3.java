@@ -12,9 +12,9 @@ public class State3 implements State {
 		if(action.acceptMove(player, gameState)==true){
 			System.out.println(player.getNickname()+" did a MainAction");
 			player.setState(new State4());
+			player.getState().checkTurn(player, gameState);
 		}
 		
-		else player.setState(this);
 	}
 	
 	@Override

@@ -13,9 +13,9 @@ public class State2 implements State {
 		if(action.acceptMove(player, gameState)==true){
 			System.out.println(player.getNickname()+" did a QuickAction");
 			player.setState(new State4());
+			player.getState().checkTurn(player, gameState);
 		}
 		
-		else player.setState(this);
 	}
 	
 	@Override
@@ -24,9 +24,9 @@ public class State2 implements State {
 		if(action.acceptMove(player, gameState)==true){
 			System.out.println(player.getNickname()+" did a NullAction");
 			player.setState(new State4());
+			player.getState().checkTurn(player, gameState);
 		}
 		
-		else player.setState(this);
 	}
 	
 	@Override
