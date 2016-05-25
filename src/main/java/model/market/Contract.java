@@ -3,12 +3,16 @@
  */
 package model.market;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
+import model.bonusable.PermissionCard;
 import model.player.Assistants;
 import model.player.Coins;
 import model.player.Player;
+import model.politicalDeck.PoliticalMarketContainer;
+import parser.Parser;
 
 /**
  * @author Riccardo Pressiani
@@ -21,6 +25,8 @@ public class Contract {
 	
 	private Player seller;
 	
+	private Parser parser;
+	
 	public Contract(Player seller){
 		if(seller==null) {
 			throw new NullPointerException("seller cannot be null"); 
@@ -29,6 +35,8 @@ public class Contract {
 		this.buyBag = new HashSet<Marketable>();
 		
 		this.seller = seller;
+		
+		this.parser = new Parser();
 	}
 	
 	/**
@@ -59,6 +67,19 @@ public class Contract {
 		else System.out.println(this.seller + "doesn't have enough coins!");
 	}
 	
+	public void sellPermissionCard(PermissionCard permissionCard){
+		if (permissionCard.verifyAdd(seller) == true) {
+			sellBag.add(permissionCard);
+		}
+	}
+
+	public void sellPoliticalCards(ArrayList<Integer> structure){
+		PoliticalMarketContainer sellingCards = new PoliticalMarketContainer(this.parser, structure);
+		if (sellingCards.verifyAdd(seller) == true) {
+			sellBag.add(sellingCards);
+		}
+	}
+	
 	/**
 	 * @param nCoins
 	 */
@@ -77,6 +98,14 @@ public class Contract {
 			throw new IllegalArgumentException("players should buy nAssistants>0"); 
 		}
 		buyBag.add(new Assistants(nAssistants));
+	}
+	
+	public void buyPermissionCard(PermissionCard permissionCard){
+		buyBag.add(permissionCard);
+	}
+	
+	public void buyPoliticalCards(ArrayList<Integer> structure){
+		buyBag.add(new PoliticalMarketContainer(this.parser, structure));
 	}
 
 	/**

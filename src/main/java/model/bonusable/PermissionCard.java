@@ -31,14 +31,15 @@ public class PermissionCard extends Bonusable implements Marketable {
 	
 	@Override
 	public void makeExchange(Player fromPlayer, Player toPlayer) {
-		// TODO Auto-generated method stub
-		
+		fromPlayer.getPermissionHand().remove(this);
+		toPlayer.getPermissionHand().add(this);
 	}
 
 	@Override
 	public boolean verifyAdd(Player player) {
-		// TODO Auto-generated method stub
-		return false;
+		if (player.getPermissionHand().contains(this)) {
+			return true;
+		} else return false;
 	}
 
 	/**
