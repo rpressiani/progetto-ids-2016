@@ -64,7 +64,6 @@ public class CFGAncestry {
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
      */
     public void setColor(String value) {
         this.color = value;
@@ -88,7 +87,6 @@ public class CFGAncestry {
      * @param value
      *     allowed object is
      *     {@link CFGBonuses }
-     *     
      */
     public void setBonuses(CFGBonuses value) {
         this.bonuses = value;

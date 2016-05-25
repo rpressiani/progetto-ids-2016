@@ -22,6 +22,12 @@ public class Market {
 	}
 	
 	/**
+	 * @return the set of contracts
+	 */
+	public Set<Contract> getContractSet() {
+		return contractSet; 
+	}
+	/**
 	 * @param contract
 	 * adds a contract to contractSet
 	 * @throws NullPointerException is contract is null

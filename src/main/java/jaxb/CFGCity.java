@@ -71,7 +71,6 @@ public class CFGCity {
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
      */
     public void setName(String value) {
         this.name = value;
@@ -119,7 +118,6 @@ public class CFGCity {
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
      */
     public void setAncestry(String value) {
         this.ancestry = value;
@@ -143,7 +141,6 @@ public class CFGCity {
      * @param value
      *     allowed object is
      *     {@link CFGLinks }
-     *     
      */
     public void setLinks(CFGLinks value) {
         this.links = value;

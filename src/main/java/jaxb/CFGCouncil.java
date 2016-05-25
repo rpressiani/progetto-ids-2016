@@ -69,7 +69,6 @@ public class CFGCouncil {
      * @param value
      *     allowed object is
      *     {@link BigInteger }
-     *     
      */
     public void setBalconyNum(BigInteger value) {
         this.balconyNum = value;
@@ -93,10 +92,9 @@ public class CFGCouncil {
      * @param value
      *     allowed object is
      *     {@link BigInteger }
-     *     
      */
     public void setNCounsellorsPerBalcony(BigInteger value) {
-        this.nCounsellorsPerBalcony = value;
+    	this.nCounsellorsPerBalcony = value;
     }
 
     /**
@@ -117,7 +115,6 @@ public class CFGCouncil {
      * @param value
      *     allowed object is
      *     {@link BigInteger }
-     *     
      */
     public void setNInitialGroupReserve(BigInteger value) {
         this.nInitialGroupReserve = value;

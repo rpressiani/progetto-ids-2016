@@ -60,7 +60,6 @@ public class CFGBonusTile {
      * @param value
      *     allowed object is
      *     {@link CFGBonuses }
-     *     
      */
     public void setBonuses(CFGBonuses value) {
         this.bonuses = value;
