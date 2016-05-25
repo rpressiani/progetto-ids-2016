@@ -9,7 +9,9 @@ public class State2 implements State {
 	
 	@Override
 	public void transition(Player player, QuickAction action, GameState gameState){
-	
+		if(player==null || action==null || gameState==null) {
+			throw new NullPointerException("player, action and gameState should all be !=null"); 
+		}
 		if(action.acceptMove(player, gameState)==true){
 			//action.doAction(player, gameState);
 			System.out.println(player.getNickname()+" did a QuickAction");
@@ -21,7 +23,9 @@ public class State2 implements State {
 	
 	@Override
 	public void transition(Player player, NullAction action, GameState gameState){
-		
+		if(player==null || action==null || gameState==null) {
+			throw new NullPointerException("player, action and gameState should all be !=null"); 
+		}
 		if(action.acceptMove(player, gameState)==true){
 			//action.doAction(player, gameState);
 			System.out.println(player.getNickname()+" did a NullAction");
@@ -32,7 +36,10 @@ public class State2 implements State {
 	}
 	
 	@Override
-	public void printOut(Player player, State state){
+	public void printOut(Player player, State state) {
+		if(player==null || state==null) {
+			throw new NullPointerException("player and state should not be null"); 
+		}
 		System.out.println(player.getNickname()+": "+"State2");
 	}
 }

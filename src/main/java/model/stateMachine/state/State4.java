@@ -6,8 +6,11 @@ import model.player.Player;
 
 public class State4 implements State {
 	
+	@Override
 	public void transition(Player player, SellAction action, GameState gameState){
-		
+		if(player==null || action==null || gameState==null) {
+			throw new NullPointerException("player, action and gameState should all be !=null"); 
+		}
 		if(action.acceptMove(player, gameState)==true){
 			//action.doAction(player, gameState);
 			System.out.println(player.getNickname()+" decided what to sell");
@@ -24,6 +27,9 @@ public class State4 implements State {
 	
 	@Override
 	public void printOut(Player player, State state){
+		if(player==null || state==null) {
+			throw new NullPointerException("player and state should not be null"); 
+		}
 		System.out.println(player.getNickname()+": "+"State4");
 	}
 	

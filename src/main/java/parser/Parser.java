@@ -77,7 +77,15 @@ public class Parser {
 		return cfgRoot.getPoliticalDeck();
 	}
 	
-	public ArrayList<BonusItem> getBonusesFromParser(List<CFGBonus> cfgBonuses){
+	/**
+	 * @param cfgBonuses
+	 * @return
+	 * @throws NullPointerException if cfgBonuses is null
+	 */
+	public ArrayList<BonusItem> getBonusesFromParser(List<CFGBonus> cfgBonuses) {
+		if(cfgBonuses==null) {
+			throw new NullPointerException("cfgBonuses should not be null"); 
+		}
 		ArrayList<BonusItem> bonuses = new ArrayList<BonusItem>();
 		for (Iterator<CFGBonus> iteratorBonuses = cfgBonuses.iterator(); iteratorBonuses.hasNext();) {
 			CFGBonus bonus = iteratorBonuses.next();
