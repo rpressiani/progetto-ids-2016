@@ -31,5 +31,6 @@ public class TestPoliticalRealDeck {
 		}
 		assertTrue(thrown); 
 	}
+	
 
 }

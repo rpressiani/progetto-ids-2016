@@ -23,6 +23,12 @@ public class Balcony {
 	private final Integer nColors;
 	
 	public Balcony(GarbageState garbage, Parser parser) {
+		if(garbage==null) {
+			throw new NullPointerException("cannot have a null garbage"); 
+		}
+		if(parser==null) {
+			throw new NullPointerException("cannot have a null parser"); 
+		}
 		this.nCounsellorsPerBalcony = parser.getCFGCouncil().getNCounsellorsPerBalcony().intValue();
 		this.balcony = new LinkedBlockingQueue<Counsellor>(nCounsellorsPerBalcony);
 		this.nColors = parser.getCFGPoliticalDeck().getNumColors().intValue();

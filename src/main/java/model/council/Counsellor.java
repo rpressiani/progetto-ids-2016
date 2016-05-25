@@ -13,7 +13,10 @@ public class Counsellor {
 	
 	private Color color;
 	
-	public Counsellor(Color color){
+	public Counsellor(Color color) {
+		if(color==null) {
+			throw new NullPointerException("color cannot be null"); 
+		}
 		this.color = color;
 	}
 

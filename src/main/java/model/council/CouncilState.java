@@ -18,7 +18,10 @@ public abstract class CouncilState {
 	private ArrayList<CounsellorGroup> state;
 	private Integer nColors;
 	
-	public CouncilState(Parser parser){
+	public CouncilState(Parser parser) {
+		if(parser==null) {
+			throw new NullPointerException("parser cannot be null"); 
+		}
 		this.state = new ArrayList<CounsellorGroup>();
 		this.nColors = parser.getCFGPoliticalDeck().getNumColors().intValue();
 	}

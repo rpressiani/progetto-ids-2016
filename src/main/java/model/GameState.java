@@ -34,7 +34,12 @@ public class GameState extends Observable<Change>{
 	private Market market;
 
 	public GameState(Parser parser, ArrayList<Player> players) {
-		
+		if(parser==null) {
+			throw new NullPointerException("cannot have a null parser"); 
+		}
+		if(players==null) {
+			throw new NullPointerException("there should be at least one player"); 
+		}
 		this.counsellorGarbage = new GarbageState(parser);
 		this.map = new Map(parser, this.counsellorGarbage);
 		this.king = new King(parser, this.map);
@@ -123,6 +128,9 @@ public class GameState extends Observable<Change>{
 	 * @param players the players to set
 	 */
 	public void setPlayers(ArrayList<Player> players) {
+		if(players==null) {
+			throw new NullPointerException("players should not be null"); 
+		}
 		this.players = players;
 	}
 	
@@ -144,11 +152,17 @@ public class GameState extends Observable<Change>{
 	 * @param currentPlayer the currentPlayer to set
 	 */
 	public void setCurrentPlayer(Player currentPlayer) {
+		if(currentPlayer==null) {
+			throw new NullPointerException("currentPlayer should not be null"); 
+		}
 		this.currentPlayer = currentPlayer;
 		this.notifyObserver(new CurrentPlayerChange(currentPlayer));
 	}
 	
 	public void nextPlayer(Player player){
+		if(player==null) {
+			throw new NullPointerException("player should not be null"); 
+		}
 		if(player==this.getCurrentPlayer()){
 			int i=this.getPlayers().indexOf(player);
 			if((i+1)!=this.getPlayers().size()) this.setCurrentPlayer(this.getPlayers().get(i+1));

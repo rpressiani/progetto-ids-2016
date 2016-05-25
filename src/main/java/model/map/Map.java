@@ -34,6 +34,12 @@ public class Map {
 	 * constructor for Map
 	 */
 	public Map(Parser parser, GarbageState garbage) {
+		if(parser==null) {
+			throw new NullPointerException("cannot have a null parser");
+		}
+		if(garbage==null) {
+			throw new NullPointerException("cannot have a null garbage state");
+		}
 		this.map = new SimpleGraph<City, DefaultEdge>(DefaultEdge.class);
 		this.allCitiesFromParser = new HashMap<String, CFGCity>();
 		this.allCitiesHashMap = new HashMap<String, City>();
