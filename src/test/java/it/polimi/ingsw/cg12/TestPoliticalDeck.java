@@ -10,7 +10,7 @@ import model.politicalDeck.PoliticalCard;
 import model.politicalDeck.PoliticalDeck;
 import parser.Parser;
 
-public class TestPoliticalDeck {
+/*public class TestPoliticalDeck {
 
 	@Test
 	public void testNullParserThrowsException() {
@@ -54,4 +54,4 @@ public class TestPoliticalDeck {
 		ArrayList<PoliticalCard> temp = deck.getDeck(); 
 		assertTrue(deck.getDeck()==temp); 
 	}
-}
+}*/
