@@ -1,7 +1,7 @@
 /**
  * 
  */
-package model.query;
+package query;
 
 import java.io.Serializable;
 

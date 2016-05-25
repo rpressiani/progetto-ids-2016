@@ -1,4 +1,4 @@
-package model.query;
+package query;
 
 import model.GameState;
 import model.player.Player;
