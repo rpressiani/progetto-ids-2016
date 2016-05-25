@@ -12,9 +12,13 @@ public class NobilityBox extends Bonusable {
 	 * create the nobility box with its level
 	 * @param bonuses can't be null
 	 * @param level can't be <=0
+	 * @throws IllegalArgumentException if level is <0
 	 */
 	public NobilityBox(ArrayList<BonusItem> bonuses, int level) {
 		super(bonuses);
+		if(level<0) {
+			throw new IllegalArgumentException("level cannot be <0");
+		}
 		this.level=level;
 	}
 	

@@ -10,6 +10,9 @@ public class PoliticalContainer extends PoliticalDeck {
 
 	public PoliticalContainer(Parser parser, ArrayList<Integer> structure) {
 		super(parser);
+		if(structure==null) {
+			throw new NullPointerException("structure should not be null"); 
+		}
 		int i = 0;
 		for (Iterator<CFGPoliticalCard> iterator = parser.getCFGPoliticalDeck().getPoliticalCard().iterator(); iterator.hasNext();) {
 			CFGPoliticalCard cfgPoliticalCard = iterator.next();

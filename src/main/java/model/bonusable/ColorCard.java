@@ -13,9 +13,13 @@ public class ColorCard extends Bonusable {
 	 * create the color card
 	 * @param bonuses can't be null
 	 * @param color can't be null
+	 * @throws NullPointerException if color is null
 	 */
 	public ColorCard(ArrayList<BonusItem> bonuses, Color color) {
 		super(bonuses);
+		if(color==null) {
+			throw new NullPointerException("color cannot be null"); 
+		}
 		this.color=color;
 	}
 

@@ -8,6 +8,7 @@ public class BonusAssistants implements BonusItem {
 	/**
 	 * set assistants bonus
 	 * @param items can't be <=0
+	 * @throws IllegalArgumentException if bonus <=0
 	 */
 	public BonusAssistants(int items) {
 		if(items<=0) {

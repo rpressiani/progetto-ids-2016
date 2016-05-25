@@ -13,9 +13,13 @@ public class RegionCard extends Bonusable {
 	 * create the region card
 	 * @param bonuses can't be null
 	 * @param region can't be null
+	 * @throws NullPointerException if region if null
 	 */
 	public RegionCard(ArrayList<BonusItem> bonuses, Region region) {
 		super(bonuses);
+		if(region==null) {
+			throw new NullPointerException("region cannot be null"); 
+		}
 		this.region=region;
 	}
 

@@ -41,6 +41,7 @@ public class Contract {
 	
 	/**
 	 * @param nCoins
+	 * @throws IllegalArgumentException if nCoins<=0
 	 */
 	public void sellCoins(Integer nCoins){
 		if(nCoins<=0) {
@@ -55,6 +56,7 @@ public class Contract {
 	
 	/**
 	 * @param nAssistants
+	 * @throws IllegalArgumentException if nAssistants<=0
 	 */
 	public void sellAssistants(Integer nAssistants){
 		if(nAssistants<=0) {
@@ -67,13 +69,27 @@ public class Contract {
 		else System.out.println(this.seller + "doesn't have enough coins!");
 	}
 	
+	/**
+	 * @param permissionCard card to be sold
+	 * @throws NullPointerException if permissionCard is null
+	 */
 	public void sellPermissionCard(PermissionCard permissionCard){
+		if(permissionCard==null) {
+			throw new NullPointerException("permissionCard should not be null"); 
+		}
 		if (permissionCard.verifyAdd(seller) == true) {
 			sellBag.add(permissionCard);
 		}
 	}
 
-	public void sellPoliticalCards(ArrayList<Integer> structure){
+	/**
+	 * @param structure politicalCards to be sold
+	 * @throws NullPointerException is structure is null
+	 */
+	public void sellPoliticalCards(ArrayList<Integer> structure) {
+		if(structure==null) {
+			throw new NullPointerException("structure should not be null"); 
+		}
 		PoliticalMarketContainer sellingCards = new PoliticalMarketContainer(this.parser, structure);
 		if (sellingCards.verifyAdd(seller) == true) {
 			sellBag.add(sellingCards);
@@ -82,6 +98,7 @@ public class Contract {
 	
 	/**
 	 * @param nCoins
+	 * @throws IllegalArgumentException if nCoins<=0
 	 */
 	public void buyCoins(Integer nCoins){
 		if(nCoins<0) {
@@ -92,19 +109,34 @@ public class Contract {
 	
 	/**
 	 * @param nAssistants
+	 * @throws IllegalArgumentException is nAssistants<0
 	 */
 	public void buyAssistants(Integer nAssistants){
 		if(nAssistants<0) {
-			throw new IllegalArgumentException("players should buy nAssistants>0"); 
+			throw new IllegalArgumentException("players should buy nAssistants>=0"); 
 		}
 		buyBag.add(new Assistants(nAssistants));
 	}
 	
-	public void buyPermissionCard(PermissionCard permissionCard){
+	/**
+	 * @param permissionCard to be sold
+	 * @throws NullPointerException is permissionCard is null
+	 */
+	public void buyPermissionCard(PermissionCard permissionCard) {
+		if(permissionCard==null) {
+			throw new NullPointerException("permissionCard should not be null"); 
+		}
 		buyBag.add(permissionCard);
 	}
 	
-	public void buyPoliticalCards(ArrayList<Integer> structure){
+	/**
+	 * @param structure political cards to be sold
+	 * @throws NullPointerException if structure is null
+	 */
+	public void buyPoliticalCards(ArrayList<Integer> structure) {
+		if(structure==null) {
+			throw new NullPointerException("structure should not be null");
+		}
 		buyBag.add(new PoliticalMarketContainer(this.parser, structure));
 	}
 

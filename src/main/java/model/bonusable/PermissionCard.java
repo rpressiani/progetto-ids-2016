@@ -20,9 +20,13 @@ public class PermissionCard extends Bonusable implements Marketable {
 	 * create the permission cards
 	 * @param bonuses can't be null
 	 * @param cities can't be null
+	 * @throws NullPointerException if cities is null
 	 */
 	public PermissionCard(ArrayList<BonusItem> bonuses, HashSet<City> cities) {
 		super(bonuses);
+		if(cities==null) {
+			throw new NullPointerException("cities should not be null");
+		}
 		this.idCard=counter;
 		counter++;
 		this.used=false;
@@ -31,12 +35,18 @@ public class PermissionCard extends Bonusable implements Marketable {
 	
 	@Override
 	public void makeExchange(Player fromPlayer, Player toPlayer) {
+		if(fromPlayer==null || toPlayer==null) {
+			throw new NullPointerException("both these two players should not be null"); 
+		}
 		fromPlayer.getPermissionHand().remove(this);
 		toPlayer.getPermissionHand().add(this);
 	}
 
 	@Override
 	public boolean verifyAdd(Player player) {
+		if(player==null) {
+			throw new NullPointerException("player should not be null"); 
+		}
 		if (player.getPermissionHand().contains(this)) {
 			return true;
 		} 

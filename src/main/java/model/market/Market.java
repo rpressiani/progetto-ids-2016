@@ -24,6 +24,7 @@ public class Market {
 	/**
 	 * @param contract
 	 * adds a contract to contractSet
+	 * @throws NullPointerException is contract is null
 	 */
 	public void addContract(Contract contract){
 		if(contract==null) {
@@ -35,6 +36,7 @@ public class Market {
 	/**
 	 * @param contract
 	 * @param buyer
+	 * @throws NullPointerException if contract or player is null
 	 */
 	public void acceptContract(Contract contract, Player buyer){
 		if(contract==null) {
