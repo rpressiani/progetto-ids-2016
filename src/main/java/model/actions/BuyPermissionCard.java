@@ -15,6 +15,7 @@ public class BuyPermissionCard extends MainAction {
 	private PoliticalDeck proposal;
 	private int index;
 
+	//temporary for ClientLogic
 	public BuyPermissionCard(){
 		
 	}

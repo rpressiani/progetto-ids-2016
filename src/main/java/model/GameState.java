@@ -9,6 +9,7 @@ import controller.CurrentPlayerChange;
 import model.council.Balcony;
 import model.council.GarbageState;
 import model.map.Map;
+import model.market.Market;
 import model.player.Player;
 import model.politicalDeck.PoliticalGarbage;
 import model.politicalDeck.PoliticalRealDeck;
@@ -30,7 +31,8 @@ public class GameState extends Observable<Change>{
 	private ArrayList<Player> players;
 	private HashMap<String, Player> playersHashMap;
 	private Player currentPlayer;
-	
+	private Market market;
+
 	public GameState(Parser parser, ArrayList<Player> players) {
 		
 		this.counsellorGarbage = new GarbageState(parser);
@@ -162,9 +164,11 @@ public class GameState extends Observable<Change>{
 		return playersHashMap;
 
 	}
-
-	/*public void setNewBalcony(Balcony balcony) {
-		this.balcony = balcony; 
-		this.notifyObserver(new BalconyStateChange(balcony));
-	}*/
+	
+	/**
+	 * @return the market
+	 */
+	public Market getMarket() {
+		return market;
+	}
 }

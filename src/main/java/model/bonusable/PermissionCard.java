@@ -39,7 +39,8 @@ public class PermissionCard extends Bonusable implements Marketable {
 	public boolean verifyAdd(Player player) {
 		if (player.getPermissionHand().contains(this)) {
 			return true;
-		} else return false;
+		} 
+		else return false;
 	}
 
 	/**

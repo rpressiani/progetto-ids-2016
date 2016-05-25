@@ -45,8 +45,4 @@ public class PoliticalRealDeck extends PoliticalDeck {
 		return "PoliticalRealDeck [toString()=" + super.toString() + "]";
 	}
 	
-	
-	
-	
-	
 }

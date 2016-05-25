@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import parser.Parser;
  
-public class PoliticalDeck {
+public abstract class PoliticalDeck {
 
 	private ArrayList<PoliticalCard> deck; 
 	private final int numColors;	//numColors doesn't include jolly
@@ -38,7 +38,6 @@ public class PoliticalDeck {
 		return deck; 
 	}
 
-	
 	/**
 	 * @return number of colors
 	 */

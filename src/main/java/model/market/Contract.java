@@ -84,8 +84,8 @@ public class Contract {
 	 * @param nCoins
 	 */
 	public void buyCoins(Integer nCoins){
-		if(nCoins<=0) {
-			throw new IllegalArgumentException("players should buy nCoins>0"); 
+		if(nCoins<0) {
+			throw new IllegalArgumentException("players should buy nCoins>=0"); 
 		}
 		buyBag.add(new Coins(nCoins));
 	}
@@ -94,7 +94,7 @@ public class Contract {
 	 * @param nAssistants
 	 */
 	public void buyAssistants(Integer nAssistants){
-		if(nAssistants>0) {
+		if(nAssistants<0) {
 			throw new IllegalArgumentException("players should buy nAssistants>0"); 
 		}
 		buyBag.add(new Assistants(nAssistants));
