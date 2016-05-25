@@ -14,7 +14,19 @@ public class CounsellorGroup {
 	private Color color;
 	private Integer counter;
 	
+	/**
+	 * @param color
+	 * @param counter
+	 * @throws NullPointerException is color is null
+	 * @throws IllegalArgumentException if counter<=0
+	 */
 	public CounsellorGroup(Color color, Integer counter){
+		if(color==null) {
+			throw new NullPointerException("color cannot be null"); 
+		}
+		if(counter<=0) {
+			throw new IllegalArgumentException("counter must be greater than zero"); 
+		}
 		this.color = color;
 		this.counter = counter;
 	}

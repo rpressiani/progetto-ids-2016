@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-public class BonusTest {
+public class TestPermissionDeck {
 
 	@Test
 	public void test() {

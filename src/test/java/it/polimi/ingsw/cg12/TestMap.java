@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-public class StateMachineTest {
+public class TestMap {
 
 	@Test
 	public void test() {

@@ -18,8 +18,12 @@ public class PoliticalDeck {
 
 	/**
 	 * @return true if political deck is empty --> need refill
+	 * @throws NullPointerException if political deck(this) is null
 	 */
 	public boolean isEmpty() {
+		if(this.getDeck()==null) {
+			throw new NullPointerException("deck should not be null"); 
+		}
 		for(int i=0; i<deck.size(); i++) {
 			if(deck.get(i).getNumCards()!=0)
 				return false; 

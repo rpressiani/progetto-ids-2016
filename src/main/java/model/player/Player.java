@@ -44,6 +44,12 @@ public class Player {
 	 * @param color		color chosen by the player
 	 */
 	public Player(String nickname, Color color) {
+		if(nickname==null) {
+			throw new IllegalArgumentException("player should have a not null nickname"); 
+		}
+		if(color==null) {
+			throw new IllegalArgumentException("each player should have a color which is not null"); 
+		}
 		this.nickname = nickname;
 		this.color = color;
 		this.nobilityLevel = new NobilityLevel();
@@ -73,7 +79,9 @@ public class Player {
 	}
 	
 	public void move(GeneralAction action, GameState gameState){
-		
+		if(gameState==null) {
+			throw new IllegalArgumentException("player should be playing a game which is not null"); 
+		}
 		if(action instanceof MainAction){
 			this.getState().transition(this, (MainAction)action, gameState);
 		}
@@ -202,6 +210,9 @@ public class Player {
 	 * @param state the state to set
 	 */
 	public void setState(State state) {
+		if(state==null) {
+			throw new IllegalArgumentException("cannot set a null state"); 
+		}
 		this.state = state;
 	}
 

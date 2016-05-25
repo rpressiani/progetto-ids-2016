@@ -26,6 +26,9 @@ public class Market {
 	 * adds a contract to contractSet
 	 */
 	public void addContract(Contract contract){
+		if(contract==null) {
+			throw new NullPointerException("cannot have a null contract"); 
+		}
 		contractSet.add(contract);
 	}
 	
@@ -34,6 +37,12 @@ public class Market {
 	 * @param buyer
 	 */
 	public void acceptContract(Contract contract, Player buyer){
+		if(contract==null) {
+			throw new NullPointerException("contract cannot be null, if created"); 
+		}
+		if(buyer==null) {
+			throw new NullPointerException("buyer cannot be null"); 
+		}
 		Iterator<Marketable> sellBagItr = contract.getSellBag().iterator();
 		while(sellBagItr.hasNext()){
 			sellBagItr.next().makeExchange(contract.getSeller(), buyer);

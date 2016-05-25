@@ -37,7 +37,19 @@ public class Balcony {
 	}
 	
 
+	/**
+	 * @param color of the garbage
+	 * @param garbage counsellors not in the game 
+	 * @throws NullPointerException if color is null
+	 * @throws NullPointerException is garbage is null
+	 */
 	public void putCounsellor(Color color, GarbageState garbage){
+		if(color==null) {
+			throw new NullPointerException("counsellor color cannot be null"); 
+		}
+		if(garbage==null) {
+			throw new NullPointerException("we should 'take' the counsellor from an existing garbage"); 
+		}
 		garbage.add(this.balcony.element().getColor());
 		this.balconyState.remove(this.balcony.element().getColor());
 		this.balcony.remove();
@@ -46,7 +58,15 @@ public class Balcony {
 		this.balconyState.add(color);
 	}
 	
+	/**
+	 * @param garbage
+	 * @return Color of the counsellor
+	 * @throws NullPointerException if garbage is null
+	 */
 	private Color getRandomCounsellor(GarbageState garbage){
+		if(garbage==null) {
+			throw new NullPointerException("garbage cannot be null"); 
+		}
 		Random rn = new Random();
 		int selectedIndex = rn.nextInt(this.nColors);
 		for (int i = 0; i < nColors; i++) {

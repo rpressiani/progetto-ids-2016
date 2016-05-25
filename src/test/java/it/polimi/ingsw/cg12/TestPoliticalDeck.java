@@ -8,7 +8,7 @@ import org.junit.Test;
 import junit.framework.TestCase;
 import model.politicalDeck.PoliticalDeck;
 
-public class PoliticalDeckTest extends TestCase{
+public class TestPoliticalDeck{
 
 	@Before
 	public void setUp() throws Exception {
