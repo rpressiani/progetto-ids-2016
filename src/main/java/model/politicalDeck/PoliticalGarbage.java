@@ -23,7 +23,7 @@ public class PoliticalGarbage extends PoliticalDeck {
 		if(this.getDeck()==null) {
 			throw new NullPointerException("deck should not be null"); 
 		}
-		for(int i=0; i<this.getNumColors(); i++) {
+		for(int i=0; i<this.getDeck().size(); i++) {
 			//gives numCards for each index
 			this.getDeck().get(i).setNumCards(0); 
 		}

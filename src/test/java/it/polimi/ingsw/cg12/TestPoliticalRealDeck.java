@@ -20,5 +20,16 @@ public class TestPoliticalRealDeck {
 		}
 		assertTrue(deck.isEmpty()); 
 	}
+	@Test
+	public void testIfNullDeckThrowsException() {
+		boolean thrown = false; 
+		try {
+			PoliticalRealDeck deck = null;
+			deck.refill();
+		} catch(NullPointerException e) {
+			thrown = true; 
+		}
+		assertTrue(thrown); 
+	}
 
 }
