@@ -11,6 +11,9 @@ public class PoliticalDeck {
 	private static Parser parser;
 
 	public PoliticalDeck(Parser parser) {
+		if(parser==null) {
+			throw new NullPointerException("cannot have a null parser"); 
+		}
 		deck = new ArrayList<PoliticalCard>(); 
 		this.numColors = parser.getCFGPoliticalDeck().getNumColors().intValue();
 		PoliticalDeck.parser = parser;

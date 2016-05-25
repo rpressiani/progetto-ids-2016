@@ -81,5 +81,15 @@ public class TestPoliticalCard {
 		PoliticalCard card = new PoliticalCard("Red", 28); 
 		assertTrue(card.getColor()=="Red"); 
 	}
+	@Test
+	public void testNegativeNumCardsThrowsException() {
+		boolean thrown = false; 
+		try {
+			PoliticalCard card = new PoliticalCard("Blue", -10); 
+		} catch(IllegalArgumentException e) {
+			thrown = true; 
+		}
+		assertTrue(thrown); 
+	}
 
 }
