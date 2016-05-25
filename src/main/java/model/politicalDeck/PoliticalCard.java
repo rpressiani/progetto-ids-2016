@@ -45,8 +45,8 @@ public class PoliticalCard {
 	 * @throws IllegalArgumentException if c<=0
 	 */
 	public void setNumCards(int c) {
-		if(c<=0) {
-			throw new IllegalArgumentException("c must be >0"); 
+		if(c<0) {
+			throw new IllegalArgumentException("c must be >=0"); 
 		}
 		this.numCards = c; 
 	}

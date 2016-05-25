@@ -28,7 +28,7 @@ public class PoliticalRealDeck extends PoliticalDeck {
 			throw new NullPointerException("deck should not be null"); 
 		}
 		if(!this.garbage.isEmpty() && this.getDeck().isEmpty()) {
-			int numGarbage = this.garbage.getNumColors();  
+			int numGarbage = this.garbage.getDeck().size();  
 			for(int i=0; i<numGarbage; i++) {
 				// c is the index of each color of the garbage deck
 				int c = this.garbage.getDeck().get(i).getNumCards(); 
