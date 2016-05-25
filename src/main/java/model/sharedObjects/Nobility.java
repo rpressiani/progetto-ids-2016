@@ -15,8 +15,12 @@ public class Nobility {
 	/**
 	 * create game's nobility
 	 * @param parser
+	 * @throws NullPointerException if parser is null
 	 */
 	public Nobility(Parser parser){
+		if(parser==null) {
+			throw new NullPointerException("parser cannot be null"); 
+		}
 		this.boxes = new HashMap<Integer,NobilityBox>();
 		
 		for (CFGNobilityBox nobilityBox : parser.getCFGRoot().getNobility().getNobilityBox()) {
@@ -31,8 +35,15 @@ public class Nobility {
 	 * check player's nobility level to give bonus
 	 * @param player can't be null
 	 * @param gameState can't be null
+	 * @throws NullPointerException if player or gameState is null
 	 */
-	public void checkNobility(Player player, GameState gameState){
+	public void checkNobility(Player player, GameState gameState) {
+		if(player==null) {
+			throw new NullPointerException("player cannot be null"); 
+		}
+		if(gameState==null) {
+			throw new NullPointerException("gameState cannot be null"); 
+		}
 		System.out.println(this.getBoxes().get(1));
 		if (this.getBoxes().get(player.getNobilityLevel().getItems()) != null) {
 			this.getBoxes().get(player.getNobilityLevel().getItems()).assignBonuses(player, gameState);

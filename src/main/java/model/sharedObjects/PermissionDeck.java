@@ -25,8 +25,12 @@ public class PermissionDeck {
 	 * create PermissionDeck for each region
 	 * @param parser can't be null
 	 * @param region can't be null
+	 * @throws NullPointerException if parser or region are null
 	 */
-	public PermissionDeck(Parser parser, Region region){
+	public PermissionDeck(Parser parser, Region region) {
+		if(parser==null || region==null) {
+			throw new NullPointerException("region and parser cannot be null"); 
+		}		
 		this.deck=new LinkedList<PermissionCard>();
 		this.visibleCards=new ArrayList<PermissionCard>();
 		this.visibleLenght = parser.getCFGRoot().getPermissionDecks().getVisibleCards().intValue();
@@ -73,9 +77,13 @@ public class PermissionDeck {
 
 	/**
 	 * shuffle the deck
-	 * @param deck can'tt be null
+	 * @param deck can't be null
+	 * @throws NullPointerException if deck is null
 	 */
 	public void shuffleDeck(LinkedList<PermissionCard> deck){
+		if(deck==null) {
+			throw new NullPointerException("deck cannot be null"); 
+		}
 		Collections.shuffle(deck);
 	}
 	
@@ -96,9 +104,13 @@ public class PermissionDeck {
 	 * substitute visible cards
 	 * @param deck can't be null
 	 * @param visibleCards can't be null
+	 * @throws NullPointerException if deck or visibleCards are null
 	 */
 	public void substituteCards(LinkedList<PermissionCard> deck, ArrayList<PermissionCard> visibleCards){
-		for(int i=0, temp=visibleLenght; i<temp; temp--){
+		if(deck==null || visibleCards==null) {
+			throw new NullPointerException("deck and visibleCards cannot be null"); 
+		}
+		for(int i=0, temp=visibleLenght; i<temp; temp--) {
 			deck.add(visibleCards.remove(i));	//better with iterator?
 		}
 	}

@@ -13,8 +13,12 @@ public class KingBonuses {
 	/**
 	 * create kingBonus cards
 	 * @param parser can't be null
+	 * @throws NullPointerException if parser is null
 	 */
-	public KingBonuses(Parser parser){
+	public KingBonuses(Parser parser) {
+		if(parser==null) {
+			throw new NullPointerException("parser cannot be null"); 
+		}
 		this.kingBonuses = new LinkedList<KingCard>();
 		
 		for (int i = 0; i < parser.getCFGRoot().getKingBonuses().getBonuses().size(); i++) {
