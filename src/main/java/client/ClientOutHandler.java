@@ -6,9 +6,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
-import model.query.GetCoins;
-import model.query.GetScores;
-import model.query.Query;
+import query.GetCoins;
+import query.GetScores;
+import query.Query;
 
 public class ClientOutHandler implements Runnable {
 	

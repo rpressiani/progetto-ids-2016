@@ -9,7 +9,7 @@ import client.ClientMessage;
 import model.GameState;
 import model.actions.GeneralAction;
 import model.player.Player;
-import model.query.Query;
+import query.Query;
 import controller.Change;
 
 public class ServerSocketView extends View implements Runnable {
