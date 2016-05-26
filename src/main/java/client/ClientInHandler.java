@@ -3,7 +3,7 @@ package client;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 
-import controller.Change;
+import controller.changes.Change;
 
 public class ClientInHandler implements Runnable {
 	
@@ -15,6 +15,7 @@ public class ClientInHandler implements Runnable {
 		}
 		this.socketIn = socketIn; 
 	}
+	
 	public void run() {
 		while(true) {
 			try {

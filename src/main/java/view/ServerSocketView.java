@@ -6,11 +6,11 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 
 import client.ClientMessage;
+import controller.changes.Change;
 import model.GameState;
 import model.actions.GeneralAction;
 import model.player.Player;
 import query.Query;
-import controller.Change;
 
 public class ServerSocketView extends View implements Runnable {
 	

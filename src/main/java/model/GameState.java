@@ -3,9 +3,8 @@ package model;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-//import controller.BalconyStateChange;
-import controller.Change;
-import controller.CurrentPlayerChange;
+import controller.changes.Change;
+import controller.changes.CurrentPlayerChange;
 import model.council.Balcony;
 import model.council.GarbageState;
 import model.map.Map;
