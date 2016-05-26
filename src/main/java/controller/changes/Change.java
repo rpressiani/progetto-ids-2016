@@ -1,4 +1,4 @@
-package controller;
+package controller.changes;
 
 import java.io.Serializable;
 

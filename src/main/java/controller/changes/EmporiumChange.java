@@ -1,4 +1,4 @@
-package controller;
+package controller.changes;
 
 public class EmporiumChange extends Change {
 

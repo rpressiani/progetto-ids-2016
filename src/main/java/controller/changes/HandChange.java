@@ -1,4 +1,4 @@
-package controller;
+package controller.changes;
 
 import model.player.Player;
 import model.politicalDeck.PoliticalHand;
