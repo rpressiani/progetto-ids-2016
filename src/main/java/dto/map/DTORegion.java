@@ -8,7 +8,7 @@ public class DTORegion implements DTOObject{
 	 * 
 	 */
 	private static final long serialVersionUID = 3197025209267242803L;
-	private String name;
+	private final String name;
 	
 	public DTORegion(String name) {
 		this.name = name;

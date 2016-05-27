@@ -10,8 +10,8 @@ public class DTOElectCounsellor implements DTOObject {
 	 * 
 	 */
 	private static final long serialVersionUID = 8997763321000061932L;
-	private DTORegion region;
-	private DTOColor color;
+	private final DTORegion region;
+	private final DTOColor color;
 	
 	public DTOElectCounsellor(DTORegion region, DTOColor color) {
 		this.region = region;
