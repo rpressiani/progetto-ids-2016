@@ -1,5 +1,7 @@
 package dto;
 
-public interface DTOObject {
+import java.io.Serializable;
+
+public interface DTOObject extends Serializable {
 	
 }
