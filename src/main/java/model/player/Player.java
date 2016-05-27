@@ -5,12 +5,12 @@ import java.util.Set;
 
 import utilities.Color;
 import model.GameState;
-import model.actions.BuyAction;
 import model.actions.GeneralAction;
 import model.actions.MainAction;
 import model.actions.NullAction;
 import model.actions.QuickAction;
-import model.actions.SellAction;
+import model.actions.market.BuyAction;
+import model.actions.market.SellAction;
 import model.bonusable.PermissionCard;
 import model.map.City;
 import model.politicalDeck.PoliticalHand;

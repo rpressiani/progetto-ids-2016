@@ -1,6 +1,8 @@
-package model.actions;
+package model.actions.quick;
 
 import model.GameState;
+import model.actions.MainAction;
+import model.actions.QuickAction;
 import model.player.Player;
 
 public class AddictionalAction extends QuickAction {

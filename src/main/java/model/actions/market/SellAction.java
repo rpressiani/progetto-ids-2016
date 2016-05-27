@@ -1,8 +1,9 @@
-package model.actions;
+package model.actions.market;
 
 import java.util.Set;
 
 import model.GameState;
+import model.actions.GeneralAction;
 import model.bonusable.PermissionCard;
 import model.market.Contract;
 import model.player.Player;
