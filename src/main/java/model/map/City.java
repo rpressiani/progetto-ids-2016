@@ -19,7 +19,7 @@ public class City extends Bonusable{
 	private String name; 
 	private String nameLong;
 	private Region region;
-	private String ancestry;
+	private Ancestry ancestry;
 	
 	/**
 	 * @param name
@@ -28,10 +28,10 @@ public class City extends Bonusable{
 	 * @param nameLong
 	 * constructor for object City
 	 */
-	public City(String name, String nameLong, ArrayList<BonusItem> bonuses, String ancestry) {
+	public City(String name, String nameLong, ArrayList<BonusItem> bonuses, Region region, Ancestry ancestry) {
 		super(bonuses);
 		this.name = name;
-		this.region = null;
+		this.region = region;
 		this.ancestry = ancestry;
 		this.nameLong = nameLong;
 	}
@@ -82,15 +82,8 @@ public class City extends Bonusable{
 	/**
 	 * @return the ancestry
 	 */
-	public String getAncestry() {
+	public Ancestry getAncestry() {
 		return ancestry;
-	}
-
-	/**
-	 * @param region the region to set
-	 */
-	public void setRegion(Region region) {
-		this.region = region;
 	}
 
 	/* (non-Javadoc)
@@ -98,7 +91,7 @@ public class City extends Bonusable{
 	 */
 	@Override
 	public String toString() {
-		return "City [name=" + name + ", nameLong=" + nameLong + ", region=" + region + ", ancestry=" + ancestry
+		return "City [name=" + name + ",\tnameLong=" + nameLong + ",\t\tregion=" + region + ",\tancestry=" + ancestry
 				+ ", toString()=" + super.toString() + "]";
 	}
 
