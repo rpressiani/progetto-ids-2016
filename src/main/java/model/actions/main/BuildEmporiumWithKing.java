@@ -1,6 +1,7 @@
-package model.actions;
+package model.actions.main;
 
 import model.GameState;
+import model.actions.MainAction;
 import model.council.Balcony;
 import model.map.City;
 import model.player.Player;

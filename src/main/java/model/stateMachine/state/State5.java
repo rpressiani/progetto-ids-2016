@@ -1,7 +1,7 @@
 package model.stateMachine.state;
 
 import model.GameState;
-import model.actions.BuyAction;
+import model.actions.market.BuyAction;
 import model.player.Player;
 
 public class State5 implements State {

@@ -1,6 +1,7 @@
-package model.actions;
+package model.actions.quick;
 
 import model.GameState;
+import model.actions.QuickAction;
 import model.player.Player;
 
 public class HireAssistant extends QuickAction {

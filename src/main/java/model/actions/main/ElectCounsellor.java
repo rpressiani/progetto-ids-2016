@@ -1,6 +1,7 @@
-package model.actions;
+package model.actions.main;
 
 import model.GameState;
+import model.actions.MainAction;
 import model.map.Region;
 import model.player.Player;
 import utilities.Color;

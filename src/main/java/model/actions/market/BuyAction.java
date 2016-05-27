@@ -1,6 +1,7 @@
-package model.actions;
+package model.actions.market;
 
 import model.GameState;
+import model.actions.GeneralAction;
 import model.market.Contract;
 import model.player.Player;
 
