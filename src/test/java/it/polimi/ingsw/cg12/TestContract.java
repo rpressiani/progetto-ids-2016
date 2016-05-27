@@ -45,5 +45,28 @@ public class TestContract {
 		}
 		assertTrue(thrown); 
 	}
-
+	@Test
+	public void testNullPermissionCardThrowsException() {
+		boolean thrown = false; 
+		Player player = new Player("Karl", new Color(1, 2, 2));
+		Contract contract = new Contract(player); 
+		try {
+			contract.buyPermissionCard(null);
+		} catch(NullPointerException e) {
+			thrown = true; 
+		}
+		assertTrue(thrown); 
+	}
+	@Test 
+	public void testNullPoliticalCardStructureThrowsException() {
+		boolean thrown = false; 
+		Player player = new Player("Rick", new Color(1, 2, 3));
+		Contract contract = new Contract(player); 
+		try {
+			contract.buyPoliticalCards(null);
+		} catch(NullPointerException e) {
+			thrown = true; 
+		}
+		assertTrue(thrown); 
+	}
 }
