@@ -14,7 +14,7 @@ import utilities.Color;
 
 /**
  * @author Riccardo Pressiani
- *
+ * 
  */
 public class Balcony {
 	private Queue<Counsellor> balcony;
