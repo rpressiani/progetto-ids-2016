@@ -1,8 +1,8 @@
 package dto.actions.quick;
 
-import dto.DTOObject;
+import dto.DTOAction;
 
-public class DTOHireAssistant implements DTOObject {
+public class DTOHireAssistant implements DTOAction {
 
 	/**
 	 * 
