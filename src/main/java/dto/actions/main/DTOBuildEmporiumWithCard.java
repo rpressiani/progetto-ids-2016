@@ -1,6 +1,6 @@
 package dto.actions.main;
 
-import dto.DTOAction;
+import dto.actions.DTOAction;
 import dto.map.DTOCity;
 import dto.utilities.DTOPermissionCard;
 

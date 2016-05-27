@@ -1,6 +1,6 @@
 package dto.actions.quick;
 
-import dto.DTOAction;
+import dto.actions.DTOAction;
 
 public class DTOAdditionalAction implements DTOAction{
 
