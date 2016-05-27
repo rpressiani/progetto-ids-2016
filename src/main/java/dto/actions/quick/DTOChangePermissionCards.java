@@ -1,4 +1,4 @@
-package dto.actions;
+package dto.actions.quick;
 
 import dto.DTOObject;
 import dto.map.DTORegion;
