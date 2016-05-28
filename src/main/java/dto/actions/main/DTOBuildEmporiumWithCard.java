@@ -1,10 +1,10 @@
-package dto.actions;
+package dto.actions.main;
 
-import dto.DTOObject;
+import dto.actions.DTOAction;
 import dto.map.DTOCity;
 import dto.utilities.DTOPermissionCard;
 
-public class DTOBuildEmporiumWithCard implements DTOObject {
+public class DTOBuildEmporiumWithCard implements DTOAction {
 
 	/**
 	 * 

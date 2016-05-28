@@ -24,7 +24,7 @@ public class CounsellorGroup {
 		if(color==null) {
 			throw new NullPointerException("color cannot be null"); 
 		}
-		if(counter<=0) {
+		if(counter<0) {
 			throw new IllegalArgumentException("counter must be greater than zero"); 
 		}
 		this.color = color;

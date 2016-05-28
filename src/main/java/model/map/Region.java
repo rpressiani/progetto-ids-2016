@@ -5,8 +5,8 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
-import jaxb.CFGCity;
 import jaxb.CFGRegion;
 import model.bonusItem.BonusItem;
 import model.bonusable.RegionCard;
@@ -25,6 +25,7 @@ public class Region {
 	private Balcony balcony;
 	private Set<City> regionCities;
 	private RegionCard regionBonus;
+	private Parser parser;
 	
 	/**
 	 * @param name
@@ -36,9 +37,10 @@ public class Region {
 	public Region(String name, GarbageState garbage, Parser parser, Map map){
 		this.name = name;
 		this.balcony = new Balcony(garbage, parser);
+		this.parser = parser;
+		this.regionCities = null;
+		this.permissionDeck = null;
 		
-		this.regionCities = new HashSet<City>();
-		Set<City> allCities = map.allVertexes();
 		List<CFGRegion> cfgRegions = parser.getCFGRoot().getMap().getRegion();
 		CFGRegion cfgRegion = new CFGRegion();
 		for (Iterator<CFGRegion> iterator = cfgRegions.iterator(); iterator.hasNext();) {
@@ -48,24 +50,20 @@ public class Region {
 			}
 		}
 		
-		for (Iterator<CFGCity> iteratorRegionCity = cfgRegion.getCities().getCity().iterator(); iteratorRegionCity.hasNext();) {
-			
-			String cityString =  iteratorRegionCity.next().getName();
-			for (Iterator<City> iteratorAllCities = allCities.iterator(); iteratorAllCities.hasNext();) {
-				City cityToAdd = iteratorAllCities.next(); 
-				if (cityToAdd.getName() == cityString) {
-					this.regionCities.add(cityToAdd);
-					cityToAdd.setRegion(this);
-					break;
-				}
-			}
-		}
-		
 		ArrayList<BonusItem> bonuses = new ArrayList<BonusItem>();
 		bonuses = parser.getBonusesFromParser(cfgRegion.getBonuses().getBonus());
 		
 		this.regionBonus = new RegionCard(bonuses, this);
-		this.permissionDeck = new PermissionDeck(parser, this);
+	}
+	
+	public void initRegion(Map map){
+		
+		List<City> cities = new ArrayList<City>(map.getAllCitiesHashMap().values());
+		this.regionCities = cities.stream()
+				.filter(e -> e.getRegion().getName().equals(this.getName()))
+				.collect(Collectors.toCollection(HashSet::new));
+		
+		this.permissionDeck = new PermissionDeck(this.parser, this);
 	}
 	
 	/**

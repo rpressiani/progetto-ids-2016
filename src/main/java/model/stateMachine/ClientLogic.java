@@ -3,14 +3,14 @@ package model.stateMachine;
 import java.util.ArrayList;
 
 import model.GameState;
-import model.actions.BuyAction;
-import model.actions.BuyPermissionCard;
 import model.actions.GeneralAction;
-import model.actions.HireAssistant;
 import model.actions.MainAction;
 import model.actions.NullAction;
 import model.actions.QuickAction;
-import model.actions.SellAction;
+import model.actions.main.BuyPermissionCard;
+import model.actions.market.BuyAction;
+import model.actions.market.SellAction;
+import model.actions.quick.HireAssistant;
 import model.player.Player;
 import model.stateMachine.state.State1;
 import parser.Parser;

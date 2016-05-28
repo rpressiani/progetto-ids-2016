@@ -1,19 +1,20 @@
-package dto.actions;
+package dto.actions.quick;
 
-import dto.DTOObject;
+import dto.actions.DTOAction;
 import dto.map.DTORegion;
 import dto.utilities.DTOColor;
 
-public class DTOElectCounsellor implements DTOObject {
-	
+public class DTOElectCounsellorWithAssistant implements DTOAction {
+
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 8997763321000061932L;
+	private static final long serialVersionUID = -1369578544438130132L;
+	
 	private final DTORegion region;
 	private final DTOColor color;
 	
-	public DTOElectCounsellor(DTORegion region, DTOColor color) {
+	public DTOElectCounsellorWithAssistant(DTORegion region, DTOColor color) {
 		this.region = region;
 		this.color = color;
 	}
