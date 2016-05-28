@@ -1,9 +1,9 @@
 package dto.actions.quick;
 
-import dto.DTOObject;
+import dto.actions.DTOAction;
 import dto.map.DTORegion;
 
-public class DTOChangePermissionCards implements DTOObject {
+public class DTOChangePermissionCards implements DTOAction {
 
 	/**
 	 * 

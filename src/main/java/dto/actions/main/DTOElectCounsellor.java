@@ -1,10 +1,10 @@
 package dto.actions.main;
 
-import dto.DTOObject;
+import dto.actions.DTOAction;
 import dto.map.DTORegion;
 import dto.utilities.DTOColor;
 
-public class DTOElectCounsellor implements DTOObject {
+public class DTOElectCounsellor implements DTOAction {
 	
 	/**
 	 * 

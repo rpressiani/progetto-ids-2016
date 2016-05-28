@@ -17,25 +17,25 @@ public class Ancestry {
 	
 	public Ancestry(Color color, Parser parser, Map map) throws IllegalArgumentException {
 		HashSet<String> checkAncestryColor = new HashSet<String>();
+		
 		for (int i = 0; i < parser.getCFGRoot().getMap().getAncestries().getAncestry().size(); i++) {
 			checkAncestryColor.add(parser.getCFGRoot().getMap().getAncestries().getAncestry().get(i).getColor());
 		}
-		if (!checkAncestryColor.contains(color.getStringID())) throw new IllegalArgumentException("This ancestry color is not defined in the configuration file");
-		this.color = color;
 		
-		for (City city : map.allVertexes()) {
-			if (city.getAncestry() == this.color.getStringID()) this.getColorCities().add(city);
-		}
+		if (!checkAncestryColor.contains(color.getStringID()))
+			throw new IllegalArgumentException("This ancestry color is not defined in the configuration file");
+		
+		this.color = color;
 		
 		int ancestryIndex = -1;
 		for (int i = 0; i < parser.getCFGRoot().getMap().getAncestries().getAncestry().size(); i++) {
-			if (this.color.getStringID() == parser.getCFGRoot().getMap().getAncestries().getAncestry().get(ancestryIndex).getColor()) {
+			if (this.color.getStringID().equals(parser.getCFGRoot().getMap().getAncestries().getAncestry().get(i).getColor())) {
 				ancestryIndex = i;
 				break;
 			}
 		}
-		ArrayList<BonusItem> bonuses = new ArrayList<BonusItem>();
-		bonuses = parser.getBonusesFromParser(parser.getCFGRoot().getMap().getAncestries().getAncestry().get(ancestryIndex).getBonuses().getBonus());
+		ArrayList<BonusItem> bonuses = parser.getBonusesFromParser(
+				parser.getCFGRoot().getMap().getAncestries().getAncestry().get(ancestryIndex).getBonuses().getBonus());
 		this.colorBonus = new ColorCard(bonuses, this.color);
 	}
 	
@@ -56,6 +56,14 @@ public class Ancestry {
 	 */
 	public ColorCard getColorBonus() {
 		return colorBonus;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Ancestry [color=" + color + ", colorBonus=" + colorBonus + "]";
 	}
 	
 }

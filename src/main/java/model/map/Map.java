@@ -6,18 +6,21 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
+import java.util.Map.Entry;
 
 import org.jgrapht.graph.DefaultEdge;
 import org.jgrapht.UndirectedGraph;
 import org.jgrapht.alg.DijkstraShortestPath;
 import org.jgrapht.graph.SimpleGraph;
 
+import jaxb.CFGAncestry;
 import jaxb.CFGBonusTile;
 import jaxb.CFGCity;
 import jaxb.CFGRegion;
 import model.bonusItem.BonusItem;
 import model.council.GarbageState;
 import parser.Parser;
+import utilities.Color;
 
 /**
  * @author Alessandro Pezzotta
@@ -29,6 +32,7 @@ public class Map {
 	private HashMap<String, CFGCity> allCitiesFromParser;
 	private HashMap<String, City> allCitiesHashMap;
 	private HashMap<String, Region> regions;
+	private HashMap<String, Ancestry> ancestries;
 	
 	/**
 	 * constructor for Map
@@ -44,6 +48,9 @@ public class Map {
 		this.allCitiesFromParser = new HashMap<String, CFGCity>();
 		this.allCitiesHashMap = new HashMap<String, City>();
 		this.regions = new HashMap<String, Region>();
+		this.ancestries = new HashMap<String, Ancestry>();
+		
+//		BONUS TILES GENERATION
 		
 		ArrayList<ArrayList<BonusItem>> bonusesList = new ArrayList<ArrayList<BonusItem>>();
 		
@@ -52,16 +59,36 @@ public class Map {
 			bonusesList.add(tile);
 		}
 		
-//		System.out.println(bonusesList);
-//		ArrayList<BonusItem> bonusesArray = parser.getBonusesFromParser(parser.getCFGRoot().getMap().getBonusCityTiles().getBonusTile().get)
+//		REGIONS HASHMAP GENERATION
 		
 		List<CFGRegion> cfgRegions = parser.getCFGRoot().getMap().getRegion();
 		
-		for (Iterator<CFGRegion> iterator = cfgRegions.iterator(); iterator.hasNext();) {
-			List<CFGCity> citiesToAdd = iterator.next().getCities().getCity();
+		for (CFGRegion cfgRegion : cfgRegions) {
+			this.regions.put(cfgRegion.getName(), new Region(cfgRegion.getName(), garbage, parser, this));
+		}
+		
+//		ANCESTRIES HASHMAP GENERATION
+		
+		List<CFGAncestry> cfgAncestries  = parser.getCFGRoot().getMap().getAncestries().getAncestry();
+		
+		for (CFGAncestry cfgAncestry : cfgAncestries) {
+			this.ancestries.put(cfgAncestry.getColor(), new Ancestry(new Color(cfgAncestry.getColor()), parser, this));
+		}
+		
+//		CITIES GENERATION
+		
+		for (Iterator<CFGRegion> iterator = cfgRegions.iterator(); iterator.hasNext();) {	//
+			CFGRegion cfgRegion = iterator.next();
+			List<CFGCity> citiesToAdd = cfgRegion.getCities().getCity();
 			for (CFGCity cfgCity : citiesToAdd) {
 				this.allCitiesFromParser.put(cfgCity.getName(), cfgCity);
+				
+				ArrayList<BonusItem> tmpBonuses;
+				Ancestry tmpAncestry = this.ancestries.get(cfgCity.getAncestry());
+				Region tmpRegion = this.regions.get(cfgRegion.getName());
 				City cityToAdd;
+				
+//				BONUS TILE ASSOCIATION
 				if (!cfgCity.getName().equals(parser.getCFGRoot().getMap().getKingInitLocation())) {
 					Collections.shuffle(bonusesList);
 //					System.out.println("ciao "+ bonusesList.size() + "\t"+ parser.getCFGRoot().getMap().getKingInitLocation()+"\t"+cfgCity.getName() + bonusesList);
@@ -69,17 +96,24 @@ public class Map {
 					if (bonusesList.get(0) == null)
 						throw new NullPointerException();
 					
-					ArrayList<BonusItem> bonuses = bonusesList.get(0);
+					tmpBonuses = bonusesList.get(0);
 					bonusesList.remove(0);
-					cityToAdd = new City(cfgCity.getName(), cfgCity.getNameLong(), bonuses, cfgCity.getAncestry());
+					
+//					CITY CREATION 
+					
+					cityToAdd = new City(cfgCity.getName(), cfgCity.getNameLong(), tmpBonuses, tmpRegion, tmpAncestry);
+					
 				} else {
-					cityToAdd = new City(cfgCity.getName(), cfgCity.getNameLong(), new ArrayList<BonusItem>(), cfgCity.getAncestry());
+					tmpBonuses = new ArrayList<BonusItem>();
+					cityToAdd = new City(cfgCity.getName(), cfgCity.getNameLong(), tmpBonuses, tmpRegion, tmpAncestry);
 				}
 				
 				this.allCitiesHashMap.put(cityToAdd.getName(), cityToAdd);
 				this.map.addVertex(cityToAdd);
 			}	
 		}
+		
+//		LINKS GENERATION
 		
 		for (City city : this.allVertexes()) {
 			for (Iterator<String> iterator = allCitiesFromParser.get(city.getName()).getLinks().getCityName().iterator();
@@ -89,10 +123,14 @@ public class Map {
 			}
 		}
 		
-		for (CFGRegion cfgRegion : cfgRegions) {
-			this.regions.put(cfgRegion.getName(), new Region(cfgRegion.getName(), garbage, parser, this));
+//		REGION INIT
+		for (Entry<String, Region> entry : this.regions.entrySet()) {
+			entry.getValue().initRegion(this);
 		}
+		
 	}
+	
+	
 	/**
 	 * @return the allCitiesHashMap
 	 */
@@ -177,6 +215,14 @@ public class Map {
 	 */
 	public HashMap<String, Region> getRegions() {
 		return regions;
+	}
+
+
+	/**
+	 * @return the ancestries
+	 */
+	public HashMap<String, Ancestry> getAncestries() {
+		return ancestries;
 	}
 	
 	

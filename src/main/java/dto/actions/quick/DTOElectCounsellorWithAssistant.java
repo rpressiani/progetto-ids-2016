@@ -1,10 +1,10 @@
 package dto.actions.quick;
 
-import dto.DTOObject;
+import dto.actions.DTOAction;
 import dto.map.DTORegion;
 import dto.utilities.DTOColor;
 
-public class DTOElectCounsellorWithAssistant implements DTOObject {
+public class DTOElectCounsellorWithAssistant implements DTOAction {
 
 	/**
 	 * 
