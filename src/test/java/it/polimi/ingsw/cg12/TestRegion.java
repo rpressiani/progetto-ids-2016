@@ -21,13 +21,13 @@ public class TestRegion {
 		}
 		assertTrue(thrown); 
 	}
-	/*@Test
+	@Test
 	public void testGetStringWorks() {
 		Parser parser = new Parser(); 
 		GarbageState garbage = new GarbageState(parser);
 		Map map = new Map(parser, garbage);
 		Region region = new Region("Lombardia", garbage, parser, map);
 		assertEquals(region.getName(), "Lombardia");  
-	}*/
+	}
 
 }
