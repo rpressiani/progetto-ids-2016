@@ -53,20 +53,19 @@ public class PoliticalHand extends PoliticalDeck {
 	 * @param garbageDeck				the garbage deck that collects the discarded cards
 	 * @param index						the index of the card color the player want to discard
 	 * 
-	 * @throws IllegalAccessException	throws an exception if the player tries to discard a card he doesn't have
+	 * @throws IllegalArgumentException	throws an exception if the player tries to discard a card he doesn't have
 	 * @throws IllegalArgumentException if we try to discard a card with negative index
 	 * @throws NullPointerException if garbageDeck is null
 	 */
-	public void discardCard(PoliticalGarbage garbageDeck, int index) throws IllegalAccessException {
+	public void discardCard(PoliticalGarbage garbageDeck, int index) {
 		if(index<0) {
 			throw new IllegalArgumentException("index must be greater than zero"); 
 		}
 		if(garbageDeck==null) {
 			throw new NullPointerException("garbageDeck cannot be null"); 
 		}
-		if (this.getDeck().get(index).getNumCards() == 0) throw new IllegalAccessException("Cannot discard a card if you don't have it");
-		if(garbageDeck.getDeck()==null) {
-			throw new IllegalArgumentException("garbage deck should not be null"); 
+		if (this.getDeck().get(index).getNumCards() == 0) {
+			throw new IllegalArgumentException("Cannot discard a card if you don't have it");
 		}
 		this.getDeck().get(index).removeCards(1);
 		garbageDeck.getDeck().get(index).addCards(1);
