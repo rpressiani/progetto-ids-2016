@@ -16,7 +16,16 @@ public class Ancestry {
 	private Set<City> colorCities;
 	private ColorCard colorBonus;
 	
-	public Ancestry(Color color, Parser parser, Map map) throws IllegalArgumentException {
+	public Ancestry(Color color, Parser parser, Map map) {
+		if(color==null) {
+			throw new NullPointerException("color cannot be null"); 
+		}
+		if(parser==null) {
+			throw new NullPointerException("parser cannot be null"); 
+		}
+		if(map==null) {
+			throw new NullPointerException("map cannot be null"); 
+		}
 		HashSet<String> checkAncestryColor = new HashSet<String>();
 		
 		for (int i = 0; i < parser.getCFGRoot().getMap().getAncestries().getAncestry().size(); i++) {

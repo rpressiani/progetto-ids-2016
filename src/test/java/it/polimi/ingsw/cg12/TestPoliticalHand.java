@@ -43,5 +43,31 @@ public class TestPoliticalHand {
 		}
 		assertTrue(thrown); 
 	}
+	@Test
+	public void testEmptyHandInDiscardCardThrowsException() {
+		boolean thrown = false; 
+		Parser parser = new Parser(); 
+		PoliticalGarbage garbage = new PoliticalGarbage(parser); 
+		PoliticalRealDeck deck = new PoliticalRealDeck(parser, garbage);
+		PoliticalHand hand = new PoliticalHand(deck); 
+		for(int i=0; i<hand.getDeck().size(); i++) {
+			hand.getDeck().get(i).setNumCards(0);
+		}
+		try {
+			hand.discardCard(garbage, 1);
+		} catch(IllegalArgumentException e) {
+			thrown = true; 
+		}
+		assertTrue(thrown); 
+	}
+	@Test
+	public void testIfDrawCardWorksAsExpected() {
+		Parser parser = new Parser(); 
+		PoliticalGarbage garbage = new PoliticalGarbage(parser); 
+		PoliticalRealDeck deck = new PoliticalRealDeck(parser, garbage); 
+		PoliticalHand hand = new PoliticalHand(deck); 
+		hand.drawCard(deck);
+		assertTrue(!hand.getDeck().isEmpty()); 
+	}
 
 }

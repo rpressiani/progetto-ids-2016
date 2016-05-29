@@ -20,7 +20,5 @@ public class PoliticalContainer extends PoliticalDeck {
 			i++;
 		}
 	}
-	
-	
 
 }

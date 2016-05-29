@@ -11,7 +11,18 @@ public class ElectCounsellor extends MainAction {
 	private Region region;
 	private Color color;
 	
+	/**
+	 * @param region
+	 * @param color
+	 * @throws NullPointerException if region or color are null
+	 */
 	public ElectCounsellor(Region region, Color color) {
+		if(region==null) {
+			throw new NullPointerException("region cannot be null"); 
+		}
+		if(color==null) {
+			throw new NullPointerException("color cannot be null"); 
+		}
 		this.region=region;
 		this.color=color;
 	}

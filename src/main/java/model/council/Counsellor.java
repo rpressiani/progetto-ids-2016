@@ -13,6 +13,10 @@ public class Counsellor {
 	
 	private Color color;
 	
+	/**
+	 * @param color
+	 * @throws NullPointerException if color is null
+	 */
 	public Counsellor(Color color) {
 		if(color==null) {
 			throw new NullPointerException("color cannot be null"); 
