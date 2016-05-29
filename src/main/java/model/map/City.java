@@ -91,8 +91,12 @@ public class City extends Bonusable{
 	 */
 	@Override
 	public String toString() {
-		return "City [name=" + name + ",\tnameLong=" + nameLong + ",\t\tregion=" + region + ",\tancestry=" + ancestry
+		return "City [name=" + name + ",nameLong=" + nameLong + ",region=" + region + ",\tancestry=" + ancestry
 				+ ", toString()=" + super.toString() + "]";
+	}
+	
+	public String toStringSimple() {
+		return this.name+" ";
 	}
 
 

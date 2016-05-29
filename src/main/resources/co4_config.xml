@@ -181,7 +181,7 @@
                 <city>
                     <name>M</name>
                     <nameLong>Merkatim</nameLong>
-                    <ancestry>gold</ancestry>
+                    <ancestry>iron</ancestry>
                     <links>
                         <cityName>O</cityName>
                         <cityName>H</cityName>
@@ -199,6 +199,7 @@
                 <city>
                     <name>O</name>
                     <nameLong>Osium</nameLong>
+                    <ancestry>gold</ancestry>
                     <links>
                         <cityName>L</cityName>
                         <cityName>M</cityName>
