@@ -4,14 +4,30 @@ public class Color {
 	private int r, g, b;
 	private String stringID;
 	
+	/**
+	 * @param r
+	 * @param g
+	 * @param b
+	 * @throws IllegalArgumentException if r, g, or b are <0
+	 */
 	public Color(int r, int g, int b) {
+		if(r<0 || g<0 || b<0) {
+			throw new IllegalArgumentException("r, g and b must all be >=0"); 
+		}
 		this.r = r; 
 		this.g= g; 
 		this.b = b;
 		this.stringID = new String("RGB definition");
 	}
 	
-	public Color(String stringID){
+	/**
+	 * @param stringID
+	 * @throws NullPointerException if stringID is null
+	 */
+	public Color(String stringID) {
+		if(stringID==null) {
+			throw new NullPointerException("stringID cannot be null"); 
+		}
 		this.stringID = stringID;
 		this.r = -1;
 		this.g = -1;
