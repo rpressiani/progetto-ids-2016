@@ -19,6 +19,7 @@ import jaxb.CFGCity;
 import jaxb.CFGRegion;
 import model.bonusItem.BonusItem;
 import model.council.GarbageState;
+import model.sharedObjects.King;
 import parser.Parser;
 import utilities.Color;
 
@@ -33,6 +34,8 @@ public class Map {
 	private HashMap<String, City> allCitiesHashMap;
 	private HashMap<String, Region> regions;
 	private HashMap<String, Ancestry> ancestries;
+	
+	private King king;
 	
 	/**
 	 * constructor for Map
@@ -123,10 +126,20 @@ public class Map {
 			}
 		}
 		
+		List<City> cities = new ArrayList<City>(this.getAllCitiesHashMap().values());
+		
 //		REGION INIT
 		for (Entry<String, Region> entry : this.regions.entrySet()) {
-			entry.getValue().initRegion(this);
+			entry.getValue().initRegion(cities);
 		}
+		
+//		ANCESTRY INIT
+		for (Entry<String, Ancestry> entry : this.ancestries.entrySet()){
+			entry.getValue().initAncestry(cities, parser.getCFGRoot().getMap().getKingInitLocation());
+		}
+		
+//		KING GENERATION
+		this.king = new King(parser, this);
 		
 	}
 	
@@ -223,6 +236,14 @@ public class Map {
 	 */
 	public HashMap<String, Ancestry> getAncestries() {
 		return ancestries;
+	}
+
+
+	/**
+	 * @return the king
+	 */
+	public King getKing() {
+		return king;
 	}
 	
 	
