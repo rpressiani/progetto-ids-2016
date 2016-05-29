@@ -6,6 +6,7 @@ import model.council.Balcony;
 import model.map.City;
 import model.player.Player;
 import model.politicalDeck.PoliticalCard;
+import model.politicalDeck.PoliticalContainer;
 import model.politicalDeck.PoliticalDeck;
 import model.politicalDeck.PoliticalHand;
 
@@ -14,7 +15,7 @@ public class BuildEmporiumWithKing extends MainAction {
 	private PoliticalDeck proposal;
 	private City cityChosed;
 	
-	public BuildEmporiumWithKing(PoliticalDeck proposal, City cityChosed) {
+	public BuildEmporiumWithKing(PoliticalContainer proposal, City cityChosed) {
 		super();
 		this.proposal = proposal;
 		this.cityChosed = cityChosed;
@@ -47,6 +48,10 @@ public class BuildEmporiumWithKing extends MainAction {
 					player.getCoins().sub(sumToPay);
 					gameState.getKing().setKingCity(cityChosed);
 					player.getBuiltCities().add(cityChosed);
+					
+					for(City c : cityChosed.linkedCities(gameState.getMap(), player)){
+						c.assignBonuses(player, gameState);
+					}
 			}
 		}
 		

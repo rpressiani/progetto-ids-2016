@@ -13,16 +13,30 @@ public class BuildEmporiumWithCard extends MainAction {
 	
 	public BuildEmporiumWithCard(PermissionCard cardChosed, City cityChosed) {
 		super();
-		this.cardChosed = cardChosed;
-		this.cityChosed = cityChosed;
+		if(cardChosed.getPossibleCities().contains(cityChosed)){
+			this.cardChosed = cardChosed;
+			this.cityChosed = cityChosed;
+		}
+		
+		else throw new IllegalArgumentException("City chosed doesn't appear on the card chosed");
+		//corretto lanciare eccezione sul costruttore?
 	}
 
 	public void doAction(Player player, GameState gameState) {
 		int assistantsToPay=checkOtherEmporium(cityChosed, gameState);
 		
 		if(cityChosed.hasBuiltHere(player)==false && 
-			assistantsToPay<=player.getAssistants().getItems()) player.getBuiltCities().add(cityChosed);
-		if(cardChosed.isUsed()==false) cardChosed.setUsed(true);
+			assistantsToPay<=player.getAssistants().getItems() &&
+			cardChosed.isUsed()==false){
+				
+				player.getBuiltCities().add(cityChosed);
+				player.getAssistants().sub(assistantsToPay);
+				cardChosed.setUsed(true);
+				
+				for(City c : cityChosed.linkedCities(gameState.getMap(), player)){
+					c.assignBonuses(player, gameState);
+				}
+		}
 	}
 	
 	public int checkOtherEmporium(City city, GameState gameState){
