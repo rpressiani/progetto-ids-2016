@@ -14,6 +14,7 @@ import model.actions.quick.HireAssistant;
 import model.player.Player;
 import model.stateMachine.state.State1;
 import parser.Parser;
+import utilities.Color;
 
 public class ClientLogic {
 
@@ -28,10 +29,10 @@ public class ClientLogic {
 		GeneralAction action4= new SellAction();
 		GeneralAction action5= new BuyAction();
 		
-		Player player1=new Player("player1", null);
-		Player player2=new Player("player2", null);
-		Player player3=new Player("player3", null);
-		Player player4=new Player("player4", null);
+		Player player1=new Player("player1", new Color("Rosso"));
+		Player player2=new Player("player2", new Color("Rosso"));
+		Player player3=new Player("player3", new Color("Rosso"));
+		Player player4=new Player("player4", new Color("Rosso"));
 		
 		player1.setState(new State1());
 		player2.setState(new State1());
