@@ -58,7 +58,7 @@ public class TestPoliticalHand {
 		} catch(IllegalArgumentException e) {
 			thrown = true; 
 		}
-		assertTrue(thrown); 
+		assertTrue(thrown);  
 	}
 	@Test
 	public void testIfDrawCardWorksAsExpected() {
