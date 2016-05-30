@@ -2,9 +2,10 @@ package dto.actions.quick;
 
 import controller.VisitorActions;
 import dto.actions.DTOAction;
-import model.actions.GeneralAction;
+import model.actions.quick.AddictionalAction;
+import model.player.Player;
 
-public class DTOAdditionalAction implements DTOAction{
+public class DTOAddictionalAction implements DTOAction{
 
 	/**
 	 * 
@@ -13,7 +14,7 @@ public class DTOAdditionalAction implements DTOAction{
 	
 	private final DTOAction action;
 	
-	public DTOAdditionalAction(DTOAction action) {
+	public DTOAddictionalAction(DTOAction action) {
 		this.action = action;
 	}
 
@@ -25,8 +26,8 @@ public class DTOAdditionalAction implements DTOAction{
 	}
 
 	@Override
-	public void accept(VisitorActions v) {
-		v.visit(this);
+	public AddictionalAction accept(VisitorActions v, Player player) {
+		return v.visit(this);
 	}
 
 }

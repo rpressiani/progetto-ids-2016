@@ -4,7 +4,8 @@ import controller.VisitorActions;
 import dto.actions.DTOAction;
 import dto.map.DTORegion;
 import dto.utilities.DTOColor;
-import model.actions.GeneralAction;
+import model.actions.main.ElectCounsellor;
+import model.player.Player;
 
 public class DTOElectCounsellor implements DTOAction {
 	
@@ -35,8 +36,8 @@ public class DTOElectCounsellor implements DTOAction {
 	}
 
 	@Override
-	public void accept(VisitorActions v) {
-		v.visit(this);
+	public ElectCounsellor accept(VisitorActions v, Player player) {
+		return v.visit(this);
 	}
 
 }
