@@ -54,10 +54,4 @@ public class Controller implements Observer<ClientMessage> {
 		}
 		
 	}
-	
-	public static void main(String[] args){
-		VisitorActions v=new VisitorActions();
-		//action1.accept(v);
-		//action2.accept(v);
-	}
 }
