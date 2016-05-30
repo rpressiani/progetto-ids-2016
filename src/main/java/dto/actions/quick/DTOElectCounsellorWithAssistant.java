@@ -1,8 +1,11 @@
 package dto.actions.quick;
 
+import controller.VisitorActions;
 import dto.actions.DTOAction;
 import dto.map.DTORegion;
 import dto.utilities.DTOColor;
+import model.actions.quick.ElectCounsellorWithAssistant;
+import model.player.Player;
 
 public class DTOElectCounsellorWithAssistant implements DTOAction {
 
@@ -31,6 +34,11 @@ public class DTOElectCounsellorWithAssistant implements DTOAction {
 	 */
 	public DTOColor getColor() {
 		return color;
+	}
+
+	@Override
+	public ElectCounsellorWithAssistant accept(VisitorActions v, Player player) {
+		return v.visit(this);
 	}
 
 }
