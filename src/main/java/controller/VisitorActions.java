@@ -1,5 +1,8 @@
 package controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import dto.actions.main.DTOBuildEmporiumWithCard;
 import dto.actions.main.DTOBuildEmporiumWithKing;
 import dto.actions.main.DTOBuyPermissionCard;
@@ -35,15 +38,22 @@ public class VisitorActions {
 	public BuildEmporiumWithCard visit(DTOBuildEmporiumWithCard DTOAction, Player player){
 		int idCard=DTOAction.getPermissionCard().getIdCard();
 		String cityName=DTOAction.getCity().getName();
+		PermissionCard card=null;
+		List<PermissionCard> list= new ArrayList<PermissionCard>(player.getPermissionHand());
 		
-		PermissionCard card;
+		for(int i=0; i<list.size(); i++){
+			if(idCard==list.get(i).getIdCard()) card=list.get(i);
+		}
 		
-		//return new BuildEmporiumWithCard(cardChosed, cityChosed);
-		
-		return null;
+		return new BuildEmporiumWithCard(card, gameState.getMap().getAllCitiesHashMap().get(cityName));
 	}
 	
 	public ElectCounsellor visit(DTOElectCounsellor DTOAction){
+		String regionString=DTOAction.getRegion().getName();
+		String colorString=DTOAction.getColor().getColorString();
+		
+		//return new ElectCounsellor(region, color);
+		
 		return null;
 	}
 	
