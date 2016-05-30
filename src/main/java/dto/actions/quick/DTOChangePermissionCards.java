@@ -3,7 +3,8 @@ package dto.actions.quick;
 import controller.VisitorActions;
 import dto.actions.DTOAction;
 import dto.map.DTORegion;
-import model.actions.GeneralAction;
+import model.actions.quick.ChangePermissionCards;
+import model.player.Player;
 
 public class DTOChangePermissionCards implements DTOAction {
 
@@ -26,8 +27,8 @@ public class DTOChangePermissionCards implements DTOAction {
 	}
 
 	@Override
-	public void accept(VisitorActions v) {
-		v.visit(this);
+	public ChangePermissionCards accept(VisitorActions v, Player player) {
+		return v.visit(this);
 	}
 
 }

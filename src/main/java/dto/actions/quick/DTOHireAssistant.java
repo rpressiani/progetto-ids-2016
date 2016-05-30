@@ -2,7 +2,8 @@ package dto.actions.quick;
 
 import controller.VisitorActions;
 import dto.actions.DTOAction;
-import model.actions.GeneralAction;
+import model.actions.quick.HireAssistant;
+import model.player.Player;
 
 public class DTOHireAssistant implements DTOAction {
 
@@ -12,8 +13,8 @@ public class DTOHireAssistant implements DTOAction {
 	private static final long serialVersionUID = -857615911131416134L;
 
 	@Override
-	public void accept(VisitorActions v) {
-		v.visit(this);
+	public HireAssistant accept(VisitorActions v, Player player) {
+		return v.visit(this);
 	}
 
 }
