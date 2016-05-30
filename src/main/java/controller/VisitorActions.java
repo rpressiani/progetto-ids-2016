@@ -25,7 +25,11 @@ import model.player.Player;
 
 public class VisitorActions {
 	
-	GameState gameState;
+	private GameState gameState;
+	
+	public VisitorActions(GameState gameState){
+		this.gameState = gameState;
+	}
 	
 	public BuyPermissionCard visit(DTOBuyPermissionCard DTOAction){
 		return null;
@@ -63,8 +67,8 @@ public class VisitorActions {
 	
 	public ChangePermissionCards visit(DTOChangePermissionCards DTOAction){
 		String regionString=DTOAction.getRegion().getName();
-		
 		return new ChangePermissionCards(gameState.getMap().getRegions().get(regionString));
+		
 	}
 	
 	public ElectCounsellorWithAssistant visit(DTOElectCounsellorWithAssistant DTOAction){

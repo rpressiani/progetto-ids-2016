@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
+import dto.actions.quick.DTOChangePermissionCards;
+import dto.map.DTORegion;
 import query.GetCoins;
 import query.GetScores;
 import query.Query;
@@ -29,6 +31,7 @@ public class ClientOutHandler implements Runnable {
 			
 			String inputLine = stdIn.nextLine();
 			ArrayList<String> inputList = new ArrayList<String>(Arrays.asList(inputLine.split(" ")));
+			System.out.println(inputList);
 			
 			try {
 				
@@ -44,7 +47,11 @@ public class ClientOutHandler implements Runnable {
 					break;
 					
 					/*----- ACTIONS -----*/
-					
+				case "changePermissionCards":
+					msg = new ClientMessage(inputList.get(0), new DTOChangePermissionCards(new DTORegion("hillside")));
+					socketOut.writeObject(msg);
+					socketOut.flush();
+					break;
 					
 					
 					/*----- QUERIES -----*/
