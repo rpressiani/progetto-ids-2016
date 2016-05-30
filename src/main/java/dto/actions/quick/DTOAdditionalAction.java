@@ -1,6 +1,8 @@
 package dto.actions.quick;
 
+import controller.VisitorActions;
 import dto.actions.DTOAction;
+import model.actions.GeneralAction;
 
 public class DTOAdditionalAction implements DTOAction{
 
@@ -20,6 +22,11 @@ public class DTOAdditionalAction implements DTOAction{
 	 */
 	public DTOAction getAction() {
 		return action;
+	}
+
+	@Override
+	public void accept(VisitorActions v) {
+		v.visit(this);
 	}
 
 }

@@ -1,8 +1,10 @@
 package dto.actions.main;
 
+import controller.VisitorActions;
 import dto.actions.DTOAction;
 import dto.map.DTOCity;
 import dto.utilities.DTOPermissionCard;
+import model.actions.GeneralAction;
 
 public class DTOBuildEmporiumWithCard implements DTOAction {
 
@@ -32,7 +34,10 @@ public class DTOBuildEmporiumWithCard implements DTOAction {
 	public DTOCity getCity() {
 		return city;
 	}
-	
-	
+
+	@Override
+	public void accept(VisitorActions v) {
+		v.visit(this);
+	}
 
 }

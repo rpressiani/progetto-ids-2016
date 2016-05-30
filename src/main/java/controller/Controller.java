@@ -1,6 +1,9 @@
 package controller;
 
 import client.ClientMessage;
+import dto.actions.DTOAction;
+import dto.actions.main.DTOBuyPermissionCard;
+import dto.actions.quick.DTOHireAssistant;
 import model.GameState;
 import model.actions.GeneralAction;
 import model.actions.MainAction;
@@ -11,6 +14,9 @@ import observer.Observer;
 //import player.Player;
 
 public class Controller implements Observer<ClientMessage> {
+	
+	static DTOAction action1=new DTOBuyPermissionCard();
+	static DTOAction action2=new DTOHireAssistant();
 	
 	private final GameState game; 
 	
@@ -49,5 +55,9 @@ public class Controller implements Observer<ClientMessage> {
 		
 	}
 	
-
+	public static void main(String[] args){
+		VisitorActions v=new VisitorActions();
+		action1.accept(v);
+		action2.accept(v);
+	}
 }
