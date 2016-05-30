@@ -2,6 +2,7 @@ package model.map;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import model.bonusItem.BonusItem;
@@ -46,6 +47,20 @@ public class Ancestry {
 		ArrayList<BonusItem> bonuses = parser.getBonusesFromParser(
 				parser.getCFGRoot().getMap().getAncestries().getAncestry().get(ancestryIndex).getBonuses().getBonus());
 		this.colorBonus = new ColorCard(bonuses, this.color);
+		
+		this.colorCities = new HashSet<City>();
+	}
+	
+	public void initAncestry(List<City> cities, String kingInitLoc){
+		
+		for (City city : cities) {
+			if (city.getName().equals(kingInitLoc)) {
+				continue;
+			}
+			if (city.getAncestry().getColor().getStringID().equals(this.getColor().getStringID())) {
+				this.colorCities.add(city);
+			}
+		}
 	}
 	
 	/**

@@ -56,9 +56,8 @@ public class Region {
 		this.regionBonus = new RegionCard(bonuses, this);
 	}
 	
-	public void initRegion(Map map){
+	public void initRegion(List<City> cities){
 		
-		List<City> cities = new ArrayList<City>(map.getAllCitiesHashMap().values());
 		this.regionCities = cities.stream()
 				.filter(e -> e.getRegion().getName().equals(this.getName()))
 				.collect(Collectors.toCollection(HashSet::new));
