@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 import dto.actions.quick.DTOChangePermissionCards;
+import dto.actions.quick.DTOHireAssistant;
 import dto.map.DTORegion;
 import query.GetCoins;
 import query.GetScores;
@@ -84,6 +85,11 @@ public class ClientOutHandler implements Runnable {
 							System.out.println(cmdNotFound.toString());
 							break;
 						}
+					case "hireAss":
+						msg = new ClientMessage(inputList.get(0), new DTOHireAssistant());
+						socketOut.writeObject(msg);
+						socketOut.flush();
+						break;
 						
 						
 						/*----- QUERIES -----*/
