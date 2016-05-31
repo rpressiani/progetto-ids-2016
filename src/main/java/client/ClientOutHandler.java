@@ -113,6 +113,35 @@ public class ClientOutHandler implements Runnable {
 						break;
 					case "addAction":
 						switch (inputList.get(1)) {
+						case "buildEmpCard":
+							msg = new ClientMessage(new DTOBuildEmporiumWithCard(
+									new DTOPermissionCard(Integer.parseInt(inputList.get(2))),
+									new DTOCity(inputList.get(3))));
+							socketOut.writeObject(msg);
+							socketOut.flush();
+							break;
+						case "buildEmpKing":
+							//msg = new ClientMessage(new DTOBuildEmporiumWithKing());
+							//socketOut.writeObject(msg);
+							socketOut.flush();
+							break;
+						case "buyPermissionCard":
+							msg = new ClientMessage(new DTOBuyPermissionCard());
+							socketOut.writeObject(msg);
+							socketOut.flush();
+							break;
+						case "electCounsellor":
+							msg = new ClientMessage(new DTOElectCounsellor(
+									new DTORegion(inputList.get(2)),
+									new DTOColor(inputList.get(3))));
+							socketOut.writeObject(msg);
+							socketOut.flush();
+							break;
+
+						default:
+							System.out.println(cmdNotFound.toString());
+							break;
+						}
 						
 					case "buildEmpCard":
 						msg = new ClientMessage(new DTOBuildEmporiumWithCard(
@@ -166,9 +195,7 @@ public class ClientOutHandler implements Runnable {
 					}
 				}
 				
-			} 
-			}
-			catch (IOException e) {
+			} catch (IOException e) {
 				// TODO: handle exception
 				e.printStackTrace();
 			}
@@ -176,7 +203,6 @@ public class ClientOutHandler implements Runnable {
 			
 		}
 
-	
+	}
 
-}
 }
