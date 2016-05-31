@@ -37,6 +37,8 @@ public class VisitorActions {
 		this.gameState = gameState;
 	}
 	
+	
+	
 	public BuyPermissionCard visit(DTOBuyPermissionCard DTOAction, Player player){
 		return null;
 	}

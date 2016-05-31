@@ -120,8 +120,8 @@ public class ClientOutHandler implements Runnable {
 								socketOut.flush();
 								break;
 							case "buildEmpKing":
-								msg = new ClientMessage(inputList.get(0), new DTOBuildEmporiumWithKing());
-								socketOut.writeObject(msg);
+								//msg = new ClientMessage(inputList.get(0), new DTOBuildEmporiumWithKing());
+								//socketOut.writeObject(msg);
 								socketOut.flush();
 								break;
 							case "buyPermissionCard":
@@ -150,8 +150,8 @@ public class ClientOutHandler implements Runnable {
 							socketOut.flush();
 							break;
 						case "buildEmpKing":
-							msg = new ClientMessage(inputList.get(0), new DTOBuildEmporiumWithKing());
-							socketOut.writeObject(msg);
+							//msg = new ClientMessage(inputList.get(0), new DTOBuildEmporiumWithKing());
+							//socketOut.writeObject(msg);
 							socketOut.flush();
 							break;
 						case "buyPermissionCard":

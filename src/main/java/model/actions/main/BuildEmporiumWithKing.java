@@ -6,12 +6,11 @@ import model.map.City;
 import model.player.Player;
 import model.politicalDeck.PoliticalCard;
 import model.politicalDeck.PoliticalContainer;
-import model.politicalDeck.PoliticalDeck;
 import model.politicalDeck.PoliticalHand;
 
 public class BuildEmporiumWithKing extends MainAction {
 	
-	private PoliticalDeck proposal;
+	private PoliticalContainer proposal;
 	private City cityChosed;
 	
 	public BuildEmporiumWithKing(PoliticalContainer proposal, City cityChosed) {
@@ -27,7 +26,7 @@ public class BuildEmporiumWithKing extends MainAction {
 		int size=player.getPoliticalHand().getDeck().size();
 		
 		if(checkProposal(proposal, gameState.getKingBalcony())==true){
-			numCards=calculateNumCards(player.getPoliticalHand());
+			numCards=calculateNumCards(proposal);
 			
 			if(numCards==1) sumToPay=10;
 			else if(numCards==2) sumToPay=7;
@@ -45,8 +44,10 @@ public class BuildEmporiumWithKing extends MainAction {
 				assistantsToPay<=player.getAssistants().getItems()){
 					
 					player.getCoins().sub(sumToPay);
+					player.getAssistants().sub(assistantsToPay);
 					gameState.getKing().setKingCity(cityChosed);
 					player.getBuiltCities().add(cityChosed);
+					subProposal(player.getPoliticalHand(), proposal);
 					
 					for(City c : cityChosed.linkedCities(gameState.getMap(), player)){
 						c.assignBonuses(player, gameState);
@@ -58,7 +59,7 @@ public class BuildEmporiumWithKing extends MainAction {
 		if(cityChosed.hasBuiltHere(player)==false) player.getBuiltCities().add(cityChosed);
 	}
 	
-	public boolean checkProposal(PoliticalDeck proposal, Balcony balcony){
+	public boolean checkProposal(PoliticalContainer proposal, Balcony balcony){
 		
 		int sum=calculateNumCards(proposal);
 		
@@ -73,7 +74,7 @@ public class BuildEmporiumWithKing extends MainAction {
 		return true;
 	}
 	
-	public int calculateNumCards(PoliticalDeck proposal){
+	public int calculateNumCards(PoliticalContainer proposal){
 		int sum=0;
 		
 		for(PoliticalCard card : proposal.getDeck()){
@@ -83,7 +84,7 @@ public class BuildEmporiumWithKing extends MainAction {
 		return sum;
 	}
 	
-	public void subProposal(PoliticalHand hand, PoliticalDeck proposal){
+	public void subProposal(PoliticalHand hand, PoliticalContainer proposal){
 		for(int i=0; i<hand.getDeck().size(); i++){
 			hand.getDeck().get(i).removeCards(proposal.getDeck().get(i).getNumCards());
 		}
