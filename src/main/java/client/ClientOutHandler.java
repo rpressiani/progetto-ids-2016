@@ -6,11 +6,18 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
+import dto.actions.main.DTOBuildEmporiumWithCard;
+import dto.actions.main.DTOBuildEmporiumWithKing;
+import dto.actions.main.DTOBuyPermissionCard;
+import dto.actions.main.DTOElectCounsellor;
+import dto.actions.quick.DTOAddictionalAction;
 import dto.actions.quick.DTOChangePermissionCards;
 import dto.actions.quick.DTOElectCounsellorWithAssistant;
 import dto.actions.quick.DTOHireAssistant;
+import dto.map.DTOCity;
 import dto.map.DTORegion;
 import dto.utilities.DTOColor;
+import dto.utilities.DTOPermissionCard;
 import query.GetCoins;
 import query.GetScores;
 import query.Query;
@@ -50,14 +57,14 @@ public class ClientOutHandler implements Runnable {
 					help.append("[CLI] <nickname> <command>\n");
 					help.append("[CLI] COMMAND LIST: \n");
 					help.append("[CLI] *\tMain Actions \n");
-					help.append("[CLI] \t\tbuildEmpCard \n");
+					help.append("[CLI] \t\tbuildEmpCard <idCard> <city>\n");
 					help.append("[CLI] \t\tbuildEmpKing \n");
 					help.append("[CLI] \t\tbuyPermissionCard \n");
-					help.append("[CLI] \t\telectCounsellor \n");
+					help.append("[CLI] \t\telectCounsellor <region> <color>\n");
 					help.append("[CLI] *\tQuick Actions \n");
-					help.append("[CLI] \t\taddAction \n");
+					help.append("[CLI] \t\taddAction <action>\n");
 					help.append("[CLI] \t\tchangePermissionCards <region>\n");
-					help.append("[CLI] \t\telectCounsellorAss \n");
+					help.append("[CLI] \t\telectCounsellorAss <region> <color>\n");
 					help.append("[CLI] \t\thireAss\n");
 					help.append("[CLI] *\tQueries \n");
 					help.append("[CLI] \t\tgetscores \n");
@@ -93,12 +100,43 @@ public class ClientOutHandler implements Runnable {
 						socketOut.flush();
 						break;
 					case "electCounsellorAss":
-						msg = new ClientMessage(inputList.get(0), new DTOElectCounsellorWithAssistant(
-																					new DTORegion(inputList.get(2)),
-																					new DTOColor(inputList.get(3))));
+						msg = new ClientMessage(inputList.get(0),new DTOElectCounsellorWithAssistant(
+								new DTORegion(inputList.get(2)),
+								new DTOColor(inputList.get(3))));
 						socketOut.writeObject(msg);
 						socketOut.flush();
 						break;
+					case "addAction":
+						switch (inputList.get(2)) {
+						case "buildEmpCard":
+							msg = new ClientMessage(inputList.get(0), new DTOBuildEmporiumWithCard(
+									new DTOPermissionCard(Integer.parseInt(inputList.get(2))),
+									new DTOCity(inputList.get(3))));
+							socketOut.writeObject(msg);
+							socketOut.flush();
+							break;
+						case "buildEmpKing":
+							msg = new ClientMessage(inputList.get(0), new DTOBuildEmporiumWithKing());
+							socketOut.writeObject(msg);
+							socketOut.flush();
+							break;
+						case "buyPermissionCard":
+							msg = new ClientMessage(inputList.get(0), new DTOBuyPermissionCard());
+							socketOut.writeObject(msg);
+							socketOut.flush();
+							break;
+						case "electCounsellor":
+							msg = new ClientMessage(inputList.get(0), new DTOElectCounsellor(
+									new DTORegion(inputList.get(2)),
+									new DTOColor(inputList.get(3))));
+							socketOut.writeObject(msg);
+							socketOut.flush();
+							break;
+
+						default:
+							System.out.println(cmdNotFound.toString());
+							break;
+						}
 						
 						
 						/*----- QUERIES -----*/
