@@ -3,6 +3,7 @@ package controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import dto.actions.DTONullAction;
 import dto.actions.main.DTOBuildEmporiumWithCard;
 import dto.actions.main.DTOBuildEmporiumWithKing;
 import dto.actions.main.DTOBuyPermissionCard;
@@ -13,6 +14,7 @@ import dto.actions.quick.DTOChangePermissionCards;
 import dto.actions.quick.DTOElectCounsellorWithAssistant;
 import dto.actions.quick.DTOHireAssistant;
 import model.GameState;
+import model.actions.NullAction;
 import model.actions.main.BuildEmporiumWithCard;
 import model.actions.main.BuildEmporiumWithKing;
 import model.actions.main.BuyPermissionCard;
@@ -91,6 +93,10 @@ public class VisitorActions {
 	
 	public HireAssistant visit(DTOHireAssistant DTOAction){
 		return new HireAssistant();
+	}
+	
+	public NullAction visit(DTONullAction DTOAction){
+		return new NullAction();
 	}
 }
 

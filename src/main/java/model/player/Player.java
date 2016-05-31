@@ -10,7 +10,6 @@ import model.actions.NullAction;
 import model.actions.main.MainAction;
 import model.actions.market.BuyAction;
 import model.actions.market.SellAction;
-import model.actions.quick.ChangePermissionCards;
 import model.actions.quick.QuickAction;
 import model.bonusable.PermissionCard;
 import model.map.City;
