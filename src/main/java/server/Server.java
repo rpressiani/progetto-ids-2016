@@ -3,12 +3,18 @@ package server;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.security.KeyStore.Entry;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import javax.swing.text.View;
+
 import controller.Controller;
 import model.GameState;
+import model.map.Ancestry;
 import model.player.Player;
 import parser.Parser;
 import utilities.Color;
@@ -29,36 +35,73 @@ public class Server {
 		this.players = new ArrayList<Player>();
 		
 		//players created for testing reasons
-		this.players.add(new Player("player1", new Color("RED")));
-		this.players.add(new Player("player2", new Color("GREEN")));
-		this.players.add(new Player("player3", new Color("YELLOW")));
-		this.players.add(new Player("player4", new Color("BLUE")));
-		
-		this.gameState = new GameState(parser, players);
-		
-		players.get(0).initPlayer(this.gameState.getPoliticalDeck(), 0, this.parser);
-		players.get(1).initPlayer(this.gameState.getPoliticalDeck(), 1, this.parser);
-		players.get(2).initPlayer(this.gameState.getPoliticalDeck(), 2, this.parser);
-		players.get(3).initPlayer(this.gameState.getPoliticalDeck(), 3, this.parser);
-		
-		this.controller = new Controller(gameState); 
+//		this.players.add(new Player("player1", new Color("RED")));
+//		this.players.add(new Player("player2", new Color("GREEN")));
+//		this.players.add(new Player("player3", new Color("YELLOW")));
+//		this.players.add(new Player("player4", new Color("BLUE")));
+//		
+//		this.gameState = new GameState(parser, players);
+//		System.out.println(this.gameState.getCounsellorGarbage().toString());
+//		
+//		players.get(0).initPlayer(this.gameState.getPoliticalDeck(), 0, this.parser);
+//		players.get(1).initPlayer(this.gameState.getPoliticalDeck(), 1, this.parser);
+//		players.get(2).initPlayer(this.gameState.getPoliticalDeck(), 2, this.parser);
+//		players.get(3).initPlayer(this.gameState.getPoliticalDeck(), 3, this.parser);
+//		
+//		this.controller = new Controller(gameState); 
 	}
 	
-	private void startSocket() throws IOException {
+	private void startSocket() throws IOException, ClassNotFoundException {
 		ExecutorService executor = Executors.newCachedThreadPool(); 
 		ServerSocket serverSocket = new ServerSocket(PORT); 
 		System.out.println("SERVER SOCKET READY ON PORT: " + PORT);
+		
+		int i = 0;
+		int counter = 2;
+		Map<ServerSocketView, Socket> tmpViewSocket = new HashMap<ServerSocketView, Socket>();
+		Map<Player, Socket> tmpPlayerSocket = new HashMap<Player, Socket>();
+		
 		while(true) {
+			if (i == counter) {
+				
+				for (Map.Entry<ServerSocketView, Socket> entry : tmpViewSocket.entrySet()) {
+					Player player = entry.getKey().getPlayer();
+					this.players.add(player);
+					tmpPlayerSocket.put(player, entry.getValue());
+				}
+				
+				this.gameState = new GameState(this.parser, this.players);
+				this.controller = new Controller(this.gameState); 
+				System.out.println(this.gameState.getCounsellorGarbage().toString());
+				
+				for (Map.Entry<ServerSocketView, Socket> entry : tmpViewSocket.entrySet()) {
+					 
+					entry.getKey().initServerSocketView(this.gameState);
+					this.gameState.registerObserver(entry.getKey());
+					entry.getKey().registerObserver(this.controller);
+					executor.submit(entry.getKey());
+					System.out.println("iterate");
+				}
+				
+				int k = 0;
+				
+				for (Player player : players) {
+					player.initPlayer(this.gameState.getPoliticalDeck(), k, this.parser);
+					k++;
+				}
+				System.out.println("Match running");
+			}
+			
 			Socket socket = serverSocket.accept();
+			ServerSocketView view = new ServerSocketView(socket);
+			tmpViewSocket.put(view, socket);
 			System.out.println("NEW CLIENTSOCKET ACCEPTED");
-			ServerSocketView view = new ServerSocketView(socket, this.gameState); 
-			this.gameState.registerObserver(view);
-			view.registerObserver(this.controller);
-			executor.submit(view);
+			
+			i++;
 		}
 	}
 	
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws IOException, ClassNotFoundException {
 		Server server = new Server();
 		
 		System.out.println("STARTING SOCKET");
