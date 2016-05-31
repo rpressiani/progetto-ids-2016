@@ -7,7 +7,7 @@ import controller.changes.Change;
 
 public class ClientInHandler implements Runnable {
 	
-	private ObjectInputStream socketIn; 
+	private ObjectInputStream socketIn;
 	
 	public ClientInHandler(ObjectInputStream socketIn) {
 		if(socketIn==null) {
