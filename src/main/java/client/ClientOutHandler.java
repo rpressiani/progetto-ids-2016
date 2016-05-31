@@ -46,7 +46,9 @@ public class ClientOutHandler implements Runnable {
 			
 			StringBuilder cmdNotFound = new StringBuilder();
 			cmdNotFound.append("\n[ERROR] Command not found!\n");
-			cmdNotFound.append("[ERROR] Enter 'help' for command list\n");
+			cmdNotFound.append("[ERROR] Insert legal commands following the instruction below:\n");
+			cmdNotFound.append("[ERROR] <nickname> <command>\n");
+			cmdNotFound.append("[ERROR] Enter help for command list\n");
 			
 			try {
 				
@@ -119,8 +121,8 @@ public class ClientOutHandler implements Runnable {
 							socketOut.flush();
 							break;
 						case "buildEmpKing":
-							msg = new ClientMessage(new DTOBuildEmporiumWithKing());
-							socketOut.writeObject(msg);
+							//msg = new ClientMessage(new DTOBuildEmporiumWithKing());
+							//socketOut.writeObject(msg);
 							socketOut.flush();
 							break;
 						case "buyPermissionCard":
@@ -149,8 +151,8 @@ public class ClientOutHandler implements Runnable {
 						socketOut.flush();
 						break;
 					case "buildEmpKing":
-						msg = new ClientMessage(new DTOBuildEmporiumWithKing());
-						socketOut.writeObject(msg);
+						//msg = new ClientMessage(new DTOBuildEmporiumWithKing());
+						//socketOut.writeObject(msg);
 						socketOut.flush();
 						break;
 					case "buyPermissionCard":
