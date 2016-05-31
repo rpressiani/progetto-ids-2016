@@ -1,11 +1,10 @@
 package dto.actions.main;
 
 import controller.VisitorActions;
-import dto.actions.DTOAction;
 import model.actions.main.BuyPermissionCard;
 import model.player.Player;
 
-public class DTOBuyPermissionCard implements DTOAction {
+public class DTOBuyPermissionCard implements DTOMainAction {
 
 	/**
 	 * 
@@ -14,7 +13,7 @@ public class DTOBuyPermissionCard implements DTOAction {
 
 	@Override
 	public BuyPermissionCard accept(VisitorActions v, Player player) {
-		return v.visit(this);
+		return v.visit(this, player);
 	}
 
 }

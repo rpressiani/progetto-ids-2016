@@ -7,6 +7,7 @@ import dto.actions.main.DTOBuildEmporiumWithCard;
 import dto.actions.main.DTOBuildEmporiumWithKing;
 import dto.actions.main.DTOBuyPermissionCard;
 import dto.actions.main.DTOElectCounsellor;
+import dto.actions.main.DTOMainAction;
 import dto.actions.quick.DTOAddictionalAction;
 import dto.actions.quick.DTOChangePermissionCards;
 import dto.actions.quick.DTOElectCounsellorWithAssistant;
@@ -16,6 +17,7 @@ import model.actions.main.BuildEmporiumWithCard;
 import model.actions.main.BuildEmporiumWithKing;
 import model.actions.main.BuyPermissionCard;
 import model.actions.main.ElectCounsellor;
+import model.actions.main.MainAction;
 import model.actions.quick.AddictionalAction;
 import model.actions.quick.ChangePermissionCards;
 import model.actions.quick.ElectCounsellorWithAssistant;
@@ -31,11 +33,11 @@ public class VisitorActions {
 		this.gameState = gameState;
 	}
 	
-	public BuyPermissionCard visit(DTOBuyPermissionCard DTOAction){
+	public BuyPermissionCard visit(DTOBuyPermissionCard DTOAction, Player player){
 		return null;
 	}
 	
-	public BuildEmporiumWithKing visit(DTOBuildEmporiumWithKing DTOAction){
+	public BuildEmporiumWithKing visit(DTOBuildEmporiumWithKing DTOAction, Player player){
 		return null;
 	}
 	
@@ -61,8 +63,16 @@ public class VisitorActions {
 		return null;
 	}
 	
-	public AddictionalAction visit(DTOAddictionalAction DTOAction){
-		return null;
+	public AddictionalAction visit(DTOAddictionalAction DTOAction, Player player){
+		DTOMainAction action=DTOAction.getAction();
+		MainAction realAction=null;
+		
+		if(action instanceof DTOBuildEmporiumWithCard) realAction=visit((DTOBuildEmporiumWithCard) action, player);
+		if(action instanceof DTOBuildEmporiumWithKing) realAction=visit((DTOBuildEmporiumWithKing) action, player);
+		if(action instanceof DTOBuyPermissionCard) realAction=visit((DTOBuyPermissionCard) action, player);
+		if(action instanceof DTOElectCounsellor) realAction=visit((DTOElectCounsellor) action);
+		
+		return new AddictionalAction(realAction);
 	}
 	
 	public ChangePermissionCards visit(DTOChangePermissionCards DTOAction){

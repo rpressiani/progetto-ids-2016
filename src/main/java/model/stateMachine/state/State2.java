@@ -2,7 +2,7 @@ package model.stateMachine.state;
 
 import model.GameState;
 import model.actions.NullAction;
-import model.actions.QuickAction;
+import model.actions.quick.QuickAction;
 import model.player.Player;
 
 public class State2 implements State {

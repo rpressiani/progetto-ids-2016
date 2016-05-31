@@ -1,11 +1,10 @@
 package dto.actions.main;
 
 import controller.VisitorActions;
-import dto.actions.DTOAction;
 import model.actions.main.BuildEmporiumWithKing;
 import model.player.Player;
 
-public class DTOBuildEmporiumWithKing implements DTOAction {
+public class DTOBuildEmporiumWithKing implements DTOMainAction {
 
 	/**
 	 * 
@@ -14,7 +13,7 @@ public class DTOBuildEmporiumWithKing implements DTOAction {
 
 	@Override
 	public BuildEmporiumWithKing accept(VisitorActions v, Player player) {
-		return v.visit(this);
+		return v.visit(this, player);
 	}
 	
 	//private final DTOPoliticalDeck proposal;
