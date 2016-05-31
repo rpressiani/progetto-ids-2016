@@ -1,8 +1,8 @@
 package model.stateMachine.state;
 
 import model.GameState;
-import model.actions.MainAction;
-import model.actions.QuickAction;
+import model.actions.main.MainAction;
+import model.actions.quick.QuickAction;
 import model.player.Player;
 
 public class State1 implements State {
@@ -27,7 +27,7 @@ public class State1 implements State {
 			throw new NullPointerException("player, action and gameState should all be !=null"); 
 		}
 		if(action.acceptMove(player, gameState)==true){
-			//action.doAction(player, gameState);
+			action.doAction(player, gameState);
 			System.out.println(player.getNickname()+" did a QuickAction");
 			player.setState(new State3());
 			player.getState().checkTurn(player, gameState);

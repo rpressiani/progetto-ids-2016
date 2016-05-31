@@ -4,13 +4,13 @@ import java.util.ArrayList;
 
 import model.GameState;
 import model.actions.GeneralAction;
-import model.actions.MainAction;
 import model.actions.NullAction;
-import model.actions.QuickAction;
 import model.actions.main.BuyPermissionCard;
+import model.actions.main.MainAction;
 import model.actions.market.BuyAction;
 import model.actions.market.SellAction;
 import model.actions.quick.HireAssistant;
+import model.actions.quick.QuickAction;
 import model.player.Player;
 import model.stateMachine.state.State1;
 import parser.Parser;

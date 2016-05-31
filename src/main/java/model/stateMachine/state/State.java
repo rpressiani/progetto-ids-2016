@@ -1,11 +1,11 @@
 package model.stateMachine.state;
 
 import model.GameState;
-import model.actions.MainAction;
 import model.actions.NullAction;
-import model.actions.QuickAction;
+import model.actions.main.MainAction;
 import model.actions.market.BuyAction;
 import model.actions.market.SellAction;
+import model.actions.quick.QuickAction;
 import model.player.Player;
 
 public interface State {

@@ -7,7 +7,7 @@ import dto.DTOObject;
 import dto.map.DTORegion;
 import dto.utilities.DTOColor;
 
-public class CLient {
+public class Client {
 
 	public static void main(String[] args) {
 		

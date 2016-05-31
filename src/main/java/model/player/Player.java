@@ -6,16 +6,18 @@ import java.util.Set;
 import utilities.Color;
 import model.GameState;
 import model.actions.GeneralAction;
-import model.actions.MainAction;
 import model.actions.NullAction;
-import model.actions.QuickAction;
+import model.actions.main.MainAction;
 import model.actions.market.BuyAction;
 import model.actions.market.SellAction;
+import model.actions.quick.ChangePermissionCards;
+import model.actions.quick.QuickAction;
 import model.bonusable.PermissionCard;
 import model.map.City;
 import model.politicalDeck.PoliticalHand;
 import model.politicalDeck.PoliticalRealDeck;
 import model.stateMachine.state.State;
+import model.stateMachine.state.State1;
 import parser.Parser;
 
 /**
@@ -76,6 +78,7 @@ public class Player {
 //		this.politicalHand = new PoliticalHand(deck);
 		this.coins = new Coins(parser.getCFGRoot().getPlayers().getPlayer().get(this.id).getCoins().intValue());
 		this.assistants = new Assistants(parser.getCFGRoot().getPlayers().getPlayer().get(this.id).getAssistants().intValue());
+		this.state = new State1();
 	}
 	
 	public void move(GeneralAction action, GameState gameState){

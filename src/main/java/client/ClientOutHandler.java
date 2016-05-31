@@ -6,6 +6,18 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
+import dto.actions.main.DTOBuildEmporiumWithCard;
+import dto.actions.main.DTOBuildEmporiumWithKing;
+import dto.actions.main.DTOBuyPermissionCard;
+import dto.actions.main.DTOElectCounsellor;
+import dto.actions.quick.DTOAddictionalAction;
+import dto.actions.quick.DTOChangePermissionCards;
+import dto.actions.quick.DTOElectCounsellorWithAssistant;
+import dto.actions.quick.DTOHireAssistant;
+import dto.map.DTOCity;
+import dto.map.DTORegion;
+import dto.utilities.DTOColor;
+import dto.utilities.DTOPermissionCard;
 import query.GetCoins;
 import query.GetScores;
 import query.Query;
@@ -30,44 +42,121 @@ public class ClientOutHandler implements Runnable {
 			String inputLine = stdIn.nextLine();
 			ArrayList<String> inputList = new ArrayList<String>(Arrays.asList(inputLine.split(" ")));
 			
+			StringBuilder cmdNotFound = new StringBuilder();
+			cmdNotFound.append("\n[ERROR] Command not found!\n");
+			cmdNotFound.append("[ERROR] Insert legal commands following the instruction below:\n");
+			cmdNotFound.append("[ERROR] <nickname> <command>\n");
+			cmdNotFound.append("[ERROR] Enter help for command list\n");
+			
 			try {
 				
 				ClientMessage msg;
-				
-				switch (inputList.get(1)) {
-				
-					/*----- GENERAL-----*/
-				case "ping":
-					msg = new ClientMessage(inputList.get(0), "ping");
-					socketOut.writeObject(msg);
-					socketOut.flush();
-					break;
+				if (inputList.get(0).equals("help")) {
+					StringBuilder help = new StringBuilder();
+					help.append("\n[CLI] Insert legal commands following the instruction below:\n");
+					help.append("[CLI] <nickname> <command>\n");
+					help.append("[CLI] COMMAND LIST: \n");
+					help.append("[CLI] *\tMain Actions \n");
+					help.append("[CLI] \t\tbuildEmpCard <idCard> <city>\n");
+					help.append("[CLI] \t\tbuildEmpKing \n");
+					help.append("[CLI] \t\tbuyPermissionCard \n");
+					help.append("[CLI] \t\telectCounsellor <region> <color>\n");
+					help.append("[CLI] *\tQuick Actions \n");
+					help.append("[CLI] \t\taddAction <action>\n");
+					help.append("[CLI] \t\tchangePermissionCards <region>\n");
+					help.append("[CLI] \t\telectCounsellorAss <region> <color>\n");
+					help.append("[CLI] \t\thireAss\n");
+					help.append("[CLI] *\tQueries \n");
+					help.append("[CLI] \t\tgetscores \n");
+					help.append("[CLI] \t\tgetcoins \n");
+					help.append("[CLI] *\tOther Commands \n");
+					help.append("[CLI] \t\tping\n");
+					System.out.println(help.toString());
+				} else {
 					
-					/*----- ACTIONS -----*/
-					
-					
-					
-					/*----- QUERIES -----*/
-				case "getscores":
-					Query<String> queryScores = new GetScores();
-					msg = new ClientMessage(inputList.get(0), queryScores);
-					socketOut.writeObject(msg);
-					socketOut.flush();
-					break;
-				case "getcoins":
-					Query<String> queryCoins = new GetCoins();
-					msg = new ClientMessage(inputList.get(0), queryCoins);
-					socketOut.writeObject(msg);
-					socketOut.flush();
-					break;
-					
-				default:
-					StringBuilder cmdNotFound = new StringBuilder();
-					cmdNotFound.append("\n[ERROR] Command not found!\n");
-					cmdNotFound.append("[ERROR] Insert legal commands following the instruction below:\n");
-					cmdNotFound.append("[ERROR] <nickname> <command>\n");
-					System.out.println(cmdNotFound.toString());
-					break;
+					switch (inputList.get(1)) {
+						
+						/*----- GENERAL-----*/
+					case "ping":
+						msg = new ClientMessage(inputList.get(0), "ping");
+						socketOut.writeObject(msg);
+						socketOut.flush();
+						break;
+						
+						/*----- ACTIONS -----*/
+					case "changePermissionCards":
+						if (inputList.size() == 3) {
+							msg = new ClientMessage(inputList.get(0), new DTOChangePermissionCards(new DTORegion(inputList.get(2))));
+							socketOut.writeObject(msg);
+							socketOut.flush();
+							break;
+						} else {
+							System.out.println(cmdNotFound.toString());
+							break;
+						}
+					case "hireAss":
+						msg = new ClientMessage(inputList.get(0), new DTOHireAssistant());
+						socketOut.writeObject(msg);
+						socketOut.flush();
+						break;
+					case "electCounsellorAss":
+						msg = new ClientMessage(inputList.get(0),new DTOElectCounsellorWithAssistant(
+								new DTORegion(inputList.get(2)),
+								new DTOColor(inputList.get(3))));
+						socketOut.writeObject(msg);
+						socketOut.flush();
+						break;
+					case "addAction":
+						switch (inputList.get(2)) {
+						case "buildEmpCard":
+							msg = new ClientMessage(inputList.get(0), new DTOBuildEmporiumWithCard(
+									new DTOPermissionCard(Integer.parseInt(inputList.get(2))),
+									new DTOCity(inputList.get(3))));
+							socketOut.writeObject(msg);
+							socketOut.flush();
+							break;
+						case "buildEmpKing":
+							msg = new ClientMessage(inputList.get(0), new DTOBuildEmporiumWithKing());
+							socketOut.writeObject(msg);
+							socketOut.flush();
+							break;
+						case "buyPermissionCard":
+							msg = new ClientMessage(inputList.get(0), new DTOBuyPermissionCard());
+							socketOut.writeObject(msg);
+							socketOut.flush();
+							break;
+						case "electCounsellor":
+							msg = new ClientMessage(inputList.get(0), new DTOElectCounsellor(
+									new DTORegion(inputList.get(2)),
+									new DTOColor(inputList.get(3))));
+							socketOut.writeObject(msg);
+							socketOut.flush();
+							break;
+
+						default:
+							System.out.println(cmdNotFound.toString());
+							break;
+						}
+						
+						
+						/*----- QUERIES -----*/
+					case "getscores":
+						Query<String> queryScores = new GetScores();
+						msg = new ClientMessage(inputList.get(0), queryScores);
+						socketOut.writeObject(msg);
+						socketOut.flush();
+						break;
+					case "getcoins":
+						Query<String> queryCoins = new GetCoins();
+						msg = new ClientMessage(inputList.get(0), queryCoins);
+						socketOut.writeObject(msg);
+						socketOut.flush();
+						break;
+						
+					default:
+						System.out.println(cmdNotFound.toString());
+						break;
+					}
 				}
 				
 			} catch (IOException e) {

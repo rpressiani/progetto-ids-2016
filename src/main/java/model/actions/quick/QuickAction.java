@@ -1,6 +1,8 @@
-package model.actions;
+package model.actions.quick;
 
 import model.GameState;
+import model.actions.GeneralAction;
+import model.actions.main.MainAction;
 import model.player.Player;
 
 public abstract class QuickAction implements GeneralAction {

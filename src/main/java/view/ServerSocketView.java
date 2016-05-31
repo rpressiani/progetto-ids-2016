@@ -7,6 +7,7 @@ import java.net.Socket;
 
 import client.ClientMessage;
 import controller.changes.Change;
+import dto.actions.DTOAction;
 import model.GameState;
 import model.actions.GeneralAction;
 import model.player.Player;
@@ -53,11 +54,11 @@ public class ServerSocketView extends View implements Runnable {
 						Player player = game.getPlayersHashMap().get(msgIn.getNickname());
 						ClientMessage msgOut;
 						
-						if (msgIn.getMessage() instanceof GeneralAction) {
-							GeneralAction action = (GeneralAction) msgIn.getMessage();
-							System.out.println("SERVER VIEW: received GeneralAction " + action);
+						if (msgIn.getMessage() instanceof DTOAction) {
+							DTOAction action = (DTOAction) msgIn.getMessage();
+							System.out.println("SERVER VIEW: received DTOAction " + action);
 							
-							msgOut = new ClientMessage(player, msgIn.getMessage());
+							msgOut = new ClientMessage(player, action);
 							
 							this.notifyObserver(msgOut);
 						}
