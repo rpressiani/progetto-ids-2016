@@ -1,7 +1,6 @@
 package model.actions.quick;
 
 import model.GameState;
-import model.actions.QuickAction;
 import model.map.Region;
 import model.player.Player;
 import utilities.Color;

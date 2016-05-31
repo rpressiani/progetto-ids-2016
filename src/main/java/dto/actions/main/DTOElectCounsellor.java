@@ -1,13 +1,12 @@
 package dto.actions.main;
 
 import controller.VisitorActions;
-import dto.actions.DTOAction;
 import dto.map.DTORegion;
 import dto.utilities.DTOColor;
 import model.actions.main.ElectCounsellor;
 import model.player.Player;
 
-public class DTOElectCounsellor implements DTOAction {
+public class DTOElectCounsellor implements DTOMainAction {
 	
 	/**
 	 * 

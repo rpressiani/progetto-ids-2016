@@ -1,6 +1,7 @@
-package model.actions;
+package model.actions.main;
 
 import model.GameState;
+import model.actions.GeneralAction;
 import model.player.Player;
 
 public abstract class MainAction implements GeneralAction{

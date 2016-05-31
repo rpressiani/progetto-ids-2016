@@ -1,8 +1,8 @@
 package model.stateMachine.state;
 
 import model.GameState;
-import model.actions.MainAction;
-import model.actions.QuickAction;
+import model.actions.main.MainAction;
+import model.actions.quick.QuickAction;
 import model.player.Player;
 
 public class State1 implements State {
