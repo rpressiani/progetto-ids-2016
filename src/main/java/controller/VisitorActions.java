@@ -25,7 +25,9 @@ import model.actions.quick.ChangePermissionCards;
 import model.actions.quick.ElectCounsellorWithAssistant;
 import model.actions.quick.HireAssistant;
 import model.bonusable.PermissionCard;
+import model.map.Region;
 import model.player.Player;
+import utilities.Color;
 
 public class VisitorActions {
 	
@@ -60,9 +62,10 @@ public class VisitorActions {
 		String regionString=DTOAction.getRegion().getName();
 		String colorString=DTOAction.getColor().getColorString();
 		
-		//return new ElectCounsellor(region, color);
+		Region region = gameState.getMap().getRegions().get(regionString);
+		Color color = new Color(colorString);
 		
-		return null;
+		return new ElectCounsellor(region, color);
 	}
 	
 	public AddictionalAction visit(DTOAddictionalAction DTOAction, Player player){
@@ -87,8 +90,10 @@ public class VisitorActions {
 		String regionString=DTOAction.getRegion().getName();
 		String colorString=DTOAction.getColor().getColorString();
 		
-		//return new ElectCounsellorWithAssistant(region, color);
-		return null;
+		Region region = gameState.getMap().getRegions().get(regionString);
+		Color color = new Color(colorString);
+		
+		return new ElectCounsellorWithAssistant(region, color);
 	}
 	
 	public HireAssistant visit(DTOHireAssistant DTOAction){
