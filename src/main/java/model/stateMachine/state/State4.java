@@ -12,7 +12,7 @@ public class State4 implements State {
 			throw new NullPointerException("player, action and gameState should all be !=null"); 
 		}
 		if(action.acceptMove(player, gameState)==true){
-			//action.doAction(player, gameState);
+			action.doAction(player, gameState);
 			System.out.println(player.getNickname()+" decided what to sell");
 			player.setState(new State5());
 			player.getState().checkTurn(player, gameState);

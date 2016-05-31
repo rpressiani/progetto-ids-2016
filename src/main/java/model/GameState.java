@@ -155,7 +155,7 @@ public class GameState extends Observable<Change>{
 			throw new NullPointerException("currentPlayer should not be null"); 
 		}
 		this.currentPlayer = currentPlayer;
-		this.notifyObserver(new CurrentPlayerChange(currentPlayer));
+//		this.notifyObserver(new CurrentPlayerChange(currentPlayer));
 	}
 	
 	public void nextPlayer(Player player){
