@@ -7,8 +7,10 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 import dto.actions.quick.DTOChangePermissionCards;
+import dto.actions.quick.DTOElectCounsellorWithAssistant;
 import dto.actions.quick.DTOHireAssistant;
 import dto.map.DTORegion;
+import dto.utilities.DTOColor;
 import query.GetCoins;
 import query.GetScores;
 import query.Query;
@@ -87,6 +89,13 @@ public class ClientOutHandler implements Runnable {
 						}
 					case "hireAss":
 						msg = new ClientMessage(inputList.get(0), new DTOHireAssistant());
+						socketOut.writeObject(msg);
+						socketOut.flush();
+						break;
+					case "electCounsellorAss":
+						msg = new ClientMessage(inputList.get(0), new DTOElectCounsellorWithAssistant(
+																					new DTORegion(inputList.get(2)),
+																					new DTOColor(inputList.get(3))));
 						socketOut.writeObject(msg);
 						socketOut.flush();
 						break;
