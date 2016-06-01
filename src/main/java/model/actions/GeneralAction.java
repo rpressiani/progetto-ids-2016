@@ -10,7 +10,7 @@ public interface GeneralAction {
 	 * @param player can't be null
 	 * @param gameState can't be null
 	 */
-	public void doAction(Player player, GameState gameState);
+	public void doAction(Player player, GameState gameState); 
 	
 	/**
 	 * 
