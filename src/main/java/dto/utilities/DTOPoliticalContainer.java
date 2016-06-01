@@ -1,4 +1,4 @@
-package dto.politicalContainer;
+package dto.utilities;
 
 import java.util.ArrayList;
 

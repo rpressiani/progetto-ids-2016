@@ -6,13 +6,13 @@ import model.council.Balcony;
 import model.map.Region;
 import model.player.Player;
 import model.politicalDeck.PoliticalCard;
-import model.politicalDeck.PoliticalDeck;
+import model.politicalDeck.PoliticalContainer;
 import model.politicalDeck.PoliticalHand;
 
 public class BuyPermissionCard implements MainAction {
 	
 	private Region region;
-	private PoliticalDeck proposal;
+	private PoliticalContainer proposal;
 	private int index;
 
 	//temporary for ClientLogic
@@ -20,7 +20,7 @@ public class BuyPermissionCard implements MainAction {
 		
 	}
 	
-	public BuyPermissionCard(Region region, PoliticalDeck proposal, int index) {
+	public BuyPermissionCard(Region region, PoliticalContainer proposal, int index) {
 		this.region=region;
 		this.proposal=proposal;
 		this.index=index;
@@ -48,7 +48,7 @@ public class BuyPermissionCard implements MainAction {
 		player.getPermissionHand().add(drawedCard);
 	}
 	
-	public boolean checkProposal(PoliticalDeck proposal, Balcony balcony){
+	public boolean checkProposal(PoliticalContainer proposal, Balcony balcony){
 		
 		int sum=calculateNumCards(proposal);
 		
@@ -63,7 +63,7 @@ public class BuyPermissionCard implements MainAction {
 		return true;
 	}
 	
-	public int calculateNumCards(PoliticalDeck proposal){
+	public int calculateNumCards(PoliticalContainer proposal){
 		int sum=0;
 		
 		for(PoliticalCard card : proposal.getDeck()){
@@ -73,7 +73,7 @@ public class BuyPermissionCard implements MainAction {
 		return sum;
 	}
 	
-	public void subProposal(PoliticalHand hand, PoliticalDeck proposal){
+	public void subProposal(PoliticalHand hand, PoliticalContainer proposal){
 		for(int i=0; i<hand.getDeck().size(); i++){
 			hand.getDeck().get(i).removeCards(proposal.getDeck().get(i).getNumCards());
 		}

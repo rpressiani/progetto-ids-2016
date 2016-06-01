@@ -25,8 +25,10 @@ import model.actions.quick.ChangePermissionCards;
 import model.actions.quick.ElectCounsellorWithAssistant;
 import model.actions.quick.HireAssistant;
 import model.bonusable.PermissionCard;
+import model.map.City;
 import model.map.Region;
 import model.player.Player;
+import model.politicalDeck.PoliticalContainer;
 import utilities.Color;
 
 public class VisitorActions {
@@ -37,14 +39,20 @@ public class VisitorActions {
 		this.gameState = gameState;
 	}
 	
-	
-	 
 	public BuyPermissionCard visit(DTOBuyPermissionCard DTOAction, Player player){
-		return null;
+		Region region=gameState.getMap().getRegions().get(DTOAction.getRegion().getName());
+		ArrayList<Integer> structure=DTOAction.getProposal().getStructure();
+		PoliticalContainer proposal=new PoliticalContainer(gameState.getParser(), structure);
+		
+		return new BuyPermissionCard(region, proposal, DTOAction.getIndex());
 	}
 	
 	public BuildEmporiumWithKing visit(DTOBuildEmporiumWithKing DTOAction, Player player){
-		return null;
+		ArrayList<Integer> structure=DTOAction.getProposal().getStructure();
+		PoliticalContainer proposal=new PoliticalContainer(gameState.getParser(), structure);
+		City city=gameState.getMap().getAllCitiesHashMap().get(DTOAction.getCity().getName());
+		
+		return new BuildEmporiumWithKing(proposal, city);
 	}
 	
 	public BuildEmporiumWithCard visit(DTOBuildEmporiumWithCard DTOAction, Player player){

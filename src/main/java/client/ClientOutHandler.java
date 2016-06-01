@@ -126,8 +126,8 @@ public class ClientOutHandler implements Runnable {
 							socketOut.flush();
 							break;
 						case "buyPermissionCard":
-							msg = new ClientMessage(new DTOBuyPermissionCard());
-							socketOut.writeObject(msg);
+							//msg = new ClientMessage(new DTOBuyPermissionCard());
+							//socketOut.writeObject(msg);
 							socketOut.flush();
 							break;
 						case "electCounsellor":
@@ -156,8 +156,8 @@ public class ClientOutHandler implements Runnable {
 						socketOut.flush();
 						break;
 					case "buyPermissionCard":
-						msg = new ClientMessage(new DTOBuyPermissionCard());
-						socketOut.writeObject(msg);
+						//msg = new ClientMessage(new DTOBuyPermissionCard());
+						//socketOut.writeObject(msg);
 						socketOut.flush();
 						break;
 					case "electCounsellor":
