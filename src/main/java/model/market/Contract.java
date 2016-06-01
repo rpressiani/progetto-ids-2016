@@ -11,7 +11,7 @@ import model.bonusable.PermissionCard;
 import model.player.Assistants;
 import model.player.Coins;
 import model.player.Player;
-import model.politicalDeck.PoliticalMarketContainer;
+import model.politicalDeck.PoliticalContainer;
 import parser.Parser;
 
 /**
@@ -90,7 +90,7 @@ public class Contract {
 		if(structure==null) {
 			throw new NullPointerException("structure should not be null"); 
 		}
-		PoliticalMarketContainer sellingCards = new PoliticalMarketContainer(this.parser, structure);
+		PoliticalContainer sellingCards = new PoliticalContainer(this.parser, structure);
 		if (sellingCards.verifyAdd(seller) == true) {
 			sellBag.add(sellingCards);
 		}
@@ -137,7 +137,7 @@ public class Contract {
 		if(structure==null) {
 			throw new NullPointerException("structure should not be null");
 		}
-		buyBag.add(new PoliticalMarketContainer(this.parser, structure));
+		buyBag.add(new PoliticalContainer(this.parser, structure));
 	}
 
 	/**

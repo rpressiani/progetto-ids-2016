@@ -12,7 +12,7 @@ import model.actions.market.SellAction;
 import model.actions.quick.HireAssistant;
 import model.actions.quick.QuickAction;
 import model.player.Player;
-import model.stateMachine.state.State1;
+import model.stateMachine.state.StartState;
 import parser.Parser;
 import utilities.Color;
 
@@ -34,10 +34,10 @@ public class ClientLogic {
 		Player player3=new Player("player3", new Color("Rosso"));
 		Player player4=new Player("player4", new Color("Rosso"));
 		
-		player1.setState(new State1());
-		player2.setState(new State1());
-		player3.setState(new State1());
-		player4.setState(new State1());
+		player1.setState(new StartState());
+		player2.setState(new StartState());
+		player3.setState(new StartState());
+		player4.setState(new StartState());
 
 		players.add(player1);
 		players.add(player2);

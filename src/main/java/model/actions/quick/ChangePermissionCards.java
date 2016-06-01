@@ -4,7 +4,7 @@ import model.GameState;
 import model.map.Region;
 import model.player.Player;
 
-public class ChangePermissionCards extends QuickAction {
+public class ChangePermissionCards implements QuickAction {
 
 	private Region region;
 	
@@ -12,11 +12,17 @@ public class ChangePermissionCards extends QuickAction {
 		this.region=region;
 	}
 	
+	@Override
 	public void doAction(Player player, GameState gameState){
-		if(player.getAssistants().getItems()>=1){
 			region.getPermissionDeck().substituteCards(region.getPermissionDeck().getDeck(), region.getPermissionDeck().getVisibleCards());
 			player.getAssistants().sub(1);
-		}
+	}
+
+	@Override
+	public boolean checkCondition(Player player, GameState gameState) {
+		if(player.getAssistants().getItems()==0) return false;
+		
+		else return true;
 	}
 
 }

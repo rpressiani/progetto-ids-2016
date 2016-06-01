@@ -3,6 +3,7 @@ package controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import dto.actions.DTONullAction;
 import dto.actions.main.DTOBuildEmporiumWithCard;
 import dto.actions.main.DTOBuildEmporiumWithKing;
 import dto.actions.main.DTOBuyPermissionCard;
@@ -13,6 +14,7 @@ import dto.actions.quick.DTOChangePermissionCards;
 import dto.actions.quick.DTOElectCounsellorWithAssistant;
 import dto.actions.quick.DTOHireAssistant;
 import model.GameState;
+import model.actions.NullAction;
 import model.actions.main.BuildEmporiumWithCard;
 import model.actions.main.BuildEmporiumWithKing;
 import model.actions.main.BuyPermissionCard;
@@ -23,7 +25,11 @@ import model.actions.quick.ChangePermissionCards;
 import model.actions.quick.ElectCounsellorWithAssistant;
 import model.actions.quick.HireAssistant;
 import model.bonusable.PermissionCard;
+import model.map.City;
+import model.map.Region;
 import model.player.Player;
+import model.politicalDeck.PoliticalContainer;
+import utilities.Color;
 
 public class VisitorActions {
 	
@@ -34,11 +40,19 @@ public class VisitorActions {
 	}
 	
 	public BuyPermissionCard visit(DTOBuyPermissionCard DTOAction, Player player){
-		return null;
+		Region region=gameState.getMap().getRegions().get(DTOAction.getRegion().getName());
+		ArrayList<Integer> structure=DTOAction.getProposal().getStructure();
+		PoliticalContainer proposal=new PoliticalContainer(gameState.getParser(), structure);
+		
+		return new BuyPermissionCard(region, proposal, DTOAction.getIndex());
 	}
 	
 	public BuildEmporiumWithKing visit(DTOBuildEmporiumWithKing DTOAction, Player player){
-		return null;
+		ArrayList<Integer> structure=DTOAction.getProposal().getStructure();
+		PoliticalContainer proposal=new PoliticalContainer(gameState.getParser(), structure);
+		City city=gameState.getMap().getAllCitiesHashMap().get(DTOAction.getCity().getName());
+		
+		return new BuildEmporiumWithKing(proposal, city);
 	}
 	
 	public BuildEmporiumWithCard visit(DTOBuildEmporiumWithCard DTOAction, Player player){
@@ -58,9 +72,10 @@ public class VisitorActions {
 		String regionString=DTOAction.getRegion().getName();
 		String colorString=DTOAction.getColor().getColorString();
 		
-		//return new ElectCounsellor(region, color);
+		Region region = gameState.getMap().getRegions().get(regionString);
+		Color color = new Color(colorString);
 		
-		return null;
+		return new ElectCounsellor(region, color);
 	}
 	
 	public AddictionalAction visit(DTOAddictionalAction DTOAction, Player player){
@@ -85,12 +100,18 @@ public class VisitorActions {
 		String regionString=DTOAction.getRegion().getName();
 		String colorString=DTOAction.getColor().getColorString();
 		
-		//return new ElectCounsellorWithAssistant(region, color);
-		return null;
+		Region region = gameState.getMap().getRegions().get(regionString);
+		Color color = new Color(colorString);
+		
+		return new ElectCounsellorWithAssistant(region, color);
 	}
 	
 	public HireAssistant visit(DTOHireAssistant DTOAction){
 		return new HireAssistant();
+	}
+	
+	public NullAction visit(DTONullAction DTOAction){
+		return new NullAction();
 	}
 }
 

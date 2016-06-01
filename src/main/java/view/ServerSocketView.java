@@ -12,20 +12,40 @@ import model.GameState;
 import model.actions.GeneralAction;
 import model.player.Player;
 import query.Query;
+import utilities.Color;
 
 public class ServerSocketView extends View implements Runnable {
 	
-//	private Socket socket; 
+	private Socket socket; 
 	private ObjectInputStream socketIn; 
 	private ObjectOutputStream socketOut;
 	private GameState game;
+	private Player player;
+	private boolean running = false;
 	
-	public ServerSocketView(Socket socket, GameState game) throws IOException {
-//		this.socket = socket; 
+	public ServerSocketView(Socket socket) throws IOException, ClassNotFoundException {
+		this.socket = socket; 
 		this.socketIn = new ObjectInputStream(socket.getInputStream()); 
 		this.socketOut = new ObjectOutputStream(socket.getOutputStream());
-		this.game = game;
+		
+//		lSystem.out.printn("insert nickname:\n");
+		this.socketOut.writeObject("insert 'setup <nickname>':");
+		this.socketOut.flush();
+		String nickname = (String)this.socketIn.readObject();
+		this.socketOut.writeObject("insert 'setup <color>':");
+		this.socketOut.flush();
+		Color color = new Color((String)this.socketIn.readObject());
+		this.player = new Player(nickname, color);
 	}
+	
+	public void initServerSocketView(GameState game) throws IOException{
+		this.game = game;
+		this.running = true;
+		this.socketOut.writeObject(this.running);
+		this.socketOut.flush();
+		System.out.println("initServerSocketView executed");
+	}
+	
 	public void update(Change change) {
 		
 		System.out.println("Sending to the client " + change);
@@ -40,25 +60,35 @@ public class ServerSocketView extends View implements Runnable {
 	}
 	@Override
 	public void run() {
+		
+		try {
+			this.socketOut.writeObject("ServerSocketView is running");
+			this.socketOut.flush();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
 		while(true) {	//suggest: check this condition
 						//reply(ricky): condition is ok because serversocket must be always ready to receive actions
 			try {
+			
 				Object obj = socketIn.readObject();
 				if (obj instanceof ClientMessage) {
 					
 					ClientMessage msgIn = (ClientMessage) obj;
 					System.out.println("RECEIVED MSG: " + msgIn);
 					
-					if (game.getPlayersHashMap().containsKey(msgIn.getNickname())) {
+//					if (game.getPlayersHashMap().containsKey(msgIn.getNickname())) {
 						
-						Player player = game.getPlayersHashMap().get(msgIn.getNickname());
+//						Player player = game.getPlayersHashMap().get(msgIn.getNickname());
 						ClientMessage msgOut;
 						
 						if (msgIn.getMessage() instanceof DTOAction) {
 							DTOAction action = (DTOAction) msgIn.getMessage();
 							System.out.println("SERVER VIEW: received DTOAction " + action);
 							
-							msgOut = new ClientMessage(player, action);
+							msgOut = new ClientMessage(this.player, action);
 							
 							this.notifyObserver(msgOut);
 						}
@@ -81,17 +111,17 @@ public class ServerSocketView extends View implements Runnable {
 							Query query = (Query) msgIn.getMessage();
 							System.out.println("SERVER VIEW: received query " + query);
 							
-							this.socketOut.writeObject(query.perform(player, this.game));
+							this.socketOut.writeObject(query.perform(this.player, this.game));
 							this.socketOut.flush();
 						}
 						
-					} else {
-						StringBuilder userNotFound = new StringBuilder();
-						userNotFound.append("\n[ERROR] User not found!\n");
-						userNotFound.append("[ERROR] Remember that the user input is case sensitive\n");
-						this.socketOut.writeObject(userNotFound.toString());
-						this.socketOut.flush();
-					}
+//					} else {
+//						StringBuilder userNotFound = new StringBuilder();
+//						userNotFound.append("\n[ERROR] User not found!\n");
+//						userNotFound.append("[ERROR] Remember that the user input is case sensitive\n");
+//						this.socketOut.writeObject(userNotFound.toString());
+//						this.socketOut.flush();
+//					}
 				}
 				
 			} catch (ClassNotFoundException | IOException e) {
@@ -100,6 +130,13 @@ public class ServerSocketView extends View implements Runnable {
 			} 
 		}
 		
+	}
+
+	/**
+	 * @return the player
+	 */
+	public Player getPlayer() {
+		return player;
 	}
 
 }

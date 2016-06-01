@@ -31,6 +31,7 @@ public class GameState extends Observable<Change>{
 	private HashMap<String, Player> playersHashMap;
 	private Player currentPlayer;
 	private Market market;
+	private Parser parser;
 
 	public GameState(Parser parser, ArrayList<Player> players) {
 		if(parser==null) {
@@ -48,6 +49,7 @@ public class GameState extends Observable<Change>{
 		this.politicalGarbage = new PoliticalGarbage(parser);
 		this.politicalDeck = new PoliticalRealDeck(parser, this.politicalGarbage);
 		this.players = players;
+		this.parser=parser;
 
 		this.playersHashMap = new HashMap<String, Player>();
 		
@@ -155,19 +157,7 @@ public class GameState extends Observable<Change>{
 			throw new NullPointerException("currentPlayer should not be null"); 
 		}
 		this.currentPlayer = currentPlayer;
-		this.notifyObserver(new CurrentPlayerChange(currentPlayer));
-	}
-	
-	public void nextPlayer(Player player){
-		if(player==null) {
-			throw new NullPointerException("player should not be null"); 
-		}
-		if(player==this.getCurrentPlayer()){
-			int i=this.getPlayers().indexOf(player);
-			if((i+1)!=this.getPlayers().size()) this.setCurrentPlayer(this.getPlayers().get(i+1));
-			else this.setCurrentPlayer(this.getPlayers().get(0));
-			//this.notifyObserver(new CurrentPlayerChange(player));
-		}
+//		this.notifyObserver(new CurrentPlayerChange(currentPlayer));
 	}
 	
 	/**
@@ -184,4 +174,24 @@ public class GameState extends Observable<Change>{
 	public Market getMarket() {
 		return market;
 	}
+	
+	/**
+	 * @return the parser
+	 */
+	public Parser getParser() {
+		return parser;
+	}
+	
+	public void nextPlayer(Player player){
+		if(player==null) {
+			throw new NullPointerException("player should not be null"); 
+		}
+		if(player==this.getCurrentPlayer()){
+			int i=this.getPlayers().indexOf(player);
+			if((i+1)!=this.getPlayers().size()) this.setCurrentPlayer(this.getPlayers().get(i+1));
+			else this.setCurrentPlayer(this.getPlayers().get(0));
+			//this.notifyObserver(new CurrentPlayerChange(player));
+		}
+	}
+	
 }

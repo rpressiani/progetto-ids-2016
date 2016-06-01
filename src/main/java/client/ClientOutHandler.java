@@ -18,7 +18,9 @@ import dto.map.DTOCity;
 import dto.map.DTORegion;
 import dto.utilities.DTOColor;
 import dto.utilities.DTOPermissionCard;
+import model.actions.main.BuildEmporiumWithKing;
 import query.GetCoins;
+import query.GetCurrentPlayer;
 import query.GetScores;
 import query.Query;
 
@@ -72,21 +74,24 @@ public class ClientOutHandler implements Runnable {
 					help.append("[CLI] *\tOther Commands \n");
 					help.append("[CLI] \t\tping\n");
 					System.out.println(help.toString());
+				} else if(inputList.get(0).equals("setup")){
+					socketOut.writeObject(inputList.get(1));
+					socketOut.flush();
 				} else {
 					
-					switch (inputList.get(1)) {
+					switch (inputList.get(0)) {
 						
 						/*----- GENERAL-----*/
 					case "ping":
-						msg = new ClientMessage(inputList.get(0), "ping");
+						msg = new ClientMessage("ping");
 						socketOut.writeObject(msg);
 						socketOut.flush();
 						break;
 						
 						/*----- ACTIONS -----*/
 					case "changePermissionCards":
-						if (inputList.size() == 3) {
-							msg = new ClientMessage(inputList.get(0), new DTOChangePermissionCards(new DTORegion(inputList.get(2))));
+						if (inputList.size() == 2) {
+							msg = new ClientMessage(new DTOChangePermissionCards(new DTORegion(inputList.get(2))));
 							socketOut.writeObject(msg);
 							socketOut.flush();
 							break;
@@ -95,38 +100,38 @@ public class ClientOutHandler implements Runnable {
 							break;
 						}
 					case "hireAss":
-						msg = new ClientMessage(inputList.get(0), new DTOHireAssistant());
+						msg = new ClientMessage(new DTOHireAssistant());
 						socketOut.writeObject(msg);
 						socketOut.flush();
 						break;
 					case "electCounsellorAss":
-						msg = new ClientMessage(inputList.get(0),new DTOElectCounsellorWithAssistant(
-								new DTORegion(inputList.get(2)),
-								new DTOColor(inputList.get(3))));
+						msg = new ClientMessage(new DTOElectCounsellorWithAssistant(
+								new DTORegion(inputList.get(1)),
+								new DTOColor(inputList.get(2))));
 						socketOut.writeObject(msg);
 						socketOut.flush();
 						break;
 					case "addAction":
-						switch (inputList.get(2)) {
+						switch (inputList.get(1)) {
 						case "buildEmpCard":
-							msg = new ClientMessage(inputList.get(0), new DTOBuildEmporiumWithCard(
+							msg = new ClientMessage(new DTOBuildEmporiumWithCard(
 									new DTOPermissionCard(Integer.parseInt(inputList.get(2))),
 									new DTOCity(inputList.get(3))));
 							socketOut.writeObject(msg);
 							socketOut.flush();
 							break;
 						case "buildEmpKing":
-							msg = new ClientMessage(inputList.get(0), new DTOBuildEmporiumWithKing());
-							socketOut.writeObject(msg);
+							//msg = new ClientMessage(new DTOBuildEmporiumWithKing());
+							//socketOut.writeObject(msg);
 							socketOut.flush();
 							break;
 						case "buyPermissionCard":
-							msg = new ClientMessage(inputList.get(0), new DTOBuyPermissionCard());
-							socketOut.writeObject(msg);
+							//msg = new ClientMessage(new DTOBuyPermissionCard());
+							//socketOut.writeObject(msg);
 							socketOut.flush();
 							break;
 						case "electCounsellor":
-							msg = new ClientMessage(inputList.get(0), new DTOElectCounsellor(
+							msg = new ClientMessage(new DTOElectCounsellor(
 									new DTORegion(inputList.get(2)),
 									new DTOColor(inputList.get(3))));
 							socketOut.writeObject(msg);
@@ -138,17 +143,48 @@ public class ClientOutHandler implements Runnable {
 							break;
 						}
 						
+					case "buildEmpCard":
+						msg = new ClientMessage(new DTOBuildEmporiumWithCard(
+								new DTOPermissionCard(Integer.parseInt(inputList.get(1))),
+								new DTOCity(inputList.get(2))));
+						socketOut.writeObject(msg);
+						socketOut.flush();
+						break;
+					case "buildEmpKing":
+						//msg = new ClientMessage(new DTOBuildEmporiumWithKing());
+						//socketOut.writeObject(msg);
+						socketOut.flush();
+						break;
+					case "buyPermissionCard":
+						//msg = new ClientMessage(new DTOBuyPermissionCard());
+						//socketOut.writeObject(msg);
+						socketOut.flush();
+						break;
+					case "electCounsellor":
+						msg = new ClientMessage(new DTOElectCounsellor(
+								new DTORegion(inputList.get(1)),
+								new DTOColor(inputList.get(2))));
+						socketOut.writeObject(msg);
+						socketOut.flush();
+						break;
+						
 						
 						/*----- QUERIES -----*/
 					case "getscores":
 						Query<String> queryScores = new GetScores();
-						msg = new ClientMessage(inputList.get(0), queryScores);
+						msg = new ClientMessage(queryScores);
 						socketOut.writeObject(msg);
 						socketOut.flush();
 						break;
 					case "getcoins":
 						Query<String> queryCoins = new GetCoins();
-						msg = new ClientMessage(inputList.get(0), queryCoins);
+						msg = new ClientMessage(queryCoins);
+						socketOut.writeObject(msg);
+						socketOut.flush();
+						break;
+					case "getcurrentplayer":
+						Query<String> queryCurrentPlayer = new GetCurrentPlayer();
+						msg = new ClientMessage(queryCurrentPlayer);
 						socketOut.writeObject(msg);
 						socketOut.flush();
 						break;

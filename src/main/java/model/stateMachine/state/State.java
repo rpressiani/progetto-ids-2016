@@ -20,7 +20,7 @@ public interface State {
 		if(player==null || action==null || gameState==null) {
 			throw new NullPointerException("player, action and gameState should all be !=null"); 
 		}
-		if(action.acceptMove(player, gameState)==true) System.out.println("You can't do a MainAction now");
+		if(action.acceptMove(player, gameState)==true) System.out.println(player.getNickname()+" You can't do a MainAction now");
 	}
 	
 	/**
@@ -33,7 +33,7 @@ public interface State {
 		if(player==null || action==null || gameState==null) {
 			throw new NullPointerException("player, action and gameState should all be !=null"); 
 		}
-		if(action.acceptMove(player, gameState)==true) System.out.println("You can't do a QuickAction now"); 
+		if(action.acceptMove(player, gameState)==true) System.out.println(player.getNickname()+" You can't do a QuickAction now"); 
 	}
 	
 	/**
@@ -46,7 +46,7 @@ public interface State {
 		if(player==null || action==null || gameState==null) {
 			throw new NullPointerException("player, action and gameState should all be !=null"); 
 		}
-		if(action.acceptMove(player, gameState)==true) System.out.println("You can't do a NullAction now");
+		if(action.acceptMove(player, gameState)==true) System.out.println(player.getNickname()+" You can't do a NullAction now");
 	}
 	
 	/**
@@ -59,7 +59,7 @@ public interface State {
 		if(player==null || action==null || gameState==null) {
 			throw new NullPointerException("player, action and gameState should all be !=null"); 
 		}
-		if(action.acceptMove(player, gameState)==true) System.out.println("You can't sell items now");
+		if(action.acceptMove(player, gameState)==true) System.out.println(player.getNickname()+" You can't sell items now");
 	}
 	
 	/**
@@ -72,7 +72,7 @@ public interface State {
 		if(player==null || action==null || gameState==null) {
 			throw new NullPointerException("player, action and gameState should all be !=null"); 
 		}
-		if(action.acceptMove(player, gameState)==true) System.out.println("You can't buy items now");
+		if(action.acceptMove(player, gameState)==true) System.out.println(player.getNickname()+" You can't buy items now");
 		//player.setState(this);
 	}
 	

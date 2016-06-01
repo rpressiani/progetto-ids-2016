@@ -5,7 +5,7 @@ import model.map.Region;
 import model.player.Player;
 import utilities.Color;
 
-public class ElectCounsellor extends MainAction {
+public class ElectCounsellor implements MainAction {
 	
 	private Region region;
 	private Color color;
@@ -30,6 +30,11 @@ public class ElectCounsellor extends MainAction {
 	public void doAction(Player player, GameState gameState) {
 		region.getBalcony().putCounsellor(color, gameState.getCounsellorGarbage());
 		player.getCoins().add(4);
+	}
+
+	@Override
+	public boolean checkCondition(Player player, GameState gameState) {
+		return true;
 	}
 
 }

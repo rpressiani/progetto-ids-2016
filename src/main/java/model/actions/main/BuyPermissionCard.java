@@ -6,13 +6,13 @@ import model.council.Balcony;
 import model.map.Region;
 import model.player.Player;
 import model.politicalDeck.PoliticalCard;
-import model.politicalDeck.PoliticalDeck;
+import model.politicalDeck.PoliticalContainer;
 import model.politicalDeck.PoliticalHand;
 
-public class BuyPermissionCard extends MainAction {
+public class BuyPermissionCard implements MainAction {
 	
 	private Region region;
-	private PoliticalDeck proposal;
+	private PoliticalContainer proposal;
 	private int index;
 
 	//temporary for ClientLogic
@@ -20,7 +20,7 @@ public class BuyPermissionCard extends MainAction {
 		
 	}
 	
-	public BuyPermissionCard(Region region, PoliticalDeck proposal, int index) {
+	public BuyPermissionCard(Region region, PoliticalContainer proposal, int index) {
 		this.region=region;
 		this.proposal=proposal;
 		this.index=index;
@@ -32,27 +32,23 @@ public class BuyPermissionCard extends MainAction {
 		int size=player.getPoliticalHand().getDeck().size();
 		PermissionCard drawedCard;
 		
-		if(checkProposal(proposal, region.getBalcony())==true){
-			numCards=calculateNumCards(player.getPoliticalHand());
+		numCards=calculateNumCards(proposal);
+		
+		if(numCards==1) sumToPay=10;
+		else if(numCards==2) sumToPay=7;
+		else if(numCards==3) sumToPay=4;
+		else sumToPay=0;
 			
-			if(numCards==1) sumToPay=10;
-			else if(numCards==2) sumToPay=7;
-			else if(numCards==3) sumToPay=4;
-			else sumToPay=0;
+		sumJolly=(player.getPoliticalHand().getDeck().get(size).getNumCards());
+		sumToPay=sumToPay+sumJolly;
 			
-			sumJolly=(player.getPoliticalHand().getDeck().get(size).getNumCards());
-			sumToPay=sumToPay+sumJolly;
-			
-			if(sumToPay<=player.getCoins().getItems()) {
-				player.getCoins().sub(sumToPay);
-				drawedCard=region.getPermissionDeck().drawCard(region.getPermissionDeck().getDeck(), region.getPermissionDeck().getVisibleCards(), index);
-				drawedCard.assignBonuses(player, gameState);
-				player.getPermissionHand().add(drawedCard);
-			}
-		}
+		player.getCoins().sub(sumToPay);
+		drawedCard=region.getPermissionDeck().drawCard(region.getPermissionDeck().getDeck(), region.getPermissionDeck().getVisibleCards(), index);
+		drawedCard.assignBonuses(player, gameState);
+		player.getPermissionHand().add(drawedCard);
 	}
 	
-	public boolean checkProposal(PoliticalDeck proposal, Balcony balcony){
+	public boolean checkProposal(PoliticalContainer proposal, Balcony balcony){
 		
 		int sum=calculateNumCards(proposal);
 		
@@ -67,7 +63,7 @@ public class BuyPermissionCard extends MainAction {
 		return true;
 	}
 	
-	public int calculateNumCards(PoliticalDeck proposal){
+	public int calculateNumCards(PoliticalContainer proposal){
 		int sum=0;
 		
 		for(PoliticalCard card : proposal.getDeck()){
@@ -77,10 +73,31 @@ public class BuyPermissionCard extends MainAction {
 		return sum;
 	}
 	
-	public void subProposal(PoliticalHand hand, PoliticalDeck proposal){
+	public void subProposal(PoliticalHand hand, PoliticalContainer proposal){
 		for(int i=0; i<hand.getDeck().size(); i++){
 			hand.getDeck().get(i).removeCards(proposal.getDeck().get(i).getNumCards());
 		}
+	}
+
+	@Override
+	public boolean checkCondition(Player player, GameState gameState) {
+		
+		if(checkProposal(proposal, region.getBalcony())==false) return false;
+		
+		int sumToPay=0;
+		int size=player.getPoliticalHand().getDeck().size();
+		int numCards=calculateNumCards(proposal);
+		int sumJolly=(player.getPoliticalHand().getDeck().get(size).getNumCards());
+		
+		if(numCards==1) sumToPay=10;
+		else if(numCards==2) sumToPay=7;
+		else if(numCards==3) sumToPay=4;
+		
+		sumToPay=sumToPay+sumJolly;
+		
+		if(sumToPay>player.getCoins().getItems()) return false;
+		
+		else return true;
 	}
 	
 }
