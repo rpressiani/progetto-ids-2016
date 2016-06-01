@@ -4,17 +4,20 @@ import model.GameState;
 import model.actions.market.BuyAction;
 import model.player.Player;
 
-public class State5 implements State {
+public class CanBuyState implements State {
 	
 	public void transition(Player player, BuyAction action, GameState gameState){
 		if(player==null || action==null || gameState==null) {
 			throw new NullPointerException("player, action and gameState should all be !=null"); 
 		}
+		
 		if(action.acceptMove(player, gameState)==true){
-			//action.doAction(player, gameState);
-			System.out.println(player.getNickname()+" decided what to buy");
-			player.setState(new State1());
-			player.getState().checkTurn(player, gameState);
+			if(action.checkCondition(player, gameState)==true){
+				action.doAction(player, gameState);
+				System.out.println(player.getNickname()+" decided what to buy");
+				player.setState(new StartState());
+				player.getState().checkTurn(player, gameState);
+			}
 		}
 		
 		else player.setState(this);

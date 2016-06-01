@@ -16,7 +16,7 @@ import model.map.City;
 import model.politicalDeck.PoliticalHand;
 import model.politicalDeck.PoliticalRealDeck;
 import model.stateMachine.state.State;
-import model.stateMachine.state.State1;
+import model.stateMachine.state.StartState;
 import parser.Parser;
 
 /**
@@ -77,7 +77,7 @@ public class Player {
 //		this.politicalHand = new PoliticalHand(deck);
 		this.coins = new Coins(parser.getCFGRoot().getPlayers().getPlayer().get(this.id).getCoins().intValue());
 		this.assistants = new Assistants(parser.getCFGRoot().getPlayers().getPlayer().get(this.id).getAssistants().intValue());
-		this.state = new State1();
+		this.state = new StartState();
 	}
 	
 	public void move(GeneralAction action, GameState gameState){

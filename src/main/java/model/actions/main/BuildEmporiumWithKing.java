@@ -8,7 +8,7 @@ import model.politicalDeck.PoliticalCard;
 import model.politicalDeck.PoliticalContainer;
 import model.politicalDeck.PoliticalHand;
 
-public class BuildEmporiumWithKing extends MainAction {
+public class BuildEmporiumWithKing implements MainAction {
 	
 	private PoliticalContainer proposal;
 	private City cityChosed;
@@ -25,38 +25,30 @@ public class BuildEmporiumWithKing extends MainAction {
 		int numCards, sumToPay, sumJolly, assistantsToPay;
 		int size=player.getPoliticalHand().getDeck().size();
 		
-		if(checkProposal(proposal, gameState.getKingBalcony())==true){
-			numCards=calculateNumCards(proposal);
+		numCards=calculateNumCards(proposal);
 			
-			if(numCards==1) sumToPay=10;
-			else if(numCards==2) sumToPay=7;
-			else if(numCards==3) sumToPay=4;
-			else sumToPay=0;
+		if(numCards==1) sumToPay=10;
+		else if(numCards==2) sumToPay=7;
+		else if(numCards==3) sumToPay=4;
+		else sumToPay=0;
 			
-			sumJolly=(player.getPoliticalHand().getDeck().get(size).getNumCards());
-			sumToPay=sumToPay+sumJolly;
+		sumJolly=(player.getPoliticalHand().getDeck().get(size).getNumCards());
+		sumToPay=sumToPay+sumJolly;
 			
-			sumToPay=sumToPay+2*gameState.getMap().numericDistance(gameState.getKing().getKingCity(), cityChosed);
-			assistantsToPay=checkOtherEmporium(cityChosed, gameState);
-			
-			if(sumToPay<=player.getCoins().getItems() &&
-				cityChosed.hasBuiltHere(player)==false &&
-				assistantsToPay<=player.getAssistants().getItems()){
+		sumToPay=sumToPay+2*gameState.getMap().numericDistance(gameState.getKing().getKingCity(), cityChosed);
+		assistantsToPay=checkOtherEmporium(cityChosed, gameState);
 					
-					player.getCoins().sub(sumToPay);
-					player.getAssistants().sub(assistantsToPay);
-					gameState.getKing().setKingCity(cityChosed);
-					player.getBuiltCities().add(cityChosed);
-					subProposal(player.getPoliticalHand(), proposal);
+		player.getCoins().sub(sumToPay);
+		player.getAssistants().sub(assistantsToPay);
+		gameState.getKing().setKingCity(cityChosed);
+		player.getBuiltCities().add(cityChosed);
+		subProposal(player.getPoliticalHand(), proposal);
 					
-					for(City c : cityChosed.linkedCities(gameState.getMap(), player)){
-						c.assignBonuses(player, gameState);
-					}
-			}
+		player.getBuiltCities().add(cityChosed);
+					
+		for(City c : cityChosed.linkedCities(gameState.getMap(), player)){
+			c.assignBonuses(player, gameState);
 		}
-		
-		
-		if(cityChosed.hasBuiltHere(player)==false) player.getBuiltCities().add(cityChosed);
 	}
 	
 	public boolean checkProposal(PoliticalContainer proposal, Balcony balcony){
@@ -98,5 +90,32 @@ public class BuildEmporiumWithKing extends MainAction {
 		}
 		
 		return res;
+	}
+
+	@Override
+	public boolean checkCondition(Player player, GameState gameState) {
+		
+		if(checkProposal(proposal, gameState.getKingBalcony())==false) return false;
+		
+		int sumToPay=0;
+		int size=player.getPoliticalHand().getDeck().size();
+		int numCards=calculateNumCards(proposal);
+		int sumJolly=(player.getPoliticalHand().getDeck().get(size).getNumCards());
+		
+		if(numCards==1) sumToPay=10;
+		else if(numCards==2) sumToPay=7;
+		else if(numCards==3) sumToPay=4;
+		
+		sumToPay=sumToPay+sumJolly;
+		
+		if(sumToPay>player.getCoins().getItems()) return false;
+		
+		int assistantsToPay=checkOtherEmporium(cityChosed, gameState);
+		
+		if(assistantsToPay>player.getAssistants().getItems()) return false;
+		
+		if(cityChosed.hasBuiltHere(player)==true) return false;
+		
+		else return true;
 	}
 }

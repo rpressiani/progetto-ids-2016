@@ -25,4 +25,10 @@ public class BuyAction implements GeneralAction {
 		gameState.getMarket().acceptContract(contract, player);
 	}
 
+	@Override
+	public boolean checkCondition(Player player, GameState gameState) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }

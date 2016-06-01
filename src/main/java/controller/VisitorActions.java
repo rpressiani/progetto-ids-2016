@@ -38,7 +38,7 @@ public class VisitorActions {
 	}
 	
 	
-	
+	 
 	public BuyPermissionCard visit(DTOBuyPermissionCard DTOAction, Player player){
 		return null;
 	}

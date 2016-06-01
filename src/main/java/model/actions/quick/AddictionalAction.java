@@ -4,7 +4,7 @@ import model.GameState;
 import model.actions.main.MainAction;
 import model.player.Player;
 
-public class AddictionalAction extends QuickAction {
+public class AddictionalAction implements QuickAction {
 	
 	MainAction action;
 	
@@ -19,13 +19,19 @@ public class AddictionalAction extends QuickAction {
 		this.action=action;
 	}
 	
+	@Override
 	public void doAction(Player player, GameState gameState) {
 		if(player==null || gameState==null) {
 			throw new NullPointerException("player and gameState cannot be null"); 
 		}
-		if(player.getAssistants().getItems()>=3){
 			player.getAssistants().sub(3);
 			action.doAction(player, gameState);
-		}
+	}
+
+	@Override
+	public boolean checkCondition(Player player, GameState gameState) {
+		if(player.getAssistants().getItems()<3) return false;
+		
+		else return true;
 	}
 }

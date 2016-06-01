@@ -5,7 +5,7 @@ import model.bonusable.PermissionCard;
 import model.map.City;
 import model.player.Player;
 
-public class BuildEmporiumWithCard extends MainAction {
+public class BuildEmporiumWithCard implements MainAction {
 
 	private PermissionCard cardChosed;
 	private City cityChosed;
@@ -15,7 +15,6 @@ public class BuildEmporiumWithCard extends MainAction {
 	 * @param cityChosed
 	 */
 	public BuildEmporiumWithCard(PermissionCard cardChosed, City cityChosed) {
-		super();
 		if(cardChosed.getPossibleCities().contains(cityChosed)){
 			this.cardChosed = cardChosed;
 			this.cityChosed = cityChosed;
@@ -25,23 +24,17 @@ public class BuildEmporiumWithCard extends MainAction {
 		//corretto lanciare eccezione sul costruttore?
 	}
 	
+	@Override
 	public void doAction(Player player, GameState gameState) {
 		int assistantsToPay=checkOtherEmporium(cityChosed, gameState);
-		
-		if(cityChosed.hasBuiltHere(player)==false && 
-
-			assistantsToPay<=player.getAssistants().getItems() &&
-			cardChosed.isUsed()==false){
 				
-				player.getBuiltCities().add(cityChosed);
-				player.getAssistants().sub(assistantsToPay);
-				cardChosed.setUsed(true);
+		player.getBuiltCities().add(cityChosed);
+		player.getAssistants().sub(assistantsToPay);
+		cardChosed.setUsed(true);
 				
-				for(City c : cityChosed.linkedCities(gameState.getMap(), player)){
-					c.assignBonuses(player, gameState);
-				}
+		for(City c : cityChosed.linkedCities(gameState.getMap(), player)){
+			c.assignBonuses(player, gameState);
 		}
-	
 	}
 	
 	/**
@@ -64,5 +57,19 @@ public class BuildEmporiumWithCard extends MainAction {
 		}
 		
 		return res;
+	}
+
+	@Override
+	public boolean checkCondition(Player player, GameState gameState) {
+		
+		if(cityChosed.hasBuiltHere(player)==true) return false;
+		
+		int assistantsToPay=checkOtherEmporium(cityChosed, gameState);
+		
+		if(assistantsToPay>player.getAssistants().getItems()) return false;
+		
+		if(cardChosed.isUsed()==true) return false;
+		
+		return true;
 	}
 }

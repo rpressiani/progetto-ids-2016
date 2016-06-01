@@ -20,4 +20,9 @@ public class NullAction implements GeneralAction {
 	
 	}
 
+	@Override
+	public boolean checkCondition(Player player, GameState gameState) {
+		return true;
+	}
+
 }

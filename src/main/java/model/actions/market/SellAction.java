@@ -59,4 +59,10 @@ public class SellAction implements GeneralAction {
 		
 	}
 
+	@Override
+	public boolean checkCondition(Player player, GameState gameState) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }

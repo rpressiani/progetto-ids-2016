@@ -13,6 +13,14 @@ public interface GeneralAction {
 	public void doAction(Player player, GameState gameState);
 	
 	/**
+	 * 
+	 * @param player can't be null
+	 * @param gameState can't be null
+	 * @return true if all preConditions for the move are respected
+	 */
+	public boolean checkCondition(Player player, GameState gameState);
+	
+	/**
 	 * accept the move if the player is the current player
 	 * @param player can't be null
 	 * @param gameState can't be null
