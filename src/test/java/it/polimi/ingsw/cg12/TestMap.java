@@ -2,12 +2,17 @@ package it.polimi.ingsw.cg12;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+
 import org.junit.Test;
 
+import model.GameState;
 import model.council.GarbageState;
 import model.map.City;
 import model.map.Map;
+import model.player.Player;
 import parser.Parser;
+import utilities.Color;
 
 public class TestMap {
 
@@ -36,4 +41,5 @@ public class TestMap {
 		}
 		assertTrue(thrown); 
 	}
+
 }
