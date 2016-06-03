@@ -7,6 +7,7 @@ import java.net.Socket;
 
 import client.ClientMessage;
 import dto.actions.DTOAction;
+import dto.changes.DTOChange;
 import dto.utilities.DTOSetup;
 import model.GameState;
 import model.changes.Change;
@@ -22,11 +23,13 @@ public class ServerSocketView extends View implements Runnable {
 	private GameState game;
 	private Player player;
 	private boolean enabled = false;
+	private VisitorChanges visitorChanges;
 	
 	public ServerSocketView(Socket socket) throws IOException, ClassNotFoundException {
 		this.socket = socket; 
 		this.socketIn = new ObjectInputStream(socket.getInputStream()); 
 		this.socketOut = new ObjectOutputStream(socket.getOutputStream());
+		this.visitorChanges = new VisitorChanges();
 		
 //		System.out.printn("insert nickname:\n");
 		this.socketOut.writeObject("[SERVER] Insert 'setup <nickname> <color>' asap\n");
@@ -49,8 +52,10 @@ public class ServerSocketView extends View implements Runnable {
 		System.out.println("Sending to the client " + change);
 		
 		try {
-			this.socketOut.writeObject(change);
+			DTOChange dtoChange = change.accept(this.visitorChanges, this.player);
+			this.socketOut.writeObject(dtoChange);
 			this.socketOut.flush();
+			System.out.println("DTOChange sent");
 			
 		} catch(IOException e) {
 			e.printStackTrace();

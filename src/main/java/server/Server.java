@@ -81,6 +81,7 @@ public class Server {
 					
 					for (Map.Entry<ServerSocketView, Socket> entry : tmpViewSocket.entrySet()) {
 						if (entry.getKey().isEnabled()) {
+//							entry.getKey().getSocketOut().writeObj .... (match started)
 							entry.getKey().initServerSocketView(this.gameState);
 							this.gameState.registerObserver(entry.getKey());
 							entry.getKey().registerObserver(this.controller);	
