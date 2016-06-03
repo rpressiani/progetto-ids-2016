@@ -32,10 +32,20 @@ public class TestKingBonuses {
 	@Test
 	public void testGetKingBonuses() {
 		Parser parser = new Parser(); 
-		Player player = new Player("Matt", new Color("red")); 
-		Player player2 = new Player("Dom", new Color("blue"));
-		Player player3 = new Player("Chris", new Color("green"));
-		Player player4 = new Player("Liam", new Color("white"));
+		
+		Player player = new Player();
+		player.setNickname("Matt");
+		player.setColor(new Color("red"));
+		Player player2 = new Player();
+		player2.setNickname("Dom");
+		player2.setColor(new Color("blue"));
+		Player player3 = new Player();
+		player3.setNickname("Chris");
+		player3.setColor(new Color("green"));
+		Player player4 = new Player();
+		player4.setNickname("Liam");
+		player4.setColor(new Color("white")); 
+		
 		ArrayList<Player> players = new ArrayList<Player>(); 
 		players.add(player); 
 		players.add(player2); 

@@ -16,6 +16,8 @@ import model.stateMachine.state.StartState;
 import parser.Parser;
 import utilities.Color;
 
+
+
 public class ClientLogic {
 
 	public static void main(String[] args) {
@@ -29,10 +31,18 @@ public class ClientLogic {
 		GeneralAction action4= new SellAction();
 		GeneralAction action5= new BuyAction();
 		
-		Player player1=new Player("player1", new Color("Rosso"));
-		Player player2=new Player("player2", new Color("Rosso"));
-		Player player3=new Player("player3", new Color("Rosso"));
-		Player player4=new Player("player4", new Color("Rosso"));
+		Player player1 = new Player();
+		player1.setNickname("Matt");
+		player1.setColor(new Color("black"));
+		Player player2 = new Player();
+		player2.setNickname("Mark");
+		player2.setColor(new Color("white"));
+		Player player3 = new Player();
+		player3.setNickname("Tom");
+		player3.setColor(new Color("orange"));
+		Player player4 = new Player();
+		player4.setNickname("Travis");
+		player4.setColor(new Color("blue"));
 		
 		player1.setState(new StartState());
 		player2.setState(new StartState());

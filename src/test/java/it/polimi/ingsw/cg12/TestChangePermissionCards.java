@@ -33,10 +33,20 @@ public class TestChangePermissionCards {
 	public void testNullPlayerInDoActionThrowsException() {
 		boolean thrown = false; 
 		Parser parser = new Parser(); 
-		Player player = new Player("Kevin", new Color("blue")); 
-		Player player2 = new Player("Russell", new Color("black")); 
-		Player player3 = new Player("Stephen", new Color("white")); 
-		Player player4 = new Player("Klay", new Color("red"));
+		
+		Player player = new Player();
+		player.setNickname("Kevin");
+		player.setColor(new Color("blue"));
+		Player player2 = new Player();
+		player2.setNickname("Russel");
+		player2.setColor(new Color("black"));
+		Player player3 = new Player();
+		player3.setNickname("Stephen");
+		player3.setColor(new Color("white"));
+		Player player4 = new Player();
+		player4.setNickname("Klay");
+		player4.setColor(new Color("red"));
+		
 		ArrayList<Player> players = new ArrayList<Player>();
 		players.add(player); 
 		players.add(player2); 
@@ -64,10 +74,18 @@ public class TestChangePermissionCards {
 	public void testNullGameStateInDoActionThrowsException() {
 		boolean thrown = false; 
 		Parser parser = new Parser(); 
-		Player player = new Player("Kevin", new Color("blue")); 
-		Player player2 = new Player("Russell", new Color("black")); 
-		Player player3 = new Player("Stephen", new Color("white")); 
-		Player player4 = new Player("Klay", new Color("red"));
+		Player player = new Player();
+		player.setNickname("Kevin");
+		player.setColor(new Color("blue"));
+		Player player2 = new Player();
+		player2.setNickname("Russel");
+		player2.setColor(new Color("black"));
+		Player player3 = new Player();
+		player3.setNickname("Stephen");
+		player3.setColor(new Color("white"));
+		Player player4 = new Player();
+		player4.setNickname("Klay");
+		player4.setColor(new Color("red"));
 		ArrayList<Player> players = new ArrayList<Player>();
 		players.add(player); 
 		players.add(player2); 
@@ -94,10 +112,18 @@ public class TestChangePermissionCards {
 	@Test
 	public void testIfDoActionWorks() {
 		Parser parser = new Parser(); 
-		Player player = new Player("Kevin", new Color("blue")); 
-		Player player2 = new Player("Russell", new Color("black")); 
-		Player player3 = new Player("Stephen", new Color("white")); 
-		Player player4 = new Player("Klay", new Color("red"));
+		Player player = new Player();
+		player.setNickname("Kevin");
+		player.setColor(new Color("blue"));
+		Player player2 = new Player();
+		player2.setNickname("Russel");
+		player2.setColor(new Color("black"));
+		Player player3 = new Player();
+		player3.setNickname("Stephen");
+		player3.setColor(new Color("white"));
+		Player player4 = new Player();
+		player4.setNickname("Klay");
+		player4.setColor(new Color("red"));
 		ArrayList<Player> players = new ArrayList<Player>();
 		players.add(player); 
 		players.add(player2); 
@@ -121,10 +147,18 @@ public class TestChangePermissionCards {
 	public void testExceptionInCheckCondition() {
 		boolean thrown = false; 
 		Parser parser = new Parser(); 
-		Player player = new Player("Kevin", new Color("blue")); 
-		Player player2 = new Player("Russell", new Color("black")); 
-		Player player3 = new Player("Stephen", new Color("white")); 
-		Player player4 = new Player("Klay", new Color("red"));
+		Player player = new Player();
+		player.setNickname("Kevin");
+		player.setColor(new Color("blue"));
+		Player player2 = new Player();
+		player2.setNickname("Russel");
+		player2.setColor(new Color("black"));
+		Player player3 = new Player();
+		player3.setNickname("Stephen");
+		player3.setColor(new Color("white"));
+		Player player4 = new Player();
+		player4.setNickname("Klay");
+		player4.setColor(new Color("red"));
 		ArrayList<Player> players = new ArrayList<Player>();
 		players.add(player); 
 		players.add(player2); 
@@ -152,10 +186,18 @@ public class TestChangePermissionCards {
 	public void testNullGameStateThrowsExceptionInCheckCondition() {
 		boolean thrown = false; 
 		Parser parser = new Parser(); 
-		Player player = new Player("Kevin", new Color("blue")); 
-		Player player2 = new Player("Russell", new Color("black")); 
-		Player player3 = new Player("Stephen", new Color("white")); 
-		Player player4 = new Player("Klay", new Color("red"));
+		Player player = new Player();
+		player.setNickname("Kevin");
+		player.setColor(new Color("blue"));
+		Player player2 = new Player();
+		player2.setNickname("Russel");
+		player2.setColor(new Color("black"));
+		Player player3 = new Player();
+		player3.setNickname("Stephen");
+		player3.setColor(new Color("white"));
+		Player player4 = new Player();
+		player4.setNickname("Klay");
+		player4.setColor(new Color("red"));
 		ArrayList<Player> players = new ArrayList<Player>();
 		players.add(player); 
 		players.add(player2); 
@@ -182,10 +224,18 @@ public class TestChangePermissionCards {
 	@Test
 	public void testCheckConditionReturnsFalseWithNoAssistants() {
 		Parser parser = new Parser(); 
-		Player player = new Player("Kevin", new Color("blue")); 
-		Player player2 = new Player("Russell", new Color("black")); 
-		Player player3 = new Player("Stephen", new Color("white")); 
-		Player player4 = new Player("Klay", new Color("red"));
+		Player player = new Player();
+		player.setNickname("Kevin");
+		player.setColor(new Color("blue"));
+		Player player2 = new Player();
+		player2.setNickname("Russel");
+		player2.setColor(new Color("black"));
+		Player player3 = new Player();
+		player3.setNickname("Stephen");
+		player3.setColor(new Color("white"));
+		Player player4 = new Player();
+		player4.setNickname("Klay");
+		player4.setColor(new Color("red"));
 		ArrayList<Player> players = new ArrayList<Player>();
 		players.add(player); 
 		players.add(player2); 
@@ -212,10 +262,18 @@ public class TestChangePermissionCards {
 	@Test
 	public void testCheckConditionReturnsTrueWithAtLeastOneAssistant() {
 		Parser parser = new Parser(); 
-		Player player = new Player("Kevin", new Color("blue")); 
-		Player player2 = new Player("Russell", new Color("black")); 
-		Player player3 = new Player("Stephen", new Color("white")); 
-		Player player4 = new Player("Klay", new Color("red"));
+		Player player = new Player();
+		player.setNickname("Kevin");
+		player.setColor(new Color("blue"));
+		Player player2 = new Player();
+		player2.setNickname("Russel");
+		player2.setColor(new Color("black"));
+		Player player3 = new Player();
+		player3.setNickname("Stephen");
+		player3.setColor(new Color("white"));
+		Player player4 = new Player();
+		player4.setNickname("Klay");
+		player4.setColor(new Color("red"));
 		ArrayList<Player> players = new ArrayList<Player>();
 		players.add(player); 
 		players.add(player2); 

@@ -51,10 +51,20 @@ public class TestElectCounsellorWithAssistant {
 	@Test
 	public void testIfDoActionWorks() {
 		Parser parser = new Parser();
-		Player player = new Player("Alessandro", new Color("blue")); 
-		Player player2 = new Player("Riccardo", new Color("grey")); 
-		Player player3 = new Player("Matteo", new Color("red")); 
-		Player player4 = new Player("Stefano", new Color("yellow")); 
+		
+		Player player = new Player();
+		player.setNickname("Alessandro");
+		player.setColor(new Color("blue"));
+		Player player2 = new Player();
+		player2.setNickname("Riccardo");
+		player2.setColor(new Color("grey"));
+		Player player3 = new Player();
+		player3.setNickname("Matteo");
+		player3.setColor(new Color("red"));
+		Player player4 = new Player();
+		player4.setNickname("Stefano");
+		player4.setColor(new Color("yellow"));
+		
 		ArrayList<Player> players = new ArrayList<Player>(); 
 		players.add(player); 
 		players.add(player2); 
@@ -78,10 +88,18 @@ public class TestElectCounsellorWithAssistant {
 	@Test
 	public void testIfCheckConditionWorks() {
 		Parser parser = new Parser();
-		Player player = new Player("Alessandro", new Color("blue")); 
-		Player player2 = new Player("Riccardo", new Color("grey")); 
-		Player player3 = new Player("Matteo", new Color("red")); 
-		Player player4 = new Player("Stefano", new Color("yellow")); 
+		Player player = new Player();
+		player.setNickname("Alessandro");
+		player.setColor(new Color("blue"));
+		Player player2 = new Player();
+		player2.setNickname("Riccardo");
+		player2.setColor(new Color("grey"));
+		Player player3 = new Player();
+		player3.setNickname("Matteo");
+		player3.setColor(new Color("red"));
+		Player player4 = new Player();
+		player4.setNickname("Stefano");
+		player4.setColor(new Color("yellow")); 
 		ArrayList<Player> players = new ArrayList<Player>(); 
 		players.add(player); 
 		players.add(player2); 
@@ -108,10 +126,18 @@ public class TestElectCounsellorWithAssistant {
 	public void testNullPlayerInDoActionThrowsException() {
 		boolean thrown = false; 
 		Parser parser = new Parser();
-		Player player = new Player("Alessandro", new Color("blue")); 
-		Player player2 = new Player("Riccardo", new Color("grey")); 
-		Player player3 = new Player("Matteo", new Color("red")); 
-		Player player4 = new Player("Stefano", new Color("yellow")); 
+		Player player = new Player();
+		player.setNickname("Alessandro");
+		player.setColor(new Color("blue"));
+		Player player2 = new Player();
+		player2.setNickname("Riccardo");
+		player2.setColor(new Color("grey"));
+		Player player3 = new Player();
+		player3.setNickname("Matteo");
+		player3.setColor(new Color("red"));
+		Player player4 = new Player();
+		player4.setNickname("Stefano");
+		player4.setColor(new Color("yellow")); 
 		ArrayList<Player> players = new ArrayList<Player>(); 
 		players.add(player); 
 		players.add(player2); 
@@ -140,10 +166,18 @@ public class TestElectCounsellorWithAssistant {
 	public void testNullGameStateInDoActionThrowsException() {
 		boolean thrown = false; 
 		Parser parser = new Parser();
-		Player player = new Player("Alessandro", new Color("blue")); 
-		Player player2 = new Player("Riccardo", new Color("grey")); 
-		Player player3 = new Player("Matteo", new Color("red")); 
-		Player player4 = new Player("Stefano", new Color("yellow")); 
+		Player player = new Player();
+		player.setNickname("Alessandro");
+		player.setColor(new Color("blue"));
+		Player player2 = new Player();
+		player2.setNickname("Riccardo");
+		player2.setColor(new Color("grey"));
+		Player player3 = new Player();
+		player3.setNickname("Matteo");
+		player3.setColor(new Color("red"));
+		Player player4 = new Player();
+		player4.setNickname("Stefano");
+		player4.setColor(new Color("yellow")); 
 		ArrayList<Player> players = new ArrayList<Player>(); 
 		players.add(player); 
 		players.add(player2); 
@@ -172,10 +206,18 @@ public class TestElectCounsellorWithAssistant {
 	public void testNullPlayerInCheckConditionThrowsException() {
 		boolean thrown = false; 
 		Parser parser = new Parser();
-		Player player = new Player("Alessandro", new Color("blue")); 
-		Player player2 = new Player("Riccardo", new Color("grey")); 
-		Player player3 = new Player("Matteo", new Color("red")); 
-		Player player4 = new Player("Stefano", new Color("yellow")); 
+		Player player = new Player();
+		player.setNickname("Alessandro");
+		player.setColor(new Color("blue"));
+		Player player2 = new Player();
+		player2.setNickname("Riccardo");
+		player2.setColor(new Color("grey"));
+		Player player3 = new Player();
+		player3.setNickname("Matteo");
+		player3.setColor(new Color("red"));
+		Player player4 = new Player();
+		player4.setNickname("Stefano");
+		player4.setColor(new Color("yellow")); 
 		ArrayList<Player> players = new ArrayList<Player>(); 
 		players.add(player); 
 		players.add(player2); 
@@ -204,10 +246,18 @@ public class TestElectCounsellorWithAssistant {
 	public void testNullGameStateInCheckConditionThrowsException() {
 		boolean thrown = false; 
 		Parser parser = new Parser();
-		Player player = new Player("Alessandro", new Color("blue")); 
-		Player player2 = new Player("Riccardo", new Color("grey")); 
-		Player player3 = new Player("Matteo", new Color("red")); 
-		Player player4 = new Player("Stefano", new Color("yellow")); 
+		Player player = new Player();
+		player.setNickname("Alessandro");
+		player.setColor(new Color("blue"));
+		Player player2 = new Player();
+		player2.setNickname("Riccardo");
+		player2.setColor(new Color("grey"));
+		Player player3 = new Player();
+		player3.setNickname("Matteo");
+		player3.setColor(new Color("red"));
+		Player player4 = new Player();
+		player4.setNickname("Stefano");
+		player4.setColor(new Color("yellow")); 
 		ArrayList<Player> players = new ArrayList<Player>(); 
 		players.add(player); 
 		players.add(player2); 

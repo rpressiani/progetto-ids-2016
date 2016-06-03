@@ -33,11 +33,19 @@ public class TestGameState {
 	public void testNullParserrInConstructorThrowsException() {
 		boolean thrown = false; 
 		Parser parser = new Parser();
-		Parser parser2 = null; 
-		Player player = new Player("Kurt", new Color("white")); 
-		Player player2 = new Player("Krist", new Color("red")); 
-		Player player3 = new Player("Dave", new Color("white")); 
-		Player player4 = new Player("Courtney", new Color("black")); 
+		Parser parser2 = null;
+		Player player = new Player();
+		player.setNickname("Kurt");
+		player.setColor(new Color("white"));
+		Player player2 = new Player();
+		player2.setNickname("Krist");
+		player2.setColor(new Color("red"));
+		Player player3 = new Player();
+		player3.setNickname("Dave");
+		player3.setColor(new Color("white"));
+		Player player4 = new Player();
+		player4.setNickname("Courtney");
+		player4.setColor(new Color("black"));
 		ArrayList<Player> players = new ArrayList<Player>();
 		PoliticalGarbage garbage = new PoliticalGarbage(parser); 
 		PoliticalRealDeck deck = new PoliticalRealDeck(parser, garbage); 
@@ -60,10 +68,18 @@ public class TestGameState {
 	@Test
 	public void testCurrentPlayer() {
 		Parser parser = new Parser();
-		Player player = new Player("Kurt", new Color("white")); 
-		Player player2 = new Player("Krist", new Color("red")); 
-		Player player3 = new Player("Dave", new Color("white")); 
-		Player player4 = new Player("Courtney", new Color("black")); 
+		Player player = new Player();
+		player.setNickname("Kurt");
+		player.setColor(new Color("white"));
+		Player player2 = new Player();
+		player2.setNickname("Krist");
+		player2.setColor(new Color("red"));
+		Player player3 = new Player();
+		player3.setNickname("Dave");
+		player3.setColor(new Color("white"));
+		Player player4 = new Player();
+		player4.setNickname("Courtney");
+		player4.setColor(new Color("black")); 
 		ArrayList<Player> players = new ArrayList<Player>();
 		PoliticalGarbage garbage = new PoliticalGarbage(parser); 
 		PoliticalRealDeck deck = new PoliticalRealDeck(parser, garbage); 
@@ -85,11 +101,19 @@ public class TestGameState {
 	@Test
 	public void testNullParameterInSetPlayersThrowsException() {
 		boolean thrown = false; 
-		Parser parser = new Parser(); 
-		Player player = new Player("Kurt", new Color("white")); 
-		Player player2 = new Player("Krist", new Color("red")); 
-		Player player3 = new Player("Dave", new Color("white")); 
-		Player player4 = new Player("Courtney", new Color("black")); 
+		Parser parser = new Parser();
+		Player player = new Player();
+		player.setNickname("Kurt");
+		player.setColor(new Color("white"));
+		Player player2 = new Player();
+		player2.setNickname("Krist");
+		player2.setColor(new Color("red"));
+		Player player3 = new Player();
+		player3.setNickname("Dave");
+		player3.setColor(new Color("white"));
+		Player player4 = new Player();
+		player4.setNickname("Courtney");
+		player4.setColor(new Color("black")); 
 		ArrayList<Player> players = new ArrayList<Player>();
 		PoliticalGarbage garbage = new PoliticalGarbage(parser); 
 		PoliticalRealDeck deck = new PoliticalRealDeck(parser, garbage); 
@@ -114,10 +138,18 @@ public class TestGameState {
 	@Test
 	public void testNextPlayer() {
 		Parser parser = new Parser(); 
-		Player player = new Player("Kurt", new Color("white")); 
-		Player player2 = new Player("Krist", new Color("red")); 
-		Player player3 = new Player("Dave", new Color("white")); 
-		Player player4 = new Player("Courtney", new Color("black")); 
+		Player player = new Player();
+		player.setNickname("Kurt");
+		player.setColor(new Color("white"));
+		Player player2 = new Player();
+		player2.setNickname("Krist");
+		player2.setColor(new Color("red"));
+		Player player3 = new Player();
+		player3.setNickname("Dave");
+		player3.setColor(new Color("white"));
+		Player player4 = new Player();
+		player4.setNickname("Courtney");
+		player4.setColor(new Color("black")); 
 		ArrayList<Player> players = new ArrayList<Player>();
 		PoliticalGarbage garbage = new PoliticalGarbage(parser); 
 		PoliticalRealDeck deck = new PoliticalRealDeck(parser, garbage); 

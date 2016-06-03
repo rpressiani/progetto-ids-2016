@@ -24,7 +24,9 @@ public class TestContract {
 	@Test
 	public void testNegativeNCoinsThrowException() {
 		boolean thrown = false; 
-		Player player = new Player("Ezio", new Color(4,5,6));
+		Player player = new Player();
+		player.setNickname("Matt");
+		player.setColor(new Color("black"));
 		Contract contract = new Contract(player); 
 		try {
 			contract.sellCoins(-1);
@@ -36,7 +38,9 @@ public class TestContract {
 	@Test
 	public void testNegativeNAssistantsThrowException() {
 		boolean thrown = false; 
-		Player player = new Player("Matt", new Color(7,8,9));
+		Player player = new Player();
+		player.setNickname("Matt");
+		player.setColor(new Color("black"));
 		Contract contract = new Contract(player); 
 		try {
 			contract.sellAssistants(0);
@@ -48,7 +52,9 @@ public class TestContract {
 	@Test
 	public void testNullPermissionCardThrowsException() {
 		boolean thrown = false; 
-		Player player = new Player("Karl", new Color(1, 2, 2));
+		Player player = new Player();
+		player.setNickname("Matt");
+		player.setColor(new Color("black"));
 		Contract contract = new Contract(player); 
 		try {
 			contract.buyPermissionCard(null);
@@ -60,7 +66,9 @@ public class TestContract {
 	@Test 
 	public void testNullPoliticalCardStructureThrowsException() {
 		boolean thrown = false; 
-		Player player = new Player("Rick", new Color(1, 2, 3));
+		Player player = new Player();
+		player.setNickname("Matt");
+		player.setColor(new Color("black"));
 		Contract contract = new Contract(player); 
 		try {
 			contract.buyPoliticalCards(null);

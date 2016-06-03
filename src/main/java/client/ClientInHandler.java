@@ -3,7 +3,8 @@ package client;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 
-import controller.changes.Change;
+import dto.changes.DTOChange;
+
 
 public class ClientInHandler implements Runnable {
 	
@@ -21,12 +22,14 @@ public class ClientInHandler implements Runnable {
 			try {
 				Object obj = socketIn.readObject();
 				
-				if (obj instanceof Change) {
-					Change line = (Change) obj;
-					System.out.println(line);
+				if (obj instanceof DTOChange) {
+					DTOChange change = (DTOChange) obj;
+					System.out.println("DTOChange received");
+					System.out.println(change);
+				} else {
+					System.out.println(obj);
 				}
 				
-				System.out.println(obj);
 			} catch (ClassNotFoundException | IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

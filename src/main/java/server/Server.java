@@ -59,41 +59,50 @@ public class Server {
 		int i = 0;
 		int counter = 2;
 		Map<ServerSocketView, Socket> tmpViewSocket = new HashMap<ServerSocketView, Socket>();
-		Map<Player, Socket> tmpPlayerSocket = new HashMap<Player, Socket>();
+//		Map<Player, Socket> tmpPlayerSocket = new HashMap<Player, Socket>();
 		
 		while(true) {
-			if (i == counter) {
+			if (i >= counter) {
+//				System.out.println("ciao");
 				
 				for (Map.Entry<ServerSocketView, Socket> entry : tmpViewSocket.entrySet()) {
-					Player player = entry.getKey().getPlayer();
-					this.players.add(player);
-					tmpPlayerSocket.put(player, entry.getValue());
+					if (entry.getKey().isEnabled()) {
+						Player player = entry.getKey().getPlayer();
+						this.players.add(player);
+					}
+//					tmpPlayerSocket.put(player, entry.getValue());
 				}
 				
-				this.gameState = new GameState(this.parser, this.players);
-				this.controller = new Controller(this.gameState); 
-				System.out.println(this.gameState.getCounsellorGarbage().toString());
-				
-				for (Map.Entry<ServerSocketView, Socket> entry : tmpViewSocket.entrySet()) {
-					 
-					entry.getKey().initServerSocketView(this.gameState);
-					this.gameState.registerObserver(entry.getKey());
-					entry.getKey().registerObserver(this.controller);
-					executor.submit(entry.getKey());
-					System.out.println("iterate");
+				if (this.players.size() >= 2) {
+					this.gameState = new GameState(this.parser, this.players);
+					this.controller = new Controller(this.gameState); 
+					
+					System.out.println(this.gameState.getCounsellorGarbage().toString());
+					
+					for (Map.Entry<ServerSocketView, Socket> entry : tmpViewSocket.entrySet()) {
+						if (entry.getKey().isEnabled()) {
+//							entry.getKey().getSocketOut().writeObj .... (match started)
+							entry.getKey().initServerSocketView(this.gameState);
+							this.gameState.registerObserver(entry.getKey());
+							entry.getKey().registerObserver(this.controller);	
+						}
+					}
+					
+					int k = 0;
+					
+					for (Player player : players) {
+						player.initPlayer(this.gameState.getPoliticalDeck(), k, this.parser);
+						k++;
+					}
+					System.out.println("Match running");
 				}
 				
-				int k = 0;
-				
-				for (Player player : players) {
-					player.initPlayer(this.gameState.getPoliticalDeck(), k, this.parser);
-					k++;
-				}
-				System.out.println("Match running");
 			}
 			
 			Socket socket = serverSocket.accept();
 			ServerSocketView view = new ServerSocketView(socket);
+			executor.submit(view);
+			System.out.println("iterate");
 			tmpViewSocket.put(view, socket);
 			System.out.println("NEW CLIENTSOCKET ACCEPTED");
 			

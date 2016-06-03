@@ -44,13 +44,4 @@ public class Assistants extends SimpleItem implements Marketable {
 		else return true;
 	}
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		return "Assistants [items=" + items + "]";
-	}
-
-
 }
