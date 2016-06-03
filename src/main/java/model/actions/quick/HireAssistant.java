@@ -26,7 +26,7 @@ public class HireAssistant implements QuickAction {
 	@Override
 	public boolean checkCondition(Player player, GameState gameState) {
 		if(player.getCoins().getItems()<3){
-			gameState.notifyObserver(new ChangeFail(player.getNickname()+" ,you don't have enough coins to hire an assistant "));
+			gameState.notifyObserver(new ChangeFail(player.getNickname()+", you don't have enough coins to hire an assistant "));
 			return false;
 		}
 		
