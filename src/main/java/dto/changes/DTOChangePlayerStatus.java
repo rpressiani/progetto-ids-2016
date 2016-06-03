@@ -39,4 +39,15 @@ public class DTOChangePlayerStatus implements DTOChange {
 	public DTOScore getScore() {
 		return score;
 	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Your current status is: \ncoins = " + coins + "\nassistants = " + assistants + "\nnobilityLevel = "
+				+ nobilityLevel + "\nscore = " + score + "";
+	}
+	
+	
 }
