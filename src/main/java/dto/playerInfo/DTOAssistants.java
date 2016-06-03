@@ -18,5 +18,13 @@ public class DTOAssistants implements DTOObject {
 	public int getQuantity() {
 		return quantity;
 	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return String.valueOf(this.getQuantity());
+	}
 	
 }

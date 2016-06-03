@@ -18,6 +18,13 @@ public class DTOScore implements DTOObject {
 	public int getLevel() {
 		return level;
 	}
-	
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return String.valueOf(this.getLevel());
+	}
 	
 }
