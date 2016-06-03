@@ -31,10 +31,10 @@ public class TestBonusScore {
 	public void testNullPlayerInGiveBonusThrowsException() {
 		boolean thrown = false; 
 		Parser parser = new Parser(); 
-		Player player = new Player("Barack", new Color("black")); 
-		Player player2 = new Player("Richard", new Color("white")); 
-		Player player3 = new Player("Ronald", new Color("blue")); 
-		Player player4 = new Player("George", new Color("red")); 
+		Player player = new Player(); 
+		Player player2 = new Player(); 
+		Player player3 = new Player(); 
+		Player player4 = new Player(); 
 		ArrayList<Player> players = new ArrayList<Player>(); 
 		players.add(player); 
 		players.add(player2); 
@@ -56,10 +56,10 @@ public class TestBonusScore {
 	public void testNullGameStateInGiveBonusThrowsException() {
 		boolean thrown = false; 
 		Parser parser = new Parser(); 
-		Player player = new Player("Barack", new Color("black")); 
-		Player player2 = new Player("Richard", new Color("white")); 
-		Player player3 = new Player("Ronald", new Color("blue")); 
-		Player player4 = new Player("George", new Color("red")); 
+		Player player = new Player(); 
+		Player player2 = new Player(); 
+		Player player3 = new Player(); 
+		Player player4 = new Player(); 
 		ArrayList<Player> players = new ArrayList<Player>(); 
 		players.add(player); 
 		players.add(player2); 
@@ -80,10 +80,10 @@ public class TestBonusScore {
 	@Test
 	public void testIfGiveBonusWorks() {
 		Parser parser = new Parser(); 
-		Player player = new Player("Barack", new Color("black")); 
-		Player player2 = new Player("Richard", new Color("white")); 
-		Player player3 = new Player("Ronald", new Color("blue")); 
-		Player player4 = new Player("George", new Color("red")); 
+		Player player = new Player(); 
+		Player player2 = new Player(); 
+		Player player3 = new Player(); 
+		Player player4 = new Player(); 
 		ArrayList<Player> players = new ArrayList<Player>(); 
 		players.add(player); 
 		players.add(player2); 

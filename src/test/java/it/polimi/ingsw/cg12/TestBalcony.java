@@ -51,10 +51,10 @@ public class TestBalcony {
 	public void testIfPutCounsellorWorks() {
 		Parser parser = new Parser();
 		GarbageState garbageState = new GarbageState(parser); 
-		Player player = new Player("Aiden", new Color("black")); 
-		Player player2 = new Player("Ezio", new Color("white")); 
-		Player player3 = new Player("Jason", new Color("red")); 
-		Player player4 = new Player("Ajay", new Color("blue")); 
+		Player player = new Player(); 
+		Player player2 = new Player(); 
+		Player player3 = new Player(); 
+		Player player4 = new Player(); 
 		ArrayList<Player> players = new ArrayList<Player>();
 		players.add(player); 
 		players.add(player2); 
@@ -76,10 +76,10 @@ public class TestBalcony {
 		boolean thrown = false; 
 		Parser parser = new Parser();
 		GarbageState garbageState = new GarbageState(parser); 
-		Player player = new Player("Aiden", new Color("black")); 
-		Player player2 = new Player("Ezio", new Color("white")); 
-		Player player3 = new Player("Jason", new Color("red")); 
-		Player player4 = new Player("Ajay", new Color("blue")); 
+		Player player = new Player(); 
+		Player player2 = new Player(); 
+		Player player3 = new Player(); 
+		Player player4 = new Player(); 
 		ArrayList<Player> players = new ArrayList<Player>();
 		players.add(player); 
 		players.add(player2); 
@@ -101,10 +101,10 @@ public class TestBalcony {
 		boolean thrown = false; 
 		Parser parser = new Parser();
 		GarbageState garbageState = new GarbageState(parser); 
-		Player player = new Player("Aiden", new Color("black")); 
-		Player player2 = new Player("Ezio", new Color("white")); 
-		Player player3 = new Player("Jason", new Color("red")); 
-		Player player4 = new Player("Ajay", new Color("blue")); 
+		Player player = new Player(); 
+		Player player2 = new Player(); 
+		Player player3 = new Player(); 
+		Player player4 = new Player(); 
 		ArrayList<Player> players = new ArrayList<Player>();
 		players.add(player); 
 		players.add(player2); 

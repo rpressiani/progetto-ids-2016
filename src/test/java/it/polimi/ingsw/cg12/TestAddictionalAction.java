@@ -33,10 +33,10 @@ public class TestAddictionalAction {
 	@Test
 	public void testIfDoActionWorks() {
 		Parser parser = new Parser();
-		Player player = new Player("John", new Color("yellow")); 
-		Player player2 = new Player("Ringo", new Color("red")); 
-		Player player3 = new Player("George", new Color("blue")); 
-		Player player4 = new Player("Paul", new Color("black")); 
+		Player player = new Player(); 
+		Player player2 = new Player(); 
+		Player player3 = new Player(); 
+		Player player4 = new Player(); 
 		ArrayList<Player> players = new ArrayList<Player>(); 
 		players.add(player); 
 		players.add(player2); 
@@ -62,10 +62,10 @@ public class TestAddictionalAction {
 	@Test
 	public void testIfCheckConditionWorks() {
 		Parser parser = new Parser();
-		Player player = new Player("John", new Color("yellow")); 
-		Player player2 = new Player("Ringo", new Color("red")); 
-		Player player3 = new Player("George", new Color("blue")); 
-		Player player4 = new Player("Paul", new Color("black")); 
+		Player player = new Player(); 
+		Player player2 = new Player(); 
+		Player player3 = new Player(); 
+		Player player4 = new Player(); 
 		ArrayList<Player> players = new ArrayList<Player>(); 
 		players.add(player); 
 		players.add(player2); 
@@ -95,10 +95,10 @@ public class TestAddictionalAction {
 	public void testNullPlayerInDoActionThrowsException() {
 		boolean thrown = false; 
 		Parser parser = new Parser();
-		Player player = new Player("John", new Color("yellow")); 
-		Player player2 = new Player("Ringo", new Color("red")); 
-		Player player3 = new Player("George", new Color("blue")); 
-		Player player4 = new Player("Paul", new Color("black")); 
+		Player player = new Player(); 
+		Player player2 = new Player(); 
+		Player player3 = new Player(); 
+		Player player4 = new Player(); 
 		ArrayList<Player> players = new ArrayList<Player>(); 
 		players.add(player); 
 		players.add(player2); 
@@ -127,10 +127,10 @@ public class TestAddictionalAction {
 	public void testNullGameStateInDoActionThrowsException() {
 		boolean thrown = false; 
 		Parser parser = new Parser();
-		Player player = new Player("John", new Color("yellow")); 
-		Player player2 = new Player("Ringo", new Color("red")); 
-		Player player3 = new Player("George", new Color("blue")); 
-		Player player4 = new Player("Paul", new Color("black")); 
+		Player player = new Player(); 
+		Player player2 = new Player(); 
+		Player player3 = new Player(); 
+		Player player4 = new Player(); 
 		ArrayList<Player> players = new ArrayList<Player>(); 
 		players.add(player); 
 		players.add(player2); 
