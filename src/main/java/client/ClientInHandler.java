@@ -3,7 +3,8 @@ package client;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 
-import controller.changes.Change;
+import model.changes.Change;
+
 
 public class ClientInHandler implements Runnable {
 	

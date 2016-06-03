@@ -3,8 +3,7 @@ package model;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import controller.changes.Change;
-import controller.changes.CurrentPlayerChange;
+import model.changes.Change;
 import model.council.Balcony;
 import model.council.GarbageState;
 import model.map.Map;
@@ -157,7 +156,6 @@ public class GameState extends Observable<Change>{
 			throw new NullPointerException("currentPlayer should not be null"); 
 		}
 		this.currentPlayer = currentPlayer;
-//		this.notifyObserver(new CurrentPlayerChange(currentPlayer));
 	}
 	
 	/**

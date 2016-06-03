@@ -1,7 +1,7 @@
 package view;
 
 import client.ClientMessage;
-import controller.changes.Change;
+import model.changes.Change;
 import observer.Observable;
 import observer.Observer;
 
