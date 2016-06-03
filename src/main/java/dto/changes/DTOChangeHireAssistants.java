@@ -31,6 +31,6 @@ public class DTOChangeHireAssistants implements DTOChange {
 	 */
 	@Override
 	public String toString() {
-		return "You gained "+assistants+"assistants and spent "+coins+"coins";
+		return "You gained "+assistants+" assistants and spent "+coins+" coins";
 	}
 }
