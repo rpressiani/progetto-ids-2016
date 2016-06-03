@@ -7,7 +7,7 @@ package model.player;
  */
 public abstract class SimpleItem {
 	
-	Integer items;
+	protected Integer items;
 	
 	/**
 	 * Constructor
@@ -37,13 +37,4 @@ public abstract class SimpleItem {
 		return items;
 	}
 	
-	
-
-//	/**
-//	 * @param items	number of items to set
-//	 */
-//	void setItems(Integer items) {
-//		this.items = items;
-//	}
-
 }

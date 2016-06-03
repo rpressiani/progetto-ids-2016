@@ -6,10 +6,10 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 
 import client.ClientMessage;
-import controller.changes.Change;
 import dto.actions.DTOAction;
 import model.GameState;
 import model.actions.GeneralAction;
+import model.changes.Change;
 import model.player.Player;
 import query.Query;
 import utilities.Color;

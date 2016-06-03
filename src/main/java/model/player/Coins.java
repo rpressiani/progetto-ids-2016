@@ -47,13 +47,4 @@ public class Coins extends SimpleItem implements Marketable {
 		toPlayer.getCoins().add(this.getItems());
 	}
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		return "Coins [items=" + items + "]";
-	}
-
-
 }
