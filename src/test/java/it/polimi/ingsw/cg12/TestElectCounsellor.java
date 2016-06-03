@@ -23,10 +23,18 @@ public class TestElectCounsellor {
 	@Test
 	public void testIfDoActionWorks() {
 		Parser parser = new Parser(); 
-		Player player = new Player("Matt", new Color("black"));
-		Player player2 = new Player("Mark", new Color("white"));
-		Player player3 = new Player("Tom", new Color("orange")); 
-		Player player4 = new Player("Travis", new Color("blue"));
+		Player player = new Player();
+		player.setNickname("Matt");
+		player.setColor(new Color("black"));
+		Player player2 = new Player();
+		player2.setNickname("Mark");
+		player2.setColor(new Color("white"));
+		Player player3 = new Player();
+		player3.setNickname("Tom");
+		player3.setColor(new Color("orange"));
+		Player player4 = new Player();
+		player4.setNickname("Travis");
+		player4.setColor(new Color("blue"));
 		ArrayList<Player> players = new ArrayList<Player>(); 
 		players.add(player); 
 		players.add(player2); 

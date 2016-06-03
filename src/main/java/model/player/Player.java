@@ -44,15 +44,15 @@ public class Player {
 	 * @param nickname	nickname chosen by the player
 	 * @param color		color chosen by the player
 	 */
-	public Player(String nickname, Color color) {
-		if(nickname==null) {
-			throw new IllegalArgumentException("player should have a not null nickname"); 
-		}
-		if(color==null) {
-			throw new IllegalArgumentException("each player should have a color which is not null"); 
-		}
-		this.nickname = nickname;
-		this.color = color;
+	public Player() {
+//		if(nickname==null) {
+//			throw new IllegalArgumentException("player should have a not null nickname"); 
+//		}
+//		if(color==null) {
+//			throw new IllegalArgumentException("each player should have a color which is not null"); 
+//		}
+		this.nickname = null;
+		this.color = null;
 		this.nobilityLevel = new NobilityLevel();
 		this.score = new Score();
 		this.builtCities = new HashSet<City>();
@@ -71,6 +71,7 @@ public class Player {
 	 */
 	public void initPlayer(PoliticalRealDeck deck, Integer id, Parser parser) throws IllegalArgumentException {
 		if (id < 0) throw new IllegalArgumentException("id must be grater than zero");
+		if (this.nickname == null || this.color == null) throw new NullPointerException("cannot init a player if it is not enabled");
 		
 		this.id = id;	//as a player register to a match this ID attribute has to increment, basically it'll represent the order
 						//of the players in a match
@@ -129,6 +130,13 @@ public class Player {
 	}
 
 	/**
+	 * @param nickname the nickname to set
+	 */
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
+
+	/**
 	 * @return the coins
 	 */
 	public Coins getCoins(){
@@ -171,6 +179,13 @@ public class Player {
 	 */
 	public Color getColor() {
 		return color;
+	}
+
+	/**
+	 * @param color the color to set
+	 */
+	public void setColor(Color color) {
+		this.color = color;
 	}
 
 	/**

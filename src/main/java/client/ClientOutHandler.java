@@ -18,6 +18,7 @@ import dto.map.DTOCity;
 import dto.map.DTORegion;
 import dto.utilities.DTOColor;
 import dto.utilities.DTOPermissionCard;
+import dto.utilities.DTOSetup;
 import model.actions.main.BuildEmporiumWithKing;
 import query.GetCoins;
 import query.GetCurrentPlayer;
@@ -55,6 +56,7 @@ public class ClientOutHandler implements Runnable {
 				ClientMessage msg;
 				if (inputList.get(0).equals("help")) {
 					StringBuilder help = new StringBuilder();
+					
 					help.append("\n[CLI] Insert legal commands following the instruction below:\n");
 					help.append("[CLI] <nickname> <command>\n");
 					help.append("[CLI] COMMAND LIST: \n");
@@ -71,12 +73,16 @@ public class ClientOutHandler implements Runnable {
 					help.append("[CLI] *\tQueries \n");
 					help.append("[CLI] \t\tgetscores \n");
 					help.append("[CLI] \t\tgetcoins \n");
+					help.append("[CLI] \t\tgetcurrentplayer \n");
 					help.append("[CLI] *\tOther Commands \n");
 					help.append("[CLI] \t\tping\n");
+				
 					System.out.println(help.toString());
 				} else if(inputList.get(0).equals("setup")){
-					socketOut.writeObject(inputList.get(1));
+					msg = new ClientMessage(new DTOSetup(inputList.get(1), new DTOColor(inputList.get(2))));
+					socketOut.writeObject(msg);
 					socketOut.flush();
+					System.out.println("DTOSetup sent");
 				} else {
 					
 					switch (inputList.get(0)) {

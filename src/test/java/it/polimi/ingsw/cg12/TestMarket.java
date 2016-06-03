@@ -25,7 +25,9 @@ public class TestMarket {
 	}
 	@Test
 	public void testAddContractEffectivelyAddsContract() {
-		Player player = new Player("Ciro", new Color(0,0,0)); 
+		Player player = new Player();
+		player.setNickname("Ciro");
+		player.setColor(new Color(0,0,0));
 		Contract contract = new Contract(player); 
 		Market market = new Market(); 
 		market.addContract(contract);
@@ -34,7 +36,9 @@ public class TestMarket {
 	@Test
 	public void testNullBuyerThrowsException() {
 		boolean thrown = false; 
-		Player player = new Player("Gennaro", new Color(1,2,3)); 
+		Player player = new Player();
+		player.setNickname("Gennaro");
+		player.setColor(new Color(1,2,3));
 		Player player2 = null; 
 		Market market = new Market(); 
 		Contract contract = new Contract(player); 
