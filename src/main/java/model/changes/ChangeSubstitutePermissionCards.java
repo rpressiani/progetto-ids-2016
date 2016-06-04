@@ -30,7 +30,7 @@ public class ChangeSubstitutePermissionCards implements Change {
 	/**
 	 * @return the region
 	 */
-	public String getRegion() {
+	public String getNameRegion() {
 		return nameRegion;
 	}
 }

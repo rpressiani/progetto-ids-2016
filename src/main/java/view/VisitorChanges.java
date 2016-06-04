@@ -40,6 +40,9 @@ public class VisitorChanges {
 	}
 	
 	public DTOChangeSubstitutePermissionCards visit(ChangeSubstitutePermissionCards change){
-		return null;
+		DTOAssistants assistants=new DTOAssistants(change.getAssistants().getItems());
+		String nameRegion=change.getNameRegion();
+		
+		return new DTOChangeSubstitutePermissionCards(assistants, nameRegion);
 	}
 }
