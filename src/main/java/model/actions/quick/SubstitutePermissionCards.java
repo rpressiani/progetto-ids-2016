@@ -1,10 +1,13 @@
 package model.actions.quick;
 
 import model.GameState;
+import model.changes.ChangeFail;
+import model.changes.ChangeSubstitutePermissionCards;
 import model.map.Region;
+import model.player.Assistants;
 import model.player.Player;
 
-public class ChangePermissionCards implements QuickAction {
+public class SubstitutePermissionCards implements QuickAction {
 
 	private Region region;
 	
@@ -12,7 +15,7 @@ public class ChangePermissionCards implements QuickAction {
 	 * @param region
 	 * @throws NullPointerException if region is null
 	 */
-	public ChangePermissionCards(Region region) {
+	public SubstitutePermissionCards(Region region) {
 		if(region==null) {
 			throw new NullPointerException("region cannot be null"); 
 		}
@@ -27,8 +30,11 @@ public class ChangePermissionCards implements QuickAction {
 		if(gameState==null) {
 			throw new NullPointerException("gameState cannot be null"); 
 		}
+		
 		region.getPermissionDeck().substituteCards(region.getPermissionDeck().getDeck(), region.getPermissionDeck().getVisibleCards());
 		player.getAssistants().sub(1);
+		
+		gameState.notifyObserver(new ChangeSubstitutePermissionCards(new Assistants(1), region.getName()));
 	}
 
 	@Override
@@ -39,7 +45,11 @@ public class ChangePermissionCards implements QuickAction {
 		if(gameState==null) {
 			throw new NullPointerException("player cannot be null"); 
 		}
-		if(player.getAssistants().getItems()==0) return false;
+		
+		if(player.getAssistants().getItems()<1){
+			gameState.notifyObserver(new ChangeFail(player.getNickname()+", you don't have enough assistants to substitute permission cards"));
+			return false;
+		}
 		
 		else return true;
 	}

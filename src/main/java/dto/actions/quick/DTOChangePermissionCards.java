@@ -2,7 +2,7 @@ package dto.actions.quick;
 
 import controller.VisitorActions;
 import dto.map.DTORegion;
-import model.actions.quick.ChangePermissionCards;
+import model.actions.quick.SubstitutePermissionCards;
 import model.player.Player;
 
 public class DTOChangePermissionCards implements DTOQuickAction {
@@ -26,7 +26,7 @@ public class DTOChangePermissionCards implements DTOQuickAction {
 	}
 
 	@Override
-	public ChangePermissionCards accept(VisitorActions v, Player player) {
+	public SubstitutePermissionCards accept(VisitorActions v, Player player) {
 		return v.visit(this);
 	}
 

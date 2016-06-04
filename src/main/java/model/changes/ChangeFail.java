@@ -1,6 +1,6 @@
 package model.changes;
 
-import dto.changes.DTOChange;
+import dto.changes.DTOChangeFail;
 import model.player.Player;
 import view.VisitorChanges;
 
@@ -13,7 +13,7 @@ public class ChangeFail implements Change {
 	}
 	
 	@Override
-	public DTOChange accept(VisitorChanges v, Player player) {
+	public DTOChangeFail accept(VisitorChanges v, Player player) {
 		return v.visit(this);
 	}
 

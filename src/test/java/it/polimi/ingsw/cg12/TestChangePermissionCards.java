@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import org.junit.Test;
 
 import model.GameState;
-import model.actions.quick.ChangePermissionCards;
+import model.actions.quick.SubstitutePermissionCards;
 import model.bonusable.PermissionCard;
 import model.council.GarbageState;
 import model.map.Map;
@@ -23,7 +23,7 @@ public class TestChangePermissionCards {
 		boolean thrown = false; 
 		Region region = null; 
 		try {
-			ChangePermissionCards action = new ChangePermissionCards(region); 
+			SubstitutePermissionCards action = new SubstitutePermissionCards(region); 
 		}  catch(NullPointerException e) {
 			thrown = true; 
 		}
@@ -61,7 +61,7 @@ public class TestChangePermissionCards {
 			id++; 
 		}
 		Region region = map.getRegions().get("seaside"); 
-		ChangePermissionCards action = new ChangePermissionCards(region); 
+		SubstitutePermissionCards action = new SubstitutePermissionCards(region); 
 		try {
 			Player pl = null; 
 			 action.doAction(pl, gameState);
@@ -101,7 +101,7 @@ public class TestChangePermissionCards {
 		}
 		GameState gameState2 = null; 
 		Region region = map.getRegions().get("seaside");
-		ChangePermissionCards action = new ChangePermissionCards(region);
+		SubstitutePermissionCards action = new SubstitutePermissionCards(region);
 		try {
 			action.doAction(player2, gameState2);
 		} catch(NullPointerException e) {
@@ -138,7 +138,7 @@ public class TestChangePermissionCards {
 			id++; 
 		}
 		Region region = map.getRegions().get("seaside"); 
-		ChangePermissionCards action = new ChangePermissionCards(region); 
+		SubstitutePermissionCards action = new SubstitutePermissionCards(region); 
 		int temp = player.getAssistants().getItems(); 
 		action.doAction(player, gameState);
 		assertTrue(temp>player.getAssistants().getItems()); 
@@ -173,7 +173,7 @@ public class TestChangePermissionCards {
 			id++; 
 		}
 		Region region = map.getRegions().get("seaside"); 
-		ChangePermissionCards action = new ChangePermissionCards(region); 
+		SubstitutePermissionCards action = new SubstitutePermissionCards(region); 
 		try {
 			Player pl = null; 
 			action.checkCondition(pl, gameState); 
@@ -212,7 +212,7 @@ public class TestChangePermissionCards {
 			id++; 
 		}
 		Region region = map.getRegions().get("seaside"); 
-		ChangePermissionCards action = new ChangePermissionCards(region); 
+		SubstitutePermissionCards action = new SubstitutePermissionCards(region); 
 		GameState gameState2 = null; 
 		try {
 			action.checkCondition(player4, gameState2); 
@@ -250,7 +250,7 @@ public class TestChangePermissionCards {
 			id++; 
 		}
 		Region region = map.getRegions().get("seaside"); 
-		ChangePermissionCards action = new ChangePermissionCards(region); 
+		SubstitutePermissionCards action = new SubstitutePermissionCards(region); 
 		boolean isMethodOk = false; 
 		int temp = player2.getAssistants().getItems(); 
 		player2.getAssistants().sub(temp);
@@ -288,7 +288,7 @@ public class TestChangePermissionCards {
 			id++; 
 		}
 		Region region = map.getRegions().get("seaside"); 
-		ChangePermissionCards action = new ChangePermissionCards(region); 
+		SubstitutePermissionCards action = new SubstitutePermissionCards(region); 
 		boolean isMethodOk = false; 
 		if(action.checkCondition(player3, gameState)) {
 			isMethodOk = true; 

@@ -28,7 +28,7 @@ import model.actions.main.MainAction;
 import model.actions.market.BuyAction;
 import model.actions.market.SellAction;
 import model.actions.quick.AddictionalAction;
-import model.actions.quick.ChangePermissionCards;
+import model.actions.quick.SubstitutePermissionCards;
 import model.actions.quick.ElectCounsellorWithAssistant;
 import model.actions.quick.HireAssistant;
 import model.bonusable.PermissionCard;
@@ -98,9 +98,9 @@ public class VisitorActions {
 		return new AddictionalAction(realAction);
 	}
 	
-	public ChangePermissionCards visit(DTOChangePermissionCards DTOAction){
+	public SubstitutePermissionCards visit(DTOChangePermissionCards DTOAction){
 		String regionString=DTOAction.getRegion().getName();
-		return new ChangePermissionCards(gameState.getMap().getRegions().get(regionString));
+		return new SubstitutePermissionCards(gameState.getMap().getRegions().get(regionString));
 		
 	}
 	
