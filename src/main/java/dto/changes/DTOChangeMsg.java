@@ -1,6 +1,6 @@
 package dto.changes;
 
-public class DTOChangeFail implements DTOChange {
+public class DTOChangeMsg implements DTOChange {
 
 	/**
 	 * 
@@ -9,7 +9,7 @@ public class DTOChangeFail implements DTOChange {
 
 	private final String msg;
 	
-	public DTOChangeFail(String msg){
+	public DTOChangeMsg(String msg){
 		this.msg=msg;
 	}
 

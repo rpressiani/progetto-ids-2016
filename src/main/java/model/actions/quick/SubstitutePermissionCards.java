@@ -1,7 +1,8 @@
 package model.actions.quick;
 
 import model.GameState;
-import model.changes.ChangeFail;
+import model.changes.ChangeMsg;
+import model.changes.ChangePlayerStatus;
 import model.changes.ChangeSubstitutePermissionCards;
 import model.map.Region;
 import model.player.Assistants;
@@ -35,6 +36,7 @@ public class SubstitutePermissionCards implements QuickAction {
 		player.getAssistants().sub(1);
 		
 		gameState.notifyObserver(new ChangeSubstitutePermissionCards(new Assistants(1), region.getName()));
+		gameState.notifyObserver(new ChangePlayerStatus(player));
 	}
 
 	@Override
@@ -47,7 +49,7 @@ public class SubstitutePermissionCards implements QuickAction {
 		}
 		
 		if(player.getAssistants().getItems()<1){
-			gameState.notifyObserver(new ChangeFail(player.getNickname()+", you don't have enough assistants to substitute permission cards"));
+			gameState.notifyObserver(new ChangeMsg(player.getNickname()+", you don't have enough assistants to substitute permission cards"));
 			return false;
 		}
 		

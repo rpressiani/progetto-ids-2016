@@ -2,7 +2,7 @@ package model.actions.market;
 
 import model.GameState;
 import model.actions.GeneralAction;
-import model.changes.ChangeFail;
+import model.changes.ChangeMsg;
 import model.market.Contract;
 import model.player.Player;
 
@@ -29,7 +29,7 @@ public class BuyAction implements GeneralAction {
 	@Override
 	public boolean checkCondition(Player player, GameState gameState) {
 		if(contract==null){
-			gameState.notifyObserver(new ChangeFail(player.getNickname()+", the player you want to buy from has no contracts in the market"));
+			gameState.notifyObserver(new ChangeMsg(player.getNickname()+", the player you want to buy from has no contracts in the market"));
 			return false;
 		}
 		
