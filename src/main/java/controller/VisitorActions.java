@@ -1,7 +1,9 @@
 package controller;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import dto.actions.DTONullAction;
 import dto.actions.main.DTOBuildEmporiumWithCard;
@@ -9,10 +11,13 @@ import dto.actions.main.DTOBuildEmporiumWithKing;
 import dto.actions.main.DTOBuyPermissionCard;
 import dto.actions.main.DTOElectCounsellor;
 import dto.actions.main.DTOMainAction;
+import dto.actions.market.DTOBuyAction;
+import dto.actions.market.DTOSellAction;
 import dto.actions.quick.DTOAddictionalAction;
 import dto.actions.quick.DTOChangePermissionCards;
 import dto.actions.quick.DTOElectCounsellorWithAssistant;
 import dto.actions.quick.DTOHireAssistant;
+import dto.utilities.DTOPermissionCard;
 import model.GameState;
 import model.actions.NullAction;
 import model.actions.main.BuildEmporiumWithCard;
@@ -20,6 +25,8 @@ import model.actions.main.BuildEmporiumWithKing;
 import model.actions.main.BuyPermissionCard;
 import model.actions.main.ElectCounsellor;
 import model.actions.main.MainAction;
+import model.actions.market.BuyAction;
+import model.actions.market.SellAction;
 import model.actions.quick.AddictionalAction;
 import model.actions.quick.ChangePermissionCards;
 import model.actions.quick.ElectCounsellorWithAssistant;
@@ -27,6 +34,7 @@ import model.actions.quick.HireAssistant;
 import model.bonusable.PermissionCard;
 import model.map.City;
 import model.map.Region;
+import model.market.Contract;
 import model.player.Player;
 import model.politicalDeck.PoliticalContainer;
 import utilities.Color;
@@ -113,6 +121,54 @@ public class VisitorActions {
 	public NullAction visit(DTONullAction DTOAction){
 		return new NullAction();
 	}
+	
+	public SellAction visit(DTOSellAction DTOAction, Player player){
+		int sellCoins=DTOAction.getSellCoins();
+		int buyCoins=DTOAction.getBuyCoins();
+		
+		int sellAssistants=DTOAction.getSellAssistants();
+		int buyAssistants=DTOAction.getBuyAssistants();
+		
+		Set<PermissionCard> sellPermissions = new HashSet<PermissionCard>();
+		List<PermissionCard> myCards= new ArrayList<PermissionCard>(player.getPermissionHand());
+		for(DTOPermissionCard c : DTOAction.getSellPermissions()){
+			int idCard=c.getIdCard();
+			PermissionCard card=null;
+			for(int i=0; i<myCards.size(); i++){
+				if(idCard==myCards.get(i).getIdCard()) card=myCards.get(i);
+			}
+			sellPermissions.add(card);
+		}
+		
+		Set<PermissionCard> buyPermissions = new HashSet<PermissionCard>();
+		for(DTOPermissionCard c : DTOAction.getBuyPermissions()){
+			int idCard=c.getIdCard();
+			PermissionCard card=null;
+			for(Player p : gameState.getPlayers()){
+				if(p!=player){
+					List<PermissionCard> othersCards= new ArrayList<PermissionCard>(player.getPermissionHand());
+					for(int i=0; i<othersCards.size(); i++){
+						if(idCard==othersCards.get(i).getIdCard()) card=othersCards.get(i);
+					}
+				}
+			}
+			buyPermissions.add(card);
+		}
+		
+		ArrayList<Integer> sellPoliticals=DTOAction.getSellPoliticals();
+		ArrayList<Integer> buyPoliticals=DTOAction.getBuyPoliticals();
+		
+		return new SellAction(sellCoins, sellAssistants, sellPermissions, sellPoliticals, buyCoins, buyAssistants, buyPermissions, buyPoliticals);
+	}
+	
+	public BuyAction visit(DTOBuyAction DTOAction){
+		Contract contract=null;
+		List<Contract> contractList= new ArrayList<Contract>(gameState.getMarket().getContractSet());
+	
+		for(int i=0; i<contractList.size(); i++){
+			if(DTOAction.getPlayerName().equals(contractList.get(i).getSeller())) contract=contractList.get(i);
+		}
+		
+		return new BuyAction(contract);
+	}
 }
-
-
