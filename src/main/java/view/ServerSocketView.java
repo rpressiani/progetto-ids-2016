@@ -30,10 +30,7 @@ public class ServerSocketView extends View implements Runnable {
 		this.socketIn = new ObjectInputStream(socket.getInputStream()); 
 		this.socketOut = new ObjectOutputStream(socket.getOutputStream());
 		this.visitorChanges = new VisitorChanges();
-		
-//		System.out.printn("insert nickname:\n");
-		this.socketOut.writeObject("[SERVER] Insert 'setup <nickname> <color>' asap\n");
-		this.socketOut.flush();
+
 		this.player = new Player(); //set name and color while running only if running==false, after that set running as true
 //										use a timer, notify the clients that if they're not running by the end of the timer they
 //										will be disconnected. the player get to be part of the match only if they're are running
@@ -65,7 +62,10 @@ public class ServerSocketView extends View implements Runnable {
 	public void run() {
 		
 		try {
-			this.socketOut.writeObject("ServerSocketView is running");
+			StringBuilder initString = new StringBuilder();
+			initString.append("\n[SERVER] ServerSocketView is running\n");
+			initString.append("[SERVER] Insert 'setup <nickname> <color>' to enable your player to join a match.\n");
+			this.socketOut.writeObject(initString);
 			this.socketOut.flush();
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
