@@ -31,17 +31,12 @@ public class ServerSocketView extends View implements Runnable {
 		this.socketOut = new ObjectOutputStream(socket.getOutputStream());
 		this.visitorChanges = new VisitorChanges();
 
-		this.player = new Player(); //set name and color while running only if running==false, after that set running as true
-//										use a timer, notify the clients that if they're not running by the end of the timer they
-//										will be disconnected. the player get to be part of the match only if they're are running
+		this.player = new Player();
 	}
 	
 	public void initServerSocketView(GameState game) throws IOException{
 		this.game = game;
-//		this.enable = true;
-//		this.socketOut.writeObject(this.enable);
 		this.socketOut.flush();
-		System.out.println("initServerSocketView executed");
 	}
 	
 	public void update(Change change) {
@@ -72,8 +67,8 @@ public class ServerSocketView extends View implements Runnable {
 			e1.printStackTrace();
 		}
 		
-		while(true) {	//suggest: check this condition
-						//reply(ricky): condition is ok because serversocket must be always ready to receive actions
+		while(true) {	
+						
 			try {
 			
 				Object obj = socketIn.readObject();
@@ -83,62 +78,59 @@ public class ServerSocketView extends View implements Runnable {
 					ClientMessage msgIn = (ClientMessage) obj;
 					System.out.println("RECEIVED MSG: " + msgIn);
 					
-//					if (game.getPlayersHashMap().containsKey(msgIn.getNickname())) {
+					ClientMessage msgOut;
+					
+					if (!enabled) {
 						
-//						Player player = game.getPlayersHashMap().get(msgIn.getNickname());
-						ClientMessage msgOut;
-						
-						if (!enabled) {
+						if (msgIn.getMessage() instanceof DTOSetup) {
 							
-							if (msgIn.getMessage() instanceof DTOSetup) {
-								
-								DTOSetup setup = (DTOSetup) msgIn.getMessage();
-								
-								this.player.setNickname(new String(setup.getNickname()));
-								this.player.setColor(new Color(setup.getColor().getColorString()));
-								this.enabled = true;
-								
-								StringBuilder playerEnabled = new StringBuilder();
-								playerEnabled.append("\n[SERVER] Setup completed\n");
-								playerEnabled.append("[SERVER] player.enabled == " + this.enabled + "\n");
-								playerEnabled.append("[SERVER] Waiting for a match to start...\n");
-								this.socketOut.writeObject(playerEnabled.toString());
+							DTOSetup setup = (DTOSetup) msgIn.getMessage();
+							
+							this.player.setNickname(new String(setup.getNickname()));
+							this.player.setColor(new Color(setup.getColor().getColorString()));
+							this.enabled = true;
+							
+							StringBuilder playerEnabled = new StringBuilder();
+							playerEnabled.append("\n[SERVER] Setup completed\n");
+							playerEnabled.append("[SERVER] player.enabled == " + this.enabled + "\n");
+							playerEnabled.append("[SERVER] Waiting for a match to start...\n");
+							this.socketOut.writeObject(playerEnabled.toString());
+							this.socketOut.flush();
+						}
+							
+					} else {
+						
+						if (msgIn.getMessage() instanceof DTOAction) {
+							DTOAction action = (DTOAction) msgIn.getMessage();
+							System.out.println("SERVER VIEW: received DTOAction " + action);
+							
+							msgOut = new ClientMessage(this.player, action);
+							
+							this.notifyObserver(msgOut);
+						}
+						
+						if (msgIn.getMessage() instanceof String) {
+							String string = (String) msgIn.getMessage();
+							System.out.println("SERVER VIEW: received String " + string);
+							
+							if (string.equals("ping")) {
+								StringBuilder ping = new StringBuilder();
+								ping.append("\n[SERVER] Ping received\n");
+								ping.append("[SERVER] Client connected\n");
+								ping.append("[SERVER] Server is responding\n");
+								this.socketOut.writeObject(ping.toString());
 								this.socketOut.flush();
 							}
+						}
+						
+						if (msgIn.getMessage() instanceof Query) {
+							Query query = (Query) msgIn.getMessage();
+							System.out.println("SERVER VIEW: received query " + query);
 							
-						} else {
-							
-							if (msgIn.getMessage() instanceof DTOAction) {
-								DTOAction action = (DTOAction) msgIn.getMessage();
-								System.out.println("SERVER VIEW: received DTOAction " + action);
-								
-								msgOut = new ClientMessage(this.player, action);
-								
-								this.notifyObserver(msgOut);
-							}
-							
-							if (msgIn.getMessage() instanceof String) {
-								String string = (String) msgIn.getMessage();
-								System.out.println("SERVER VIEW: received String " + string);
-								
-								if (string.equals("ping")) {
-									StringBuilder ping = new StringBuilder();
-									ping.append("\n[SERVER] Ping received\n");
-									ping.append("[SERVER] Client connected\n");
-									ping.append("[SERVER] Server is responding\n");
-									this.socketOut.writeObject(ping.toString());
-									this.socketOut.flush();
-								}
-							}
-							
-							if (msgIn.getMessage() instanceof Query) {
-								Query query = (Query) msgIn.getMessage();
-								System.out.println("SERVER VIEW: received query " + query);
-								
-								this.socketOut.writeObject(query.perform(this.player, this.game));
-								this.socketOut.flush();
-							}
-						}						
+							this.socketOut.writeObject(query.perform(this.player, this.game));
+							this.socketOut.flush();
+						}
+					}						
 				}
 				
 			} catch (ClassNotFoundException | IOException e) {

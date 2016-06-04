@@ -66,9 +66,9 @@ public class ClientOutHandler implements Runnable {
 					help.append("[CLI] \t\telectCounsellor <region> <color>\n");
 					help.append("[CLI] *\tQuick Actions \n");
 					help.append("[CLI] \t\taddAction <action>\n");
-					help.append("[CLI] \t\tchangePermissionCards <region>\n");
-					help.append("[CLI] \t\telectCounsellorAss <region> <color>\n");
-					help.append("[CLI] \t\thireAss\n");
+					help.append("[CLI] \t\tsubPermissionCards <region>\n");
+					help.append("[CLI] \t\telectCounsellorAssistant <region> <color>\n");
+					help.append("[CLI] \t\thireAssistant\n");
 					help.append("[CLI] *\tQueries \n");
 					help.append("[CLI] \t\tgetscores \n");
 					help.append("[CLI] \t\tgetcoins \n");
