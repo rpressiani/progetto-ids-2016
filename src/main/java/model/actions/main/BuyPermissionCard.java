@@ -20,7 +20,23 @@ public class BuyPermissionCard implements MainAction {
 		
 	}
 	
+	/**
+	 * @param region
+	 * @param proposal
+	 * @param index
+	 * @throws NullPointerException if region, proposal are null
+	 * @throws IllegalArgumentException if index <0
+	 */
 	public BuyPermissionCard(Region region, PoliticalContainer proposal, int index) {
+		if(region==null) {
+			throw new NullPointerException("region cannot be null"); 
+		}
+		if(proposal==null) {
+			throw new NullPointerException("proposal cannot be null"); 
+		}
+		if(index<0) {
+			throw new IllegalArgumentException("index cannot be <0"); 
+		}
 		this.region=region;
 		this.proposal=proposal;
 		this.index=index;
@@ -48,22 +64,42 @@ public class BuyPermissionCard implements MainAction {
 		player.getPermissionHand().add(drawedCard);
 	}
 	
+	/**
+	 * @param proposal
+	 * @param balcony
+	 * @return true if proposal is ok
+	 * @throws NullPointerException if proposal or balcony are null
+	 */
 	public boolean checkProposal(PoliticalContainer proposal, Balcony balcony){
-		
+		if(proposal==null) {
+			throw new NullPointerException("proposal cannot be null"); 
+		}
+		if(balcony==null) {
+			throw new NullPointerException("balcony cannot be null"); 
+		}
 		int sum=calculateNumCards(proposal);
 		
 		if (sum>=balcony.getnCounsellorsPerBalcony() && sum!=0) return false;
 		
 		else{
 			for(int i=0; i<proposal.getDeck().size()-1; i++){
-				if(proposal.getDeck().get(i).getNumCards() > balcony.getBalconyState().getState().get(i).getCounter()) return false;
+				if(proposal.getDeck().get(i).getNumCards() > balcony.getBalconyState().getState().get(i).getCounter()) 
+					return false;
 			}
 		}
 		
 		return true;
 	}
 	
+	/**
+	 * @param proposal
+	 * @return number of the cards contained in PoliticalContainer
+	 * @throws NullPointerException if proposal is null
+	 */
 	public int calculateNumCards(PoliticalContainer proposal){
+		if(proposal==null) {
+			throw new NullPointerException("proposal cannot be null"); 
+		}
 		int sum=0;
 		
 		for(PoliticalCard card : proposal.getDeck()){
@@ -73,7 +109,18 @@ public class BuyPermissionCard implements MainAction {
 		return sum;
 	}
 	
+	/**
+	 * @param hand
+	 * @param proposal
+	 * @throws NullPointerException if hand or proposal are null
+	 */
 	public void subProposal(PoliticalHand hand, PoliticalContainer proposal){
+		if(hand==null) {
+			throw new NullPointerException("hand cannot be null"); 
+		}
+		if(proposal==null) {
+			throw new NullPointerException("proposal cannot be null"); 
+		}
 		for(int i=0; i<hand.getDeck().size(); i++){
 			hand.getDeck().get(i).removeCards(proposal.getDeck().get(i).getNumCards());
 		}
