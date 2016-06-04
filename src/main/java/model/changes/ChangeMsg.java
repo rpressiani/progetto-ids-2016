@@ -1,19 +1,19 @@
 package model.changes;
 
-import dto.changes.DTOChange;
+import dto.changes.DTOChangeMsg;
 import model.player.Player;
 import view.VisitorChanges;
 
-public class ChangeFail implements Change {
+public class ChangeMsg implements Change {
 
 	private String msg;
 	
-	public ChangeFail(String msg){
+	public ChangeMsg(String msg){
 		this.msg=msg;
 	}
 	
 	@Override
-	public DTOChange accept(VisitorChanges v, Player player) {
+	public DTOChangeMsg accept(VisitorChanges v, Player player) {
 		return v.visit(this);
 	}
 
