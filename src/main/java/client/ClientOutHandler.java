@@ -47,8 +47,7 @@ public class ClientOutHandler implements Runnable {
 			
 			StringBuilder cmdNotFound = new StringBuilder();
 			cmdNotFound.append("\n[ERROR] Command not found!\n");
-			cmdNotFound.append("[ERROR] Insert legal commands following the instruction below:\n");
-			cmdNotFound.append("[ERROR] <nickname> <command>\n");
+			cmdNotFound.append("[ERROR] Insert legal commands\n");
 			cmdNotFound.append("[ERROR] Enter help for command list\n");
 			
 			try {

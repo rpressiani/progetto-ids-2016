@@ -31,4 +31,12 @@ public class DTOSetup implements DTOObject {
 		return color;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "DTOSetup [nickname=" + nickname + ", color=" + color + "]";
+	}
+
 }

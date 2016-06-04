@@ -25,6 +25,8 @@ import parser.Parser;
  */
 public class Player {
 	
+	private static int serialIDGenerator = 0;
+	private final int serialID;
 	private int id;
 	private String nickname;
 	private Coins coins;
@@ -51,6 +53,8 @@ public class Player {
 //		if(color==null) {
 //			throw new IllegalArgumentException("each player should have a color which is not null"); 
 //		}
+		this.serialID = serialIDGenerator;
+		serialIDGenerator++;
 		this.nickname = null;
 		this.color = null;
 		this.nobilityLevel = new NobilityLevel();
@@ -240,14 +244,12 @@ public class Player {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + id;
-		result = prime * result + ((nickname == null) ? 0 : nickname.hashCode());
+		result = prime * result + serialID;
 		return result;
 	}
 
 	/* (non-Javadoc)
 	 * @see java.lang.Object#equals(java.lang.Object)
-	 * Compares only ID and NICKNAME
 	 */
 	@Override
 	public boolean equals(Object obj) {
@@ -258,12 +260,7 @@ public class Player {
 		if (getClass() != obj.getClass())
 			return false;
 		Player other = (Player) obj;
-		if (id != other.id)
-			return false;
-		if (nickname == null) {
-			if (other.nickname != null)
-				return false;
-		} else if (!nickname.equals(other.nickname))
+		if (serialID != other.serialID)
 			return false;
 		return true;
 	}
