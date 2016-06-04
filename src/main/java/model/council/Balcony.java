@@ -22,6 +22,11 @@ public class Balcony {
 	private final Integer nCounsellorsPerBalcony;
 	private final Integer nColors;
 	
+	/**
+	 * @param garbage
+	 * @param parser
+	 * @throws NullPointerException if garbage or parser are null
+	 */
 	public Balcony(GarbageState garbage, Parser parser) {
 		if(garbage==null) {
 			throw new NullPointerException("cannot have a null garbage"); 

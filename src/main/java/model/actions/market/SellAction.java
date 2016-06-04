@@ -8,13 +8,12 @@ import model.actions.GeneralAction;
 import model.bonusable.PermissionCard;
 import model.market.Contract;
 import model.player.Player;
-import model.politicalDeck.PoliticalContainer;
 
 public class SellAction implements GeneralAction {
 
 	private int sellCoins, buyCoins;
 	private int sellAssistants, buyAssistants;
-	private Set<PermissionCard> sellPermissionCards, buyPermissionCards;
+	private Set<PermissionCard> sellPermissions, buyPermissions;
 	private ArrayList<Integer> sellPoliticals, buyPoliticals;
 	
 	public SellAction(){
@@ -24,15 +23,16 @@ public class SellAction implements GeneralAction {
 	/**
 	 * create the sell action
 	 */
-	public SellAction(int sellCoins, int sellAssistants, Set<PermissionCard> sellPermissionCards, ArrayList<Integer> sellPoliticals,
-			int buyCoins, int buyAssistants, Set<PermissionCard> buyPermissionCards, ArrayList<Integer> buyPoliticals){
+	public SellAction(int sellCoins, int sellAssistants, Set<PermissionCard> sellPermissions, ArrayList<Integer> sellPoliticals,
+			int buyCoins, int buyAssistants, Set<PermissionCard> buyPermissions, ArrayList<Integer> buyPoliticals){
 		this.sellCoins=sellCoins;
 		this.sellAssistants=sellAssistants;
-		this.sellPermissionCards=sellPermissionCards;
+		this.sellPermissions=sellPermissions;
 		this.sellPoliticals=sellPoliticals;
+		
 		this.buyCoins=buyCoins;
 		this.buyAssistants=buyAssistants;
-		this.buyPermissionCards=buyPermissionCards;
+		this.buyPermissions=buyPermissions;
 		this.buyPoliticals=buyPoliticals;
 	}
 	
@@ -43,14 +43,14 @@ public class SellAction implements GeneralAction {
 		
 		contract.sellCoins(sellCoins);
 		contract.sellAssistants(sellAssistants);
-		for(PermissionCard card : sellPermissionCards){
+		for(PermissionCard card : sellPermissions){
 			contract.sellPermissionCard(card);
 		}
 		contract.sellPoliticalCards(sellPoliticals);
 		
 		contract.buyCoins(buyCoins);
 		contract.buyAssistants(buyAssistants);
-		for(PermissionCard card : buyPermissionCards){
+		for(PermissionCard card : buyPermissions){
 			contract.buyPermissionCard(card);
 		}
 		contract.buyPoliticalCards(buyPoliticals);
@@ -62,7 +62,7 @@ public class SellAction implements GeneralAction {
 	@Override
 	public boolean checkCondition(Player player, GameState gameState) {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 }
