@@ -1,7 +1,11 @@
 package model.actions.quick;
 
 import model.GameState;
+import model.changes.ChangeElectCounsellorWithAssistant;
+import model.changes.ChangeMsg;
+import model.changes.ChangePlayerStatus;
 import model.map.Region;
+import model.player.Assistants;
 import model.player.Player;
 import utilities.Color;
 
@@ -34,8 +38,12 @@ public class ElectCounsellorWithAssistant implements QuickAction {
 		if(gameState==null) {
 			throw new NullPointerException("gameState cannot be null"); 
 		}
+		
 		region.getBalcony().putCounsellor(color, gameState.getCounsellorGarbage());
 		player.getAssistants().sub(1);
+		
+		gameState.notifyObserver(new ChangeElectCounsellorWithAssistant(new Assistants(1), color, region));
+		gameState.notifyObserver(new ChangePlayerStatus(player));
 	}
 
 	@Override
@@ -46,7 +54,11 @@ public class ElectCounsellorWithAssistant implements QuickAction {
 		if(gameState==null) {
 			throw new NullPointerException("gameState cannot be null"); 
 		}
-		if(player.getAssistants().getItems()==0) return false;
+		
+		if(player.getAssistants().getItems()<1){
+			gameState.notifyObserver(new ChangeMsg(player.getNickname()+", you don't have enough assistants to elect a counsellor"));
+			return false;
+		}
 		
 		else return true;
 	}
