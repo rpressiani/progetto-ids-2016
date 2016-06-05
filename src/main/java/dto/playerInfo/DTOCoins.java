@@ -11,7 +11,14 @@ public class DTOCoins implements DTOObject {
 
 	private final int quantity;
 	
-	public DTOCoins(int quantity){
+	/**
+	 * @param quantity
+	 * @throws IllegalArgumentException if quantity<0
+	 */
+	public DTOCoins(int quantity) {
+		if(quantity<0) {
+			throw new IllegalArgumentException("quantity must be >=0");
+		}
 		this.quantity=quantity;
 	}
 

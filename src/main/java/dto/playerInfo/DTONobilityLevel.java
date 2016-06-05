@@ -11,7 +11,14 @@ public class DTONobilityLevel implements DTOObject {
 
 	private final int level;
 	
-	public DTONobilityLevel(int level){
+	/**
+	 * @param level
+	 * @throws IllegalArgumentException if level<0
+	 */
+	public DTONobilityLevel(int level) {
+		if(level<0) {
+			throw new IllegalArgumentException("level must be >=0");
+		}
 		this.level=level;
 	}
 
