@@ -29,16 +29,11 @@ public abstract class Observable<C> {
 	}
 	
 	public void registerObserver(Player player, Observer<C> o){
-		System.out.println("regO 1");
 		if(o==null) {
 			throw new NullPointerException("Observers cannot be null"); 
 		}
-		System.out.println("regO 2");
 		this.observers.add(o);
-		System.out.println("regO 3");
 		this.observersMap.put(player, o);
-		System.out.println("regO 4");
-		
 	}
 	
 	/**
