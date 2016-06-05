@@ -30,7 +30,7 @@ public interface GeneralAction {
 	public default boolean acceptMove(Player player, GameState gameState){
 		if(gameState.getCurrentPlayer()!=player){
 			System.out.println("It's not your turn "+player.getNickname());
-			gameState.notifyObserver(new ChangeMsg("It's not your turn "+player.getNickname()));
+			gameState.notifyObserver(player, new ChangeMsg("It's not your turn "+player.getNickname()));
 			return false;
 		}
 		
