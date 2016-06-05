@@ -16,7 +16,18 @@ public class DTOBuildEmporiumWithKing implements DTOMainAction {
 	private final DTOPoliticalContainer proposal;
 	private final DTOCity city;
 	
-	public DTOBuildEmporiumWithKing(DTOPoliticalContainer proposal, DTOCity city){
+	/**
+	 * @param proposal
+	 * @param city
+	 * @throws NullPointerException if proposal or city are null
+	 */
+	public DTOBuildEmporiumWithKing(DTOPoliticalContainer proposal, DTOCity city) {
+		if(proposal==null) {
+			throw new NullPointerException("proposal cannot be null"); 
+		}
+		if(city==null) {
+			throw new NullPointerException("city cannot be null"); 
+		}
 		this.proposal=proposal;
 		this.city=city;
 	}

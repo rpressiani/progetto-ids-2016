@@ -15,7 +15,22 @@ public class DTOChangeElectCounsellor implements DTOChange {
 	private final DTOColor color;
 	private final DTORegion region;
 	
+	/**
+	 * @param coins
+	 * @param color
+	 * @param region
+	 * @throws NullPointerException if coins, color or region are null
+	 */
 	public DTOChangeElectCounsellor(DTOCoins coins, DTOColor color, DTORegion region){
+		if(coins==null) {
+			throw new NullPointerException("coins cannot be null"); 
+		}
+		if(color==null) {
+			throw new NullPointerException("color cannot be null"); 
+		}
+		if(region==null) {
+			throw new NullPointerException("region cannot be null"); 
+		}
 		this.coins=coins;
 		this.color=color;
 		this.region=region;

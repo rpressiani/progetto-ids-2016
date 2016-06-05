@@ -2,6 +2,7 @@ package model.stateMachine.state;
 
 import model.GameState;
 import model.actions.main.MainAction;
+import model.changes.ChangeMsg;
 import model.player.Player;
 
 public class CanMainState implements State {
@@ -16,6 +17,7 @@ public class CanMainState implements State {
 			if(action.checkCondition(player, gameState)==true){
 				action.doAction(player, gameState);
 				System.out.println(player.getNickname()+" did a MainAction");
+				gameState.notifyObserver(new ChangeMsg(player.getNickname()+" did a MainAction"));
 				player.setState(new CanSellState());
 				player.getState().checkTurn(player, gameState);
 			}

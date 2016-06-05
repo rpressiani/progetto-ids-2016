@@ -9,7 +9,14 @@ public class DTOChangeMsg implements DTOChange {
 
 	private final String msg;
 	
-	public DTOChangeMsg(String msg){
+	/**
+	 * @param msg
+	 * @throws NullPointerException if msg is null
+	 */
+	public DTOChangeMsg(String msg) {
+		if(msg==null) {
+			throw new NullPointerException("msg cannot be null"); 
+		}
 		this.msg=msg;
 	}
 

@@ -3,6 +3,7 @@ package model.stateMachine.state;
 import model.GameState;
 import model.actions.main.MainAction;
 import model.actions.quick.QuickAction;
+import model.changes.ChangeMsg;
 import model.player.Player;
 
 public class StartState implements State {
@@ -17,6 +18,7 @@ public class StartState implements State {
 			if(action.checkCondition(player, gameState)==true){
 				action.doAction(player, gameState);
 				System.out.println(player.getNickname()+" did a MainAction");
+				gameState.notifyObserver(new ChangeMsg(player.getNickname()+" did a MainAction"));
 				player.setState(new CanQuickOrNullState());
 				player.getState().checkTurn(player, gameState);
 			}
@@ -33,6 +35,7 @@ public class StartState implements State {
 			if(action.checkCondition(player, gameState)==true){
 				action.doAction(player, gameState);
 				System.out.println(player.getNickname()+" did a QuickAction");
+				gameState.notifyObserver(new ChangeMsg(player.getNickname()+" did a QuickAction"));
 				player.setState(new CanMainState());
 				player.getState().checkTurn(player, gameState);
 			}
@@ -45,7 +48,9 @@ public class StartState implements State {
 		if(player==null || gameState==null) {
 			throw new NullPointerException("player and state should not be null"); 
 		}
+		
 		gameState.nextPlayer(player);
+		gameState.notifyObserver(new ChangeMsg("Now it's time for "+gameState.getCurrentPlayer().getNickname()+" to play"));
 	}
 	
 	@Override

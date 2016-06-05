@@ -2,6 +2,7 @@ package model.stateMachine.state;
 
 import model.GameState;
 import model.actions.market.BuyAction;
+import model.changes.ChangeMsg;
 import model.player.Player;
 
 public class CanBuyState implements State {
@@ -15,6 +16,7 @@ public class CanBuyState implements State {
 			if(action.checkCondition(player, gameState)==true){
 				action.doAction(player, gameState);
 				System.out.println(player.getNickname()+" decided what to buy");
+				gameState.notifyObserver(new ChangeMsg(player.getNickname()+" decided what to buy"));
 				player.setState(new StartState());
 				player.getState().checkTurn(player, gameState);
 			}
@@ -30,6 +32,11 @@ public class CanBuyState implements State {
 	
 	@Override
 	public void checkTurn(Player player, GameState gameState){
+		if(player==null || gameState==null) {
+			throw new NullPointerException("player and state should not be null"); 
+		}
+		
 		gameState.nextPlayer(player);
+		gameState.notifyObserver(new ChangeMsg("Now it's time for "+gameState.getCurrentPlayer().getNickname()+" to play"));
 	}
 }

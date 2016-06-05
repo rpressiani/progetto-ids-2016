@@ -46,7 +46,7 @@ public interface State {
 		if(player==null || action==null || gameState==null) {
 			throw new NullPointerException("player, action and gameState should all be !=null"); 
 		}
-		if(action.acceptMove(player, gameState)==true) System.out.println(player.getNickname()+" ,you can't do a NullAction now");
+		if(action.acceptMove(player, gameState)==true) System.out.println(player.getNickname()+" ,you can't pass the turn now");
 	}
 	
 	/**
