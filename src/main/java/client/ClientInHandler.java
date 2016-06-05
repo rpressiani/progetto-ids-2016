@@ -24,7 +24,7 @@ public class ClientInHandler implements Runnable {
 				
 				if (obj instanceof DTOChange) {
 					DTOChange change = (DTOChange) obj;
-					System.out.println("DTOChange received");
+//					System.out.println("DTOChange received");
 					System.out.println(change);
 				} else {
 					System.out.println(obj);

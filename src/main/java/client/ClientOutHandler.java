@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
+import dto.actions.DTONullAction;
 import dto.actions.main.DTOBuildEmporiumWithCard;
 import dto.actions.main.DTOBuildEmporiumWithKing;
 import dto.actions.main.DTOBuyPermissionCard;
@@ -16,8 +17,10 @@ import dto.actions.quick.DTOElectCounsellorWithAssistant;
 import dto.actions.quick.DTOHireAssistant;
 import dto.map.DTOCity;
 import dto.map.DTORegion;
+import dto.queries.request.DTOGetProposalOrder;
 import dto.utilities.DTOColor;
 import dto.utilities.DTOPermissionCard;
+import dto.utilities.DTOPoliticalContainer;
 import dto.utilities.DTOSetup;
 import model.actions.main.BuildEmporiumWithKing;
 import query.GetCoins;
@@ -61,8 +64,8 @@ public class ClientOutHandler implements Runnable {
 					help.append("[CLI] COMMAND LIST: \n");
 					help.append("[CLI] *\tMain Actions \n");
 					help.append("[CLI] \t\tbuildEmpCard <idCard> <city>\n");
-					help.append("[CLI] \t\tbuildEmpKing \n");
-					help.append("[CLI] \t\tbuyPermissionCard \n");
+					help.append("[CLI] \t\tbuildEmpKing <city> <proposal>\n");
+					help.append("[CLI] \t\tbuyPermissionCard <region> <cardIndex> <proposal> \n");
 					help.append("[CLI] \t\telectCounsellor <region> <color>\n");
 					help.append("[CLI] *\tQuick Actions \n");
 					help.append("[CLI] \t\taddAction <action>\n");
@@ -74,14 +77,20 @@ public class ClientOutHandler implements Runnable {
 					help.append("[CLI] \t\tgetcoins \n");
 					help.append("[CLI] \t\tgetcurrentplayer \n");
 					help.append("[CLI] *\tOther Commands \n");
+					help.append("[CLI] \t\tpass\n");
 					help.append("[CLI] \t\tping\n");
-				
+					help.append("[CLI] \n");
+					help.append("[CLI] Remember that the order for the card proposal is the one written below:");
+					msg = new ClientMessage(new DTOGetProposalOrder());
 					System.out.println(help.toString());
+					socketOut.writeObject(msg);
+					socketOut.flush();
+					
 				} else if(inputList.get(0).equals("setup")){
 					msg = new ClientMessage(new DTOSetup(inputList.get(1), new DTOColor(inputList.get(2))));
 					socketOut.writeObject(msg);
 					socketOut.flush();
-					System.out.println("DTOSetup sent");
+//					System.out.println("DTOSetup sent");
 				} else {
 					
 					switch (inputList.get(0)) {
@@ -127,13 +136,11 @@ public class ClientOutHandler implements Runnable {
 							break;
 						case "buildEmpKing":
 							//msg = new ClientMessage(new DTOBuildEmporiumWithKing());
-							//socketOut.writeObject(msg);
-							socketOut.flush();
+//							this.sendMsg(msg);
 							break;
 						case "buyPermissionCard":
 							//msg = new ClientMessage(new DTOBuyPermissionCard());
-							//socketOut.writeObject(msg);
-							socketOut.flush();
+//							this.sendMsg(msg);
 							break;
 						case "electCounsellor":
 							msg = new ClientMessage(new DTOElectCounsellor(
@@ -156,19 +163,29 @@ public class ClientOutHandler implements Runnable {
 						socketOut.flush();
 						break;
 					case "buildEmpKing":
-						//msg = new ClientMessage(new DTOBuildEmporiumWithKing());
-						//socketOut.writeObject(msg);
+						msg = new ClientMessage(new DTOBuildEmporiumWithKing(
+								new DTOPoliticalContainer(getProposal(inputList, 2)),
+								new DTOCity(inputList.get(1))));
+						socketOut.writeObject(msg);
 						socketOut.flush();
 						break;
 					case "buyPermissionCard":
-						//msg = new ClientMessage(new DTOBuyPermissionCard());
-						//socketOut.writeObject(msg);
+						msg = new ClientMessage(new DTOBuyPermissionCard(
+								new DTORegion(inputList.get(1)),
+								new DTOPoliticalContainer(getProposal(inputList, 3)),
+								Integer.parseInt(inputList.get(2))));
+						socketOut.writeObject(msg);
 						socketOut.flush();
 						break;
 					case "electCounsellor":
 						msg = new ClientMessage(new DTOElectCounsellor(
 								new DTORegion(inputList.get(1)),
 								new DTOColor(inputList.get(2))));
+						socketOut.writeObject(msg);
+						socketOut.flush();
+						break;
+					case "pass":
+						msg = new ClientMessage(new DTONullAction());
 						socketOut.writeObject(msg);
 						socketOut.flush();
 						break;
@@ -208,6 +225,16 @@ public class ClientOutHandler implements Runnable {
 			
 		}
 
+	}
+	
+	private static ArrayList<Integer> getProposal(ArrayList<String> inputList, int from){
+		ArrayList<Integer> proposal = new ArrayList<Integer>();
+		
+		for (int i = from; i < inputList.size(); i++) {
+			proposal.add(Integer.parseInt(inputList.get(i)));
+		}
+		
+		return proposal;
 	}
 
 }
