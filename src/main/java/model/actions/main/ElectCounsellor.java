@@ -2,6 +2,9 @@ package model.actions.main;
 
 import model.GameState;
 import model.changes.ChangeElectCounsellor;
+import model.changes.ChangeMsg;
+import model.changes.ChangePlayerStatus;
+import model.council.CounsellorGroup;
 import model.map.Region;
 import model.player.Coins;
 import model.player.Player;
@@ -35,10 +38,30 @@ public class ElectCounsellor implements MainAction {
 		player.getCoins().add(4);
 		
 		gameState.notifyObserver(new ChangeElectCounsellor(new Coins(4), color, region));
+		gameState.notifyObserver(new ChangePlayerStatus(player));
 	}
 
 	@Override
 	public boolean checkCondition(Player player, GameState gameState) {
+		CounsellorGroup el=null;
+		
+		for(int i=0; i<gameState.getCounsellorGarbage().getState().size(); i++){
+			if(gameState.getCounsellorGarbage().getState().get(i).getColor().getStringID().equals(color))
+				el=gameState.getCounsellorGarbage().getState().get(i);
+		}
+		
+		if(el==null){
+			gameState.notifyObserver(new ChangeMsg("The colour you selected doesn't exist"));
+			return false;
+		}
+		
+		else{
+			if(el.getCounter()==0){
+				gameState.notifyObserver(new ChangeMsg("There aren't any counsellors of this colour"));
+				return false;
+			}
+		}
+		
 		return true;
 	}
 

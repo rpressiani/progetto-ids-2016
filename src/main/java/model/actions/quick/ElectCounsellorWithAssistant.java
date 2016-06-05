@@ -51,16 +51,17 @@ public class ElectCounsellorWithAssistant implements QuickAction {
 		if(player==null) {
 			throw new NullPointerException("player cannot be null"); 
 		}
+		
 		if(gameState==null) {
 			throw new NullPointerException("gameState cannot be null"); 
 		}
 		
 		if(player.getAssistants().getItems()<1){
-			gameState.notifyObserver(new ChangeMsg(player.getNickname()+", you don't have enough assistants to elect a counsellor"));
+			gameState.notifyObserver(new ChangeMsg("You don't have enough assistants to elect a counsellor"));
 			return false;
 		}
 		
-		else return true;
+		return true;
 	}
 
 }

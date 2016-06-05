@@ -2,8 +2,12 @@ package model.actions.main;
 
 import model.GameState;
 import model.bonusable.PermissionCard;
+import model.changes.ChangeBuyPermissionCard;
+import model.changes.ChangeMsg;
+import model.changes.ChangePlayerStatus;
 import model.council.Balcony;
 import model.map.Region;
+import model.player.Coins;
 import model.player.Player;
 import model.politicalDeck.PoliticalCard;
 import model.politicalDeck.PoliticalContainer;
@@ -59,9 +63,13 @@ public class BuyPermissionCard implements MainAction {
 		sumToPay=sumToPay+sumJolly;
 			
 		player.getCoins().sub(sumToPay);
+		subProposal(player.getPoliticalHand(), proposal);
 		drawedCard=region.getPermissionDeck().drawCard(region.getPermissionDeck().getDeck(), region.getPermissionDeck().getVisibleCards(), index);
 		drawedCard.assignBonuses(player, gameState);
 		player.getPermissionHand().add(drawedCard);
+		
+		gameState.notifyObserver(new ChangeBuyPermissionCard(new Coins(sumToPay), region));
+		gameState.notifyObserver(new ChangePlayerStatus(player));
 	}
 	
 	/**
@@ -77,6 +85,7 @@ public class BuyPermissionCard implements MainAction {
 		if(balcony==null) {
 			throw new NullPointerException("balcony cannot be null"); 
 		}
+		
 		int sum=calculateNumCards(proposal);
 		
 		if (sum>=balcony.getnCounsellorsPerBalcony() && sum!=0) return false;
@@ -129,9 +138,17 @@ public class BuyPermissionCard implements MainAction {
 	@Override
 	public boolean checkCondition(Player player, GameState gameState) {
 		
-		if(checkProposal(proposal, region.getBalcony())==false) return false;
+		if(index>1){
+			gameState.notifyObserver(new ChangeMsg("You have to choose 0 or 1 as the index of permission card to buy"));
+			return false;
+		}
 		
-		int sumToPay=0;
+		if(checkProposal(proposal, region.getBalcony())==false){
+			gameState.notifyObserver(new ChangeMsg("Your proposal doesn't fit the state of balcony you chosed, try again"));
+			return false;
+		}
+		
+		int sumToPay;
 		int size=player.getPoliticalHand().getDeck().size();
 		int numCards=calculateNumCards(proposal);
 		int sumJolly=(player.getPoliticalHand().getDeck().get(size).getNumCards());
@@ -139,12 +156,16 @@ public class BuyPermissionCard implements MainAction {
 		if(numCards==1) sumToPay=10;
 		else if(numCards==2) sumToPay=7;
 		else if(numCards==3) sumToPay=4;
+		else sumToPay=0;
 		
 		sumToPay=sumToPay+sumJolly;
 		
-		if(sumToPay>player.getCoins().getItems()) return false;
+		if(sumToPay>player.getCoins().getItems()){
+			gameState.notifyObserver(new ChangeMsg("You don't have enough coins to buy the card with this proposal"));
+			return false;
+		}
 		
-		else return true;
+		return true;
 	}
 	
 }

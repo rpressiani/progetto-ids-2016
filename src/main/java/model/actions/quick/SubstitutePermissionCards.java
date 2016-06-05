@@ -49,11 +49,11 @@ public class SubstitutePermissionCards implements QuickAction {
 		}
 		
 		if(player.getAssistants().getItems()<1){
-			gameState.notifyObserver(new ChangeMsg(player.getNickname()+", you don't have enough assistants to substitute permission cards"));
+			gameState.notifyObserver(new ChangeMsg("You don't have enough assistants to substitute permission cards"));
 			return false;
 		}
 		
-		else return true;
+		return true;
 	}
 
 }
