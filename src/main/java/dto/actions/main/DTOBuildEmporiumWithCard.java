@@ -16,7 +16,18 @@ public class DTOBuildEmporiumWithCard implements DTOMainAction {
 	private final DTOPermissionCard permissionCard;
 	private final DTOCity city;
 	
+	/**
+	 * @param permissionCard
+	 * @param city
+	 * @throws NullPointerException if permissionCard or city are null
+	 */
 	public DTOBuildEmporiumWithCard(DTOPermissionCard permissionCard, DTOCity city) {
+		if(permissionCard==null) {
+			throw new NullPointerException("permissionCard cannot be null"); 
+		}
+		if(city==null) {
+			throw new NullPointerException("city cannot be null"); 
+		}
 		this.permissionCard = permissionCard;
 		this.city = city;
 	}

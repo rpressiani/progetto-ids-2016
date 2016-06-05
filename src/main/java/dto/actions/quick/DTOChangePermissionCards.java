@@ -14,7 +14,14 @@ public class DTOChangePermissionCards implements DTOQuickAction {
 	
 	private final DTORegion region;
 	
+	/**
+	 * @param region
+	 * @throws NullPointerException if region is null
+	 */
 	public DTOChangePermissionCards(DTORegion region) {
+		if(region==null) {
+			throw new NullPointerException("region cannot be null"); 
+		}
 		this.region = region;
 	}
 

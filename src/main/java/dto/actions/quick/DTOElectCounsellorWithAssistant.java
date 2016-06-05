@@ -16,7 +16,18 @@ public class DTOElectCounsellorWithAssistant implements DTOQuickAction {
 	private final DTORegion region;
 	private final DTOColor color;
 	
+	/**
+	 * @param region
+	 * @param color
+	 * @throws NullPointerException if region or color are null
+	 */
 	public DTOElectCounsellorWithAssistant(DTORegion region, DTOColor color) {
+		if(region==null) {
+			throw new NullPointerException("region cannot be null"); 
+		}
+		if(color==null) {
+			throw new NullPointerException("color cannot be null"); 
+		}
 		this.region = region;
 		this.color = color;
 	}
