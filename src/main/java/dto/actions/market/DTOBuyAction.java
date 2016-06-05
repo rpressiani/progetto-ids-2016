@@ -14,7 +14,14 @@ public class DTOBuyAction implements DTOAction {
 
 	private final String playerName;
 	
-	public DTOBuyAction(String playerName){
+	/**
+	 * @param playerName
+	 * @throws NullPointerException if playerName is null
+	 */
+	public DTOBuyAction(String playerName) {
+		if(playerName==null) {
+			throw new NullPointerException("playerName cannot be null"); 
+		}
 		this.playerName=playerName;
 	}
 

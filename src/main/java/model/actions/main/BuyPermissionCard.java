@@ -138,6 +138,11 @@ public class BuyPermissionCard implements MainAction {
 	@Override
 	public boolean checkCondition(Player player, GameState gameState) {
 		
+		if(this.proposal.getDeck().get(0).getNumCards() == -1) {
+			gameState.notifyObserver(player, new ChangeMsg("Type 'help' to check the correct card proposal structure"));
+			return false;
+		}
+		
 		if(index>1){
 			gameState.notifyObserver(player, new ChangeMsg("You have to choose 0 or 1 as the index of permission card to buy"));
 			return false;

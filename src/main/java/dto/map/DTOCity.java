@@ -11,7 +11,14 @@ public class DTOCity implements DTOObject {
 	
 	private final String name;
 	
+	/**
+	 * @param name
+	 * @throws NullPointerException if name is null
+	 */
 	public DTOCity(String name) {
+		if(name==null) {
+			throw new NullPointerException("name cannot be null"); 
+		}
 		this.name = name;
 	}
 

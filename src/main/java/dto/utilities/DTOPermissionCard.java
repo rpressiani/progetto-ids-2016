@@ -11,7 +11,14 @@ public class DTOPermissionCard implements DTOObject {
 	
 	private final int idCard;
 	
+	/**
+	 * @param idCard
+	 * @throws IllegalArgumentException if idCard<0
+	 */
 	public DTOPermissionCard(int idCard) {
+		if(idCard<0) {
+			throw new IllegalArgumentException("idCard must be >=0"); 
+		}
 		this.idCard = idCard;
 	}
 

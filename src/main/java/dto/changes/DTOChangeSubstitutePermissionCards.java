@@ -13,7 +13,18 @@ public class DTOChangeSubstitutePermissionCards implements DTOChange {
 	private final DTOAssistants assistants;
 	private final DTORegion region;
 	
-	public DTOChangeSubstitutePermissionCards(DTOAssistants assistants, DTORegion region){
+	/**
+	 * @param assistants
+	 * @param region
+	 * @throws NullPointerException if assistants or region are null
+	 */
+	public DTOChangeSubstitutePermissionCards(DTOAssistants assistants, DTORegion region) {
+		if(assistants==null) {
+			throw new NullPointerException("assistants cannot be null"); 
+		}
+		if(region==null) {
+			throw new NullPointerException("region cannot be null"); 
+		}
 		this.assistants=assistants;
 		this.region=region;
 	}

@@ -17,7 +17,26 @@ public class DTOChangePlayerStatus implements DTOChange {
 	private final DTONobilityLevel nobilityLevel;
 	private final DTOScore score;
 	
+	/**
+	 * @param coins
+	 * @param assistants
+	 * @param nobilityLevel
+	 * @param score
+	 * @throws NullPointerException if coins, assistants, nobilityLevel or score are null
+	 */
 	public DTOChangePlayerStatus(DTOCoins coins, DTOAssistants assistants, DTONobilityLevel nobilityLevel, DTOScore score){
+		if(coins==null) {
+			throw new NullPointerException("coins cannot be null"); 
+		}
+		if(assistants==null) {
+			throw new NullPointerException("assistants cannot be null"); 
+		}
+		if(nobilityLevel==null) {
+			throw new NullPointerException("nobilityLevel cannot be null"); 
+		}
+		if(score==null) {
+			throw new NullPointerException("score cannot be null"); 
+		}
 		this.coins=coins;
 		this.assistants=assistants;
 		this.nobilityLevel=nobilityLevel;

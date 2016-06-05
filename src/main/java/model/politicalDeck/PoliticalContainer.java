@@ -2,6 +2,7 @@ package model.politicalDeck;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 import jaxb.CFGPoliticalCard;
 import model.market.Marketable;
@@ -16,11 +17,23 @@ public class PoliticalContainer extends PoliticalDeck implements Marketable{
 			throw new NullPointerException("structure should not be null"); 
 		}
 		int i = 0;
-		for (Iterator<CFGPoliticalCard> iterator = parser.getCFGPoliticalDeck().getPoliticalCard().iterator(); iterator.hasNext();) {
-			CFGPoliticalCard cfgPoliticalCard = iterator.next();
-			this.getDeck().add(new PoliticalCard(cfgPoliticalCard.getColor(), structure.get(i)));
-			i++;
+		List<CFGPoliticalCard> cfgPoliticalCardList = parser.getCFGPoliticalDeck().getPoliticalCard();
+		if (structure.size() == cfgPoliticalCardList.size()) {
+			
+			for (Iterator<CFGPoliticalCard> iterator = cfgPoliticalCardList.iterator(); iterator.hasNext();) {
+				CFGPoliticalCard cfgPoliticalCard = iterator.next();
+				this.getDeck().add(new PoliticalCard(cfgPoliticalCard.getColor(), structure.get(i)));
+				i++;
+			}
+		} else {
+			
+			for (Iterator<CFGPoliticalCard> iterator = cfgPoliticalCardList.iterator(); iterator.hasNext();) {
+				CFGPoliticalCard cfgPoliticalCard = iterator.next();
+				this.getDeck().add(new PoliticalCard(cfgPoliticalCard.getColor(), -1));
+				i++;
+			}
 		}
+		
 	}
 
 	

@@ -13,7 +13,18 @@ public class DTOChangeHireAssistants implements DTOChange {
 	private final DTOAssistants assistants;
 	private final DTOCoins coins;
 	
-	public DTOChangeHireAssistants(DTOAssistants assistants, DTOCoins coins){
+	/**
+	 * @param assistants
+	 * @param coins
+	 * @throws NullPointerException if assistants or coins are null
+	 */
+	public DTOChangeHireAssistants(DTOAssistants assistants, DTOCoins coins) {
+		if(assistants==null) {
+			throw new NullPointerException("assistants cannot be null"); 
+		}
+		if(coins==null) {
+			throw new NullPointerException("coins cannot be null"); 
+		}
 		this.assistants=assistants;
 		this.coins=coins;
 	}
