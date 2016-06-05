@@ -68,8 +68,8 @@ public class BuyPermissionCard implements MainAction {
 		drawedCard.assignBonuses(player, gameState);
 		player.getPermissionHand().add(drawedCard);
 		
-		gameState.notifyObserver(new ChangeBuyPermissionCard(new Coins(sumToPay), region));
-		gameState.notifyObserver(new ChangePlayerStatus(player));
+		gameState.notifyObserver(player, new ChangeBuyPermissionCard(new Coins(sumToPay), region));
+		gameState.notifyObserver(player, new ChangePlayerStatus(player));
 	}
 	
 	/**
@@ -139,12 +139,12 @@ public class BuyPermissionCard implements MainAction {
 	public boolean checkCondition(Player player, GameState gameState) {
 		
 		if(index>1){
-			gameState.notifyObserver(new ChangeMsg("You have to choose 0 or 1 as the index of permission card to buy"));
+			gameState.notifyObserver(player, new ChangeMsg("You have to choose 0 or 1 as the index of permission card to buy"));
 			return false;
 		}
 		
 		if(checkProposal(proposal, region.getBalcony())==false){
-			gameState.notifyObserver(new ChangeMsg("Your proposal doesn't fit the state of balcony you chosed, try again"));
+			gameState.notifyObserver(player, new ChangeMsg("Your proposal doesn't fit the state of balcony you chosed, try again"));
 			return false;
 		}
 		
@@ -161,7 +161,7 @@ public class BuyPermissionCard implements MainAction {
 		sumToPay=sumToPay+sumJolly;
 		
 		if(sumToPay>player.getCoins().getItems()){
-			gameState.notifyObserver(new ChangeMsg("You don't have enough coins to buy the card with this proposal"));
+			gameState.notifyObserver(player, new ChangeMsg("You don't have enough coins to buy the card with this proposal"));
 			return false;
 		}
 		

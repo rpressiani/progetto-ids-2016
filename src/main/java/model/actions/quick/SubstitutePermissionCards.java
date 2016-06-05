@@ -35,8 +35,8 @@ public class SubstitutePermissionCards implements QuickAction {
 		region.getPermissionDeck().substituteCards(region.getPermissionDeck().getDeck(), region.getPermissionDeck().getVisibleCards());
 		player.getAssistants().sub(1);
 		
-		gameState.notifyObserver(new ChangeSubstitutePermissionCards(new Assistants(1), region));
-		gameState.notifyObserver(new ChangePlayerStatus(player));
+		gameState.notifyObserver(player, new ChangeSubstitutePermissionCards(new Assistants(1), region));
+		gameState.notifyObserver(player, new ChangePlayerStatus(player));
 	}
 
 	@Override
@@ -49,7 +49,7 @@ public class SubstitutePermissionCards implements QuickAction {
 		}
 		
 		if(player.getAssistants().getItems()<1){
-			gameState.notifyObserver(new ChangeMsg("You don't have enough assistants to substitute permission cards"));
+			gameState.notifyObserver(player, new ChangeMsg("You don't have enough assistants to substitute permission cards"));
 			return false;
 		}
 		

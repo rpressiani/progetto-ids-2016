@@ -42,8 +42,8 @@ public class ElectCounsellorWithAssistant implements QuickAction {
 		region.getBalcony().putCounsellor(color, gameState.getCounsellorGarbage());
 		player.getAssistants().sub(1);
 		
-		gameState.notifyObserver(new ChangeElectCounsellorWithAssistant(new Assistants(1), color, region));
-		gameState.notifyObserver(new ChangePlayerStatus(player));
+		gameState.notifyObserver(player, new ChangeElectCounsellorWithAssistant(new Assistants(1), color, region));
+		gameState.notifyObserver(player, new ChangePlayerStatus(player));
 	}
 
 	@Override
@@ -57,7 +57,7 @@ public class ElectCounsellorWithAssistant implements QuickAction {
 		}
 		
 		if(player.getAssistants().getItems()<1){
-			gameState.notifyObserver(new ChangeMsg("You don't have enough assistants to elect a counsellor"));
+			gameState.notifyObserver(player, new ChangeMsg("You don't have enough assistants to elect a counsellor"));
 			return false;
 		}
 		

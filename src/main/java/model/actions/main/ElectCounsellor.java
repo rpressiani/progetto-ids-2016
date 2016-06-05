@@ -37,8 +37,8 @@ public class ElectCounsellor implements MainAction {
 		region.getBalcony().putCounsellor(color, gameState.getCounsellorGarbage());
 		player.getCoins().add(4);
 		
-		gameState.notifyObserver(new ChangeElectCounsellor(new Coins(4), color, region));
-		gameState.notifyObserver(new ChangePlayerStatus(player));
+		gameState.notifyObserver(player, new ChangeElectCounsellor(new Coins(4), color, region));
+		gameState.notifyObserver(player, new ChangePlayerStatus(player));
 	}
 
 	@Override
@@ -51,13 +51,13 @@ public class ElectCounsellor implements MainAction {
 		}
 		
 		if(el==null){
-			gameState.notifyObserver(new ChangeMsg("The colour you selected doesn't exist"));
+			gameState.notifyObserver(player, new ChangeMsg("The colour you selected doesn't exist"));
 			return false;
 		}
 		
 		else{
 			if(el.getCounter()==0){
-				gameState.notifyObserver(new ChangeMsg("There aren't any counsellors of this colour"));
+				gameState.notifyObserver(player, new ChangeMsg("There aren't any counsellors of this colour"));
 				return false;
 			}
 		}
