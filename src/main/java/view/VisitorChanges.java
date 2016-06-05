@@ -1,8 +1,10 @@
 package view;
 
 import dto.changes.DTOChangeSubstitutePermissionCards;
+import dto.map.DTOCity;
 import dto.map.DTORegion;
 import dto.changes.DTOChangeMsg;
+import dto.changes.DTOChangeBuildEmporiumWithCard;
 import dto.changes.DTOChangeBuyPermissionCard;
 import dto.changes.DTOChangeElectCounsellor;
 import dto.changes.DTOChangeElectCounsellorWithAssistant;
@@ -13,8 +15,10 @@ import dto.playerInfo.DTOCoins;
 import dto.playerInfo.DTONobilityLevel;
 import dto.playerInfo.DTOScore;
 import dto.utilities.DTOColor;
+import dto.utilities.DTOPermissionCard;
 import model.changes.ChangeSubstitutePermissionCards;
 import model.changes.ChangeMsg;
+import model.changes.ChangeBuildEmporiumWithCard;
 import model.changes.ChangeBuyPermissionCard;
 import model.changes.ChangeElectCounsellor;
 import model.changes.ChangeElectCounsellorWithAssistant;
@@ -75,5 +79,13 @@ public class VisitorChanges {
 		DTORegion region=new DTORegion(change.getRegion().getName());
 		
 		return new DTOChangeBuyPermissionCard(coins, region);
+	}
+	
+	public DTOChangeBuildEmporiumWithCard visit(ChangeBuildEmporiumWithCard change){
+		DTOAssistants assistants=new DTOAssistants(change.getAssistants().getItems());
+		DTOCity city=new DTOCity(change.getCity().getName());
+		DTOPermissionCard card=new DTOPermissionCard(change.getCard().getIdCard());
+		
+		return new DTOChangeBuildEmporiumWithCard(assistants, city, card);
 	}
 }

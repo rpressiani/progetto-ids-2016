@@ -2,7 +2,10 @@ package model.actions.main;
 
 import model.GameState;
 import model.bonusable.PermissionCard;
+import model.changes.ChangeBuildEmporiumWithCard;
+import model.changes.ChangeMsg;
 import model.map.City;
+import model.player.Assistants;
 import model.player.Player;
 
 public class BuildEmporiumWithCard implements MainAction {
@@ -15,13 +18,8 @@ public class BuildEmporiumWithCard implements MainAction {
 	 * @param cityChosed
 	 */
 	public BuildEmporiumWithCard(PermissionCard cardChosed, City cityChosed) {
-		if(cardChosed.getPossibleCities().contains(cityChosed)){
-			this.cardChosed = cardChosed;
-			this.cityChosed = cityChosed;
-		}
-		
-		else throw new IllegalArgumentException("City chosed doesn't appear on the card chosed");
-		//corretto lanciare eccezione sul costruttore?
+		this.cardChosed = cardChosed;
+		this.cityChosed = cityChosed;	
 	}
 	
 	@Override
@@ -35,6 +33,8 @@ public class BuildEmporiumWithCard implements MainAction {
 		for(City c : cityChosed.linkedCities(gameState.getMap(), player)){
 			c.assignBonuses(player, gameState);
 		}
+		
+		gameState.notifyObserver(player, new ChangeBuildEmporiumWithCard(new Assistants(assistantsToPay), cityChosed, cardChosed));
 	}
 	
 	/**
@@ -62,13 +62,27 @@ public class BuildEmporiumWithCard implements MainAction {
 	@Override
 	public boolean checkCondition(Player player, GameState gameState) {
 		
-		if(cityChosed.hasBuiltHere(player)==true) return false;
+		if(cardChosed.isUsed()==true){
+			gameState.notifyObserver(player, new ChangeMsg("You already used this permission card to build an emporium"));
+			return false;
+		}
+		
+		if(!cardChosed.getPossibleCities().contains(cityChosed)){
+			gameState.notifyObserver(player, new ChangeMsg("The city you chosed doesn't appear in the card you chosed"));
+			return false;
+		}
+		
+		if(cityChosed.hasBuiltHere(player)==true){
+			gameState.notifyObserver(player, new ChangeMsg("You already built an emporium in this city"));
+			return false;
+		}
 		
 		int assistantsToPay=checkOtherEmporium(cityChosed, gameState);
 		
-		if(assistantsToPay>player.getAssistants().getItems()) return false;
-		
-		if(cardChosed.isUsed()==true) return false;
+		if(assistantsToPay>player.getAssistants().getItems()){
+			gameState.notifyObserver(player, new ChangeMsg("You don't have enough assistants to build in this city"));
+			return false;
+		}
 		
 		return true;
 	}
