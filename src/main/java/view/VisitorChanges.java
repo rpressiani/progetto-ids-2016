@@ -29,10 +29,6 @@ import model.changes.ChangePlayerStatus;
 
 public class VisitorChanges {
 	
-	public VisitorChanges(){
-		
-	}
-	
 	public DTOChangePlayerStatus visit(ChangePlayerStatus change){
 		DTOCoins coins=new DTOCoins(change.getCoins().getItems());
 		DTOAssistants assistants=new DTOAssistants(change.getAssistants().getItems());

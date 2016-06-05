@@ -46,7 +46,7 @@ public class ElectCounsellor implements MainAction {
 		CounsellorGroup el=null;
 		
 		for(int i=0; i<gameState.getCounsellorGarbage().getState().size(); i++){
-			if(gameState.getCounsellorGarbage().getState().get(i).getColor().getStringID().equals(color))
+			if(gameState.getCounsellorGarbage().getState().get(i).getColor().getStringID().equals(color.getStringID()))
 				el=gameState.getCounsellorGarbage().getState().get(i);
 		}
 		
