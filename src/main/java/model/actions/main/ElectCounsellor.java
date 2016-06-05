@@ -1,7 +1,9 @@
 package model.actions.main;
 
 import model.GameState;
+import model.changes.ChangeElectCounsellor;
 import model.map.Region;
+import model.player.Coins;
 import model.player.Player;
 import utilities.Color;
 
@@ -22,6 +24,7 @@ public class ElectCounsellor implements MainAction {
 		if(color==null) {
 			throw new NullPointerException("color cannot be null"); 
 		}
+		
 		this.region=region;
 		this.color=color;
 	}
@@ -30,6 +33,8 @@ public class ElectCounsellor implements MainAction {
 	public void doAction(Player player, GameState gameState) {
 		region.getBalcony().putCounsellor(color, gameState.getCounsellorGarbage());
 		player.getCoins().add(4);
+		
+		gameState.notifyObserver(new ChangeElectCounsellor(new Coins(4), color, region));
 	}
 
 	@Override

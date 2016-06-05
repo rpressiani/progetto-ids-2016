@@ -40,6 +40,5 @@ public class DTOChangeElectCounsellorWithAssistant implements DTOChange {
 	public String toString() {
 		return "You used "+assistants+" assistants to elect a "+color+" counsellor in "+region+"'s balcony";
 	}
-	
-	
+
 }

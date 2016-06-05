@@ -3,6 +3,7 @@ package view;
 import dto.changes.DTOChangeSubstitutePermissionCards;
 import dto.map.DTORegion;
 import dto.changes.DTOChangeMsg;
+import dto.changes.DTOChangeElectCounsellor;
 import dto.changes.DTOChangeElectCounsellorWithAssistant;
 import dto.changes.DTOChangeHireAssistants;
 import dto.changes.DTOChangePlayerStatus;
@@ -13,6 +14,7 @@ import dto.playerInfo.DTOScore;
 import dto.utilities.DTOColor;
 import model.changes.ChangeSubstitutePermissionCards;
 import model.changes.ChangeMsg;
+import model.changes.ChangeElectCounsellor;
 import model.changes.ChangeElectCounsellorWithAssistant;
 import model.changes.ChangeHireAssistants;
 import model.changes.ChangePlayerStatus;
@@ -56,5 +58,13 @@ public class VisitorChanges {
 		DTORegion region=new DTORegion(change.getRegion().getName());
 		
 		return new DTOChangeElectCounsellorWithAssistant(assistants, color, region);
+	}
+	
+	public DTOChangeElectCounsellor visit(ChangeElectCounsellor change){
+		DTOCoins coins=new DTOCoins(change.getCoins().getItems());
+		DTOColor color=new DTOColor(change.getColor().getStringID());
+		DTORegion region=new DTORegion(change.getRegion().getName());
+		
+		return new DTOChangeElectCounsellor(coins, color, region);
 	}
 }
