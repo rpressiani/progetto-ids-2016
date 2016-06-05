@@ -23,7 +23,7 @@ public interface State {
 		}
 		if(action.acceptMove(player, gameState)==true){
 			System.out.println(player.getNickname()+" ,you can't do a MainAction now");
-			gameState.notifyObserver(player, new ChangeMsg(player.getNickname()+" ,you can't do a MainAction now"));
+			gameState.notifyObserver(player, new ChangeMsg(player.getNickname()+", you can't do a MainAction now"));
 		}
 	}
 	
@@ -39,7 +39,7 @@ public interface State {
 		}
 		if(action.acceptMove(player, gameState)==true){
 			System.out.println(player.getNickname()+" ,you can't do a QuickAction now"); 
-			gameState.notifyObserver(player, new ChangeMsg(player.getNickname()+" ,you can't do a QuickAction now"));
+			gameState.notifyObserver(player, new ChangeMsg(player.getNickname()+", you can't do a QuickAction now"));
 		}
 	}
 	
@@ -55,7 +55,7 @@ public interface State {
 		}
 		if(action.acceptMove(player, gameState)==true){
 			System.out.println(player.getNickname()+" ,you can't pass the turn now");
-			gameState.notifyObserver(player, new ChangeMsg(player.getNickname()+" ,you can't pass the turn now"));
+			gameState.notifyObserver(player, new ChangeMsg(player.getNickname()+", you can't pass the turn now"));
 
 		}
 	}
@@ -72,7 +72,7 @@ public interface State {
 		}
 		if(action.acceptMove(player, gameState)==true){
 			System.out.println(player.getNickname()+" ,you can't sell items now");
-			gameState.notifyObserver(player, new ChangeMsg(player.getNickname()+" ,you can't sell items now"));
+			gameState.notifyObserver(player, new ChangeMsg(player.getNickname()+", you can't sell items now"));
 		}
 	}
 	
@@ -88,7 +88,7 @@ public interface State {
 		}
 		if(action.acceptMove(player, gameState)==true){
 			System.out.println(player.getNickname()+" ,you can't buy items now");
-			gameState.notifyObserver(player, new ChangeMsg(player.getNickname()+" ,you can't buy items now"));
+			gameState.notifyObserver(player, new ChangeMsg(player.getNickname()+", you can't buy items now"));
 		}
 	}
 	
