@@ -5,6 +5,7 @@ import dto.map.DTOCity;
 import dto.map.DTORegion;
 import dto.changes.DTOChangeMsg;
 import dto.changes.DTOChangeBuildEmporiumWithCard;
+import dto.changes.DTOChangeBuildEmporiumWithKing;
 import dto.changes.DTOChangeBuyPermissionCard;
 import dto.changes.DTOChangeElectCounsellor;
 import dto.changes.DTOChangeElectCounsellorWithAssistant;
@@ -19,6 +20,7 @@ import dto.utilities.DTOPermissionCard;
 import model.changes.ChangeSubstitutePermissionCards;
 import model.changes.ChangeMsg;
 import model.changes.ChangeBuildEmporiumWithCard;
+import model.changes.ChangeBuildEmporiumWithKing;
 import model.changes.ChangeBuyPermissionCard;
 import model.changes.ChangeElectCounsellor;
 import model.changes.ChangeElectCounsellorWithAssistant;
@@ -87,5 +89,13 @@ public class VisitorChanges {
 		DTOPermissionCard card=new DTOPermissionCard(change.getCard().getIdCard());
 		
 		return new DTOChangeBuildEmporiumWithCard(assistants, city, card);
+	}
+	
+	public DTOChangeBuildEmporiumWithKing visit(ChangeBuildEmporiumWithKing change){
+		DTOCoins coins=new DTOCoins(change.getCoins().getItems());
+		DTOAssistants assistants=new DTOAssistants(change.getAssistants().getItems());
+		DTOCity city=new DTOCity(change.getCity().getName());
+		
+		return new DTOChangeBuildEmporiumWithKing(assistants, coins, city);
 	}
 }

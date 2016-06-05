@@ -4,6 +4,7 @@ import model.GameState;
 import model.bonusable.PermissionCard;
 import model.changes.ChangeBuildEmporiumWithCard;
 import model.changes.ChangeMsg;
+import model.changes.ChangePlayerStatus;
 import model.map.City;
 import model.player.Assistants;
 import model.player.Player;
@@ -35,6 +36,7 @@ public class BuildEmporiumWithCard implements MainAction {
 		}
 		
 		gameState.notifyObserver(player, new ChangeBuildEmporiumWithCard(new Assistants(assistantsToPay), cityChosed, cardChosed));
+		gameState.notifyObserver(player, new ChangePlayerStatus(player));
 	}
 	
 	/**
