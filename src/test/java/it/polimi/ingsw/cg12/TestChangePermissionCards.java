@@ -109,7 +109,7 @@ public class TestChangePermissionCards {
 		}
 		assertTrue(thrown); 
 	}
-	@Test
+/*	@Test
 	public void testIfDoActionWorks() {
 		Parser parser = new Parser(); 
 		Player player = new Player();
@@ -142,7 +142,7 @@ public class TestChangePermissionCards {
 		int temp = player.getAssistants().getItems(); 
 		action.doAction(player, gameState);
 		assertTrue(temp>player.getAssistants().getItems()); 
-	}
+	}*/
 	@Test
 	public void testExceptionInCheckCondition() {
 		boolean thrown = false; 
@@ -221,7 +221,7 @@ public class TestChangePermissionCards {
 		}
 		assertTrue(thrown); 
 	}
-	@Test
+	/*@Test
 	public void testCheckConditionReturnsFalseWithNoAssistants() {
 		Parser parser = new Parser(); 
 		Player player = new Player();
@@ -258,7 +258,7 @@ public class TestChangePermissionCards {
 			isMethodOk = true; 
 		}
 		assertFalse(isMethodOk);  
-	}
+	}*/
 	@Test
 	public void testCheckConditionReturnsTrueWithAtLeastOneAssistant() {
 		Parser parser = new Parser(); 
