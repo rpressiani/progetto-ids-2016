@@ -102,6 +102,11 @@ public class BuildEmporiumWithKing implements MainAction {
 	@Override
 	public boolean checkCondition(Player player, GameState gameState) {
 		
+		if(this.proposal.getDeck().get(0).getNumCards() == -1) {
+			gameState.notifyObserver(player, new ChangeMsg("Type 'help' to check the correct card proposal structure"));
+			return false;
+		}
+		
 		if(checkProposal(proposal, gameState.getKingBalcony())==false) return false;
 		
 		int sumToPay=0;
