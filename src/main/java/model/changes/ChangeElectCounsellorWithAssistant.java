@@ -3,7 +3,6 @@ package model.changes;
 import dto.changes.DTOChangeElectCounsellorWithAssistant;
 import model.map.Region;
 import model.player.Assistants;
-import model.player.Player;
 import utilities.Color;
 import view.VisitorChanges;
 
@@ -20,7 +19,7 @@ public class ChangeElectCounsellorWithAssistant implements Change {
 	}
 	
 	@Override
-	public DTOChangeElectCounsellorWithAssistant accept(VisitorChanges v, Player player) {
+	public DTOChangeElectCounsellorWithAssistant accept(VisitorChanges v) {
 		return v.visit(this);
 	}
 

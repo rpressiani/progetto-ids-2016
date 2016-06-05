@@ -3,7 +3,6 @@ package model.changes;
 import dto.changes.DTOChangeElectCounsellor;
 import model.map.Region;
 import model.player.Coins;
-import model.player.Player;
 import utilities.Color;
 import view.VisitorChanges;
 
@@ -20,7 +19,7 @@ public class ChangeElectCounsellor implements Change {
 	}
 	
 	@Override
-	public DTOChangeElectCounsellor accept(VisitorChanges v, Player player) {
+	public DTOChangeElectCounsellor accept(VisitorChanges v) {
 		return v.visit(this);
 	}
 

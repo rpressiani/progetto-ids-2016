@@ -3,7 +3,6 @@ package model.changes;
 import dto.changes.DTOChangeSubstitutePermissionCards;
 import model.map.Region;
 import model.player.Assistants;
-import model.player.Player;
 import view.VisitorChanges;
 
 public class ChangeSubstitutePermissionCards implements Change {
@@ -17,7 +16,7 @@ public class ChangeSubstitutePermissionCards implements Change {
 	}
 	
 	@Override
-	public DTOChangeSubstitutePermissionCards accept(VisitorChanges v, Player player) {
+	public DTOChangeSubstitutePermissionCards accept(VisitorChanges v) {
 		return v.visit(this);
 	}
 

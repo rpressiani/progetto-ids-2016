@@ -44,7 +44,7 @@ public class ServerSocketView extends View implements Runnable {
 		System.out.println("Sending to the client " + change);
 		
 		try {
-			DTOChange dtoChange = change.accept(this.visitorChanges, this.player);
+			DTOChange dtoChange = change.accept(this.visitorChanges);
 			this.socketOut.writeObject(dtoChange);
 			this.socketOut.flush();
 			System.out.println("DTOChange sent");

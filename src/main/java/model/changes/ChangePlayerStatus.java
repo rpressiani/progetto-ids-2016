@@ -23,7 +23,7 @@ public class ChangePlayerStatus implements Change {
 	}
 	
 	@Override
-	public DTOChangePlayerStatus accept(VisitorChanges v, Player player) {
+	public DTOChangePlayerStatus accept(VisitorChanges v) {
 		return v.visit(this);
 	}
 

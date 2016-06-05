@@ -3,7 +3,6 @@ package model.changes;
 import dto.changes.DTOChangeBuyPermissionCard;
 import model.map.Region;
 import model.player.Coins;
-import model.player.Player;
 import view.VisitorChanges;
 
 public class ChangeBuyPermissionCard implements Change {
@@ -17,7 +16,7 @@ public class ChangeBuyPermissionCard implements Change {
 	}
 
 	@Override
-	public DTOChangeBuyPermissionCard accept(VisitorChanges v, Player player) {
+	public DTOChangeBuyPermissionCard accept(VisitorChanges v) {
 		return v.visit(this);
 	}
 

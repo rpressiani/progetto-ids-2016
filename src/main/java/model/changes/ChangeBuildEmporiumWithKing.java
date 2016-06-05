@@ -4,7 +4,6 @@ import dto.changes.DTOChangeBuildEmporiumWithKing;
 import model.map.City;
 import model.player.Assistants;
 import model.player.Coins;
-import model.player.Player;
 import view.VisitorChanges;
 
 public class ChangeBuildEmporiumWithKing implements Change {
@@ -20,7 +19,7 @@ public class ChangeBuildEmporiumWithKing implements Change {
 	}
 	
 	@Override
-	public DTOChangeBuildEmporiumWithKing accept(VisitorChanges v, Player player) {
+	public DTOChangeBuildEmporiumWithKing accept(VisitorChanges v) {
 		return v.visit(this);
 	}
 
