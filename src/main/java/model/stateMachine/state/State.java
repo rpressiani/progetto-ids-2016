@@ -6,6 +6,7 @@ import model.actions.main.MainAction;
 import model.actions.market.BuyAction;
 import model.actions.market.SellAction;
 import model.actions.quick.QuickAction;
+import model.changes.ChangeMsg;
 import model.player.Player;
 
 public interface State {
@@ -20,7 +21,10 @@ public interface State {
 		if(player==null || action==null || gameState==null) {
 			throw new NullPointerException("player, action and gameState should all be !=null"); 
 		}
-		if(action.acceptMove(player, gameState)==true) System.out.println(player.getNickname()+" ,you can't do a MainAction now");
+		if(action.acceptMove(player, gameState)==true){
+			System.out.println(player.getNickname()+" ,you can't do a MainAction now");
+			gameState.notifyObserver(player, new ChangeMsg(player.getNickname()+" ,you can't do a MainAction now"));
+		}
 	}
 	
 	/**
@@ -33,7 +37,10 @@ public interface State {
 		if(player==null || action==null || gameState==null) {
 			throw new NullPointerException("player, action and gameState should all be !=null"); 
 		}
-		if(action.acceptMove(player, gameState)==true) System.out.println(player.getNickname()+" ,you can't do a QuickAction now"); 
+		if(action.acceptMove(player, gameState)==true){
+			System.out.println(player.getNickname()+" ,you can't do a QuickAction now"); 
+			gameState.notifyObserver(player, new ChangeMsg(player.getNickname()+" ,you can't do a QuickAction now"));
+		}
 	}
 	
 	/**
@@ -46,7 +53,11 @@ public interface State {
 		if(player==null || action==null || gameState==null) {
 			throw new NullPointerException("player, action and gameState should all be !=null"); 
 		}
-		if(action.acceptMove(player, gameState)==true) System.out.println(player.getNickname()+" ,you can't pass the turn now");
+		if(action.acceptMove(player, gameState)==true){
+			System.out.println(player.getNickname()+" ,you can't pass the turn now");
+			gameState.notifyObserver(player, new ChangeMsg(player.getNickname()+" ,you can't pass the turn now"));
+
+		}
 	}
 	
 	/**
@@ -59,7 +70,10 @@ public interface State {
 		if(player==null || action==null || gameState==null) {
 			throw new NullPointerException("player, action and gameState should all be !=null"); 
 		}
-		if(action.acceptMove(player, gameState)==true) System.out.println(player.getNickname()+" ,you can't sell items now");
+		if(action.acceptMove(player, gameState)==true){
+			System.out.println(player.getNickname()+" ,you can't sell items now");
+			gameState.notifyObserver(player, new ChangeMsg(player.getNickname()+" ,you can't sell items now"));
+		}
 	}
 	
 	/**
@@ -72,8 +86,10 @@ public interface State {
 		if(player==null || action==null || gameState==null) {
 			throw new NullPointerException("player, action and gameState should all be !=null"); 
 		}
-		if(action.acceptMove(player, gameState)==true) System.out.println(player.getNickname()+" ,you can't buy items now");
-		//player.setState(this);
+		if(action.acceptMove(player, gameState)==true){
+			System.out.println(player.getNickname()+" ,you can't buy items now");
+			gameState.notifyObserver(player, new ChangeMsg(player.getNickname()+" ,you can't buy items now"));
+		}
 	}
 	
 	public default void checkTurn(Player player, GameState gameState){
