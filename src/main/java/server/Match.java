@@ -37,7 +37,6 @@ public class Match {
 				view.initServerSocketView(this.gameState);
 				System.out.println(view.getPlayer());
 				this.gameState.registerObserver(view.getPlayer(), view);
-				System.out.println("2");
 				view.registerObserver(this.controller);
 			}
 		}

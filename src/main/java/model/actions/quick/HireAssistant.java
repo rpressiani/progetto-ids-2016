@@ -19,17 +19,17 @@ public class HireAssistant implements QuickAction {
 		player.getAssistants().add(1);
 		player.getCoins().sub(3);
 			
-		gameState.notifyObserver(new ChangeHireAssistants(new Assistants(1), new Coins(3)));
-		gameState.notifyObserver(new ChangePlayerStatus(player));
+		gameState.notifyObserver(player, new ChangeHireAssistants(new Assistants(1), new Coins(3)));
+		gameState.notifyObserver(player, new ChangePlayerStatus(player));
 	}
 
 	@Override
 	public boolean checkCondition(Player player, GameState gameState) {
 		if(player.getCoins().getItems()<3){
-			gameState.notifyObserver(new ChangeMsg(player.getNickname()+", you don't have enough coins to hire an assistant "));
+			gameState.notifyObserver(player, new ChangeMsg("You don't have enough coins to hire an assistant "));
 			return false;
 		}
 		
-		else return true;
+		return true;
 	}
 }

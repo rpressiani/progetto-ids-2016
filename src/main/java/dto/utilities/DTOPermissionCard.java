@@ -29,4 +29,13 @@ public class DTOPermissionCard implements DTOObject {
 		return idCard;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return String.valueOf(idCard);
+	}
+
+	
 }

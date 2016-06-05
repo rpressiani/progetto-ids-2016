@@ -1,8 +1,13 @@
 package model.actions.main;
 
 import model.GameState;
+import model.changes.ChangeBuildEmporiumWithKing;
+import model.changes.ChangeMsg;
+import model.changes.ChangePlayerStatus;
 import model.council.Balcony;
 import model.map.City;
+import model.player.Assistants;
+import model.player.Coins;
 import model.player.Player;
 import model.politicalDeck.PoliticalCard;
 import model.politicalDeck.PoliticalContainer;
@@ -39,16 +44,18 @@ public class BuildEmporiumWithKing implements MainAction {
 		assistantsToPay=checkOtherEmporium(cityChosed, gameState);
 					
 		player.getCoins().sub(sumToPay);
+		subProposal(player.getPoliticalHand(), proposal);
 		player.getAssistants().sub(assistantsToPay);
 		gameState.getKing().setKingCity(cityChosed);
-		player.getBuiltCities().add(cityChosed);
-		subProposal(player.getPoliticalHand(), proposal);
-					
 		player.getBuiltCities().add(cityChosed);
 					
 		for(City c : cityChosed.linkedCities(gameState.getMap(), player)){
 			c.assignBonuses(player, gameState);
 		}
+		
+		gameState.notifyObserver(player, new ChangeBuildEmporiumWithKing(new Coins(sumToPay), new Assistants(assistantsToPay), cityChosed));
+		gameState.notifyObserver(player, new ChangePlayerStatus(player));
+		gameState.notifyObserver(new ChangeMsg("The king has been moved to "+cityChosed));
 	}
 	
 	public boolean checkProposal(PoliticalContainer proposal, Balcony balcony){
@@ -108,14 +115,23 @@ public class BuildEmporiumWithKing implements MainAction {
 		
 		sumToPay=sumToPay+sumJolly;
 		
-		if(sumToPay>player.getCoins().getItems()) return false;
+		if(sumToPay>player.getCoins().getItems()){
+			gameState.notifyObserver(player, new ChangeMsg("You don't have enough coins to satisfy the king's balcony"));
+			return false;
+		}
+		
+		if(cityChosed.hasBuiltHere(player)==true){
+			gameState.notifyObserver(player, new ChangeMsg("You already built an emporium in this city"));
+			return false;
+		}
 		
 		int assistantsToPay=checkOtherEmporium(cityChosed, gameState);
 		
-		if(assistantsToPay>player.getAssistants().getItems()) return false;
+		if(assistantsToPay>player.getAssistants().getItems()){
+			gameState.notifyObserver(player, new ChangeMsg("You don't have enough assistants to build in this city"));
+			return false;
+		}
 		
-		if(cityChosed.hasBuiltHere(player)==true) return false;
-		
-		else return true;
+		return true;
 	}
 }

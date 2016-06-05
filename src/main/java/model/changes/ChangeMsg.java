@@ -1,7 +1,6 @@
 package model.changes;
 
 import dto.changes.DTOChangeMsg;
-import model.player.Player;
 import view.VisitorChanges;
 
 public class ChangeMsg implements Change {
@@ -20,7 +19,7 @@ public class ChangeMsg implements Change {
 	}
 	
 	@Override
-	public DTOChangeMsg accept(VisitorChanges v, Player player) {
+	public DTOChangeMsg accept(VisitorChanges v) {
 		return v.visit(this);
 	}
 

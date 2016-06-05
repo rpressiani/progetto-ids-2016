@@ -3,7 +3,6 @@ package model.changes;
 import dto.changes.DTOChangeHireAssistants;
 import model.player.Assistants;
 import model.player.Coins;
-import model.player.Player;
 import view.VisitorChanges;
 
 public class ChangeHireAssistants implements Change {
@@ -17,7 +16,7 @@ public class ChangeHireAssistants implements Change {
 	}
 	
 	@Override
-	public DTOChangeHireAssistants accept(VisitorChanges v, Player player) {
+	public DTOChangeHireAssistants accept(VisitorChanges v) {
 		return v.visit(this);
 	}
 	

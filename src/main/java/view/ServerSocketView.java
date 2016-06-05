@@ -6,8 +6,11 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 
 import client.ClientMessage;
+import dto.DTOObject;
 import dto.actions.DTOAction;
 import dto.changes.DTOChange;
+import dto.queries.DTOQuery;
+import dto.queries.VisitorQueries;
 import dto.utilities.DTOSetup;
 import model.GameState;
 import model.changes.Change;
@@ -24,6 +27,7 @@ public class ServerSocketView extends View implements Runnable {
 	private Player player;
 	private boolean enabled = false;
 	private VisitorChanges visitorChanges;
+	private VisitorQueries visitorQueries;
 	
 	public ServerSocketView(Socket socket) throws IOException, ClassNotFoundException {
 		this.socket = socket; 
@@ -36,7 +40,7 @@ public class ServerSocketView extends View implements Runnable {
 	
 	public void initServerSocketView(GameState game) throws IOException{
 		this.game = game;
-		this.socketOut.flush();
+		this.visitorQueries = new VisitorQueries(this.game);
 	}
 	
 	public void update(Change change) {
@@ -44,7 +48,7 @@ public class ServerSocketView extends View implements Runnable {
 		System.out.println("Sending to the client " + change);
 		
 		try {
-			DTOChange dtoChange = change.accept(this.visitorChanges, this.player);
+			DTOChange dtoChange = change.accept(this.visitorChanges);
 			this.socketOut.writeObject(dtoChange);
 			this.socketOut.flush();
 			System.out.println("DTOChange sent");
@@ -107,6 +111,16 @@ public class ServerSocketView extends View implements Runnable {
 							msgOut = new ClientMessage(this.player, action);
 							
 							this.notifyObserver(msgOut);
+						}
+						
+						if (msgIn.getMessage() instanceof DTOQuery) {
+							
+							DTOQuery request = (DTOQuery) msgIn.getMessage();
+							DTOObject respond = request.accept(this.visitorQueries);
+							System.out.println("SERVER VIEW: received DTOQuery " + request);
+							
+							this.socketOut.writeObject(respond);
+							this.socketOut.flush();
 						}
 						
 						if (msgIn.getMessage() instanceof String) {
