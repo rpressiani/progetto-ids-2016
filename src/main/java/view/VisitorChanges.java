@@ -25,7 +25,15 @@ public class VisitorChanges {
 		
 	}
 	
-	public DTOChangePlayerStatus visit(ChangePlayerStatus change){
+	/**
+	 * @param change
+	 * @return
+	 * @throws NullPointerException if change is null
+	 */
+	public DTOChangePlayerStatus visit(ChangePlayerStatus change) {
+		if(change==null) {
+			throw new NullPointerException("change cannot be null"); 
+		}
 		DTOCoins coins=new DTOCoins(change.getCoins().getItems());
 		DTOAssistants assistants=new DTOAssistants(change.getAssistants().getItems());
 		DTONobilityLevel nobilityLevel=new DTONobilityLevel(change.getNobilityLevel().getItems());
