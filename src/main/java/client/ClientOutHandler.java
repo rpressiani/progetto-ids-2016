@@ -94,7 +94,7 @@ public class ClientOutHandler implements Runnable {
 						break;
 						
 						/*----- ACTIONS -----*/
-					case "changePermissionCards":
+					case "subPermissionCards":
 						if (inputList.size() == 2) {
 							msg = new ClientMessage(new DTOChangePermissionCards(new DTORegion(inputList.get(2))));
 							socketOut.writeObject(msg);
@@ -104,7 +104,7 @@ public class ClientOutHandler implements Runnable {
 							System.out.println(cmdNotFound.toString());
 							break;
 						}
-					case "hireAss":
+					case "hireAssistant":
 						msg = new ClientMessage(new DTOHireAssistant());
 						socketOut.writeObject(msg);
 						socketOut.flush();

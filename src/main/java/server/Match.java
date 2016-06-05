@@ -6,6 +6,7 @@ import java.util.Map;
 
 import controller.Controller;
 import model.GameState;
+import model.changes.ChangeMsg;
 import model.player.Player;
 import parser.Parser;
 import view.ServerSocketView;
@@ -29,16 +30,19 @@ public class Match {
 		int k = 0;
 		
 		for (Map.Entry<Player, ServerSocketView> entry : tmpViewSocket.entrySet()) {
-			if (entry.getValue().isEnabled()) {
-				entry.getValue().getPlayer().initPlayer(this.gameState.getPoliticalDeck(), k, this.parser);
+			ServerSocketView view = entry.getValue();
+			if (view.isEnabled()) {
+				view.getPlayer().initPlayer(this.gameState.getPoliticalDeck(), k, this.parser);
 				k++;
-				entry.getValue().initServerSocketView(this.gameState);
-				this.gameState.registerObserver(entry.getValue());
-				entry.getValue().registerObserver(this.controller);
+				view.initServerSocketView(this.gameState);
+				System.out.println(view.getPlayer());
+				this.gameState.registerObserver(view.getPlayer(), view);
+				System.out.println("2");
+				view.registerObserver(this.controller);
 			}
 		}
 		
-		//notify a match started change
+		this.gameState.notifyObserver(new ChangeMsg("[SERVER] New match started. The first player is " + this.gameState.getCurrentPlayer().getNickname() + ". Let's go!"));
 		
 	}
 
