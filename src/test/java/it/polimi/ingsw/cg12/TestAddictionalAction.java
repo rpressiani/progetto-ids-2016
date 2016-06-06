@@ -30,7 +30,7 @@ public class TestAddictionalAction {
 		}
 		assertTrue(thrown); 
 	}
-/*	@Test
+	@Test
 	public void testIfDoActionWorks() {
 		Parser parser = new Parser();
 		Player player = new Player(); 
@@ -106,7 +106,7 @@ public class TestAddictionalAction {
 			isMethodOk = true; 
 		}
 		assertTrue(isMethodOk); 
-	}*/
+	}
 	@Test
 	public void testNullPlayerInDoActionThrowsException() {
 		boolean thrown = false; 

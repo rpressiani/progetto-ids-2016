@@ -16,7 +16,7 @@ import utilities.Color;
 
 public class TestHireAssistant {
 
-	/*@Test
+	@Test
 	public void testHireAssistantsWorks() {
 		Parser parser = new Parser(); 
 //		GarbageState garbageState = new GarbageState(parser);
@@ -52,6 +52,6 @@ public class TestHireAssistant {
 		assertTrue(tempCoins!=player.getCoins().getItems() && tempAssistants!=player.getAssistants().getItems()); 
 		
 		
-	}*/
+	}
 
 }
