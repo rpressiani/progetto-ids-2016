@@ -18,7 +18,7 @@ public class HireAssistant implements QuickAction {
 	public void doAction(Player player, GameState gameState){
 		player.getAssistants().add(1);
 		player.getCoins().sub(3);
-			
+		
 		gameState.notifyObserver(player, new ChangeHireAssistants(new Assistants(1), new Coins(3)));
 		gameState.notifyObserver(player, new ChangePlayerStatus(player));
 	}

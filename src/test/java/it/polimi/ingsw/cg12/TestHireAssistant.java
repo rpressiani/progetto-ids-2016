@@ -8,18 +8,19 @@ import org.junit.Test;
 
 import model.GameState;
 import model.actions.quick.HireAssistant;
+import model.council.GarbageState;
 import model.player.Player;
 import model.politicalDeck.PoliticalGarbage;
 import model.politicalDeck.PoliticalRealDeck;
 import parser.Parser;
 import utilities.Color;
 
-public class TestHireAssistant {
+/*public class TestHireAssistant {
 
-	/*@Test
+	@Test
 	public void testHireAssistantsWorks() {
 		Parser parser = new Parser(); 
-//		GarbageState garbageState = new GarbageState(parser);
+		GarbageState garbageState = new GarbageState(parser);
 		Player player = new Player();
 		player.setNickname("Ciro");
 		player.setColor(new Color("blue"));
@@ -52,6 +53,6 @@ public class TestHireAssistant {
 		assertTrue(tempCoins!=player.getCoins().getItems() && tempAssistants!=player.getAssistants().getItems()); 
 		
 		
-	}*/
+	}
 
-}
+}*/

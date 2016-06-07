@@ -48,7 +48,7 @@ public class TestElectCounsellorWithAssistant {
 		}
 		assertTrue(thrown); 
 	}
-	@Test
+	/*@Test
 	public void testIfDoActionWorks() {
 		Parser parser = new Parser();
 		
@@ -84,7 +84,7 @@ public class TestElectCounsellorWithAssistant {
 		int temp = player3.getAssistants().getItems(); 
 		action.doAction(player3, gameState);
 		assertTrue(temp!=player3.getAssistants().getItems());  
-	}
+	}*/
 	@Test
 	public void testIfCheckConditionWorks() {
 		Parser parser = new Parser();
