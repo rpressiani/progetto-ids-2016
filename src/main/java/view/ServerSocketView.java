@@ -15,7 +15,6 @@ import dto.utilities.DTOSetup;
 import model.GameState;
 import model.changes.Change;
 import model.player.Player;
-import query.Query;
 import utilities.Color;
 
 public class ServerSocketView extends View implements Runnable {
