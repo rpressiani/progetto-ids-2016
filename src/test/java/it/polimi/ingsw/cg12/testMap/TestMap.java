@@ -12,6 +12,7 @@ import org.junit.Test;
 import model.GameState;
 import model.bonusItem.BonusItem;
 import model.council.GarbageState;
+import model.map.Ancestry;
 import model.map.City;
 import model.map.Map;
 import model.map.Region;
@@ -159,5 +160,22 @@ public class TestMap {
 		Map map = gameState.getMap();
 		HashMap<String, Region> temp = map.getRegions(); 
 		assertTrue(temp==map.getRegions()); 
+	}
+	@Test
+	public void testGetAncestriesWorks() {
+		Parser parser = new Parser(); 
+		Player player = new Player();
+		Player player2 = new Player(); 
+		Player player3 = new Player(); 
+		Player player4 = new Player(); 
+		ArrayList<Player> players = new ArrayList<Player>(); 
+		players.add(player); 
+		players.add(player2); 
+		players.add(player3); 
+		players.add(player4); 
+		GameState gameState = new GameState(parser, players); 
+		Map map = gameState.getMap();
+		HashMap<String, Ancestry> temp = map.getAncestries(); 
+		assertTrue(temp==map.getAncestries()); 
 	}
 }
