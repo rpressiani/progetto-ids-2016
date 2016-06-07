@@ -30,6 +30,8 @@ import query.Query;
 
 public class ClientOutHandler implements Runnable {
 	
+	//Cercare appena si parte quanti sono i colori del deck!!!!!
+	
 	private ObjectOutputStream socketOut; 
 	
 	public ClientOutHandler(ObjectOutputStream socketOut) {
@@ -56,6 +58,8 @@ public class ClientOutHandler implements Runnable {
 			try {
 				
 				ClientMessage msg;
+				ArrayList<Integer> proposal;
+				
 				if (inputList.get(0).equals("help")) {
 					StringBuilder help = new StringBuilder();
 					
@@ -114,41 +118,91 @@ public class ClientOutHandler implements Runnable {
 							break;
 						}
 					case "hireAssistant":
-						msg = new ClientMessage(new DTOHireAssistant());
-						socketOut.writeObject(msg);
-						socketOut.flush();
-						break;
+						if (inputList.size() == 1) {
+							msg = new ClientMessage(new DTOHireAssistant());
+							socketOut.writeObject(msg);
+							socketOut.flush();
+							break;
+						} else {
+							System.out.println(cmdNotFound.toString());
+							break;
+						}
 					case "electCounsellorAss":
-						msg = new ClientMessage(new DTOElectCounsellorWithAssistant(
-								new DTORegion(inputList.get(1)),
-								new DTOColor(inputList.get(2))));
-						socketOut.writeObject(msg);
-						socketOut.flush();
-						break;
+						if (inputList.size() == 3) {
+							msg = new ClientMessage(new DTOElectCounsellorWithAssistant(
+									new DTORegion(inputList.get(1)),
+									new DTOColor(inputList.get(2))));
+							socketOut.writeObject(msg);
+							socketOut.flush();
+							break;
+						} else {
+							System.out.println(cmdNotFound.toString());
+							break;
+						}
 					case "addAction":
 						switch (inputList.get(1)) {
 						case "buildEmpCard":
-							msg = new ClientMessage(new DTOBuildEmporiumWithCard(
-									new DTOPermissionCard(Integer.parseInt(inputList.get(2))),
-									new DTOCity(inputList.get(3))));
-							socketOut.writeObject(msg);
-							socketOut.flush();
-							break;
+							if (inputList.size() == 4) {
+								msg = new ClientMessage(new DTOBuildEmporiumWithCard(
+										new DTOPermissionCard(Integer.parseInt(inputList.get(2))),
+										new DTOCity(inputList.get(3))));
+								socketOut.writeObject(msg);
+								socketOut.flush();
+								break;
+							} else {
+								System.out.println(cmdNotFound.toString());
+								break;
+							}
 						case "buildEmpKing":
-							//msg = new ClientMessage(new DTOBuildEmporiumWithKing());
-//							this.sendMsg(msg);
-							break;
+							if (inputList.size() >= 4) {
+								proposal = getProposal(inputList, 3);
+								msg = new ClientMessage(new DTOBuildEmporiumWithKing(
+										new DTOPoliticalContainer(proposal),
+										new DTOCity(inputList.get(2))));
+
+								if (proposal.get(proposal.size()-1).equals(-1)) {
+									System.out.println(cmdNotFound.toString());
+									break;
+								} else {
+									socketOut.writeObject(msg);
+									socketOut.flush();
+									break;
+								}
+							} else {
+								System.out.println(cmdNotFound.toString());
+								break;
+							}
 						case "buyPermissionCard":
-							//msg = new ClientMessage(new DTOBuyPermissionCard());
-//							this.sendMsg(msg);
-							break;
+							if (inputList.size() >= 4) {
+								proposal = getProposal(inputList, 4);
+								msg = new ClientMessage(new DTOBuyPermissionCard(
+										new DTORegion(inputList.get(2)),
+										new DTOPoliticalContainer(proposal),
+										Integer.parseInt(inputList.get(3))));
+								if (proposal.get(proposal.size()-1).equals(-1)) {
+									System.out.println(cmdNotFound.toString());
+									break;
+								} else {
+									socketOut.writeObject(msg);
+									socketOut.flush();
+									break;
+								}
+							} else {
+								System.out.println(cmdNotFound.toString());
+								break;
+							}
 						case "electCounsellor":
-							msg = new ClientMessage(new DTOElectCounsellor(
-									new DTORegion(inputList.get(2)),
-									new DTOColor(inputList.get(3))));
-							socketOut.writeObject(msg);
-							socketOut.flush();
-							break;
+							if (inputList.size() == 3) {
+								msg = new ClientMessage(new DTOElectCounsellor(
+										new DTORegion(inputList.get(1)),
+										new DTOColor(inputList.get(2))));
+								socketOut.writeObject(msg);
+								socketOut.flush();
+								break;
+							} else {
+								System.out.println(cmdNotFound.toString());
+								break;
+							}
 
 						default:
 							System.out.println(cmdNotFound.toString());
@@ -156,40 +210,77 @@ public class ClientOutHandler implements Runnable {
 						}
 						
 					case "buildEmpCard":
-						msg = new ClientMessage(new DTOBuildEmporiumWithCard(
-								new DTOPermissionCard(Integer.parseInt(inputList.get(1))),
-								new DTOCity(inputList.get(2))));
-						socketOut.writeObject(msg);
-						socketOut.flush();
-						break;
+						if (inputList.size() == 3) {
+							msg = new ClientMessage(new DTOBuildEmporiumWithCard(
+									new DTOPermissionCard(Integer.parseInt(inputList.get(1))),
+									new DTOCity(inputList.get(2))));
+							socketOut.writeObject(msg);
+							socketOut.flush();
+							break;
+						} else {
+							System.out.println(cmdNotFound.toString());
+							break;
+						}
 					case "buildEmpKing":
-						msg = new ClientMessage(new DTOBuildEmporiumWithKing(
-								new DTOPoliticalContainer(getProposal(inputList, 2)),
-								new DTOCity(inputList.get(1))));
-						socketOut.writeObject(msg);
-						socketOut.flush();
-						break;
+						if (inputList.size() >= 3) {
+							proposal = getProposal(inputList, 2);
+							msg = new ClientMessage(new DTOBuildEmporiumWithKing(
+									new DTOPoliticalContainer(proposal),
+									new DTOCity(inputList.get(1))));
+
+							if (proposal.get(proposal.size()-1).equals(-1)) {
+								System.out.println(cmdNotFound.toString());
+								break;
+							} else {
+								socketOut.writeObject(msg);
+								socketOut.flush();
+								break;
+							}
+						} else {
+							System.out.println(cmdNotFound.toString());
+							break;
+						}
 					case "buyPermissionCard":
-						msg = new ClientMessage(new DTOBuyPermissionCard(
-								new DTORegion(inputList.get(1)),
-								new DTOPoliticalContainer(getProposal(inputList, 3)),
-								Integer.parseInt(inputList.get(2))));
-						socketOut.writeObject(msg);
-						socketOut.flush();
-						break;
+						if (inputList.size() >= 3) {
+							proposal = getProposal(inputList, 3);
+							msg = new ClientMessage(new DTOBuyPermissionCard(
+									new DTORegion(inputList.get(1)),
+									new DTOPoliticalContainer(proposal),
+									Integer.parseInt(inputList.get(2))));
+							if (proposal.get(proposal.size()-1).equals(-1)) {
+								System.out.println(cmdNotFound.toString());
+								break;
+							} else {
+								socketOut.writeObject(msg);
+								socketOut.flush();
+								break;
+							}
+						} else {
+							System.out.println(cmdNotFound.toString());
+							break;
+						}
 					case "electCounsellor":
-						msg = new ClientMessage(new DTOElectCounsellor(
-								new DTORegion(inputList.get(1)),
-								new DTOColor(inputList.get(2))));
-						socketOut.writeObject(msg);
-						socketOut.flush();
-						break;
+						if (inputList.size() == 3) {
+							msg = new ClientMessage(new DTOElectCounsellor(
+									new DTORegion(inputList.get(1)),
+									new DTOColor(inputList.get(2))));
+							socketOut.writeObject(msg);
+							socketOut.flush();
+							break;
+						} else {
+							System.out.println(cmdNotFound.toString());
+							break;
+						}
 					case "pass":
-						msg = new ClientMessage(new DTONullAction());
-						socketOut.writeObject(msg);
-						socketOut.flush();
-						break;
-						
+						if (inputList.size() == 1) {
+							msg = new ClientMessage(new DTONullAction());
+							socketOut.writeObject(msg);
+							socketOut.flush();
+							break;
+						} else {
+							System.out.println(cmdNotFound.toString());
+							break;
+						}
 						
 						/*----- QUERIES -----*/
 					case "getscores":
@@ -227,13 +318,34 @@ public class ClientOutHandler implements Runnable {
 
 	}
 	
+	/**
+	 * returns the player political card proposal as an ArrayList of Integer
+	 * 
+	 * @param	inputList				ist of String that contains the command and the parameters retrieved from the client
+	 * @param	from					index from which the player political card proposal starts
+	 * 
+	 * @throws	NumberFormatException	if a NaN is passed by the player in the card proposal
+	 * 
+	 * @return							an ArrayList of Integer that contains the player political card proposal
+	 */
 	private static ArrayList<Integer> getProposal(ArrayList<String> inputList, int from){
 		ArrayList<Integer> proposal = new ArrayList<Integer>();
 		
-		for (int i = from; i < inputList.size(); i++) {
-			proposal.add(Integer.parseInt(inputList.get(i)));
-		}
+		boolean error = false;
 		
+		for (int i = from; i < inputList.size(); i++) {
+			try {
+				if (error) {
+					proposal.add(-1);
+				} else {
+					proposal.add(Integer.parseInt(inputList.get(i)));
+				}
+			} catch (NumberFormatException e) {
+				proposal.add(-1);
+				error = true;
+			}
+			
+		}
 		return proposal;
 	}
 
