@@ -2,6 +2,7 @@ package model.stateMachine.state;
 
 import model.GameState;
 import model.actions.NullAction;
+import model.actions.inputBonus.InputBonusAction;
 import model.actions.main.MainAction;
 import model.actions.market.BuyAction;
 import model.actions.market.SellAction;
@@ -56,7 +57,22 @@ public interface State {
 		if(action.acceptMove(player, gameState)==true){
 			System.out.println(player.getNickname()+" ,you can't pass the turn now");
 			gameState.notifyObserver(player, new ChangeMsg(player.getNickname()+", you can't pass the turn now"));
-
+		}
+	}
+	
+	/**
+	 * @param player current
+	 * @param action mainAction to do
+	 * @param gameState current game
+	 * @throws NullPointerException if one(of more) of the parameters are null
+	 */
+	public default void transition(Player player, InputBonusAction action, GameState gameState) {
+		if(player==null || action==null || gameState==null) {
+			throw new NullPointerException("player, action and gameState should all be !=null"); 
+		}
+		if(action.acceptMove(player, gameState)==true){
+			System.out.println(player.getNickname()+" ,you can't choose a bonus now");
+			gameState.notifyObserver(player, new ChangeMsg(player.getNickname()+", you can't choose a bonus now"));
 		}
 	}
 	

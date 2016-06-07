@@ -18,7 +18,7 @@ public class ClientMessage implements Serializable {
 	 */
 	private static final long serialVersionUID = 8197501378692211337L;
 	
-	private Player player;
+	private transient Player player;
 	private Object message;
 	
 	public ClientMessage(Player player, Object message){
@@ -43,7 +43,6 @@ public class ClientMessage implements Serializable {
 	public Object getMessage() {
 		return message;
 	}
-
 
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
