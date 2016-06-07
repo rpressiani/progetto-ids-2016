@@ -21,6 +21,7 @@ import dto.queries.request.DTOProposalOrderRequest;
 import dto.queries.request.DTOScoresRequest;
 import dto.queries.request.DTOCurrentPlayerRequest;
 import dto.queries.request.DTOPingRequest;
+import dto.queries.request.DTOPlayerInfoRequest;
 import dto.utilities.DTOColor;
 import dto.utilities.DTOPermissionCard;
 import dto.utilities.DTOPoliticalContainer;
@@ -76,6 +77,8 @@ public class ClientOutHandler implements Runnable {
 					help.append("[CLI] *\tQueries \n");
 					help.append("[CLI] \t\tgetscores \n");
 					help.append("[CLI] \t\tgetcurrentplayer \n");
+					help.append("[CLI] \t\tgetinfo \n");
+					help.append("[CLI] \t\tgetplayerinfo <player> \n");
 					help.append("[CLI] *\tOther Commands \n");
 					help.append("[CLI] \t\tpass\n");
 					help.append("[CLI] \t\tping\n");
@@ -278,7 +281,7 @@ public class ClientOutHandler implements Runnable {
 							break;
 						}
 						
-						/*----- ACTIONS -----*/
+						/*----- QUERIES -----*/
 						
 					case "getcurrentplayer":
 						if (inputList.size() == 1) {
@@ -293,6 +296,26 @@ public class ClientOutHandler implements Runnable {
 					case "getscores":
 						if (inputList.size() == 1) {
 							msg = new ClientMessage(new DTOScoresRequest());
+							socketOut.writeObject(msg);
+							socketOut.flush();
+							break;
+						} else {
+							System.out.println(cmdNotFound.toString());
+							break;
+						}
+					case "getinfo":
+						if (inputList.size() == 1) {
+							msg = new ClientMessage(new DTOPlayerInfoRequest());
+							socketOut.writeObject(msg);
+							socketOut.flush();
+							break;
+						} else {
+							System.out.println(cmdNotFound.toString());
+							break;
+						}
+					case "getplayerinfo":
+						if (inputList.size() == 2) {
+							msg = new ClientMessage(new DTOPlayerInfoRequest(inputList.get(1)));
 							socketOut.writeObject(msg);
 							socketOut.flush();
 							break;

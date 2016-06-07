@@ -98,22 +98,30 @@ public class VisitorQueries {
 		return new DTOScoresResponse(scores, new DTOPlayer(requestingPlayer.getId(), new String(requestingPlayer.getNickname())));
 	}
 	
-//	public DTOPlayerInfoResponse visit(DTOPlayerInfoRequest dto){
-//		if(dto==null){
-//			throw new NullPointerException("dto can't be null");
-//		}
-//		
-//		Player player;
-//		
-//		if (this.gameState.getPlayersHashMap().containsKey(dto.getPlayer())) {
-//			player = this.gameState.getPlayersHashMap().get(dto.getPlayer());
-//			return new DTOPlayerInfoResponse();
-//		} else {
-//			return new DTOPlayerInfoResponse();
-//		}
-//		
-//
-//	}
+	public DTOPlayerInfoResponse visit(DTOPlayerInfoRequest dto){
+		if(dto==null){
+			throw new NullPointerException("dto can't be null");
+		}
+		
+		Player player;
+		
+		if (dto.getPlayer().equals("me")) {
+			player = this.requestingPlayer;
+			return new DTOPlayerInfoResponse(new DTOPlayer(player.getSerialID(), new String(player.getNickname())));
+		} else {
+			
+			if (this.gameState.getPlayersHashMap().containsKey(dto.getPlayer())) {
+				player = this.gameState.getPlayersHashMap().get(dto.getPlayer());
+				return new DTOPlayerInfoResponse(new DTOPlayer(player.getSerialID(), new String(player.getNickname())));
+			} else {
+				return new DTOPlayerInfoResponse();
+			}
+			
+		}
+
+		
+
+	}
 
 
 }
