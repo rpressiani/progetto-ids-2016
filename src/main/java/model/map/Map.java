@@ -80,19 +80,22 @@ public class Map {
 		
 //		CITIES GENERATION
 		
+		Ancestry tmpAncestry;
+		ArrayList<BonusItem> tmpBonuses;
+		City cityToAdd;
+		Region tmpRegion;
+		
 		for (Iterator<CFGRegion> iterator = cfgRegions.iterator(); iterator.hasNext();) {	//
 			CFGRegion cfgRegion = iterator.next();
 			List<CFGCity> citiesToAdd = cfgRegion.getCities().getCity();
 			for (CFGCity cfgCity : citiesToAdd) {
 				this.allCitiesFromParser.put(cfgCity.getName(), cfgCity);
 				
-				ArrayList<BonusItem> tmpBonuses;
-				Ancestry tmpAncestry = this.ancestries.get(cfgCity.getAncestry());
-				Region tmpRegion = this.regions.get(cfgRegion.getName());
-				City cityToAdd;
+				tmpRegion = this.regions.get(cfgRegion.getName());
 				
 //				BONUS TILE ASSOCIATION
 				if (!cfgCity.getName().equals(parser.getCFGRoot().getMap().getKingInitLocation())) {
+					tmpAncestry = this.ancestries.get(cfgCity.getAncestry());
 					Collections.shuffle(bonusesList);
 //					System.out.println("ciao "+ bonusesList.size() + "\t"+ parser.getCFGRoot().getMap().getKingInitLocation()+"\t"+cfgCity.getName() + bonusesList);
 					
@@ -107,6 +110,7 @@ public class Map {
 					cityToAdd = new City(cfgCity.getName(), cfgCity.getNameLong(), tmpBonuses, tmpRegion, tmpAncestry);
 					
 				} else {
+					tmpAncestry = new Ancestry();
 					tmpBonuses = new ArrayList<BonusItem>();
 					cityToAdd = new City(cfgCity.getName(), cfgCity.getNameLong(), tmpBonuses, tmpRegion, tmpAncestry);
 				}
