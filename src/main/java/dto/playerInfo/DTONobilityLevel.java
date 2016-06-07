@@ -22,6 +22,10 @@ public class DTONobilityLevel implements DTOObject {
 		this.level=level;
 	}
 
+	/**
+	 * 
+	 * @return the level
+	 */
 	public int getLevel() {
 		return level;
 	}

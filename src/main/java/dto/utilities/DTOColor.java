@@ -10,7 +10,15 @@ public class DTOColor implements DTOObject{
 	private static final long serialVersionUID = 4725332874694722062L;
 	private final String colorString;
 	
+	/**
+	 * 
+	 * @param colorString
+	 * @throws NullPointerException
+	 */
 	public DTOColor(String colorString) {
+		if(colorString==null){
+			throw new NullPointerException("colorString can't be null");
+		}
 		this.colorString = colorString;
 	}
 

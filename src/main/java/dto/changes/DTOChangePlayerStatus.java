@@ -43,18 +43,34 @@ public class DTOChangePlayerStatus implements DTOChange {
 		this.score=score;
 	}
 
+	/**
+	 * 
+	 * @return the coins
+	 */
 	public DTOCoins getCoins() {
 		return coins;
 	}
 
+	/**
+	 * 
+	 * @return the assistants
+	 */
 	public DTOAssistants getAssistants() {
 		return assistants;
 	}
 
+	/**
+	 * 
+	 * @return the  nobilityLevel
+	 */
 	public DTONobilityLevel getNobilityLevel() {
 		return nobilityLevel;
 	}
 
+	/**
+	 * 
+	 * @return the score
+	 */
 	public DTOScore getScore() {
 		return score;
 	}

@@ -39,14 +39,26 @@ public class DTOBuyPermissionCard implements DTOMainAction {
 		this.index=index;
 	}
 	
+	/**
+	 * 
+	 * @return the region
+	 */
 	public DTORegion getRegion() {
 		return region;
 	}
 
+	/**
+	 * 
+	 * @return the proposal
+	 */
 	public DTOPoliticalContainer getProposal() {
 		return proposal;
 	}
 
+	/**
+	 * 
+	 * @return the index
+	 */
 	public int getIndex() {
 		return index;
 	}
