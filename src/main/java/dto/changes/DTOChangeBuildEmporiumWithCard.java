@@ -15,20 +15,42 @@ public class DTOChangeBuildEmporiumWithCard implements DTOChange {
 	private final DTOCity city;
 	private final DTOPermissionCard card;
 	
+	/**
+	 * 
+	 * @param assistants
+	 * @param city
+	 * @param card
+	 * @throws NullPointerException if assistants/city/card are null
+	 */
 	public DTOChangeBuildEmporiumWithCard(DTOAssistants assistants, DTOCity city, DTOPermissionCard card){
+		if(assistants==null || city==null || card==null){
+			throw new NullPointerException("assistants or city or card can't be null");
+		}
 		this.assistants=assistants;
 		this.city=city;
 		this.card=card;
 	}
 
+	/**
+	 * 
+	 * @return the assistants
+	 */
 	public DTOAssistants getAssistants() {
 		return assistants;
 	}
 
+	/**
+	 * 
+	 * @return the city
+	 */
 	public DTOCity getCity() {
 		return city;
 	}
 
+	/**
+	 * 
+	 * @return the card
+	 */
 	public DTOPermissionCard getCard() {
 		return card;
 	}

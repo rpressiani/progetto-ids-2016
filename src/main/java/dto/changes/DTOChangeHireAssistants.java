@@ -29,10 +29,18 @@ public class DTOChangeHireAssistants implements DTOChange {
 		this.coins=coins;
 	}
 
+	/**
+	 * 
+	 * @return the assistants
+	 */
 	public DTOAssistants getAssistants() {
 		return assistants;
 	}
 
+	/**
+	 * 
+	 * @return the coins
+	 */
 	public DTOCoins getCoins() {
 		return coins;
 	}

@@ -11,6 +11,11 @@ public class VisitorQueries {
 	
 	private GameState gameState;
 	
+	/**
+	 * 
+	 * @param gameState
+	 * @throws NullPointerException if gameState==null
+	 */
 	public VisitorQueries(GameState gameState) {
 		if(gameState == null) throw new NullPointerException();
 		this.gameState = gameState;
@@ -24,7 +29,17 @@ public class VisitorQueries {
 //		return new BuyPermissionCard(region, proposal, DTOAction.getIndex());
 //	}
 	
+	/**
+	 * 
+	 * @param dto
+	 * @return the order of colours in politicalDeck
+	 * @throws NullPointerException if dto==null
+	 */
 	public DTOProposalOrder visit(DTOGetProposalOrder dto){
+		if(dto==null){
+			throw new NullPointerException("dto can't be null");
+		}
+		
 		ArrayList<String> proposalOrder = new ArrayList<String>();
 		
 		for (CFGPoliticalCard cfgPoliticalCard : this.gameState.getParser().getCFGRoot().getPoliticalDeck().getPoliticalCard()) {

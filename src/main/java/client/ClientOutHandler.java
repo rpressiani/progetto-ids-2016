@@ -12,7 +12,7 @@ import dto.actions.main.DTOBuildEmporiumWithKing;
 import dto.actions.main.DTOBuyPermissionCard;
 import dto.actions.main.DTOElectCounsellor;
 import dto.actions.quick.DTOAddictionalAction;
-import dto.actions.quick.DTOChangePermissionCards;
+import dto.actions.quick.DTOSubstitutePermissionCards;
 import dto.actions.quick.DTOElectCounsellorWithAssistant;
 import dto.actions.quick.DTOHireAssistant;
 import dto.map.DTOCity;
@@ -105,7 +105,7 @@ public class ClientOutHandler implements Runnable {
 						/*----- ACTIONS -----*/
 					case "subPermissionCards":
 						if (inputList.size() == 2) {
-							msg = new ClientMessage(new DTOChangePermissionCards(new DTORegion(inputList.get(2))));
+							msg = new ClientMessage(new DTOSubstitutePermissionCards(new DTORegion(inputList.get(2))));
 							socketOut.writeObject(msg);
 							socketOut.flush();
 							break;

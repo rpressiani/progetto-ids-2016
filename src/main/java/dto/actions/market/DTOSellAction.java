@@ -52,34 +52,66 @@ public class DTOSellAction implements DTOAction {
 		this.buyPoliticals=buyPoliticals;
 	}
 
+	/**
+	 * 
+	 * @return buyCoins
+	 */
 	public int getBuyCoins() {
 		return buyCoins;
 	}
 
+	/**
+	 * 
+	 * @return sellCoins
+	 */
 	public int getSellCoins() {
 		return sellCoins;
 	}
 
+	/**
+	 * 
+	 * @return buyAssistants
+	 */
 	public int getBuyAssistants() {
 		return buyAssistants;
 	}
 
+	/**
+	 * 
+	 * @return sellAssistants
+	 */
 	public int getSellAssistants() {
 		return sellAssistants;
 	}
 
+	/**
+	 * 
+	 * @return sellPermissions
+	 */
 	public Set<DTOPermissionCard> getSellPermissions() {
 		return sellPermissions;
 	}
 
+	/**
+	 * 
+	 * @return buyPermissions
+	 */
 	public Set<DTOPermissionCard> getBuyPermissions() {
 		return buyPermissions;
 	}
 
+	/**
+	 * 
+	 * @return buyPoliticals
+	 */
 	public ArrayList<Integer> getBuyPoliticals() {
 		return buyPoliticals;
 	}
 
+	/**
+	 * 
+	 * @return sellPoliticals
+	 */
 	public ArrayList<Integer> getSellPoliticals() {
 		return sellPoliticals;
 	}

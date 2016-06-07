@@ -29,10 +29,18 @@ public class DTOChangeSubstitutePermissionCards implements DTOChange {
 		this.region=region;
 	}
 
+	/**
+	 * 
+	 * @return the assistants
+	 */
 	public DTOAssistants getAssistants() {
 		return assistants;
 	}
 
+	/**
+	 * 
+	 * @return the region
+	 */
 	public DTORegion getRegion() {
 		return region;
 	}
