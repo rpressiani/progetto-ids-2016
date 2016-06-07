@@ -51,7 +51,7 @@ public class ServerSocketView extends View implements Runnable {
 	 */
 	public void initServerSocketView(GameState game) throws IOException{
 		this.game = game;
-		this.visitorQueries = new VisitorQueries(this.game);
+		this.visitorQueries = new VisitorQueries(this.game, this.player);
 	}
 	
 	/**

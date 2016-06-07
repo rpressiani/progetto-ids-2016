@@ -10,8 +10,10 @@ import dto.playerInfo.DTOPlayer;
 import dto.playerInfo.DTOScore;
 import dto.queries.request.DTOCurrentPlayerRequest;
 import dto.queries.request.DTOPingRequest;
+import dto.queries.request.DTOPlayerInfoRequest;
 import dto.queries.respond.DTOCurrentPlayerResponse;
 import dto.queries.respond.DTOPingResponse;
+import dto.queries.respond.DTOPlayerInfoResponse;
 import dto.queries.respond.DTOProposalOrderResponse;
 import dto.queries.respond.DTOScoresResponse;
 import jaxb.CFGPoliticalCard;
@@ -21,15 +23,17 @@ import model.player.Player;
 public class VisitorQueries {
 	
 	private GameState gameState;
+	private Player requestingPlayer;
 	
 	/**
 	 * 
 	 * @param gameState
 	 * @throws NullPointerException if gameState==null
 	 */
-	public VisitorQueries(GameState gameState) {
+	public VisitorQueries(GameState gameState, Player requestingPlayer) {
 		if(gameState == null) throw new NullPointerException();
 		this.gameState = gameState;
+		this.requestingPlayer = requestingPlayer;
 	}
 	
 //	public BuyPermissionCard visit(DTOBuyPermissionCard DTOAction, Player player){
@@ -91,7 +95,25 @@ public class VisitorQueries {
 					new DTOScore(player.getScore().getItems().intValue()));
 		}
 		
-		return new DTOScoresResponse(scores);
+		return new DTOScoresResponse(scores, new DTOPlayer(requestingPlayer.getId(), new String(requestingPlayer.getNickname())));
 	}
+	
+//	public DTOPlayerInfoResponse visit(DTOPlayerInfoRequest dto){
+//		if(dto==null){
+//			throw new NullPointerException("dto can't be null");
+//		}
+//		
+//		Player player;
+//		
+//		if (this.gameState.getPlayersHashMap().containsKey(dto.getPlayer())) {
+//			player = this.gameState.getPlayersHashMap().get(dto.getPlayer());
+//			return new DTOPlayerInfoResponse();
+//		} else {
+//			return new DTOPlayerInfoResponse();
+//		}
+//		
+//
+//	}
+
 
 }
