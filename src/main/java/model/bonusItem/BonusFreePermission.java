@@ -1,11 +1,5 @@
 package model.bonusItem;
-import model.GameState;
-import model.player.Player;
 
-public class BonusFreePermission implements BonusItem {
+public class BonusFreePermission extends BonusInputItem {
 
-	@Override
-	public void giveBonus(Player player, GameState gameState){
-		
-	}
 }

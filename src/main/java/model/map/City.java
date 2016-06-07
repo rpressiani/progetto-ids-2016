@@ -76,7 +76,7 @@ public class City extends Bonusable{
 		Set<City> linkedCities = null;
 		UndirectedSubgraph<City, DefaultEdge> sg = new UndirectedSubgraph<City, DefaultEdge>(map.getGraph(), player.getBuiltCities(), null); 
 		ConnectivityInspector<City, DefaultEdge> inspector = new ConnectivityInspector<City, DefaultEdge>(sg);
-		linkedCities = inspector.connectedSetOf(this); 
+		linkedCities = inspector.connectedSetOf(this);
 		return linkedCities; 
 	}
 	/**

@@ -65,7 +65,7 @@ public class TestAddictionalAction {
 		int temp = player.getAssistants().getItems(); 
 		int temp2 = player.getCoins().getItems(); 
 		action.doAction(player, gameState);
-		assertTrue(temp!=player.getAssistants().getItems() && temp2!=player.getCoins().getItems()); 
+		assertTrue(temp==(player.getAssistants().getItems()+3) && temp2!=player.getCoins().getItems()); 
 	}
 	@Test
 	public void testIfCheckConditionWorks() {

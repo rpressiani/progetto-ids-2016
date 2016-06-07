@@ -1,11 +1,5 @@
 package model.bonusItem;
-import model.GameState;
-import model.player.Player;
 
-public class BonusAddictionalAction implements BonusItem {
+public class BonusAddictionalAction extends BonusInputItem {
 
-	@Override
-	public void giveBonus(Player player, GameState gameState){
-		
-	}
 }
