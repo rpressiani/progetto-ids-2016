@@ -10,7 +10,13 @@ public class ChangeBuyPermissionCard implements Change {
 	private Coins coins;
 	private Region region;
 	
-	public ChangeBuyPermissionCard(Coins coins, Region region){
+	public ChangeBuyPermissionCard(Coins coins, Region region) {
+		if(coins==null) {
+			throw new NullPointerException("coins cannot be null"); 
+		}
+		if(region==null) {
+			throw new NullPointerException("region cannot be null"); 
+		}
 		this.coins=coins;
 		this.region=region;
 	}

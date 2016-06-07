@@ -11,6 +11,12 @@ public class ChangeHireAssistants implements Change {
 	private Coins coins;
 	
 	public ChangeHireAssistants(Assistants assistants, Coins coins) {
+		if(assistants==null) {
+			throw new NullPointerException("assistants cannot be null"); 
+		}
+		if(coins==null) {
+			throw new NullPointerException("coins cannot be null"); 
+		}
 		this.assistants=assistants;
 		this.coins=coins;
 	}
