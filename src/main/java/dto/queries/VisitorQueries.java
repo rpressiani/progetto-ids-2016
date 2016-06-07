@@ -3,6 +3,8 @@ package dto.queries;
 import java.util.ArrayList;
 
 import dto.queries.request.DTOGetProposalOrder;
+import dto.queries.request.DTOPingRequest;
+import dto.queries.respond.DTOPingResponse;
 import dto.queries.respond.DTOProposalOrder;
 import jaxb.CFGPoliticalCard;
 import model.GameState;
@@ -47,6 +49,14 @@ public class VisitorQueries {
 		}
 		
 		return new DTOProposalOrder(proposalOrder);
+	}
+	
+	public DTOPingResponse visit(DTOPingRequest dto){
+		if(dto==null){
+			throw new NullPointerException("dto can't be null");
+		}
+		
+		return new DTOPingResponse();
 	}
 
 }

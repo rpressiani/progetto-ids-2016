@@ -138,27 +138,27 @@ public class ServerSocketView extends View implements Runnable {
 							this.socketOut.flush();
 						}
 						
-						if (msgIn.getMessage() instanceof String) {
-							String string = (String) msgIn.getMessage();
-							System.out.println("SERVER VIEW: received String " + string);
-							
-							if (string.equals("ping")) {
-								StringBuilder ping = new StringBuilder();
-								ping.append("\n[SERVER] Ping received\n");
-								ping.append("[SERVER] Client connected\n");
-								ping.append("[SERVER] Server is responding\n");
-								this.socketOut.writeObject(ping.toString());
-								this.socketOut.flush();
-							}
-						}
+//						if (msgIn.getMessage() instanceof String) {
+//							String string = (String) msgIn.getMessage();
+//							System.out.println("SERVER VIEW: received String " + string);
+//							
+//							if (string.equals("ping")) {
+//								StringBuilder ping = new StringBuilder();
+//								ping.append("\n[SERVER] Ping received\n");
+//								ping.append("[SERVER] Client connected\n");
+//								ping.append("[SERVER] Server is responding\n");
+//								this.socketOut.writeObject(ping.toString());
+//								this.socketOut.flush();
+//							}
+//						}
 						
-						if (msgIn.getMessage() instanceof Query) {
-							Query query = (Query) msgIn.getMessage();
-							System.out.println("SERVER VIEW: received query " + query);
-							
-							this.socketOut.writeObject(query.perform(this.player, this.game));
-							this.socketOut.flush();
-						}
+//						if (msgIn.getMessage() instanceof Query) {
+//							Query query = (Query) msgIn.getMessage();
+//							System.out.println("SERVER VIEW: received query " + query);
+//							
+//							this.socketOut.writeObject(query.perform(this.player, this.game));
+//							this.socketOut.flush();
+//						}
 					}						
 				}
 				

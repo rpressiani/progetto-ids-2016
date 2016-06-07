@@ -18,6 +18,7 @@ import dto.actions.quick.DTOHireAssistant;
 import dto.map.DTOCity;
 import dto.map.DTORegion;
 import dto.queries.request.DTOGetProposalOrder;
+import dto.queries.request.DTOPingRequest;
 import dto.utilities.DTOColor;
 import dto.utilities.DTOPermissionCard;
 import dto.utilities.DTOPoliticalContainer;
@@ -101,7 +102,7 @@ public class ClientOutHandler implements Runnable {
 						
 						/*----- GENERAL-----*/
 					case "ping":
-						msg = new ClientMessage("ping");
+						msg = new ClientMessage(new DTOPingRequest());
 						socketOut.writeObject(msg);
 						socketOut.flush();
 						break;
@@ -283,24 +284,24 @@ public class ClientOutHandler implements Runnable {
 						}
 						
 						/*----- QUERIES -----*/
-					case "getscores":
-						Query<String> queryScores = new GetScores();
-						msg = new ClientMessage(queryScores);
-						socketOut.writeObject(msg);
-						socketOut.flush();
-						break;
-					case "getcoins":
-						Query<String> queryCoins = new GetCoins();
-						msg = new ClientMessage(queryCoins);
-						socketOut.writeObject(msg);
-						socketOut.flush();
-						break;
-					case "getcurrentplayer":
-						Query<String> queryCurrentPlayer = new GetCurrentPlayer();
-						msg = new ClientMessage(queryCurrentPlayer);
-						socketOut.writeObject(msg);
-						socketOut.flush();
-						break;
+//					case "getscores":
+//						Query<String> queryScores = new GetScores();
+//						msg = new ClientMessage(queryScores);
+//						socketOut.writeObject(msg);
+//						socketOut.flush();
+//						break;
+//					case "getcoins":
+//						Query<String> queryCoins = new GetCoins();
+//						msg = new ClientMessage(queryCoins);
+//						socketOut.writeObject(msg);
+//						socketOut.flush();
+//						break;
+//					case "getcurrentplayer":
+//						Query<String> queryCurrentPlayer = new GetCurrentsPlayer();
+//						msg = new ClientMessage(queryCurrentPlayer);
+//						socketOut.writeObject(msg);
+//						socketOut.flush();
+//						break;
 						
 					default:
 						System.out.println(cmdNotFound.toString());
