@@ -65,6 +65,8 @@ public abstract class Observable<C> {
 		if(c==null) {
 			throw new NullPointerException("Change cannot be null"); 
 		}
-		this.observersMap.get(player).update(c);
+		if (this.observersMap.get(player) != null) {
+				this.observersMap.get(player).update(c);	
+		}
 	}
 }

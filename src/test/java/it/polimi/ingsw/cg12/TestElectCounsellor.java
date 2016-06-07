@@ -20,7 +20,7 @@ import utilities.Color;
 
 public class TestElectCounsellor {
 
-	/*@Test
+	@Test
 	public void testIfDoActionWorks() {
 		Parser parser = new Parser(); 
 		Player player = new Player();
@@ -54,7 +54,7 @@ public class TestElectCounsellor {
 		ElectCounsellor action = new ElectCounsellor(map.getRegions().get("seaside"), new Color("gold"));
 		action.doAction(player, gameState);
 		assertTrue(player.getCoins().getItems()!=temp); 
-	}*/
+	}
 	@Test
 	public void testNullRegionInConstructorThrowsException() {
 		boolean thrown = false; 
