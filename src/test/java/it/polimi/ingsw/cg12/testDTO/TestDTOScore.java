@@ -1,19 +1,19 @@
-package it.polimi.ingsw.cg12;
+package it.polimi.ingsw.cg12.testDTO;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import dto.playerInfo.DTOCoins;
+import dto.playerInfo.DTOScore;
 
-public class TestDTOCoins {
+public class TestDTOScore {
 
 	@Test
-	public void testWrongQuantityInConstructorThrowsException() {
+	public void testWrongLevelInConstructorThrowsException() {
 		boolean thrown = false; 
-		int quantity = -1; 
+		int level = -1; 
 		try {
-			DTOCoins coins = new DTOCoins(quantity); 
+			DTOScore score = new DTOScore(level); 
 		} catch(IllegalArgumentException e) {
 			thrown = true; 
 		}
@@ -22,9 +22,9 @@ public class TestDTOCoins {
 	@Test
 	public void testIfConstructorWorks() {
 		boolean thrown = false; 
-		int quantity = 2; 
+		int level = 2; 
 		try {
-			DTOCoins coins = new DTOCoins(quantity); 
+			DTOScore score = new DTOScore(level); 
 		} catch(IllegalArgumentException e) {
 			thrown = true; 
 		}

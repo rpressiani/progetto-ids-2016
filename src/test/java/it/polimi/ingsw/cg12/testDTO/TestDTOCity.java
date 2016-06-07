@@ -1,19 +1,19 @@
-package it.polimi.ingsw.cg12;
+package it.polimi.ingsw.cg12.testDTO;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import dto.map.DTORegion;
+import dto.map.DTOCity;
 
-public class TestDTORegion {
+public class TestDTOCity {
 
 	@Test
-	public void testNullStringInConstructorThrowsException() {
+	public void testNullNameInConstructorThrowsException() {
 		boolean thrown = false; 
 		String name = null; 
 		try {
-			DTORegion region = new DTORegion(name); 
+			DTOCity city = new DTOCity(name); 
 		} catch(NullPointerException e) {
 			thrown = true; 
 		}
@@ -22,13 +22,13 @@ public class TestDTORegion {
 	@Test
 	public void testIfConstructorWorks() {
 		boolean thrown = false; 
-		String name = "Campania"; 
+		String name = "Napoli"; 
 		try {
-			DTORegion region = new DTORegion(name); 
+			DTOCity city = new DTOCity(name); 
 		} catch(NullPointerException e) {
 			thrown = true; 
 		}
-		assertFalse(thrown);
+		assertFalse(thrown); 
 	}
 
 }

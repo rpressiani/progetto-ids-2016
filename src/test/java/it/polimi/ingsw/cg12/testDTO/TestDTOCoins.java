@@ -1,30 +1,30 @@
-package it.polimi.ingsw.cg12;
+package it.polimi.ingsw.cg12.testDTO;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import dto.playerInfo.DTOAssistants;
+import dto.playerInfo.DTOCoins;
 
-public class TestDTOAssistants {
+public class TestDTOCoins {
 
 	@Test
 	public void testWrongQuantityInConstructorThrowsException() {
 		boolean thrown = false; 
-		int quantity = -3; 
+		int quantity = -1; 
 		try {
-			DTOAssistants assistants = new DTOAssistants(quantity); 
+			DTOCoins coins = new DTOCoins(quantity); 
 		} catch(IllegalArgumentException e) {
 			thrown = true; 
 		}
 		assertTrue(thrown); 
 	}
 	@Test
-	public void testIFConstructorWorks() {
-		boolean thrown = false;
-		int quantity = 0; 
+	public void testIfConstructorWorks() {
+		boolean thrown = false; 
+		int quantity = 2; 
 		try {
-			DTOAssistants assistants = new DTOAssistants(quantity); 
+			DTOCoins coins = new DTOCoins(quantity); 
 		} catch(IllegalArgumentException e) {
 			thrown = true; 
 		}
