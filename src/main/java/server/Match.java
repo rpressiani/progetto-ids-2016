@@ -19,7 +19,17 @@ public class Match {
 	private Controller controller;
 	private Parser parser;
 	
+	/**
+	 * 
+	 * @param players
+	 * @param tmpViewSocket
+	 * @throws IOException
+	 */
 	public Match(ArrayList<Player> players, Map<Player, ServerSocketView> tmpViewSocket) throws IOException {
+		if(players==null || tmpViewSocket==null){
+			throw new NullPointerException("players or tmpViewSocket can't be null");
+		}
+		
 		this.parser = new Parser();
 		this.gameState = new GameState(this.parser, players);
 		this.controller = new Controller(this.gameState);

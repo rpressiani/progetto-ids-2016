@@ -11,11 +11,6 @@ public abstract class View extends Observable<ClientMessage> implements Observer
 	public void update(Change o) {
 		Observer.super.update(o);
 		//State to be implemented
-		
 	}
 
-	public void input(String input) {
-		
-	}
-	
 }

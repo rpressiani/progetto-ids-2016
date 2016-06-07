@@ -22,13 +22,23 @@ public class MatchCreator implements Runnable {
 	private static int counter = 0;
 	private Set<Match> runningMatches;
 	
+	/**
+	 * 
+	 * @param tmpViewSocket
+	 */
 	public MatchCreator(Map<Player, ServerSocketView> tmpViewSocket) {
+		if(tmpViewSocket==null){
+			throw new NullPointerException("tmpViewSocket can't be null");
+		}
 		
 		this.runningMatches = new HashSet<Match>();
 		this.tmpViewSocket = tmpViewSocket;
 		this.enabledPlayers = new LinkedList<Player>();
 	}
 	
+	/**
+	 * find the players enabled
+	 */
 	private void findEnabledPlayers(){
 		
 		for (Map.Entry<Player, ServerSocketView> entry : tmpViewSocket.entrySet()) {
