@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import dto.DTOObject;
 
-public class DTOProposalOrder implements DTOObject {
+public class DTOProposalOrderResponse implements DTOObject {
 
 	/**
 	 * 
@@ -18,7 +18,7 @@ public class DTOProposalOrder implements DTOObject {
 	 * @param proposalOrder
 	 * @throws NullPointerException
 	 */
-	public DTOProposalOrder(ArrayList<String> proposalOrder) {
+	public DTOProposalOrderResponse(ArrayList<String> proposalOrder) {
 		if(proposalOrder==null){
 			throw new NullPointerException("proposalOrder can't be null");
 		}

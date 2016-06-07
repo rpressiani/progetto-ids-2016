@@ -237,6 +237,13 @@ public class Player {
 		this.state = state;
 	}
 
+	/**
+	 * @return the serialID
+	 */
+	public int getSerialID() {
+		return serialID;
+	}
+
 	/* (non-Javadoc)
 	 * @see java.lang.Object#hashCode()
 	 */

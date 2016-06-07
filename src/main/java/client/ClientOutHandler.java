@@ -17,21 +17,17 @@ import dto.actions.quick.DTOElectCounsellorWithAssistant;
 import dto.actions.quick.DTOHireAssistant;
 import dto.map.DTOCity;
 import dto.map.DTORegion;
-import dto.queries.request.DTOGetProposalOrder;
+import dto.queries.request.DTOProposalOrderRequest;
+import dto.queries.request.DTOScoresRequest;
+import dto.queries.request.DTOCurrentPlayerRequest;
 import dto.queries.request.DTOPingRequest;
 import dto.utilities.DTOColor;
 import dto.utilities.DTOPermissionCard;
 import dto.utilities.DTOPoliticalContainer;
 import dto.utilities.DTOSetup;
-import model.actions.main.BuildEmporiumWithKing;
-import query.GetCoins;
-import query.GetCurrentPlayer;
-import query.GetScores;
-import query.Query;
+
 
 public class ClientOutHandler implements Runnable {
-	
-	//Cercare appena si parte quanti sono i colori del deck!!!!!
 	
 	private ObjectOutputStream socketOut; 
 	
@@ -79,14 +75,13 @@ public class ClientOutHandler implements Runnable {
 					help.append("[CLI] \t\thireAssistant\n");
 					help.append("[CLI] *\tQueries \n");
 					help.append("[CLI] \t\tgetscores \n");
-					help.append("[CLI] \t\tgetcoins \n");
 					help.append("[CLI] \t\tgetcurrentplayer \n");
 					help.append("[CLI] *\tOther Commands \n");
 					help.append("[CLI] \t\tpass\n");
 					help.append("[CLI] \t\tping\n");
 					help.append("[CLI] \n");
 					help.append("[CLI] Remember that the order for the card proposal is the one written below:");
-					msg = new ClientMessage(new DTOGetProposalOrder());
+					msg = new ClientMessage(new DTOProposalOrderRequest());
 					System.out.println(help.toString());
 					socketOut.writeObject(msg);
 					socketOut.flush();
@@ -283,25 +278,28 @@ public class ClientOutHandler implements Runnable {
 							break;
 						}
 						
-						/*----- QUERIES -----*/
-//					case "getscores":
-//						Query<String> queryScores = new GetScores();
-//						msg = new ClientMessage(queryScores);
-//						socketOut.writeObject(msg);
-//						socketOut.flush();
-//						break;
-//					case "getcoins":
-//						Query<String> queryCoins = new GetCoins();
-//						msg = new ClientMessage(queryCoins);
-//						socketOut.writeObject(msg);
-//						socketOut.flush();
-//						break;
-//					case "getcurrentplayer":
-//						Query<String> queryCurrentPlayer = new GetCurrentsPlayer();
-//						msg = new ClientMessage(queryCurrentPlayer);
-//						socketOut.writeObject(msg);
-//						socketOut.flush();
-//						break;
+						/*----- ACTIONS -----*/
+						
+					case "getcurrentplayer":
+						if (inputList.size() == 1) {
+							msg = new ClientMessage(new DTOCurrentPlayerRequest());
+							socketOut.writeObject(msg);
+							socketOut.flush();
+							break;
+						} else {
+							System.out.println(cmdNotFound.toString());
+							break;
+						}
+					case "getscores":
+						if (inputList.size() == 1) {
+							msg = new ClientMessage(new DTOScoresRequest());
+							socketOut.writeObject(msg);
+							socketOut.flush();
+							break;
+						} else {
+							System.out.println(cmdNotFound.toString());
+							break;
+						}
 						
 					default:
 						System.out.println(cmdNotFound.toString());
@@ -322,7 +320,7 @@ public class ClientOutHandler implements Runnable {
 	/**
 	 * returns the player political card proposal as an ArrayList of Integer
 	 * 
-	 * @param	inputList				ist of String that contains the command and the parameters retrieved from the client
+	 * @param	inputList				List of String that contains the command and the parameters retrieved from the client
 	 * @param	from					index from which the player political card proposal starts
 	 * 
 	 * @throws	NumberFormatException	if a NaN is passed by the player in the card proposal

@@ -4,12 +4,12 @@ import dto.DTOObject;
 import dto.queries.DTOQuery;
 import dto.queries.VisitorQueries;
 
-public class DTOGetProposalOrder implements DTOQuery {
+public class DTOScoresRequest implements DTOQuery {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 3734921273021305140L;
+	private static final long serialVersionUID = -1386453953371632145L;
 
 	@Override
 	public DTOObject accept(VisitorQueries v) {

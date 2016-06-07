@@ -1,13 +1,22 @@
 package dto.queries;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
-import dto.queries.request.DTOGetProposalOrder;
+import dto.queries.request.DTOProposalOrderRequest;
+import dto.queries.request.DTOScoresRequest;
+import dto.playerInfo.DTOPlayer;
+import dto.playerInfo.DTOScore;
+import dto.queries.request.DTOCurrentPlayerRequest;
 import dto.queries.request.DTOPingRequest;
+import dto.queries.respond.DTOCurrentPlayerResponse;
 import dto.queries.respond.DTOPingResponse;
-import dto.queries.respond.DTOProposalOrder;
+import dto.queries.respond.DTOProposalOrderResponse;
+import dto.queries.respond.DTOScoresResponse;
 import jaxb.CFGPoliticalCard;
 import model.GameState;
+import model.player.Player;
 
 public class VisitorQueries {
 	
@@ -37,7 +46,7 @@ public class VisitorQueries {
 	 * @return the order of colours in politicalDeck
 	 * @throws NullPointerException if dto==null
 	 */
-	public DTOProposalOrder visit(DTOGetProposalOrder dto){
+	public DTOProposalOrderResponse visit(DTOProposalOrderRequest dto){
 		if(dto==null){
 			throw new NullPointerException("dto can't be null");
 		}
@@ -48,7 +57,7 @@ public class VisitorQueries {
 			proposalOrder.add(cfgPoliticalCard.getColor());
 		}
 		
-		return new DTOProposalOrder(proposalOrder);
+		return new DTOProposalOrderResponse(proposalOrder);
 	}
 	
 	public DTOPingResponse visit(DTOPingRequest dto){
@@ -57,6 +66,32 @@ public class VisitorQueries {
 		}
 		
 		return new DTOPingResponse();
+	}
+	
+	public DTOCurrentPlayerResponse visit(DTOCurrentPlayerRequest dto){
+		if(dto==null){
+			throw new NullPointerException("dto can't be null");
+		}
+		
+		return new DTOCurrentPlayerResponse(new DTOPlayer(
+				this.gameState.getCurrentPlayer().getSerialID(),
+				new String(this.gameState.getCurrentPlayer().getNickname())));
+	}
+	
+	public DTOScoresResponse visit(DTOScoresRequest dto){
+		if(dto==null){
+			throw new NullPointerException("dto can't be null");
+		}
+		
+		Map<DTOPlayer, DTOScore> scores = new HashMap<DTOPlayer, DTOScore>();
+		
+		for (Player player : this.gameState.getPlayers()) {
+			scores.put(
+					new DTOPlayer(player.getSerialID(), new String(player.getNickname())),
+					new DTOScore(player.getScore().getItems().intValue()));
+		}
+		
+		return new DTOScoresResponse(scores);
 	}
 
 }
