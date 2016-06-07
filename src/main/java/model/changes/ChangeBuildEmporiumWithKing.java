@@ -12,7 +12,22 @@ public class ChangeBuildEmporiumWithKing implements Change {
 	private Assistants assistants;
 	private City city;
 	
+	/**
+	 * @param coins
+	 * @param assistants
+	 * @param city
+	 * @throws NullPointerException if coins, assistants or city are null
+	 */
 	public ChangeBuildEmporiumWithKing(Coins coins, Assistants assistants, City city){
+		if(coins==null) {
+			throw new NullPointerException("coins cannot be null"); 
+		}
+		if(assistants==null) {
+			throw new NullPointerException("assistants cannot be null"); 
+		}
+		if(city==null) {
+			throw new NullPointerException("city cannot be null"); 
+		}
 		this.coins=coins;
 		this.assistants=assistants;
 		this.city=city;

@@ -26,7 +26,12 @@ public class BuildEmporiumWithKing implements MainAction {
 
 	@Override
 	public void doAction(Player player, GameState gameState) {
-		
+		if(player==null) {
+			throw new NullPointerException("player cannot be null"); 
+		}
+		if(gameState==null) {
+			throw new NullPointerException("gameState cannot be null"); 
+		}
 		int numCards, sumToPay, sumJolly, assistantsToPay;
 		int size=player.getPoliticalHand().getDeck().size();
 		

@@ -13,6 +13,15 @@ public class ChangeElectCounsellorWithAssistant implements Change {
 	private Region region;
 	
 	public ChangeElectCounsellorWithAssistant(Assistants assistants, Color color, Region region) {
+		if(color==null) {
+			throw new NullPointerException("coins cannot be null"); 
+		}
+		if(assistants==null) {
+			throw new NullPointerException("assistants cannot be null"); 
+		}
+		if(region==null) {
+			throw new NullPointerException("city cannot be null"); 
+		}
 		this.assistants=assistants;
 		this.color=color;
 		this.region=region;

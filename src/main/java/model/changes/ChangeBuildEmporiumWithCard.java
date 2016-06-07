@@ -12,7 +12,22 @@ public class ChangeBuildEmporiumWithCard implements Change {
 	private City city;
 	private PermissionCard card;
 	
+	/**
+	 * @param assistants
+	 * @param city
+	 * @param card
+	 * @throws NullPointerException if assistants, city or card are null
+	 */
 	public ChangeBuildEmporiumWithCard(Assistants assistants, City city, PermissionCard card) {
+		if(assistants==null) {
+			throw new NullPointerException("assistants cannot be null"); 
+		}
+		if(city==null) {
+			throw new NullPointerException("city cannot be null"); 
+		}
+		if(card==null) {
+			throw new NullPointerException("card cannot be null"); 
+		}
 		this.assistants=assistants;
 		this.city=city;
 		this.card=card;

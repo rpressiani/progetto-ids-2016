@@ -11,6 +11,12 @@ public class ChangeSubstitutePermissionCards implements Change {
 	private Region region;
 
 	public ChangeSubstitutePermissionCards(Assistants assistants, Region region){
+		if(assistants==null) {
+			throw new NullPointerException("assistants cannot be null"); 
+		}
+		if(region==null) {
+			throw new NullPointerException("region cannot be null"); 
+		}
 		this.assistants=assistants;
 		this.region=region;
 	}

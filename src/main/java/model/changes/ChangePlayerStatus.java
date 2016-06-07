@@ -15,7 +15,10 @@ public class ChangePlayerStatus implements Change {
 	private NobilityLevel nobilityLevel;
 	private Score score;
 
-	public ChangePlayerStatus(Player player){
+	public ChangePlayerStatus(Player player) {
+		if(player==null) {
+			throw new NullPointerException("player cannot be null"); 
+		}
 		this.coins=player.getCoins();
 		this.assistants=player.getAssistants();
 		this.nobilityLevel=player.getNobilityLevel();

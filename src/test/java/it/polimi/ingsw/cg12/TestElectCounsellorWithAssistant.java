@@ -83,8 +83,13 @@ public class TestElectCounsellorWithAssistant {
 				new ElectCounsellorWithAssistant(region, new Color("orange")); 
 		int temp = player3.getAssistants().getItems(); 
 		action.doAction(player3, gameState);
+<<<<<<< HEAD
+		assertTrue(temp==(player3.getAssistants().getItems()+1));  
+	}
+=======
 		assertTrue(temp!=player3.getAssistants().getItems());  
 	}*/
+
 	@Test
 	public void testIfCheckConditionWorks() {
 		Parser parser = new Parser();
