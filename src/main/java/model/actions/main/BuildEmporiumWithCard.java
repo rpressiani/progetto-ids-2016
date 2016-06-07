@@ -17,8 +17,15 @@ public class BuildEmporiumWithCard implements MainAction {
 	/**
 	 * @param cardChosed
 	 * @param cityChosed
+	 * @throws NullPointerException if cardChosed or cityChosed are null
 	 */
 	public BuildEmporiumWithCard(PermissionCard cardChosed, City cityChosed) {
+		if(cardChosed==null) {
+			throw new NullPointerException("cardChosed cannot be null"); 
+		}
+		if(cityChosed==null) {
+			throw new NullPointerException("cityChosed cannot be null"); 
+		}
 		this.cardChosed = cardChosed;
 		this.cityChosed = cityChosed;	
 	}
@@ -63,6 +70,12 @@ public class BuildEmporiumWithCard implements MainAction {
 
 	@Override
 	public boolean checkCondition(Player player, GameState gameState) {
+		if(player==null) {
+			throw new NullPointerException("player cannot be null"); 
+		}
+		if(gameState==null) {
+			throw new NullPointerException("gameState cannot be null"); 
+		}
 		
 		if(cardChosed.isUsed()==true){
 			gameState.notifyObserver(player, new ChangeMsg("You already used this permission card to build an emporium"));

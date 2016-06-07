@@ -83,7 +83,7 @@ public class TestElectCounsellorWithAssistant {
 				new ElectCounsellorWithAssistant(region, new Color("orange")); 
 		int temp = player3.getAssistants().getItems(); 
 		action.doAction(player3, gameState);
-		assertTrue(temp!=player3.getAssistants().getItems());  
+		assertTrue(temp==(player3.getAssistants().getItems()+1));  
 	}
 	@Test
 	public void testIfCheckConditionWorks() {

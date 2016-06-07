@@ -51,9 +51,9 @@ public class TestElectCounsellor {
 		GameState gameState = new GameState(parser, players); 
 		GarbageState garbageState = new GarbageState(parser); 
 		Map map = new Map(parser, garbageState); 
-		ElectCounsellor action = new ElectCounsellor(map.getRegions().get("seaside"), new Color("gold"));
+		ElectCounsellor action = new ElectCounsellor(map.getRegions().get("seaside"), new Color("white"));
 		action.doAction(player, gameState);
-		assertTrue(player.getCoins().getItems()!=temp); 
+		assertTrue(temp==(player.getCoins().getItems()-4)); 
 	}
 	@Test
 	public void testNullRegionInConstructorThrowsException() {
