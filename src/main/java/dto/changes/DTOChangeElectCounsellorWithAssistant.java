@@ -36,14 +36,26 @@ public class DTOChangeElectCounsellorWithAssistant implements DTOChange {
 		this.region=region;
 	}
 
+	/**
+	 * 
+	 * @return the assistants
+	 */
 	public DTOAssistants getAssistants() {
 		return assistants;
 	}
 
+	/**
+	 * 
+	 * @return the color
+	 */
 	public DTOColor getColor() {
 		return color;
 	}
 
+	/**
+	 * 
+	 * @return the region
+	 */
 	public DTORegion getRegion() {
 		return region;
 	}

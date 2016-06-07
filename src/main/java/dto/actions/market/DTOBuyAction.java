@@ -25,6 +25,10 @@ public class DTOBuyAction implements DTOAction {
 		this.playerName=playerName;
 	}
 
+	/**
+	 * 
+	 * @return playerName
+	 */
 	public String getPlayerName() {
 		return playerName;
 	}

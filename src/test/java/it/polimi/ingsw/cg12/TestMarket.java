@@ -27,7 +27,7 @@ public class TestMarket {
 	public void testAddContractEffectivelyAddsContract() {
 		Player player = new Player();
 		player.setNickname("Ciro");
-		player.setColor(new Color(0,0,0));
+		player.setColor(new Color("red"));
 		Contract contract = new Contract(player); 
 		Market market = new Market(); 
 		market.addContract(contract);
@@ -38,7 +38,7 @@ public class TestMarket {
 		boolean thrown = false; 
 		Player player = new Player();
 		player.setNickname("Gennaro");
-		player.setColor(new Color(1,2,3));
+		player.setColor(new Color("black"));
 		Player player2 = null; 
 		Market market = new Market(); 
 		Contract contract = new Contract(player); 

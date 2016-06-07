@@ -13,7 +13,15 @@ public class DTOProposalOrder implements DTOObject {
 	
 	private final ArrayList<String> proposalOrder;
 	
+	/**
+	 * 
+	 * @param proposalOrder
+	 * @throws NullPointerException
+	 */
 	public DTOProposalOrder(ArrayList<String> proposalOrder) {
+		if(proposalOrder==null){
+			throw new NullPointerException("proposalOrder can't be null");
+		}
 		this.proposalOrder = proposalOrder;
 	}
 

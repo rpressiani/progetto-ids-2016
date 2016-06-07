@@ -15,9 +15,11 @@ public class Server {
 	
 	private final static int PORT = 29999; //load from file!
 	
-	public Server() {
-	}
-	
+	/**
+	 * start the socket
+	 * @throws IOException
+	 * @throws ClassNotFoundException
+	 */
 	private void startSocket() throws IOException, ClassNotFoundException {
 		ExecutorService viewExecutor = Executors.newCachedThreadPool(); 
 		ExecutorService matchExecutor = Executors.newCachedThreadPool();
@@ -38,6 +40,12 @@ public class Server {
 		}
 	}
 	
+	/**
+	 * 
+	 * @param args
+	 * @throws IOException
+	 * @throws ClassNotFoundException
+	 */
 	public static void main(String[] args) throws IOException, ClassNotFoundException {
 		Server server = new Server();
 		

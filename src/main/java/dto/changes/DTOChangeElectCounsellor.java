@@ -36,14 +36,26 @@ public class DTOChangeElectCounsellor implements DTOChange {
 		this.region=region;
 	}
 
+	/**
+	 * 
+	 * @return the coins
+	 */
 	public DTOCoins getCoins() {
 		return coins;
 	}
 	
+	/**
+	 * 
+	 * @return the color
+	 */
 	public DTOColor getColor() {
 		return color;
 	}
 
+	/**
+	 * 
+	 * @return the region
+	 */
 	public DTORegion getRegion() {
 		return region;
 	}

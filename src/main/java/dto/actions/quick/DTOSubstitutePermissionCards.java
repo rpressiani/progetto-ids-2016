@@ -5,7 +5,7 @@ import dto.map.DTORegion;
 import model.actions.quick.SubstitutePermissionCards;
 import model.player.Player;
 
-public class DTOChangePermissionCards implements DTOQuickAction {
+public class DTOSubstitutePermissionCards implements DTOQuickAction {
 
 	/**
 	 * 
@@ -18,7 +18,7 @@ public class DTOChangePermissionCards implements DTOQuickAction {
 	 * @param region
 	 * @throws NullPointerException if region is null
 	 */
-	public DTOChangePermissionCards(DTORegion region) {
+	public DTOSubstitutePermissionCards(DTORegion region) {
 		if(region==null) {
 			throw new NullPointerException("region cannot be null"); 
 		}

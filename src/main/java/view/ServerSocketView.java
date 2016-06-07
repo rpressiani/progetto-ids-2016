@@ -29,6 +29,12 @@ public class ServerSocketView extends View implements Runnable {
 	private VisitorChanges visitorChanges;
 	private VisitorQueries visitorQueries;
 	
+	/**
+	 * 
+	 * @param socket
+	 * @throws IOException
+	 * @throws ClassNotFoundException
+	 */
 	public ServerSocketView(Socket socket) throws IOException, ClassNotFoundException {
 		this.socket = socket; 
 		this.socketIn = new ObjectInputStream(socket.getInputStream()); 
@@ -38,11 +44,19 @@ public class ServerSocketView extends View implements Runnable {
 		this.player = new Player();
 	}
 	
+	/**
+	 * initialize the ServerSocketView
+	 * @param game
+	 * @throws IOException
+	 */
 	public void initServerSocketView(GameState game) throws IOException{
 		this.game = game;
 		this.visitorQueries = new VisitorQueries(this.game);
 	}
 	
+	/**
+	 * communicate to the client the notify received
+	 */
 	public void update(Change change) {
 		
 		System.out.println("Sending to the client " + change);
@@ -57,6 +71,7 @@ public class ServerSocketView extends View implements Runnable {
 			e.printStackTrace();
 		}
 	}
+	
 	@Override
 	public void run() {
 		

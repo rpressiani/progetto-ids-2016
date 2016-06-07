@@ -14,7 +14,7 @@ import dto.actions.main.DTOMainAction;
 import dto.actions.market.DTOBuyAction;
 import dto.actions.market.DTOSellAction;
 import dto.actions.quick.DTOAddictionalAction;
-import dto.actions.quick.DTOChangePermissionCards;
+import dto.actions.quick.DTOSubstitutePermissionCards;
 import dto.actions.quick.DTOElectCounsellorWithAssistant;
 import dto.actions.quick.DTOHireAssistant;
 import dto.utilities.DTOPermissionCard;
@@ -98,7 +98,7 @@ public class VisitorActions {
 		return new AddictionalAction(realAction);
 	}
 	
-	public SubstitutePermissionCards visit(DTOChangePermissionCards DTOAction){
+	public SubstitutePermissionCards visit(DTOSubstitutePermissionCards DTOAction){
 		String regionString=DTOAction.getRegion().getName();
 		return new SubstitutePermissionCards(gameState.getMap().getRegions().get(regionString));
 		

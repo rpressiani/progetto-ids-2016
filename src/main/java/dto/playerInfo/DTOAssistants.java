@@ -22,6 +22,10 @@ public class DTOAssistants implements DTOObject {
 		this.quantity=quantity;
 	}
 
+	/**
+	 * 
+	 * @return the quantity
+	 */
 	public int getQuantity() {
 		return quantity;
 	}

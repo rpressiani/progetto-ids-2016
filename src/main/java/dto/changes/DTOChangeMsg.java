@@ -20,6 +20,10 @@ public class DTOChangeMsg implements DTOChange {
 		this.msg=msg;
 	}
 
+	/**
+	 * 
+	 * @return the msg
+	 */
 	public String getMsg() {
 		return msg;
 	}
