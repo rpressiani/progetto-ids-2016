@@ -4,7 +4,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import dto.DTOObject;
-import dto.playerInfo.DTOPlayer;
+import dto.playerInfo.DTOPlayerBasic;
 import dto.playerInfo.DTOScore;
 
 public class DTOScoresResponse implements DTOObject {
@@ -14,10 +14,10 @@ public class DTOScoresResponse implements DTOObject {
 	 */
 	private static final long serialVersionUID = 5714959351747251213L;
 	
-	private final Map<DTOPlayer, DTOScore> scores;
-	private final DTOPlayer requestingPlayer;
+	private final Map<DTOPlayerBasic, DTOScore> scores;
+	private final DTOPlayerBasic requestingPlayer;
 	
-	public DTOScoresResponse(Map<DTOPlayer, DTOScore> scores, DTOPlayer requestingPlayer) {
+	public DTOScoresResponse(Map<DTOPlayerBasic, DTOScore> scores, DTOPlayerBasic requestingPlayer) {
 		this.scores = scores;
 		this.requestingPlayer = requestingPlayer;
 	}
@@ -25,7 +25,7 @@ public class DTOScoresResponse implements DTOObject {
 	/**
 	 * @return the scores
 	 */
-	public Map<DTOPlayer, DTOScore> getScores() {
+	public Map<DTOPlayerBasic, DTOScore> getScores() {
 		return scores;
 	}
 
@@ -37,7 +37,7 @@ public class DTOScoresResponse implements DTOObject {
 		StringBuilder scores = new StringBuilder();
 		scores.append("\n[SERVER] PLAYERS SCORE:\n");
 		
-		for (Entry<DTOPlayer, DTOScore> entry : this.scores.entrySet()) {
+		for (Entry<DTOPlayerBasic, DTOScore> entry : this.scores.entrySet()) {
 			if (entry.getKey().equals(this.requestingPlayer)) {
 				scores.append("[SERVER] " + entry.getKey().getNickname().toUpperCase() + ": " + entry.getValue().getLevel() + "\n");
 			} else {

@@ -1,7 +1,7 @@
 package dto.queries.respond;
 
 import dto.DTOObject;
-import dto.playerInfo.DTOPlayer;
+import dto.playerInfo.DTOPlayerBasic;
 
 public class DTOCurrentPlayerResponse implements DTOObject {
 
@@ -10,16 +10,16 @@ public class DTOCurrentPlayerResponse implements DTOObject {
 	 */
 	private static final long serialVersionUID = -3221188911388221123L;
 	
-	private final DTOPlayer player;
+	private final DTOPlayerBasic player;
 	
-	public DTOCurrentPlayerResponse(DTOPlayer player) {
+	public DTOCurrentPlayerResponse(DTOPlayerBasic player) {
 		this.player = player;
 	}
 
 	/**
 	 * @return the player
 	 */
-	public DTOPlayer getPlayer() {
+	public DTOPlayerBasic getPlayer() {
 		return player;
 	}
 

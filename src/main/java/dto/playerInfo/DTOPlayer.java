@@ -1,68 +1,57 @@
 package dto.playerInfo;
 
 import dto.DTOObject;
+import dto.utilities.DTOColor;
 
-public class DTOPlayer implements DTOObject {
+public class DTOPlayer extends DTOPlayerBasic implements DTOObject {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1502123848556511187L;
 	
-	private final int serialID;
-	private final String nickname;
+	private final DTOCoins coins;
+	private final DTOAssistants assistants;
+	private final DTONobilityLevel nobilityLevel;
+	private final DTOScore score;
 	
-	public DTOPlayer(int serialID, String nickname) {
-		this.serialID = serialID;
-		this.nickname = nickname;
+	public DTOPlayer(int serialID, String nickname, DTOColor color, DTOCoins coins, DTOAssistants assistants,
+			DTONobilityLevel nobilityLevel, DTOScore score) {
+		
+		super(serialID, nickname, color);
+		
+		this.coins = coins;
+		this.assistants = assistants;
+		this.nobilityLevel = nobilityLevel;
+		this.score = score;
+	}
+	
+	/**
+	 * @return the coins
+	 */
+	public DTOCoins getCoins() {
+		return coins;
 	}
 
 	/**
-	 * @return the serialID
+	 * @return the assistants
 	 */
-	public int getSerialID() {
-		return serialID;
+	public DTOAssistants getAssistants() {
+		return assistants;
 	}
 
 	/**
-	 * @return the nickname
+	 * @return the nobilityLevel
 	 */
-	public String getNickname() {
-		return nickname;
+	public DTONobilityLevel getNobilityLevel() {
+		return nobilityLevel;
 	}
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#hashCode()
+	/**
+	 * @return the score
 	 */
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((nickname == null) ? 0 : nickname.hashCode());
-		result = prime * result + serialID;
-		return result;
-	}
-
-	/* (non-Javadoc)
-	 * @see java.lang.Object#equals(java.lang.Object)
-	 */
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		DTOPlayer other = (DTOPlayer) obj;
-		if (nickname == null) {
-			if (other.nickname != null)
-				return false;
-		} else if (!nickname.equals(other.nickname))
-			return false;
-		if (serialID != other.serialID)
-			return false;
-		return true;
+	public DTOScore getScore() {
+		return score;
 	}
 
 }
