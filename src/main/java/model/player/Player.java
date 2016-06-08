@@ -79,7 +79,7 @@ public class Player {
 		
 		this.id = id;	//as a player register to a match this ID attribute has to increment, basically it'll represent the order
 						//of the players in a match
-//		this.politicalHand = new PoliticalHand(deck);
+		this.politicalHand = new PoliticalHand(deck);
 		this.coins = new Coins(parser.getCFGRoot().getPlayers().getPlayer().get(this.id).getCoins().intValue());
 		this.assistants = new Assistants(parser.getCFGRoot().getPlayers().getPlayer().get(this.id).getAssistants().intValue());
 		this.state = new StartState();

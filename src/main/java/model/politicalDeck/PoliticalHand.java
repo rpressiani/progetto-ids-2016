@@ -14,7 +14,9 @@ public class PoliticalHand extends PoliticalDeck {
 			this.getDeck().add(new PoliticalCard(cfgPoliticalCard.getColor(), 0));
 		}
 		
+		System.out.println(PoliticalHand.getParser().getCFGRoot().getPlayers().getNInitPoliticalCards().intValue());
 		for (int i = 0; i < PoliticalHand.getParser().getCFGRoot().getPlayers().getNInitPoliticalCards().intValue(); i++) {
+			System.out.println("draw");
 			this.drawCard(deck);
 		}
 	}
@@ -35,10 +37,12 @@ public class PoliticalHand extends PoliticalDeck {
 		}
 		rnd = new Random(); 
 		int selectedIndex = rnd.nextInt(this.getDeck().size());
+		System.out.println(selectedIndex);
 		for(int i=0; i<this.getNumColors(); i++) {
 			if(deck.getDeck().get(selectedIndex).getNumCards()!=0) {
 			deck.getDeck().get(selectedIndex).removeCards(1);
 			this.getDeck().get(selectedIndex).addCards(1);
+			break;
 		} else {
 			selectedIndex = (selectedIndex++)%deck.getDeck().size(); 
 		}			
