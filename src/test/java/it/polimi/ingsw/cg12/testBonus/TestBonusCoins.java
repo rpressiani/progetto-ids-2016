@@ -1,4 +1,4 @@
-package it.polimi.ingsw.cg12;
+package it.polimi.ingsw.cg12.testBonus;
 
 import static org.junit.Assert.*;
 
@@ -7,21 +7,21 @@ import java.util.ArrayList;
 import org.junit.Test;
 
 import model.GameState;
-import model.bonusItem.BonusScore;
+import model.bonusItem.BonusCoins;
 import model.council.GarbageState;
 import model.map.Map;
 import model.player.Player;
 import parser.Parser;
 import utilities.Color;
 
-public class TestBonusScore {
+public class TestBonusCoins {
 
 	@Test
-	public void testNullItemsThrowException() {
+	public void testItemsLessThanZeroThrowsExceptionInConstructor() {
 		boolean thrown = false; 
-		int items = -3; 
+		int items = -1; 
 		try {
-			BonusScore bonus = new BonusScore(items); 
+			BonusCoins bonus = new BonusCoins(items); 
 		} catch(IllegalArgumentException e) {
 			thrown = true; 
 		}
@@ -30,8 +30,9 @@ public class TestBonusScore {
 	@Test
 	public void testNullPlayerInGiveBonusThrowsException() {
 		boolean thrown = false; 
+		int items = 2; 
 		Parser parser = new Parser(); 
-		Player player = new Player(); 
+		Player player = new Player();
 		Player player2 = new Player(); 
 		Player player3 = new Player(); 
 		Player player4 = new Player(); 
@@ -40,10 +41,8 @@ public class TestBonusScore {
 		players.add(player2); 
 		players.add(player3); 
 		players.add(player4); 
-		GarbageState garbageState = new GarbageState(parser); 
-		Map map = new Map(parser, garbageState); 
 		GameState gameState = new GameState(parser, players); 
-		BonusScore bonus = new BonusScore(7);
+		BonusCoins bonus = new BonusCoins(items); 
 		try {
 			Player pl = null; 
 			bonus.giveBonus(pl, gameState);
@@ -55,8 +54,9 @@ public class TestBonusScore {
 	@Test
 	public void testNullGameStateInGiveBonusThrowsException() {
 		boolean thrown = false; 
+		int items = 2; 
 		Parser parser = new Parser(); 
-		Player player = new Player(); 
+		Player player = new Player();
 		Player player2 = new Player(); 
 		Player player3 = new Player(); 
 		Player player4 = new Player(); 
@@ -65,22 +65,21 @@ public class TestBonusScore {
 		players.add(player2); 
 		players.add(player3); 
 		players.add(player4); 
-		GarbageState garbageState = new GarbageState(parser); 
-		Map map = new Map(parser, garbageState); 
 		GameState gameState = new GameState(parser, players); 
-		BonusScore bonus = new BonusScore(7);
+		BonusCoins bonus = new BonusCoins(items); 
 		try {
 			GameState gameState2 = null; 
 			bonus.giveBonus(player4, gameState2);
 		} catch(NullPointerException e) {
 			thrown = true; 
 		}
-		assertTrue(thrown);
+		assertTrue(thrown); 
 	}
 	@Test
 	public void testIfGiveBonusWorks() {
+		int items = 2; 
 		Parser parser = new Parser(); 
-		Player player = new Player(); 
+		Player player = new Player();
 		Player player2 = new Player(); 
 		Player player3 = new Player(); 
 		Player player4 = new Player(); 
@@ -89,13 +88,24 @@ public class TestBonusScore {
 		players.add(player2); 
 		players.add(player3); 
 		players.add(player4); 
-		GarbageState garbageState = new GarbageState(parser); 
-		Map map = new Map(parser, garbageState); 
+		player.setNickname("Ciro");
+		player.setColor(new Color("red"));
+		player2.setNickname("Genny");
+		player2.setColor(new Color("black"));
+		player3.setNickname("Salvatore");
+		player3.setColor(new Color("white"));
+		player4.setNickname("Pietro");
+		player4.setColor(new Color("blue"));
 		GameState gameState = new GameState(parser, players); 
-		BonusScore bonus = new BonusScore(7);
-		int temp = player2.getScore().getItems(); 
-		bonus.giveBonus(player2, gameState);
-		assertTrue(temp!=player2.getScore().getItems()); 
+		int id = 0; 
+		for(Player p : players) {
+			p.initPlayer(gameState.getPoliticalDeck(), id, parser);
+			id++; 
+		}
+		
+		BonusCoins bonus = new BonusCoins(items); 
+		int temp = player.getCoins().getItems();
+		bonus.giveBonus(player, gameState);
+		assertTrue(temp!=player.getCoins().getItems()); 
 	}
-
 }

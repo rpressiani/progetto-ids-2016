@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import java.util.ArrayList;
 import java.util.HashSet;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import model.GameState;
@@ -19,7 +20,6 @@ import parser.Parser;
 import utilities.Color;
 
 public class TestBuildEmporiumWithCard {
-
 	@Test
 	public void testIfDoActionWorks() {
 		Parser parser = new Parser();
@@ -34,8 +34,8 @@ public class TestBuildEmporiumWithCard {
 		player3.setColor(new Color("white"));
 		Player player4 = new Player();
 		player4.setNickname("Klay");
-		player4.setColor(new Color("red"));
-		ArrayList<Player> players = new ArrayList<Player>();
+		player4.setColor(new Color("red")); 
+		ArrayList<Player> players = new ArrayList<Player>(); 
 		players.add(player); 
 		players.add(player2); 
 		players.add(player3); 
@@ -52,8 +52,8 @@ public class TestBuildEmporiumWithCard {
 		cities.add(city); 
 		PermissionCard permissionCard = new PermissionCard(bonuses, cities);
 		BuildEmporiumWithCard action = new BuildEmporiumWithCard(permissionCard, city);
-		action.doAction(player2, gameState);
-		assertTrue(city.hasBuiltHere(player2)); 
+		action.doAction(player, gameState);
+		assertTrue(city.hasBuiltHere(player)); 
 	}
 	@Test
 	public void testNullCardInConstructorThrowsException() {

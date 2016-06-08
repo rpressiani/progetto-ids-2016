@@ -43,8 +43,9 @@ public class Coins extends SimpleItem implements Marketable {
 
 	@Override
 	public void makeExchange(Player fromPlayer, Player toPlayer) {
-		fromPlayer.getCoins().sub(this.getItems());
-		toPlayer.getCoins().add(this.getItems());
+		int temp = fromPlayer.getCoins().getItems(); 
+		fromPlayer.getCoins().sub(temp);
+		toPlayer.getCoins().add(temp);
 	}
 
 }

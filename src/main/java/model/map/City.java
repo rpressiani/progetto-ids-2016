@@ -26,10 +26,26 @@ public class City extends Bonusable{
 	 * @param bonuses
 	 * @param ancestry
 	 * @param nameLong
+	 * @throws NullPointerException if one of the parameters is null
 	 * constructor for object City
 	 */
 	public City(String name, String nameLong, ArrayList<BonusItem> bonuses, Region region, Ancestry ancestry) {
 		super(bonuses);
+		if(name==null) {
+			throw new NullPointerException("name cannot be null"); 
+		}
+		if(nameLong==null) {
+			throw new NullPointerException("nameLong cannot be null"); 
+		}
+		if(bonuses==null) {
+			throw new NullPointerException("bonuses cannot be null"); 
+		}
+		if(region==null) {
+			throw new NullPointerException("region cannot be null"); 
+		}
+		if(ancestry==null) {
+			throw new NullPointerException("ancestry cannot be null"); 
+		}
 		this.name = name;
 		this.region = region;
 		this.ancestry = ancestry;
