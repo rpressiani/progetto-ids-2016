@@ -94,7 +94,16 @@ public class PermissionDeck {
 	 * @param index can't be negative
 	 * @return the drawed card
 	 */
-	public PermissionCard drawCard(LinkedList<PermissionCard> deck, ArrayList<PermissionCard> visibleCards, int index){
+	public PermissionCard drawCard(LinkedList<PermissionCard> deck, ArrayList<PermissionCard> visibleCards, int index) {
+		if(deck==null) {
+			throw new NullPointerException("deck cannot be null"); 
+		}
+		if(visibleCards==null) {
+			throw new NullPointerException("visibleCards cannot be null"); 
+		}
+		if(index<0) {
+			throw new NullPointerException("index cannot be negative"); 
+		}
 		PermissionCard drawedCard=visibleCards.remove(index);
 		visibleCards.add(index, deck.remove());
 		return drawedCard;
