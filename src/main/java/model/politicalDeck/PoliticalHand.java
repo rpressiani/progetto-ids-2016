@@ -37,7 +37,6 @@ public class PoliticalHand extends PoliticalDeck {
 		}
 		rnd = new Random(); 
 		int selectedIndex = rnd.nextInt(this.getDeck().size());
-		System.out.println(selectedIndex);
 		for(int i=0; i<this.getNumColors(); i++) {
 			if(deck.getDeck().get(selectedIndex).getNumCards()!=0) {
 			deck.getDeck().get(selectedIndex).removeCards(1);
