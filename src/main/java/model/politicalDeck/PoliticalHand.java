@@ -39,6 +39,7 @@ public class PoliticalHand extends PoliticalDeck {
 			if(deck.getDeck().get(selectedIndex).getNumCards()!=0) {
 			deck.getDeck().get(selectedIndex).removeCards(1);
 			this.getDeck().get(selectedIndex).addCards(1);
+			break;
 		} else {
 			selectedIndex = (selectedIndex++)%deck.getDeck().size(); 
 		}			

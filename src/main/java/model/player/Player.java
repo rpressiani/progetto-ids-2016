@@ -74,20 +74,30 @@ public class Player {
 	 * @throws IlleagalArgumentException	if id is lower of zero
 	 */
 	public void initPlayer(PoliticalRealDeck deck, Integer id, Parser parser) throws IllegalArgumentException {
-		if (id < 0) throw new IllegalArgumentException("id must be grater than zero");
+		if (id < 0) throw new IllegalArgumentException("id must be greater or equal than zero");
 		if (this.nickname == null || this.color == null) throw new NullPointerException("cannot init a player if it is not enabled");
-		
+		if(deck==null || parser==null) {
+			throw new NullPointerException("parser and deck cannot be nulle"); 
+		}
 		this.id = id;	//as a player register to a match this ID attribute has to increment, basically it'll represent the order
 						//of the players in a match
-//		this.politicalHand = new PoliticalHand(deck);
+		this.politicalHand = new PoliticalHand(deck);
 		this.coins = new Coins(parser.getCFGRoot().getPlayers().getPlayer().get(this.id).getCoins().intValue());
 		this.assistants = new Assistants(parser.getCFGRoot().getPlayers().getPlayer().get(this.id).getAssistants().intValue());
 		this.state = new StartState();
 	}
 	
-	public void move(GeneralAction action, GameState gameState){
+	/**
+	 * @param action
+	 * @param gameState
+	 * @throws NullPointerException if action or gameState are null
+	 */
+	public void move(GeneralAction action, GameState gameState) {
+		if(action==null) {
+			throw new NullPointerException("action cannot be null"); 
+		}
 		if(gameState==null) {
-			throw new IllegalArgumentException("player should be playing a game which is not null"); 
+			throw new NullPointerException("player should be playing a game which is not null"); 
 		}
 		if(action instanceof MainAction){
 			this.getState().transition(this, (MainAction)action, gameState);
@@ -235,6 +245,13 @@ public class Player {
 			throw new IllegalArgumentException("cannot set a null state"); 
 		}
 		this.state = state;
+	}
+
+	/**
+	 * @return the serialID
+	 */
+	public int getSerialID() {
+		return serialID;
 	}
 
 	/* (non-Javadoc)

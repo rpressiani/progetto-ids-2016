@@ -15,7 +15,6 @@ import dto.utilities.DTOSetup;
 import model.GameState;
 import model.changes.Change;
 import model.player.Player;
-import query.Query;
 import utilities.Color;
 
 public class ServerSocketView extends View implements Runnable {
@@ -51,7 +50,7 @@ public class ServerSocketView extends View implements Runnable {
 	 */
 	public void initServerSocketView(GameState game) throws IOException{
 		this.game = game;
-		this.visitorQueries = new VisitorQueries(this.game);
+		this.visitorQueries = new VisitorQueries(this.game, this.player);
 	}
 	
 	/**
@@ -135,28 +134,6 @@ public class ServerSocketView extends View implements Runnable {
 							System.out.println("SERVER VIEW: received DTOQuery " + request);
 							
 							this.socketOut.writeObject(respond);
-							this.socketOut.flush();
-						}
-						
-						if (msgIn.getMessage() instanceof String) {
-							String string = (String) msgIn.getMessage();
-							System.out.println("SERVER VIEW: received String " + string);
-							
-							if (string.equals("ping")) {
-								StringBuilder ping = new StringBuilder();
-								ping.append("\n[SERVER] Ping received\n");
-								ping.append("[SERVER] Client connected\n");
-								ping.append("[SERVER] Server is responding\n");
-								this.socketOut.writeObject(ping.toString());
-								this.socketOut.flush();
-							}
-						}
-						
-						if (msgIn.getMessage() instanceof Query) {
-							Query query = (Query) msgIn.getMessage();
-							System.out.println("SERVER VIEW: received query " + query);
-							
-							this.socketOut.writeObject(query.perform(this.player, this.game));
 							this.socketOut.flush();
 						}
 					}						

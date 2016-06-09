@@ -51,6 +51,13 @@ public class Ancestry {
 		this.colorCities = new HashSet<City>();
 	}
 	
+	public Ancestry(){
+		this.color = new Color("king");
+		this.colorCities = new HashSet<City>();
+		this.colorBonus = new ColorCard(new ArrayList<BonusItem>(), this.color);
+		
+	}
+	
 	public void initAncestry(List<City> cities, String kingInitLoc){
 		
 		for (City city : cities) {

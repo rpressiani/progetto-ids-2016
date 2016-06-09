@@ -1,41 +1,39 @@
 package dto.utilities;
 
-import dto.DTOObject;
+import java.util.Set;
 
-public class DTOPermissionCard implements DTOObject {
+import dto.DTOObject;
+import dto.map.DTOCity;
+
+public class DTOPermissionCard extends DTOPermissionCardSelection implements DTOObject {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 4102612563103193760L;
+	private static final long serialVersionUID = 3018472196804517104L;
 	
-	private final int idCard;
+	private final boolean used;
+	private final Set<DTOCity> cities;
 	
-	/**
-	 * @param idCard
-	 * @throws IllegalArgumentException if idCard<0
-	 */
-	public DTOPermissionCard(int idCard) {
-		if(idCard<0) {
-			throw new IllegalArgumentException("idCard must be >=0"); 
-		}
-		this.idCard = idCard;
+	public DTOPermissionCard(int idCard, boolean used, Set<DTOCity> cities) {
+		super(idCard);
+
+		this.used = used;
+		this.cities = cities;
 	}
 
 	/**
-	 * @return the idCard
+	 * @return the used
 	 */
-	public int getIdCard() {
-		return idCard;
+	public boolean isUsed() {
+		return used;
 	}
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
+	/**
+	 * @return the cities
 	 */
-	@Override
-	public String toString() {
-		return String.valueOf(idCard);
+	public Set<DTOCity> getCities() {
+		return cities;
 	}
 
-	
 }

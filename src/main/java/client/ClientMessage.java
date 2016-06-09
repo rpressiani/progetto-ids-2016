@@ -5,6 +5,7 @@ package client;
 
 import java.io.Serializable;
 
+import dto.DTOObject;
 import model.player.Player;
 
 /**
@@ -19,14 +20,14 @@ public class ClientMessage implements Serializable {
 	private static final long serialVersionUID = 8197501378692211337L;
 	
 	private transient Player player;
-	private Object message;
+	private DTOObject message;
 	
-	public ClientMessage(Player player, Object message){
+	public ClientMessage(Player player, DTOObject message){
 		this.player = player;
 		this.message = message;
 	}
 	
-	public ClientMessage(Object message){
+	public ClientMessage(DTOObject message){
 		this.message = message;
 	}
 
