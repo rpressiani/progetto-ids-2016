@@ -12,6 +12,7 @@ import model.map.Map;
 import model.player.Player;
 import model.politicalDeck.PoliticalGarbage;
 import model.politicalDeck.PoliticalRealDeck;
+import model.sharedObjects.Nobility;
 import parser.Parser;
 import utilities.Color;
 
@@ -30,7 +31,7 @@ public class TestGameState {
 		assertTrue(thrown); 
 	}
 	@Test
-	public void testNullParserrInConstructorThrowsException() {
+	public void testNullParserInConstructorThrowsException() {
 		boolean thrown = false; 
 		Parser parser = new Parser();
 		Parser parser2 = null;
@@ -168,5 +169,35 @@ public class TestGameState {
 		gameState.setCurrentPlayer(player2);
 		gameState.nextPlayer(player2);
 		assertTrue(gameState.getCurrentPlayer()==player3); 
+	}
+	@Test
+	public void testGetMap() {
+		Parser parser = new Parser(); 
+		Player player = new Player(); 
+		ArrayList<Player> players = new ArrayList<Player>(); 
+		players.add(player); 
+		GameState gameState = new GameState(parser, players); 
+		Map temp = gameState.getMap(); 
+		assertEquals(temp, gameState.getMap()); 
+	}
+	@Test
+	public void testGetNobility() {
+		Parser parser = new Parser(); 
+		Player player = new Player(); 
+		ArrayList<Player> players = new ArrayList<Player>(); 
+		players.add(player); 
+		GameState gameState = new GameState(parser, players); 
+		Nobility temp = gameState.getNobility(); 
+		assertEquals(temp, gameState.getNobility()); 
+	}
+	@Test
+	public void testGetPoliticalDeck() {
+		Parser parser = new Parser(); 
+		Player player = new Player(); 
+		ArrayList<Player> players = new ArrayList<Player>(); 
+		players.add(player); 
+		GameState gameState = new GameState(parser, players); 
+		PoliticalRealDeck temp = gameState.getPoliticalDeck();
+		assertEquals(temp, gameState.getPoliticalDeck()); 
 	}
 }
