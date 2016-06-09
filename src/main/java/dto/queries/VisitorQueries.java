@@ -17,10 +17,12 @@ import dto.playerInfo.DTOPlayerAdvanced;
 import dto.playerInfo.DTOPlayerBasic;
 import dto.playerInfo.DTOScore;
 import dto.queries.request.DTOCurrentPlayerRequest;
+import dto.queries.request.DTOFreeCounsellorsRequest;
 import dto.queries.request.DTOPingRequest;
 import dto.queries.request.DTOPlayerInfoRequest;
 import dto.queries.request.DTOPlayersListRequest;
 import dto.queries.respond.DTOCurrentPlayerResponse;
+import dto.queries.respond.DTOFreeCounsellorsResponse;
 import dto.queries.respond.DTOPingResponse;
 import dto.queries.respond.DTOPlayerInfoAdvancedResponse;
 import dto.queries.respond.DTOPlayerInfoResponse;
@@ -29,10 +31,11 @@ import dto.queries.respond.DTOProposalOrderResponse;
 import dto.queries.respond.DTOScoresResponse;
 import dto.utilities.DTOColor;
 import dto.utilities.DTOPermissionCard;
-import dto.utilities.DTOPoliticalHand;
+import dto.utilities.DTOColorCounter;
 import jaxb.CFGPoliticalCard;
 import model.GameState;
 import model.bonusable.PermissionCard;
+import model.council.CounsellorGroup;
 import model.map.City;
 import model.player.Player;
 import model.politicalDeck.PoliticalCard;
@@ -128,7 +131,7 @@ public class VisitorQueries {
 			for (PoliticalCard card : player.getPoliticalHand().getDeck()) {
 				structure.put(new DTOColor(new String(card.getColor())), card.getNumCards());
 			}
-			DTOPoliticalHand politicalCards = new DTOPoliticalHand(structure);
+			DTOColorCounter politicalCards = new DTOColorCounter(structure);
 			
 			ArrayList<DTOPermissionCard> permissionCards = new ArrayList<DTOPermissionCard>();
 			
@@ -183,6 +186,19 @@ public class VisitorQueries {
 		}
 		
 		return new DTOPlayersListResponse(players);
+	}
+	
+	public DTOFreeCounsellorsResponse visit(DTOFreeCounsellorsRequest dto){
+		
+		Map<DTOColor, Integer> structure = new HashMap<DTOColor, Integer>();
+		
+		for (CounsellorGroup group : this.gameState.getCounsellorGarbage().getState()) {
+			structure.put(new DTOColor(new String(group.getColor().getStringID())), group.getCounter().intValue());
+		}
+		
+		DTOColorCounter garbageStatus = new DTOColorCounter(structure);
+		
+		return new DTOFreeCounsellorsResponse(garbageStatus);
 	}
 
 }

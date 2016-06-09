@@ -20,6 +20,7 @@ import dto.map.DTORegion;
 import dto.queries.request.DTOProposalOrderRequest;
 import dto.queries.request.DTOScoresRequest;
 import dto.queries.request.DTOCurrentPlayerRequest;
+import dto.queries.request.DTOFreeCounsellorsRequest;
 import dto.queries.request.DTOPingRequest;
 import dto.queries.request.DTOPlayerInfoRequest;
 import dto.queries.request.DTOPlayersListRequest;
@@ -81,6 +82,7 @@ public class ClientOutHandler implements Runnable {
 					help.append("[CLI] \t\tgetinfo \n");
 					help.append("[CLI] \t\tgetplayerinfo <player> \n");
 					help.append("[CLI] \t\tgetplayers \n");
+					help.append("[CLI] \t\tgetfreecounsellors \n");
 					help.append("[CLI] *\tOther Commands \n");
 					help.append("[CLI] \t\tpass\n");
 					help.append("[CLI] \t\tping\n");
@@ -328,6 +330,16 @@ public class ClientOutHandler implements Runnable {
 					case "getplayers":
 						if (inputList.size() == 1) {
 							msg = new ClientMessage(new DTOPlayersListRequest());
+							socketOut.writeObject(msg);
+							socketOut.flush();
+							break;
+						} else {
+							System.out.println(cmdNotFound.toString());
+							break;
+						}
+					case "getfreecounsellors":
+						if (inputList.size() == 1) {
+							msg = new ClientMessage(new DTOFreeCounsellorsRequest());
 							socketOut.writeObject(msg);
 							socketOut.flush();
 							break;
