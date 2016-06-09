@@ -44,7 +44,7 @@ public class ClientOutHandler implements Runnable {
 	
 	public void run() {
 		
-		System.out.println("ClientOutHandler is RUNNING");
+		System.out.println("[CLIENT] ClientOutHandler is RUNNING");
 		Scanner stdIn = new Scanner(System.in);
 		
 		while (true) {
