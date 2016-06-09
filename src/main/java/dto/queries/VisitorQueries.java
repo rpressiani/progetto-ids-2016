@@ -2,10 +2,13 @@ package dto.queries;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 import dto.queries.request.DTOProposalOrderRequest;
 import dto.queries.request.DTOScoresRequest;
+import dto.map.DTOCity;
 import dto.playerInfo.DTOAssistants;
 import dto.playerInfo.DTOCoins;
 import dto.playerInfo.DTONobilityLevel;
@@ -23,9 +26,12 @@ import dto.queries.respond.DTOPlayerInfoResponse;
 import dto.queries.respond.DTOProposalOrderResponse;
 import dto.queries.respond.DTOScoresResponse;
 import dto.utilities.DTOColor;
+import dto.utilities.DTOPermissionCard;
 import dto.utilities.DTOPoliticalHand;
 import jaxb.CFGPoliticalCard;
 import model.GameState;
+import model.bonusable.PermissionCard;
+import model.map.City;
 import model.player.Player;
 import model.politicalDeck.PoliticalCard;
 
@@ -117,10 +123,26 @@ public class VisitorQueries {
 			
 			Map<DTOColor, Integer> structure = new HashMap<DTOColor, Integer>();
 
-			for (PoliticalCard card : this.requestingPlayer.getPoliticalHand().getDeck()) {
+			for (PoliticalCard card : player.getPoliticalHand().getDeck()) {
 				structure.put(new DTOColor(new String(card.getColor())), card.getNumCards());
 			}
 			DTOPoliticalHand politicalCards = new DTOPoliticalHand(structure);
+			
+			ArrayList<DTOPermissionCard> permissionCards = new ArrayList<DTOPermissionCard>();
+			
+			for (PermissionCard card : player.getPermissionHand()) {
+				Set<DTOCity> cities = new HashSet<DTOCity>();
+				for (City city : card.getPossibleCities()) {
+					cities.add(new DTOCity(city.getName()));
+				}
+				permissionCards.add(new DTOPermissionCard(card.getIdCard(), card.isUsed(), cities));
+			}
+			
+			ArrayList<DTOCity> builtCities = new ArrayList<DTOCity>();
+			
+			for (City city : player.getBuiltCities()) {
+				builtCities.add(new DTOCity(city.getName()));
+			}
 			
 			return new DTOPlayerInfoAdvancedResponse(new DTOPlayerAdvanced(player.getSerialID(), new String(player.getNickname()),
 					new DTOColor(new String(player.getColor().getStringID())),
@@ -128,7 +150,7 @@ public class VisitorQueries {
 					new DTOAssistants(player.getAssistants().getItems().intValue()),
 					new DTONobilityLevel(player.getNobilityLevel().getItems().intValue()),
 					new DTOScore(player.getScore().getItems().intValue()),
-					politicalCards));
+					politicalCards, permissionCards, builtCities));
 			
 		} else {
 			

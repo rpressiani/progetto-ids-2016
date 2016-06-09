@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import dto.utilities.DTOPermissionCard;
+import dto.utilities.DTOPermissionCardSelection;
 
 public class TestDTOPermissionCard {
 
@@ -13,7 +13,7 @@ public class TestDTOPermissionCard {
 		boolean thrown = false; 
 		int id = -1; 
 		try {
-			DTOPermissionCard card = new DTOPermissionCard(id); 
+			DTOPermissionCardSelection card = new DTOPermissionCardSelection(id); 
 		} catch(IllegalArgumentException e) {
 			thrown = true; 
 		}
@@ -22,7 +22,7 @@ public class TestDTOPermissionCard {
 	@Test
 	public void testGetIdWorks() {
 		int id = 1; 
-		DTOPermissionCard card = new DTOPermissionCard(id); 
+		DTOPermissionCardSelection card = new DTOPermissionCardSelection(id); 
 		int temp = card.getIdCard(); 
 		assertEquals(temp, card.getIdCard()); 
 	}

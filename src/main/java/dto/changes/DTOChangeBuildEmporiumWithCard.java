@@ -2,7 +2,7 @@ package dto.changes;
 
 import dto.map.DTOCity;
 import dto.playerInfo.DTOAssistants;
-import dto.utilities.DTOPermissionCard;
+import dto.utilities.DTOPermissionCardSelection;
 
 public class DTOChangeBuildEmporiumWithCard implements DTOChange {
 
@@ -13,7 +13,7 @@ public class DTOChangeBuildEmporiumWithCard implements DTOChange {
 
 	private final DTOAssistants assistants;
 	private final DTOCity city;
-	private final DTOPermissionCard card;
+	private final DTOPermissionCardSelection card;
 	
 	/**
 	 * 
@@ -22,7 +22,7 @@ public class DTOChangeBuildEmporiumWithCard implements DTOChange {
 	 * @param card
 	 * @throws NullPointerException if assistants/city/card are null
 	 */
-	public DTOChangeBuildEmporiumWithCard(DTOAssistants assistants, DTOCity city, DTOPermissionCard card){
+	public DTOChangeBuildEmporiumWithCard(DTOAssistants assistants, DTOCity city, DTOPermissionCardSelection card){
 		if(assistants==null || city==null || card==null){
 			throw new NullPointerException("assistants or city or card can't be null");
 		}
@@ -51,7 +51,7 @@ public class DTOChangeBuildEmporiumWithCard implements DTOChange {
 	 * 
 	 * @return the card
 	 */
-	public DTOPermissionCard getCard() {
+	public DTOPermissionCardSelection getCard() {
 		return card;
 	}
 

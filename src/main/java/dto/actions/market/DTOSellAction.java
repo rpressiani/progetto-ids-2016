@@ -5,7 +5,7 @@ import java.util.Set;
 
 import controller.VisitorActions;
 import dto.actions.DTOAction;
-import dto.utilities.DTOPermissionCard;
+import dto.utilities.DTOPermissionCardSelection;
 import model.actions.market.SellAction;
 import model.player.Player;
 
@@ -18,7 +18,7 @@ public class DTOSellAction implements DTOAction {
 	
 	private final int sellCoins, buyCoins;
 	private final int sellAssistants, buyAssistants;
-	private final Set<DTOPermissionCard> sellPermissions, buyPermissions;
+	private final Set<DTOPermissionCardSelection> sellPermissions, buyPermissions;
 	private final ArrayList<Integer> sellPoliticals, buyPoliticals;
 
 	/**
@@ -33,8 +33,8 @@ public class DTOSellAction implements DTOAction {
 	 * @throws IllegalArgumentException if one of the int parameters is <0
 	 * @throws NullPointerException if one of the other parameters is null
 	 */
-	public DTOSellAction(int sellCoins, int sellAssistants, Set<DTOPermissionCard> sellPermissions, ArrayList<Integer> sellPoliticals,
-			int buyCoins, int buyAssistants, Set<DTOPermissionCard> buyPermissions, ArrayList<Integer> buyPoliticals) {
+	public DTOSellAction(int sellCoins, int sellAssistants, Set<DTOPermissionCardSelection> sellPermissions, ArrayList<Integer> sellPoliticals,
+			int buyCoins, int buyAssistants, Set<DTOPermissionCardSelection> buyPermissions, ArrayList<Integer> buyPoliticals) {
 		if(sellCoins<0 || sellAssistants<0 || buyCoins<0 || buyAssistants<0) {
 			throw new IllegalArgumentException("int parameters must all be >=0"); 
 		}
@@ -88,7 +88,7 @@ public class DTOSellAction implements DTOAction {
 	 * 
 	 * @return sellPermissions
 	 */
-	public Set<DTOPermissionCard> getSellPermissions() {
+	public Set<DTOPermissionCardSelection> getSellPermissions() {
 		return sellPermissions;
 	}
 
@@ -96,7 +96,7 @@ public class DTOSellAction implements DTOAction {
 	 * 
 	 * @return buyPermissions
 	 */
-	public Set<DTOPermissionCard> getBuyPermissions() {
+	public Set<DTOPermissionCardSelection> getBuyPermissions() {
 		return buyPermissions;
 	}
 

@@ -16,7 +16,7 @@ import dto.playerInfo.DTOCoins;
 import dto.playerInfo.DTONobilityLevel;
 import dto.playerInfo.DTOScore;
 import dto.utilities.DTOColor;
-import dto.utilities.DTOPermissionCard;
+import dto.utilities.DTOPermissionCardSelection;
 import model.changes.ChangeSubstitutePermissionCards;
 import model.changes.ChangeMsg;
 import model.changes.ChangeBuildEmporiumWithCard;
@@ -161,7 +161,7 @@ public class VisitorChanges {
 		
 		DTOAssistants assistants=new DTOAssistants(change.getAssistants().getItems());
 		DTOCity city=new DTOCity(change.getCity().getName());
-		DTOPermissionCard card=new DTOPermissionCard(change.getCard().getIdCard());
+		DTOPermissionCardSelection card=new DTOPermissionCardSelection(change.getCard().getIdCard());
 		
 		return new DTOChangeBuildEmporiumWithCard(assistants, city, card);
 	}

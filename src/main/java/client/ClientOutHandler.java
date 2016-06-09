@@ -23,7 +23,7 @@ import dto.queries.request.DTOCurrentPlayerRequest;
 import dto.queries.request.DTOPingRequest;
 import dto.queries.request.DTOPlayerInfoRequest;
 import dto.utilities.DTOColor;
-import dto.utilities.DTOPermissionCard;
+import dto.utilities.DTOPermissionCardSelection;
 import dto.utilities.DTOPoliticalContainer;
 import dto.utilities.DTOSetup;
 
@@ -143,7 +143,7 @@ public class ClientOutHandler implements Runnable {
 						case "buildEmpCard":
 							if (inputList.size() == 4) {
 								msg = new ClientMessage(new DTOBuildEmporiumWithCard(
-										new DTOPermissionCard(Integer.parseInt(inputList.get(2))),
+										new DTOPermissionCardSelection(Integer.parseInt(inputList.get(2))),
 										new DTOCity(inputList.get(3))));
 								socketOut.writeObject(msg);
 								socketOut.flush();
@@ -211,7 +211,7 @@ public class ClientOutHandler implements Runnable {
 					case "buildEmpCard":
 						if (inputList.size() == 3) {
 							msg = new ClientMessage(new DTOBuildEmporiumWithCard(
-									new DTOPermissionCard(Integer.parseInt(inputList.get(1))),
+									new DTOPermissionCardSelection(Integer.parseInt(inputList.get(1))),
 									new DTOCity(inputList.get(2))));
 							socketOut.writeObject(msg);
 							socketOut.flush();

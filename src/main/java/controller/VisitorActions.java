@@ -17,7 +17,7 @@ import dto.actions.quick.DTOAddictionalAction;
 import dto.actions.quick.DTOSubstitutePermissionCards;
 import dto.actions.quick.DTOElectCounsellorWithAssistant;
 import dto.actions.quick.DTOHireAssistant;
-import dto.utilities.DTOPermissionCard;
+import dto.utilities.DTOPermissionCardSelection;
 import model.GameState;
 import model.actions.NullAction;
 import model.actions.main.BuildEmporiumWithCard;
@@ -131,7 +131,7 @@ public class VisitorActions {
 		
 		Set<PermissionCard> sellPermissions = new HashSet<PermissionCard>();
 		List<PermissionCard> myCards= new ArrayList<PermissionCard>(player.getPermissionHand());
-		for(DTOPermissionCard c : DTOAction.getSellPermissions()){
+		for(DTOPermissionCardSelection c : DTOAction.getSellPermissions()){
 			int idCard=c.getIdCard();
 			PermissionCard card=null;
 			for(int i=0; i<myCards.size(); i++){
@@ -141,7 +141,7 @@ public class VisitorActions {
 		}
 		
 		Set<PermissionCard> buyPermissions = new HashSet<PermissionCard>();
-		for(DTOPermissionCard c : DTOAction.getBuyPermissions()){
+		for(DTOPermissionCardSelection c : DTOAction.getBuyPermissions()){
 			int idCard=c.getIdCard();
 			PermissionCard card=null;
 			for(Player p : gameState.getPlayers()){
