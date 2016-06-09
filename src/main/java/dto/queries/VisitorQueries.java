@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+import java.util.Map.Entry;
 
 import dto.queries.request.DTOProposalOrderRequest;
 import dto.queries.request.DTOScoresRequest;
@@ -16,11 +17,13 @@ import dto.playerInfo.DTOPlayer;
 import dto.playerInfo.DTOPlayerAdvanced;
 import dto.playerInfo.DTOPlayerBasic;
 import dto.playerInfo.DTOScore;
+import dto.queries.request.DTOBalconiesStateRequest;
 import dto.queries.request.DTOCurrentPlayerRequest;
 import dto.queries.request.DTOFreeCounsellorsRequest;
 import dto.queries.request.DTOPingRequest;
 import dto.queries.request.DTOPlayerInfoRequest;
 import dto.queries.request.DTOPlayersListRequest;
+import dto.queries.respond.DTOBalconiesStateResponse;
 import dto.queries.respond.DTOCurrentPlayerResponse;
 import dto.queries.respond.DTOFreeCounsellorsResponse;
 import dto.queries.respond.DTOPingResponse;
@@ -29,14 +32,17 @@ import dto.queries.respond.DTOPlayerInfoResponse;
 import dto.queries.respond.DTOPlayersListResponse;
 import dto.queries.respond.DTOProposalOrderResponse;
 import dto.queries.respond.DTOScoresResponse;
+import dto.utilities.DTOBalcony;
 import dto.utilities.DTOColor;
 import dto.utilities.DTOPermissionCard;
 import dto.utilities.DTOColorCounter;
 import jaxb.CFGPoliticalCard;
 import model.GameState;
 import model.bonusable.PermissionCard;
+import model.council.Counsellor;
 import model.council.CounsellorGroup;
 import model.map.City;
+import model.map.Region;
 import model.player.Player;
 import model.politicalDeck.PoliticalCard;
 
@@ -199,6 +205,31 @@ public class VisitorQueries {
 		DTOColorCounter garbageStatus = new DTOColorCounter(structure);
 		
 		return new DTOFreeCounsellorsResponse(garbageStatus);
+	}
+	
+	public DTOBalconiesStateResponse visit(DTOBalconiesStateRequest dto){
+		
+		Map<String, DTOBalcony> balconies = new HashMap<String, DTOBalcony>();
+		
+		
+		ArrayList<DTOColor> balcony;
+		
+		for (Entry<String, Region> entry  : this.gameState.getMap().getRegions().entrySet()) {
+			balcony = new ArrayList<DTOColor>();
+			for (Counsellor counsellor : entry.getValue().getBalcony().getBalcony()) {
+				balcony.add(new DTOColor(new String(counsellor.getColor().getStringID())));
+			}
+			
+			balconies.put(entry.getKey(), new DTOBalcony(balcony));
+		}
+		
+		balcony = new ArrayList<DTOColor>();
+		for (Counsellor counsellor : this.gameState.getKingBalcony().getBalcony()) {
+			balcony.add(new DTOColor(new String(counsellor.getColor().getStringID())));
+		}
+		balconies.put("king", new DTOBalcony(balcony));
+		
+		return new DTOBalconiesStateResponse(balconies);
 	}
 
 }
