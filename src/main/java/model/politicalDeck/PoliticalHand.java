@@ -14,9 +14,7 @@ public class PoliticalHand extends PoliticalDeck {
 			this.getDeck().add(new PoliticalCard(cfgPoliticalCard.getColor(), 0));
 		}
 		
-		System.out.println(PoliticalHand.getParser().getCFGRoot().getPlayers().getNInitPoliticalCards().intValue());
 		for (int i = 0; i < PoliticalHand.getParser().getCFGRoot().getPlayers().getNInitPoliticalCards().intValue(); i++) {
-			System.out.println("draw");
 			this.drawCard(deck);
 		}
 	}

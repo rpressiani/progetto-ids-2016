@@ -19,11 +19,14 @@ import dto.map.DTOCity;
 import dto.map.DTORegion;
 import dto.queries.request.DTOProposalOrderRequest;
 import dto.queries.request.DTOScoresRequest;
+import dto.queries.request.DTOBalconiesStateRequest;
 import dto.queries.request.DTOCurrentPlayerRequest;
+import dto.queries.request.DTOFreeCounsellorsRequest;
 import dto.queries.request.DTOPingRequest;
 import dto.queries.request.DTOPlayerInfoRequest;
+import dto.queries.request.DTOPlayersListRequest;
 import dto.utilities.DTOColor;
-import dto.utilities.DTOPermissionCard;
+import dto.utilities.DTOPermissionCardSelection;
 import dto.utilities.DTOPoliticalContainer;
 import dto.utilities.DTOSetup;
 
@@ -38,9 +41,10 @@ public class ClientOutHandler implements Runnable {
 		}
 		this.socketOut = socketOut; 
 	}
+	
 	public void run() {
 		
-		System.out.println("ClientOutHandler is RUNNING");
+		System.out.println("[CLIENT] ClientOutHandler is RUNNING");
 		Scanner stdIn = new Scanner(System.in);
 		
 		while (true) {
@@ -79,6 +83,9 @@ public class ClientOutHandler implements Runnable {
 					help.append("[CLI] \t\tgetcurrentplayer \n");
 					help.append("[CLI] \t\tgetinfo \n");
 					help.append("[CLI] \t\tgetplayerinfo <player> \n");
+					help.append("[CLI] \t\tgetplayers \n");
+					help.append("[CLI] \t\tgetfreecounsellors \n");
+					help.append("[CLI] \t\tgetbalconies \n");
 					help.append("[CLI] *\tOther Commands \n");
 					help.append("[CLI] \t\tpass\n");
 					help.append("[CLI] \t\tping\n");
@@ -143,7 +150,7 @@ public class ClientOutHandler implements Runnable {
 						case "buildEmpCard":
 							if (inputList.size() == 4) {
 								msg = new ClientMessage(new DTOBuildEmporiumWithCard(
-										new DTOPermissionCard(Integer.parseInt(inputList.get(2))),
+										new DTOPermissionCardSelection(Integer.parseInt(inputList.get(2))),
 										new DTOCity(inputList.get(3))));
 								socketOut.writeObject(msg);
 								socketOut.flush();
@@ -211,7 +218,7 @@ public class ClientOutHandler implements Runnable {
 					case "buildEmpCard":
 						if (inputList.size() == 3) {
 							msg = new ClientMessage(new DTOBuildEmporiumWithCard(
-									new DTOPermissionCard(Integer.parseInt(inputList.get(1))),
+									new DTOPermissionCardSelection(Integer.parseInt(inputList.get(1))),
 									new DTOCity(inputList.get(2))));
 							socketOut.writeObject(msg);
 							socketOut.flush();
@@ -323,6 +330,36 @@ public class ClientOutHandler implements Runnable {
 							System.out.println(cmdNotFound.toString());
 							break;
 						}
+					case "getplayers":
+						if (inputList.size() == 1) {
+							msg = new ClientMessage(new DTOPlayersListRequest());
+							socketOut.writeObject(msg);
+							socketOut.flush();
+							break;
+						} else {
+							System.out.println(cmdNotFound.toString());
+							break;
+						}
+					case "getfreecounsellors":
+						if (inputList.size() == 1) {
+							msg = new ClientMessage(new DTOFreeCounsellorsRequest());
+							socketOut.writeObject(msg);
+							socketOut.flush();
+							break;
+						} else {
+							System.out.println(cmdNotFound.toString());
+							break;
+						}
+					case "getbalconies":
+						if (inputList.size() == 1) {
+							msg = new ClientMessage(new DTOBalconiesStateRequest());
+							socketOut.writeObject(msg);
+							socketOut.flush();
+							break;
+						} else {
+							System.out.println(cmdNotFound.toString());
+							break;
+						}
 						
 					default:
 						System.out.println(cmdNotFound.toString());
@@ -343,7 +380,10 @@ public class ClientOutHandler implements Runnable {
 	/**
 	 * returns the player political card proposal as an ArrayList of Integer
 	 * 
+	 * @param	inputList				list of Strings that contains the command and the parameters retrieved from the client
+
 	 * @param	inputList				List of String that contains the command and the parameters retrieved from the client
+
 	 * @param	from					index from which the player political card proposal starts
 	 * 
 	 * @throws	NumberFormatException	if a NaN is passed by the player in the card proposal

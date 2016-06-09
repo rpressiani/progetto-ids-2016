@@ -2,7 +2,7 @@ package dto.actions.main;
 
 import controller.VisitorActions;
 import dto.map.DTOCity;
-import dto.utilities.DTOPermissionCard;
+import dto.utilities.DTOPermissionCardSelection;
 import model.actions.main.BuildEmporiumWithCard;
 import model.player.Player;
 
@@ -13,7 +13,7 @@ public class DTOBuildEmporiumWithCard implements DTOMainAction {
 	 */
 	private static final long serialVersionUID = 85255788780648973L;
 	
-	private final DTOPermissionCard permissionCard;
+	private final DTOPermissionCardSelection permissionCard;
 	private final DTOCity city;
 	
 	/**
@@ -21,7 +21,7 @@ public class DTOBuildEmporiumWithCard implements DTOMainAction {
 	 * @param city
 	 * @throws NullPointerException if permissionCard or city are null
 	 */
-	public DTOBuildEmporiumWithCard(DTOPermissionCard permissionCard, DTOCity city) {
+	public DTOBuildEmporiumWithCard(DTOPermissionCardSelection permissionCard, DTOCity city) {
 		if(permissionCard==null) {
 			throw new NullPointerException("permissionCard cannot be null"); 
 		}
@@ -35,7 +35,7 @@ public class DTOBuildEmporiumWithCard implements DTOMainAction {
 	/**
 	 * @return the permissionCard
 	 */
-	public DTOPermissionCard getPermissionCard() {
+	public DTOPermissionCardSelection getPermissionCard() {
 		return permissionCard;
 	}
 

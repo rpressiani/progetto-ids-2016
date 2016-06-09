@@ -10,7 +10,6 @@ public abstract class View extends Observable<ClientMessage> implements Observer
 	@Override
 	public void update(Change o) {
 		Observer.super.update(o);
-		//State to be implemented
 	}
 
 }

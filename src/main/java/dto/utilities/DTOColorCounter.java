@@ -4,7 +4,7 @@ import java.util.Map;
 
 import dto.DTOObject;
 
-public class DTOPoliticalHand implements DTOObject {
+public class DTOColorCounter implements DTOObject {
 
 	/**
 	 * 
@@ -13,7 +13,7 @@ public class DTOPoliticalHand implements DTOObject {
 	
 	private final Map<DTOColor, Integer> structure;
 	
-	public DTOPoliticalHand(Map<DTOColor, Integer> structure) {
+	public DTOColorCounter(Map<DTOColor, Integer> structure) {
 		this.structure = structure;
 	}
 

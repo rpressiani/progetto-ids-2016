@@ -5,7 +5,6 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.net.UnknownHostException;
-import java.util.Scanner;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -17,22 +16,18 @@ public class ClientSocket {
 	
 	public void startClient() throws UnknownHostException, IOException {
 		
-//		Scanner in = new Scanner(System.in);
-//		System.out.println("Enter your nickname:\n");
-//		String inputLine = in.nextLine();
-//		in.close();
-//		this.nickname = inputLine;
-		
 		Socket socket = new Socket(IP, PORT); 
-		System.out.println("Connection Created");
+		System.out.println("[CLIENT] Connection Created");
 		ExecutorService executor = Executors.newFixedThreadPool(2); //load from file
 		executor.submit(new ClientOutHandler(new ObjectOutputStream(socket.getOutputStream())));
 		executor.submit(new ClientInHandler(new ObjectInputStream(socket.getInputStream()))); 
 	}
+	
 	public static void main(String[] args) throws UnknownHostException, IOException {
 		ClientSocket client = new ClientSocket(); 
 		client.startClient();
 	}
+	
 	/**
 	 * @return the nickname
 	 */
