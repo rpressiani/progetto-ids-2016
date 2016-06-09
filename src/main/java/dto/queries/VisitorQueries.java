@@ -57,7 +57,11 @@ public class VisitorQueries {
 	 * @throws NullPointerException if gameState==null
 	 */
 	public VisitorQueries(GameState gameState, Player requestingPlayer) {
-		if(gameState == null) throw new NullPointerException();
+		if(gameState == null) 
+			throw new NullPointerException("gameState cannot be null");
+		if(requestingPlayer==null) {
+			throw new NullPointerException("requestingPlayer cannot be null"); 
+		}
 		this.gameState = gameState;
 		this.requestingPlayer = requestingPlayer;
 	}
