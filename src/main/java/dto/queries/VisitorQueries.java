@@ -19,10 +19,12 @@ import dto.playerInfo.DTOScore;
 import dto.queries.request.DTOCurrentPlayerRequest;
 import dto.queries.request.DTOPingRequest;
 import dto.queries.request.DTOPlayerInfoRequest;
+import dto.queries.request.DTOPlayersListRequest;
 import dto.queries.respond.DTOCurrentPlayerResponse;
 import dto.queries.respond.DTOPingResponse;
 import dto.queries.respond.DTOPlayerInfoAdvancedResponse;
 import dto.queries.respond.DTOPlayerInfoResponse;
+import dto.queries.respond.DTOPlayersListResponse;
 import dto.queries.respond.DTOProposalOrderResponse;
 import dto.queries.respond.DTOScoresResponse;
 import dto.utilities.DTOColor;
@@ -173,5 +175,14 @@ public class VisitorQueries {
 
 	}
 
+	public DTOPlayersListResponse visit(DTOPlayersListRequest dto){
+		ArrayList<DTOPlayerBasic> players = new ArrayList<DTOPlayerBasic>();
+		for (Player player : this.gameState.getPlayers()) {
+			players.add(new DTOPlayerBasic(player.getId(), new String(player.getNickname()),
+					new DTOColor(new String(player.getColor().getStringID()))));
+		}
+		
+		return new DTOPlayersListResponse(players);
+	}
 
 }
