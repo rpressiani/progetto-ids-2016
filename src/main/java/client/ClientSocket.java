@@ -29,6 +29,7 @@ public class ClientSocket {
 		executor.submit(new ClientOutHandler(new ObjectOutputStream(socket.getOutputStream())));
 		executor.submit(new ClientInHandler(new ObjectInputStream(socket.getInputStream()))); 
 	}
+	
 	public static void main(String[] args) throws UnknownHostException, IOException {
 		ClientSocket client = new ClientSocket(); 
 		client.startClient();

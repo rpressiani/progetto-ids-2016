@@ -40,6 +40,7 @@ public class ClientOutHandler implements Runnable {
 		}
 		this.socketOut = socketOut; 
 	}
+	
 	public void run() {
 		
 		System.out.println("ClientOutHandler is RUNNING");
@@ -321,7 +322,7 @@ public class ClientOutHandler implements Runnable {
 	/**
 	 * returns the player political card proposal as an ArrayList of Integer
 	 * 
-	 * @param	inputList				ist of String that contains the command and the parameters retrieved from the client
+	 * @param	inputList				list of Strings that contains the command and the parameters retrieved from the client
 	 * @param	from					index from which the player political card proposal starts
 	 * 
 	 * @throws	NumberFormatException	if a NaN is passed by the player in the card proposal
