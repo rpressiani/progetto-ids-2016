@@ -7,11 +7,14 @@ import java.util.ArrayList;
 import org.junit.Test;
 
 import model.GameState;
+import model.council.Balcony;
 import model.council.GarbageState;
 import model.map.Map;
 import model.player.Player;
 import model.politicalDeck.PoliticalGarbage;
 import model.politicalDeck.PoliticalRealDeck;
+import model.sharedObjects.King;
+import model.sharedObjects.KingBonuses;
 import model.sharedObjects.Nobility;
 import parser.Parser;
 import utilities.Color;
@@ -199,5 +202,55 @@ public class TestGameState {
 		GameState gameState = new GameState(parser, players); 
 		PoliticalRealDeck temp = gameState.getPoliticalDeck();
 		assertEquals(temp, gameState.getPoliticalDeck()); 
+	}
+	@Test
+	public void testGetGarbage() {
+		Parser parser = new Parser(); 
+		Player player = new Player(); 
+		ArrayList<Player> players = new ArrayList<Player>(); 
+		players.add(player); 
+		GameState gameState = new GameState(parser, players); 
+		PoliticalGarbage temp = gameState.getGarbage();
+		assertEquals(temp, gameState.getGarbage()); 
+	}
+	@Test
+	public void testGetKingBalcony() {
+		Parser parser = new Parser(); 
+		Player player = new Player(); 
+		ArrayList<Player> players = new ArrayList<Player>(); 
+		players.add(player); 
+		GameState gameState = new GameState(parser, players); 
+		Balcony temp = gameState.getKingBalcony();
+		assertEquals(temp, gameState.getKingBalcony()); 
+	}
+	@Test
+	public void testGetCounsellorGarbage() {
+		Parser parser = new Parser(); 
+		Player player = new Player(); 
+		ArrayList<Player> players = new ArrayList<Player>(); 
+		players.add(player); 
+		GameState gameState = new GameState(parser, players); 
+		GarbageState temp = gameState.getCounsellorGarbage();
+		assertEquals(temp, gameState.getCounsellorGarbage()); 
+	}
+	@Test
+	public void testGetKingBonuss() {
+		Parser parser = new Parser(); 
+		Player player = new Player(); 
+		ArrayList<Player> players = new ArrayList<Player>(); 
+		players.add(player); 
+		GameState gameState = new GameState(parser, players); 
+		KingBonuses temp = gameState.getKingBonuses();
+		assertEquals(temp, gameState.getKingBonuses()); 
+	}
+	@Test
+	public void testGetKing() {
+		Parser parser = new Parser(); 
+		Player player = new Player(); 
+		ArrayList<Player> players = new ArrayList<Player>(); 
+		players.add(player); 
+		GameState gameState = new GameState(parser, players); 
+		King temp = gameState.getKing(); 
+		assertEquals(temp, gameState.getKing()); 
 	}
 }
