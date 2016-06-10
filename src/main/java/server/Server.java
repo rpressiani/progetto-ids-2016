@@ -13,14 +13,16 @@ import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import controller.Controller;
-import model.GameState;
 import model.player.Player;
+import view.RMIView;
+import view.RMIViewRemote;
 import view.ServerSocketView;
 
 public class Server {
 	
 	private final static int PORT = 29999; //load from file!
+	private final static int RMI_PORT = 52365;
+	private final String NAME = "prigionieri";
 	
 	/**
 	 * start the socket
@@ -47,17 +49,31 @@ public class Server {
 		}
 	}
 	
+	private void startRMI() throws RemoteException, AlreadyBoundException{
+		Registry registry = LocateRegistry.createRegistry(RMI_PORT);
+		System.out.println("Constructing the RMI registry");
+		RMIView rmiView=new RMIView();
+		RMIViewRemote viewRemote=(RMIViewRemote) UnicastRemoteObject.exportObject(rmiView, 0);
+		System.out.println("Binding the server implementation to the registry");
+		registry.bind(NAME, rmiView);
+	}
+	
 	/**
 	 * 
 	 * @param args
 	 * @throws IOException
 	 * @throws ClassNotFoundException
+	 * @throws AlreadyBoundException 
 	 */
-	public static void main(String[] args) throws IOException, ClassNotFoundException {
+	public static void main(String[] args) throws IOException, ClassNotFoundException, AlreadyBoundException {
 		Server server = new Server();
+		
+		System.out.println("STARTING RMI");
+		server.startRMI();
 		
 		System.out.println("STARTING SOCKET");
 		server.startSocket();
+	
 	}
 
 }
