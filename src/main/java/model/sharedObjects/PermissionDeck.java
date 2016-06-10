@@ -41,7 +41,7 @@ public class PermissionDeck {
 		for (Iterator<CFGPermissionDeck> iterator = permissionDeckList.iterator(); iterator.hasNext();) {
 			cfgPermissionDeck = iterator.next();
 			index++;
-			if (cfgPermissionDeck.getRegion() == region.getName()){
+			if (cfgPermissionDeck.getRegion().equals(region.getName())){
 				break;
 			}
 		}
@@ -59,7 +59,7 @@ public class PermissionDeck {
 				String cityName = iteratorCities.next();
 				for (Iterator<City> iteratorMatchCity = region.getRegionCities().iterator(); iteratorMatchCity.hasNext();) {
 					City cityToAdd = iteratorMatchCity.next();
-					if (cityToAdd.getName() == cityName) {
+					if (cityToAdd.getName().equals(cityName)) {
 						cities.add(cityToAdd);
 						break;
 					}
