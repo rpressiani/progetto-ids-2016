@@ -34,6 +34,7 @@ public class Map {
 	private HashMap<String, City> allCitiesHashMap;
 	private HashMap<String, Region> regions;
 	private HashMap<String, Ancestry> ancestries;
+	private final String cliDisplay;
 	
 	private King king;
 	
@@ -52,6 +53,7 @@ public class Map {
 		this.allCitiesHashMap = new HashMap<String, City>();
 		this.regions = new HashMap<String, Region>();
 		this.ancestries = new HashMap<String, Ancestry>();
+		this.cliDisplay = parser.getCFGRoot().getMap().getCliDisplay();
 		
 //		BONUS TILES GENERATION
 		
@@ -248,6 +250,14 @@ public class Map {
 	 */
 	public King getKing() {
 		return king;
+	}
+
+
+	/**
+	 * @return the cliDisplay
+	 */
+	public String getCliDisplay() {
+		return cliDisplay;
 	}
 	
 	

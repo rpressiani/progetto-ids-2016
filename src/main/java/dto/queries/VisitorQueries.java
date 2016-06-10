@@ -20,6 +20,7 @@ import dto.playerInfo.DTOScore;
 import dto.queries.request.DTOBalconiesStateRequest;
 import dto.queries.request.DTOCurrentPlayerRequest;
 import dto.queries.request.DTOFreeCounsellorsRequest;
+import dto.queries.request.DTOMapRequest;
 import dto.queries.request.DTOPermissionAvailableRequest;
 import dto.queries.request.DTOPingRequest;
 import dto.queries.request.DTOPlayerInfoRequest;
@@ -27,6 +28,7 @@ import dto.queries.request.DTOPlayersListRequest;
 import dto.queries.respond.DTOBalconiesStateResponse;
 import dto.queries.respond.DTOCurrentPlayerResponse;
 import dto.queries.respond.DTOFreeCounsellorsResponse;
+import dto.queries.respond.DTOMapResponse;
 import dto.queries.respond.DTOPermissionAvailableResponse;
 import dto.queries.respond.DTOPingResponse;
 import dto.queries.respond.DTOPlayerInfoAdvancedResponse;
@@ -258,6 +260,30 @@ public class VisitorQueries {
 		
 		
 		return new DTOPermissionAvailableResponse(permissionPerRegion);
+	}
+	
+	public DTOMapResponse visit(DTOMapRequest dto){
+		
+		Set<DTOCity> builtCities = new HashSet<DTOCity>();
+		
+		for (City city : this.requestingPlayer.getBuiltCities()) {
+			builtCities.add(new DTOCity(new String(city.getName())));
+		}
+		
+		Map<DTOCity, Set<DTOPlayerBasic>> citiesStatus = new HashMap<DTOCity, Set<DTOPlayerBasic>>();
+		
+		for (Entry<String, City> entry : this.gameState.getMap().getAllCitiesHashMap().entrySet()) {
+			Set<DTOPlayerBasic> playersInCity = new HashSet<DTOPlayerBasic>();
+			for (Player player : this.gameState.getPlayers()) {
+				if (player.getBuiltCities().contains(entry.getValue())) {
+					playersInCity.add(new DTOPlayerBasic(player.getSerialID(), new String(player.getNickname()),
+							new DTOColor(new String(player.getColor().getStringID()))));
+				}
+			}
+			citiesStatus.put(new DTOCity(new String(entry.getKey())), playersInCity);
+		}
+		
+		return new DTOMapResponse(new String(this.gameState.getMap().getCliDisplay()), builtCities, citiesStatus);
 	}
 
 }

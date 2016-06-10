@@ -22,6 +22,7 @@ import dto.queries.request.DTOScoresRequest;
 import dto.queries.request.DTOBalconiesStateRequest;
 import dto.queries.request.DTOCurrentPlayerRequest;
 import dto.queries.request.DTOFreeCounsellorsRequest;
+import dto.queries.request.DTOMapRequest;
 import dto.queries.request.DTOPermissionAvailableRequest;
 import dto.queries.request.DTOPingRequest;
 import dto.queries.request.DTOPlayerInfoRequest;
@@ -88,6 +89,7 @@ public class ClientOutHandler implements Runnable {
 					help.append("[CLI] \t\tgetfreecounsellors \n");
 					help.append("[CLI] \t\tgetbalconies \n");
 					help.append("[CLI] \t\tgetpermissionavailable \n");
+					help.append("[CLI] \t\tgetmap \n");
 					help.append("[CLI] *\tOther Commands \n");
 					help.append("[CLI] \t\tpass\n");
 					help.append("[CLI] \t\tping\n");
@@ -365,6 +367,16 @@ public class ClientOutHandler implements Runnable {
 					case "getpermissionavailable":
 						if (inputList.size() == 1) {
 							msg = new ClientMessage(new DTOPermissionAvailableRequest());
+							socketOut.writeObject(msg);
+							socketOut.flush();
+							break;
+						} else {
+							System.out.println(cmdNotFound.toString());
+							break;
+						}
+					case "getmap":
+						if (inputList.size() == 1) {
+							msg = new ClientMessage(new DTOMapRequest());
 							socketOut.writeObject(msg);
 							socketOut.flush();
 							break;

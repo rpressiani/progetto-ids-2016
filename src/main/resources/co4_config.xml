@@ -2,6 +2,21 @@
 <!--<x:books xmlns:x="urn:books">-->
 <x:root xmlns:x="urn:co4">
     <map>
+        <cliDisplay>
+        _________________________________________
+	|  SEASIDE  |    HILLSIDE   |  MOUNTAIN |
+	            |               |
+	A ----- C --|-- F ----- I --|-- K ----- N
+	|           |           |   |           |
+	|           |           |   |           |
+	|           |           |   |           |
+	B ----- D --|-- G ----- J --|-- L ----- O
+	|           |           |   |           |
+	|           |           |   |           |
+	|           |           |   |           |
+	E ----------|---------- H --|---------- M
+	____________|_______________|____________
+        </cliDisplay>
         <kingInitLocation>J</kingInitLocation>
         <ancestries>
             <ancestry>
