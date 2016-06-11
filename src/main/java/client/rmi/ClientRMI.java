@@ -1,4 +1,4 @@
-package client;
+package client.rmi;
 
 import java.rmi.AlreadyBoundException;
 import java.rmi.NotBoundException;
@@ -6,7 +6,7 @@ import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 
-import view.RMIViewRemote;
+import view.rmi.RMIViewRemote;
 
 
 public class ClientRMI {

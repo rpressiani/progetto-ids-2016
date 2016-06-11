@@ -9,7 +9,7 @@ import model.GameState;
 import model.changes.ChangeMsg;
 import model.player.Player;
 import parser.Parser;
-import view.ServerSocketView;
+import view.socket.ServerSocketView;
 
 public class Match {
 	

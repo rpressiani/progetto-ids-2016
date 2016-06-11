@@ -1,15 +1,16 @@
-package view;
+package view.rmi;
 
 import java.rmi.RemoteException;
 import java.util.HashSet;
 import java.util.Set;
 
-import client.ClientViewRemote;
+import client.rmi.ClientViewRemote;
 import controller.VisitorActions;
 import dto.actions.DTOAction;
 import model.GameState;
 import model.actions.GeneralAction;
 import model.changes.Change;
+import view.View;
 
 public class RMIView extends View implements RMIViewRemote {
 

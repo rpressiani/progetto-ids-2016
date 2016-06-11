@@ -14,9 +14,9 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import model.player.Player;
-import view.RMIView;
-import view.RMIViewRemote;
-import view.ServerSocketView;
+import view.rmi.RMIView;
+import view.rmi.RMIViewRemote;
+import view.socket.ServerSocketView;
 
 public class Server {
 	

@@ -1,11 +1,11 @@
-package view;
+package view.socket;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 
-import client.ClientMessage;
+import client.socket.ClientMessage;
 import dto.DTOObject;
 import dto.actions.DTOAction;
 import dto.changes.DTOChange;
@@ -16,6 +16,8 @@ import model.GameState;
 import model.changes.Change;
 import model.player.Player;
 import utilities.Color;
+import view.View;
+import view.VisitorChanges;
 
 public class ServerSocketView extends View implements Runnable {
 	

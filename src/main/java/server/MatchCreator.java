@@ -10,7 +10,7 @@ import java.util.Queue;
 import java.util.Set;
 
 import model.player.Player;
-import view.ServerSocketView;
+import view.socket.ServerSocketView;
 
 public class MatchCreator implements Runnable {
 	
@@ -70,7 +70,7 @@ public class MatchCreator implements Runnable {
 			log.append("[MATCH CREATOR] There are " + this.enabledPlayers.size() + " players enabled\n");
 			log.append("[MATCH CREATOR] There are " + this.tmpViewSocket.size() + " players connected in the lobby\n");
 			log.append("[MATCH CREATOR] There are " + this.runningMatches.size() + " matches running\n");
-			System.out.println(log);
+//			System.out.println(log);
 			
 			try {
 				

@@ -1,9 +1,9 @@
-package view;
+package view.rmi;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 
-import client.ClientViewRemote;
+import client.rmi.ClientViewRemote;
 import dto.actions.DTOAction;
 import model.actions.GeneralAction;
 
