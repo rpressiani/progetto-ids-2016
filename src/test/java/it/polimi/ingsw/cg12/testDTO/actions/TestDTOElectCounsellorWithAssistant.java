@@ -1,4 +1,4 @@
-package it.polimi.ingsw.cg12.testDTO;
+package it.polimi.ingsw.cg12.testDTO.actions;
 
 import static org.junit.Assert.*;
 
