@@ -4,12 +4,14 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 
 import client.rmi.ClientViewRemote;
-import dto.actions.DTOAction;
-import model.actions.GeneralAction;
+import client.socket.ClientMessage;
+import model.player.Player;
 
 
 public interface RMIViewRemote extends Remote {
 
 	public void registerClient(ClientViewRemote clientStub) throws RemoteException;
-	public void translateAction(DTOAction action) throws RemoteException;
+	public void registerClient(Player player, ClientViewRemote clientStub) throws RemoteException;
+	public void unregisterClient(Player player) throws RemoteException;
+	public void receiveMessage(ClientMessage msg) throws RemoteException;
 }

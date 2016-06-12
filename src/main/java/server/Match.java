@@ -1,14 +1,22 @@
 package server;
 
 import java.io.IOException;
+import java.rmi.AlreadyBoundException;
+import java.rmi.NotBoundException;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 import java.util.Map;
 
+import client.rmi.ClientViewRemote;
 import controller.Controller;
 import model.GameState;
 import model.changes.ChangeMsg;
 import model.player.Player;
 import parser.Parser;
+import view.rmi.RMIView;
+import view.rmi.RMIViewRemote;
 import view.socket.ServerSocketView;
 
 public class Match {
@@ -24,10 +32,14 @@ public class Match {
 	 * @param players
 	 * @param tmpViewSocket
 	 * @throws IOException
+	 * @throws AlreadyBoundException 
+	 * @throws NotBoundException 
 	 */
-	public Match(ArrayList<Player> players, Map<Player, ServerSocketView> tmpViewSocket) throws IOException {
-		if(players==null || tmpViewSocket==null){
-			throw new NullPointerException("players or tmpViewSocket can't be null");
+	public Match(ArrayList<Player> players, Map<Player, ServerSocketView> tmpViewSocket,
+			Map<Player, ClientViewRemote> tmpViewRMI) throws IOException, AlreadyBoundException, NotBoundException {
+		
+		if(players==null || tmpViewSocket==null || tmpViewRMI==null){
+			throw new NullPointerException("players or tmpViews can't be null");
 		}
 		
 		this.parser = new Parser();
@@ -51,7 +63,23 @@ public class Match {
 			}
 		}
 		
-		this.gameState.notifyObserver(new ChangeMsg("[SERVER] New match started. The first player is " + this.gameState.getCurrentPlayer().getNickname() + ". Let's go!"));
+		RMIView rmiViewMatch = new RMIView();
+		RMIViewRemote viewRemote=(RMIViewRemote) UnicastRemoteObject.exportObject(rmiViewMatch, 0);
+//		registry.bind("match1", rmiViewMatch);
+		for (Map.Entry<Player, ClientViewRemote> entry : tmpViewRMI.entrySet()) {
+			rmiViewMatch.registerClient(entry.getKey(), entry.getValue());
+//			RMIViewRemote view = (RMIViewRemote) entry.getValue();
+//			view = (RMIViewRemote) registry.lookup("match1");
+			
+		}
+		
+		this.gameState.registerObserver(rmiViewMatch);
+		rmiViewMatch.registerObserver(this.controller);
+		System.out.println(rmiViewMatch.getObservers());
+		
+		System.out.println("clients rmiviewMatch: " + rmiViewMatch.getClients());
+		
+//		this.gameState.notifyObserver(new ChangeMsg("[SERVER] New match started. The first player is " + this.gameState.getCurrentPlayer().getNickname() + ". Let's go!"));
 		
 	}
 

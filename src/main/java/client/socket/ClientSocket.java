@@ -8,6 +8,8 @@ import java.net.UnknownHostException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import client.ClientOutHandler;
+
 public class ClientSocket {
 	
 	private final static int PORT = 29999; //file!
@@ -19,7 +21,7 @@ public class ClientSocket {
 		Socket socket = new Socket(IP, PORT); 
 		System.out.println("[CLIENT] Connection Created");
 		ExecutorService executor = Executors.newFixedThreadPool(2); //load from file
-		executor.submit(new ClientOutHandler(new ObjectOutputStream(socket.getOutputStream())));
+		executor.submit(new ClientOutHandlerSocket(new ObjectOutputStream(socket.getOutputStream())));
 		executor.submit(new ClientInHandler(new ObjectInputStream(socket.getInputStream()))); 
 	}
 	

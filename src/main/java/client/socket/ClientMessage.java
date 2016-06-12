@@ -5,6 +5,7 @@ package client.socket;
 
 import java.io.Serializable;
 
+import client.rmi.ClientViewRemote;
 import dto.DTOObject;
 import model.player.Player;
 
@@ -20,10 +21,17 @@ public class ClientMessage implements Serializable {
 	private static final long serialVersionUID = 8197501378692211337L;
 	
 	private transient Player player;
-	private DTOObject message;
+	private final DTOObject message;
+	private ClientViewRemote clientRMI;
 	
+
 	public ClientMessage(Player player, DTOObject message){
 		this.player = player;
+		this.message = message;
+	}
+	
+	public ClientMessage(ClientViewRemote clientRMI, DTOObject message){
+		this.clientRMI = clientRMI;
 		this.message = message;
 	}
 	
@@ -41,8 +49,15 @@ public class ClientMessage implements Serializable {
 	/**
 	 * @return the message
 	 */
-	public Object getMessage() {
+	public DTOObject getMessage() {
 		return message;
+	}
+	
+	/**
+	 * @return the clientRMI
+	 */
+	public ClientViewRemote getClientRMI() {
+		return clientRMI;
 	}
 
 	/* (non-Javadoc)

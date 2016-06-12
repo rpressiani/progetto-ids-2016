@@ -27,7 +27,7 @@ public abstract class Observable<C> {
 		}
 		this.observers.add(o);
 	}
-	
+
 	public void registerObserver(Player player, Observer<C> o){
 		if(o==null) {
 			throw new NullPointerException("Observers cannot be null"); 
@@ -56,8 +56,10 @@ public abstract class Observable<C> {
 		if(c==null) {
 			throw new NullPointerException("Change cannot be null"); 
 		}
+		System.out.println("size observer: " + this.observers.size());
 		for(Observer<C> o: this.observers){
 			o.update(c);
+			System.out.println("Observer notified");
 		}
 	}
 	
@@ -68,5 +70,13 @@ public abstract class Observable<C> {
 		if (this.observersMap.get(player) != null) {
 				this.observersMap.get(player).update(c);	
 		}
+	}
+	
+	
+	/**
+	 * @return the observers
+	 */
+	public List<Observer<C>> getObservers() {
+		return observers;
 	}
 }

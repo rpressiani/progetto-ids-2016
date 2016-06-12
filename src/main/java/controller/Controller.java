@@ -24,7 +24,10 @@ public class Controller implements Observer<ClientMessage> {
 	public void update(ClientMessage msg){
 		Observer.super.update(msg);
 		
+		
+		System.out.println("action received1");
 		if (msg.getMessage() instanceof DTOAction) {
+			System.out.println("action received2");
 			DTOAction action = (DTOAction) msg.getMessage();
 			Player player = msg.getPlayer();
 			player.move(action.accept(this.visitor, msg.getPlayer()), this.gameState);	
