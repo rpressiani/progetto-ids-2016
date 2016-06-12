@@ -28,6 +28,7 @@ public class Player {
 	private static int serialIDGenerator = 0;
 	private final int serialID;
 	private int id;
+	private boolean enabled;
 	private String nickname;
 	private Coins coins;
 	private NobilityLevel nobilityLevel;
@@ -53,6 +54,7 @@ public class Player {
 //		if(color==null) {
 //			throw new IllegalArgumentException("each player should have a color which is not null"); 
 //		}
+		this.enabled = false;
 		this.serialID = serialIDGenerator;
 		serialIDGenerator++;
 		this.nickname = null;
@@ -136,6 +138,20 @@ public class Player {
 		this.getState().printOut(this, this.state);
 	}
 	
+	/**
+	 * @return the enabled
+	 */
+	public boolean isEnabled() {
+		return enabled;
+	}
+
+	/**
+	 * @param enabled the enabled to set
+	 */
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
+
 	/**
 	 * @return the nickname
 	 */

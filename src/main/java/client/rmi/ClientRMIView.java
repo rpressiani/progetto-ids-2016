@@ -1,4 +1,4 @@
-package client;
+package client.rmi;
 
 import java.io.Serializable;
 import java.rmi.RemoteException;
@@ -13,7 +13,7 @@ public class ClientRMIView extends UnicastRemoteObject implements ClientViewRemo
 	 */
 	private static final long serialVersionUID = 6354186384238327446L;
 	
-	protected ClientRMIView() throws RemoteException {
+	public ClientRMIView() throws RemoteException {
 		super();
 		// TODO Auto-generated constructor stub
 	}

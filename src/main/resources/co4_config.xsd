@@ -79,6 +79,7 @@
         
         <xsd:complexType name="CFGMap">
             <xsd:sequence>
+                <xsd:element name="cliDisplay" type="xsd:string" minOccurs="1" maxOccurs="1"/>
                 <xsd:element name="kingInitLocation" type="xsd:string" minOccurs="1" maxOccurs="1"/>
                 <xsd:element name="ancestries" type="bks:CFGAncestries" minOccurs="1" maxOccurs="1"/>
                 <xsd:element name="region" type="bks:CFGRegion" minOccurs="1" maxOccurs="unbounded"/>

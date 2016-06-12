@@ -1,11 +1,11 @@
-package view;
+package view.socket;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 
-import client.ClientMessage;
+import client.socket.ClientMessage;
 import dto.DTOObject;
 import dto.actions.DTOAction;
 import dto.changes.DTOChange;
@@ -16,6 +16,8 @@ import model.GameState;
 import model.changes.Change;
 import model.player.Player;
 import utilities.Color;
+import view.View;
+import view.VisitorChanges;
 
 public class ServerSocketView extends View implements Runnable {
 	
@@ -24,7 +26,6 @@ public class ServerSocketView extends View implements Runnable {
 	private ObjectOutputStream socketOut;
 	private GameState game;
 	private Player player;
-	private boolean enabled = false;
 	private VisitorChanges visitorChanges;
 	private VisitorQueries visitorQueries;
 	
@@ -98,7 +99,7 @@ public class ServerSocketView extends View implements Runnable {
 					
 					ClientMessage msgOut;
 					
-					if (!enabled) {
+					if (!this.player.isEnabled()) {
 						
 						if (msgIn.getMessage() instanceof DTOSetup) {
 							
@@ -106,11 +107,11 @@ public class ServerSocketView extends View implements Runnable {
 							
 							this.player.setNickname(new String(setup.getNickname()));
 							this.player.setColor(new Color(setup.getColor().getColorString()));
-							this.enabled = true;
+							this.player.setEnabled(true);
 							
 							StringBuilder playerEnabled = new StringBuilder();
 							playerEnabled.append("\n[SERVER] Setup completed\n");
-							playerEnabled.append("[SERVER] player.enabled == " + this.enabled + "\n");
+							playerEnabled.append("[SERVER] player.enabled == " + this.player.isEnabled() + "\n");
 							playerEnabled.append("[SERVER] Waiting for a match to start...\n");
 							this.socketOut.writeObject(playerEnabled.toString());
 							this.socketOut.flush();
@@ -158,7 +159,7 @@ public class ServerSocketView extends View implements Runnable {
 	 * @return if the object is enabled
 	 */
 	public boolean isEnabled() {
-		return enabled;
+		return this.player.isEnabled();
 	}
 
 }

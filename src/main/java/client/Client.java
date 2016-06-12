@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.net.UnknownHostException;
 import java.util.Scanner;
 
+import client.socket.ClientSocket;
+
 public class Client {
 
 	public static void main(String[] args) throws UnknownHostException, IOException {

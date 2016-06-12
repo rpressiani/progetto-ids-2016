@@ -87,5 +87,13 @@ public class PermissionCard extends Bonusable implements Marketable {
 	public Set<City> getPossibleCities() {
 		return possibleCities;
 	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "PermissionCard [idCard=" + idCard + ", used=" + used + ", possibleCities=" + possibleCities + "]";
+	}
 	
 }

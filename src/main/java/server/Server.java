@@ -13,16 +13,20 @@ import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import client.rmi.ClientViewRemote;
 import model.player.Player;
-import view.RMIView;
-import view.RMIViewRemote;
-import view.ServerSocketView;
+import view.rmi.RMIView;
+import view.rmi.RMIViewRemote;
+import view.socket.ServerSocketView;
 
 public class Server {
 	
 	private final static int PORT = 29999; //load from file!
-	private final static int RMI_PORT = 52365;
-	private final String NAME = "prigionieri";
+	private final static int RMI_PORT = 29998;
+	private final String NAME = "co4";
+	
+	private static Map<Player, ServerSocketView> tmpViewSocket = new HashMap<Player, ServerSocketView>();
+	private static Map<Player, ClientViewRemote> tmpViewRMI = new HashMap<Player, ClientViewRemote>();
 	
 	/**
 	 * start the socket
@@ -31,12 +35,12 @@ public class Server {
 	 */
 	private void startSocket() throws IOException, ClassNotFoundException {
 		ExecutorService viewExecutor = Executors.newCachedThreadPool(); 
-		ExecutorService matchExecutor = Executors.newCachedThreadPool();
+		
 		ServerSocket serverSocket = new ServerSocket(PORT); 
 		System.out.println("SERVER SOCKET READY ON PORT: " + PORT);
 		
-		Map<Player, ServerSocketView> tmpViewSocket = new HashMap<Player, ServerSocketView>();
-		matchExecutor.submit(new MatchCreator(tmpViewSocket));
+//		tmpViewSocket = new HashMap<Player, ServerSocketView>();
+		
 		
 		
 		while(true) {
@@ -45,14 +49,15 @@ public class Server {
 			ServerSocketView view = new ServerSocketView(socket);
 			viewExecutor.submit(view);
 			tmpViewSocket.put(view.getPlayer(), view);
-			System.out.println("NEW CLIENTSOCKET ACCEPTED");
+			System.out.println("NEW CLIENT_SOCKET ACCEPTED");
 		}
 	}
 	
 	private void startRMI() throws RemoteException, AlreadyBoundException{
 		Registry registry = LocateRegistry.createRegistry(RMI_PORT);
 		System.out.println("Constructing the RMI registry");
-		RMIView rmiView=new RMIView();
+		RMIView rmiView=new RMIView(tmpViewRMI);
+		System.out.println("RMIVIEW SERVER: " + rmiView);
 		RMIViewRemote viewRemote=(RMIViewRemote) UnicastRemoteObject.exportObject(rmiView, 0);
 		System.out.println("Binding the server implementation to the registry");
 		registry.bind(NAME, rmiView);
@@ -67,6 +72,9 @@ public class Server {
 	 */
 	public static void main(String[] args) throws IOException, ClassNotFoundException, AlreadyBoundException {
 		Server server = new Server();
+		
+		ExecutorService matchExecutor = Executors.newCachedThreadPool();
+		matchExecutor.submit(new MatchCreator(tmpViewSocket, tmpViewRMI));
 		
 		System.out.println("STARTING RMI");
 		server.startRMI();
