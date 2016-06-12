@@ -5,7 +5,6 @@ import java.rmi.RemoteException;
 
 import client.ClientViewRemote;
 import dto.actions.DTOAction;
-import model.actions.GeneralAction;
 
 
 public interface RMIViewRemote extends Remote {
