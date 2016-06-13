@@ -15,6 +15,15 @@ public class DTOPlayerBasic implements DTOObject {
 	private final DTOColor color;
 	
 	public DTOPlayerBasic(int serialID, String nickname, DTOColor color) {
+		if(serialID<0) {
+			throw new IllegalArgumentException("serialID must be >=0"); 
+		}
+		if(nickname==null) {
+			throw new NullPointerException("nickname cannot be null"); 
+		}
+		if(color==null) {
+			throw new NullPointerException("color cannot be null"); 
+		}
 		this.serialID = serialID;
 		this.nickname = nickname;
 		this.color = color;

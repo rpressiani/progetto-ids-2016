@@ -1,29 +1,30 @@
-package it.polimi.ingsw.cg12.testDTO;
+package it.polimi.ingsw.cg12.testDTO.playerInfo;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import dto.playerInfo.DTONobilityLevel;
+import dto.playerInfo.DTOCoins;
 
-public class TestDTONobilityLevel {
+public class TestDTOCoins {
 
 	@Test
-	public void testWrongLevelInConstructorThrowsException() {
+	public void testWrongQuantityInConstructorThrowsException() {
 		boolean thrown = false; 
-		int level = -2; 
+		int quantity = -1; 
 		try {
-			DTONobilityLevel nobilityLevel = new DTONobilityLevel(level); 
+			DTOCoins coins = new DTOCoins(quantity); 
 		} catch(IllegalArgumentException e) {
 			thrown = true; 
 		}
+		assertTrue(thrown); 
 	}
 	@Test
 	public void testIfConstructorWorks() {
 		boolean thrown = false; 
-		int level = 0; 
+		int quantity = 2; 
 		try {
-			DTONobilityLevel nobilityLevel = new DTONobilityLevel(level); 
+			DTOCoins coins = new DTOCoins(quantity); 
 		} catch(IllegalArgumentException e) {
 			thrown = true; 
 		}
