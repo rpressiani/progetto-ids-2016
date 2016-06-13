@@ -42,6 +42,5 @@ public class ClientRMI {
 	public void initMatch() throws RemoteException, NotBoundException {
 		Registry registry = LocateRegistry.getRegistry(HOST, PORT);
 		this.serverStub = (RMIViewRemote) registry.lookup("match1");
-		
 	}
 }
