@@ -31,12 +31,12 @@ public class CounsellorGroup {
 		this.counter = counter;
 	}
 	
-	public void add(){
+	public synchronized void add(){
 		this.counter++;
 	}
 	
-	public void remove(){
-		this.counter--;
+	public synchronized void remove(){
+		this.counter = this.counter - 1;
 	}
 
 	/**
