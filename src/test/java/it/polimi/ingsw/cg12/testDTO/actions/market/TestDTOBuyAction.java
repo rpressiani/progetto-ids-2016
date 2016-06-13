@@ -1,4 +1,4 @@
-package it.polimi.ingsw.cg12.testDTO;
+package it.polimi.ingsw.cg12.testDTO.actions.market;
 
 import static org.junit.Assert.*;
 

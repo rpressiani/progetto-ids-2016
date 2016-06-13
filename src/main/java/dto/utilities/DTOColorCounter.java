@@ -14,6 +14,9 @@ public class DTOColorCounter implements DTOObject {
 	private final Map<DTOColor, Integer> structure;
 	
 	public DTOColorCounter(Map<DTOColor, Integer> structure) {
+		if(structure==null) {
+			throw new NullPointerException("structure cannot be null"); 
+		}
 		this.structure = structure;
 	}
 

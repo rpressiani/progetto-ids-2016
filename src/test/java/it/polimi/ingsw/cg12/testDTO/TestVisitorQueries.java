@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import org.junit.Test;
 
 import dto.queries.VisitorQueries;
+import dto.queries.request.DTOProposalOrderRequest;
 import model.GameState;
 import model.player.Player;
 import parser.Parser;
@@ -36,6 +37,23 @@ public class TestVisitorQueries {
 		GameState gameState = new GameState(parser, players); 
 		try {
 			VisitorQueries query = new VisitorQueries(gameState, player2); 
+		} catch(NullPointerException e) {
+			thrown = true; 
+		}
+		assertTrue(thrown); 
+	}
+	@Test
+	public void testNullParameterInVisitThrowsException() {
+		boolean thrown = false; 
+		Parser parser = new Parser(); 
+		Player player = new Player(); 
+		ArrayList<Player> players = new ArrayList<Player>();
+		players.add(player); 
+		GameState gameState = new GameState(parser, players); 
+		VisitorQueries query = new VisitorQueries(gameState, player);
+		try {
+			DTOProposalOrderRequest dto = null;
+			query.visit(dto); 
 		} catch(NullPointerException e) {
 			thrown = true; 
 		}
