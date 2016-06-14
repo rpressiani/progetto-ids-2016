@@ -26,6 +26,8 @@ public class Match {
 	private GameState gameState; 
 	private Controller controller;
 	private Parser parser;
+	private final static String HOST = "127.0.0.1";
+	private final static int PORT = 29998;
 	
 	/**
 	 * 
@@ -65,9 +67,12 @@ public class Match {
 		
 		RMIView rmiViewMatch = new RMIView();
 		RMIViewRemote viewRemote=(RMIViewRemote) UnicastRemoteObject.exportObject(rmiViewMatch, 0);
+		Registry registry=LocateRegistry.getRegistry(HOST, PORT);
+		registry.rebind("co4", rmiViewMatch);
 //		registry.bind("match1", rmiViewMatch);
 		for (Map.Entry<Player, ClientViewRemote> entry : tmpViewRMI.entrySet()) {
-			rmiViewMatch.registerClient(entry.getKey(), entry.getValue());
+			entry.getValue().changeStub(rmiViewMatch);
+//			rmiViewMatch.registerClient(entry.getKey(), entry.getValue());
 //			RMIViewRemote view = (RMIViewRemote) entry.getValue();
 //			view = (RMIViewRemote) registry.lookup("match1");
 			
