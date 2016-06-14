@@ -28,29 +28,29 @@ public class TestChangePlayerStatus {
 	public void testGetCoinsWorks() {
 		Player player = new Player(); 
 		ChangePlayerStatus change = new ChangePlayerStatus(player); 
-		Coins temp = change.getCoins();
-		assertEquals(temp, change.getCoins()); 
+		Coins temp = change.getPlayer().getCoins();
+		assertEquals(temp, change.getPlayer().getCoins()); 
 	}
 	@Test
 	public void testGetNobilityLevelWorks() {
 		Player player = new Player(); 
 		ChangePlayerStatus change = new ChangePlayerStatus(player); 
-		NobilityLevel temp = change.getNobilityLevel();
-		assertEquals(temp, change.getNobilityLevel()); 
+		NobilityLevel temp = change.getPlayer().getNobilityLevel();
+		assertEquals(temp, change.getPlayer().getNobilityLevel()); 
 	}
 	@Test
 	public void testGetScoreWorks() {
 		Player player = new Player(); 
 		ChangePlayerStatus change = new ChangePlayerStatus(player); 
-		Score temp = change.getScore();
-		assertEquals(temp, change.getScore()); 
+		Score temp = change.getPlayer().getScore();
+		assertEquals(temp, change.getPlayer().getScore()); 
 	}
 	@Test
 	public void testGetAssistantsWorks() {
 		Player player = new Player(); 
 		ChangePlayerStatus change = new ChangePlayerStatus(player); 
-		Assistants temp = change.getAssistants();
-		assertEquals(temp, change.getAssistants()); 
+		Assistants temp = change.getPlayer().getAssistants();
+		assertEquals(temp, change.getPlayer().getAssistants()); 
 	}
 	
 
