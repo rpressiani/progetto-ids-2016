@@ -11,6 +11,10 @@ public class Controller implements Observer<ClientMessage> {
 	private final GameState gameState;
 	private final VisitorActions visitor;
 	
+	/**
+	 * @param gameState
+	 * @throws NullPointerException if gameState is null
+	 */
 	public Controller(GameState gameState) {
 		if(gameState==null) {
 			throw new NullPointerException("game should not be null"); 

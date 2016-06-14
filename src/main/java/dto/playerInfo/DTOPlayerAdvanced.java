@@ -24,7 +24,15 @@ public class DTOPlayerAdvanced extends DTOPlayer implements DTOObject {
 			ArrayList<DTOPermissionCard> permissionCards, ArrayList<DTOCity> builtCities) {
 		
 		super(serialID, nickname, color, coins, assistants, nobilityLevel, score);
-		
+		if(politicalHand==null) {
+			throw new NullPointerException("politicalHand cannot be null"); 
+		}
+		if(permissionCards==null) {
+			throw new NullPointerException("permissionCards cannot be null"); 
+		}
+		if(builtCities==null) {
+			throw new NullPointerException("builtCities cannot be null"); 
+		}
 		this.politicalHand = politicalHand;
 		this.permissionCards = permissionCards;
 		this.builtCities = builtCities;

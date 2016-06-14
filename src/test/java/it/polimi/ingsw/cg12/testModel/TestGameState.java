@@ -1,4 +1,4 @@
-package it.polimi.ingsw.cg12;
+package it.polimi.ingsw.cg12.testModel;
 
 import static org.junit.Assert.*;
 

@@ -25,7 +25,22 @@ public class DTOMapResponse implements DTOObject {
 	private final Set<DTOCity> builtCities;
 	private final Map<DTOCity, Set<DTOPlayerBasic>> citiesStatus;
 	
+	/**
+	 * @param cliDisplay
+	 * @param builtCities
+	 * @param citiesStatus
+	 * @throws NullPointerException if one of the parameters is null
+	 */
 	public DTOMapResponse(String cliDisplay, Set<DTOCity> builtCities, Map<DTOCity, Set<DTOPlayerBasic>> citiesStatus) {
+		if(cliDisplay==null) {
+			throw new NullPointerException("cliDisplay cannot be null"); 
+		}
+		if(builtCities==null) {
+			throw new NullPointerException("builtCities cannot be null"); 
+		}
+		if(citiesStatus==null) {
+			throw new NullPointerException("citiesStatus cannot be null"); 
+		}
 		this.cliDisplay = cliDisplay;
 		this.builtCities = builtCities;
 		this.citiesStatus = citiesStatus;

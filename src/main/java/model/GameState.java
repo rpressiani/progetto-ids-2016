@@ -1,7 +1,11 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Map.Entry;
+import java.util.stream.Stream;
 
 import model.changes.Change;
 import model.council.Balcony;
@@ -188,8 +192,25 @@ public class GameState extends Observable<Change>{
 			int i=this.getPlayers().indexOf(player);
 			if((i+1)!=this.getPlayers().size()) this.setCurrentPlayer(this.getPlayers().get(i+1));
 			else this.setCurrentPlayer(this.getPlayers().get(0));
-			//this.notifyObserver(new CurrentPlayerChange(player));
 		}
 	}
+
+	public void calculateWinner(ArrayList<Player> players){
+		Collections.sort(players, new NobilityComparator());
+		
+		int maxNobility=players.get(0).getNobilityLevel().getItems();
+		
+		
+		for(int i=0 ; maxNobility==players.get(i).getNobilityLevel().getItems(); i++){
+			players.get(i).getScore().add(5);
+		}
+		
+		if(true){
+			for(int i=0; maxNobility==players.get(i).getNobilityLevel().getItems(); i++){
+				players.get(i).getScore().add(5);
+			}
+		}
+	}
+	
 	
 }

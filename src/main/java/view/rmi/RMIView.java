@@ -1,5 +1,6 @@
 package view.rmi;
 
+import java.io.Serializable;
 import java.rmi.RemoteException;
 import java.util.HashMap;
 import java.util.Map;
@@ -15,8 +16,12 @@ import model.player.Player;
 import utilities.Color;
 import view.View;
 
-public class RMIView extends View implements RMIViewRemote {
+public class RMIView extends View implements RMIViewRemote, Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6855000797347157450L;
 //	private Set<ClientViewRemote> clients;
 	private Map<Player, ClientViewRemote> clients;
 	

@@ -15,7 +15,14 @@ public class DTOFreeCounsellorsResponse implements DTOObject {
 	
 	private final DTOColorCounter garbageStatus;
 	
+	/**
+	 * @param garbageStatus
+	 * @throws NullPointerException if garbageStatus is null
+	 */
 	public DTOFreeCounsellorsResponse(DTOColorCounter garbageStatus) {
+		if(garbageStatus==null) {
+			throw new NullPointerException("garbageStatus cannot be null"); 
+		}
 		this.garbageStatus = garbageStatus;
 	}
 

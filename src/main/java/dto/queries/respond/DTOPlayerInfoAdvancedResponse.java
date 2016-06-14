@@ -18,6 +18,9 @@ public class DTOPlayerInfoAdvancedResponse extends DTOPlayerInfoResponse impleme
 	private final DTOPlayerAdvanced player;
 	
 	public DTOPlayerInfoAdvancedResponse(DTOPlayerAdvanced player) {
+		if(player==null) {
+			throw new NullPointerException("player cannot be null"); 
+		}
 		this.player = player;
 	}
 

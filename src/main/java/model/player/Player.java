@@ -39,7 +39,7 @@ public class Player {
 	private Set<PermissionCard> permissionHand;
 	private Set<City> builtCities; 
 	private State state;
-	
+
 	/**
 	 * Constructor
 	 * Set nickname, color, hand and create the other objects.
@@ -48,12 +48,6 @@ public class Player {
 	 * @param color		color chosen by the player
 	 */
 	public Player() {
-//		if(nickname==null) {
-//			throw new IllegalArgumentException("player should have a not null nickname"); 
-//		}
-//		if(color==null) {
-//			throw new IllegalArgumentException("each player should have a color which is not null"); 
-//		}
 		this.enabled = false;
 		this.serialID = serialIDGenerator;
 		serialIDGenerator++;
@@ -64,7 +58,7 @@ public class Player {
 		this.builtCities = new HashSet<City>();
 		this.permissionHand= new HashSet<PermissionCard>();
 	}
-
+	
 	/**
 	 * initPlayer conclude the setting of the player after he has joined a specific match. An ID is set, coins and assistants
 	 * are set based on the content of the configuration file and the PoliticalHand of the player is instantiated.

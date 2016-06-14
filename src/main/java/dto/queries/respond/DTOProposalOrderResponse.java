@@ -16,7 +16,7 @@ public class DTOProposalOrderResponse implements DTOObject {
 	/**
 	 * 
 	 * @param proposalOrder
-	 * @throws NullPointerException
+	 * @throws NullPointerException if proposalOrder is null
 	 */
 	public DTOProposalOrderResponse(ArrayList<String> proposalOrder) {
 		if(proposalOrder==null){
