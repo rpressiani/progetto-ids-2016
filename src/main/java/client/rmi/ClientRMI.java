@@ -8,7 +8,8 @@ import java.rmi.registry.Registry;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import view.rmi.RMIViewRemote;
+import server.RMIServer;
+import view.rmi.RMIView;
 
 
 public class ClientRMI {
@@ -17,29 +18,25 @@ public class ClientRMI {
 	private final static int PORT = 29998;
 	private static final String NAME = "co4";
 	
-	private RMIViewRemote serverStub;
+	private RMIServer serverStub;
+	private RMIView rmiView;
 	
 	public ClientRMI() throws RemoteException, NotBoundException {
 		Registry registry = LocateRegistry.getRegistry(HOST, PORT);
-		this.serverStub = (RMIViewRemote) registry.lookup(NAME);
+		this.serverStub = (RMIServer) registry.lookup(NAME);
 		
-		ClientRMIView rmiView=new ClientRMIView();
+		ClientRMIView clientRmiView=new ClientRMIView();
 		
-		this.serverStub.registerClient(rmiView);
+		this.rmiView=serverStub.connect();
+		this.rmiView.registerClient(clientRmiView);
 		
 		ExecutorService executor = Executors.newFixedThreadPool(2); //load from file
-		executor.submit(new ClientOutHandlerRMI(serverStub, rmiView));
+		executor.submit(new ClientOutHandlerRMI(rmiView, clientRmiView));
 		
 	}
 	
 	public static void main(String[] args) throws RemoteException, NotBoundException, AlreadyBoundException {
 		new ClientRMI();
 	}
-	
-	public void initMatch() throws RemoteException, NotBoundException {
-		Registry registry = LocateRegistry.getRegistry(HOST, PORT);
-		this.serverStub = (RMIViewRemote) registry.lookup("match1");
-	}
-	
 	
 }

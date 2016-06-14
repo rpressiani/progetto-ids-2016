@@ -5,8 +5,6 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 
 import model.changes.Change;
-import model.player.Player;
-import view.rmi.RMIView;
 import view.rmi.RMIViewRemote;
 
 public class ClientRMIView extends UnicastRemoteObject implements ClientViewRemote, Serializable {

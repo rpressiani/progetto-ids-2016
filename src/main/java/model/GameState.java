@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map.Entry;
@@ -194,6 +195,22 @@ public class GameState extends Observable<Change>{
 		}
 	}
 
+	public void calculateWinner(ArrayList<Player> players){
+		Collections.sort(players, new NobilityComparator());
+		
+		int maxNobility=players.get(0).getNobilityLevel().getItems();
+		
+		
+		for(int i=0 ; maxNobility==players.get(i).getNobilityLevel().getItems(); i++){
+			players.get(i).getScore().add(5);
+		}
+		
+		if(true){
+			for(int i=0; maxNobility==players.get(i).getNobilityLevel().getItems(); i++){
+				players.get(i).getScore().add(5);
+			}
+		}
+	}
 	
 	
 }

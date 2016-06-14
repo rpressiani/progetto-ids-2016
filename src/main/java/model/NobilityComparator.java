@@ -1,8 +1,10 @@
 package model;
 
+import java.util.Comparator;
+
 import model.player.Player;
 
-public class NobilityComparator implements Comparable<Player> {
+public class NobilityComparator implements Comparator<Player> {
 	
 	/**
 	 * 
@@ -10,16 +12,13 @@ public class NobilityComparator implements Comparable<Player> {
 	 * @param p2 player
 	 * @return 1 if p1Nobility is greater than p2Nobility, -1 the opposite, 0 if same nobility, 
 	 */
-	public int compareTo(Player p1, Player p2) {
+	@Override
+	public int compare(Player p1, Player p2) {
 		if(p1==null || p2==null) throw new NullPointerException("players can't be null");
 		
-		return p1.getNobilityLevel().getItems().compareTo(p2.getNobilityLevel().getItems());
+		//return p1.getNobilityLevel().getItems().compareTo(p2.getNobilityLevel().getItems());
+		return p2.getNobilityLevel().getItems().compareTo(p1.getNobilityLevel().getItems());
 	}
 
-	@Override
-	public int compareTo(Player o) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 
 }

@@ -56,11 +56,11 @@ public class Server {
 	private void startRMI() throws RemoteException, AlreadyBoundException{
 		Registry registry = LocateRegistry.createRegistry(RMI_PORT);
 		System.out.println("Constructing the RMI registry");
-		RMIView rmiView=new RMIView(tmpViewRMI);
-		System.out.println("RMIVIEW SERVER: " + rmiView);
-		RMIViewRemote viewRemote=(RMIViewRemote) UnicastRemoteObject.exportObject(rmiView, 0);
+		RMIServer serverRMI=new RMIServer();
+		System.out.println("RMIVIEW SERVER: " + serverRMI);
+		RMIServer serverView=(RMIServer) UnicastRemoteObject.exportObject(serverRMI, 0);
 		System.out.println("Binding the server implementation to the registry");
-		registry.bind(NAME, rmiView);
+		registry.bind(NAME, serverView);
 	}
 	
 	/**

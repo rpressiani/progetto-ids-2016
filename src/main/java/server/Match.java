@@ -66,6 +66,7 @@ public class Match {
 		}
 		
 		RMIView rmiViewMatch = new RMIView();
+		System.out.println(rmiViewMatch);
 		RMIViewRemote viewRemote=(RMIViewRemote) UnicastRemoteObject.exportObject(rmiViewMatch, 0);
 		Registry registry=LocateRegistry.getRegistry(HOST, PORT);
 		registry.rebind("co4", rmiViewMatch);
