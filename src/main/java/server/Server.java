@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.rmi.AlreadyBoundException;
-import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
@@ -16,8 +15,6 @@ import java.util.concurrent.Executors;
 
 import client.rmi.ClientViewRemote;
 import model.player.Player;
-import view.rmi.RMIView;
-import view.rmi.RMIViewRemote;
 import view.socket.ServerSocketView;
 
 public class Server {

@@ -16,7 +16,6 @@ import model.changes.ChangeMsg;
 import model.player.Player;
 import parser.Parser;
 import view.rmi.RMIView;
-import view.rmi.RMIViewRemote;
 import view.socket.ServerSocketView;
 
 public class Match {
@@ -65,27 +64,8 @@ public class Match {
 			}
 		}
 		
-		RMIView rmiViewMatch = new RMIView();
-		System.out.println(rmiViewMatch);
-		RMIViewRemote viewRemote=(RMIViewRemote) UnicastRemoteObject.exportObject(rmiViewMatch, 0);
-		Registry registry=LocateRegistry.getRegistry(HOST, PORT);
-		registry.rebind("co4", rmiViewMatch);
-//		registry.bind("match1", rmiViewMatch);
-		for (Map.Entry<Player, ClientViewRemote> entry : tmpViewRMI.entrySet()) {
-			entry.getValue().changeStub(rmiViewMatch);
-//			rmiViewMatch.registerClient(entry.getKey(), entry.getValue());
-//			RMIViewRemote view = (RMIViewRemote) entry.getValue();
-//			view = (RMIViewRemote) registry.lookup("match1");
-			
-		}
-		
-		this.gameState.registerObserver(rmiViewMatch);
-		rmiViewMatch.registerObserver(this.controller);
-		System.out.println(rmiViewMatch.getObservers());
-		
-		System.out.println("clients rmiviewMatch: " + rmiViewMatch.getClients());
-		
-//		this.gameState.notifyObserver(new ChangeMsg("[SERVER] New match started. The first player is " + this.gameState.getCurrentPlayer().getNickname() + ". Let's go!"));
+				
+		this.gameState.notifyObserver(new ChangeMsg("[SERVER] New match started. The first player is " + this.gameState.getCurrentPlayer().getNickname() + ". Let's go!"));
 		
 	}
 

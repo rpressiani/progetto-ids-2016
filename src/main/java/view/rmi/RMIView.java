@@ -1,6 +1,5 @@
 package view.rmi;
 
-import java.io.Serializable;
 import java.rmi.RemoteException;
 import java.util.HashMap;
 import java.util.Map;
@@ -16,13 +15,8 @@ import model.player.Player;
 import utilities.Color;
 import view.View;
 
-public class RMIView extends View implements RMIViewRemote, Serializable {
+public class RMIView extends View {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -6855000797347157450L;
-//	private Set<ClientViewRemote> clients;
 	private Map<Player, ClientViewRemote> clients;
 	
 	public RMIView(Map<Player, ClientViewRemote> clients) {
@@ -33,21 +27,20 @@ public class RMIView extends View implements RMIViewRemote, Serializable {
 		this.clients = new HashMap<Player, ClientViewRemote>();
 	}
 	
-	@Override
 	public void registerClient(ClientViewRemote clientStub) throws RemoteException {
 		System.out.println("NEW CLIENT_RMI ACCEPTED");
 		this.clients.put(new Player(), clientStub);
 	}
 	
-	@Override
+
 	public void registerClient(Player player, ClientViewRemote clientStub) throws RemoteException {
 		this.clients.put(player, clientStub);
 	}
 	
-	@Override
+	
 	public void unregisterClient(Player player) throws RemoteException {
 		this.clients.remove(player);
-	};
+	}
 	
 	@Override
 	public void update(Change o) {
@@ -63,7 +56,7 @@ public class RMIView extends View implements RMIViewRemote, Serializable {
 		}
 	}
 
-	@Override
+
 	public void receiveMessage(ClientMessage msgIn) throws RemoteException {
 		
 		System.out.println("MSG RMI RECEIVED");

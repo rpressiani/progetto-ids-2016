@@ -8,8 +8,8 @@ import java.rmi.registry.Registry;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import server.RMIServer;
-import view.rmi.RMIView;
+import server.RMIServerInterface;
+
 
 
 public class ClientRMI {
@@ -18,20 +18,18 @@ public class ClientRMI {
 	private final static int PORT = 29998;
 	private static final String NAME = "co4";
 	
-	private RMIServer serverStub;
-	private RMIView rmiView;
+	private RMIServerInterface serverStub;
 	
 	public ClientRMI() throws RemoteException, NotBoundException {
 		Registry registry = LocateRegistry.getRegistry(HOST, PORT);
-		this.serverStub = (RMIServer) registry.lookup(NAME);
+		this.serverStub = (RMIServerInterface) registry.lookup(NAME);
 		
 		ClientRMIView clientRmiView=new ClientRMIView();
 		
-		this.rmiView=serverStub.connect();
-		this.rmiView.registerClient(clientRmiView);
+		this.serverStub.registerClient(clientRmiView);
 		
 		ExecutorService executor = Executors.newFixedThreadPool(2); //load from file
-		executor.submit(new ClientOutHandlerRMI(rmiView, clientRmiView));
+		//executor.submit(new ClientOutHandlerRMI(rmiView, clientRmiView));
 		
 	}
 	

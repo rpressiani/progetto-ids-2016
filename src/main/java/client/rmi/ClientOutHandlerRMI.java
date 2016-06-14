@@ -4,14 +4,14 @@ import java.rmi.RemoteException;
 
 import client.ClientOutHandler;
 import client.socket.ClientMessage;
-import view.rmi.RMIViewRemote;
+import server.RMIServerInterface;
 
 public class ClientOutHandlerRMI extends ClientOutHandler {
 	
-	private RMIViewRemote serverStub;
+	private RMIServerInterface serverStub;
 	private ClientViewRemote clientRMI;
 	
-	public ClientOutHandlerRMI(RMIViewRemote serverStub, ClientViewRemote clientRMI) {
+	public ClientOutHandlerRMI(RMIServerInterface serverStub, ClientViewRemote clientRMI) {
 		this.serverStub = serverStub;
 		this.clientRMI = clientRMI;
 	}
