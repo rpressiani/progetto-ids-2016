@@ -43,7 +43,14 @@ public class VisitorActions {
 	
 	private GameState gameState;
 	
-	public VisitorActions(GameState gameState){
+	/**
+	 * @param gameState
+	 * @throws NullPointerException if gameState is null
+	 */
+	public VisitorActions(GameState gameState) {
+		if(gameState==null) {
+			throw new NullPointerException("gameState cannot be null"); 
+		}
 		this.gameState = gameState;
 	}
 	
