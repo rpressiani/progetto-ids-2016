@@ -17,7 +17,14 @@ public class DTOPermissionAvailableResponse implements DTOObject {
 	
 	private final Map<String, Set<DTOPermissionCard>> permissionPerRegion;
 	
+	/**
+	 * @param permissionPerRegion
+	 * @throws NullPointerException if permissionPerRegion is null
+	 */
 	public DTOPermissionAvailableResponse(Map<String, Set<DTOPermissionCard>> permissionPerRegion) {
+		if(permissionPerRegion==null) {
+			throw new NullPointerException("permissionPerRegion cannot be null"); 
+		}
 		this.permissionPerRegion = permissionPerRegion;
 	}
 

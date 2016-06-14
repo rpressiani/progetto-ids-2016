@@ -14,7 +14,14 @@ public class DTOPlayersListResponse implements DTOObject {
 	
 	private final ArrayList<DTOPlayerBasic> players;
 	
+	/**
+	 * @param players
+	 * @throws NullPointerException if players is null
+	 */
 	public DTOPlayersListResponse(ArrayList<DTOPlayerBasic> players) {
+		if(players==null) {
+			throw new NullPointerException("players cannot be null");
+		}
 		this.players = players;
 	}
 

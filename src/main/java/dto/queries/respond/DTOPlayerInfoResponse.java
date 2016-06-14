@@ -13,8 +13,14 @@ public class DTOPlayerInfoResponse implements DTOObject {
 	private final boolean error;
 	private final DTOPlayer player;
 	
+	/**
+	 * @param player
+	 * @throws NullPointerException if player is null
+	 */
 	public DTOPlayerInfoResponse(DTOPlayer player) {
-		
+		if(player==null) {
+			throw new NullPointerException("player cannot be null"); 
+		}
 		this.error = false;
 		this.player = player;
 	}
