@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.rmi.AlreadyBoundException;
+import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
@@ -58,7 +59,7 @@ public class Server {
 		System.out.println("Constructing the RMI registry");
 		RMIServer serverRMI=new RMIServer();
 		System.out.println("RMIVIEW SERVER: " + serverRMI);
-		RMIServer serverView=(RMIServer) UnicastRemoteObject.exportObject(serverRMI, 0);
+		RMIServerInterface serverView=(RMIServerInterface) UnicastRemoteObject.exportObject(serverRMI, 0);
 		System.out.println("Binding the server implementation to the registry");
 		registry.bind(NAME, serverView);
 	}
