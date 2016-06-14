@@ -4,21 +4,34 @@ import dto.changes.DTOChangeSubstitutePermissionCards;
 import dto.map.DTOCity;
 import dto.map.DTORegion;
 import dto.changes.DTOChangeMsg;
+import dto.changes.DTOChangePlayerStatus;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+
 import dto.changes.DTOChangeBuildEmporiumWithCard;
 import dto.changes.DTOChangeBuildEmporiumWithKing;
 import dto.changes.DTOChangeBuyPermissionCard;
 import dto.changes.DTOChangeElectCounsellor;
 import dto.changes.DTOChangeElectCounsellorWithAssistant;
 import dto.changes.DTOChangeHireAssistants;
-import dto.changes.DTOChangePlayerStatus;
 import dto.playerInfo.DTOAssistants;
 import dto.playerInfo.DTOCoins;
 import dto.playerInfo.DTONobilityLevel;
+import dto.playerInfo.DTOPlayerAdvanced;
 import dto.playerInfo.DTOScore;
 import dto.utilities.DTOColor;
+import dto.utilities.DTOColorCounter;
+import dto.utilities.DTOPermissionCard;
 import dto.utilities.DTOPermissionCardSelection;
 import model.changes.ChangeSubstitutePermissionCards;
+import model.map.City;
+import model.politicalDeck.PoliticalCard;
 import model.changes.ChangeMsg;
+import model.bonusable.PermissionCard;
 import model.changes.ChangeBuildEmporiumWithCard;
 import model.changes.ChangeBuildEmporiumWithKing;
 import model.changes.ChangeBuyPermissionCard;
@@ -28,6 +41,7 @@ import model.changes.ChangeHireAssistants;
 import model.changes.ChangePlayerStatus;
 
 public class VisitorChanges {
+
 	
 	/**
 	 * @param change
@@ -39,12 +53,39 @@ public class VisitorChanges {
 			throw new NullPointerException("change cannot be null"); 
 		}
 		
-		DTOCoins coins=new DTOCoins(change.getCoins().getItems());
-		DTOAssistants assistants=new DTOAssistants(change.getAssistants().getItems());
-		DTONobilityLevel nobilityLevel=new DTONobilityLevel(change.getNobilityLevel().getItems());
-		DTOScore score=new DTOScore(change.getScore().getItems());
+		Map<DTOColor, Integer> structure = new HashMap<DTOColor, Integer>();
+
+		for (PoliticalCard card : change.getPlayer().getPoliticalHand().getDeck()) {
+			structure.put(new DTOColor(new String(card.getColor())), card.getNumCards());
+		}
+		DTOColorCounter politicalCards = new DTOColorCounter(structure);
 		
-		return new DTOChangePlayerStatus(coins, assistants, nobilityLevel, score);
+		ArrayList<DTOPermissionCard> permissionCards = new ArrayList<DTOPermissionCard>();
+		
+		for (PermissionCard card : change.getPlayer().getPermissionHand()) {
+			Set<DTOCity> cities = new HashSet<DTOCity>();
+			for (City city : card.getPossibleCities()) {
+				cities.add(new DTOCity(city.getName()));
+			}
+			permissionCards.add(new DTOPermissionCard(card.getIdCard(), card.isUsed(), cities));
+		}
+		
+		ArrayList<DTOCity> builtCities = new ArrayList<DTOCity>();
+		
+		for (City city : change.getPlayer().getBuiltCities()) {
+			builtCities.add(new DTOCity(city.getName()));
+		}
+		
+		DTOPlayerAdvanced player = new DTOPlayerAdvanced(change.getPlayer().getSerialID(),
+				new String(change.getPlayer().getNickname()),
+				new DTOColor(new String(change.getPlayer().getColor().getStringID())),
+				new DTOCoins(change.getPlayer().getCoins().getItems().intValue()),
+				new DTOAssistants(change.getPlayer().getAssistants().getItems().intValue()),
+				new DTONobilityLevel(change.getPlayer().getNobilityLevel().getItems().intValue()),
+				new DTOScore(change.getPlayer().getScore().getItems().intValue()),
+				politicalCards, permissionCards, builtCities);
+		
+		return new DTOChangePlayerStatus(player);
 	}
 	
 	/**
