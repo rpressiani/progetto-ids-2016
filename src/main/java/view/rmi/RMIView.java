@@ -15,9 +15,8 @@ import model.player.Player;
 import utilities.Color;
 import view.View;
 
-public class RMIView extends View implements RMIViewRemote {
+public class RMIView extends View {
 
-//	private Set<ClientViewRemote> clients;
 	private Map<Player, ClientViewRemote> clients;
 	
 	public RMIView(Map<Player, ClientViewRemote> clients) {
@@ -28,21 +27,20 @@ public class RMIView extends View implements RMIViewRemote {
 		this.clients = new HashMap<Player, ClientViewRemote>();
 	}
 	
-	@Override
 	public void registerClient(ClientViewRemote clientStub) throws RemoteException {
 		System.out.println("NEW CLIENT_RMI ACCEPTED");
 		this.clients.put(new Player(), clientStub);
 	}
 	
-	@Override
+
 	public void registerClient(Player player, ClientViewRemote clientStub) throws RemoteException {
 		this.clients.put(player, clientStub);
 	}
 	
-	@Override
+	
 	public void unregisterClient(Player player) throws RemoteException {
 		this.clients.remove(player);
-	};
+	}
 	
 	@Override
 	public void update(Change o) {
@@ -58,7 +56,7 @@ public class RMIView extends View implements RMIViewRemote {
 		}
 	}
 
-	@Override
+
 	public void receiveMessage(ClientMessage msgIn) throws RemoteException {
 		
 		System.out.println("MSG RMI RECEIVED");
