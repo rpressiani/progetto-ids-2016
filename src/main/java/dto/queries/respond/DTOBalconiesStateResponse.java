@@ -17,6 +17,9 @@ public class DTOBalconiesStateResponse implements DTOObject {
 	private final Map<String, DTOBalcony> balconies;
 	
 	public DTOBalconiesStateResponse(Map<String, DTOBalcony> balconies) {
+		if(balconies==null) {
+			throw new NullPointerException("balconies cannot be null"); 
+		}
 		this.balconies = balconies;
 	}
 

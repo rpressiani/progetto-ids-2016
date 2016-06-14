@@ -17,7 +17,18 @@ public class DTOScoresResponse implements DTOObject {
 	private final Map<DTOPlayerBasic, DTOScore> scores;
 	private final DTOPlayerBasic requestingPlayer;
 	
+	/**
+	 * @param scores
+	 * @param requestingPlayer
+	 * @throws NullPointerException if scores or requestingPlayer are null
+	 */
 	public DTOScoresResponse(Map<DTOPlayerBasic, DTOScore> scores, DTOPlayerBasic requestingPlayer) {
+		if(scores==null) {
+			throw new NullPointerException("scores cannot be null"); 
+		}
+		if(requestingPlayer==null) {
+			throw new NullPointerException("requestingPlayer cannot be null"); 
+		}
 		this.scores = scores;
 		this.requestingPlayer = requestingPlayer;
 	}

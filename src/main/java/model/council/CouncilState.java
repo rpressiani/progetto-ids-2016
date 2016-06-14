@@ -51,11 +51,17 @@ public abstract class CouncilState {
 		if(color==null) {
 			throw new NullPointerException("can't remove with a null color"); 
 		}
-		Iterator<CounsellorGroup> itr = state.iterator();
-		while(itr.hasNext()){
-			CounsellorGroup counsellorGroupItr = itr.next();
-			if (counsellorGroupItr.getColor().equals(color)) {
-				counsellorGroupItr.remove();
+//		Iterator<CounsellorGroup> itr = state.iterator();
+//		while(itr.hasNext()){
+//			CounsellorGroup counsellorGroupItr = itr.next();
+//			if (counsellorGroupItr.getColor().equals(color)) {
+//				counsellorGroupItr.remove();
+//			}
+//		}
+		for (CounsellorGroup counsellorGroup : state) {
+			if (counsellorGroup.getColor().equals(color)) {
+				counsellorGroup.remove();
+				break;
 			}
 		}
 	}

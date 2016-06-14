@@ -14,6 +14,9 @@ public class DTOBalcony implements DTOObject {
 	private final ArrayList<DTOColor> balconyState;
 	
 	public DTOBalcony(ArrayList<DTOColor> balconyState) {
+		if(balconyState==null) {
+			throw new NullPointerException("balconyState cannot be null"); 
+		}
 		this.balconyState = balconyState;
 	}
 

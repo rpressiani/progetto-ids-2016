@@ -42,6 +42,7 @@ public class Balcony {
 			Color randomColor = getRandomCounsellor(garbage);
 			this.balcony.add(new Counsellor(randomColor));
 			garbage.remove(randomColor);
+			
 		}
 		this.balconyState = new BalconyState(parser);
 		this.initBalconyState();
@@ -80,13 +81,31 @@ public class Balcony {
 		}
 		Random rn = new Random();
 		int selectedIndex = rn.nextInt(this.nColors);
+//		for (int i = 0; i < nColors; i++) {
+//			int groupCounter = garbage.getState().get(selectedIndex).getCounter();
+////			System.out.println(groupCounter);
+//			if (groupCounter > 0) {
+//				break;
+//			}
+//			else selectedIndex = (selectedIndex++) % nColors;
+//		
+//		
+//		}
+		
 		for (int i = 0; i < nColors; i++) {
-			int groupCounter = garbage.getState().get(selectedIndex).getCounter();
-//			System.out.println(groupCounter);
-			if (groupCounter > 0) {
+			int groupCounter = garbage.getState().get(selectedIndex).getCounter().intValue();
+			System.out.println("counter: "+ groupCounter);
+			if (groupCounter>0) {
+				System.out.println("break");
 				break;
+			} else {
+				System.out.println("index++");
+				selectedIndex++;
 			}
-			else selectedIndex = (selectedIndex++) % garbage.getState().size();
+			if (selectedIndex >= nColors.intValue()) {
+				System.out.println("index over");
+				selectedIndex = 0;
+			}
 		}
 		
 		return garbage.getState().get(selectedIndex).getColor();

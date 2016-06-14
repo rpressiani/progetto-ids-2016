@@ -13,6 +13,9 @@ public class DTOCurrentPlayerResponse implements DTOObject {
 	private final DTOPlayerBasic player;
 	
 	public DTOCurrentPlayerResponse(DTOPlayerBasic player) {
+		if(player==null) {
+			throw new NullPointerException("player cannot be null"); 
+		}
 		this.player = player;
 	}
 
