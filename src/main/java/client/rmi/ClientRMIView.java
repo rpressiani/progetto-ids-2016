@@ -5,6 +5,9 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 
 import model.changes.Change;
+import model.player.Player;
+import view.rmi.RMIView;
+import view.rmi.RMIViewRemote;
 
 public class ClientRMIView extends UnicastRemoteObject implements ClientViewRemote, Serializable {
 
@@ -22,6 +25,11 @@ public class ClientRMIView extends UnicastRemoteObject implements ClientViewRemo
 	public void updateClient(Change c) throws RemoteException {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public void changeStub(RMIViewRemote serverStub) throws RemoteException {
+		serverStub.registerClient(this);
 	}
 
 }

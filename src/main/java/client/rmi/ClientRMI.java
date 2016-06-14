@@ -33,14 +33,13 @@ public class ClientRMI {
 	}
 	
 	public static void main(String[] args) throws RemoteException, NotBoundException, AlreadyBoundException {
-		
-		ClientRMI client = new ClientRMI();
-
-		
+		new ClientRMI();
 	}
 	
 	public void initMatch() throws RemoteException, NotBoundException {
 		Registry registry = LocateRegistry.getRegistry(HOST, PORT);
 		this.serverStub = (RMIViewRemote) registry.lookup("match1");
 	}
+	
+	
 }
