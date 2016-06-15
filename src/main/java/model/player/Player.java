@@ -13,6 +13,7 @@ import model.actions.market.SellAction;
 import model.actions.quick.QuickAction;
 import model.bonusable.PermissionCard;
 import model.map.City;
+import model.politicalDeck.PoliticalCard;
 import model.politicalDeck.PoliticalHand;
 import model.politicalDeck.PoliticalRealDeck;
 import model.stateMachine.state.State;
@@ -39,7 +40,7 @@ public class Player {
 	private Set<PermissionCard> permissionHand;
 	private Set<City> builtCities; 
 	private State state;
-
+	
 	/**
 	 * Constructor
 	 * Set nickname, color, hand and create the other objects.
@@ -264,6 +265,17 @@ public class Player {
 		return serialID;
 	}
 
+	public int getAssistantsPlusPoliticals(){
+		int res=0;
+		for(PoliticalCard c : this.getPoliticalHand().getDeck()){
+			res=res+c.getNumCards();
+		}
+		
+		res=res+this.getAssistants().getItems();
+		
+		return res;
+	}
+	
 	/* (non-Javadoc)
 	 * @see java.lang.Object#hashCode()
 	 */

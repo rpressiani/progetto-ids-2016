@@ -3,9 +3,7 @@ package model;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.Map.Entry;
-import java.util.stream.Stream;
 
 import model.changes.Change;
 import model.council.Balcony;
@@ -195,22 +193,69 @@ public class GameState extends Observable<Change>{
 		}
 	}
 
-	public void calculateWinner(ArrayList<Player> players){
+	public Player calculateWinner(ArrayList<Player> players){
+	
+		int maxPermissions=players.get(0).getPermissionHand().size();
+		
+		for(Player p : players){
+			if(p.getPermissionHand().size()>maxPermissions) maxPermissions=p.getPermissionHand().size();
+		}
+		
+		for(Player p : players){
+			if(p.getPermissionHand().size()==maxPermissions) p.getScore().add(3);
+		}
+		
+		
 		Collections.sort(players, new NobilityComparator());
 		
+		int i;
 		int maxNobility=players.get(0).getNobilityLevel().getItems();
 		
-		
-		for(int i=0 ; maxNobility==players.get(i).getNobilityLevel().getItems(); i++){
+		for(i=0 ; maxNobility==players.get(i).getNobilityLevel().getItems(); i++){
 			players.get(i).getScore().add(5);
 		}
 		
-		if(true){
-			for(int i=0; maxNobility==players.get(i).getNobilityLevel().getItems(); i++){
-				players.get(i).getScore().add(5);
+		if(i==1){
+			maxNobility=players.get(i).getNobilityLevel().getItems();
+			for(i=1; maxNobility==players.get(i).getNobilityLevel().getItems(); i++){
+				players.get(i).getScore().add(2);
 			}
 		}
-	}
+		
+		
+		Collections.sort(players, new ScoreComparator());
 	
+		i=0;
+		int maxScore=players.get(0).getScore().getItems();
+		
+		while(maxScore==players.get(i).getScore().getItems()){
+			i++;
+		}
+		
+		if(i==1) return players.get(0);
+		
+		else{
+			int maxAssistantsPlusPoliticals=players.get(0).getAssistantsPlusPoliticals();
+			HashMap<Player, Integer> result=new HashMap<Player, Integer>();
+			
+			for(int j=0; j<i; j++){
+				result.put(players.get(j), players.get(j).getAssistantsPlusPoliticals());
+				
+				if(players.get(j).getAssistantsPlusPoliticals()>maxAssistantsPlusPoliticals) maxAssistantsPlusPoliticals=
+						players.get(j).getAssistantsPlusPoliticals();
+				
+			}
+			
+			for(Entry<Player,Integer> entry : result.entrySet()){
+				if(entry.getValue()==maxAssistantsPlusPoliticals){
+					players.clear();
+					players.add(entry.getKey());
+				}
+			}
+			
+			return players.get(0);
+		}
+		
+	}
 	
 }
