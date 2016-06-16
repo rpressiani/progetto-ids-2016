@@ -248,8 +248,7 @@ public class GameState extends Observable<Change>{
 			
 			for(Entry<Player,Integer> entry : result.entrySet()){
 				if(entry.getValue()==maxAssistantsPlusPoliticals){
-					players.clear();
-					players.add(entry.getKey());
+					players.add(0,entry.getKey());
 				}
 			}
 			
