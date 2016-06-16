@@ -41,11 +41,13 @@ public class GameState extends Observable<Change>{
 		if(players==null) {
 			throw new NullPointerException("there should be at least one player"); 
 		}
+		
 		this.counsellorGarbage = new GarbageState(parser);
 		this.map = new Map(parser, this.counsellorGarbage);
 		this.king = new King(parser, this.map);
 		this.kingBalcony = new Balcony(this.counsellorGarbage, parser);
 		this.kingBonuses = new KingBonuses(parser);
+		this.market=new Market();
 		this.nobility = new Nobility(parser);
 		this.politicalGarbage = new PoliticalGarbage(parser);
 		this.politicalDeck = new PoliticalRealDeck(parser, this.politicalGarbage);

@@ -31,6 +31,7 @@ public class Contract {
 		if(seller==null) {
 			throw new NullPointerException("seller cannot be null"); 
 		}
+		
 		this.sellBag = new HashSet<Marketable>();
 		this.buyBag = new HashSet<Marketable>();
 		

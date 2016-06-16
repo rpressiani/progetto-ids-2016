@@ -59,6 +59,9 @@ public class CanSellState implements State {
 		}
 		
 		if(isInputBonusRequired()==false){
+			if(player==gameState.getPlayers().get(gameState.getPlayers().size()-1)){
+				gameState.notifyObserver(new ChangeMsg("The market has started"));
+			}
 			gameState.nextPlayer(player);
 			gameState.notifyObserver(new ChangeMsg("Now it's time for "+gameState.getCurrentPlayer().getNickname()+" to play"));
 		}
