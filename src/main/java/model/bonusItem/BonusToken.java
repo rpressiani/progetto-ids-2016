@@ -1,5 +1,5 @@
 package model.bonusItem;
 
-public class BonusToken extends BonusInputItem {
+public class BonusToken implements BonusInputItem {
 
 }

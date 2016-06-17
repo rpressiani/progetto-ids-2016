@@ -1,4 +1,4 @@
-package model.stateMachine.state;
+package model.stateMachine;
 
 import model.GameState;
 import model.actions.NullAction;
@@ -7,12 +7,10 @@ import model.changes.ChangeMsg;
 import model.player.Player;
 
 public class CanQuickOrNullState implements State {
-	
-	private boolean inputBonusRequired=false;
-	
+
 	@Override
 	public void transition(Player player, QuickAction action, GameState gameState){
-		if(isInputBonusRequired()==false){
+		if(player.getBonusInputs().isEmpty()){
 			if(player==null || action==null || gameState==null) {
 				throw new NullPointerException("player, action and gameState should all be !=null"); 
 			}
@@ -37,7 +35,7 @@ public class CanQuickOrNullState implements State {
 				throw new NullPointerException("player, action and gameState should all be !=null"); 
 		}
 		
-		if(isInputBonusRequired()==false){	
+		if(player.getBonusInputs().isEmpty()){	
 			if(action.acceptMove(player, gameState)==true){
 				if(action.checkCondition(player, gameState)==true){
 					action.doAction(player, gameState);
@@ -51,20 +49,5 @@ public class CanQuickOrNullState implements State {
 		
 		else State.super.transition(player, action, gameState);
 	}
-	
-	@Override
-	public void printOut(Player player, State state) {
-		if(player==null || state==null) {
-			throw new NullPointerException("player and state should not be null"); 
-		}
-		System.out.println(player.getNickname()+": "+"State2");
-	}
 
-	public boolean isInputBonusRequired() {
-		return inputBonusRequired;
-	}
-
-	public void setInputBonusRequired(boolean inputBonusRequired) {
-		this.inputBonusRequired = inputBonusRequired;
-	}
 }

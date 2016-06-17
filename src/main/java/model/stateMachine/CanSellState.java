@@ -1,4 +1,4 @@
-package model.stateMachine.state;
+package model.stateMachine;
 
 import model.GameState;
 import model.actions.NullAction;
@@ -8,15 +8,13 @@ import model.player.Player;
 
 public class CanSellState implements State {
 	
-	private boolean inputBonusRequired=false;
-	
 	@Override
 	public void transition(Player player, SellAction action, GameState gameState){
 		if(player==null || action==null || gameState==null) {
 			throw new NullPointerException("player, action and gameState should all be !=null"); 
 		}
 		
-		if(isInputBonusRequired()==false){
+		if(player.getBonusInputs().isEmpty()){
 			if(action.acceptMove(player, gameState)==true){
 				if(action.checkCondition(player, gameState)==true){
 					action.doAction(player, gameState);
@@ -37,7 +35,7 @@ public class CanSellState implements State {
 				throw new NullPointerException("player, action and gameState should all be !=null"); 
 		}
 		
-		if(isInputBonusRequired()==false){	
+		if(player.getBonusInputs().isEmpty()){	
 			if(action.acceptMove(player, gameState)==true){
 				if(action.checkCondition(player, gameState)==true){
 					action.doAction(player, gameState);
@@ -58,7 +56,7 @@ public class CanSellState implements State {
 			throw new NullPointerException("player and state should not be null"); 
 		}
 		
-		if(isInputBonusRequired()==false){
+		if(player.getBonusInputs().isEmpty()){
 			if(player==gameState.getPlayers().get(gameState.getPlayers().size()-1)){
 				gameState.notifyObserver(new ChangeMsg("The market has started"));
 			}
@@ -67,22 +65,6 @@ public class CanSellState implements State {
 		}
 		
 		else State.super.checkTurn(player, gameState);
-	}
-	
-	@Override
-	public void printOut(Player player, State state){
-		if(player==null || state==null) {
-			throw new NullPointerException("player and state should not be null"); 
-		}
-		System.out.println(player.getNickname()+": "+"State4");
-	}
-
-	public boolean isInputBonusRequired() {
-		return inputBonusRequired;
-	}
-
-	public void setInputBonusRequired(boolean inputBonusRequired) {
-		this.inputBonusRequired = inputBonusRequired;
 	}
 	
 }

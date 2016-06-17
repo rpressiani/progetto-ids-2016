@@ -1,5 +1,5 @@
 package model.bonusItem;
 
-public class BonusAgainPermission extends BonusInputItem {
+public class BonusAgainPermission implements BonusInputItem {
 
 }

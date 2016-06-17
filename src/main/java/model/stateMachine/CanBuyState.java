@@ -1,4 +1,4 @@
-package model.stateMachine.state;
+package model.stateMachine;
 
 import model.GameState;
 import model.actions.NullAction;
@@ -45,11 +45,6 @@ public class CanBuyState implements State {
 			}
 		}
 
-	}
-	
-	@Override
-	public void printOut(Player player, State state){
-		System.out.println(player.getNickname()+": "+"State5");
 	}
 	
 	@Override

@@ -1,4 +1,4 @@
-package model.stateMachine.state;
+package model.stateMachine;
 
 import model.GameState;
 import model.actions.main.MainAction;
@@ -7,15 +7,13 @@ import model.player.Player;
 
 public class CanMainState implements State {
 	
-	private boolean intpuBonusRequired=false;
-	
 	@Override
 	public void transition(Player player, MainAction action, GameState gameState){
 		if(player==null || action==null || gameState==null) {
 				throw new NullPointerException("player, action and gameState should all be !=null"); 
 		}
 		
-		if(isIntpuBonusRequired()==false){	
+		if(player.getBonusInputs().isEmpty()){	
 			if(action.acceptMove(player, gameState)==true){
 				if(action.checkCondition(player, gameState)==true){
 					action.doAction(player, gameState);
@@ -37,27 +35,11 @@ public class CanMainState implements State {
 			throw new NullPointerException("player, action and gameState should all be !=null"); 
 		}
 		
-		if(isIntpuBonusRequired()==true){
+		if(player.getBonusInputs().isEmpty()){
 			
 		}
 		
 		else State.super.transition(player, action, gameState);
 	}
 	
-	@Override
-	public void printOut(Player player, State state) {
-		if(player==null || state==null) {
-			throw new NullPointerException("player and state should not be null"); 
-		}
-		System.out.println(player.getNickname()+": "+"State3");
-	}
-
-	public boolean isIntpuBonusRequired() {
-		return intpuBonusRequired;
-	}
-
-	public void setIntpuBonusRequired(boolean intpuBonusRequired) {
-		this.intpuBonusRequired = intpuBonusRequired;
-	}
-
 }

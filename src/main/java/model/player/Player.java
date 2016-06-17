@@ -11,13 +11,14 @@ import model.actions.main.MainAction;
 import model.actions.market.BuyAction;
 import model.actions.market.SellAction;
 import model.actions.quick.QuickAction;
+import model.bonusItem.BonusInputItem;
 import model.bonusable.PermissionCard;
 import model.map.City;
 import model.politicalDeck.PoliticalCard;
 import model.politicalDeck.PoliticalHand;
 import model.politicalDeck.PoliticalRealDeck;
-import model.stateMachine.state.State;
-import model.stateMachine.state.StartState;
+import model.stateMachine.StartState;
+import model.stateMachine.State;
 import parser.Parser;
 
 /**
@@ -39,6 +40,7 @@ public class Player {
 	private PoliticalHand politicalHand;
 	private Set<PermissionCard> permissionHand;
 	private Set<City> builtCities; 
+	private Set<BonusInputItem> bonusInputs;
 	private State state;
 	
 	/**
@@ -57,7 +59,8 @@ public class Player {
 		this.nobilityLevel = new NobilityLevel();
 		this.score = new Score();
 		this.builtCities = new HashSet<City>();
-		this.permissionHand= new HashSet<PermissionCard>();
+		this.permissionHand = new HashSet<PermissionCard>();
+		this.bonusInputs = new HashSet<BonusInputItem>();
 	}
 	
 	/**
@@ -82,6 +85,7 @@ public class Player {
 		this.coins = new Coins(parser.getCFGRoot().getPlayers().getPlayer().get(this.id).getCoins().intValue());
 		this.assistants = new Assistants(parser.getCFGRoot().getPlayers().getPlayer().get(this.id).getAssistants().intValue());
 		this.state = new StartState();
+		
 	}
 	
 	/**
@@ -115,22 +119,6 @@ public class Player {
 		if(action instanceof BuyAction){
 			this.getState().transition(this, (BuyAction)action, gameState);
 		}
-	}
-	
-	/*public void move(MainAction action, GameState gameState){
-		this.getState().transition(this, action, gameState);
-	}
-	
-	public void move(QuickAction action, GameState gameState){
-		this.getState().transition(this, action, gameState);
-	}
-	
-	public void move(NullAction action, GameState gameState){
-		this.getState().transition(this, action, gameState);
-	}*/
-
-	public void printState(){
-		this.getState().printOut(this, this.state);
 	}
 	
 	/**
@@ -265,6 +253,13 @@ public class Player {
 		return serialID;
 	}
 
+	/**
+	 * @return the bonusInputs
+	 */
+	public Set<BonusInputItem> getBonusInputs() {
+		return bonusInputs;
+	}
+	
 	public int getAssistantsPlusPoliticals(){
 		int res=0;
 		for(PoliticalCard c : this.getPoliticalHand().getDeck()){

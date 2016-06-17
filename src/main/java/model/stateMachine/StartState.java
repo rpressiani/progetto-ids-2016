@@ -1,4 +1,4 @@
-package model.stateMachine.state;
+package model.stateMachine;
 
 import model.GameState;
 import model.actions.main.MainAction;
@@ -51,14 +51,6 @@ public class StartState implements State {
 		
 		gameState.nextPlayer(player);
 		gameState.notifyObserver(new ChangeMsg("Now it's time for "+gameState.getCurrentPlayer().getNickname()+" to play"));
-	}
-	
-	@Override
-	public void printOut(Player player, State state) {
-		if(player==null || state==null) {
-			throw new NullPointerException("player and state should not be null"); 
-		}
-		System.out.println(player.getNickname()+": "+"State1");
 	}
 
 }

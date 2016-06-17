@@ -1,5 +1,5 @@
 package model.bonusItem;
 
-public class BonusAddictionalAction extends BonusInputItem {
+public class BonusAddictionalAction implements BonusInputItem {
 
 }

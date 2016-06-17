@@ -9,8 +9,8 @@ import org.junit.Test;
 import model.GameState;
 import model.actions.market.BuyAction;
 import model.player.Player;
-import model.stateMachine.state.CanBuyState;
-import model.stateMachine.state.State;
+import model.stateMachine.CanBuyState;
+import model.stateMachine.State;
 import parser.Parser;
 import utilities.Color;
 

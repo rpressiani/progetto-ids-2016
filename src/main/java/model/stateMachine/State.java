@@ -1,4 +1,4 @@
-package model.stateMachine.state;
+package model.stateMachine;
 
 import model.GameState;
 import model.actions.NullAction;
@@ -112,5 +112,4 @@ public interface State {
 		
 	}
 	
-	public void printOut(Player player, State state);
 }

@@ -138,6 +138,11 @@ public class BuyPermissionCard implements MainAction {
 	@Override
 	public boolean checkCondition(Player player, GameState gameState) {
 		
+		if(region==null){
+			gameState.notifyObserver(player, new ChangeMsg("The region you selected doesnt exist"));
+			return false;
+		}
+		
 		if(this.proposal.getDeck().get(0).getNumCards() == -1) {
 			gameState.notifyObserver(player, new ChangeMsg("Type 'help' to check the correct card proposal structure"));
 			return false;
