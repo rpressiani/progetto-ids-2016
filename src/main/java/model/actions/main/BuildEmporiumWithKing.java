@@ -18,8 +18,18 @@ public class BuildEmporiumWithKing implements MainAction {
 	private PoliticalContainer proposal;
 	private City cityChosed;
 	
+	/**
+	 * @param proposal
+	 * @param cityChosed
+	 */
 	public BuildEmporiumWithKing(PoliticalContainer proposal, City cityChosed) {
 		super();
+		if(proposal==null) {
+			throw new NullPointerException("proposal cannot be null"); 
+		} 
+		if(cityChosed==null) {
+			throw new NullPointerException("cityChosed cannot be null"); 
+		}
 		this.proposal = proposal;
 		this.cityChosed = cityChosed;
 	}
