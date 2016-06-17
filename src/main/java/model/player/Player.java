@@ -175,14 +175,25 @@ public class Player {
 		return nobilityLevel;
 	}
 
+//	/* (non-Javadoc)
+//	 * @see java.lang.Object#toString()
+//	 */
+//	@Override
+//	public String toString() {
+//		return "Player [id=" + id + ", nickname=" + nickname + ", coins=" + coins + ", nobilityLevel=" + nobilityLevel
+//				+ ", score=" + score + ", assistants=" + assistants + ", color=" + color + ", politicalHand="
+//				+ politicalHand + "]";
+//	}
+
+	
+	
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
 	public String toString() {
-		return "Player [id=" + id + ", nickname=" + nickname + ", coins=" + coins + ", nobilityLevel=" + nobilityLevel
-				+ ", score=" + score + ", assistants=" + assistants + ", color=" + color + ", politicalHand="
-				+ politicalHand + "]";
+		return "Player [serialID=" + serialID + ", enabled=" + enabled + ", nickname=" + nickname + ", color=" + color
+				+ "]";
 	}
 
 	/**

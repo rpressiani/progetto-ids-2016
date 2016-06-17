@@ -15,6 +15,7 @@ import java.util.concurrent.Executors;
 
 import client.rmi.ClientViewRemote;
 import model.player.Player;
+import view.rmi.RMIView;
 import view.socket.ServerSocketView;
 
 public class Server {
@@ -24,7 +25,7 @@ public class Server {
 	private final String NAME = "co4";
 	
 	private static Map<Player, ServerSocketView> tmpViewSocket = new HashMap<Player, ServerSocketView>();
-	private static Map<Player, ClientViewRemote> tmpViewRMI = new HashMap<Player, ClientViewRemote>();
+	private static Map<Player, RMIView> tmpViewRMI = new HashMap<Player, RMIView>();
 	
 	/**
 	 * start the socket
@@ -54,7 +55,7 @@ public class Server {
 	private void startRMI() throws RemoteException, AlreadyBoundException{
 		Registry registry = LocateRegistry.createRegistry(RMI_PORT);
 		System.out.println("Constructing the RMI registry");
-		RMIServer serverRMI=new RMIServer();
+		RMIServer serverRMI=new RMIServer(tmpViewRMI);
 		System.out.println("RMIVIEW SERVER: " + serverRMI);
 		RMIServerInterface serverView=(RMIServerInterface) UnicastRemoteObject.exportObject(serverRMI, 0);
 		System.out.println("Binding the server implementation to the registry");
