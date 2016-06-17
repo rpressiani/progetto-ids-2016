@@ -26,10 +26,12 @@ public class ClientRMI {
 		
 		ClientRMIView clientRmiView=new ClientRMIView();
 		
-		this.serverStub.registerClient(clientRmiView);
+
 		
 		ExecutorService executor = Executors.newFixedThreadPool(2); //load from file
-		//executor.submit(new ClientOutHandlerRMI(rmiView, clientRmiView));
+		executor.submit(new ClientOutHandlerRMI(serverStub, clientRmiView));
+		
+		this.serverStub.registerClient(clientRmiView); //before or after executor?
 		
 	}
 	

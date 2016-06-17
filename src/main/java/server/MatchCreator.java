@@ -13,16 +13,17 @@ import java.util.Set;
 
 import client.rmi.ClientViewRemote;
 import model.player.Player;
+import view.rmi.RMIView;
 import view.socket.ServerSocketView;
 
 public class MatchCreator implements Runnable {
 	
 	private Map<Player, ServerSocketView> tmpViewSocket;
-	private Map<Player, ClientViewRemote> tmpViewRMI;
+	private Map<Player, RMIView> tmpViewRMI;
 	private Queue<Player> enabledPlayers;
 	
 	private final int pauseTime = 5000;
-	private final int matchReadyPauseTime = 1000;
+	private final int matchReadyPauseTime = 20000;
 	private static int counter = 0;
 	private Set<Match> runningMatches;
 	
@@ -30,7 +31,7 @@ public class MatchCreator implements Runnable {
 	 * 
 	 * @param tmpViewSocket
 	 */
-	public MatchCreator(Map<Player, ServerSocketView> tmpViewSocket, Map<Player, ClientViewRemote> tmpViewRMI) {
+	public MatchCreator(Map<Player, ServerSocketView> tmpViewSocket, Map<Player, RMIView> tmpViewRMI) {
 		if(tmpViewSocket==null){
 			throw new NullPointerException("tmpViewSocket can't be null");
 		}
@@ -55,7 +56,7 @@ public class MatchCreator implements Runnable {
 			}
 		}
 		
-		for (Map.Entry<Player, ClientViewRemote> entry : tmpViewRMI.entrySet()) {
+		for (Map.Entry<Player, RMIView> entry : tmpViewRMI.entrySet()) {
 			if (entry.getKey().isEnabled()) {
 				Player player = entry.getKey();
 				if (!this.enabledPlayers.contains(player)) {
@@ -89,7 +90,7 @@ public class MatchCreator implements Runnable {
 				int playersInLobby = this.tmpViewSocket.size() + this.tmpViewRMI.size();
 				log.append("[MATCH CREATOR] There are " + playersInLobby + " players connected in the lobby\n");
 				log.append("[MATCH CREATOR] There are " + this.runningMatches.size() + " matches running\n");
-//				System.out.println(log);
+				System.out.println(log);
 				
 				if (this.enabledPlayers.size() >= 2) {
 					
@@ -120,7 +121,8 @@ public class MatchCreator implements Runnable {
 							throw new IllegalArgumentException("[CRITICAL] Player not found");
 						}
 						
-						System.out.println(tmpViewRMI);
+						System.out.println("STATUS tmpSocket"+this.tmpViewSocket);
+						System.out.println("STATUS tmpRMI"+this.tmpViewRMI);
 					}
 					
 					System.out.println("[MATCH CREATOR] New match started with " + matchPlayers.size() + " players");

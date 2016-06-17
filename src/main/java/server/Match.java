@@ -36,8 +36,8 @@ public class Match {
 	 * @throws AlreadyBoundException 
 	 * @throws NotBoundException 
 	 */
-	public Match(ArrayList<Player> players, Map<Player, ServerSocketView> tmpViewSocket,
-			Map<Player, ClientViewRemote> tmpViewRMI) throws IOException, AlreadyBoundException, NotBoundException {
+	public Match(ArrayList<Player> players, Map<Player,ServerSocketView> tmpViewSocket,
+			Map<Player, RMIView> tmpViewRMI) throws IOException, AlreadyBoundException, NotBoundException {
 		
 		if(players==null || tmpViewSocket==null || tmpViewRMI==null){
 			throw new NullPointerException("players or tmpViews can't be null");
@@ -64,8 +64,25 @@ public class Match {
 			}
 		}
 		
+		for (Map.Entry<Player, RMIView> entry : tmpViewRMI.entrySet()){
+			RMIView view = entry.getValue();
+			if (view.isEnabled()) {
+				view.getPlayer().initPlayer(this.gameState.getPoliticalDeck(), k, this.parser);
+				k++;
+				view.initServerSocketView(this.gameState);
+				System.out.println(view.getPlayer());
+				this.gameState.registerObserver(view.getPlayer(), view);
+				view.registerObserver(this.controller);
+				System.out.println("VIEW OBSERVERS: " + view.getObservers());
+			}
+		}
+		
+		System.out.println("GAMESTATE OBSERVERS: " + this.gameState.getObservers());
+		
+		
 				
-		this.gameState.notifyObserver(new ChangeMsg("[SERVER] New match started. The first player is " + this.gameState.getCurrentPlayer().getNickname() + ". Let's go!"));
+		this.gameState.notifyObserver(new ChangeMsg("[SERVER] New match started. The first player is " +
+				this.gameState.getCurrentPlayer().getNickname() + ". Let's go!"));
 		
 	}
 

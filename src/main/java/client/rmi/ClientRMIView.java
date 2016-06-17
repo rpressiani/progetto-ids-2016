@@ -30,4 +30,10 @@ public class ClientRMIView extends UnicastRemoteObject implements ClientViewRemo
 		//serverStub.registerClient(this);
 	}
 
+	@Override
+	public void print(String message) throws RemoteException {
+		System.out.println(message);
+		
+	}
+
 }

@@ -10,4 +10,5 @@ public interface ClientViewRemote extends Remote {
 
 	public void updateClient(Change c) throws RemoteException;
 	public void changeStub(RMIServerInterface serverStub) throws RemoteException;
+	public void print(String message) throws RemoteException;
 }
