@@ -64,10 +64,10 @@ public class PoliticalCard {
 	 * @throws IllegalArgumentException if c<=0
 	 */
 	public void removeCards(int c) {
-		if(c<=0) {
+		if(c<0) {
 			throw new IllegalArgumentException("c must be greater than 0"); 
 		}
-		this.numCards-=c; 
+		this.numCards-=c;
 	}
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()

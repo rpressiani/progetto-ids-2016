@@ -42,6 +42,7 @@ public class BuyPermissionCard implements MainAction {
 	public void doAction(Player player, GameState gameState) {
 		int numCards, sumToPay, sumJolly;
 		int size=player.getPoliticalHand().getDeck().size();
+		sumJolly=(proposal.getDeck().get(size-1).getNumCards());
 		PermissionCard drawedCard;
 		
 		numCards=calculateNumCards(proposal);
@@ -51,7 +52,6 @@ public class BuyPermissionCard implements MainAction {
 		else if(numCards==3) sumToPay=4;
 		else sumToPay=0;
 			
-		sumJolly=(player.getPoliticalHand().getDeck().get(size-1).getNumCards());
 		sumToPay=sumToPay+sumJolly;
 		
 		player.getCoins().sub(sumToPay);
@@ -62,6 +62,21 @@ public class BuyPermissionCard implements MainAction {
 		
 		gameState.notifyObserver(player, new ChangeBuyPermissionCard(new Coins(sumToPay), region));
 		gameState.notifyObserver(player, new ChangePlayerStatus(player));
+	}
+	
+	public boolean checkHand(PoliticalHand hand, PoliticalContainer proposal){
+		if(hand==null) {
+			throw new NullPointerException("hand cannot be null"); 
+		}
+		if(proposal==null) {
+			throw new NullPointerException("proposal cannot be null"); 
+		}
+		
+		for(int i=0; i<hand.getDeck().size(); i++){
+			if(hand.getDeck().get(i).getNumCards()<proposal.getDeck().get(i).getNumCards()) return false;
+		}
+		
+		return true;
 	}
 	
 	/**
@@ -82,13 +97,9 @@ public class BuyPermissionCard implements MainAction {
 		
 		if (sum>=balcony.getnCounsellorsPerBalcony() || sum==0) return false;
 		
-			/*for(int i=0; i<proposal.getDeck().size()-1; i++){
+		for(int i=0; i<proposal.getDeck().size()-1; i++){
 				if(proposal.getDeck().get(i).getNumCards() > balcony.getBalconyState().getState().get(i).getCounter()) 
 					return false;
-			}*/
-		
-		for(int i=0; i<proposal.getDeck().size()-1;i++){
-			System.out.println(proposal.getDeck().get(i).getNumCards()+" , "+balcony.getBalconyState().getState().get(i).getCounter());
 		}
 		
 		return true;
@@ -124,6 +135,7 @@ public class BuyPermissionCard implements MainAction {
 		if(proposal==null) {
 			throw new NullPointerException("proposal cannot be null"); 
 		}
+		
 		for(int i=0; i<hand.getDeck().size(); i++){
 			hand.getDeck().get(i).removeCards(proposal.getDeck().get(i).getNumCards());
 		}
@@ -131,10 +143,9 @@ public class BuyPermissionCard implements MainAction {
 
 	@Override
 	public boolean checkCondition(Player player, GameState gameState) {
-		System.out.println("sono dentro");
-		
+
 		if(region==null){
-			gameState.notifyObserver(player, new ChangeMsg("The region you selected doesnt exist"));
+			gameState.notifyObserver(player, new ChangeMsg("The region you selected doesn't exist"));
 			return false;
 		}
 		
@@ -148,6 +159,11 @@ public class BuyPermissionCard implements MainAction {
 			return false;
 		}
 		
+		if(checkHand(player.getPoliticalHand(), proposal)==false){
+			gameState.notifyObserver(player, new ChangeMsg("You don't have enough cards to make this proposal"));
+			return false;
+		}
+		
 		if(checkProposal(proposal, region.getBalcony())==false){
 			gameState.notifyObserver(player, new ChangeMsg("Your proposal doesn't fit the state of balcony you chosed, try again"));
 			return false;
@@ -157,7 +173,7 @@ public class BuyPermissionCard implements MainAction {
 		int sumToPay;
 		int size=player.getPoliticalHand().getDeck().size();
 		int numCards=calculateNumCards(proposal);
-		int sumJolly=(player.getPoliticalHand().getDeck().get(size-1).getNumCards());
+		int sumJolly=(proposal.getDeck().get(size-1).getNumCards());
 		
 		if(numCards==1) sumToPay=10;
 		else if(numCards==2) sumToPay=7;
@@ -171,7 +187,6 @@ public class BuyPermissionCard implements MainAction {
 			return false;
 		}
 		
-		System.out.println("sono uscito");
 		return true;
 	}
 	

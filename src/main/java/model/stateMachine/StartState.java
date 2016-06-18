@@ -16,7 +16,7 @@ public class StartState implements State {
 		
 		if(action.acceptMove(player, gameState)==true){
 			if(action.checkCondition(player, gameState)==true){
-				//action.doAction(player, gameState);
+				action.doAction(player, gameState);
 				System.out.println(player.getNickname()+" did a MainAction");
 				gameState.notifyObserver(new ChangeMsg(player.getNickname()+" did a MainAction"));
 				player.setState(new CanQuickOrNullState());
