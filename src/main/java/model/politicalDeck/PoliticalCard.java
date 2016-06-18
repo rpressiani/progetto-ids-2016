@@ -18,9 +18,6 @@ public class PoliticalCard {
 	 * constructor
 	 */
 	public PoliticalCard(String color, int numCards) {
-		if(numCards<0) {
-			throw new IllegalArgumentException("numCards cannot be less than zero"); 
-		}
 		if(color==null) {
 			throw new NullPointerException("color can't be null"); 
 		}

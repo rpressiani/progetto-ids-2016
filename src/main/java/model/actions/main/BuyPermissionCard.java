@@ -18,11 +18,6 @@ public class BuyPermissionCard implements MainAction {
 	private Region region;
 	private PoliticalContainer proposal;
 	private int index;
-
-	//temporary for ClientLogic
-	public BuyPermissionCard(){
-		
-	}
 	
 	/**
 	 * @param region
@@ -32,9 +27,6 @@ public class BuyPermissionCard implements MainAction {
 	 * @throws IllegalArgumentException if index <0
 	 */
 	public BuyPermissionCard(Region region, PoliticalContainer proposal, int index) {
-		if(region==null) {
-			throw new NullPointerException("region cannot be null"); 
-		}
 		if(proposal==null) {
 			throw new NullPointerException("proposal cannot be null"); 
 		}
@@ -59,9 +51,9 @@ public class BuyPermissionCard implements MainAction {
 		else if(numCards==3) sumToPay=4;
 		else sumToPay=0;
 			
-		sumJolly=(player.getPoliticalHand().getDeck().get(size).getNumCards());
+		sumJolly=(player.getPoliticalHand().getDeck().get(size-1).getNumCards());
 		sumToPay=sumToPay+sumJolly;
-			
+		
 		player.getCoins().sub(sumToPay);
 		subProposal(player.getPoliticalHand(), proposal);
 		drawedCard=region.getPermissionDeck().drawCard(region.getPermissionDeck().getDeck(), region.getPermissionDeck().getVisibleCards(), index);
@@ -88,13 +80,15 @@ public class BuyPermissionCard implements MainAction {
 		
 		int sum=calculateNumCards(proposal);
 		
-		if (sum>=balcony.getnCounsellorsPerBalcony() && sum!=0) return false;
+		if (sum>=balcony.getnCounsellorsPerBalcony() || sum==0) return false;
 		
-		else{
-			for(int i=0; i<proposal.getDeck().size()-1; i++){
+			/*for(int i=0; i<proposal.getDeck().size()-1; i++){
 				if(proposal.getDeck().get(i).getNumCards() > balcony.getBalconyState().getState().get(i).getCounter()) 
 					return false;
-			}
+			}*/
+		
+		for(int i=0; i<proposal.getDeck().size()-1;i++){
+			System.out.println(proposal.getDeck().get(i).getNumCards()+" , "+balcony.getBalconyState().getState().get(i).getCounter());
 		}
 		
 		return true;
@@ -137,14 +131,10 @@ public class BuyPermissionCard implements MainAction {
 
 	@Override
 	public boolean checkCondition(Player player, GameState gameState) {
+		System.out.println("sono dentro");
 		
 		if(region==null){
 			gameState.notifyObserver(player, new ChangeMsg("The region you selected doesnt exist"));
-			return false;
-		}
-		
-		if(this.proposal.getDeck().get(0).getNumCards() == -1) {
-			gameState.notifyObserver(player, new ChangeMsg("Type 'help' to check the correct card proposal structure"));
 			return false;
 		}
 		
@@ -153,15 +143,21 @@ public class BuyPermissionCard implements MainAction {
 			return false;
 		}
 		
+		if(this.proposal.getDeck().get(0).getNumCards() == -1) {
+			gameState.notifyObserver(player, new ChangeMsg("Type 'help' to check the correct card proposal structure"));
+			return false;
+		}
+		
 		if(checkProposal(proposal, region.getBalcony())==false){
 			gameState.notifyObserver(player, new ChangeMsg("Your proposal doesn't fit the state of balcony you chosed, try again"));
 			return false;
 		}
 		
+		
 		int sumToPay;
 		int size=player.getPoliticalHand().getDeck().size();
 		int numCards=calculateNumCards(proposal);
-		int sumJolly=(player.getPoliticalHand().getDeck().get(size).getNumCards());
+		int sumJolly=(player.getPoliticalHand().getDeck().get(size-1).getNumCards());
 		
 		if(numCards==1) sumToPay=10;
 		else if(numCards==2) sumToPay=7;
@@ -175,6 +171,7 @@ public class BuyPermissionCard implements MainAction {
 			return false;
 		}
 		
+		System.out.println("sono uscito");
 		return true;
 	}
 	

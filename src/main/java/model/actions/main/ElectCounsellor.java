@@ -55,11 +55,10 @@ public class ElectCounsellor implements MainAction {
 			return false;
 		}
 		
-		else{
-			if(el.getCounter()==0){
+		else if(el.getCounter()==0){
 				gameState.notifyObserver(player, new ChangeMsg("There aren't any counsellors of this colour"));
 				return false;
-			}
+			
 		}
 		
 		return true;
