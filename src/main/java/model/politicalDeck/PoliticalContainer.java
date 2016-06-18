@@ -18,20 +18,19 @@ public class PoliticalContainer extends PoliticalDeck implements Marketable{
 		}
 		int i = 0;
 		List<CFGPoliticalCard> cfgPoliticalCardList = parser.getCFGPoliticalDeck().getPoliticalCard();
+		System.out.println(cfgPoliticalCardList);
 		if (structure.size() == cfgPoliticalCardList.size()) {
-			
 			for (Iterator<CFGPoliticalCard> iterator = cfgPoliticalCardList.iterator(); iterator.hasNext();) {
 				CFGPoliticalCard cfgPoliticalCard = iterator.next();
 				this.getDeck().add(new PoliticalCard(cfgPoliticalCard.getColor(), structure.get(i)));
 				i++;
 			}
 		} else {
-			
-			for (Iterator<CFGPoliticalCard> iterator = cfgPoliticalCardList.iterator(); iterator.hasNext();) {
-				CFGPoliticalCard cfgPoliticalCard = iterator.next();
+			for (CFGPoliticalCard cfgPoliticalCard : cfgPoliticalCardList) {
 				this.getDeck().add(new PoliticalCard(cfgPoliticalCard.getColor(), -1));
-				i++;
+				System.out.println("go");
 			}
+			
 		}
 		
 	}
