@@ -63,7 +63,12 @@ public class LoginClientController {
     		
     		okClicked = true; 
     		dialogStage.close();
+    		//TODO: switch to next scene --> connection choice
     	}
+    }
+    @FXML
+    private void handleCancel() {
+    	dialogStage.close(); 
     }
     
 }
