@@ -101,7 +101,7 @@ public class VisitorActions {
 		if(action instanceof DTOBuildEmporiumWithKing) realAction=visit((DTOBuildEmporiumWithKing) action, player);
 		if(action instanceof DTOBuyPermissionCard) realAction=visit((DTOBuyPermissionCard) action, player);
 		if(action instanceof DTOElectCounsellor) realAction=visit((DTOElectCounsellor) action);
-		
+	
 		return new AddictionalAction(realAction);
 	}
 	
