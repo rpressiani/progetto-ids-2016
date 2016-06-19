@@ -39,6 +39,8 @@ public class AddictionalAction implements QuickAction {
 			return false;
 		}
 		
+		if(action.checkCondition(player, gameState)==false) return false;
+		
 		return true;
 	}
 }

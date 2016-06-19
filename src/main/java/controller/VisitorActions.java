@@ -72,7 +72,7 @@ public class VisitorActions {
 	
 	public BuildEmporiumWithCard visit(DTOBuildEmporiumWithCard DTOAction, Player player){
 		int idCard=DTOAction.getPermissionCard().getIdCard();
-		String cityName=DTOAction.getCity().getName();
+		City city=gameState.getMap().getAllCitiesHashMap().get(DTOAction.getCity().getName());
 		PermissionCard card=null;
 		List<PermissionCard> list= new ArrayList<PermissionCard>(player.getPermissionHand());
 		
@@ -80,14 +80,13 @@ public class VisitorActions {
 			if(idCard==list.get(i).getIdCard()) card=list.get(i);
 		}
 		
-		return new BuildEmporiumWithCard(card, gameState.getMap().getAllCitiesHashMap().get(cityName));
+		return new BuildEmporiumWithCard(card, city);
 	}
 	
 	public ElectCounsellor visit(DTOElectCounsellor DTOAction){
-		String regionString=DTOAction.getRegion().getName();
 		String colorString=DTOAction.getColor().getColorString();
 		
-		Region region = gameState.getMap().getRegions().get(regionString);
+		Region region=gameState.getMap().getRegions().get(DTOAction.getRegion().getName());
 		Color color = new Color(colorString);
 		
 		return new ElectCounsellor(region, color);
@@ -106,16 +105,14 @@ public class VisitorActions {
 	}
 	
 	public SubstitutePermissionCards visit(DTOSubstitutePermissionCards DTOAction){
-		String regionString=DTOAction.getRegion().getName();
-		return new SubstitutePermissionCards(gameState.getMap().getRegions().get(regionString));
-		
+		Region region=gameState.getMap().getRegions().get(DTOAction.getRegion().getName());
+		return new SubstitutePermissionCards(region);	
 	}
 	
 	public ElectCounsellorWithAssistant visit(DTOElectCounsellorWithAssistant DTOAction){
-		String regionString=DTOAction.getRegion().getName();
+		Region region=gameState.getMap().getRegions().get(DTOAction.getRegion().getName());
 		String colorString=DTOAction.getColor().getColorString();
 		
-		Region region = gameState.getMap().getRegions().get(regionString);
 		Color color = new Color(colorString);
 		
 		return new ElectCounsellorWithAssistant(region, color);
