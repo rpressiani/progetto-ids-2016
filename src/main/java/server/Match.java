@@ -52,21 +52,17 @@ public class Match {
 		
 		int k = 0;
 		
-		for (Map.Entry<Player, ServerSocketView> entry : tmpViewSocket.entrySet()) {
-			ServerSocketView view = entry.getValue();
-			if (view.isEnabled()) {
+		for (Player player : players) {
+			if (tmpViewSocket.containsKey(player)) {
+				ServerSocketView view = tmpViewSocket.get(player);
 				view.getPlayer().initPlayer(this.gameState.getPoliticalDeck(), k, this.parser);
 				k++;
 				view.initServerSocketView(this.gameState);
 				System.out.println(view.getPlayer());
 				this.gameState.registerObserver(view.getPlayer(), view);
 				view.registerObserver(this.controller);
-			}
-		}
-		
-		for (Map.Entry<Player, RMIView> entry : tmpViewRMI.entrySet()){
-			RMIView view = entry.getValue();
-			if (view.isEnabled()) {
+			} else if (tmpViewRMI.containsKey(player)) {
+				RMIView view = tmpViewRMI.get(player);
 				view.getPlayer().initPlayer(this.gameState.getPoliticalDeck(), k, this.parser);
 				k++;
 				view.initServerSocketView(this.gameState);
@@ -79,8 +75,6 @@ public class Match {
 		
 		System.out.println("GAMESTATE OBSERVERS: " + this.gameState.getObservers());
 		
-		
-				
 		this.gameState.notifyObserver(new ChangeMsg("[SERVER] New match started. The first player is " +
 				this.gameState.getCurrentPlayer().getNickname() + ". Let's go!"));
 		

@@ -21,9 +21,6 @@ public class ElectCounsellor implements MainAction {
 	 * @throws NullPointerException if region or color are null
 	 */
 	public ElectCounsellor(Region region, Color color) {
-		if(region==null) {
-			throw new NullPointerException("region cannot be null"); 
-		}
 		if(color==null) {
 			throw new NullPointerException("color cannot be null"); 
 		}
@@ -48,6 +45,11 @@ public class ElectCounsellor implements MainAction {
 		for(int i=0; i<gameState.getCounsellorGarbage().getState().size(); i++){
 			if(gameState.getCounsellorGarbage().getState().get(i).getColor().getStringID().equals(color.getStringID()))
 				el=gameState.getCounsellorGarbage().getState().get(i);
+		}
+		
+		if(region==null){
+			gameState.notifyObserver(player, new ChangeMsg("The region you selected doesn't exist"));
+			return false;
 		}
 		
 		if(el==null){

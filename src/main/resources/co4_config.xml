@@ -1227,7 +1227,8 @@
         <player>
             <id>0</id>
             <coins>10</coins>
-            <assistants>1</assistants>
+            <!-- <assistants>1</assistants> -->
+            <assistants>3</assistants>
         </player>
         <player>
             <id>1</id>
