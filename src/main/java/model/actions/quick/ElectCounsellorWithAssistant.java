@@ -4,6 +4,7 @@ import model.GameState;
 import model.changes.ChangeElectCounsellorWithAssistant;
 import model.changes.ChangeMsg;
 import model.changes.ChangePlayerStatus;
+import model.council.CounsellorGroup;
 import model.map.Region;
 import model.player.Assistants;
 import model.player.Player;
@@ -17,9 +18,6 @@ public class ElectCounsellorWithAssistant implements QuickAction {
 	 * @throws NullPointerException if region or color is null
 	 */
 	public ElectCounsellorWithAssistant(Region region, Color color) {
-		if(region==null) {
-			throw new NullPointerException("region cannot be null"); 
-		}
 		if(color==null) {
 			throw new NullPointerException("color cannot be null");
 		}
@@ -48,17 +46,32 @@ public class ElectCounsellorWithAssistant implements QuickAction {
 
 	@Override
 	public boolean checkCondition(Player player, GameState gameState) {
-		if(player==null) {
-			throw new NullPointerException("player cannot be null"); 
-		}
+		CounsellorGroup el=null;
 		
-		if(gameState==null) {
-			throw new NullPointerException("gameState cannot be null"); 
+		for(int i=0; i<gameState.getCounsellorGarbage().getState().size(); i++){
+			if(gameState.getCounsellorGarbage().getState().get(i).getColor().getStringID().equals(color.getStringID()))
+				el=gameState.getCounsellorGarbage().getState().get(i);
 		}
 		
 		if(player.getAssistants().getItems()<1){
 			gameState.notifyObserver(player, new ChangeMsg("You don't have enough assistants to elect a counsellor"));
 			return false;
+		}
+		
+		if(region==null){
+			gameState.notifyObserver(player, new ChangeMsg("The region you selected doesn't exist"));
+			return false;
+		}
+		
+		if(el==null){
+			gameState.notifyObserver(player, new ChangeMsg("The colour you selected doesn't exist"));
+			return false;
+		}
+		
+		else if(el.getCounter()==0){
+				gameState.notifyObserver(player, new ChangeMsg("There aren't any counsellors of this colour"));
+				return false;
+			
 		}
 		
 		return true;

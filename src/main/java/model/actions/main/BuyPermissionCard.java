@@ -42,7 +42,7 @@ public class BuyPermissionCard implements MainAction {
 	public void doAction(Player player, GameState gameState) {
 		int numCards, sumToPay, sumJolly;
 		int size=player.getPoliticalHand().getDeck().size();
-		sumJolly=(proposal.getDeck().get(size-1).getNumCards());
+		sumJolly=proposal.getDeck().get(size-1).getNumCards();
 		PermissionCard drawedCard;
 		
 		numCards=calculateNumCards(proposal);
@@ -64,6 +64,13 @@ public class BuyPermissionCard implements MainAction {
 		gameState.notifyObserver(player, new ChangePlayerStatus(player));
 	}
 	
+	/**
+	 * 
+	 * @param hand
+	 * @param proposal
+	 * @return
+	 * throws NullPointerException if hand or proposal are null
+	 */
 	public boolean checkHand(PoliticalHand hand, PoliticalContainer proposal){
 		if(hand==null) {
 			throw new NullPointerException("hand cannot be null"); 
@@ -173,7 +180,7 @@ public class BuyPermissionCard implements MainAction {
 		int sumToPay;
 		int size=player.getPoliticalHand().getDeck().size();
 		int numCards=calculateNumCards(proposal);
-		int sumJolly=(proposal.getDeck().get(size-1).getNumCards());
+		int sumJolly=proposal.getDeck().get(size-1).getNumCards();
 		
 		if(numCards==1) sumToPay=10;
 		else if(numCards==2) sumToPay=7;
