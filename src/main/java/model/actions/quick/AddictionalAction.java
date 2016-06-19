@@ -27,8 +27,8 @@ public class AddictionalAction implements QuickAction {
 		if(player==null || gameState==null) {
 			throw new NullPointerException("player and gameState cannot be null"); 
 		}
-			action.doAction(player, gameState);
 			player.getAssistants().sub(3);
+			action.doAction(player, gameState);
 			System.out.println("uscito dall'azione");
 	}
 
