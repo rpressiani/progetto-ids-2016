@@ -1,6 +1,8 @@
 package model.changes;
 
+
 import dto.changes.DTOChangeBuyPermissionCard;
+import model.bonusable.PermissionCard;
 import model.map.Region;
 import model.player.Coins;
 import view.VisitorChanges;
@@ -9,8 +11,9 @@ public class ChangeBuyPermissionCard implements Change {
 
 	private Coins coins;
 	private Region region;
+	private PermissionCard card;
 	
-	public ChangeBuyPermissionCard(Coins coins, Region region) {
+	public ChangeBuyPermissionCard(Coins coins, Region region, PermissionCard card) {
 		if(coins==null) {
 			throw new NullPointerException("coins cannot be null"); 
 		}
@@ -19,6 +22,7 @@ public class ChangeBuyPermissionCard implements Change {
 		}
 		this.coins=coins;
 		this.region=region;
+		this.card=card;
 	}
 
 	@Override
@@ -39,5 +43,12 @@ public class ChangeBuyPermissionCard implements Change {
 	public Region getRegion() {
 		return region;
 	}
-	
+
+	/**
+	 * @return the card
+	 */
+	public PermissionCard getCard() {
+		return card;
+	}
+
 }

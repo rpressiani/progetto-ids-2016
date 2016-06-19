@@ -7,6 +7,7 @@ import org.junit.Test;
 import dto.changes.DTOChangeBuyPermissionCard;
 import dto.map.DTORegion;
 import dto.playerInfo.DTOCoins;
+import dto.utilities.DTOPermissionCardSelection;
 
 public class TestDTOChangeBuyPermissionCard {
 
@@ -15,9 +16,10 @@ public class TestDTOChangeBuyPermissionCard {
 		boolean thrown = false; 
 		DTOCoins coins = null; 
 		DTORegion region = new DTORegion("Ohio"); 
+		DTOPermissionCardSelection card=new DTOPermissionCardSelection(1);
 		try {
 			DTOChangeBuyPermissionCard change = 
-					new DTOChangeBuyPermissionCard(coins, region); 
+					new DTOChangeBuyPermissionCard(coins, region,card); 
 		} catch(NullPointerException e) {
 			thrown = true; 
 		}
@@ -28,9 +30,10 @@ public class TestDTOChangeBuyPermissionCard {
 		boolean thrown = false; 
 		DTOCoins coins = new DTOCoins(3); 
 		DTORegion region = null; 
+		DTOPermissionCardSelection card=new DTOPermissionCardSelection(1);
 		try {
 			DTOChangeBuyPermissionCard change = 
-					new DTOChangeBuyPermissionCard(coins, region); 
+					new DTOChangeBuyPermissionCard(coins, region, card); 
 		} catch(NullPointerException e) {
 			thrown = true; 
 		}
@@ -40,16 +43,18 @@ public class TestDTOChangeBuyPermissionCard {
 	public void testGetCoins() {
 		DTOCoins coins = new DTOCoins(3); 
 		DTORegion region = new DTORegion("California"); 
+		DTOPermissionCardSelection card=new DTOPermissionCardSelection(1);
 		DTOChangeBuyPermissionCard change = 
-				new DTOChangeBuyPermissionCard(coins, region); 
+				new DTOChangeBuyPermissionCard(coins, region, card); 
 		assertEquals(coins, change.getCoins()); 
 	}
 	@Test
 	public void testGetRegion() {
 		DTOCoins coins = new DTOCoins(3); 
 		DTORegion region = new DTORegion("California"); 
+		DTOPermissionCardSelection card=new DTOPermissionCardSelection(1);
 		DTOChangeBuyPermissionCard change = 
-				new DTOChangeBuyPermissionCard(coins, region); 
+				new DTOChangeBuyPermissionCard(coins, region, card); 
 		assertEquals(region, change.getRegion()); 
 	}
 	

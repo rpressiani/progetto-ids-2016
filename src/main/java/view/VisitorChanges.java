@@ -17,6 +17,7 @@ import dto.changes.DTOChangeBuildEmporiumWithKing;
 import dto.changes.DTOChangeBuyPermissionCard;
 import dto.changes.DTOChangeElectCounsellor;
 import dto.changes.DTOChangeElectCounsellorWithAssistant;
+import dto.changes.DTOChangeGetFreePermission;
 import dto.changes.DTOChangeHireAssistants;
 import dto.playerInfo.DTOAssistants;
 import dto.playerInfo.DTOCoins;
@@ -37,6 +38,7 @@ import model.changes.ChangeBuildEmporiumWithKing;
 import model.changes.ChangeBuyPermissionCard;
 import model.changes.ChangeElectCounsellor;
 import model.changes.ChangeElectCounsellorWithAssistant;
+import model.changes.ChangeGetFreePermission;
 import model.changes.ChangeHireAssistants;
 import model.changes.ChangePlayerStatus;
 
@@ -185,8 +187,9 @@ public class VisitorChanges {
 		
 		DTOCoins coins=new DTOCoins(change.getCoins().getItems());
 		DTORegion region=new DTORegion(change.getRegion().getName());
+		DTOPermissionCardSelection card=new DTOPermissionCardSelection(change.getCard().getIdCard());
 		
-		return new DTOChangeBuyPermissionCard(coins, region);
+		return new DTOChangeBuyPermissionCard(coins, region, card);
 	}
 	
 	/**
@@ -223,5 +226,14 @@ public class VisitorChanges {
 		DTOCity city=new DTOCity(change.getCity().getName());
 		
 		return new DTOChangeBuildEmporiumWithKing(assistants, coins, city);
+	}
+	
+	public DTOChangeGetFreePermission visit(ChangeGetFreePermission change){
+		if(change==null) throw new NullPointerException("change can't be null");
+		
+		DTORegion region=new DTORegion(change.getRegion().getName());
+		DTOPermissionCardSelection card=new DTOPermissionCardSelection(change.getCard().getIdCard());
+		
+		return new DTOChangeGetFreePermission(region, card);
 	}
 }

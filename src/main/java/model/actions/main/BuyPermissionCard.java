@@ -60,7 +60,7 @@ public class BuyPermissionCard implements MainAction {
 		drawedCard.assignBonuses(player, gameState);
 		player.getPermissionHand().add(drawedCard);
 		
-		gameState.notifyObserver(player, new ChangeBuyPermissionCard(new Coins(sumToPay), region));
+		gameState.notifyObserver(player, new ChangeBuyPermissionCard(new Coins(sumToPay), region, drawedCard));
 		gameState.notifyObserver(player, new ChangePlayerStatus(player));
 	}
 	

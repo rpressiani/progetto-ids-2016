@@ -2,7 +2,9 @@ package model.actions.inputBonus;
 
 import model.GameState;
 import model.bonusable.PermissionCard;
+import model.changes.ChangeGetFreePermission;
 import model.changes.ChangeMsg;
+import model.changes.ChangePlayerStatus;
 import model.map.Region;
 import model.player.Player;
 
@@ -23,6 +25,9 @@ public class GetFreePermission implements InputBonusAction {
 		drawedCard=region.getPermissionDeck().drawCard(region.getPermissionDeck().getDeck(), region.getPermissionDeck().getVisibleCards(), index);
 		drawedCard.assignBonuses(player, gameState);
 		player.getPermissionHand().add(drawedCard);
+		
+		gameState.notifyObserver(player, new ChangeGetFreePermission(region, drawedCard));
+		gameState.notifyObserver(player, new ChangePlayerStatus(player));
 	}
 
 	@Override
