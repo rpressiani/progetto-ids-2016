@@ -150,12 +150,13 @@ public abstract class ClientOutHandler implements Runnable {
 						break;
 					}
 				case "addAction":
+					System.out.println("addAction detected");
 					switch (inputList.get(1)) {
 					case "buildEmpCard":
 						if (inputList.size() == 4) {
-							msg = new ClientMessage(new DTOBuildEmporiumWithCard(
+							msg = new ClientMessage(new DTOAddictionalAction(new DTOBuildEmporiumWithCard(
 									new DTOPermissionCardSelection(Integer.parseInt(inputList.get(2))),
-									new DTOCity(inputList.get(3))));
+									new DTOCity(inputList.get(3)))));
 							sendMsg(msg);
 //								socketOut.writeObject(msg);
 //								socketOut.flush();
@@ -167,9 +168,9 @@ public abstract class ClientOutHandler implements Runnable {
 					case "buildEmpKing":
 						if (inputList.size() >= 4) {
 							proposal = getProposal(inputList, 3);
-							msg = new ClientMessage(new DTOBuildEmporiumWithKing(
+							msg = new ClientMessage(new DTOAddictionalAction(new DTOBuildEmporiumWithKing(
 									new DTOPoliticalContainer(proposal),
-									new DTOCity(inputList.get(2))));
+									new DTOCity(inputList.get(2)))));
 
 							if (proposal.get(proposal.size()-1).equals(-1)) {
 								System.out.println(cmdNotFound.toString());
@@ -187,10 +188,10 @@ public abstract class ClientOutHandler implements Runnable {
 					case "buyPermissionCard":
 						if (inputList.size() >= 4) {
 							proposal = getProposal(inputList, 4);
-							msg = new ClientMessage(new DTOBuyPermissionCard(
+							msg = new ClientMessage(new DTOAddictionalAction(new DTOBuyPermissionCard(
 									new DTORegion(inputList.get(2)),
 									new DTOPoliticalContainer(proposal),
-									Integer.parseInt(inputList.get(3))));
+									Integer.parseInt(inputList.get(3)))));
 							if (proposal.get(proposal.size()-1).equals(-1)) {
 								System.out.println(cmdNotFound.toString());
 								break;
@@ -205,11 +206,15 @@ public abstract class ClientOutHandler implements Runnable {
 							break;
 						}
 					case "electCounsellor":
-						if (inputList.size() == 3) {
-							msg = new ClientMessage(new DTOElectCounsellor(
-									new DTORegion(inputList.get(1)),
-									new DTOColor(inputList.get(2))));
+						System.out.println("electDetected");
+						System.out.println(inputList.size());
+						if (inputList.size() == 4) {
+							System.out.println("inside if");
+							msg = new ClientMessage(new DTOAddictionalAction(new DTOElectCounsellor(
+									new DTORegion(inputList.get(2)),
+									new DTOColor(inputList.get(3)))));
 							sendMsg(msg);
+							System.out.println("msg sent");
 //								socketOut.writeObject(msg);
 //								socketOut.flush();
 							break;
@@ -222,6 +227,7 @@ public abstract class ClientOutHandler implements Runnable {
 						System.out.println(cmdNotFound.toString());
 						break;
 					}
+					break;
 					
 				case "buildEmpCard":
 					if (inputList.size() == 3) {
