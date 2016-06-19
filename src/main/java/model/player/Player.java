@@ -77,7 +77,7 @@ public class Player {
 		if (id < 0) throw new IllegalArgumentException("id must be greater or equal than zero");
 		if (this.nickname == null || this.color == null) throw new NullPointerException("cannot init a player if it is not enabled");
 		if(deck==null || parser==null) {
-			throw new NullPointerException("parser and deck cannot be nulle"); 
+			throw new NullPointerException("parser and deck cannot be null"); 
 		}
 		this.id = id;	//as a player register to a match this ID attribute has to increment, basically it'll represent the order
 						//of the players in a match
