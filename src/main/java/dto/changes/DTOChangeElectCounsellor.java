@@ -65,7 +65,7 @@ public class DTOChangeElectCounsellor implements DTOChange {
 	 */
 	@Override
 	public String toString() {
-		return "You gained "+coins+" for having elected a "+color+" counsellor in "+region+"'s balcony";
+		return "You gained "+coins+" coins for having elected a "+color+" counsellor in "+region+"'s balcony";
 	}
 
 }
