@@ -30,7 +30,7 @@ public class DTOGetFreePermission implements DTOInputBonusAction {
 	
 	@Override
 	public GetFreePermission accept(VisitorActions v, Player player) {
-		return v.visit(this, player);
+		return v.visit(this);
 	}
 
 }

@@ -6,7 +6,9 @@ import java.util.List;
 import java.util.Set;
 
 import dto.actions.DTONullAction;
+import dto.actions.inputBonus.DTOGetAgainBonusPermission;
 import dto.actions.inputBonus.DTOGetFreePermission;
+import dto.actions.inputBonus.DTOGetFreeToken;
 import dto.actions.main.DTOBuildEmporiumWithCard;
 import dto.actions.main.DTOBuildEmporiumWithKing;
 import dto.actions.main.DTOBuyPermissionCard;
@@ -16,12 +18,15 @@ import dto.actions.market.DTOBuyAction;
 import dto.actions.market.DTOSellAction;
 import dto.actions.quick.DTOAddictionalAction;
 import dto.actions.quick.DTOSubstitutePermissionCards;
+import dto.map.DTOCity;
 import dto.actions.quick.DTOElectCounsellorWithAssistant;
 import dto.actions.quick.DTOHireAssistant;
 import dto.utilities.DTOPermissionCardSelection;
 import model.GameState;
 import model.actions.NullAction;
+import model.actions.inputBonus.GetAgainBonusPermission;
 import model.actions.inputBonus.GetFreePermission;
+import model.actions.inputBonus.GetFreeToken;
 import model.actions.main.BuildEmporiumWithCard;
 import model.actions.main.BuildEmporiumWithKing;
 import model.actions.main.BuyPermissionCard;
@@ -178,9 +183,31 @@ public class VisitorActions {
 		return new BuyAction(contract);
 	}
 	
-	public GetFreePermission visit(DTOGetFreePermission DTOAction, Player player){
+	public GetFreePermission visit(DTOGetFreePermission DTOAction){
 		Region region=gameState.getMap().getRegions().get(DTOAction.getRegion().getName());
 		
 		return new GetFreePermission(region, DTOAction.getIndex());
+	}
+	
+	public GetFreeToken visit(DTOGetFreeToken DTOAction, Player player){
+		Set<City> cities=new HashSet<City>();
+		
+		for(DTOCity c : DTOAction.getCities()){
+			cities.add(gameState.getMap().getAllCitiesHashMap().get(c.getName()));
+		}
+		
+		return new GetFreeToken(cities);
+	}
+	
+	public GetAgainBonusPermission visit(DTOGetAgainBonusPermission DTOAction, Player player){
+		int idCard=DTOAction.getCard().getIdCard();
+		PermissionCard card=null;
+		List<PermissionCard> list= new ArrayList<PermissionCard>(player.getPermissionHand());
+		
+		for(int i=0; i<list.size(); i++){
+			if(idCard==list.get(i).getIdCard()) card=list.get(i);
+		}
+		
+		return new GetAgainBonusPermission(card);
 	}
 }
