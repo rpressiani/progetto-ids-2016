@@ -1,8 +1,13 @@
 package gui;
 
+import java.io.IOException;
+
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextArea;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import model.player.Player;
@@ -19,6 +24,7 @@ public class LoginClientController {
 	private Player player; //?
 	private boolean okClicked = false; 
 	private MainController main; 
+	private MainApp mainApp; 
 	
 	/**
      * Sets the stage of this dialog.
@@ -64,6 +70,18 @@ public class LoginClientController {
     		
     		okClicked = true; 
     		dialogStage.close();
+    		try {
+    			FXMLLoader loader = new FXMLLoader(); 
+        		loader.setLocation(getClass().getResource("/ConnectionChoice.fxml"));
+				AnchorPane connectionChoice = (AnchorPane) loader.load();
+				Scene scene = new Scene(connectionChoice); 
+				mainApp.getRootLayout().setCenter(connectionChoice);
+				mainApp.getPrimaryStage().setScene(scene);
+				mainApp.getPrimaryStage().show();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} 
     		//TODO: switch to next scene --> connection choice
     	}
     }
