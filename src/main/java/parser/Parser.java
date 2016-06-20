@@ -124,8 +124,8 @@ public class Parser {
 				bonuses.add(bonusItem);
 				break;
 			case "token":
-				bonusItem = new BonusToken(); //correct constructor
-				bonuses.add(bonusItem);
+				//bonusItem = new BonusToken(); //correct constructor
+				//bonuses.add(bonusItem);
 				break;
 			default:
 				break;

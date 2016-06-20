@@ -1,5 +1,6 @@
 package model.bonusItem;
 import model.GameState;
+import model.changes.ChangeMsg;
 import model.player.Player;
 
 public class BonusNobility implements BonusItem {
@@ -27,5 +28,6 @@ public class BonusNobility implements BonusItem {
 			throw new NullPointerException("gameState cannot be null"); 
 		}
 		player.getNobilityLevel().add(items);
+		gameState.notifyObserver(player, new ChangeMsg("You did "+items+" steps in the nobility route"));
 	}
 }

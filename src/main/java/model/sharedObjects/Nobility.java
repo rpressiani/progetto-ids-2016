@@ -44,7 +44,7 @@ public class Nobility {
 		if(gameState==null) {
 			throw new NullPointerException("gameState cannot be null"); 
 		}
-		System.out.println(this.getBoxes().get(1));
+	
 		if (this.getBoxes().get(player.getNobilityLevel().getItems()) != null) {
 			this.getBoxes().get(player.getNobilityLevel().getItems()).assignBonuses(player, gameState);
 		}

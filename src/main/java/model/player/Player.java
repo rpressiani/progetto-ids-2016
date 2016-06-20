@@ -1,5 +1,6 @@
 package model.player;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -40,7 +41,7 @@ public class Player {
 	private PoliticalHand politicalHand;
 	private Set<PermissionCard> permissionHand;
 	private Set<City> builtCities; 
-	private Set<BonusInputItem> bonusInputs;
+	private ArrayList<BonusInputItem> bonusInputs;
 	private State state;
 	
 	/**
@@ -60,7 +61,7 @@ public class Player {
 		this.score = new Score();
 		this.builtCities = new HashSet<City>();
 		this.permissionHand = new HashSet<PermissionCard>();
-		this.bonusInputs = new HashSet<BonusInputItem>();
+		this.bonusInputs = new ArrayList<BonusInputItem>();
 	}
 	
 	/**
@@ -267,7 +268,7 @@ public class Player {
 	/**
 	 * @return the bonusInputs
 	 */
-	public Set<BonusInputItem> getBonusInputs() {
+	public ArrayList<BonusInputItem> getBonusInputs() {
 		return bonusInputs;
 	}
 	

@@ -1,5 +1,6 @@
 package model.bonusItem;
 import model.GameState;
+import model.changes.ChangeMsg;
 import model.player.Player;
 
 public class BonusCoins implements BonusItem {
@@ -25,6 +26,7 @@ public class BonusCoins implements BonusItem {
 			throw new NullPointerException("gameState cannot be null"); 
 		}
 		player.getCoins().add(items);
+		gameState.notifyObserver(player, new ChangeMsg("You gained "+items+" bonus coins"));
 	}
 
 	/* (non-Javadoc)

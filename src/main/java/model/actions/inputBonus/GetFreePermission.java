@@ -1,6 +1,7 @@
 package model.actions.inputBonus;
 
 import model.GameState;
+import model.bonusItem.BonusFreePermission;
 import model.bonusable.PermissionCard;
 import model.changes.ChangeGetFreePermission;
 import model.changes.ChangeMsg;
@@ -26,6 +27,8 @@ public class GetFreePermission implements InputBonusAction {
 		drawedCard.assignBonuses(player, gameState);
 		player.getPermissionHand().add(drawedCard);
 		
+		player.getBonusInputs().remove(0);
+		
 		gameState.notifyObserver(player, new ChangeGetFreePermission(region, drawedCard));
 		gameState.notifyObserver(player, new ChangePlayerStatus(player));
 	}
@@ -33,8 +36,13 @@ public class GetFreePermission implements InputBonusAction {
 	@Override
 	public boolean checkCondition(Player player, GameState gameState) {
 		
+		if(!(player.getBonusInputs().get(0) instanceof BonusFreePermission)){
+			gameState.notifyObserver(player, new ChangeMsg("You can't choose now a free permission card to get"));
+			return false;
+		}
+		
 		if(index>1){
-			gameState.notifyObserver(player, new ChangeMsg("You have to choose 0 or 1 as the index of permission card to buy"));
+			gameState.notifyObserver(player, new ChangeMsg("You have to choose 0 or 1 as the index of permission card to get"));
 			return false;
 		}
 		
