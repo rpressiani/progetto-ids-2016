@@ -18,6 +18,7 @@ public class LoginClientController {
 	private Stage dialogStage; 
 	private Player player; //?
 	private boolean okClicked = false; 
+	private MainController main; 
 	
 	/**
      * Sets the stage of this dialog.
@@ -70,5 +71,8 @@ public class LoginClientController {
     private void handleCancel() {
     	dialogStage.close(); 
     }
+    public void init(MainController mainController) {
+		main = mainController;
+	}
     
 }

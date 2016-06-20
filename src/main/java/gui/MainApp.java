@@ -6,23 +6,29 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 public class MainApp extends Application {
 
 	private Stage primaryStage; 
-	private AnchorPane rootLayout; 
+	private BorderPane rootLayout; 
 	
 	public MainApp() {
 		
 	}
 	@Override
 	public void start(Stage primaryStage) {
-		this.primaryStage = primaryStage; 
-		this.primaryStage.setTitle("Council of Four");
-		initRootLayout(); 
-		
+		try {
+			this.primaryStage = primaryStage; 
+			this.primaryStage.setTitle("Council of Four");
+			
+			initRootLayout(); 
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	public static void main(String[] args) {
@@ -31,8 +37,8 @@ public class MainApp extends Application {
 	private void initRootLayout() {
 		try {
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(MainApp.class.getResource("gui/RootLayout.fxml"));
-			rootLayout = (AnchorPane) loader.load();
+			loader.setLocation(MainApp.class.getResource("/progetto-ids2016/src/main/resources/RootLayout.fxml"));
+			rootLayout = (BorderPane) loader.load();
 			Scene scene = new Scene(rootLayout); 
 			primaryStage.setScene(scene);
 			primaryStage.show();
@@ -41,8 +47,21 @@ public class MainApp extends Application {
 			e.printStackTrace();
 		} 
 	}
-	public void showRootLayout() {
-		
+	public void showLoginClient() {
+		try {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(getClass().getResource("/progetto-ids2016/src/main/resources/LoginClient.fxml"));
+			AnchorPane loginClient = (AnchorPane) loader.load();
+			rootLayout.setCenter(loginClient);
+			MainController controller = new MainController();
+			controller.initialize();
+			
+			
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	public void showMapOverview() {
 		try {
