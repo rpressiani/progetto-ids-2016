@@ -35,11 +35,12 @@ public class CanMainState implements State {
 			throw new NullPointerException("player, action and gameState should all be !=null"); 
 		}
 		
-		if(player.getBonusInputs().isEmpty()){
+		if(player.getBonusInputs().isEmpty()) State.super.transition(player, action, gameState);
+		
+		else{
+			
 			
 		}
-		
-		else State.super.transition(player, action, gameState);
 	}
 	
 }

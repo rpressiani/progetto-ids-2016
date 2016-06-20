@@ -24,12 +24,12 @@ public class GetFreePermission implements InputBonusAction {
 		PermissionCard drawedCard;
 		
 		drawedCard=region.getPermissionDeck().drawCard(region.getPermissionDeck().getDeck(), region.getPermissionDeck().getVisibleCards(), index);
-		drawedCard.assignBonuses(player, gameState);
 		player.getPermissionHand().add(drawedCard);
 		
 		player.getBonusInputs().remove(0);
 		
 		gameState.notifyObserver(player, new ChangeGetFreePermission(region, drawedCard));
+		drawedCard.assignBonuses(player, gameState);
 		gameState.notifyObserver(player, new ChangePlayerStatus(player));
 	}
 
@@ -37,7 +37,12 @@ public class GetFreePermission implements InputBonusAction {
 	public boolean checkCondition(Player player, GameState gameState) {
 		
 		if(!(player.getBonusInputs().get(0) instanceof BonusFreePermission)){
-			gameState.notifyObserver(player, new ChangeMsg("You can't choose now a free permission card to get"));
+			gameState.notifyObserver(player, new ChangeMsg("It's not time to choose a free permission card to get"));
+			return false;
+		}
+		
+		if(region==null){
+			gameState.notifyObserver(player, new ChangeMsg("The region you selected doesn't exist"));
 			return false;
 		}
 		
