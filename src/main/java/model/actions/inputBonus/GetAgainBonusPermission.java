@@ -11,6 +11,9 @@ public class GetAgainBonusPermission implements InputBonusAction {
 	private PermissionCard cardChosed;
 	
 	public GetAgainBonusPermission(PermissionCard cardChosed) {
+		if(cardChosed==null) {
+			throw new NullPointerException("cardChosed cannot be null"); 
+		}
 		this.cardChosed=cardChosed;
 	}
 	

@@ -15,6 +15,9 @@ public class DTOGetAgainBonusPermission implements DTOInputBonusAction {
 	private final DTOPermissionCardSelection card;
 	
 	public DTOGetAgainBonusPermission(DTOPermissionCardSelection card) {
+		if(card==null) {
+			throw new NullPointerException("card cannot be null"); 
+		}
 		this.card=card;
 	}
 

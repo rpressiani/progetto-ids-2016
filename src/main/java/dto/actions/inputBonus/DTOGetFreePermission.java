@@ -16,6 +16,12 @@ public class DTOGetFreePermission implements DTOInputBonusAction {
 	private final int index;
 	
 	public DTOGetFreePermission(DTORegion region, int index) {
+		if(region==null) {
+			throw new NullPointerException("region cannot be null"); 
+		}
+		if(index<0) {
+			throw new IllegalArgumentException("index must be >=0"); 
+		}
 		this.region=region;
 		this.index=index;
 	}
