@@ -36,6 +36,7 @@ public abstract class Bonusable {
 		if(gameState==null) {
 			throw new NullPointerException("gameState should not be null"); 
 		}
+		
 		Iterator<BonusItem> itr=bonuses.iterator();
 		while(itr.hasNext()){
 			itr.next().giveBonus(player, gameState);

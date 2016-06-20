@@ -1,5 +1,6 @@
 package model.bonusItem;
 import model.GameState;
+import model.changes.ChangeMsg;
 import model.player.Player;
 
 public class BonusScore implements BonusItem {
@@ -26,6 +27,7 @@ public class BonusScore implements BonusItem {
 			throw new NullPointerException("gameState cannot be null"); 
 		}
 		player.getScore().add(items);
+		gameState.notifyObserver(player, new ChangeMsg("Your score has been incremented by "+items));
 	}
 
 	/* (non-Javadoc)
