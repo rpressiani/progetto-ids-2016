@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Set;
 
 import dto.actions.DTONullAction;
+import dto.actions.inputBonus.DTOGetFreePermission;
 import dto.actions.main.DTOBuildEmporiumWithCard;
 import dto.actions.main.DTOBuildEmporiumWithKing;
 import dto.actions.main.DTOBuyPermissionCard;
@@ -20,6 +21,7 @@ import dto.actions.quick.DTOHireAssistant;
 import dto.utilities.DTOPermissionCardSelection;
 import model.GameState;
 import model.actions.NullAction;
+import model.actions.inputBonus.GetFreePermission;
 import model.actions.main.BuildEmporiumWithCard;
 import model.actions.main.BuildEmporiumWithKing;
 import model.actions.main.BuyPermissionCard;
@@ -174,5 +176,11 @@ public class VisitorActions {
 		}
 		
 		return new BuyAction(contract);
+	}
+	
+	public GetFreePermission visit(DTOGetFreePermission DTOAction, Player player){
+		Region region=gameState.getMap().getRegions().get(DTOAction.getRegion().getName());
+		
+		return new GetFreePermission(region, DTOAction.getIndex());
 	}
 }
