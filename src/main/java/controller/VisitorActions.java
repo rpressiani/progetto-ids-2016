@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Set;
 
 import dto.actions.DTONullAction;
+import dto.actions.inputBonus.DTOGetAgainBonusPermission;
 import dto.actions.inputBonus.DTOGetFreePermission;
 import dto.actions.inputBonus.DTOGetFreeToken;
 import dto.actions.main.DTOBuildEmporiumWithCard;
@@ -23,6 +24,7 @@ import dto.actions.quick.DTOHireAssistant;
 import dto.utilities.DTOPermissionCardSelection;
 import model.GameState;
 import model.actions.NullAction;
+import model.actions.inputBonus.GetAgainBonusPermission;
 import model.actions.inputBonus.GetFreePermission;
 import model.actions.inputBonus.GetFreeToken;
 import model.actions.main.BuildEmporiumWithCard;
@@ -195,5 +197,17 @@ public class VisitorActions {
 		}
 		
 		return new GetFreeToken(cities);
+	}
+	
+	public GetAgainBonusPermission visit(DTOGetAgainBonusPermission DTOAction, Player player){
+		int idCard=DTOAction.getCard().getIdCard();
+		PermissionCard card=null;
+		List<PermissionCard> list= new ArrayList<PermissionCard>(player.getPermissionHand());
+		
+		for(int i=0; i<list.size(); i++){
+			if(idCard==list.get(i).getIdCard()) card=list.get(i);
+		}
+		
+		return new GetAgainBonusPermission(card);
 	}
 }

@@ -64,12 +64,6 @@ public class BuildEmporiumWithCard implements MainAction {
 
 	@Override
 	public boolean checkCondition(Player player, GameState gameState) {
-		if(player==null) {
-			throw new NullPointerException("player cannot be null"); 
-		}
-		if(gameState==null) {
-			throw new NullPointerException("gameState cannot be null"); 
-		}
 		
 		if(cardChosed==null){
 			gameState.notifyObserver(player, new ChangeMsg("You don't have the permission card you chosed or it doesn't exist"));
