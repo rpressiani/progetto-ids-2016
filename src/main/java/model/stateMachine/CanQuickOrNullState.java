@@ -49,5 +49,24 @@ public class CanQuickOrNullState implements State {
 		
 		else State.super.transition(player, action, gameState);
 	}
+	
+	@Override
+	public void transition(Player player, model.actions.inputBonus.InputBonusAction action, GameState gameState){
+		if(player==null || action==null || gameState==null) {
+			throw new NullPointerException("player, action and gameState should all be !=null"); 
+		}
+		
+		if(player.getBonusInputs().isEmpty()) State.super.transition(player, action, gameState);
+		
+		else{
+			if(action.acceptMove(player, gameState)==true){
+				if(action.checkCondition(player, gameState)==true){
+					action.doAction(player, gameState);
+					System.out.println(player.getNickname()+" chosed his bonus");
+					gameState.notifyObserver(new ChangeMsg(player.getNickname()+" chosed his bonus"));
+				}
+			}
+		}
+	}
 
 }
