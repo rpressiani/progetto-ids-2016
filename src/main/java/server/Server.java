@@ -13,7 +13,6 @@ import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import client.rmi.ClientViewRemote;
 import model.player.Player;
 import view.rmi.RMIView;
 import view.socket.ServerSocketView;
@@ -27,6 +26,8 @@ public class Server {
 	private static Map<Player, ServerSocketView> tmpViewSocket = new HashMap<Player, ServerSocketView>();
 	private static Map<Player, RMIView> tmpViewRMI = new HashMap<Player, RMIView>();
 	
+	private ServerSocket serverSocket;
+	
 	/**
 	 * start the socket
 	 * @throws IOException
@@ -35,15 +36,10 @@ public class Server {
 	private void startSocket() throws IOException, ClassNotFoundException {
 		ExecutorService viewExecutor = Executors.newCachedThreadPool(); 
 		
-		ServerSocket serverSocket = new ServerSocket(PORT); 
+		this.serverSocket = new ServerSocket(PORT); 
 		System.out.println("SERVER SOCKET READY ON PORT: " + PORT);
 		
-//		tmpViewSocket = new HashMap<Player, ServerSocketView>();
-		
-		
-		
 		while(true) {
-			
 			Socket socket = serverSocket.accept();
 			ServerSocketView view = new ServerSocketView(socket);
 			viewExecutor.submit(view);
@@ -60,6 +56,10 @@ public class Server {
 		RMIServerInterface serverView=(RMIServerInterface) UnicastRemoteObject.exportObject(serverRMI, 0);
 		System.out.println("Binding the server implementation to the registry");
 		registry.bind(NAME, serverView);
+	}
+	
+	public void closeServer() throws IOException{
+		this.serverSocket.close();
 	}
 	
 	/**
