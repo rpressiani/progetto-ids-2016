@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Set;
 
 import dto.actions.DTONullAction;
+import dto.actions.inputBonus.DTODoAgainAction;
 import dto.actions.inputBonus.DTOGetAgainBonusPermission;
 import dto.actions.inputBonus.DTOGetFreePermission;
 import dto.actions.inputBonus.DTOGetFreeToken;
@@ -24,6 +25,7 @@ import dto.actions.quick.DTOHireAssistant;
 import dto.utilities.DTOPermissionCardSelection;
 import model.GameState;
 import model.actions.NullAction;
+import model.actions.inputBonus.DoAgainAction;
 import model.actions.inputBonus.GetAgainBonusPermission;
 import model.actions.inputBonus.GetFreePermission;
 import model.actions.inputBonus.GetFreeToken;
@@ -209,5 +211,17 @@ public class VisitorActions {
 		}
 		
 		return new GetAgainBonusPermission(card);
+	}
+	
+	public DoAgainAction visit(DTODoAgainAction DTOAction, Player player){
+		DTOMainAction action=DTOAction.getAction();
+		MainAction realAction=null;
+		
+		if(action instanceof DTOBuildEmporiumWithCard) realAction=visit((DTOBuildEmporiumWithCard) action, player);
+		if(action instanceof DTOBuildEmporiumWithKing) realAction=visit((DTOBuildEmporiumWithKing) action, player);
+		if(action instanceof DTOBuyPermissionCard) realAction=visit((DTOBuyPermissionCard) action, player);
+		if(action instanceof DTOElectCounsellor) realAction=visit((DTOElectCounsellor) action);
+	
+		return new DoAgainAction(realAction);
 	}
 }
