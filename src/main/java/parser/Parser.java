@@ -23,9 +23,7 @@ import model.bonusItem.BonusCoins;
 import model.bonusItem.BonusFreePermission;
 import model.bonusItem.BonusItem;
 import model.bonusItem.BonusNobility;
-import model.bonusItem.BonusPoliticalCards;
 import model.bonusItem.BonusScore;
-import model.bonusItem.BonusToken;
 
 /**
  * @author Riccardo Pressiani

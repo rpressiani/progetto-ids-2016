@@ -37,8 +37,8 @@ public class ServerSocketView extends View implements Runnable {
 	 */
 	public ServerSocketView(Socket socket) throws IOException, ClassNotFoundException {
 		this.socket = socket; 
-		this.socketIn = new ObjectInputStream(socket.getInputStream()); 
-		this.socketOut = new ObjectOutputStream(socket.getOutputStream());
+		this.socketIn = new ObjectInputStream(this.socket.getInputStream()); 
+		this.socketOut = new ObjectOutputStream(this.socket.getOutputStream());
 		this.visitorChanges = new VisitorChanges();
 
 		this.player = new Player();

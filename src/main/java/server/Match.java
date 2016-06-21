@@ -3,13 +3,9 @@ package server;
 import java.io.IOException;
 import java.rmi.AlreadyBoundException;
 import java.rmi.NotBoundException;
-import java.rmi.registry.LocateRegistry;
-import java.rmi.registry.Registry;
-import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 import java.util.Map;
 
-import client.rmi.ClientViewRemote;
 import controller.Controller;
 import model.GameState;
 import model.changes.ChangeMsg;
@@ -25,8 +21,6 @@ public class Match {
 	private GameState gameState; 
 	private Controller controller;
 	private Parser parser;
-	private final static String HOST = "127.0.0.1";
-	private final static int PORT = 29998;
 	
 	/**
 	 * 

@@ -11,7 +11,6 @@ import java.util.Map;
 import java.util.Queue;
 import java.util.Set;
 
-import client.rmi.ClientViewRemote;
 import model.player.Player;
 import view.rmi.RMIView;
 import view.socket.ServerSocketView;
@@ -90,7 +89,7 @@ public class MatchCreator implements Runnable {
 				int playersInLobby = this.tmpViewSocket.size() + this.tmpViewRMI.size();
 				log.append("[MATCH CREATOR] There are " + playersInLobby + " players connected in the lobby\n");
 				log.append("[MATCH CREATOR] There are " + this.runningMatches.size() + " matches running\n");
-				System.out.println(log);
+//				System.out.println(log);
 				
 				if (this.enabledPlayers.size() >= 2) {
 					
