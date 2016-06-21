@@ -7,8 +7,7 @@
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.72">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.72" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <SplitPane dividerPositions="0.678391959798995" layoutX="113.0" layoutY="14.0" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
@@ -40,6 +39,7 @@
                                   <MenuItem mnemonicParsing="false" text="Addictional Action" />
                                     <MenuItem mnemonicParsing="false" text="Substitute Permission Card" />
                                     <MenuItem mnemonicParsing="false" text="Elect Counsellor With Assistant" />
+                                    <MenuItem mnemonicParsing="false" text="NullAction" />
                                   <MenuItem mnemonicParsing="false" text="Hire Assistant " />
                                 </items>
                                  <contextMenu>

@@ -17,6 +17,9 @@ public class DTOGetFreeToken implements DTOInputBonusAction {
 	private final Set<DTOCity> cities;
 	
 	public DTOGetFreeToken(Set<DTOCity> cities) {
+		if(cities==null) {
+			throw new NullPointerException("cities cannot be null"); 
+		}
 		this.cities=cities;
 	}
 	

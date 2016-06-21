@@ -1,9 +1,17 @@
 package gui;
 
+import java.io.IOException;
+
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextArea;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import model.player.Player;
 import utilities.Color;
@@ -14,17 +22,27 @@ public class LoginClientController {
 	private TextArea nicknameArea; 
 	@FXML
 	private TextArea colorArea; 
-	
+	@FXML
+	private Button ok; 
+	@FXML
+	private Button decline; 
 	private Stage dialogStage; 
 	private Player player; //?
 	private boolean okClicked = false; 
-	private MainController main; 
+	private MainApp mainApp; 
 	
 	/**
      * Sets the stage of this dialog.
      * 
      * @param dialogStage
      */
+	public LoginClientController() {
+		
+	}
+	@FXML
+	private void initialize() {
+		this.mainApp = mainApp; 
+	}
     public void setDialogStage(Stage dialogStage) {
         this.dialogStage = dialogStage;
     }
@@ -59,20 +77,35 @@ public class LoginClientController {
     @FXML
     private void handleOk() {
     	if(isInputOk()) {
+    		Player player = new Player(); 
     		player.setNickname(nicknameArea.getText());
     		player.setColor(new Color(colorArea.getText()));
     		
     		okClicked = true; 
-    		dialogStage.close();
+    		try { 
+    			FXMLLoader loader = new FXMLLoader(); 
+        		loader.setLocation(getClass().getResource("/ChooseConnection.fxml"));
+				AnchorPane connectionChoice = (AnchorPane) loader.load();
+				Scene scene = new Scene(connectionChoice); 
+				mainApp.getRootLayout().setCenter(connectionChoice);
+				mainApp.getPrimaryStage().setScene(scene);
+				mainApp.getPrimaryStage().show();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} 
     		//TODO: switch to next scene --> connection choice
     	}
     }
     @FXML
     private void handleCancel() {
-    	dialogStage.close(); 
+    	decline.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				mainApp.getPrimaryStage().close();				
+			}
+    		
+    	});
     }
-    public void init(MainController mainController) {
-		main = mainController;
-	}
     
 }

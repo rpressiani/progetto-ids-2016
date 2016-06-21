@@ -26,18 +26,19 @@ public class MainApp extends Application {
 			
 			initRootLayout(); 
 			
+			showLoginClient(); 
+			
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
 	}
-
 	public static void main(String[] args) {
 		launch(args);
 	}
 	private void initRootLayout() {
 		try {
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(MainApp.class.getResource("/progetto-ids2016/src/main/resources/RootLayout.fxml"));
+			loader.setLocation(getClass().getResource("/RootLayout.fxml"));
 			rootLayout = (BorderPane) loader.load();
 			Scene scene = new Scene(rootLayout); 
 			primaryStage.setScene(scene);
@@ -47,30 +48,37 @@ public class MainApp extends Application {
 			e.printStackTrace();
 		} 
 	}
+	public BorderPane getRootLayout() {
+		return rootLayout; 
+	}
+	
+	public Stage getPrimaryStage() {
+		return primaryStage; 
+	}
+	
 	public void showLoginClient() {
 		try {
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("/progetto-ids2016/src/main/resources/LoginClient.fxml"));
+			loader.setLocation(getClass().getResource("/LoginClient.fxml"));
 			AnchorPane loginClient = (AnchorPane) loader.load();
 			rootLayout.setCenter(loginClient);
-			MainController controller = new MainController();
-			controller.initialize();
-			
-			
-			
+			//MainController controller = new MainController();
+			//controller.initialize();									
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-	public void showMapOverview() {
+	/*public void showMapOverview() {
 		try {
 			FXMLLoader loader = new FXMLLoader(); 
-			loader.setLocation(MainApp.class.getResource("gui/MapOverview.fxml"));
+			loader.setLocation(MainApp.class.getResource("/MapOverview.fxml"));
 			AnchorPane mapOverview = (AnchorPane) loader.load();
+			//rootLayout.setCenter(mapOverview);
+			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} 
-	}
+		} */
 }
+
