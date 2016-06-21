@@ -2,16 +2,17 @@ package client;
 
 import java.io.IOException;
 import java.net.UnknownHostException;
+import java.rmi.NotBoundException;
 import java.util.Scanner;
 
+import client.rmi.ClientRMI;
 import client.socket.ClientSocket;
 
 public class Client {
 
-	public static void main(String[] args) throws UnknownHostException, IOException {
+	public static void main(String[] args) throws UnknownHostException, IOException, NotBoundException {
 		Scanner in = new Scanner(System.in);
 		
-		while(true) {
 			
 			System.out.println("[CLIENT] Welcome to Council of Four! Set your preferences before starting a new match.");
 			System.out.println("[CLIENT] Connection: type 1 for SOCKET, 2 for RMI\n");
@@ -36,23 +37,21 @@ public class Client {
 			if (connection.equals("1")) {
 				if (view.equals("1")) {
 					System.out.println("\n[CLIENT] Starting new SOCKET CLI");
-					ClientSocket socketCLI = new ClientSocket();
+					ClientSocket socketCLI = new ClientSocket(in);
 					socketCLI.startClient();
-					break;
 				} else {
 					System.out.println("\n[CLIENT] SOCKET GUI still need to be implemented\n\n\n");
 				}
 			} else {
 				if (view.equals("1")) {
-					System.out.println("\n[CLIENT] RMI CLI still need to be implemented\n\n\n");
+					System.out.println("\n[CLIENT] Starting new RMI CLI");
+					ClientRMI clientRMI = new ClientRMI(in);
+					clientRMI.startClient();
 				} else {
 					System.out.println("\n[CLIENT] RMI GUI still need to be implemented\n\n\n");
 				}
 			}
-			
-		}
-
-		in.close();
+	
 	}
 
 }

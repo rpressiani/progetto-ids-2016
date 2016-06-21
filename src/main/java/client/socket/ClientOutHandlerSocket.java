@@ -2,6 +2,7 @@ package client.socket;
 
 import java.io.IOException;
 import java.io.ObjectOutputStream;
+import java.util.Scanner;
 
 import client.ClientOutHandler;
 
@@ -9,7 +10,8 @@ public class ClientOutHandlerSocket extends ClientOutHandler {
 	
 	private ObjectOutputStream socketOut; 
 	
-	public ClientOutHandlerSocket(ObjectOutputStream socketOut) {
+	public ClientOutHandlerSocket(ObjectOutputStream socketOut, Scanner in) {
+		super(in);
 		if(socketOut==null) {
 			throw new IllegalArgumentException("socketOut cannot be null"); 
 		}

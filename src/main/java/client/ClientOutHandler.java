@@ -1,12 +1,9 @@
 package client;
 
-import java.io.IOException;
-import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
-import client.rmi.ClientViewRemote;
 import client.socket.ClientMessage;
 import dto.actions.DTONullAction;
 import dto.actions.main.DTOBuildEmporiumWithCard;
@@ -37,15 +34,19 @@ import dto.utilities.DTOSetup;
 
 public abstract class ClientOutHandler implements Runnable {
 	
+	private Scanner stdIn;
+	
+	public ClientOutHandler(Scanner in) {
+		this.stdIn = in;
+	}
+	
 	public abstract void sendMsg(ClientMessage msg);
 	
 	public void run() {
 		
 		System.out.println("[CLIENT] ClientOutHandler is RUNNING");
-		Scanner stdIn = new Scanner(System.in);
 		
 		while (true) {
-			
 			String inputLine = stdIn.nextLine();
 			ArrayList<String> inputList = new ArrayList<String>(Arrays.asList(inputLine.split(" ")));
 			

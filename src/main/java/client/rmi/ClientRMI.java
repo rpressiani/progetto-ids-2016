@@ -5,6 +5,7 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
+import java.util.Scanner;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -18,25 +19,31 @@ public class ClientRMI {
 	private final static int PORT = 29998;
 	private static final String NAME = "co4";
 	
-	private RMIServerInterface serverStub;
+	private Scanner in;
 	
-	public ClientRMI() throws RemoteException, NotBoundException {
+	private RMIServerInterface serverStub;
+	private ClientRMIView clientRMIView;
+	
+	public ClientRMI(Scanner in) throws RemoteException, NotBoundException {
+		this.in = in;
+	}
+	
+	public void startClient() throws RemoteException, NotBoundException{
 		Registry registry = LocateRegistry.getRegistry(HOST, PORT);
 		this.serverStub = (RMIServerInterface) registry.lookup(NAME);
 		
-		ClientRMIView clientRmiView=new ClientRMIView();
-		
-
+		this.clientRMIView=new ClientRMIView();
 		
 		ExecutorService executor = Executors.newFixedThreadPool(2); //load from file
-		executor.submit(new ClientOutHandlerRMI(serverStub, clientRmiView));
+		executor.submit(new ClientOutHandlerRMI(serverStub, clientRMIView, this.in));
 		
-		this.serverStub.registerClient(clientRmiView); //before or after executor?
-		
+		this.serverStub.registerClient(clientRMIView); //before or after executor?
 	}
 	
 	public static void main(String[] args) throws RemoteException, NotBoundException, AlreadyBoundException {
-		new ClientRMI();
+		Scanner in = new Scanner(System.in);
+		ClientRMI client = new ClientRMI(in);
+		client.startClient();
 	}
 	
 }
