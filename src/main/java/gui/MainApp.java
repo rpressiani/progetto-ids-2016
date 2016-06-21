@@ -69,16 +69,16 @@ public class MainApp extends Application {
 			e.printStackTrace();
 		}
 	}
-	public void showMapOverview() {
+	/*public void showMapOverview() {
 		try {
 			FXMLLoader loader = new FXMLLoader(); 
-			loader.setLocation(MainApp.class.getResource("gui/MapOverview.fxml"));
+			loader.setLocation(MainApp.class.getResource("/MapOverview.fxml"));
 			AnchorPane mapOverview = (AnchorPane) loader.load();
 			//rootLayout.setCenter(mapOverview);
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} 
-	}
+		} */
 }
+

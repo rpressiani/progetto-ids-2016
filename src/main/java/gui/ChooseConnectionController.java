@@ -10,7 +10,6 @@ public class ChooseConnectionController {
 	private Stage dialogStage;
     private boolean okClicked = false;
     private Player player; 
-    private MainController main; 
     
 	@FXML
 	private TextArea connectionArea;
@@ -38,9 +37,6 @@ public class ChooseConnectionController {
 		
 		//TODO: switch to gameScene --> mapOverview
 		okClicked = true; 
-	}
-	public void init(MainController mainController) {
-		main = mainController;
 	}
 	
 
