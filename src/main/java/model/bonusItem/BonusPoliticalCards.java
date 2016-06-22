@@ -1,5 +1,6 @@
 package model.bonusItem;
 import model.GameState;
+import model.changes.ChangeMsg;
 import model.player.Player;
 
 public class BonusPoliticalCards implements BonusItem {
@@ -30,5 +31,7 @@ public class BonusPoliticalCards implements BonusItem {
 		for(int i=0; i<n; i++){
 			player.getPoliticalHand().drawCard(gameState.getPoliticalDeck());
 		}
+		
+		gameState.notifyObserver(player, new ChangeMsg("You drawed "+n+" bonus political cards"));
 	}
 }

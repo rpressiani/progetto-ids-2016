@@ -29,6 +29,7 @@ public class GameState extends Observable<Change>{
 	private KingBonuses kingBonuses;
 	private King king;
 	private ArrayList<Player> players;
+	private ArrayList<Player> playersDisconnected;
 	private HashMap<String, Player> playersHashMap;
 	private Player currentPlayer;
 	private Market market;
@@ -168,6 +169,10 @@ public class GameState extends Observable<Change>{
 	public HashMap<String, Player> getPlayersHashMap() {
 		return playersHashMap;
 
+	}
+	
+	public ArrayList<Player> getPlayersDisconnected() {
+		return playersDisconnected;
 	}
 	
 	/**
