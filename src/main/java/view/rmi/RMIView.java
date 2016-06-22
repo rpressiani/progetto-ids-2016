@@ -2,12 +2,7 @@ package view.rmi;
 
 import java.io.IOException;
 import java.rmi.RemoteException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
-import javax.management.remote.rmi.RMIServer;
-
-import client.rmi.ClientOutHandlerRMI;
 import client.rmi.ClientViewRemote;
 import dto.changes.DTOChange;
 import dto.queries.VisitorQueries;

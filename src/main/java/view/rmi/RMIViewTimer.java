@@ -29,8 +29,8 @@ public class RMIViewTimer implements Runnable {
 	public void run() {
 		try {
 			System.out.println("Timer started");
-			this.timer1.schedule(new RMITimerAdvice(this.client, this.server, this.player), 10*1000);
-			this.timer2.schedule(new RMIDisconnect(this.client, this.game, this.server, this.player), 20*1000);
+			this.timer1.schedule(new RMITimerAdvice(this.client, this.server, this.player), 20*1000);
+			this.timer2.schedule(new RMIDisconnect(this.client, this.game, this.server, this.player), 30*1000);
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -42,8 +42,8 @@ public class RMIViewTimer implements Runnable {
 		this.timer2.cancel();
 		this.timer1 = new Timer();
 		this.timer2 = new Timer();
-		this.timer1.schedule(new RMITimerAdvice(this.client, this.server, this.player), 10*1000);
-		this.timer2.schedule(new RMIDisconnect(this.client, this.game, this.server, this.player), 20*1000);
+		this.timer1.schedule(new RMITimerAdvice(this.client, this.server, this.player), 20*1000);
+		this.timer2.schedule(new RMIDisconnect(this.client, this.game, this.server, this.player), 30*1000);
 		System.out.println("Timer reset");
 	}
 

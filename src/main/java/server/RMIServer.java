@@ -40,7 +40,7 @@ public class RMIServer implements RMIServerInterface {
 	}
 	
 	public void disconnect(Player player){
-		this.server.disconnect(player);
+		this.server.disconnectRMI(player);
 	}
 	
 	@Override

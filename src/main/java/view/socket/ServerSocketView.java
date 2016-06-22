@@ -148,7 +148,7 @@ public class ServerSocketView extends View implements Runnable {
 			} catch (ClassNotFoundException | IOException e) {
 				System.out.println("CLIENT_SOCKET DISCONNECTED");
 				try {
-					this.server.disconnect(player);
+					this.server.disconnectSocket(player);
 					this.socketIn.close();
 					this.socketOut.close();
 					this.socket.close();

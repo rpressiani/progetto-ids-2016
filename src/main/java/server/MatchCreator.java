@@ -19,6 +19,7 @@ public class MatchCreator implements Runnable {
 
 	private Map<Player, ServerSocketView> tmpViewSocket;
 	private Map<Player, RMIView> tmpViewRMI;
+	private Map<Player, Match> playerMatch;
 	private Queue<Player> enabledPlayers;
 	
 	private final int pauseTime = 5000;
@@ -30,7 +31,7 @@ public class MatchCreator implements Runnable {
 	 * 
 	 * @param tmpViewSocket
 	 */
-	public MatchCreator(Map<Player, ServerSocketView> tmpViewSocket, Map<Player, RMIView> tmpViewRMI) {
+	public MatchCreator(Map<Player, ServerSocketView> tmpViewSocket, Map<Player, RMIView> tmpViewRMI, Map<Player, Match> playerMatch) {
 		if(tmpViewSocket==null){
 			throw new NullPointerException("tmpViewSocket can't be null");
 		}
@@ -38,6 +39,7 @@ public class MatchCreator implements Runnable {
 		this.runningMatches = new HashSet<Match>();
 		this.tmpViewSocket = tmpViewSocket;
 		this.tmpViewRMI = tmpViewRMI;
+		this.playerMatch = playerMatch;
 		this.enabledPlayers = new LinkedList<Player>();
 	}
 	
@@ -113,10 +115,13 @@ public class MatchCreator implements Runnable {
 						matchPlayers.add(player);
 					}
 					
-					this.runningMatches.add(new Match(matchPlayers, this.tmpViewSocket, this.tmpViewRMI));
+					Match match = new Match(matchPlayers, this.tmpViewSocket, this.tmpViewRMI);
+					this.runningMatches.add(match);
+					
 					
 					for (Iterator<Player> iterator = matchPlayers.iterator(); iterator.hasNext();) {
 						Player playerToRemove =iterator.next();
+						playerMatch.put(playerToRemove, match);
 						this.enabledPlayers.remove(playerToRemove);
 						
 						if (tmpViewSocket.containsKey(playerToRemove)) {

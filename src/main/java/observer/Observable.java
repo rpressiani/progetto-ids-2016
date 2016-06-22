@@ -93,4 +93,11 @@ public abstract class Observable<C> {
 	public List<Observer<C>> getObservers() {
 		return observers;
 	}
+
+	/**
+	 * @return the observersMap
+	 */
+	public Map<Player, Observer<C>> getObserversMap() {
+		return observersMap;
+	}
 }
