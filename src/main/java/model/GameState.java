@@ -52,6 +52,7 @@ public class GameState extends Observable<Change>{
 		this.nobility = new Nobility(parser);
 		this.politicalGarbage = new PoliticalGarbage(parser);
 		this.politicalDeck = new PoliticalRealDeck(parser, this.politicalGarbage);
+		this.playersDisconnected = new ArrayList<Player>();
 		this.players = players;
 		this.parser=parser;
 
@@ -262,4 +263,7 @@ public class GameState extends Observable<Change>{
 		
 	}
 	
+	public void removePlayer(Player player){
+		
+	}
 }

@@ -8,11 +8,13 @@ import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import model.changes.ChangeMsg;
 import model.player.Player;
 import view.rmi.RMIView;
 import view.socket.ServerSocketView;
@@ -25,8 +27,11 @@ public class Server {
 	
 	private static Map<Player, ServerSocketView> tmpViewSocket = new HashMap<Player, ServerSocketView>();
 	private static Map<Player, RMIView> tmpViewRMI = new HashMap<Player, RMIView>();
+	private static Map<Player, Match> playerMatch = new HashMap<Player, Match>();
 	
 	private ServerSocket serverSocket;
+	
+	private static MatchCreator matchCreator;
 	
 	/**
 	 * start the socket
@@ -41,7 +46,7 @@ public class Server {
 		
 		while(true) {
 			Socket socket = serverSocket.accept();
-			ServerSocketView view = new ServerSocketView(socket);
+			ServerSocketView view = new ServerSocketView(socket, this);
 			viewExecutor.submit(view);
 			tmpViewSocket.put(view.getPlayer(), view);
 			System.out.println("NEW CLIENT_SOCKET ACCEPTED");
@@ -51,15 +56,97 @@ public class Server {
 	private void startRMI() throws RemoteException, AlreadyBoundException{
 		Registry registry = LocateRegistry.createRegistry(RMI_PORT);
 		System.out.println("Constructing the RMI registry");
-		RMIServer serverRMI=new RMIServer(tmpViewRMI);
+		RMIServer serverRMI=new RMIServer(tmpViewRMI, this);
 		System.out.println("RMIVIEW SERVER: " + serverRMI);
 		RMIServerInterface serverView=(RMIServerInterface) UnicastRemoteObject.exportObject(serverRMI, 0);
 		System.out.println("Binding the server implementation to the registry");
 		registry.bind(NAME, serverView);
 	}
 	
-	public void closeServer() throws IOException{
+	private void closeServer() throws IOException{
 		this.serverSocket.close();
+	}
+	
+//	public void disconnect(Player player){
+//		if (tmpViewSocket.containsKey(player)) {
+//			tmpViewSocket.remove(player);
+//			matchCreator.getEnabledPlayers().remove(player);
+//		}
+//		if (tmpViewRMI.containsKey(player)) {
+//			tmpViewRMI.remove(player);
+//			matchCreator.getEnabledPlayers().remove(player);
+//		}
+//	}
+	
+	public void disconnectRMI(Player player){
+		if (tmpViewRMI.containsKey(player)) {
+			tmpViewRMI.remove(player);
+			matchCreator.getEnabledPlayers().remove(player);
+		}
+		if (playerMatch.containsKey(player)) {
+			
+			playerMatch.get(player).getGameState().nextPlayer(player);
+			
+			ArrayList<Player> players = playerMatch.get(player).getGameState().getPlayers();
+			int i;
+			for (i = 0; i < players.size(); i++) {
+				if (players.get(i).equals(player)) {
+					break;
+				}
+			}
+			players.remove(i);
+			
+			playerMatch.get(player).getGameState().getPlayersHashMap().remove(player);
+			
+			playerMatch.get(player).getGameState().getPlayersDisconnected().add(player);
+			
+			playerMatch.get(player).getPlayersRMI().get(player).unregisterObserver(player, playerMatch.get(player).getController());
+			
+			playerMatch.get(player).getGameState().unregisterObserver(player, playerMatch.get(player).getPlayersRMI().get(player));
+			
+			playerMatch.get(player).getGameState().notifyObserver(new ChangeMsg(player.getNickname().toUpperCase() + " has disconnected, hope you won't miss him/her too much!"));
+			playerMatch.get(player).getGameState().notifyObserver(new ChangeMsg("Now it's time for " +playerMatch.get(player).getGameState().getCurrentPlayer().getNickname().toUpperCase() + " to play"));
+			
+			playerMatch.remove(player);
+			
+		}
+		
+		
+	}
+	
+
+	public void disconnectSocket(Player player){
+		if (tmpViewSocket.containsKey(player)) {
+			tmpViewSocket.remove(player);
+			matchCreator.getEnabledPlayers().remove(player);
+		}
+		if (playerMatch.containsKey(player)) {
+			
+			playerMatch.get(player).getGameState().nextPlayer(player);
+			
+			ArrayList<Player> players = playerMatch.get(player).getGameState().getPlayers();
+			int i;
+			for (i = 0; i < players.size(); i++) {
+				if (players.get(i).equals(player)) {
+					break;
+				}
+			}
+			players.remove(i);
+			
+			playerMatch.get(player).getGameState().getPlayersHashMap().remove(player);
+			
+			playerMatch.get(player).getGameState().getPlayersDisconnected().add(player);
+			
+			playerMatch.get(player).getPlayersSocket().get(player).unregisterObserver(player, playerMatch.get(player).getController());
+			
+			playerMatch.get(player).getGameState().unregisterObserver(player, playerMatch.get(player).getPlayersSocket().get(player));
+
+			playerMatch.get(player).getGameState().notifyObserver(new ChangeMsg(player.getNickname().toUpperCase() + "has disconnected, hope you won't miss him/her too much!"));
+			playerMatch.get(player).getGameState().notifyObserver(new ChangeMsg("Now it's time for " +playerMatch.get(player).getGameState().getCurrentPlayer().getNickname().toUpperCase() + " to play"));
+			
+			playerMatch.remove(player);
+			
+		}
 	}
 	
 	/**
@@ -72,8 +159,9 @@ public class Server {
 	public static void main(String[] args) throws IOException, ClassNotFoundException, AlreadyBoundException {
 		Server server = new Server();
 		
+		matchCreator = new MatchCreator(tmpViewSocket, tmpViewRMI, playerMatch);
 		ExecutorService matchExecutor = Executors.newCachedThreadPool();
-		matchExecutor.submit(new MatchCreator(tmpViewSocket, tmpViewRMI));
+		matchExecutor.submit(matchCreator);
 		
 		System.out.println("STARTING RMI");
 		server.startRMI();

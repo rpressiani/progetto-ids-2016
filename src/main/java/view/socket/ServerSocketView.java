@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.util.Map;
 
 import client.socket.ClientMessage;
 import dto.DTOObject;
@@ -15,6 +16,7 @@ import dto.utilities.DTOSetup;
 import model.GameState;
 import model.changes.Change;
 import model.player.Player;
+import server.Server;
 import utilities.Color;
 import view.View;
 import view.VisitorChanges;
@@ -29,14 +31,17 @@ public class ServerSocketView extends View implements Runnable {
 	private VisitorChanges visitorChanges;
 	private VisitorQueries visitorQueries;
 	
+	private Server server;
+	
 	/**
 	 * 
 	 * @param socket
 	 * @throws IOException
 	 * @throws ClassNotFoundException
 	 */
-	public ServerSocketView(Socket socket) throws IOException, ClassNotFoundException {
-		this.socket = socket; 
+	public ServerSocketView(Socket socket, Server server) throws IOException, ClassNotFoundException {
+		this.socket = socket;
+		this.server = server;
 		this.socketIn = new ObjectInputStream(this.socket.getInputStream()); 
 		this.socketOut = new ObjectOutputStream(this.socket.getOutputStream());
 		this.visitorChanges = new VisitorChanges();
@@ -141,8 +146,19 @@ public class ServerSocketView extends View implements Runnable {
 				}
 				
 			} catch (ClassNotFoundException | IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				System.out.println("CLIENT_SOCKET DISCONNECTED");
+				try {
+					this.server.disconnectSocket(player);
+					this.socketIn.close();
+					this.socketOut.close();
+					this.socket.close();
+					break;
+					
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
 			} 
 		}
 		
