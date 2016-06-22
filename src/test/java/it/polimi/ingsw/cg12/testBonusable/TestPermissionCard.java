@@ -65,29 +65,7 @@ public class TestPermissionCard {
 		card.makeExchange(player, player2);
 		assertTrue(player2.getPermissionHand().contains(card) && !player.getPermissionHand().contains(card)); 
 	}
-	@Test
-	public void testNullPlayerInVerifyAddThrowsException() {
-		boolean thrown = false; 
-		ArrayList<BonusItem> bonuses = new ArrayList<BonusItem>(); 
-		HashSet<City> cities = new HashSet<City>();
-		PermissionCard card = new PermissionCard(bonuses, cities); 
-		try {
-			Player player = null; 
-			card.verifyAdd(player); 
-		} catch(NullPointerException e) {
-			thrown = true; 
-		}
-		assertTrue(thrown); 
-	}
-	@Test
-	public void testVerifyAdd() {
-		ArrayList<BonusItem> bonuses = new ArrayList<BonusItem>(); 
-		HashSet<City> cities = new HashSet<City>();
-		PermissionCard card = new PermissionCard(bonuses, cities); 
-		Player player = new Player(); 
-		player.getPermissionHand().add(card); 
-		assertTrue(card.verifyAdd(player)); 
-	}
+	
 	@Test
 	public void testGetIdCard() {
 		ArrayList<BonusItem> bonuses = new ArrayList<BonusItem>(); 

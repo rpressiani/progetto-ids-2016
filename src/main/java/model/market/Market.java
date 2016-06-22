@@ -51,10 +51,12 @@ public class Market {
 		if(buyer==null) {
 			throw new NullPointerException("buyer cannot be null"); 
 		}
+		
 		Iterator<Marketable> sellBagItr = contract.getSellBag().iterator();
 		while(sellBagItr.hasNext()){
 			sellBagItr.next().makeExchange(contract.getSeller(), buyer);
 		}
+		
 		Iterator<Marketable> buyBagItr = contract.getBuyBag().iterator();
 		while(buyBagItr.hasNext()){
 			buyBagItr.next().makeExchange(buyer, contract.getSeller());

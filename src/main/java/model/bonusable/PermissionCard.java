@@ -42,17 +42,6 @@ public class PermissionCard extends Bonusable implements Marketable {
 		toPlayer.getPermissionHand().add(this);
 	}
 
-	@Override
-	public boolean verifyAdd(Player player) {
-		if(player==null) {
-			throw new NullPointerException("player should not be null"); 
-		}
-		if (player.getPermissionHand().contains(this)) {
-			return true;
-		} 
-		else return false;
-	}
-
 	/**
 	 * @return the idCard
 	 */

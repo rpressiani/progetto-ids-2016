@@ -38,10 +38,4 @@ public class Assistants extends SimpleItem implements Marketable {
 		toPlayer.getCoins().add(this.getItems());	
 	}
 
-	@Override
-	public boolean verifyAdd(Player player) {
-		if (Integer.compare(player.getAssistants().getItems(), this.getItems()) < 0) return false;
-		else return true;
-	}
-
 }

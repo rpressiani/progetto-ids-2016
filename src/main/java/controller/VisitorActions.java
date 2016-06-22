@@ -170,8 +170,8 @@ public class VisitorActions {
 			buyPermissions.add(card);
 		}
 		
-		ArrayList<Integer> sellPoliticals=DTOAction.getSellPoliticals();
-		ArrayList<Integer> buyPoliticals=DTOAction.getBuyPoliticals();
+		PoliticalContainer sellPoliticals=new PoliticalContainer(gameState.getParser(), DTOAction.getSellPoliticals());
+		PoliticalContainer buyPoliticals=new PoliticalContainer(gameState.getParser(), DTOAction.getBuyPoliticals());
 		
 		return new SellAction(sellCoins, sellAssistants, sellPermissions, sellPoliticals, buyCoins, buyAssistants, buyPermissions, buyPoliticals);
 	}
@@ -179,7 +179,7 @@ public class VisitorActions {
 	public BuyAction visit(DTOBuyAction DTOAction){
 		Contract contract=null;
 		List<Contract> contractList= new ArrayList<Contract>(gameState.getMarket().getContractSet());
-	
+
 		for(int i=0; i<contractList.size(); i++){
 			if(DTOAction.getPlayerName().equals(contractList.get(i).getSeller())) contract=contractList.get(i);
 		}

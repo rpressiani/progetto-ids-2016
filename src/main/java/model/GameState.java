@@ -61,8 +61,6 @@ public class GameState extends Observable<Change>{
 			this.playersHashMap.put(player.getNickname(), player);
 		}
 
-		
-		//Players sorting still to be decided
 		this.currentPlayer = this.players.get(0);
 		
 	}

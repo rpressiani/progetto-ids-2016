@@ -35,13 +35,6 @@ public class Coins extends SimpleItem implements Marketable {
 	}
 
 	@Override
-	public boolean verifyAdd(Player player) {
-		if (Integer.compare(player.getCoins().getItems(), this.getItems()) < 0) return false;
-		else return true;
-		
-	}
-
-	@Override
 	public void makeExchange(Player fromPlayer, Player toPlayer) {
 		int temp = fromPlayer.getCoins().getItems(); 
 		fromPlayer.getCoins().sub(temp);

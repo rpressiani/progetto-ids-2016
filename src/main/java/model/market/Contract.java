@@ -3,7 +3,6 @@
  */
 package model.market;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -12,7 +11,6 @@ import model.player.Assistants;
 import model.player.Coins;
 import model.player.Player;
 import model.politicalDeck.PoliticalContainer;
-import parser.Parser;
 
 /**
  * @author Riccardo Pressiani
@@ -25,8 +23,6 @@ public class Contract {
 	
 	private Player seller;
 	
-	private Parser parser;
-	
 	public Contract(Player seller){
 		if(seller==null) {
 			throw new NullPointerException("seller cannot be null"); 
@@ -36,8 +32,7 @@ public class Contract {
 		this.buyBag = new HashSet<Marketable>();
 		
 		this.seller = seller;
-		
-		this.parser = new Parser();
+	
 	}
 	
 	/**
@@ -45,14 +40,8 @@ public class Contract {
 	 * @throws IllegalArgumentException if nCoins<=0
 	 */
 	public void sellCoins(Integer nCoins){
-		if(nCoins<=0) {
-			throw new IllegalArgumentException("players should be selling nCoins>0"); 
-		}
 		Coins sellingCoins = new Coins(nCoins);
-		if (sellingCoins.verifyAdd(seller) == true) {
-			sellBag.add(sellingCoins);
-		}
-		else System.out.println(this.seller + "doesn't have enough coins!");
+		sellBag.add(sellingCoins);
 	}
 	
 	/**
@@ -60,14 +49,8 @@ public class Contract {
 	 * @throws IllegalArgumentException if nAssistants<=0
 	 */
 	public void sellAssistants(Integer nAssistants){
-		if(nAssistants<=0) {
-			throw new IllegalArgumentException("players should be selling nAssistants>0"); 
-		}
 		Assistants sellingAssistants = new Assistants(nAssistants);
-		if (sellingAssistants.verifyAdd(seller) == true) {
-			sellBag.add(sellingAssistants);
-		}
-		else System.out.println(this.seller + "doesn't have enough coins!");
+		sellBag.add(sellingAssistants);
 	}
 	
 	/**
@@ -75,26 +58,15 @@ public class Contract {
 	 * @throws NullPointerException if permissionCard is null
 	 */
 	public void sellPermissionCard(PermissionCard permissionCard){
-		if(permissionCard==null) {
-			throw new NullPointerException("permissionCard should not be null"); 
-		}
-		if (permissionCard.verifyAdd(seller) == true) {
-			sellBag.add(permissionCard);
-		}
+		sellBag.add(permissionCard);
 	}
 
 	/**
 	 * @param structure politicalCards to be sold
 	 * @throws NullPointerException is structure is null
 	 */
-	public void sellPoliticalCards(ArrayList<Integer> structure) {
-		if(structure==null) {
-			throw new NullPointerException("structure should not be null"); 
-		}
-		PoliticalContainer sellingCards = new PoliticalContainer(this.parser, structure);
-		if (sellingCards.verifyAdd(seller) == true) {
-			sellBag.add(sellingCards);
-		}
+	public void sellPoliticalCards(PoliticalContainer sellingCards) {
+		sellBag.add(sellingCards);	
 	}
 	
 	/**
@@ -134,11 +106,8 @@ public class Contract {
 	 * @param structure political cards to be sold
 	 * @throws NullPointerException if structure is null
 	 */
-	public void buyPoliticalCards(ArrayList<Integer> structure) {
-		if(structure==null) {
-			throw new NullPointerException("structure should not be null");
-		}
-		buyBag.add(new PoliticalContainer(this.parser, structure));
+	public void buyPoliticalCards(PoliticalContainer buyingCards) {
+		buyBag.add(buyingCards);
 	}
 
 	/**
