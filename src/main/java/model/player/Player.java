@@ -8,6 +8,7 @@ import utilities.Color;
 import model.GameState;
 import model.actions.GeneralAction;
 import model.actions.NullAction;
+import model.actions.inputBonus.InputBonusAction;
 import model.actions.main.MainAction;
 import model.actions.market.BuyAction;
 import model.actions.market.SellAction;
@@ -32,6 +33,7 @@ public class Player {
 	private final int serialID;
 	private int id;
 	private boolean enabled;
+	private boolean bonusChosed;
 	private String nickname;
 	private Coins coins;
 	private NobilityLevel nobilityLevel;
@@ -62,6 +64,7 @@ public class Player {
 		this.builtCities = new HashSet<City>();
 		this.permissionHand = new HashSet<PermissionCard>();
 		this.bonusInputs = new ArrayList<BonusInputItem>();
+		this.bonusChosed=false;
 	}
 	
 	/**
@@ -120,6 +123,10 @@ public class Player {
 		if(action instanceof BuyAction){
 			this.getState().transition(this, (BuyAction)action, gameState);
 		}
+		
+		if(action instanceof InputBonusAction){
+			this.getState().transition(this, (InputBonusAction)action, gameState);
+		}
 	}
 	
 	/**
@@ -163,18 +170,6 @@ public class Player {
 	public NobilityLevel getNobilityLevel() {
 		return nobilityLevel;
 	}
-
-//	/* (non-Javadoc)
-//	 * @see java.lang.Object#toString()
-//	 */
-//	@Override
-//	public String toString() {
-//		return "Player [id=" + id + ", nickname=" + nickname + ", coins=" + coins + ", nobilityLevel=" + nobilityLevel
-//				+ ", score=" + score + ", assistants=" + assistants + ", color=" + color + ", politicalHand="
-//				+ politicalHand + "]";
-//	}
-
-	
 	
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
@@ -272,6 +267,14 @@ public class Player {
 		return bonusInputs;
 	}
 	
+	public boolean isBonusChosed() {
+		return bonusChosed;
+	}
+
+	public void setBonusChosed(boolean bonusChosed) {
+		this.bonusChosed = bonusChosed;
+	}
+	
 	public int getAssistantsPlusPoliticals(){
 		int res=0;
 		for(PoliticalCard c : this.getPoliticalHand().getDeck()){
@@ -310,4 +313,5 @@ public class Player {
 			return false;
 		return true;
 	}
+
 }

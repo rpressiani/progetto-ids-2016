@@ -2,6 +2,7 @@ package model.stateMachine;
 
 import model.GameState;
 import model.actions.NullAction;
+import model.actions.inputBonus.InputBonusAction;
 import model.actions.quick.QuickAction;
 import model.changes.ChangeMsg;
 import model.player.Player;
@@ -51,12 +52,14 @@ public class CanQuickOrNullState implements State {
 	}
 	
 	@Override
-	public void transition(Player player, model.actions.inputBonus.InputBonusAction action, GameState gameState){
+	public void transition(Player player, InputBonusAction action, GameState gameState){
 		if(player==null || action==null || gameState==null) {
 			throw new NullPointerException("player, action and gameState should all be !=null"); 
 		}
 		
-		if(player.getBonusInputs().isEmpty()) State.super.transition(player, action, gameState);
+		if(player.getBonusInputs().isEmpty()){
+			State.super.transition(player, action, gameState);
+		}
 		
 		else{
 			if(action.acceptMove(player, gameState)==true){

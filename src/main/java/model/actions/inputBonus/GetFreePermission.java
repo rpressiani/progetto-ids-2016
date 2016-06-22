@@ -21,12 +21,12 @@ public class GetFreePermission implements InputBonusAction {
 	
 	@Override
 	public void doAction(Player player, GameState gameState) {
-		PermissionCard drawedCard;
-		
-		drawedCard=region.getPermissionDeck().drawCard(region.getPermissionDeck().getDeck(), region.getPermissionDeck().getVisibleCards(), index);
-		player.getPermissionHand().add(drawedCard);
+		PermissionCard drawedCard=region.getPermissionDeck().drawCard(region.getPermissionDeck().getDeck(), region.getPermissionDeck().getVisibleCards(), index);
 		
 		player.getBonusInputs().remove(0);
+		player.setBonusChosed(true);
+
+		player.getPermissionHand().add(drawedCard);
 		
 		gameState.notifyObserver(player, new ChangeGetFreePermission(region, drawedCard));
 		drawedCard.assignBonuses(player, gameState);

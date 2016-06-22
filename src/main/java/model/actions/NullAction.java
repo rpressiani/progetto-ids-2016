@@ -17,7 +17,7 @@ public class NullAction implements GeneralAction {
 	 * pass the turn
 	 */
 	public void doAction(Player player, GameState gameState) {
-	
+		
 	}
 
 	@Override

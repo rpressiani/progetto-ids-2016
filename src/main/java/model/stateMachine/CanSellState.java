@@ -2,6 +2,7 @@ package model.stateMachine;
 
 import model.GameState;
 import model.actions.NullAction;
+import model.actions.inputBonus.InputBonusAction;
 import model.actions.market.SellAction;
 import model.changes.ChangeMsg;
 import model.player.Player;
@@ -51,7 +52,7 @@ public class CanSellState implements State {
 	}
 	
 	@Override
-	public void transition(Player player, model.actions.inputBonus.InputBonusAction action, GameState gameState){
+	public void transition(Player player, InputBonusAction action, GameState gameState){
 		if(player==null || action==null || gameState==null) {
 			throw new NullPointerException("player, action and gameState should all be !=null"); 
 		}
@@ -64,6 +65,7 @@ public class CanSellState implements State {
 					action.doAction(player, gameState);
 					System.out.println(player.getNickname()+" chosed his bonus");
 					gameState.notifyAllExceptPlayer(player, new ChangeMsg(player.getNickname()+" chosed his bonus"));
+					player.getState().checkTurn(player, gameState);
 				}
 			}
 		}

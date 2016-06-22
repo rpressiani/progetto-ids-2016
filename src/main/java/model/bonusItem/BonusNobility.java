@@ -28,6 +28,7 @@ public class BonusNobility implements BonusItem {
 			throw new NullPointerException("gameState cannot be null"); 
 		}
 		player.getNobilityLevel().add(items);
+		player.setBonusChosed(false);
 		gameState.notifyObserver(player, new ChangeMsg("You did "+items+" steps in the nobility route"));
 	}
 }

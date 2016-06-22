@@ -1,6 +1,7 @@
 package model.stateMachine;
 
 import model.GameState;
+import model.actions.inputBonus.InputBonusAction;
 import model.actions.main.MainAction;
 import model.changes.ChangeMsg;
 import model.player.Player;
@@ -30,7 +31,7 @@ public class CanMainState implements State {
 	}
 	
 	@Override
-	public void transition(Player player, model.actions.inputBonus.InputBonusAction action, GameState gameState){
+	public void transition(Player player, InputBonusAction action, GameState gameState){
 		if(player==null || action==null || gameState==null) {
 			throw new NullPointerException("player, action and gameState should all be !=null"); 
 		}
