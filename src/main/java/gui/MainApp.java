@@ -8,14 +8,20 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import model.GameState;
 
 public class MainApp extends Application {
 
 	private Stage primaryStage; 
 	private BorderPane rootLayout; 
+	private GameState gameState; 
 	
 	public MainApp() {
 		
+	}
+	public void start(GameState gameState) {
+		
+		launch(); 
 	}
 	@Override
 	public void start(Stage primaryStage) {
@@ -32,7 +38,7 @@ public class MainApp extends Application {
 		}
 	}
 	public static void main(String[] args) {
-		launch(args);
+		launch(args); 
 	}
 	private void initRootLayout() {
 		try {

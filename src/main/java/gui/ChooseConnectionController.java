@@ -28,6 +28,13 @@ public class ChooseConnectionController {
 	public void setMainApp(MainApp mainApp) {
 		this.mainApp = mainApp; 
 	}
+	public boolean isPortOk() {
+		if(portArea.getText()==null) {
+			return false; 
+		} //TODO: fix this
+		return true; 
+		
+	}
 	@FXML
 	private void handleCancel() {
 		
