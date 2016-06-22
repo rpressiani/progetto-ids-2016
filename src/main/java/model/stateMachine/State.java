@@ -2,6 +2,7 @@ package model.stateMachine;
 
 import model.GameState;
 import model.actions.NullAction;
+import model.actions.QuitAction;
 import model.actions.inputBonus.InputBonusAction;
 import model.actions.main.MainAction;
 import model.actions.market.BuyAction;
@@ -108,7 +109,7 @@ public interface State {
 		}
 	}
 	
-	public default void transition(Player player, GameState gameState){
+	public default void transition(Player player, QuitAction action, GameState gameState){
 		if(player==null || gameState==null) throw new NullPointerException("player/gameState cannot be null");
 		
 		System.out.println(player.getNickname()+" has disconnected");

@@ -8,6 +8,7 @@ import utilities.Color;
 import model.GameState;
 import model.actions.GeneralAction;
 import model.actions.NullAction;
+import model.actions.QuitAction;
 import model.actions.inputBonus.InputBonusAction;
 import model.actions.main.MainAction;
 import model.actions.market.BuyAction;
@@ -126,6 +127,10 @@ public class Player {
 		
 		if(action instanceof InputBonusAction){
 			this.getState().transition(this, (InputBonusAction)action, gameState);
+		}
+		
+		if(action instanceof QuitAction){
+			this.getState().transition(this, (QuitAction)action, gameState);
 		}
 	}
 	
