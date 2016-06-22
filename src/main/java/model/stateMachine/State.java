@@ -108,6 +108,13 @@ public interface State {
 		}
 	}
 	
+	public default void transition(Player player, GameState gameState){
+		if(player==null || gameState==null) throw new NullPointerException("player/gameState cannot be null");
+		
+		System.out.println(player.getNickname()+" has disconnected");
+		gameState.notifyObserver(new ChangeMsg(player.getNickname()+" has disconnected, hope you won't miss him/her too much"));
+	}
+	
 	public default void checkTurn(Player player, GameState gameState){
 		
 	}

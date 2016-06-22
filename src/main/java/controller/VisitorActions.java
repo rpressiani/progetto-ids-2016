@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Set;
 
 import dto.actions.DTONullAction;
+import dto.actions.DTOQuitAction;
 import dto.actions.inputBonus.DTODoAgainAction;
 import dto.actions.inputBonus.DTOGetAgainBonusPermission;
 import dto.actions.inputBonus.DTOGetFreePermission;
@@ -25,6 +26,7 @@ import dto.actions.quick.DTOHireAssistant;
 import dto.utilities.DTOPermissionCardSelection;
 import model.GameState;
 import model.actions.NullAction;
+import model.actions.QuitAction;
 import model.actions.inputBonus.DoAgainAction;
 import model.actions.inputBonus.GetAgainBonusPermission;
 import model.actions.inputBonus.GetFreePermission;
@@ -223,5 +225,9 @@ public class VisitorActions {
 		if(action instanceof DTOElectCounsellor) realAction=visit((DTOElectCounsellor) action);
 	
 		return new DoAgainAction(realAction);
+	}
+	
+	public QuitAction visit(DTOQuitAction DTOAction){
+		return new QuitAction();
 	}
 }
