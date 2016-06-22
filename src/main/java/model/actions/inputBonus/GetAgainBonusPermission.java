@@ -22,6 +22,7 @@ public class GetAgainBonusPermission implements InputBonusAction {
 	public void doAction(Player player, GameState gameState) {
 		cardChosed.assignBonuses(player, gameState);
 		gameState.notifyObserver(player, new ChangePlayerStatus(player));
+		gameState.getNobility().checkNobility(player, gameState);
 	}
 
 	@Override

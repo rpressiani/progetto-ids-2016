@@ -71,6 +71,7 @@ public class BuildEmporiumWithKing implements MainAction {
 		gameState.notifyObserver(player, new ChangeBuildEmporiumWithKing(new Coins(sumToPay), new Assistants(assistantsToPay), cityChosed));
 		gameState.notifyObserver(player, new ChangePlayerStatus(player));
 		gameState.notifyObserver(new ChangeMsg("The king has been moved to "+cityChosed));
+		gameState.getNobility().checkNobility(player, gameState);
 	}
 	
 	/**

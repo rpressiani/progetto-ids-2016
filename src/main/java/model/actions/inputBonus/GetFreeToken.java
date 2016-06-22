@@ -29,7 +29,7 @@ public class GetFreeToken implements InputBonusAction {
 		player.getBonusInputs().remove(0);
 		
 		gameState.notifyObserver(player, new ChangePlayerStatus(player));
-		
+		gameState.getNobility().checkNobility(player, gameState);
 	}
 
 	@Override

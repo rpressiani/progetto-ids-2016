@@ -38,6 +38,7 @@ public class BuildEmporiumWithCard implements MainAction {
 		
 		gameState.notifyObserver(player, new ChangeBuildEmporiumWithCard(new Assistants(assistantsToPay), cityChosed, cardChosed));
 		gameState.notifyObserver(player, new ChangePlayerStatus(player));
+		gameState.getNobility().checkNobility(player, gameState);
 	}
 	
 	/**
