@@ -60,6 +60,7 @@ public class BuildEmporiumWithKing implements MainAction {
 					
 		player.getCoins().sub(sumToPay);
 		subProposal(player.getPoliticalHand(), proposal);
+		gameState.getGarbage().add(proposal);
 		player.getAssistants().sub(assistantsToPay);
 		gameState.getKing().setKingCity(cityChosed);
 		player.getBuiltCities().add(cityChosed);

@@ -28,5 +28,13 @@ public class PoliticalGarbage extends PoliticalDeck {
 			this.getDeck().get(i).setNumCards(0); 
 		}
 	}
+	
+	public void add(PoliticalContainer proposal){
+		if(proposal==null) throw new NullPointerException("proposal can't be null");
+		
+		for(int i=0; i<proposal.getDeck().size(); i++){
+			this.getDeck().get(i).addCards(proposal.getDeck().get(i).getNumCards());
+		}
+	}
 }	
 

@@ -56,6 +56,7 @@ public class BuyPermissionCard implements MainAction {
 		
 		player.getCoins().sub(sumToPay);
 		subProposal(player.getPoliticalHand(), proposal);
+		gameState.getGarbage().add(proposal);
 		drawedCard=region.getPermissionDeck().drawCard(region.getPermissionDeck().getDeck(), region.getPermissionDeck().getVisibleCards(), index);
 		player.getPermissionHand().add(drawedCard);
 		
