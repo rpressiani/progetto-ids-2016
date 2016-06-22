@@ -23,7 +23,9 @@ import model.bonusItem.BonusCoins;
 import model.bonusItem.BonusFreePermission;
 import model.bonusItem.BonusItem;
 import model.bonusItem.BonusNobility;
+import model.bonusItem.BonusPoliticalCards;
 import model.bonusItem.BonusScore;
+import model.bonusItem.BonusToken;
 
 /**
  * @author Riccardo Pressiani
@@ -106,8 +108,8 @@ public class Parser {
 				bonuses.add(bonusItem);
 				break;
 			case "politicalCard":
-				//bonusItem = new BonusPoliticalCards(); //correct constructor
-				//bonuses.add(bonusItem);
+				bonusItem = new BonusPoliticalCards(bonus.getQuantity().intValue());
+				bonuses.add(bonusItem);
 				break;
 			case "additionalAction":
 				bonusItem = new BonusAddictionalAction();
@@ -122,8 +124,8 @@ public class Parser {
 				bonuses.add(bonusItem);
 				break;
 			case "token":
-				//bonusItem = new BonusToken(); //correct constructor
-				//bonuses.add(bonusItem);
+				bonusItem = new BonusToken(bonus.getQuantity().intValue());
+				bonuses.add(bonusItem);
 				break;
 			default:
 				break;

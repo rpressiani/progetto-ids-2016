@@ -2,10 +2,16 @@ package client;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.Scanner;
+import java.util.Set;
 
 import client.socket.ClientMessage;
 import dto.actions.DTONullAction;
+import dto.actions.inputBonus.DTODoAgainAction;
+import dto.actions.inputBonus.DTOGetAgainBonusPermission;
+import dto.actions.inputBonus.DTOGetFreePermission;
+import dto.actions.inputBonus.DTOGetFreeToken;
 import dto.actions.main.DTOBuildEmporiumWithCard;
 import dto.actions.main.DTOBuildEmporiumWithKing;
 import dto.actions.main.DTOBuyPermissionCard;
@@ -70,11 +76,19 @@ public abstract class ClientOutHandler implements Runnable {
 				help.append("[CLI] \t\tbuildEmpKing <city> <proposal>\n");
 				help.append("[CLI] \t\tbuyPermissionCard <region> <cardIndex> <proposal> \n");
 				help.append("[CLI] \t\telectCounsellor <region> <color>\n");
+				
 				help.append("[CLI] *\tQuick Actions \n");
-				help.append("[CLI] \t\taddAction <action>\n");
+				help.append("[CLI] \t\taddAction <main_action>\n");
 				help.append("[CLI] \t\tsubPermissionCards <region>\n");
 				help.append("[CLI] \t\telectCounsellorAssistant <region> <color>\n");
 				help.append("[CLI] \t\thireAssistant\n");
+				
+				help.append("[CLI] *\tBonus action\n");
+				help.append("[CLI] \t\tbonusToken <city1> ... <city-n> \n");
+				help.append("[CLI] \t\tbonusFreePermission <region> <index> \n");
+				help.append("[CLI] \t\tbonusPermissionGift <index> \n");
+				help.append("[CLI] \t\tbonusDoActionAgain <main_action> \n");
+				
 				help.append("[CLI] *\tQueries \n");
 				help.append("[CLI] \t\tgetscores \n");
 				help.append("[CLI] \t\tgetcurrentplayer \n");
@@ -85,6 +99,7 @@ public abstract class ClientOutHandler implements Runnable {
 				help.append("[CLI] \t\tgetbalconies \n");
 				help.append("[CLI] \t\tgetpermissionavailable \n");
 				help.append("[CLI] \t\tgetmap \n");
+				
 				help.append("[CLI] *\tOther Commands \n");
 				help.append("[CLI] \t\tpass\n");
 				help.append("[CLI] \t\tping\n");
@@ -93,15 +108,10 @@ public abstract class ClientOutHandler implements Runnable {
 				msg = new ClientMessage(new DTOProposalOrderRequest());
 				System.out.println(help.toString());
 				sendMsg(msg);
-//					socketOut.writeObject(msg);
-//					socketOut.flush();
 				
 			} else if(inputList.get(0).equals("setup")){
 				msg = new ClientMessage(new DTOSetup(inputList.get(1), new DTOColor(inputList.get(2))));
 				sendMsg(msg);
-//					socketOut.writeObject(msg);
-//					socketOut.flush();
-//					System.out.println("DTOSetup sent");
 			} else {
 				
 				switch (inputList.get(0)) {
@@ -110,8 +120,6 @@ public abstract class ClientOutHandler implements Runnable {
 				case "ping":
 					msg = new ClientMessage(new DTOPingRequest());
 					sendMsg(msg);
-//						socketOut.writeObject(msg);
-//						socketOut.flush();
 					break;
 					
 					/*----- ACTIONS -----*/
@@ -119,8 +127,6 @@ public abstract class ClientOutHandler implements Runnable {
 					if (inputList.size() == 2) {
 						msg = new ClientMessage(new DTOSubstitutePermissionCards(new DTORegion(inputList.get(2))));
 						sendMsg(msg);
-//							socketOut.writeObject(msg);
-//							socketOut.flush();
 						break;
 					} else {
 						System.out.println(cmdNotFound.toString());
@@ -130,8 +136,6 @@ public abstract class ClientOutHandler implements Runnable {
 					if (inputList.size() == 1) {
 						msg = new ClientMessage(new DTOHireAssistant());
 						sendMsg(msg);
-//							socketOut.writeObject(msg);
-//							socketOut.flush();
 						break;
 					} else {
 						System.out.println(cmdNotFound.toString());
@@ -143,8 +147,6 @@ public abstract class ClientOutHandler implements Runnable {
 								new DTORegion(inputList.get(1)),
 								new DTOColor(inputList.get(2))));
 						sendMsg(msg);
-//							socketOut.writeObject(msg);
-//							socketOut.flush();
 						break;
 					} else {
 						System.out.println(cmdNotFound.toString());
@@ -159,8 +161,6 @@ public abstract class ClientOutHandler implements Runnable {
 									new DTOPermissionCardSelection(Integer.parseInt(inputList.get(2))),
 									new DTOCity(inputList.get(3)))));
 							sendMsg(msg);
-//								socketOut.writeObject(msg);
-//								socketOut.flush();
 							break;
 						} else {
 							System.out.println(cmdNotFound.toString());
@@ -178,8 +178,6 @@ public abstract class ClientOutHandler implements Runnable {
 								break;
 							} else {
 								sendMsg(msg);
-//									socketOut.writeObject(msg);
-//									socketOut.flush();
 								break;
 							}
 						} else {
@@ -198,8 +196,6 @@ public abstract class ClientOutHandler implements Runnable {
 								break;
 							} else {
 								sendMsg(msg);
-//									socketOut.writeObject(msg);
-//									socketOut.flush();
 								break;
 							}
 						} else {
@@ -216,8 +212,6 @@ public abstract class ClientOutHandler implements Runnable {
 									new DTOColor(inputList.get(3)))));
 							sendMsg(msg);
 							System.out.println("msg sent");
-//								socketOut.writeObject(msg);
-//								socketOut.flush();
 							break;
 						} else {
 							System.out.println(cmdNotFound.toString());
@@ -236,8 +230,6 @@ public abstract class ClientOutHandler implements Runnable {
 								new DTOPermissionCardSelection(Integer.parseInt(inputList.get(1))),
 								new DTOCity(inputList.get(2))));
 						sendMsg(msg);
-//							socketOut.writeObject(msg);
-//							socketOut.flush();
 						break;
 					} else {
 						System.out.println(cmdNotFound.toString());
@@ -255,8 +247,6 @@ public abstract class ClientOutHandler implements Runnable {
 							break;
 						} else {
 							sendMsg(msg);
-//								socketOut.writeObject(msg);
-//								socketOut.flush();
 							break;
 						}
 					} else {
@@ -275,8 +265,6 @@ public abstract class ClientOutHandler implements Runnable {
 							break;
 						} else {
 							sendMsg(msg);
-//								socketOut.writeObject(msg);
-//								socketOut.flush();
 							break;
 						}
 					} else {
@@ -289,8 +277,6 @@ public abstract class ClientOutHandler implements Runnable {
 								new DTORegion(inputList.get(1)),
 								new DTOColor(inputList.get(2))));
 						sendMsg(msg);
-//							socketOut.writeObject(msg);
-//							socketOut.flush();
 						break;
 					} else {
 						System.out.println(cmdNotFound.toString());
@@ -300,13 +286,118 @@ public abstract class ClientOutHandler implements Runnable {
 					if (inputList.size() == 1) {
 						msg = new ClientMessage(new DTONullAction());
 						sendMsg(msg);
-//							socketOut.writeObject(msg);
-//							socketOut.flush();
 						break;
 					} else {
 						System.out.println(cmdNotFound.toString());
 						break;
 					}
+					
+					/*----- BONUS -----*/
+					
+				case "bonusToken":
+					if (inputList.size() >= 2) {
+						Set<DTOCity> cities = new HashSet<DTOCity>();
+						for (int i = 1; i < inputList.size(); i++) {
+							cities.add(new DTOCity(inputList.get(i)));
+						}
+						msg = new ClientMessage(new DTOGetFreeToken(cities));
+						sendMsg(msg);
+						break;
+					} else {
+						System.out.println(cmdNotFound.toString());
+						break;
+					}
+				case "bonusFreePermission":
+					if (inputList.size() == 3) {
+						DTORegion region = new DTORegion(inputList.get(1));
+						int index = Integer.parseInt(inputList.get(2));
+						msg = new ClientMessage(new DTOGetFreePermission(region, index));
+						sendMsg(msg);
+						break;
+					} else {
+						System.out.println(cmdNotFound.toString());
+						break;
+					}
+				case "bonusPermissionGift":
+					if (inputList.size() == 2) {
+						DTOPermissionCardSelection card = new DTOPermissionCardSelection(Integer.parseInt(inputList.get(1)));
+						msg = new ClientMessage(new DTOGetAgainBonusPermission(card));
+						sendMsg(msg);
+						break;
+					} else {
+						System.out.println(cmdNotFound.toString());
+						break;
+					}
+				case "bonusDoActionAgain":
+					switch (inputList.get(1)) {
+						case "buildEmpCard":
+							if (inputList.size() == 4) {
+								msg = new ClientMessage(new DTODoAgainAction(new DTOBuildEmporiumWithCard(
+										new DTOPermissionCardSelection(Integer.parseInt(inputList.get(2))),
+										new DTOCity(inputList.get(3)))));
+								sendMsg(msg);
+								break;
+							} else {
+								System.out.println(cmdNotFound.toString());
+								break;
+							}
+						case "buildEmpKing":
+							if (inputList.size() >= 4) {
+								proposal = getProposal(inputList, 3);
+								msg = new ClientMessage(new DTODoAgainAction(new DTOBuildEmporiumWithKing(
+										new DTOPoliticalContainer(proposal),
+										new DTOCity(inputList.get(2)))));
+
+								if (proposal.get(proposal.size()-1).equals(-1)) {
+									System.out.println(cmdNotFound.toString());
+									break;
+								} else {
+									sendMsg(msg);
+									break;
+								}
+							} else {
+								System.out.println(cmdNotFound.toString());
+								break;
+							}
+						case "buyPermissionCard":
+							if (inputList.size() >= 4) {
+								proposal = getProposal(inputList, 4);
+								msg = new ClientMessage(new DTODoAgainAction(new DTOBuyPermissionCard(
+										new DTORegion(inputList.get(2)),
+										new DTOPoliticalContainer(proposal),
+										Integer.parseInt(inputList.get(3)))));
+								if (proposal.get(proposal.size()-1).equals(-1)) {
+									System.out.println(cmdNotFound.toString());
+									break;
+								} else {
+									sendMsg(msg);
+									break;
+								}
+							} else {
+								System.out.println(cmdNotFound.toString());
+								break;
+							}
+						case "electCounsellor":
+							System.out.println("electDetected");
+							System.out.println(inputList.size());
+							if (inputList.size() == 4) {
+								System.out.println("inside if");
+								msg = new ClientMessage(new DTODoAgainAction(new DTOElectCounsellor(
+										new DTORegion(inputList.get(2)),
+										new DTOColor(inputList.get(3)))));
+								sendMsg(msg);
+								System.out.println("msg sent");
+								break;
+							} else {
+								System.out.println(cmdNotFound.toString());
+								break;
+							}
+
+						default:
+							System.out.println(cmdNotFound.toString());
+							break;
+						}
+						break;
 					
 					/*----- QUERIES -----*/
 					
@@ -314,8 +405,6 @@ public abstract class ClientOutHandler implements Runnable {
 					if (inputList.size() == 1) {
 						msg = new ClientMessage(new DTOCurrentPlayerRequest());
 						sendMsg(msg);
-//							socketOut.writeObject(msg);
-//							socketOut.flush();
 						break;
 					} else {
 						System.out.println(cmdNotFound.toString());
@@ -325,8 +414,6 @@ public abstract class ClientOutHandler implements Runnable {
 					if (inputList.size() == 1) {
 						msg = new ClientMessage(new DTOScoresRequest());
 						sendMsg(msg);
-//							socketOut.writeObject(msg);
-//							socketOut.flush();
 						break;
 					} else {
 						System.out.println(cmdNotFound.toString());
@@ -336,8 +423,6 @@ public abstract class ClientOutHandler implements Runnable {
 					if (inputList.size() == 1) {
 						msg = new ClientMessage(new DTOPlayerInfoRequest());
 						sendMsg(msg);
-//							socketOut.writeObject(msg);
-//							socketOut.flush();
 						break;
 					} else {
 						System.out.println(cmdNotFound.toString());
@@ -347,8 +432,6 @@ public abstract class ClientOutHandler implements Runnable {
 					if (inputList.size() == 2) {
 						msg = new ClientMessage(new DTOPlayerInfoRequest(inputList.get(1)));
 						sendMsg(msg);
-//							socketOut.writeObject(msg);
-//							socketOut.flush();
 						break;
 					} else {
 						System.out.println(cmdNotFound.toString());
@@ -358,8 +441,6 @@ public abstract class ClientOutHandler implements Runnable {
 					if (inputList.size() == 1) {
 						msg = new ClientMessage(new DTOPlayersListRequest());
 						sendMsg(msg);
-//							socketOut.writeObject(msg);
-//							socketOut.flush();
 						break;
 					} else {
 						System.out.println(cmdNotFound.toString());
@@ -369,8 +450,6 @@ public abstract class ClientOutHandler implements Runnable {
 					if (inputList.size() == 1) {
 						msg = new ClientMessage(new DTOFreeCounsellorsRequest());
 						sendMsg(msg);
-//							socketOut.writeObject(msg);
-//							socketOut.flush();
 						break;
 					} else {
 						System.out.println(cmdNotFound.toString());
@@ -380,8 +459,6 @@ public abstract class ClientOutHandler implements Runnable {
 					if (inputList.size() == 1) {
 						msg = new ClientMessage(new DTOBalconiesStateRequest());
 						sendMsg(msg);
-//							socketOut.writeObject(msg);
-//							socketOut.flush();
 						break;
 					} else {
 						System.out.println(cmdNotFound.toString());
