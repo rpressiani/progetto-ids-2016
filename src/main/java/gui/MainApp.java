@@ -7,7 +7,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 public class MainApp extends Application {
@@ -62,10 +61,22 @@ public class MainApp extends Application {
 			loader.setLocation(getClass().getResource("/LoginClient.fxml"));
 			AnchorPane loginClient = (AnchorPane) loader.load();
 			rootLayout.setCenter(loginClient);
-			//MainController controller = new MainController();
-			//controller.initialize();									
+			LoginClientController controller = loader.getController(); 
+			controller.setMainApp(this); 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	public void showConnectionChoice() {
+		try {
+			FXMLLoader loader = new FXMLLoader(); 
+			loader.setLocation(getClass().getResource("/ChooseConnection.fxml"));
+			AnchorPane connectionChoice = (AnchorPane) loader.load();
+			rootLayout.setCenter(connectionChoice);
+			ChooseConnectionController controller = loader.getController(); 
+			controller.setMainApp(this);
+		} catch(IOException e) {
 			e.printStackTrace();
 		}
 	}

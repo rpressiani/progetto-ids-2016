@@ -27,7 +27,7 @@ public class LoginClientController {
 	@FXML
 	private Button decline; 
 	private Stage dialogStage; 
-	private Player player; //?
+	//private Player player; //?
 	private boolean okClicked = false; 
 	private MainApp mainApp; 
 	
@@ -39,8 +39,7 @@ public class LoginClientController {
 	public LoginClientController() {
 		
 	}
-	@FXML
-	private void initialize() {
+	public void setMainApp(MainApp mainApp) {
 		this.mainApp = mainApp; 
 	}
     public void setDialogStage(Stage dialogStage) {
@@ -82,19 +81,8 @@ public class LoginClientController {
     		player.setColor(new Color(colorArea.getText()));
     		
     		okClicked = true; 
-    		try { 
-    			FXMLLoader loader = new FXMLLoader(); 
-        		loader.setLocation(getClass().getResource("/ChooseConnection.fxml"));
-				AnchorPane connectionChoice = (AnchorPane) loader.load();
-				Scene scene = new Scene(connectionChoice); 
-				mainApp.getRootLayout().setCenter(connectionChoice);
-				mainApp.getPrimaryStage().setScene(scene);
-				mainApp.getPrimaryStage().show();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} 
-    		//TODO: switch to next scene --> connection choice
+    		
+    		mainApp.showConnectionChoice();
     	}
     }
     @FXML
