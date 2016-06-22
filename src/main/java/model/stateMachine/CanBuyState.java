@@ -17,7 +17,7 @@ public class CanBuyState implements State {
 			if(action.checkCondition(player, gameState)==true){
 				action.doAction(player, gameState);
 				System.out.println(player.getNickname()+" decided what to buy");
-				gameState.notifyObserver(new ChangeMsg(player.getNickname()+" decided what to buy"));
+				gameState.notifyAllExceptPlayer(player, new ChangeMsg(player.getNickname()+" decided what to buy"));
 				player.setState(new StartState());
 				player.getState().checkTurn(player, gameState);
 				
@@ -39,7 +39,7 @@ public class CanBuyState implements State {
 			if(action.checkCondition(player, gameState)==true){
 				action.doAction(player, gameState);
 				System.out.println(player.getNickname()+" passed the turn");
-				gameState.notifyObserver(new ChangeMsg(player.getNickname()+" passed the turn"));
+				gameState.notifyAllExceptPlayer(player, new ChangeMsg(player.getNickname()+" passed the turn"));
 				player.setState(new StartState());
 				player.getState().checkTurn(player, gameState);
 			}
