@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import model.player.Player;
 
@@ -69,6 +70,19 @@ public abstract class Observable<C> {
 		}
 		if (this.observersMap.get(player) != null) {
 				this.observersMap.get(player).update(c);	
+		}
+	}
+	
+	public void notifyAllExceptPlayer(Player player, C c){
+		if(c==null) {
+			throw new NullPointerException("Change cannot be null"); 
+		}
+		for(Entry<Player, Observer<C>> entry: this.observersMap.entrySet()){
+			if (entry.getKey().equals(player)) {
+				continue;
+			} else {
+				entry.getValue().update(c);
+			}
 		}
 	}
 	
