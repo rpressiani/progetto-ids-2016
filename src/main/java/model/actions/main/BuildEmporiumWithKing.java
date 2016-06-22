@@ -60,6 +60,7 @@ public class BuildEmporiumWithKing implements MainAction {
 					
 		player.getCoins().sub(sumToPay);
 		subProposal(player.getPoliticalHand(), proposal);
+		gameState.getGarbage().add(proposal);
 		player.getAssistants().sub(assistantsToPay);
 		gameState.getKing().setKingCity(cityChosed);
 		player.getBuiltCities().add(cityChosed);
@@ -71,6 +72,7 @@ public class BuildEmporiumWithKing implements MainAction {
 		gameState.notifyObserver(player, new ChangeBuildEmporiumWithKing(new Coins(sumToPay), new Assistants(assistantsToPay), cityChosed));
 		gameState.notifyObserver(player, new ChangePlayerStatus(player));
 		gameState.notifyObserver(new ChangeMsg("The king has been moved to "+cityChosed));
+		gameState.getNobility().checkNobility(player, gameState);
 	}
 	
 	/**

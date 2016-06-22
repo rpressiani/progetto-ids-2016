@@ -31,6 +31,7 @@ public class GetFreePermission implements InputBonusAction {
 		gameState.notifyObserver(player, new ChangeGetFreePermission(region, drawedCard));
 		drawedCard.assignBonuses(player, gameState);
 		gameState.notifyObserver(player, new ChangePlayerStatus(player));
+		gameState.getNobility().checkNobility(player, gameState);
 	}
 
 	@Override

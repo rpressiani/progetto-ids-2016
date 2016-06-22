@@ -56,12 +56,14 @@ public class BuyPermissionCard implements MainAction {
 		
 		player.getCoins().sub(sumToPay);
 		subProposal(player.getPoliticalHand(), proposal);
+		gameState.getGarbage().add(proposal);
 		drawedCard=region.getPermissionDeck().drawCard(region.getPermissionDeck().getDeck(), region.getPermissionDeck().getVisibleCards(), index);
 		player.getPermissionHand().add(drawedCard);
 		
 		gameState.notifyObserver(player, new ChangeBuyPermissionCard(new Coins(sumToPay), region, drawedCard));
 		drawedCard.assignBonuses(player, gameState);
 		gameState.notifyObserver(player, new ChangePlayerStatus(player));
+		gameState.getNobility().checkNobility(player, gameState);
 	}
 	
 	/**

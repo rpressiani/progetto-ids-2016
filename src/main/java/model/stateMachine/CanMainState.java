@@ -18,7 +18,7 @@ public class CanMainState implements State {
 				if(action.checkCondition(player, gameState)==true){
 					action.doAction(player, gameState);
 					System.out.println(player.getNickname()+" did a MainAction");
-					gameState.notifyObserver(new ChangeMsg(player.getNickname()+" did a MainAction"));
+					gameState.notifyAllExceptPlayer(player, new ChangeMsg(player.getNickname()+" did a MainAction"));
 					player.setState(new CanSellState());
 					player.getState().checkTurn(player, gameState);
 				}
@@ -42,7 +42,7 @@ public class CanMainState implements State {
 				if(action.checkCondition(player, gameState)==true){
 					action.doAction(player, gameState);
 					System.out.println(player.getNickname()+" chosed his bonus");
-					gameState.notifyObserver(new ChangeMsg(player.getNickname()+" chosed his bonus"));
+					gameState.notifyAllExceptPlayer(player, new ChangeMsg(player.getNickname()+" chosed his bonus"));
 				}
 			}
 		}
