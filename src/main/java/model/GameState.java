@@ -259,4 +259,7 @@ public class GameState extends Observable<Change>{
 		
 	}
 	
+	public void removePlayer(Player player){
+		
+	}
 }

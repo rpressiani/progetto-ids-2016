@@ -37,12 +37,12 @@ public abstract class Observable<C> {
 		this.observersMap.put(player, o);
 	}
 	
-	/**
-	 * @param o
-	 */
-	public void unregisterObserver(Observer<C> o ){
-		this.observers.remove(o);
-	}
+//	/**
+//	 * @param o
+//	 */
+//	public void unregisterObserver(Observer<C> o ){
+//		this.observers.remove(o);
+//	}
 	
 	public void unregisterObserver(Player player, Observer<C> o ){
 		this.observers.remove(o);

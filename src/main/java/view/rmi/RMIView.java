@@ -1,7 +1,13 @@
 package view.rmi;
 
 import java.io.IOException;
+import java.rmi.RemoteException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
+import javax.management.remote.rmi.RMIServer;
+
+import client.rmi.ClientOutHandlerRMI;
 import client.rmi.ClientViewRemote;
 import dto.changes.DTOChange;
 import dto.queries.VisitorQueries;
@@ -13,22 +19,28 @@ import view.VisitorChanges;
 
 public class RMIView extends View {
 
-//	private Map<Player, ClientViewRemote> clients;
 	private final Player player;
 	private final ClientViewRemote client;
 	private GameState game;
 	private VisitorChanges visitorChanges;
 	private VisitorQueries visitorQueries;
+	private Thread timerThread;
+	private server.RMIServer server;
+	private RMIViewTimer timer;
 	
-//	public RMIView(Map<Player, ClientViewRemote> clients) {
-//		this.clients = clients;
-//	}
 	
-	public RMIView(ClientViewRemote client) {
-//		this.clients = new HashMap<Player, ClientViewRemote>();
+	public RMIView(ClientViewRemote client, server.RMIServer server) {
 		this.client = client;
+		this.server = server;
 		this.player = new Player();
 		this.visitorChanges = new VisitorChanges();
+		this.timer = new RMIViewTimer(this.client, this.game, this.server, this.player);
+		(this.timerThread = new Thread(this.timer)).run();
+	}
+
+	public void resetTimer() throws RemoteException {
+		this.timer.reset();
+		System.out.println("new timer started");
 	}
 
 	/**

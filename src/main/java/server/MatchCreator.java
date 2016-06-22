@@ -16,7 +16,7 @@ import view.rmi.RMIView;
 import view.socket.ServerSocketView;
 
 public class MatchCreator implements Runnable {
-	
+
 	private Map<Player, ServerSocketView> tmpViewSocket;
 	private Map<Player, RMIView> tmpViewRMI;
 	private Queue<Player> enabledPlayers;
@@ -64,6 +64,13 @@ public class MatchCreator implements Runnable {
 			}
 		}
 	}
+	
+	/**
+	 * @return the enabledPlayers
+	 */
+	public Queue<Player> getEnabledPlayers() {
+		return enabledPlayers;
+	}
 
 	@Override
 	public void run() {
@@ -89,7 +96,7 @@ public class MatchCreator implements Runnable {
 				int playersInLobby = this.tmpViewSocket.size() + this.tmpViewRMI.size();
 				log.append("[MATCH CREATOR] There are " + playersInLobby + " players connected in the lobby\n");
 				log.append("[MATCH CREATOR] There are " + this.runningMatches.size() + " matches running\n");
-//				System.out.println(log);
+				System.out.println(log);
 				
 				if (this.enabledPlayers.size() >= 2) {
 					

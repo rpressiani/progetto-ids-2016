@@ -28,6 +28,8 @@ public class Server {
 	
 	private ServerSocket serverSocket;
 	
+	private static MatchCreator matchCreator;
+	
 	/**
 	 * start the socket
 	 * @throws IOException
@@ -41,7 +43,7 @@ public class Server {
 		
 		while(true) {
 			Socket socket = serverSocket.accept();
-			ServerSocketView view = new ServerSocketView(socket);
+			ServerSocketView view = new ServerSocketView(socket, this);
 			viewExecutor.submit(view);
 			tmpViewSocket.put(view.getPlayer(), view);
 			System.out.println("NEW CLIENT_SOCKET ACCEPTED");
@@ -51,15 +53,26 @@ public class Server {
 	private void startRMI() throws RemoteException, AlreadyBoundException{
 		Registry registry = LocateRegistry.createRegistry(RMI_PORT);
 		System.out.println("Constructing the RMI registry");
-		RMIServer serverRMI=new RMIServer(tmpViewRMI);
+		RMIServer serverRMI=new RMIServer(tmpViewRMI, this);
 		System.out.println("RMIVIEW SERVER: " + serverRMI);
 		RMIServerInterface serverView=(RMIServerInterface) UnicastRemoteObject.exportObject(serverRMI, 0);
 		System.out.println("Binding the server implementation to the registry");
 		registry.bind(NAME, serverView);
 	}
 	
-	public void closeServer() throws IOException{
+	private void closeServer() throws IOException{
 		this.serverSocket.close();
+	}
+	
+	public void disconnect(Player player){
+		if (tmpViewSocket.containsKey(player)) {
+			tmpViewSocket.remove(player);
+			matchCreator.getEnabledPlayers().remove(player);
+		}
+		if (tmpViewRMI.containsKey(player)) {
+			tmpViewRMI.remove(player);
+			matchCreator.getEnabledPlayers().remove(player);
+		}
 	}
 	
 	/**
@@ -72,8 +85,9 @@ public class Server {
 	public static void main(String[] args) throws IOException, ClassNotFoundException, AlreadyBoundException {
 		Server server = new Server();
 		
+		matchCreator = new MatchCreator(tmpViewSocket, tmpViewRMI);
 		ExecutorService matchExecutor = Executors.newCachedThreadPool();
-		matchExecutor.submit(new MatchCreator(tmpViewSocket, tmpViewRMI));
+		matchExecutor.submit(matchCreator);
 		
 		System.out.println("STARTING RMI");
 		server.startRMI();
