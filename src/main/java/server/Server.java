@@ -3,6 +3,7 @@ package server;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.SocketException;
 import java.rmi.AlreadyBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
@@ -10,7 +11,9 @@ import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -29,6 +32,12 @@ public class Server {
 	private static Map<Player, RMIView> tmpViewRMI = new HashMap<Player, RMIView>();
 	private static Map<Player, Match> playerMatch = new HashMap<Player, Match>();
 	
+	private ExecutorService matchExecutor;
+	
+	private static Set<Match> runningMatches = new HashSet<Match>();
+	
+	private boolean running = false;
+
 	private ServerSocket serverSocket;
 	
 	private static MatchCreator matchCreator;
@@ -44,11 +53,16 @@ public class Server {
 		this.serverSocket = new ServerSocket(PORT); 
 		System.out.println("SERVER SOCKET READY ON PORT: " + PORT);
 		
-		while(true) {
-			Socket socket = serverSocket.accept();
-			ServerSocketView view = new ServerSocketView(socket, this);
-			viewExecutor.submit(view);
-			tmpViewSocket.put(view.getPlayer(), view);
+		while(this.isRunning()) {
+			try {
+				Socket socket = serverSocket.accept();
+				ServerSocketView view = new ServerSocketView(socket, this);
+				viewExecutor.submit(view);
+				tmpViewSocket.put(view.getPlayer(), view);
+			} catch (SocketException e) {
+				System.out.println("ServerSocket closed!");
+			}
+			
 			System.out.println("NEW CLIENT_SOCKET ACCEPTED");
 		}
 	}
@@ -63,20 +77,12 @@ public class Server {
 		registry.bind(NAME, serverView);
 	}
 	
-	private void closeServer() throws IOException{
+	protected void closeServer() throws IOException{
+		this.setRunning(false);
+		this.matchExecutor.shutdownNow();
 		this.serverSocket.close();
+		System.out.println("\n !!! SERVER DISCONNECTED !!!\n");
 	}
-	
-//	public void disconnect(Player player){
-//		if (tmpViewSocket.containsKey(player)) {
-//			tmpViewSocket.remove(player);
-//			matchCreator.getEnabledPlayers().remove(player);
-//		}
-//		if (tmpViewRMI.containsKey(player)) {
-//			tmpViewRMI.remove(player);
-//			matchCreator.getEnabledPlayers().remove(player);
-//		}
-//	}
 	
 	public void disconnectRMI(Player player){
 		if (tmpViewRMI.containsKey(player)) {
@@ -150,6 +156,27 @@ public class Server {
 	}
 	
 	/**
+	 * @return the running
+	 */
+	public boolean isRunning() {
+		return running;
+	}
+
+	/**
+	 * @param running the running to set
+	 */
+	public void setRunning(boolean running) {
+		this.running = running;
+	}
+	
+	/**
+	 * @return the runningMatches
+	 */
+	public static Set<Match> getRunningMatches() {
+		return runningMatches;
+	}
+
+	/**
 	 * 
 	 * @param args
 	 * @throws IOException
@@ -159,9 +186,14 @@ public class Server {
 	public static void main(String[] args) throws IOException, ClassNotFoundException, AlreadyBoundException {
 		Server server = new Server();
 		
-		matchCreator = new MatchCreator(tmpViewSocket, tmpViewRMI, playerMatch);
-		ExecutorService matchExecutor = Executors.newCachedThreadPool();
-		matchExecutor.submit(matchCreator);
+		server.setRunning(true);
+		
+		matchCreator = new MatchCreator(tmpViewSocket, tmpViewRMI, playerMatch, runningMatches);
+		ServerCloser closer = new ServerCloser(server);
+		server.matchExecutor = Executors.newCachedThreadPool();
+		server.matchExecutor.submit(matchCreator);
+		server.matchExecutor.submit(closer);
+
 		
 		System.out.println("STARTING RMI");
 		server.startRMI();
