@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.SplitPane;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import model.GameState;
@@ -38,7 +39,14 @@ public class MapOverviewController {
 	private MenuItem hire; 
 	@FXML
 	private MenuItem nullAction; 
-	
+	//if we want to load regions from configuration file
+	@FXML
+	private ImageView region1; 
+	@FXML
+	private ImageView region2; 
+	@FXML
+	private ImageView region3; 
+
 	private boolean doneMain = false; 
 	private boolean doneQuick = false; 
 	private boolean isTurnOver = false; 
@@ -81,8 +89,44 @@ public class MapOverviewController {
 			}
 			
 		});
+		addictional.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>(){
+
+			@Override
+			public void handle(MouseEvent event) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
+		substitute.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>(){
+
+			@Override
+			public void handle(MouseEvent event) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
+		elect2.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>(){
+
+			@Override
+			public void handle(MouseEvent event) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
+		hire.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>(){
+
+			@Override
+			public void handle(MouseEvent event) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
 	}
-	public void handleMainAction() {
+	public void handleBuildEmporium() {
 		
 	}
 	public void handleQuickAction() {

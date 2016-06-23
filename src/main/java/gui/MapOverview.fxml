@@ -34,7 +34,7 @@
                                     </AnchorPane>
                                     <AnchorPane>
                                        <children>
-                                          <ImageView fitHeight="266.0" fitWidth="138.0" pickOnBounds="true" preserveRatio="true">
+                                          <ImageView fitHeight="565.0" fitWidth="138.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
                                                 <Image url="@../../resources/photo_2016-06-22_16-50-31.jpg" />
                                              </image>
@@ -43,9 +43,9 @@
                                     </AnchorPane>
                                     <AnchorPane>
                                        <children>
-                                          <ImageView fitHeight="234.0" fitWidth="142.0" pickOnBounds="true" preserveRatio="true">
+                                          <ImageView fitHeight="278.0" fitWidth="142.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
-                                                <Image url="@../../resources/photo_2016-06-22_16-50-33.jpg" />
+                                                <Image url="@../../resources/photo_2016-06-22_16-50-36.jpg" />
                                              </image>
                                           </ImageView>
                                        </children>
@@ -96,17 +96,90 @@
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                <children>
                   <FlowPane layoutX="418.0" prefHeight="124.0" prefWidth="180.0" />
-                  <ImageView fitHeight="124.0" fitWidth="44.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../resources/green.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="124.0" fitWidth="44.0" layoutX="44.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../resources/red.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="109.0" fitWidth="44.0" layoutX="87.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true" />
+                  <MenuButton layoutX="7.0" layoutY="1.0" mnemonicParsing="false" text="Check Councils">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Council 1 ">
+                           <graphic>
+                              <HBox prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../resources/green.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../resources/red.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../resources/white.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../resources/purple.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </HBox>
+                           </graphic>
+                        </MenuItem>
+                      <MenuItem mnemonicParsing="false" text="Council 2">
+                           <graphic>
+                              <HBox prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../resources/white.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../resources/pink.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../resources/white.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../resources/yellow.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </HBox>
+                           </graphic>
+                        </MenuItem>
+                      <MenuItem mnemonicParsing="false" text="Council 3">
+                           <graphic>
+                              <HBox prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                                 </children>
+                              </HBox>
+                           </graphic>
+                        </MenuItem>
+                        <MenuItem mnemonicParsing="false" text="Council 4">
+                           <graphic>
+                              <HBox prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                                 </children>
+                              </HBox>
+                           </graphic>
+                        </MenuItem>
+                    </items>
+                  </MenuButton>
                </children></AnchorPane>
         </items>
       </SplitPane>
