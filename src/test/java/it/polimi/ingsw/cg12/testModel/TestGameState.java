@@ -27,6 +27,7 @@ public class TestGameState {
 		Parser parser = new Parser(); 
 		ArrayList<Player> players = null;
 		try {
+			@SuppressWarnings("unused")
 			GameState gameState = new GameState(parser, players); 
 		} catch(NullPointerException e) {
 			thrown = true; 
@@ -63,6 +64,7 @@ public class TestGameState {
 			id++; 
 		}
 		try {
+			@SuppressWarnings("unused")
 			GameState gameState = new GameState(parser2, players); 
 		} catch(NullPointerException e) {
 			thrown = true; 
@@ -98,6 +100,7 @@ public class TestGameState {
 		}
 		GarbageState garbageState = new GarbageState(parser); 
 		GameState gameState = new GameState(parser, players); 
+		@SuppressWarnings("unused")
 		Map map = new Map(parser, garbageState); 
 		gameState.setCurrentPlayer(player2);
 		assertTrue(gameState.getCurrentPlayer()==player2); 
@@ -168,6 +171,7 @@ public class TestGameState {
 		}
 		GameState gameState = new GameState(parser, players); 
 		GarbageState garbageState = new GarbageState(parser); 
+		@SuppressWarnings("unused")
 		Map map = new Map(parser, garbageState); 
 		gameState.setCurrentPlayer(player2);
 		gameState.nextPlayer(player2);
