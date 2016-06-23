@@ -19,22 +19,28 @@ public class RMIServer implements RMIServerInterface {
 
 	private Map<ClientViewRemote, RMIView> clients;
 	private Map<Player, RMIView> tmpViewRMI;
+	private Server server;
 	
-	public RMIServer(Map<Player, RMIView> tmpViewRMI) {
+	public RMIServer(Map<Player, RMIView> tmpViewRMI, Server server) {
 		this.clients = new HashMap<ClientViewRemote, RMIView>();
 		this.tmpViewRMI = tmpViewRMI;
+		this.server = server;
 	}
 	
 	@Override
 	public void registerClient(ClientViewRemote clientStub) throws RemoteException{
 		System.out.println("NEW CLIENT_RMI ACCEPTED");
-		RMIView assignedRMIView = new RMIView(clientStub);
+		RMIView assignedRMIView = new RMIView(clientStub, this);
 		this.clients.put(clientStub, assignedRMIView);
 		this.tmpViewRMI.put(assignedRMIView.getPlayer(), assignedRMIView);
 		StringBuilder initString = new StringBuilder();
 		initString.append("\n[SERVER] RMIView is running\n");
 		initString.append("[SERVER] Insert 'setup <nickname> <color>' to enable your player to join a match.\n");
 		clientStub.print(initString.toString());
+	}
+	
+	public void disconnect(Player player){
+		this.server.disconnectRMI(player);
 	}
 	
 	@Override
@@ -48,12 +54,16 @@ public class RMIServer implements RMIServerInterface {
 		System.out.println("MSG RMI RECEIVED");
 		
 		Player player = null;
+		RMIView view = null;
 		for (Entry<ClientViewRemote, RMIView> entry : this.clients.entrySet()) {
 			if (entry.getKey().equals(msgIn.getClientRMI())) {
 				player = entry.getValue().getPlayer();
+				view = entry.getValue();
 				break;
 			}
 		}
+		
+		view.resetTimer();
 		
 		System.out.println(player);
 		

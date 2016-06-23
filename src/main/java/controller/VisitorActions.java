@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Set;
 
 import dto.actions.DTONullAction;
+import dto.actions.DTOQuitAction;
 import dto.actions.inputBonus.DTODoAgainAction;
 import dto.actions.inputBonus.DTOGetAgainBonusPermission;
 import dto.actions.inputBonus.DTOGetFreePermission;
@@ -25,6 +26,7 @@ import dto.actions.quick.DTOHireAssistant;
 import dto.utilities.DTOPermissionCardSelection;
 import model.GameState;
 import model.actions.NullAction;
+import model.actions.QuitAction;
 import model.actions.inputBonus.DoAgainAction;
 import model.actions.inputBonus.GetAgainBonusPermission;
 import model.actions.inputBonus.GetFreePermission;
@@ -168,8 +170,8 @@ public class VisitorActions {
 			buyPermissions.add(card);
 		}
 		
-		ArrayList<Integer> sellPoliticals=DTOAction.getSellPoliticals();
-		ArrayList<Integer> buyPoliticals=DTOAction.getBuyPoliticals();
+		PoliticalContainer sellPoliticals=new PoliticalContainer(gameState.getParser(), DTOAction.getSellPoliticals());
+		PoliticalContainer buyPoliticals=new PoliticalContainer(gameState.getParser(), DTOAction.getBuyPoliticals());
 		
 		return new SellAction(sellCoins, sellAssistants, sellPermissions, sellPoliticals, buyCoins, buyAssistants, buyPermissions, buyPoliticals);
 	}
@@ -177,7 +179,7 @@ public class VisitorActions {
 	public BuyAction visit(DTOBuyAction DTOAction){
 		Contract contract=null;
 		List<Contract> contractList= new ArrayList<Contract>(gameState.getMarket().getContractSet());
-	
+
 		for(int i=0; i<contractList.size(); i++){
 			if(DTOAction.getPlayerName().equals(contractList.get(i).getSeller())) contract=contractList.get(i);
 		}
@@ -223,5 +225,9 @@ public class VisitorActions {
 		if(action instanceof DTOElectCounsellor) realAction=visit((DTOElectCounsellor) action);
 	
 		return new DoAgainAction(realAction);
+	}
+	
+	public QuitAction visit(DTOQuitAction DTOAction){
+		return new QuitAction();
 	}
 }

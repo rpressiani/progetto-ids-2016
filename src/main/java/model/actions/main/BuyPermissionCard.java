@@ -30,9 +30,7 @@ public class BuyPermissionCard implements MainAction {
 		if(proposal==null) {
 			throw new NullPointerException("proposal cannot be null"); 
 		}
-		if(index<0) {
-			throw new IllegalArgumentException("index cannot be <0"); 
-		}
+		
 		this.region=region;
 		this.proposal=proposal;
 		this.index=index;
@@ -158,7 +156,7 @@ public class BuyPermissionCard implements MainAction {
 			return false;
 		}
 		
-		if(index>1){
+		if(index!=0 || index!=1){
 			gameState.notifyObserver(player, new ChangeMsg("You have to choose 0 or 1 as the index of permission card to buy"));
 			return false;
 		}

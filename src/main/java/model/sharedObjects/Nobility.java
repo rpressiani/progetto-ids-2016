@@ -46,7 +46,9 @@ public class Nobility {
 		}
 	
 		if (this.getBoxes().get(player.getNobilityLevel().getItems()) != null) {
-			this.getBoxes().get(player.getNobilityLevel().getItems()).assignBonuses(player, gameState);
+			if(player.isBonusChosed()==false){
+				this.getBoxes().get(player.getNobilityLevel().getItems()).assignBonuses(player, gameState);
+			}
 		}
 	}
 

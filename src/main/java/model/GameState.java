@@ -29,6 +29,7 @@ public class GameState extends Observable<Change>{
 	private KingBonuses kingBonuses;
 	private King king;
 	private ArrayList<Player> players;
+	private ArrayList<Player> playersDisconnected;
 	private HashMap<String, Player> playersHashMap;
 	private Player currentPlayer;
 	private Market market;
@@ -51,6 +52,7 @@ public class GameState extends Observable<Change>{
 		this.nobility = new Nobility(parser);
 		this.politicalGarbage = new PoliticalGarbage(parser);
 		this.politicalDeck = new PoliticalRealDeck(parser, this.politicalGarbage);
+		this.playersDisconnected = new ArrayList<Player>();
 		this.players = players;
 		this.parser=parser;
 
@@ -60,8 +62,6 @@ public class GameState extends Observable<Change>{
 			this.playersHashMap.put(player.getNickname(), player);
 		}
 
-		
-		//Players sorting still to be decided
 		this.currentPlayer = this.players.get(0);
 		
 	}
@@ -170,6 +170,10 @@ public class GameState extends Observable<Change>{
 
 	}
 	
+	public ArrayList<Player> getPlayersDisconnected() {
+		return playersDisconnected;
+	}
+	
 	/**
 	 * @return the market
 	 */
@@ -259,4 +263,7 @@ public class GameState extends Observable<Change>{
 		
 	}
 	
+	public void removePlayer(Player player){
+		
+	}
 }

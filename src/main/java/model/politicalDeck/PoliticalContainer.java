@@ -52,17 +52,4 @@ public class PoliticalContainer extends PoliticalDeck implements Marketable{
 
 	}
 
-	@Override
-	public boolean verifyAdd(Player player) {
-		if(player==null) {
-			throw new NullPointerException("player should not be null"); 
-		}
-		int i = 0;
-		for (PoliticalCard card : player.getPoliticalHand().getDeck()) {
-			if (card.getColor() != this.getDeck().get(i).getColor() || card.getNumCards() < this.getDeck().get(i).getNumCards()) {
-				return false;
-			}
-		}
-		return true;
-	}
 }

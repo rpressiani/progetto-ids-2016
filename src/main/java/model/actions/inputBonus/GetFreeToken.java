@@ -22,11 +22,12 @@ public class GetFreeToken implements InputBonusAction {
 	@Override
 	public void doAction(Player player, GameState gameState) {
 		
+		player.setBonusChosed(true);
+		player.getBonusInputs().remove(0);
+		
 		for(City c : citiesToChoose){
 			c.assignBonuses(player, gameState);
 		}
-
-		player.getBonusInputs().remove(0);
 		
 		gameState.notifyObserver(player, new ChangePlayerStatus(player));
 		gameState.getNobility().checkNobility(player, gameState);

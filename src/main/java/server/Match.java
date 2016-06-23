@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.rmi.AlreadyBoundException;
 import java.rmi.NotBoundException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 import controller.Controller;
@@ -21,6 +22,9 @@ public class Match {
 	private GameState gameState; 
 	private Controller controller;
 	private Parser parser;
+	
+	private Map<Player, RMIView> playersRMI = new HashMap<Player, RMIView>();
+	private Map<Player, ServerSocketView> playersSocket = new HashMap<Player, ServerSocketView>();
 	
 	/**
 	 * 
@@ -49,6 +53,7 @@ public class Match {
 		for (Player player : players) {
 			if (tmpViewSocket.containsKey(player)) {
 				ServerSocketView view = tmpViewSocket.get(player);
+				playersSocket.put(player, view);
 				view.getPlayer().initPlayer(this.gameState.getPoliticalDeck(), k, this.parser);
 				k++;
 				view.initServerSocketView(this.gameState);
@@ -57,6 +62,7 @@ public class Match {
 				view.registerObserver(this.controller);
 			} else if (tmpViewRMI.containsKey(player)) {
 				RMIView view = tmpViewRMI.get(player);
+				playersRMI.put(player, view);
 				view.getPlayer().initPlayer(this.gameState.getPoliticalDeck(), k, this.parser);
 				k++;
 				view.initServerSocketView(this.gameState);
@@ -72,6 +78,34 @@ public class Match {
 		this.gameState.notifyObserver(new ChangeMsg("[SERVER] New match started. The first player is " +
 				this.gameState.getCurrentPlayer().getNickname() + ". Let's go!"));
 		
+	}
+
+	/**
+	 * @return the playersRMI
+	 */
+	public Map<Player, RMIView> getPlayersRMI() {
+		return playersRMI;
+	}
+
+	/**
+	 * @return the playersSocket
+	 */
+	public Map<Player, ServerSocketView> getPlayersSocket() {
+		return playersSocket;
+	}
+
+	/**
+	 * @return the gameState
+	 */
+	public GameState getGameState() {
+		return gameState;
+	}
+
+	/**
+	 * @return the controller
+	 */
+	public Controller getController() {
+		return controller;
 	}
 
 	/* (non-Javadoc)

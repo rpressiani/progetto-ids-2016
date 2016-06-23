@@ -3,21 +3,13 @@ package model.actions;
 import model.GameState;
 import model.player.Player;
 
-public class NullAction implements GeneralAction {
-	
-	/**
-	 * create the null action
-	 */
-	public NullAction(){
-		
-	}
-	
+public class QuitAction implements GeneralAction {
+
 	@Override
-	/**
-	 * pass the turn
-	 */
 	public void doAction(Player player, GameState gameState) {
-		
+		// TODO Auto-generated method stub
+		gameState.getPlayers().remove(player);
+		gameState.getPlayersDisconnected().add(player);
 	}
 
 	@Override

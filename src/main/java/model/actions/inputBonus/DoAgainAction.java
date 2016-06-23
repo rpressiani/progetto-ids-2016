@@ -24,17 +24,17 @@ public class DoAgainAction implements InputBonusAction {
 	
 	@Override
 	public void doAction(Player player, GameState gameState) {
-
 		if(player==null || gameState==null) {
 			throw new NullPointerException("player and gameState cannot be null"); 
 		}
 
-			action.doAction(player, gameState);
+		player.getBonusInputs().remove(0);
+		player.setBonusChosed(true);
+		action.doAction(player, gameState);
 	}
 
 	@Override
 	public boolean checkCondition(Player player, GameState gameState) {
-		
 		if(!(player.getBonusInputs().get(0) instanceof BonusAddictionalAction)){
 			gameState.notifyObserver(player, new ChangeMsg("It's no time to do a bonus action"));
 			return false;
