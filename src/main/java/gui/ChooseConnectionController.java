@@ -1,6 +1,7 @@
 package gui;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 import model.player.Player;
@@ -15,6 +16,10 @@ public class ChooseConnectionController {
 	private TextArea connectionArea;
 	@FXML
 	private TextArea portArea; 
+	@FXML
+	private MenuItem chooseRMI; 
+	@FXML
+	private MenuItem chooseSocket; 
 	
 	private MainApp mainApp; 
 	
@@ -29,11 +34,10 @@ public class ChooseConnectionController {
 		this.mainApp = mainApp; 
 	}
 	public boolean isPortOk() {
-		if(portArea.getText()==null) {
+		if(portArea.getText()==null || portArea.getText().length()==0) {
 			return false; 
-		} //TODO: fix this
+		} //TODO: convert text to integer 
 		return true; 
-		
 	}
 	@FXML
 	private void handleCancel() {
@@ -45,6 +49,11 @@ public class ChooseConnectionController {
 		//TODO: switch to gameScene --> mapOverview
 		okClicked = true; 
 	}
-	
+	@FXML 
+	private void handleRMI() {
+		if(isPortOk()) {
+			
+		}
+	}
 
 }

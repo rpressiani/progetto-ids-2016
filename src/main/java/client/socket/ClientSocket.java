@@ -18,10 +18,18 @@ public class ClientSocket {
 	
 	private Scanner in;
 	
+	/**
+	 * @param in
+	 */
 	public ClientSocket(Scanner in) {
 		this.in = in;
 	}
 	
+	/**
+	 * starts client
+	 * @throws UnknownHostException
+	 * @throws IOException
+	 */
 	public void startClient() throws UnknownHostException, IOException {
 		this.socket = new Socket(IP, PORT); 
 		System.out.println("[CLIENT] Connection Created");

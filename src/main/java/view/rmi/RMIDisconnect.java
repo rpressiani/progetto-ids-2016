@@ -6,7 +6,6 @@ import java.util.TimerTask;
 import client.rmi.ClientViewRemote;
 import model.GameState;
 import model.player.Player;
-import server.RMIServer;
 
 public class RMIDisconnect extends TimerTask {
 	

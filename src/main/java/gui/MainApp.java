@@ -14,15 +14,13 @@ public class MainApp extends Application {
 
 	private Stage primaryStage; 
 	private BorderPane rootLayout; 
+	//how 
 	private GameState gameState; 
 	
 	public MainApp() {
 		
 	}
-	public void start(GameState gameState) {
-		
-		launch(); 
-	}
+	
 	@Override
 	public void start(Stage primaryStage) {
 		try {
@@ -86,16 +84,18 @@ public class MainApp extends Application {
 			e.printStackTrace();
 		}
 	}
-	/*public void showMapOverview() {
+	public void showGameScene() {
 		try {
 			FXMLLoader loader = new FXMLLoader(); 
-			loader.setLocation(MainApp.class.getResource("/MapOverview.fxml"));
+			loader.setLocation(MainApp.class.getResource("/GameScene.fxml"));
+			//which gameState?
+			loader.setControllerFactory(t -> new MainGameController(gameState));			
 			AnchorPane mapOverview = (AnchorPane) loader.load();
 			//rootLayout.setCenter(mapOverview);
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} */
+		} 
+	}
 }
-
