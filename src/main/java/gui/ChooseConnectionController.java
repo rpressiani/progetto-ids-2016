@@ -55,5 +55,9 @@ public class ChooseConnectionController {
 			
 		}
 	}
+	public String getPort() {
+		return portArea.getText(); 
+	}
+	
 
 }
