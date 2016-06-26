@@ -55,7 +55,7 @@ public class TestBuildEmporiumWithCard {
 		action.doAction(player, gameState);
 		assertTrue(city.hasBuiltHere(player)); 
 	}
-	@Test
+	/*@Test
 	public void testNullCardInConstructorThrowsException() {
 		boolean thrown = false;
 		Parser parser = new Parser();
@@ -130,7 +130,7 @@ public class TestBuildEmporiumWithCard {
 			thrown = true; 
 		}
 		assertTrue(thrown); 
-	}
+	}*/
 	@Test
 	public void testIfCheckOtherEmporiumWorks() {
 		Parser parser = new Parser();

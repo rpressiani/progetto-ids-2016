@@ -10,8 +10,6 @@ import model.GameState;
 import model.actions.main.ElectCounsellor;
 import model.council.GarbageState;
 import model.map.Map;
-import model.map.Region;
-import model.player.Coins;
 import model.player.Player;
 import model.politicalDeck.PoliticalGarbage;
 import model.politicalDeck.PoliticalRealDeck;
@@ -55,17 +53,4 @@ public class TestElectCounsellor {
 		action.doAction(player, gameState);
 		assertTrue(temp==(player.getCoins().getItems()-4)); 
 	}
-	@Test
-	public void testNullRegionInConstructorThrowsException() {
-		boolean thrown = false; 
-		Region region = null; 
-		Color color = new Color("gold"); 
-		try {
-			ElectCounsellor action = new ElectCounsellor(region, color); 
-		} catch(NullPointerException e) {
-			thrown = true; 
-		}
-		assertTrue(thrown); 
-	}
-
 }

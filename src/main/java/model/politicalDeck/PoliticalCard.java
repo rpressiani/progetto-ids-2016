@@ -21,6 +21,7 @@ public class PoliticalCard {
 		if(color==null) {
 			throw new NullPointerException("color can't be null"); 
 		}
+		
 		this.color = color; 
 		this.numCards = numCards; 
 		
