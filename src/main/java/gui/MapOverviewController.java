@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.SplitPane;
@@ -11,7 +12,14 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import model.GameState;
+import model.actions.main.BuildEmporiumWithCard;
+import model.actions.main.ElectCounsellor;
+import model.bonusItem.BonusItem;
+import model.bonusable.PermissionCard;
+import model.map.City;
+import model.map.Region;
 import model.player.Player;
+import utilities.Color;
 
 public class MapOverviewController {
 	
@@ -46,19 +54,36 @@ public class MapOverviewController {
 	private ImageView region2; 
 	@FXML
 	private ImageView region3; 
+	@FXML
+	private ArrayList<Button> cities; 
 
+	private MainApp mainApp; 
 	private boolean doneMain = false; 
 	private boolean doneQuick = false; 
 	private boolean isTurnOver = false; 
 	//private ArrayList<MenuItem> mainActionsList; 
 	
+	public void setMainApp(MainApp mainApp) {
+		this.mainApp = mainApp; 
+	}
+	
 	@FXML
 	private void initialize() {
-		buildAction.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+		//initialize cities?
+		buildAction.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {		
 			@Override
 			public void handle(MouseEvent event) {
-				// TODO Auto-generated method stub
-				
+				if(!mainApp.getGameState().getCurrentPlayer().isEnabled()) {
+					System.out.println("can't do this action now");
+				}
+				City city = mainApp.getGameState().getMap().getAllCitiesHashMap().get("A"); 
+				PermissionCard card = 
+						mainApp.getGameState().getMap().getRegions().get("seaside").getPermissionDeck().getDeck().get(0);
+				//TODO: choose clicked city
+				BuildEmporiumWithCard action = new BuildEmporiumWithCard(card, city); 
+				action.doAction(mainApp.getGameState().getCurrentPlayer(), mainApp.getGameState());
+				doneMain = true; 
+				//TODO: implement end of turn
 			}
 			
 		});
@@ -66,7 +91,10 @@ public class MapOverviewController {
 
 			@Override
 			public void handle(MouseEvent event) {
-				// TODO Auto-generated method stub
+				if(!mainApp.getGameState().getCurrentPlayer().isEnabled()) {
+					System.out.println("can't do this action now");
+				}
+				
 				
 			}
 			
@@ -84,7 +112,14 @@ public class MapOverviewController {
 
 			@Override
 			public void handle(MouseEvent event) {
-				// TODO Auto-generated method stub
+				if(!mainApp.getGameState().getCurrentPlayer().isEnabled()) {
+					System.out.println("can't do this action now");
+				}
+				Region region = mainApp.getGameState().getMap().getRegions().get("seaside");
+				Color color = new Color("red"); 
+				ElectCounsellor action = new ElectCounsellor(region, color);
+				action.doAction(mainApp.getGameState().getCurrentPlayer(), mainApp.getGameState());
+				doneMain = true; 
 				
 			}
 			

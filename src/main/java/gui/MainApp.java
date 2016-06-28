@@ -91,11 +91,15 @@ public class MainApp extends Application {
 			//which gameState?
 			loader.setControllerFactory(t -> new MainGameController(gameState));			
 			AnchorPane mapOverview = (AnchorPane) loader.load();
-			//rootLayout.setCenter(mapOverview);
+			rootLayout.setCenter(mapOverview);
+			
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} 
+	}
+	public GameState getGameState() {
+		return gameState; 
 	}
 }
