@@ -73,9 +73,6 @@ public class MapOverviewController {
 		buildAction.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {		
 			@Override
 			public void handle(MouseEvent event) {
-				if(!mainApp.getGameState().getCurrentPlayer().isEnabled()) {
-					System.out.println("can't do this action now");
-				}
 				City city = mainApp.getGameState().getMap().getAllCitiesHashMap().get("A"); 
 				PermissionCard card = 
 						mainApp.getGameState().getMap().getRegions().get("seaside").getPermissionDeck().getDeck().get(0);
@@ -161,10 +158,38 @@ public class MapOverviewController {
 			
 		});
 	}
-	public void handleBuildEmporium() {
-		
+	@FXML
+	public void handleBuildEmporium(MouseEvent mouseEvent) {
+		if(!mainApp.getGameState().getCurrentPlayer().isEnabled()) {
+			System.out.println("can't do it now");
+		}
 	}
-	public void handleQuickAction() {
+	@FXML
+	public void handleElectCounsellor(MouseEvent mouseEvent) {
+		if(!mainApp.getGameState().getCurrentPlayer().isEnabled()) {
+			System.out.println("can't do it now");
+		}
+	}
+	@FXML
+	public void handleBuildWithKing() {
+		if(!mainApp.getGameState().getCurrentPlayer().isEnabled()) {
+			System.out.println("can't do it now");
+		}
+	}
+	@FXML
+	public void handleSubstitute() {
+		if(!mainApp.getGameState().getCurrentPlayer().isEnabled()) {
+			System.out.println("can't do it now");
+		}
+	}
+	@FXML
+	public void handleElectWithAssistant() {
+		if(!mainApp.getGameState().getCurrentPlayer().isEnabled()) {
+			System.out.println("can't do it now");
+		}
+	}
+	@FXML
+	public void handleNullAction() {
 		
 	}
 	public void endTurn() {
@@ -177,5 +202,15 @@ public class MapOverviewController {
 	}
 	public boolean getDoneQuick() {
 		return doneQuick; 
+	}
+	public void waitForActionClick(Player player, MenuItem actionToDo) {
+		final EventHandler<MouseEvent> mouseEventHandler =
+		        new EventHandler<MouseEvent>() {
+		            public void handle(final MouseEvent mouseEvent) {
+		                if (mouseEvent.getEventType() == MouseEvent.MOUSE_CLICKED) {
+		                    mouseEvent.consume();
+		                }
+		            }
+		        };
 	}
 }
