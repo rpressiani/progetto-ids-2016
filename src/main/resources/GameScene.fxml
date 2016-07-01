@@ -34,7 +34,7 @@
                                     </AnchorPane>
                                     <AnchorPane prefHeight="357.0" prefWidth="138.0">
                                        <children>
-                                          <ImageView fitHeight="365.0" fitWidth="138.0" pickOnBounds="true" preserveRatio="true">
+                                          <ImageView fitHeight="295.0" fitWidth="138.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
                                                 <Image url="@photo_2016-06-22_16-50-31.jpg" />
                                              </image>
@@ -43,7 +43,7 @@
                                     </AnchorPane>
                                     <AnchorPane prefHeight="357.0" prefWidth="204.0">
                                        <children>
-                                          <ImageView fitHeight="214.0" fitWidth="203.0" pickOnBounds="true" preserveRatio="true">
+                                          <ImageView fitHeight="297.0" fitWidth="171.0" layoutX="26.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
                                                 <Image url="@photo_2016-06-22_16-50-36.jpg" />
                                              </image>

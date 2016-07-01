@@ -8,11 +8,8 @@ import org.junit.Test;
 
 import model.GameState;
 import model.bonusItem.BonusScore;
-import model.council.GarbageState;
-import model.map.Map;
 import model.player.Player;
 import parser.Parser;
-import utilities.Color;
 
 public class TestBonusScore {
 
@@ -21,6 +18,7 @@ public class TestBonusScore {
 		boolean thrown = false; 
 		int items = -3; 
 		try {
+			@SuppressWarnings("unused")
 			BonusScore bonus = new BonusScore(items); 
 		} catch(IllegalArgumentException e) {
 			thrown = true; 
@@ -40,8 +38,6 @@ public class TestBonusScore {
 		players.add(player2); 
 		players.add(player3); 
 		players.add(player4); 
-		GarbageState garbageState = new GarbageState(parser); 
-		Map map = new Map(parser, garbageState); 
 		GameState gameState = new GameState(parser, players); 
 		BonusScore bonus = new BonusScore(7);
 		try {
@@ -55,23 +51,11 @@ public class TestBonusScore {
 	@Test
 	public void testNullGameStateInGiveBonusThrowsException() {
 		boolean thrown = false; 
-		Parser parser = new Parser(); 
 		Player player = new Player(); 
-		Player player2 = new Player(); 
-		Player player3 = new Player(); 
-		Player player4 = new Player(); 
-		ArrayList<Player> players = new ArrayList<Player>(); 
-		players.add(player); 
-		players.add(player2); 
-		players.add(player3); 
-		players.add(player4); 
-		GarbageState garbageState = new GarbageState(parser); 
-		Map map = new Map(parser, garbageState); 
-		GameState gameState = new GameState(parser, players); 
 		BonusScore bonus = new BonusScore(7);
 		try {
 			GameState gameState2 = null; 
-			bonus.giveBonus(player4, gameState2);
+			bonus.giveBonus(player, gameState2);
 		} catch(NullPointerException e) {
 			thrown = true; 
 		}
@@ -89,8 +73,6 @@ public class TestBonusScore {
 		players.add(player2); 
 		players.add(player3); 
 		players.add(player4); 
-		GarbageState garbageState = new GarbageState(parser); 
-		Map map = new Map(parser, garbageState); 
 		GameState gameState = new GameState(parser, players); 
 		BonusScore bonus = new BonusScore(7);
 		int temp = player2.getScore().getItems(); 

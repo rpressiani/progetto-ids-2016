@@ -5,8 +5,6 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import model.player.Assistants;
-import model.player.Player;
-import utilities.Color;
 
 public class TestAssistants {
 
@@ -15,6 +13,7 @@ public class TestAssistants {
 		boolean thrown = false; 
 		Integer nAssistants = -3;
 		try {
+			@SuppressWarnings("unused")
 			Assistants assistants = new Assistants(nAssistants); 
 		} catch(IllegalArgumentException e) {
 			thrown = true; 

@@ -8,8 +8,6 @@ import org.junit.Test;
 
 import model.GameState;
 import model.bonusItem.BonusNobility;
-import model.council.GarbageState;
-import model.map.Map;
 import model.player.Player;
 import parser.Parser;
 import utilities.Color;
@@ -20,6 +18,7 @@ public class TestBonusNobility {
 	public void testNullItemsThrowsException() {
 		boolean thrown = false; 
 		int items = -2; 
+		@SuppressWarnings("unused")
 		BonusNobility bonus; 
 		try {
 			bonus = new BonusNobility(items); 
@@ -49,8 +48,6 @@ public class TestBonusNobility {
 		players.add(player2); 
 		players.add(player3); 
 		players.add(player4); 
-		GarbageState garbageState = new GarbageState(parser); 
-		Map map = new Map(parser, garbageState); 
 		GameState gameState = new GameState(parser, players);
 		int id = 0; 
 		for(Player p : players) {
@@ -87,8 +84,6 @@ public class TestBonusNobility {
 		players.add(player2); 
 		players.add(player3); 
 		players.add(player4); 
-		GarbageState garbageState = new GarbageState(parser); 
-		Map map = new Map(parser, garbageState); 
 		GameState gameState = new GameState(parser, players);
 		int id = 0; 
 		for(Player p : players) {
@@ -124,8 +119,6 @@ public class TestBonusNobility {
 		players.add(player2); 
 		players.add(player3); 
 		players.add(player4); 
-		GarbageState garbageState = new GarbageState(parser); 
-		Map map = new Map(parser, garbageState); 
 		GameState gameState = new GameState(parser, players);
 		int id = 0; 
 		for(Player p : players) {

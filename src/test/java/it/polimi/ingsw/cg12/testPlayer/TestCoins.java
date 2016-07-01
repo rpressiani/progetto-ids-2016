@@ -18,6 +18,7 @@ public class TestCoins {
 	public void testNegativeIntegerThrowsException() {
 		boolean thrown = false; 
 		try {
+			@SuppressWarnings("unused")
 			Coins coins = new Coins(-1); 
 		} catch(IllegalArgumentException e) {
 			thrown = true; 

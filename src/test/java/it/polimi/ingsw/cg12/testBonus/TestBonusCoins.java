@@ -8,8 +8,6 @@ import org.junit.Test;
 
 import model.GameState;
 import model.bonusItem.BonusCoins;
-import model.council.GarbageState;
-import model.map.Map;
 import model.player.Player;
 import parser.Parser;
 import utilities.Color;
@@ -21,6 +19,7 @@ public class TestBonusCoins {
 		boolean thrown = false; 
 		int items = -1; 
 		try {
+			@SuppressWarnings("unused")
 			BonusCoins bonus = new BonusCoins(items); 
 		} catch(IllegalArgumentException e) {
 			thrown = true; 
@@ -54,22 +53,12 @@ public class TestBonusCoins {
 	@Test
 	public void testNullGameStateInGiveBonusThrowsException() {
 		boolean thrown = false; 
-		int items = 2; 
-		Parser parser = new Parser(); 
+		int items = 2;  
 		Player player = new Player();
-		Player player2 = new Player(); 
-		Player player3 = new Player(); 
-		Player player4 = new Player(); 
-		ArrayList<Player> players = new ArrayList<Player>(); 
-		players.add(player); 
-		players.add(player2); 
-		players.add(player3); 
-		players.add(player4); 
-		GameState gameState = new GameState(parser, players); 
 		BonusCoins bonus = new BonusCoins(items); 
 		try {
 			GameState gameState2 = null; 
-			bonus.giveBonus(player4, gameState2);
+			bonus.giveBonus(player, gameState2);
 		} catch(NullPointerException e) {
 			thrown = true; 
 		}

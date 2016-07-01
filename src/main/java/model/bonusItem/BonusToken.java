@@ -9,7 +9,14 @@ public class BonusToken implements BonusInputItem {
 
 	private int tokenToChoose;
 	
-	public BonusToken(int tokenToChoose){
+	/**
+	 * @param tokenToChoose
+	 * @throws IllegalArgumentException if tokenToChoose<0
+	 */
+	public BonusToken(int tokenToChoose) {
+		if(tokenToChoose<0) {
+			throw new IllegalArgumentException("tokenToChoose cannot be null");			
+		}
 		this.tokenToChoose=tokenToChoose;
 	}
 
