@@ -13,6 +13,7 @@ public class TestKingCard {
 	public void testNullBonusesInConstructorThrowsException() {
 		boolean thrown = false; 
 		try {
+			@SuppressWarnings("unused")
 			KingCard kingCard = new KingCard(null); 
 		} catch(NullPointerException e) {
 			thrown = true; 

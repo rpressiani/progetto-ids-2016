@@ -13,6 +13,7 @@ public class TestDTOChangeMsg {
 		boolean thrown = false; 
 		String msg = null; 
 		try {
+			@SuppressWarnings("unused")
 			DTOChangeMsg change = new DTOChangeMsg(msg); 
 		} catch(NullPointerException e) {
 			thrown = true; 

@@ -14,6 +14,7 @@ public class TestGarbageState {
 		boolean thrown = false; 
 		Parser parser = null; 
 		try {
+			@SuppressWarnings("unused")
 			GarbageState garbageState = new GarbageState(parser); 
 		} catch(NullPointerException e) {
 			thrown = true; 

@@ -20,6 +20,7 @@ public class TestDTOScoresResponse {
 		Map<DTOPlayerBasic, DTOScore> scores = null;
 		DTOPlayerBasic player = new DTOPlayerBasic(2, "Bryan", new DTOColor("red")); 
 		try {
+			@SuppressWarnings("unused")
 			DTOScoresResponse response = new DTOScoresResponse(scores, player); 
 		} catch(NullPointerException e) {
 			thrown = true; 
@@ -32,6 +33,7 @@ public class TestDTOScoresResponse {
 		Map<DTOPlayerBasic, DTOScore> scores = new HashMap<DTOPlayerBasic, DTOScore>();
 		DTOPlayerBasic player = null; 
 		try {
+			@SuppressWarnings("unused")
 			DTOScoresResponse response = new DTOScoresResponse(scores, player); 
 		} catch(NullPointerException e) {
 			thrown = true; 

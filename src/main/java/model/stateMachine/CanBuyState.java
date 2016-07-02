@@ -8,6 +8,7 @@ import model.player.Player;
 
 public class CanBuyState implements State {
 	
+	@Override
 	public void transition(Player player, BuyAction action, GameState gameState){
 		if(player==null || action==null || gameState==null) {
 			throw new NullPointerException("player, action and gameState should all be !=null"); 

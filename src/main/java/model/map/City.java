@@ -15,7 +15,7 @@ import model.player.Player;
  * @author Alessandro Pezzotta
  *
  */
-public class City extends Bonusable{
+public class City extends Bonusable {
 	private String name; 
 	private String nameLong;
 	private Region region;

@@ -22,7 +22,15 @@ public class BuyAction implements GeneralAction {
 		
 	}
 	
-	public BuyAction(Contract contract){
+	/**
+	 * Constructor
+	 * @param contract
+	 * @throws NullPointerException if contract is null
+	 */
+	public BuyAction(Contract contract) {
+		if(contract==null) {
+			throw new NullPointerException(); 
+		}
 		this.contract=contract;
 	}
 	

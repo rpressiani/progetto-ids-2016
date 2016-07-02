@@ -15,6 +15,7 @@ public class TestDTOProposalOrderResponse {
 		boolean thrown = false; 
 		ArrayList<String> proposalOrder = null;
 		try {
+			@SuppressWarnings("unused")
 			DTOProposalOrderResponse response = 
 					new DTOProposalOrderResponse(proposalOrder); 
 		} catch(NullPointerException e) {

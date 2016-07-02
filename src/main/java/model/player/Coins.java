@@ -17,6 +17,11 @@ public class Coins extends SimpleItem implements Marketable {
 		super();
 	}
 	
+	/**
+	 * Constructor
+	 * @param coins
+	 * @throws NullPointerException if coins<0
+	 */
 	public Coins(Integer coins) {
 		if (coins < 0) throw new IllegalArgumentException("Argument must be greater than zero");
 		this.items = coins;

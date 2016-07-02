@@ -15,6 +15,7 @@ public class TestDTOSetup {
 		String nickname = null; 
 		DTOColor color = new DTOColor("ciao"); 
 		try {
+			@SuppressWarnings("unused")
 			DTOSetup setup = new DTOSetup(nickname, color); 
 		} catch(NullPointerException e) {
 			thrown = true; 
@@ -27,6 +28,7 @@ public class TestDTOSetup {
 		String nickname = "Ciro"; 
 		DTOColor color = null; 
 		try {
+			@SuppressWarnings("unused")
 			DTOSetup setup = new DTOSetup(nickname, color); 
 		} catch(NullPointerException e) {
 			thrown = true; 

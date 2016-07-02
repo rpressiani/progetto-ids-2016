@@ -17,6 +17,7 @@ public class TestDTOChangePlayerStatus {
 		DTOPlayerAdvanced player = null;
 		
 		try {
+			@SuppressWarnings("unused")
 			DTOChangePlayerStatus change = 
 					new DTOChangePlayerStatus(player); 
 		} catch(NullPointerException e) {

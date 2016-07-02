@@ -56,6 +56,10 @@ public class Region {
 		this.regionBonus = new RegionCard(bonuses, this);
 	}
 	
+	/**
+	 * @param cities
+	 * 
+	 */
 	public void initRegion(List<City> cities){
 		
 		this.regionCities = cities.stream()

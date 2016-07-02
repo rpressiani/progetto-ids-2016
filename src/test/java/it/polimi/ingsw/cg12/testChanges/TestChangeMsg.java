@@ -13,6 +13,7 @@ public class TestChangeMsg {
 		boolean thrown = false; 
 		String msg = null; 
 		try {
+			@SuppressWarnings("unused")
 			ChangeMsg change = new ChangeMsg(msg); 
 		} catch(NullPointerException e) {
 			thrown = true; 

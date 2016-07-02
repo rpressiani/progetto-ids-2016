@@ -1,14 +1,13 @@
 package it.polimi.ingsw.cg12.testDTO.changes;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-import dto.changes.DTOChangeElectCounsellor;
 import dto.changes.DTOChangeElectCounsellorWithAssistant;
 import dto.map.DTORegion;
 import dto.playerInfo.DTOAssistants;
-import dto.playerInfo.DTOCoins;
 import dto.utilities.DTOColor;
 
 public class TestDTOChangeElectCounsellorWithAssistant {
@@ -21,6 +20,7 @@ public class TestDTOChangeElectCounsellorWithAssistant {
 		DTOColor color = new DTOColor("red"); 
 		DTORegion region = new DTORegion("Campania"); 
 		try {
+			@SuppressWarnings("unused")
 			DTOChangeElectCounsellorWithAssistant change = 
 					new DTOChangeElectCounsellorWithAssistant(assistants, color, region); 
 		} catch(NullPointerException e) {
@@ -35,6 +35,7 @@ public class TestDTOChangeElectCounsellorWithAssistant {
 		DTOColor color = null; 
 		DTORegion region = new DTORegion("Campania"); 
 		try {
+			@SuppressWarnings("unused")
 			DTOChangeElectCounsellorWithAssistant change = 
 					new DTOChangeElectCounsellorWithAssistant(assistants, color, region); 
 		} catch(NullPointerException e) {
@@ -49,6 +50,7 @@ public class TestDTOChangeElectCounsellorWithAssistant {
 		DTOColor color = new DTOColor("red"); 
 		DTORegion region = null; 
 		try {
+			@SuppressWarnings("unused")
 			DTOChangeElectCounsellorWithAssistant change = 
 					new DTOChangeElectCounsellorWithAssistant(assistants, color, region); 
 		} catch(NullPointerException e) {

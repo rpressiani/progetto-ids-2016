@@ -18,6 +18,7 @@ public class TestDTOFreeCounsellorsResponse {
 		boolean thrown = false; 
 		DTOColorCounter garbageStatus = null;
 		try {
+			@SuppressWarnings("unused")
 			DTOFreeCounsellorsResponse response = 
 					new DTOFreeCounsellorsResponse(garbageStatus); 
 		} catch(NullPointerException e) {

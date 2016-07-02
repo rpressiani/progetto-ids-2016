@@ -1,9 +1,9 @@
 package it.polimi.ingsw.cg12.testMap;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.Set;
 
 import org.junit.Test;
@@ -24,6 +24,7 @@ public class TestRegion {
 	public void testNullConstructorThrowsException() {
 		boolean thrown = false; 
 		try {
+			@SuppressWarnings("unused")
 			Region region = new Region(null, null, null, null); 
 		} catch(NullPointerException e) {
 			thrown = true; 

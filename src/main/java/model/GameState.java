@@ -35,6 +35,11 @@ public class GameState extends Observable<Change>{
 	private Market market;
 	private Parser parser;
 
+	/**
+	 * @param parser
+	 * @param players
+	 * @throws NullPointerException if parser or players are null
+	 */
 	public GameState(Parser parser, ArrayList<Player> players) {
 		if(parser==null) {
 			throw new NullPointerException("cannot have a null parser"); 

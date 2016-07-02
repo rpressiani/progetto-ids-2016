@@ -16,6 +16,7 @@ public class TestDTOPlayersListResponse {
 		boolean thrown = false; 
 		ArrayList<DTOPlayerBasic> players = null; 
 		try {
+			@SuppressWarnings("unused")
 			DTOPlayersListResponse response = 
 					new DTOPlayersListResponse(players); 
 		} catch(NullPointerException e) {

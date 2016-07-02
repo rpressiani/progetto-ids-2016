@@ -13,6 +13,7 @@ public class TestDTOScore {
 		boolean thrown = false; 
 		int level = -1; 
 		try {
+			@SuppressWarnings("unused")
 			DTOScore score = new DTOScore(level); 
 		} catch(IllegalArgumentException e) {
 			thrown = true; 
@@ -24,6 +25,7 @@ public class TestDTOScore {
 		boolean thrown = false; 
 		int level = 2; 
 		try {
+			@SuppressWarnings("unused")
 			DTOScore score = new DTOScore(level); 
 		} catch(IllegalArgumentException e) {
 			thrown = true; 

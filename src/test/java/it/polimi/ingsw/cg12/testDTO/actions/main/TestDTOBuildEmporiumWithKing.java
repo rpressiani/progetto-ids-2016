@@ -18,6 +18,7 @@ public class TestDTOBuildEmporiumWithKing {
 		DTOPoliticalContainer proposal = null; 
 		DTOCity city = new DTOCity("Roma");
 		try {
+			@SuppressWarnings("unused")
 			DTOBuildEmporiumWithKing action = new DTOBuildEmporiumWithKing(proposal, city); 
 		} catch(NullPointerException e) {
 			thrown = true; 
@@ -31,6 +32,7 @@ public class TestDTOBuildEmporiumWithKing {
 		DTOPoliticalContainer proposal = new DTOPoliticalContainer(structure); 
 		DTOCity city = null; 
 		try {
+			@SuppressWarnings("unused")
 			DTOBuildEmporiumWithKing action = new DTOBuildEmporiumWithKing(proposal, city); 
 		} catch(NullPointerException e) {
 			thrown = true; 

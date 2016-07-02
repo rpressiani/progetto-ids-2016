@@ -18,6 +18,7 @@ public class TestDTOChangeBuildEmporiumWithKing {
 		DTOCoins coins = new DTOCoins(3); 
 		DTOCity city = new DTOCity("Oakland");
 		try {
+			@SuppressWarnings("unused")
 			DTOChangeBuildEmporiumWithKing change = 
 					new DTOChangeBuildEmporiumWithKing(assistants, coins, city); 
 		} catch(NullPointerException e) {
@@ -32,6 +33,7 @@ public class TestDTOChangeBuildEmporiumWithKing {
 		DTOCoins coins = null; 
 		DTOCity city = new DTOCity("Oakland");
 		try {
+			@SuppressWarnings("unused")
 			DTOChangeBuildEmporiumWithKing change = 
 					new DTOChangeBuildEmporiumWithKing(assistants, coins, city); 
 		} catch(NullPointerException e) {
@@ -46,6 +48,7 @@ public class TestDTOChangeBuildEmporiumWithKing {
 		DTOCoins coins = new DTOCoins(3); 
 		DTOCity city = null;
 		try {
+			@SuppressWarnings("unused")
 			DTOChangeBuildEmporiumWithKing change = 
 					new DTOChangeBuildEmporiumWithKing(assistants, coins, city); 
 		} catch(NullPointerException e) {

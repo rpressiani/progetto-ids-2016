@@ -23,6 +23,7 @@ public class TestDTOMapResponse {
 		Map<DTOCity, Set<DTOPlayerBasic>> citiesStatus = 
 				new HashMap<DTOCity, Set<DTOPlayerBasic>>(); 
 		try {
+			@SuppressWarnings("unused")
 			DTOMapResponse response = 
 					new DTOMapResponse(cliDisplay, builtCities, citiesStatus); 
 		} catch(NullPointerException e) {
@@ -38,6 +39,7 @@ public class TestDTOMapResponse {
 		Map<DTOCity, Set<DTOPlayerBasic>> citiesStatus = 
 				new HashMap<DTOCity, Set<DTOPlayerBasic>>(); 
 		try {
+			@SuppressWarnings("unused")
 			DTOMapResponse response = 
 					new DTOMapResponse(cliDisplay, builtCities, citiesStatus); 
 		} catch(NullPointerException e) {
@@ -52,6 +54,7 @@ public class TestDTOMapResponse {
 		Set<DTOCity> builtCities = new HashSet<DTOCity>();
 		Map<DTOCity, Set<DTOPlayerBasic>> citiesStatus = null; 
 		try {
+			@SuppressWarnings("unused")
 			DTOMapResponse response = 
 					new DTOMapResponse(cliDisplay, builtCities, citiesStatus); 
 		} catch(NullPointerException e) {

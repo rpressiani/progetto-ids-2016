@@ -18,6 +18,7 @@ public class TestDTOPermissionAvailableResponse {
 		boolean thrown = false; 
 		Map<String, Set<DTOPermissionCard>> permissionPerRegion = null;
 		try {
+			@SuppressWarnings("unused")
 			DTOPermissionAvailableResponse response = 
 					new DTOPermissionAvailableResponse(permissionPerRegion); 
 		} catch(NullPointerException e) {

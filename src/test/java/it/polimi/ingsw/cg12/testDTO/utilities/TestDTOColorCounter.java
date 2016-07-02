@@ -17,6 +17,7 @@ public class TestDTOColorCounter {
 		boolean thrown = false; 
 		Map<DTOColor, Integer> structure = null; 
 		try {
+			@SuppressWarnings("unused")
 			DTOColorCounter counter = new DTOColorCounter(structure); 
 		} catch(NullPointerException e) {
 			thrown = true; 

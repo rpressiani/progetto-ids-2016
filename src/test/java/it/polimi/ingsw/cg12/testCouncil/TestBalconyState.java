@@ -14,6 +14,7 @@ public class TestBalconyState {
 		boolean thrown = false; 
 		Parser parser = null;
 		try {
+			@SuppressWarnings("unused")
 			BalconyState state = new BalconyState(parser); 
 		} catch(NullPointerException e) {
 			thrown = true; 

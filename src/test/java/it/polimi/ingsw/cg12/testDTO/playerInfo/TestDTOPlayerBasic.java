@@ -13,6 +13,7 @@ public class TestDTOPlayerBasic {
 	public void testNegativeIdInConstrutorThrowsExcpetion() {
 		boolean thrown = false; 
 		try {
+			@SuppressWarnings("unused")
 			DTOPlayerBasic player = new DTOPlayerBasic(-1, "Ciro", new DTOColor("red")); 
 		} catch(IllegalArgumentException e) {
 			thrown = true; 
@@ -24,6 +25,7 @@ public class TestDTOPlayerBasic {
 		boolean thrown = false; 
 		String nickname = null; 
 		try {
+			@SuppressWarnings("unused")
 			DTOPlayerBasic player = new DTOPlayerBasic(1, nickname, new DTOColor("red")); 
 		} catch(NullPointerException e) {
 			thrown = true; 
@@ -35,6 +37,7 @@ public class TestDTOPlayerBasic {
 		boolean thrown = false; 
 		DTOColor color = null; 
 		try {
+			@SuppressWarnings("unused")
 			DTOPlayerBasic player = new DTOPlayerBasic(1, "Ciro", color); 
 		} catch(NullPointerException e) {
 			thrown = true; 
@@ -46,7 +49,7 @@ public class TestDTOPlayerBasic {
 		int id = 3;
 		String nickname = "Ciro"; 
 		DTOColor color = new DTOColor("red"); 
-		DTOPlayerBasic player = new DTOPlayerBasic(id, "Ciro", color); 
+		DTOPlayerBasic player = new DTOPlayerBasic(id, nickname, color); 
 		assertEquals(id, player.getSerialID()); 
 	}
 	@Test
@@ -62,7 +65,7 @@ public class TestDTOPlayerBasic {
 		int id = 3;
 		String nickname = "Ciro"; 
 		DTOColor color = new DTOColor("red"); 
-		DTOPlayerBasic player = new DTOPlayerBasic(id, "Ciro", color); 
+		DTOPlayerBasic player = new DTOPlayerBasic(id, nickname, color); 
 		assertEquals(color, player.getColor()); 
 	}
 

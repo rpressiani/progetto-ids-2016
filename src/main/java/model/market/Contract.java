@@ -23,6 +23,11 @@ public class Contract {
 	
 	private Player seller;
 	
+	/**
+	 * Constructor
+	 * @param seller
+	 * @throws NullPointerException if seller is null
+	 */
 	public Contract(Player seller){
 		if(seller==null) {
 			throw new NullPointerException("seller cannot be null"); 

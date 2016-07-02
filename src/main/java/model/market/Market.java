@@ -17,6 +17,9 @@ public class Market {
 	
 	private Set<Contract> contractSet;
 	
+	/**
+	 * Constructor
+	 */
 	public Market(){
 		this.contractSet = new HashSet<Contract>();
 	}

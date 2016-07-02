@@ -16,6 +16,7 @@ public class TestDTOBuildEmporiumWithCard {
 		DTOCity city = null; 
 		DTOPermissionCardSelection card = new DTOPermissionCardSelection(3); 
 		try {
+			@SuppressWarnings("unused")
 			DTOBuildEmporiumWithCard action = new DTOBuildEmporiumWithCard(card, city); 
 		} catch(NullPointerException e) {
 			thrown = true; 
@@ -28,6 +29,7 @@ public class TestDTOBuildEmporiumWithCard {
 		DTOPermissionCardSelection card = null; 
 		DTOCity city = new DTOCity("Roma"); 
 		try {
+			@SuppressWarnings("unused")
 			DTOBuildEmporiumWithCard action = new DTOBuildEmporiumWithCard(card, city); 
 		} catch(NullPointerException e) {
 			thrown = true; 

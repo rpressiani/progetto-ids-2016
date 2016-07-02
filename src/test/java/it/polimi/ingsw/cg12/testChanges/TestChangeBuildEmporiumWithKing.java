@@ -33,6 +33,7 @@ public class TestChangeBuildEmporiumWithKing {
 		player.initPlayer(gameState.getPoliticalDeck(), id, parser);
 		City city = gameState.getMap().getAllCitiesHashMap().get("A");
 		try {
+			@SuppressWarnings("unused")
 			ChangeBuildEmporiumWithKing change = new ChangeBuildEmporiumWithKing(coins, assistants, city); 
 		} catch(NullPointerException e) {
 			thrown = true; 
@@ -55,6 +56,7 @@ public class TestChangeBuildEmporiumWithKing {
 		player.initPlayer(gameState.getPoliticalDeck(), id, parser);
 		City city = null;
 		try {
+			@SuppressWarnings("unused")
 			ChangeBuildEmporiumWithKing change = new ChangeBuildEmporiumWithKing(coins, assistants, city); 
 		} catch(NullPointerException e) {
 			thrown = true; 
@@ -77,6 +79,7 @@ public class TestChangeBuildEmporiumWithKing {
 		player.initPlayer(gameState.getPoliticalDeck(), id, parser);
 		City city = gameState.getMap().getAllCitiesHashMap().get("A");
 		try {
+			@SuppressWarnings("unused")
 			ChangeBuildEmporiumWithKing change = new ChangeBuildEmporiumWithKing(coins, assistants, city); 
 		} catch(NullPointerException e) {
 			thrown = true; 

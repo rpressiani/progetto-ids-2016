@@ -4,6 +4,7 @@ import model.changes.ChangeMsg;
 import model.player.Player;
 
 public class BonusCoins implements BonusItem {
+	
 	private final int items;
 		
 	/**

@@ -21,6 +21,7 @@ public class TestPermissionCard {
 		ArrayList<BonusItem> bonuses = null; 
 		HashSet<City> cities = new HashSet<City>(); 
 		try {
+			@SuppressWarnings("unused")
 			PermissionCard card = new PermissionCard(bonuses, cities); 
 		} catch(NullPointerException e) {
 			thrown = true; 
@@ -33,6 +34,7 @@ public class TestPermissionCard {
 		ArrayList<BonusItem> bonuses = new ArrayList<BonusItem>(); 
 		HashSet<City> cities = null; 
 		try {
+			@SuppressWarnings("unused")
 			PermissionCard card = new PermissionCard(bonuses, cities); 
 		} catch(NullPointerException e) {
 			thrown = true; 
@@ -94,6 +96,7 @@ public class TestPermissionCard {
 	public void testGetCounter() {
 		ArrayList<BonusItem> bonuses = new ArrayList<BonusItem>(); 
 		HashSet<City> cities = new HashSet<City>();
+		@SuppressWarnings("unused")
 		PermissionCard card = new PermissionCard(bonuses, cities);
 		int temp = PermissionCard.getCounter(); 
 		assertEquals(temp, PermissionCard.getCounter()); 

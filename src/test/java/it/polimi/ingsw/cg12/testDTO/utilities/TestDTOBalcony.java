@@ -15,6 +15,7 @@ public class TestDTOBalcony {
 	public void testNullArrayListInConstructorThrowsException() {
 		boolean thrown = false; 
 		ArrayList<DTOColor> balconyState = null;
+		@SuppressWarnings("unused")
 		DTOBalcony balcony; 
 		try {
 			balcony = new DTOBalcony(balconyState); 
