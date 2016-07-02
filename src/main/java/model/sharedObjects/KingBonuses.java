@@ -33,7 +33,7 @@ public class KingBonuses {
 	/**
 	 * @return the kingbonuses
 	 */
-	public LinkedList<KingCard> getKingbonuses() {
+	public LinkedList<KingCard> getKingCards() {
 		return kingBonuses;
 	}
 

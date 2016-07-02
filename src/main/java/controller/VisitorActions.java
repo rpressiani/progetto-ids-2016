@@ -152,7 +152,7 @@ public class VisitorActions {
 			int idCard=c.getIdCard();
 			PermissionCard card=null;
 			for(int i=0; i<myCards.size(); i++){
-				if(idCard!=0 && idCard==myCards.get(i).getIdCard()) card=myCards.get(i);
+				if(idCard==myCards.get(i).getIdCard()) card=myCards.get(i);
 			}
 			sellPermissions.add(card);
 		}
@@ -165,7 +165,7 @@ public class VisitorActions {
 				if(p!=player){
 					List<PermissionCard> othersCards= new ArrayList<PermissionCard>(player.getPermissionHand());
 					for(int i=0; i<othersCards.size(); i++){
-						if(idCard!=0 && idCard==othersCards.get(i).getIdCard()) card=othersCards.get(i);
+						if(idCard==othersCards.get(i).getIdCard()) card=othersCards.get(i);
 					}
 				}
 			}
