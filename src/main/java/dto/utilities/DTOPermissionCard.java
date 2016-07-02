@@ -56,11 +56,11 @@ public class DTOPermissionCard extends DTOPermissionCardSelection implements DTO
 	public String toString() {
 		StringBuilder msg = new StringBuilder();
 		
-		msg.append("\n[SERVER] Card " + this.getIdCard() + "\n\t[SERVER] Cities: ");
+		msg.append("\n[SERVER] Card " + this.getIdCard() + "\n[SERVER]\tCities: ");
 		for (DTOCity city: this.cities) {
 			msg.append(city.getName() + " ");
 		}
-		msg.append("\n\t[SERVER] Bonuses: ");
+		msg.append("\n[SERVER]\tBonuses: ");
 		int index = 0;
 		for (Map.Entry<String, Integer> entry : this.bonuses.entrySet()) {
 			if (index != 0) msg.append(", ");
