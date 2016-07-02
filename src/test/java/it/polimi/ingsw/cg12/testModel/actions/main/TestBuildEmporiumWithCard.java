@@ -1,20 +1,18 @@
 package it.polimi.ingsw.cg12.testModel.actions.main;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 
-import org.junit.Before;
 import org.junit.Test;
 
 import model.GameState;
 import model.actions.main.BuildEmporiumWithCard;
 import model.bonusItem.BonusItem;
 import model.bonusable.PermissionCard;
-import model.council.GarbageState;
+import model.map.Ancestry;
 import model.map.City;
-import model.map.Map;
 import model.player.Player;
 import parser.Parser;
 import utilities.Color;

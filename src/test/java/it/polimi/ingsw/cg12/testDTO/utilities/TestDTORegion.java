@@ -13,6 +13,7 @@ public class TestDTORegion {
 		boolean thrown = false; 
 		String name = null; 
 		try {
+			@SuppressWarnings("unused")
 			DTORegion region = new DTORegion(name); 
 		} catch(NullPointerException e) {
 			thrown = true; 
@@ -24,6 +25,7 @@ public class TestDTORegion {
 		boolean thrown = false; 
 		String name = "Campania"; 
 		try {
+			@SuppressWarnings("unused")
 			DTORegion region = new DTORegion(name); 
 		} catch(NullPointerException e) {
 			thrown = true; 

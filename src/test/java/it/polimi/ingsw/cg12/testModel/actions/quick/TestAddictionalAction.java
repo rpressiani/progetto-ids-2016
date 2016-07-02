@@ -24,6 +24,7 @@ public class TestAddictionalAction {
 		boolean thrown = false; 
 		MainAction mainAction = null; 
 		try {
+			@SuppressWarnings("unused")
 			AddictionalAction action = new AddictionalAction(mainAction); 
 		} catch(NullPointerException e) {
 			thrown = true; 

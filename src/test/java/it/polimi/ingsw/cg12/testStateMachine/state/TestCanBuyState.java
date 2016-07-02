@@ -8,6 +8,7 @@ import org.junit.Test;
 
 import model.GameState;
 import model.actions.market.BuyAction;
+import model.market.Contract;
 import model.player.Player;
 import model.stateMachine.CanBuyState;
 import model.stateMachine.State;
@@ -25,7 +26,8 @@ public class TestCanBuyState {
 		ArrayList<Player> players = new ArrayList<Player>(); 
 		players.add(player); 
 		GameState gameState = new GameState(parser, players); 
-		BuyAction action = new BuyAction(); 
+		Contract contract = new Contract(player);
+		BuyAction action = new BuyAction(contract); 
 		try {
 			Player player2 = null; 
 			state.transition(player2, action, gameState);
@@ -60,7 +62,8 @@ public class TestCanBuyState {
 		ArrayList<Player> players = new ArrayList<Player>(); 
 		players.add(player); 
 		GameState gameState = new GameState(parser, players); 
-		BuyAction action = new BuyAction(); 
+		Contract contract = new Contract(player); 
+		BuyAction action = new BuyAction(contract); 
 		try {
 			GameState gameState2 = null; 
 			state.transition(player, action, gameState2);
