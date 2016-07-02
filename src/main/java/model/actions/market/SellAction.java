@@ -7,13 +7,15 @@ import model.actions.GeneralAction;
 import model.bonusable.PermissionCard;
 import model.changes.ChangeMsg;
 import model.market.Contract;
+import model.player.Assistants;
+import model.player.Coins;
 import model.player.Player;
 import model.politicalDeck.PoliticalContainer;
 
 public class SellAction implements GeneralAction {
 
-	private int sellCoins, buyCoins;
-	private int sellAssistants, buyAssistants;
+	private Coins sellCoins, buyCoins;
+	private Assistants sellAssistants, buyAssistants;
 	private Set<PermissionCard> sellPermissions, buyPermissions;
 	private PoliticalContainer sellPoliticals, buyPoliticals;
 	
@@ -36,8 +38,8 @@ public class SellAction implements GeneralAction {
 	 * @param buyPermissions
 	 * @param buyPoliticals
 	 */
-	public SellAction(int sellCoins, int sellAssistants, Set<PermissionCard> sellPermissions, PoliticalContainer sellPoliticals,
-			int buyCoins, int buyAssistants, Set<PermissionCard> buyPermissions, PoliticalContainer buyPoliticals){
+	public SellAction(Coins sellCoins, Assistants sellAssistants, Set<PermissionCard> sellPermissions, PoliticalContainer sellPoliticals,
+			Coins buyCoins, Assistants buyAssistants, Set<PermissionCard> buyPermissions, PoliticalContainer buyPoliticals){
 		this.sellCoins=sellCoins;
 		this.sellAssistants=sellAssistants;
 		this.sellPermissions=sellPermissions;
@@ -54,15 +56,15 @@ public class SellAction implements GeneralAction {
 		
 		Contract contract=new Contract(player);
 		
-		contract.sellCoins(sellCoins);
-		contract.sellAssistants(sellAssistants);
+		contract.sellCoins(sellCoins.getItems());
+		contract.sellAssistants(sellAssistants.getItems());
 		for(PermissionCard card : sellPermissions){
 			contract.sellPermissionCard(card);
 		}
 		contract.sellPoliticalCards(sellPoliticals);
 		
-		contract.buyCoins(buyCoins);
-		contract.buyAssistants(buyAssistants);
+		contract.buyCoins(buyCoins.getItems());
+		contract.buyAssistants(buyAssistants.getItems());
 		for(PermissionCard card : buyPermissions){
 			contract.buyPermissionCard(card);
 		}
@@ -77,17 +79,17 @@ public class SellAction implements GeneralAction {
 	@Override
 	public boolean checkCondition(Player player, GameState gameState) {
 		
-		if(sellCoins<0 || buyCoins<0 || sellAssistants<0 || buyAssistants<0){
+		if(sellCoins.getItems()<0 || buyCoins.getItems()<0 || sellAssistants.getItems()<0 || buyAssistants.getItems()<0){
 			gameState.notifyObserver(player, new ChangeMsg("You can't put negative quantity of things to sell or buy in the contract"));
 			return false;
 		}
 		
-		if(player.getCoins().getItems()<sellCoins){
+		if(player.getCoins().getItems()<sellCoins.getItems()){
 			gameState.notifyObserver(player, new ChangeMsg("You don't have enough coins to make this contract"));
 			return false;
 		}
 		
-		if(player.getAssistants().getItems()<sellAssistants){
+		if(player.getAssistants().getItems()<sellAssistants.getItems()){
 			gameState.notifyObserver(player, new ChangeMsg("You don't have enough assistants to make this contract"));
 			return false;
 		}

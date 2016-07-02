@@ -9,7 +9,10 @@ import java.util.Set;
 import org.junit.Test;
 
 import dto.actions.market.DTOSellAction;
+import dto.playerInfo.DTOAssistants;
+import dto.playerInfo.DTOCoins;
 import dto.utilities.DTOPermissionCardSelection;
+import dto.utilities.DTOPoliticalContainer;
 
 public class TestDTOSellAction {
 
@@ -24,12 +27,12 @@ public class TestDTOSellAction {
 				new HashSet<DTOPermissionCardSelection>(); 
 		Set<DTOPermissionCardSelection> buyPermissions = 
 				new HashSet<DTOPermissionCardSelection>(); 
-		ArrayList<Integer> sellPoliticals = new ArrayList<Integer>(); 
-		ArrayList<Integer> buyPoliticals = new ArrayList<Integer>(); 
+		DTOPoliticalContainer sellPoliticals = new DTOPoliticalContainer(new ArrayList<Integer>());
+		DTOPoliticalContainer buyPoliticals = new DTOPoliticalContainer(new ArrayList<Integer>());
 		try {
 			DTOSellAction action = 
-					new DTOSellAction(sellCoins, sellAssistants, sellPermissions, sellPoliticals, 
-							buyCoins, buyAssistants, buyPermissions, buyPoliticals);
+					new DTOSellAction(new DTOCoins(sellCoins), new DTOAssistants(sellAssistants), sellPermissions, sellPoliticals, 
+							new DTOCoins(buyCoins), new DTOAssistants(buyAssistants), buyPermissions, buyPoliticals);
 		} catch(IllegalArgumentException e) {
 			thrown = true; 
 		}
@@ -45,12 +48,12 @@ public class TestDTOSellAction {
 		Set<DTOPermissionCardSelection> sellPermissions = null; 
 		Set<DTOPermissionCardSelection> buyPermissions = 
 				new HashSet<DTOPermissionCardSelection>(); 
-		ArrayList<Integer> sellPoliticals = new ArrayList<Integer>(); 
-		ArrayList<Integer> buyPoliticals = new ArrayList<Integer>(); 
+		DTOPoliticalContainer sellPoliticals = new DTOPoliticalContainer(new ArrayList<Integer>());
+		DTOPoliticalContainer buyPoliticals = new DTOPoliticalContainer(new ArrayList<Integer>());
 		try {
 			DTOSellAction action = 
-					new DTOSellAction(sellCoins, sellAssistants, sellPermissions, sellPoliticals, 
-							buyCoins, buyAssistants, buyPermissions, buyPoliticals);
+					new DTOSellAction(new DTOCoins(sellCoins), new DTOAssistants(sellAssistants), sellPermissions, sellPoliticals, 
+							new DTOCoins(buyCoins), new DTOAssistants(buyAssistants), buyPermissions, buyPoliticals);
 		} catch(NullPointerException e) {
 			thrown = true; 
 		}
@@ -67,12 +70,12 @@ public class TestDTOSellAction {
 				new HashSet<DTOPermissionCardSelection>(); 
 		Set<DTOPermissionCardSelection> buyPermissions = 
 				new HashSet<DTOPermissionCardSelection>(); 
-		ArrayList<Integer> sellPoliticals = null; 
-		ArrayList<Integer> buyPoliticals = new ArrayList<Integer>(); 
+		DTOPoliticalContainer sellPoliticals = null;
+		DTOPoliticalContainer buyPoliticals = new DTOPoliticalContainer(new ArrayList<Integer>());
 		try {
 			DTOSellAction action = 
-					new DTOSellAction(sellCoins, sellAssistants, sellPermissions, sellPoliticals, 
-							buyCoins, buyAssistants, buyPermissions, buyPoliticals);
+					new DTOSellAction(new DTOCoins(sellCoins), new DTOAssistants(sellAssistants), sellPermissions, sellPoliticals, 
+							new DTOCoins(buyCoins), new DTOAssistants(buyAssistants), buyPermissions, buyPoliticals);
 		} catch(NullPointerException e) {
 			thrown = true; 
 		}
