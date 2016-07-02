@@ -21,6 +21,7 @@ import dto.queries.request.DTOBalconiesStateRequest;
 import dto.queries.request.DTOCurrentPlayerRequest;
 import dto.queries.request.DTOFreeCounsellorsRequest;
 import dto.queries.request.DTOMapRequest;
+import dto.queries.request.DTOMarketStatusRequest;
 import dto.queries.request.DTOPermissionAvailableRequest;
 import dto.queries.request.DTOPingRequest;
 import dto.queries.request.DTOPlayerInfoRequest;
@@ -29,6 +30,7 @@ import dto.queries.respond.DTOBalconiesStateResponse;
 import dto.queries.respond.DTOCurrentPlayerResponse;
 import dto.queries.respond.DTOFreeCounsellorsResponse;
 import dto.queries.respond.DTOMapResponse;
+import dto.queries.respond.DTOMarketStatusResponse;
 import dto.queries.respond.DTOPermissionAvailableResponse;
 import dto.queries.respond.DTOPingResponse;
 import dto.queries.respond.DTOPlayerInfoAdvancedResponse;
@@ -39,7 +41,9 @@ import dto.queries.respond.DTOScoresResponse;
 import dto.utilities.DTOBalcony;
 import dto.utilities.DTOColor;
 import dto.utilities.DTOPermissionCard;
+import dto.utilities.DTOPoliticalContainer;
 import dto.utilities.DTOColorCounter;
+import dto.utilities.DTOContract;
 import jaxb.CFGPoliticalCard;
 import model.GameState;
 import model.bonusable.PermissionCard;
@@ -47,8 +51,13 @@ import model.council.Counsellor;
 import model.council.CounsellorGroup;
 import model.map.City;
 import model.map.Region;
+import model.market.Contract;
+import model.market.Marketable;
+import model.player.Assistants;
+import model.player.Coins;
 import model.player.Player;
 import model.politicalDeck.PoliticalCard;
+import model.politicalDeck.PoliticalContainer;
 
 public class VisitorQueries {
 	
@@ -284,6 +293,62 @@ public class VisitorQueries {
 		}
 		
 		return new DTOMapResponse(new String(this.gameState.getMap().getCliDisplay()), builtCities, citiesStatus);
+	}
+	
+	public DTOMarketStatusResponse visit(DTOMarketStatusRequest dto){
+		Map<String, DTOContract> contracts = new HashMap<String, DTOContract>();
+		for (Contract contract : this.gameState.getMarket().getContractSet()) {
+			DTOContract dtoContract = new DTOContract(contract.getSeller().getNickname());
+			Set<DTOPermissionCard> sellPermissions = new HashSet<DTOPermissionCard>();
+			for (Marketable item : contract.getSellBag()) {
+				if (item instanceof Coins) {
+					dtoContract.setSellCoins(new DTOCoins(((Coins) item).getItems().intValue()));
+				}
+				if (item instanceof Assistants) {
+					dtoContract.setSellAssistants(new DTOAssistants(((Assistants) item).getItems().intValue()));
+				}
+				if (item instanceof PermissionCard) {
+					Set<DTOCity> cities = new HashSet<>();
+					for (City city : ((PermissionCard) item).getPossibleCities()) {
+						cities.add(new DTOCity(city.getName()));
+					}
+					sellPermissions.add(new DTOPermissionCard(((PermissionCard) item).getIdCard(), ((PermissionCard) item).isUsed(), cities));
+				}
+				if (item instanceof PoliticalContainer) {
+					ArrayList<Integer> structure = new ArrayList<Integer>();
+					for (PoliticalCard card : ((PoliticalContainer) item).getDeck()) {
+						structure.add(card.getNumCards());
+					}
+					dtoContract.setSellPoliticals(new DTOPoliticalContainer(structure));
+				}
+				dtoContract.setSellPermissions(sellPermissions);
+			}
+			Set<DTOPermissionCard> buyPermissions = new HashSet<DTOPermissionCard>();
+			for (Marketable item : contract.getBuyBag()) {
+				if (item instanceof Coins) {
+					dtoContract.setBuyCoins(new DTOCoins(((Coins) item).getItems().intValue()));
+				}
+				if (item instanceof Assistants) {
+					dtoContract.setBuyAssistants(new DTOAssistants(((Assistants) item).getItems().intValue()));
+				}
+				if (item instanceof PermissionCard) {
+					Set<DTOCity> cities = new HashSet<>();
+					for (City city : ((PermissionCard) item).getPossibleCities()) {
+						cities.add(new DTOCity(city.getName()));
+					}
+					buyPermissions.add(new DTOPermissionCard(((PermissionCard) item).getIdCard(), ((PermissionCard) item).isUsed(), cities));
+				}
+				if (item instanceof PoliticalContainer) {
+					ArrayList<Integer> structure = new ArrayList<Integer>();
+					for (PoliticalCard card : ((PoliticalContainer) item).getDeck()) {
+						structure.add(card.getNumCards());
+					}
+					dtoContract.setBuyPoliticals(new DTOPoliticalContainer(structure));
+				}
+				dtoContract.setBuyPermissions(buyPermissions);
+			}
+		}
+		return new DTOMarketStatusResponse(contracts);
 	}
 
 }

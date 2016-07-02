@@ -33,7 +33,6 @@ public class PoliticalContainer extends PoliticalDeck implements Marketable {
 		} else {
 			for (CFGPoliticalCard cfgPoliticalCard : cfgPoliticalCardList) {
 				this.getDeck().add(new PoliticalCard(cfgPoliticalCard.getColor(), -1));
-				System.out.println("go");
 			}
 			
 		}
