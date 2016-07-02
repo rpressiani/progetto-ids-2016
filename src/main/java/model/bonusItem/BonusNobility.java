@@ -31,4 +31,9 @@ public class BonusNobility implements BonusItem {
 		player.setBonusChosed(false);
 		gameState.notifyObserver(player, new ChangeMsg("You did "+items+" steps in the nobility route"));
 	}
+	
+	@Override
+	public int getQuantity(){
+		return this.items;
+	}
 }

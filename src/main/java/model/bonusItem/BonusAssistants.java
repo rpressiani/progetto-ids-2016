@@ -29,6 +29,11 @@ public class BonusAssistants implements BonusItem {
 		player.getAssistants().add(items);
 		gameState.notifyObserver(player, new ChangeMsg("You gained "+items+" bonus assistants"));
 	}
+	
+	@Override
+	public int getQuantity(){
+		return this.items;
+	}
 
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()

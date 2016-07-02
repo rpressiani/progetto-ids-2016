@@ -29,6 +29,11 @@ public class BonusScore implements BonusItem {
 		player.getScore().add(items);
 		gameState.notifyObserver(player, new ChangeMsg("Your score has been incremented by "+items));
 	}
+	
+	@Override
+	public int getQuantity(){
+		return this.items;
+	}
 
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()

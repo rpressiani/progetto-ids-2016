@@ -1,6 +1,7 @@
 package dto.utilities;
 
 import java.util.Map;
+import java.util.Map.Entry;
 
 import dto.DTOObject;
 
@@ -26,5 +27,21 @@ public class DTOColorCounter implements DTOObject {
 	public Map<DTOColor, Integer> getStructure() {
 		return structure;
 	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		StringBuilder msg = new StringBuilder();
+		
+		for (Entry<DTOColor, Integer> entry : structure.entrySet()){
+			msg.append("\n[SERVER]\t" + entry.getKey().getColorString() + ": " + entry.getValue());
+		}
+		
+		return msg.toString();
+	}
+	
+	
 
 }

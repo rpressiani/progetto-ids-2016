@@ -32,6 +32,8 @@ import model.changes.ChangeSubstitutePermissionCards;
 import model.map.City;
 import model.politicalDeck.PoliticalCard;
 import model.changes.ChangeMsg;
+import model.bonusItem.BonusInputItem;
+import model.bonusItem.BonusItem;
 import model.bonusable.PermissionCard;
 import model.changes.ChangeBuildEmporiumWithCard;
 import model.changes.ChangeBuildEmporiumWithKing;
@@ -69,7 +71,23 @@ public class VisitorChanges {
 			for (City city : card.getPossibleCities()) {
 				cities.add(new DTOCity(city.getName()));
 			}
-			permissionCards.add(new DTOPermissionCard(card.getIdCard(), card.isUsed(), cities));
+			Map<String, Integer> bonuses = new HashMap<String, Integer>();
+			for (BonusItem item : card.getBonuses()){
+				if (!bonuses.containsKey(item.getClass().getName())) {
+					if (item instanceof BonusInputItem) {
+						bonuses.put(item.getClass().getName(), 1);
+					} else {
+						bonuses.put(item.getClass().getName(), item.getQuantity());
+					}
+				} else {
+					if (item instanceof BonusInputItem) {
+						bonuses.put(item.getClass().getName(), bonuses.get(item.getClass().getName()).intValue()+1);
+					} else {
+						bonuses.put(item.getClass().getName(), bonuses.get(item.getClass().getName()).intValue()+item.getQuantity());
+					}
+				}
+			}
+			permissionCards.add(new DTOPermissionCard(card.getIdCard(), card.isUsed(), cities, bonuses));
 		}
 		
 		ArrayList<DTOCity> builtCities = new ArrayList<DTOCity>();

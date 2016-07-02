@@ -41,11 +41,11 @@ import dto.queries.respond.DTOScoresResponse;
 import dto.utilities.DTOBalcony;
 import dto.utilities.DTOColor;
 import dto.utilities.DTOPermissionCard;
-import dto.utilities.DTOPoliticalContainer;
 import dto.utilities.DTOColorCounter;
-import dto.utilities.DTOContract;
 import jaxb.CFGPoliticalCard;
 import model.GameState;
+import model.bonusItem.BonusInputItem;
+import model.bonusItem.BonusItem;
 import model.bonusable.PermissionCard;
 import model.council.Counsellor;
 import model.council.CounsellorGroup;
@@ -163,7 +163,23 @@ public class VisitorQueries {
 				for (City city : card.getPossibleCities()) {
 					cities.add(new DTOCity(city.getName()));
 				}
-				permissionCards.add(new DTOPermissionCard(card.getIdCard(), card.isUsed(), cities));
+				Map<String, Integer> bonuses = new HashMap<String, Integer>();
+				for (BonusItem item : card.getBonuses()){
+					if (!bonuses.containsKey(item.getClass().getName())) {
+						if (item instanceof BonusInputItem) {
+							bonuses.put(item.getClass().getName(), 1);
+						} else {
+							bonuses.put(item.getClass().getName(), item.getQuantity());
+						}
+					} else {
+						if (item instanceof BonusInputItem) {
+							bonuses.put(item.getClass().getName(), bonuses.get(item.getClass().getName()).intValue()+1);
+						} else {
+							bonuses.put(item.getClass().getName(), bonuses.get(item.getClass().getName()).intValue()+item.getQuantity());
+						}
+					}
+				}
+				permissionCards.add(new DTOPermissionCard(card.getIdCard(), card.isUsed(), cities, bonuses));
 			}
 			
 			ArrayList<DTOCity> builtCities = new ArrayList<DTOCity>();
@@ -250,7 +266,6 @@ public class VisitorQueries {
 	}
 	
 	public DTOPermissionAvailableResponse visit(DTOPermissionAvailableRequest dto){
-		
 		Map<String, Set<DTOPermissionCard>> permissionPerRegion = new HashMap<String, Set<DTOPermissionCard>>();
 		Set<DTOPermissionCard> cards;
 		
@@ -261,7 +276,23 @@ public class VisitorQueries {
 				for (City city : card.getPossibleCities()) {
 					cities.add(new DTOCity(city.getName()));
 				}
-				cards.add(new DTOPermissionCard(card.getIdCard(), card.isUsed(), cities));
+				Map<String, Integer> bonuses = new HashMap<String, Integer>();
+				for (BonusItem item : card.getBonuses()){
+					if (!bonuses.containsKey(item.getClass().getName())) {
+						if (item instanceof BonusInputItem) {
+							bonuses.put(item.getClass().getName(), 1);
+						} else {
+							bonuses.put(item.getClass().getName(), item.getQuantity());
+						}
+					} else {
+						if (item instanceof BonusInputItem) {
+							bonuses.put(item.getClass().getName(), bonuses.get(item.getClass().getName()).intValue()+1);
+						} else {
+							bonuses.put(item.getClass().getName(), bonuses.get(item.getClass().getName()).intValue()+item.getQuantity());
+						}
+					}
+				}
+				cards.add(new DTOPermissionCard(card.getIdCard(), card.isUsed(), cities, bonuses));
 			}
 			
 			permissionPerRegion.put(entry.getKey(), cards);
@@ -312,14 +343,40 @@ public class VisitorQueries {
 					for (City city : ((PermissionCard) item).getPossibleCities()) {
 						cities.add(new DTOCity(city.getName()));
 					}
-					sellPermissions.add(new DTOPermissionCard(((PermissionCard) item).getIdCard(), ((PermissionCard) item).isUsed(), cities));
+					Map<String, Integer> bonuses = new HashMap<String, Integer>();
+					for (BonusItem bonusItem : ((PermissionCard)item).getBonuses()){
+						if (!bonuses.containsKey(item.getClass().getName())) {
+							if (item instanceof BonusInputItem) {
+								bonuses.put(item.getClass().getName(), 1);
+							} else {
+								bonuses.put(item.getClass().getName(), bonusItem.getQuantity());
+							}
+						} else {
+							if (item instanceof BonusInputItem) {
+								bonuses.put(item.getClass().getName(), bonuses.get(item.getClass().getName()).intValue()+1);
+							} else {
+								bonuses.put(item.getClass().getName(), bonuses.get(item.getClass().getName()).intValue()+bonusItem.getQuantity());
+							}
+						}
+					}
+					sellPermissions.add(new DTOPermissionCard(((PermissionCard) item).getIdCard(),
+							((PermissionCard) item).isUsed(), cities, bonuses));
 				}
 				if (item instanceof PoliticalContainer) {
 					ArrayList<Integer> structure = new ArrayList<Integer>();
 					for (PoliticalCard card : ((PoliticalContainer) item).getDeck()) {
 						structure.add(card.getNumCards());
 					}
-					dtoContract.setSellPoliticals(new DTOPoliticalContainer(structure));
+					
+					Map<DTOColor, Integer> sellPoliticals = new HashMap<DTOColor, Integer>();
+
+					for (int i = 0; i < this.gameState.getPoliticalDeck().getDeck().size(); i++) {
+						sellPoliticals.put(new DTOColor(new String(this.gameState.getPoliticalDeck().getDeck().get(i).getColor())),
+								structure.get(i));
+					}
+					
+					DTOColorCounter politicalCards = new DTOColorCounter(sellPoliticals);
+					dtoContract.setSellPoliticals(politicalCards);
 				}
 				dtoContract.setSellPermissions(sellPermissions);
 			}
@@ -336,14 +393,40 @@ public class VisitorQueries {
 					for (City city : ((PermissionCard) item).getPossibleCities()) {
 						cities.add(new DTOCity(city.getName()));
 					}
-					buyPermissions.add(new DTOPermissionCard(((PermissionCard) item).getIdCard(), ((PermissionCard) item).isUsed(), cities));
+					Map<String, Integer> bonuses = new HashMap<String, Integer>();
+					for (BonusItem bonusItem : ((PermissionCard)item).getBonuses()){
+						if (!bonuses.containsKey(item.getClass().getName())) {
+							if (item instanceof BonusInputItem) {
+								bonuses.put(item.getClass().getName(), 1);
+							} else {
+								bonuses.put(item.getClass().getName(), bonusItem.getQuantity());
+							}
+						} else {
+							if (item instanceof BonusInputItem) {
+								bonuses.put(item.getClass().getName(), bonuses.get(item.getClass().getName()).intValue()+1);
+							} else {
+								bonuses.put(item.getClass().getName(), bonuses.get(item.getClass().getName()).intValue()+bonusItem.getQuantity());
+							}
+						}
+					}
+					buyPermissions.add(new DTOPermissionCard(((PermissionCard) item).getIdCard(),
+							((PermissionCard) item).isUsed(), cities, bonuses));
 				}
 				if (item instanceof PoliticalContainer) {
 					ArrayList<Integer> structure = new ArrayList<Integer>();
 					for (PoliticalCard card : ((PoliticalContainer) item).getDeck()) {
 						structure.add(card.getNumCards());
 					}
-					dtoContract.setBuyPoliticals(new DTOPoliticalContainer(structure));
+					
+					Map<DTOColor, Integer> buyPoliticals = new HashMap<DTOColor, Integer>();
+
+					for (int i = 0; i < this.gameState.getPoliticalDeck().getDeck().size(); i++) {
+						buyPoliticals.put(new DTOColor(new String(this.gameState.getPoliticalDeck().getDeck().get(i).getColor())),
+								structure.get(i));
+					}
+					
+					DTOColorCounter politicalCards = new DTOColorCounter(buyPoliticals);
+					dtoContract.setSellPoliticals(politicalCards);
 				}
 				dtoContract.setBuyPermissions(buyPermissions);
 			}

@@ -29,6 +29,11 @@ public class BonusCoins implements BonusItem {
 		player.getCoins().add(items);
 		gameState.notifyObserver(player, new ChangeMsg("You gained "+items+" bonus coins"));
 	}
+	
+	@Override
+	public int getQuantity(){
+		return this.items;
+	}
 
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()

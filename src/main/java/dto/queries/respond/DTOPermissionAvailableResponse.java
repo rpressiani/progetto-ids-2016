@@ -5,7 +5,6 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 import dto.DTOObject;
-import dto.map.DTOCity;
 import dto.utilities.DTOPermissionCard;
 
 public class DTOPermissionAvailableResponse implements DTOObject {
@@ -47,11 +46,7 @@ public class DTOPermissionAvailableResponse implements DTOObject {
 			msg.append("\n[SERVER] " + entry.getKey().toUpperCase() + ": ");
 			
 			for (DTOPermissionCard card : entry.getValue()) {
-				msg.append("\n[SERVER]\t Card ID: " + card.getIdCard() + ",\tcities:  ");
-				
-				for (DTOCity city : card.getCities()) {
-					msg.append(" " + city.getName());
-				}
+				msg.append(card);
 			}
 		}
 		msg.append("\n");

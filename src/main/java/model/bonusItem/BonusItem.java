@@ -10,4 +10,7 @@ public interface BonusItem {
 	 * @param gameState can't be null
 	 */
 	public void giveBonus(Player player, GameState gameState);
+	public default int getQuantity() {
+		return 1;
+	}
 }
