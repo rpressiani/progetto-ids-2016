@@ -1,6 +1,5 @@
 package dto.queries.respond;
 
-import java.util.Iterator;
 import java.util.Map;
 
 import dto.DTOObject;
