@@ -95,10 +95,6 @@ public class MapOverviewController {
 
 			@Override
 			public void handle(MouseEvent event) {
-				if(!mainApp.getGameState().getCurrentPlayer().isEnabled()) {
-					System.out.println("can't do this action now");
-				}
-				
 				
 			}
 			
@@ -116,9 +112,6 @@ public class MapOverviewController {
 
 			@Override
 			public void handle(MouseEvent event) {
-				if(!mainApp.getGameState().getCurrentPlayer().isEnabled()) {
-					System.out.println("can't do this action now");
-				}
 				Region region = mainApp.getGameState().getMap().getRegions().get("seaside");
 				Color color = new Color("red"); 
 				ElectCounsellor action = new ElectCounsellor(region, color);
