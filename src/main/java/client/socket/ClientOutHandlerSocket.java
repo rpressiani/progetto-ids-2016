@@ -24,8 +24,7 @@ public class ClientOutHandlerSocket extends ClientOutHandler {
 			this.socketOut.writeObject(msg);
 			this.socketOut.flush();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println("SERVER IS DOWN");
 		}
 	}
 
