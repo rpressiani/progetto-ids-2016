@@ -19,7 +19,6 @@ public class RMIView extends View {
 	private GameState game;
 	private VisitorChanges visitorChanges;
 	private VisitorQueries visitorQueries;
-	private Thread timerThread;
 	private server.RMIServer server;
 	private RMIViewTimer timer;
 	
@@ -29,13 +28,40 @@ public class RMIView extends View {
 		this.server = server;
 		this.player = new Player();
 		this.visitorChanges = new VisitorChanges();
-		this.timer = new RMIViewTimer(this.client, this.game, this.server, this.player);
-		(this.timerThread = new Thread(this.timer)).run();
+		this.timer = new RMIViewTimer(this.client, this.server, this.player);
+		(new Thread(this.timer)).run();
 	}
 
-	public void resetTimer() throws RemoteException {
-		this.timer.reset();
+	@Override
+	public void resetTimer() {
+		try {
+			this.timer.reset();
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		System.out.println("new timer started");
+	}
+	
+	@Override
+	public void startTimer(){
+		try {
+			this.timer.start();
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	
+	@Override
+	public void stopTimer(){
+		try {
+			this.timer.stop();
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -86,5 +112,12 @@ public class RMIView extends View {
 		} catch(IOException e) {
 			e.printStackTrace();
 		}
+	}
+
+	/**
+	 * @return the timer
+	 */
+	public RMIViewTimer getTimer() {
+		return timer;
 	}
 }
