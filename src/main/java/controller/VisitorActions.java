@@ -46,6 +46,8 @@ import model.bonusable.PermissionCard;
 import model.map.City;
 import model.map.Region;
 import model.market.Contract;
+import model.player.Assistants;
+import model.player.Coins;
 import model.player.Player;
 import model.politicalDeck.PoliticalContainer;
 import utilities.Color;
@@ -138,11 +140,11 @@ public class VisitorActions {
 	}
 	
 	public SellAction visit(DTOSellAction DTOAction, Player player){
-		int sellCoins=DTOAction.getSellCoins();
-		int buyCoins=DTOAction.getBuyCoins();
+		Coins sellCoins=new Coins(DTOAction.getSellCoins().getQuantity());
+		Coins buyCoins=new Coins(DTOAction.getBuyCoins().getQuantity());
 		
-		int sellAssistants=DTOAction.getSellAssistants();
-		int buyAssistants=DTOAction.getBuyAssistants();
+		Assistants sellAssistants=new Assistants(DTOAction.getSellAssistants().getQuantity());
+		Assistants buyAssistants=new Assistants(DTOAction.getBuyAssistants().getQuantity());
 		
 		Set<PermissionCard> sellPermissions = new HashSet<PermissionCard>();
 		List<PermissionCard> myCards= new ArrayList<PermissionCard>(player.getPermissionHand());
@@ -150,7 +152,7 @@ public class VisitorActions {
 			int idCard=c.getIdCard();
 			PermissionCard card=null;
 			for(int i=0; i<myCards.size(); i++){
-				if(idCard==myCards.get(i).getIdCard()) card=myCards.get(i);
+				if(idCard!=0 && idCard==myCards.get(i).getIdCard()) card=myCards.get(i);
 			}
 			sellPermissions.add(card);
 		}
@@ -163,15 +165,15 @@ public class VisitorActions {
 				if(p!=player){
 					List<PermissionCard> othersCards= new ArrayList<PermissionCard>(player.getPermissionHand());
 					for(int i=0; i<othersCards.size(); i++){
-						if(idCard==othersCards.get(i).getIdCard()) card=othersCards.get(i);
+						if(idCard!=0 && idCard==othersCards.get(i).getIdCard()) card=othersCards.get(i);
 					}
 				}
 			}
 			buyPermissions.add(card);
 		}
 		
-		PoliticalContainer sellPoliticals=new PoliticalContainer(gameState.getParser(), DTOAction.getSellPoliticals());
-		PoliticalContainer buyPoliticals=new PoliticalContainer(gameState.getParser(), DTOAction.getBuyPoliticals());
+		PoliticalContainer sellPoliticals=new PoliticalContainer(gameState.getParser(), DTOAction.getSellPoliticals().getStructure());
+		PoliticalContainer buyPoliticals=new PoliticalContainer(gameState.getParser(), DTOAction.getBuyPoliticals().getStructure());
 		
 		return new SellAction(sellCoins, sellAssistants, sellPermissions, sellPoliticals, buyCoins, buyAssistants, buyPermissions, buyPoliticals);
 	}

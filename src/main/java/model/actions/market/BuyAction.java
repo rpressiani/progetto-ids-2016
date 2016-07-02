@@ -27,6 +27,9 @@ public class BuyAction implements GeneralAction {
 	@Override
 	public void doAction(Player player, GameState gameState) {
 		gameState.getMarket().acceptContract(contract, player);
+		
+		gameState.notifyObserver(contract.getSeller(), new ChangeMsg(player.getNickname()+" accepted your contract"));
+		gameState.notifyAllExceptPlayer(contract.getSeller(), new ChangeMsg(player.getNickname()+" accepted a contract from "+contract.getSeller().getNickname()));
 	}
 
 	@Override
@@ -37,7 +40,7 @@ public class BuyAction implements GeneralAction {
 		}
 		
 		Coins coins=null;
-		for(Marketable m : contract.getSellBag()){
+		for(Marketable m : contract.getBuyBag()){
 			if(m instanceof Coins){
 				coins=(Coins) m;
 			}
@@ -48,7 +51,7 @@ public class BuyAction implements GeneralAction {
 		}
 		
 		Assistants assistants=null;
-		for(Marketable m : contract.getSellBag()){
+		for(Marketable m : contract.getBuyBag()){
 			if(m instanceof Assistants){
 				assistants=(Assistants) m;
 			}
@@ -56,6 +59,12 @@ public class BuyAction implements GeneralAction {
 		if(player.getAssistants().getItems()<assistants.getItems()){
 			gameState.notifyObserver(player, new ChangeMsg("You don't have enough assistants to accept this contract"));
 			return false;
+		}
+		
+		for(Marketable m : contract.getBuyBag()){
+			if(m instanceof Assistants){
+				
+			}
 		}
 		
 		return true;
