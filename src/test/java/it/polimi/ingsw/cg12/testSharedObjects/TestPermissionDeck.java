@@ -1,6 +1,6 @@
 package it.polimi.ingsw.cg12.testSharedObjects;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -13,8 +13,6 @@ import model.council.GarbageState;
 import model.map.Map;
 import model.map.Region;
 import model.player.Player;
-import model.politicalDeck.PoliticalGarbage;
-import model.politicalDeck.PoliticalRealDeck;
 import model.sharedObjects.PermissionDeck;
 import parser.Parser;
 import utilities.Color;
@@ -30,6 +28,7 @@ public class TestPermissionDeck {
 		Map map = new Map(parser, garbageState);
 		Region region = new Region("Lombardia", garbageState, parser, map); 
 		try {
+			@SuppressWarnings("unused")
 			PermissionDeck deck = new PermissionDeck(parser2, region); 
 		} catch(NullPointerException e) {
 			thrown = true; 
@@ -42,6 +41,7 @@ public class TestPermissionDeck {
 		Parser parser = new Parser(); 
 		Region region = null; 
 		try {
+			@SuppressWarnings("unused")
 			PermissionDeck deck = new PermissionDeck(parser, region); 
 		} catch(NullPointerException e) {
 			thrown = true; 

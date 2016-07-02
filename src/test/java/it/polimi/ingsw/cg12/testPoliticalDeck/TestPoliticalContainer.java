@@ -1,16 +1,13 @@
 package it.polimi.ingsw.cg12.testPoliticalDeck;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 
 import org.junit.Test;
 
-import model.GameState;
-import model.player.Player;
 import model.politicalDeck.PoliticalContainer;
 import parser.Parser;
-import utilities.Color;
 
 public class TestPoliticalContainer {
 
@@ -20,6 +17,7 @@ public class TestPoliticalContainer {
 		Parser parser = new Parser();
 		ArrayList<Integer> structure = null; 
 		try {
+			@SuppressWarnings("unused")
 			PoliticalContainer container= new PoliticalContainer(parser, structure); 
 		} catch(NullPointerException e) {
 			thrown = true; 
@@ -32,6 +30,7 @@ public class TestPoliticalContainer {
 		ArrayList<Integer> structure = new ArrayList<Integer>();
 		Parser parser = null; 
 		try {
+			@SuppressWarnings("unused")
 			PoliticalContainer container = new PoliticalContainer(parser, structure);
 		} catch(NullPointerException e) {
 			thrown = true; 

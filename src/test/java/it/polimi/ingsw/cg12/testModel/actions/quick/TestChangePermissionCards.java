@@ -1,6 +1,7 @@
 package it.polimi.ingsw.cg12.testModel.actions.quick;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 
@@ -8,7 +9,6 @@ import org.junit.Test;
 
 import model.GameState;
 import model.actions.quick.SubstitutePermissionCards;
-import model.bonusable.PermissionCard;
 import model.council.GarbageState;
 import model.map.Map;
 import model.map.Region;
@@ -23,6 +23,7 @@ public class TestChangePermissionCards {
 		boolean thrown = false; 
 		Region region = null; 
 		try {
+			@SuppressWarnings("unused")
 			SubstitutePermissionCards action = new SubstitutePermissionCards(region); 
 		}  catch(NullPointerException e) {
 			thrown = true; 

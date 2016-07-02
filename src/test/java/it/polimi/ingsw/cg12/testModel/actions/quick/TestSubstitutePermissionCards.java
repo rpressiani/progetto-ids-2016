@@ -20,6 +20,7 @@ public class TestSubstitutePermissionCards {
 		boolean thrown = false; 
 		Region region = null; 
 		try {
+			@SuppressWarnings("unused")
 			SubstitutePermissionCards action = new SubstitutePermissionCards(region); 
 		} catch(NullPointerException e) {
 			thrown = true; 
