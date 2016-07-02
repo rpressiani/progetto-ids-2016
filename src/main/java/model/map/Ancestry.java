@@ -14,7 +14,7 @@ public class Ancestry {
 	
 	private Color color;
 	private Set<City> colorCities;
-	private ColorCard colorBonus;
+	private ColorCard colorCard;
 	
 	/**
 	 * Constructor
@@ -53,7 +53,7 @@ public class Ancestry {
 		}
 		ArrayList<BonusItem> bonuses = parser.getBonusesFromParser(
 				parser.getCFGRoot().getMap().getAncestries().getAncestry().get(ancestryIndex).getBonuses().getBonus());
-		this.colorBonus = new ColorCard(bonuses, this.color);
+		this.colorCard = new ColorCard(bonuses, this.color);
 		
 		this.colorCities = new HashSet<City>();
 	}
@@ -64,7 +64,7 @@ public class Ancestry {
 	public Ancestry() {
 		this.color = new Color("king");
 		this.colorCities = new HashSet<City>();
-		this.colorBonus = new ColorCard(new ArrayList<BonusItem>(), this.color);
+		this.colorCard = new ColorCard(new ArrayList<BonusItem>(), this.color);
 		
 	}
 	
@@ -100,8 +100,8 @@ public class Ancestry {
 	/**
 	 * @return the colorBonus
 	 */
-	public ColorCard getColorBonus() {
-		return colorBonus;
+	public ColorCard getColorCard() {
+		return colorCard;
 	}
 
 	/* (non-Javadoc)
@@ -109,7 +109,7 @@ public class Ancestry {
 	 */
 	@Override
 	public String toString() {
-		return "Ancestry [color=" + color + ", colorBonus=" + colorBonus + "]";
+		return "Ancestry [color=" + color + ", colorBonus=" + colorCard + "]";
 	}
 	
 }

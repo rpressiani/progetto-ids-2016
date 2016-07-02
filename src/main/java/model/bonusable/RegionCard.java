@@ -8,6 +8,7 @@ import model.map.Region;
 public class RegionCard extends Bonusable {
 
 	private Region region;
+	private boolean assigned;
 	
 	/**
 	 * create the region card
@@ -21,6 +22,7 @@ public class RegionCard extends Bonusable {
 			throw new NullPointerException("region cannot be null"); 
 		}
 		this.region=region;
+		this.setAssigned(false);
 	}
 
 	/**
@@ -28,6 +30,14 @@ public class RegionCard extends Bonusable {
 	 */
 	public Region getRegion() {
 		return region;
+	}
+
+	public boolean isAssigned() {
+		return assigned;
+	}
+
+	public void setAssigned(boolean assigned) {
+		this.assigned = assigned;
 	}
 	
 }

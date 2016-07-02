@@ -94,10 +94,6 @@ public class SellAction implements GeneralAction {
 			return false;
 		}
 		
-		if(sellPermissions.isEmpty()){
-			gameState.notifyObserver(player, new ChangeMsg("VOID"));
-			return false;
-		}
 		for(PermissionCard c : sellPermissions){
 			if(c==null){
 				gameState.notifyObserver(player, new ChangeMsg("One or more permission cards you want to sell don't exist or you don't have them"));

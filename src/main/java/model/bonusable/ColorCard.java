@@ -8,6 +8,7 @@ import utilities.Color;
 public class ColorCard extends Bonusable {
 
 	private Color color;
+	private boolean assigned;
 	
 	/**
 	 * create the color card
@@ -21,6 +22,7 @@ public class ColorCard extends Bonusable {
 			throw new NullPointerException("color cannot be null"); 
 		}
 		this.color=color;
+		this.setAssigned(false);
 	}
 
 	/**
@@ -28,6 +30,14 @@ public class ColorCard extends Bonusable {
 	 */
 	public Color getColor() {
 		return color;
+	}
+
+	public boolean isAssigned() {
+		return assigned;
+	}
+
+	public void setAssigned(boolean assigned) {
+		this.assigned = assigned;
 	}
 
 }

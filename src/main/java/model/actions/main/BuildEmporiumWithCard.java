@@ -1,7 +1,9 @@
 package model.actions.main;
 
 import model.GameState;
+import model.bonusable.ColorCard;
 import model.bonusable.PermissionCard;
+import model.bonusable.RegionCard;
 import model.changes.ChangeBuildEmporiumWithCard;
 import model.changes.ChangeMsg;
 import model.changes.ChangePlayerStatus;
@@ -31,13 +33,52 @@ public class BuildEmporiumWithCard implements MainAction {
 		player.getBuiltCities().add(cityChosed);
 		player.getAssistants().sub(assistantsToPay);
 		cardChosed.setUsed(true);
-				
+		
+		gameState.notifyObserver(player, new ChangeBuildEmporiumWithCard(new Assistants(assistantsToPay), cityChosed, cardChosed));
+		gameState.notifyObserver(player, new ChangePlayerStatus(player));
+		
 		for(City c : cityChosed.linkedCities(gameState.getMap(), player)){
 			c.assignBonuses(player, gameState);
 		}
 		
-		gameState.notifyObserver(player, new ChangeBuildEmporiumWithCard(new Assistants(assistantsToPay), cityChosed, cardChosed));
-		gameState.notifyObserver(player, new ChangePlayerStatus(player));
+		gameState.getNobility().checkNobility(player, gameState);
+		
+		if(player.getBuiltCities().containsAll(gameState.getMap().getRegions().get(cityChosed.getRegion().getName()).getRegionCities())){
+			RegionCard card=gameState.getMap().getRegions().get(cityChosed.getRegion().getName()).getRegionBonus();
+			
+			if(card.isAssigned()==false){
+				gameState.notifyObserver(player, new ChangeMsg("Congratulations, you got the "+cityChosed.getRegion().getName()+" bonus"));
+				gameState.notifyAllExceptPlayer(player, new ChangeMsg(player.getNickname()+" got the "+cityChosed.getRegion().getName()+" bonus"));
+				card.setAssigned(true);
+				card.assignBonuses(player, gameState);
+			}
+			
+			if(!gameState.getKingBonuses().getKingCards().isEmpty()){
+				gameState.notifyObserver(player, new ChangeMsg("Congratulations, you got bonuses of a king card"));
+				gameState.notifyAllExceptPlayer(player, new ChangeMsg(player.getNickname()+" got bonuses of a king card"));
+				gameState.getKingBonuses().getKingCards().get(0).assignBonuses(player, gameState);
+				gameState.getKingBonuses().getKingCards().remove(0);
+			}
+		}
+		
+		if(player.getBuiltCities().containsAll(gameState.getMap().getAncestries().get(cityChosed.getAncestry()).getColorCities())){
+			ColorCard card=gameState.getMap().getAncestries().get(cityChosed.getAncestry()).getColorCard();
+			
+			if(card.isAssigned()==false){
+				gameState.notifyObserver(player, new ChangeMsg("Congratulations, you got the "+cityChosed.getAncestry().getColor().getStringID()+" bonus"));
+				gameState.notifyAllExceptPlayer(player, new ChangeMsg(player.getNickname()+" got the "+cityChosed.getAncestry().getColor().getStringID()+" bonus"));
+				card.setAssigned(true);
+				card.assignBonuses(player, gameState);
+			}
+			
+			if(!gameState.getKingBonuses().getKingCards().isEmpty()){
+				gameState.notifyObserver(player, new ChangeMsg("Congratulations, you got bonuses of a king card"));
+				gameState.notifyAllExceptPlayer(player, new ChangeMsg(player.getNickname()+" got bonuses of a king card"));
+				gameState.getKingBonuses().getKingCards().get(0).assignBonuses(player, gameState);
+				gameState.getKingBonuses().getKingCards().remove(0);
+			}
+		}
+		
 		gameState.getNobility().checkNobility(player, gameState);
 	}
 	

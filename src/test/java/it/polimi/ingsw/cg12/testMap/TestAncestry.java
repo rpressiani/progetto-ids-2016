@@ -123,8 +123,8 @@ public class TestAncestry {
 		players.add(player4); 
 		GameState gameState = new GameState(parser, players); 
 		Ancestry ancestry = new Ancestry(color, parser, gameState.getMap());
-		ColorCard temp = ancestry.getColorBonus();
-		assertTrue(temp==ancestry.getColorBonus()); 
+		ColorCard temp = ancestry.getColorCard();
+		assertTrue(temp==ancestry.getColorCard()); 
 	}
 
 }
