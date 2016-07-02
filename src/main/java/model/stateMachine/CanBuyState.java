@@ -19,13 +19,14 @@ public class CanBuyState implements State {
 				action.doAction(player, gameState);
 				System.out.println(player.getNickname()+" decided what to buy");
 				gameState.notifyAllExceptPlayer(player, new ChangeMsg(player.getNickname()+" decided what to buy"));
-				player.setState(new StartState());
-				player.getState().checkTurn(player, gameState);
 				
 				if(player==gameState.getPlayers().get(gameState.getPlayers().size()-1)){
 					gameState.getMarket().getContractSet().clear();
 					gameState.notifyObserver(new ChangeMsg("The market has finished"));
 				}
+				
+				player.setState(new StartState());
+				player.getState().checkTurn(player, gameState);
 			}
 		}
 		
@@ -42,6 +43,12 @@ public class CanBuyState implements State {
 				action.doAction(player, gameState);
 				System.out.println(player.getNickname()+" passed the turn");
 				gameState.notifyAllExceptPlayer(player, new ChangeMsg(player.getNickname()+" passed the turn"));
+				
+				if(player==gameState.getPlayers().get(gameState.getPlayers().size()-1)){
+					gameState.getMarket().getContractSet().clear();
+					gameState.notifyObserver(new ChangeMsg("The market has finished"));
+				}
+				
 				player.setState(new StartState());
 				player.getState().checkTurn(player, gameState);
 			}
