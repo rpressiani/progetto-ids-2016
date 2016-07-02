@@ -426,7 +426,7 @@ public class VisitorQueries {
 					}
 					
 					DTOColorCounter politicalCards = new DTOColorCounter(buyPoliticals);
-					dtoContract.setSellPoliticals(politicalCards);
+					dtoContract.setBuyPoliticals(politicalCards);
 				}
 				dtoContract.setBuyPermissions(buyPermissions);
 				contracts.put(new String(contract.getSeller().getNickname()), dtoContract);
