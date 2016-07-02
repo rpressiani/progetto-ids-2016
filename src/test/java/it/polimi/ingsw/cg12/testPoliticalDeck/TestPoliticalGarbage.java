@@ -14,6 +14,7 @@ public class TestPoliticalGarbage {
 		boolean thrown = false; 
 		Parser parser = null; 
 		try {
+			@SuppressWarnings("unused")
 			PoliticalGarbage garbage = new PoliticalGarbage(parser); 
 		} catch(NullPointerException e) {
 			thrown = true; 

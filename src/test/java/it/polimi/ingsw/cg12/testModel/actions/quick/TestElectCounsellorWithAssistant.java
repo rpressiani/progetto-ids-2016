@@ -25,6 +25,7 @@ public class TestElectCounsellorWithAssistant {
 		Map map = new Map(parser, garbageState); 
 		Region region = map.getRegions().get("seaside"); 
 		Color color = null; 
+		@SuppressWarnings("unused")
 		ElectCounsellorWithAssistant action; 
 		try {
 			action = new ElectCounsellorWithAssistant(region, color); 

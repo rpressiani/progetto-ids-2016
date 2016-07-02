@@ -1,14 +1,12 @@
 package it.polimi.ingsw.cg12.testSharedObjects;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 
 import org.junit.Test;
 
 import model.GameState;
-import model.council.GarbageState;
-import model.map.Map;
 import model.player.Player;
 import model.politicalDeck.PoliticalGarbage;
 import model.politicalDeck.PoliticalRealDeck;
@@ -23,6 +21,7 @@ public class TestKingBonuses {
 		boolean thrown = false; 
 		Parser parser = null; 
 		try {
+			@SuppressWarnings("unused")
 			KingBonuses bonuses = new KingBonuses(parser); 
 		} catch(NullPointerException e) {
 			thrown = true; 
@@ -59,8 +58,6 @@ public class TestKingBonuses {
 			id++; 
 		}
 		GameState gameState = new GameState(parser, players);
-		GarbageState garbageState = new GarbageState(parser); 
-		Map map = new Map(parser, garbageState); 
 		KingBonuses temp = gameState.getKingBonuses(); 
 		assertTrue(temp==gameState.getKingBonuses()); 
 	}

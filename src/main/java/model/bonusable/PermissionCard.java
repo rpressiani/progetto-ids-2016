@@ -11,7 +11,7 @@ import model.player.Player;
 
 public class PermissionCard extends Bonusable implements Marketable {
 	
-	private static int counter=1;
+	private static int counter=0;
 	private final int idCard;
 	private boolean used;	//true if used
 	private Set<City> possibleCities;

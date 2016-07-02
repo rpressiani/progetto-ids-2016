@@ -429,6 +429,7 @@ public class VisitorQueries {
 					dtoContract.setSellPoliticals(politicalCards);
 				}
 				dtoContract.setBuyPermissions(buyPermissions);
+				contracts.put(new String(contract.getSeller().getNickname()), dtoContract);
 			}
 		}
 		return new DTOMarketStatusResponse(contracts);

@@ -16,13 +16,6 @@ public class BuyAction implements GeneralAction {
 	private Contract contract;
 	
 	/**
-	 * create the buy action
-	 */
-	public BuyAction() {
-		
-	}
-	
-	/**
 	 * Constructor
 	 * @param contract
 	 * @throws NullPointerException if contract is null

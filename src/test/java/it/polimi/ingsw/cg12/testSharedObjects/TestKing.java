@@ -26,6 +26,7 @@ public class TestKing {
 		Map map = gameState.getMap(); 
 		try {
 			Parser parser2 = null; 
+			@SuppressWarnings("unused")
 			King king = new King(parser2, map); 
 		} catch(NullPointerException e) {
 			thrown = true; 
@@ -38,6 +39,7 @@ public class TestKing {
 		Parser parser = new Parser(); 
 		Map map = null; 
 		try {
+			@SuppressWarnings("unused")
 			King king = new King(parser, map); 
 		} catch(NullPointerException e) {
 			thrown = true; 

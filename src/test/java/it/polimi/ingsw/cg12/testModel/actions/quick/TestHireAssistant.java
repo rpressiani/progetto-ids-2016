@@ -1,20 +1,5 @@
 package it.polimi.ingsw.cg12.testModel.actions.quick;
 
-import static org.junit.Assert.*;
-
-import java.util.ArrayList;
-
-import org.junit.Test;
-
-import model.GameState;
-import model.actions.quick.HireAssistant;
-import model.council.GarbageState;
-import model.player.Player;
-import model.politicalDeck.PoliticalGarbage;
-import model.politicalDeck.PoliticalRealDeck;
-import parser.Parser;
-import utilities.Color;
-
 /*public class TestHireAssistant {
 
 	@Test
