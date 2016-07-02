@@ -10,6 +10,10 @@ public abstract class PoliticalDeck {
 	private final int numColors;	//numColors doesn't include jolly
 	private static Parser parser;
 
+	/**
+	 * @param parser
+	 * @throws NullPointerException if parser is null
+	 */
 	public PoliticalDeck(Parser parser) {
 		if(parser==null) {
 			throw new NullPointerException("cannot have a null parser"); 

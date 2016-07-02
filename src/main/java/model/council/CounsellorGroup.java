@@ -31,10 +31,16 @@ public class CounsellorGroup {
 		this.counter = counter;
 	}
 	
+	/**
+	 * increments counter by 1
+	 */
 	public synchronized void add(){
 		this.counter++;
 	}
 	
+	/**
+	 * decrements counter by 1
+	 */
 	public synchronized void remove(){
 		this.counter--;
 	}

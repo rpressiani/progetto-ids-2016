@@ -17,12 +17,24 @@ public class SellAction implements GeneralAction {
 	private Set<PermissionCard> sellPermissions, buyPermissions;
 	private PoliticalContainer sellPoliticals, buyPoliticals;
 	
+	/**
+	 * Constructor
+	 */
 	public SellAction(){
 		
 	}
 	
+	
 	/**
-	 * create the sell action
+	 * Constructor
+	 * @param sellCoins
+	 * @param sellAssistants
+	 * @param sellPermissions
+	 * @param sellPoliticals
+	 * @param buyCoins
+	 * @param buyAssistants
+	 * @param buyPermissions
+	 * @param buyPoliticals
 	 */
 	public SellAction(int sellCoins, int sellAssistants, Set<PermissionCard> sellPermissions, PoliticalContainer sellPoliticals,
 			int buyCoins, int buyAssistants, Set<PermissionCard> buyPermissions, PoliticalContainer buyPoliticals){

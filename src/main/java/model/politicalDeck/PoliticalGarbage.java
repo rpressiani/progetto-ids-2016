@@ -7,6 +7,9 @@ import parser.Parser;
 
 public class PoliticalGarbage extends PoliticalDeck {
 	
+	/**
+	 * @param parser
+	 */
 	public PoliticalGarbage(Parser parser) {
 		super(parser);
 		for (Iterator<CFGPoliticalCard> iterator = parser.getCFGPoliticalDeck().getPoliticalCard().iterator(); iterator.hasNext();) {
@@ -29,7 +32,11 @@ public class PoliticalGarbage extends PoliticalDeck {
 		}
 	}
 	
-	public void add(PoliticalContainer proposal){
+	/**
+	 * @param proposal
+	 * adds cards to market proposal
+	 */
+	public void add(PoliticalContainer proposal) {
 		if(proposal==null) throw new NullPointerException("proposal can't be null");
 		
 		for(int i=0; i<proposal.getDeck().size(); i++){

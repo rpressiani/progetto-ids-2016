@@ -9,8 +9,13 @@ import model.market.Marketable;
 import model.player.Player;
 import parser.Parser;
 
-public class PoliticalContainer extends PoliticalDeck implements Marketable{
+public class PoliticalContainer extends PoliticalDeck implements Marketable {
 
+	/**
+	 * @param parser
+	 * @param structure
+	 * @throws NullPointerException if parser or structure are null
+	 */
 	public PoliticalContainer(Parser parser, ArrayList<Integer> structure) {
 		super(parser);
 		if(structure==null) {

@@ -109,6 +109,12 @@ public interface State {
 		}
 	}
 	
+	/**
+	 * @param player
+	 * @param action
+	 * @param gameState
+	 * @throws NullPointerException if one(or more) of the parameters is null
+	 */
 	public default void transition(Player player, QuitAction action, GameState gameState){
 		if(player==null || gameState==null) throw new NullPointerException("player/gameState cannot be null");
 		

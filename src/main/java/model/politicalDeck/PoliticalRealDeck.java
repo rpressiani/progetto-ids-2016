@@ -9,8 +9,16 @@ public class PoliticalRealDeck extends PoliticalDeck {
 	
 	private PoliticalGarbage garbage;
 	
+	/**
+	 * @param parser
+	 * @param garbage
+	 * @throws NullPointerException if garbage or parser are null
+	 */
 	public PoliticalRealDeck(Parser parser, PoliticalGarbage garbage) {
 		super(parser);
+		if(garbage==null) {
+			throw new NullPointerException("garbage cannot be null"); 
+		}
 		this.garbage = garbage;
 		for (Iterator<CFGPoliticalCard> iterator = parser.getCFGPoliticalDeck().getPoliticalCard().iterator(); iterator.hasNext();) {
 			CFGPoliticalCard cfgPoliticalCard = iterator.next();

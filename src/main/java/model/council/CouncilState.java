@@ -18,6 +18,10 @@ public abstract class CouncilState {
 	private ArrayList<CounsellorGroup> state;
 	private Integer nColors;
 	
+	/**
+	 * @param parser
+	 * @throws NullPointerException if parser is null
+	 */
 	public CouncilState(Parser parser) {
 		if(parser==null) {
 			throw new NullPointerException("parser cannot be null"); 
