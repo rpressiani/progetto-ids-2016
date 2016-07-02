@@ -1,5 +1,6 @@
 package dto.queries.respond;
 
+import java.util.Iterator;
 import java.util.Map;
 
 import dto.DTOObject;
@@ -30,7 +31,14 @@ public class DTOMarketStatusResponse implements DTOObject {
 	 */
 	@Override
 	public String toString() {
-		return "DTOMarketStatusResponse [contracts=" + contracts + "]";
+		StringBuilder msg = new StringBuilder();
+		msg.append("\n[SERVER] Market status:\n");
+		for (Map.Entry<String, DTOContract> entry : this.contracts.entrySet()) {
+			msg.append("[SERVER] Player: " + entry.getKey() + "\n");
+			msg.append(entry.getValue());
+		}
+		
+		return msg.toString();
 	}
 	
 	
