@@ -7,6 +7,7 @@ import model.actions.GeneralAction;
 import model.bonusable.PermissionCard;
 import model.changes.ChangeMsg;
 import model.market.Contract;
+import model.market.Marketable;
 import model.player.Assistants;
 import model.player.Coins;
 import model.player.Player;
@@ -18,14 +19,6 @@ public class SellAction implements GeneralAction {
 	private Assistants sellAssistants, buyAssistants;
 	private Set<PermissionCard> sellPermissions, buyPermissions;
 	private PoliticalContainer sellPoliticals, buyPoliticals;
-	
-	/**
-	 * Constructor
-	 */
-	public SellAction(){
-		
-	}
-	
 	
 	/**
 	 * Constructor
@@ -74,6 +67,12 @@ public class SellAction implements GeneralAction {
 		
 		gameState.notifyObserver(player, new ChangeMsg("You successfully put a contract in the market"));
 		gameState.notifyAllExceptPlayer(player, new ChangeMsg(player.getNickname()+" put a contract in the market"));
+		System.out.println(gameState.getMarket().getContractSet().contains(contract));
+		Coins coins=null;
+		for(Marketable m : contract.getSellBag()){
+			if(m instanceof Coins) coins=(Coins) m;
+		}
+		System.out.println(coins.getItems());
 	}
 
 	@Override
