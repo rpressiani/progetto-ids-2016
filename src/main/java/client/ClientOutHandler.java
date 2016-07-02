@@ -32,6 +32,7 @@ import dto.queries.request.DTOBalconiesStateRequest;
 import dto.queries.request.DTOCurrentPlayerRequest;
 import dto.queries.request.DTOFreeCounsellorsRequest;
 import dto.queries.request.DTOMapRequest;
+import dto.queries.request.DTOMarketStatusRequest;
 import dto.queries.request.DTOPermissionAvailableRequest;
 import dto.queries.request.DTOPingRequest;
 import dto.queries.request.DTOPlayerInfoRequest;
@@ -107,6 +108,7 @@ public abstract class ClientOutHandler implements Runnable {
 				help.append("[CLI] \t\tgetbalconies \n");
 				help.append("[CLI] \t\tgetpermissionavailable \n");
 				help.append("[CLI] \t\tgetmap \n");
+				help.append("[CLI] \t\tgetmarket \n");
 				
 				help.append("[CLI] *\tOther Commands \n");
 				help.append("[CLI] \t\tpass\n");
@@ -606,7 +608,15 @@ public abstract class ClientOutHandler implements Runnable {
 						System.out.println(cmdNotFound.toString());
 						break;
 					}
-					
+				case "getmarket":
+					if (inputList.size() == 1) {
+						msg = new ClientMessage(new DTOMarketStatusRequest());
+						sendMsg(msg);
+						break;
+					} else {
+						System.out.println(cmdNotFound.toString());
+						break;
+					}
 				default:
 					System.out.println(cmdNotFound.toString());
 					break;
