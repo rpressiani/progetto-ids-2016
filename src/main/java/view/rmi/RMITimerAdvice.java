@@ -26,7 +26,6 @@ public class RMITimerAdvice extends TimerTask {
 		try {
 			this.client.print(msg.toString());
 		} catch (RemoteException e) {
-			System.out.println("ciao");
 			try {
 				this.server.disconnect(player);
 				this.server.unregisterClient(this.client);

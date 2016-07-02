@@ -29,6 +29,7 @@ public class ServerSocketView extends View implements Runnable {
 	private Player player;
 	private VisitorChanges visitorChanges;
 	private VisitorQueries visitorQueries;
+	private SocketViewTimer timer;
 	
 	private Server server;
 	
@@ -44,6 +45,9 @@ public class ServerSocketView extends View implements Runnable {
 		this.socketIn = new ObjectInputStream(this.socket.getInputStream()); 
 		this.socketOut = new ObjectOutputStream(this.socket.getOutputStream());
 		this.visitorChanges = new VisitorChanges();
+		
+		this.timer = new SocketViewTimer(this, this.server, this.player);
+		(new Thread(this.timer)).run();
 
 		this.player = new Player();
 	}
@@ -95,6 +99,8 @@ public class ServerSocketView extends View implements Runnable {
 			try {
 			
 				Object obj = socketIn.readObject();
+				
+				if (this.timer.isActive()) this.timer.reset();
 				
 				if (obj instanceof ClientMessage) {
 					
@@ -175,6 +181,31 @@ public class ServerSocketView extends View implements Runnable {
 	 */
 	public boolean isEnabled() {
 		return this.player.isEnabled();
+	}
+
+	@Override
+	public void startTimer() {
+		this.timer.start();
+		
+	}
+
+	@Override
+	public void stopTimer() {
+		this.timer.stop();
+		
+	}
+
+	@Override
+	public void resetTimer() {
+		this.timer.reset();
+		
+	}
+
+	/**
+	 * @return the timer
+	 */
+	public SocketViewTimer getTimer() {
+		return timer;
 	}
 
 }

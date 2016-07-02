@@ -166,7 +166,7 @@ public class DTOContract implements DTOObject {
 		}
 		msg.append(sellPoliticals);
 		
-		msg.append("[SERVER] Items to buy:\n");
+		msg.append("\n[SERVER] Items to buy:\n");
 		msg.append("[SERVER]\t Coins: " + buyCoins.getQuantity() + "\n");
 		msg.append("[SERVER]\t Assistants: " + buyAssistants.getQuantity() + "\n");
 		msg.append("[SERVER]\t Permission cards:\n");

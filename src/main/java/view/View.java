@@ -11,5 +11,9 @@ public abstract class View extends Observable<ClientMessage> implements Observer
 	public void update(Change o) {
 		Observer.super.update(o);
 	}
+	
+	public abstract void startTimer();
+	public abstract void stopTimer();
+	public abstract void resetTimer();
 
 }

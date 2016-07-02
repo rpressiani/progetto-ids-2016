@@ -63,7 +63,7 @@ public class RMIServer implements RMIServerInterface {
 			}
 		}
 		
-		view.resetTimer();
+		if (view.getTimer().isActive()) view.resetTimer();
 		
 		System.out.println(player);
 		

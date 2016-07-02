@@ -4,19 +4,16 @@ import java.rmi.RemoteException;
 import java.util.TimerTask;
 
 import client.rmi.ClientViewRemote;
-import model.GameState;
 import model.player.Player;
 
 public class RMIDisconnect extends TimerTask {
 	
 	private final ClientViewRemote client;
-//	private final GameState game;
 	private server.RMIServer server;
 	private Player player;
 	
-	public RMIDisconnect(ClientViewRemote client, GameState game, server.RMIServer server, Player player) throws RemoteException {
+	public RMIDisconnect(ClientViewRemote client, server.RMIServer server, Player player) throws RemoteException {
 		this.client = client;
-//		this.game = game;
 		this.server = server;
 		this.player = player;
 	}
