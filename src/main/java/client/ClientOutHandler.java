@@ -16,12 +16,16 @@ import dto.actions.main.DTOBuildEmporiumWithCard;
 import dto.actions.main.DTOBuildEmporiumWithKing;
 import dto.actions.main.DTOBuyPermissionCard;
 import dto.actions.main.DTOElectCounsellor;
+import dto.actions.market.DTOBuyAction;
+import dto.actions.market.DTOSellAction;
 import dto.actions.quick.DTOAddictionalAction;
 import dto.actions.quick.DTOSubstitutePermissionCards;
 import dto.actions.quick.DTOElectCounsellorWithAssistant;
 import dto.actions.quick.DTOHireAssistant;
 import dto.map.DTOCity;
 import dto.map.DTORegion;
+import dto.playerInfo.DTOAssistants;
+import dto.playerInfo.DTOCoins;
 import dto.queries.request.DTOProposalOrderRequest;
 import dto.queries.request.DTOScoresRequest;
 import dto.queries.request.DTOBalconiesStateRequest;
@@ -88,6 +92,10 @@ public abstract class ClientOutHandler implements Runnable {
 				help.append("[CLI] \t\tbonusFreePermission <region> <index> \n");
 				help.append("[CLI] \t\tbonusPermissionGift <index> \n");
 				help.append("[CLI] \t\tbonusDoActionAgain <main_action> \n");
+				
+				help.append("[CLI] *\tMarket action\n");
+				help.append("[CLI] \t\tsell \n");
+				help.append("[CLI] \t\tbuy <playerNickname> \n");
 				
 				help.append("[CLI] *\tQueries \n");
 				help.append("[CLI] \t\tgetscores \n");
@@ -285,6 +293,122 @@ public abstract class ClientOutHandler implements Runnable {
 				case "pass":
 					if (inputList.size() == 1) {
 						msg = new ClientMessage(new DTONullAction());
+						sendMsg(msg);
+						break;
+					} else {
+						System.out.println(cmdNotFound.toString());
+						break;
+					}
+					
+					/*----- BONUS -----*/
+					
+				case "buy":
+					if (inputList.size() == 2) {
+						msg = new ClientMessage(new DTOBuyAction(inputList.get(1)));
+						sendMsg(msg);
+						break;
+					} else {
+						System.out.println(cmdNotFound.toString());
+						break;
+					}
+				case "sell":
+					if (inputList.size() == 1) {
+						
+						System.out.println("Now insert what you want to sell following the order below:");
+						System.out.println("<coins> <assistants> <permissionCard1> <permissionCard2> <politicalProposal>");
+						System.out.println("If you don't want to sell something insert 0 (zero) in that field.\n");
+						String sellLine = stdIn.nextLine();
+						ArrayList<String> sellList = new ArrayList<String>(Arrays.asList(sellLine.split(" ")));
+						
+						if (sellList.size() <= 4) {
+							System.out.println(cmdNotFound.toString());
+							break;
+						}
+						
+						DTOCoins sellCoins;
+						try {
+							sellCoins = new DTOCoins(Integer.parseInt(sellList.get(0)));
+						} catch (NumberFormatException e) {
+							sellCoins = new DTOCoins(0);
+						}
+						DTOAssistants sellAssistants;
+						try {
+							sellAssistants = new DTOAssistants(Integer.parseInt(sellList.get(1)));
+						} catch (NumberFormatException e) {
+							sellAssistants = new DTOAssistants(0);
+						}
+						Set<DTOPermissionCardSelection> sellPermissions = new HashSet<DTOPermissionCardSelection>();
+						try {
+							sellPermissions.add(new DTOPermissionCardSelection(Integer.parseInt(sellList.get(2))));
+						} catch (NumberFormatException e) {
+							sellPermissions.add(new DTOPermissionCardSelection(0));
+						}
+						try {
+							sellPermissions.add(new DTOPermissionCardSelection(Integer.parseInt(sellList.get(3))));
+						} catch (NumberFormatException e) {
+							sellPermissions.add(new DTOPermissionCardSelection(0));
+						}
+						
+						proposal = getProposal(sellList, 4);
+						if (proposal.get(proposal.size()-1).equals(-1)) {
+							System.out.println(cmdNotFound.toString());
+							break;
+						}
+						
+						DTOPoliticalContainer sellPoliticals = new DTOPoliticalContainer(proposal);
+						
+						System.out.println("Now insert what you want to buy following the order below:");
+						System.out.println("<coins> <assistants> <permissionCard1> <permissionCard2> <politicalProposal>");
+						System.out.println("If you don't want to buy something insert 0 (zero) in that field.\n");
+						String buyLine = stdIn.nextLine();
+						ArrayList<String> buyList = new ArrayList<String>(Arrays.asList(buyLine.split(" ")));
+						
+						if (buyList.size() <= 4) {
+							System.out.println(cmdNotFound.toString());
+							break;
+						}
+						
+						DTOCoins buyCoins;
+						try {
+							buyCoins = new DTOCoins(Integer.parseInt(buyList.get(0)));
+						} catch (NumberFormatException e) {
+							buyCoins = new DTOCoins(0);
+						}
+						DTOAssistants buyAssistants;
+						try {
+							buyAssistants = new DTOAssistants(Integer.parseInt(buyList.get(1)));
+						} catch (NumberFormatException e) {
+							buyAssistants = new DTOAssistants(0);
+						}
+						Set<DTOPermissionCardSelection> buyPermissions = new HashSet<DTOPermissionCardSelection>();
+						try {
+							buyPermissions.add(new DTOPermissionCardSelection(Integer.parseInt(buyList.get(2))));
+						} catch (NumberFormatException e) {
+							buyPermissions.add(new DTOPermissionCardSelection(0));
+						}
+						try {
+							buyPermissions.add(new DTOPermissionCardSelection(Integer.parseInt(buyList.get(3))));
+						} catch (NumberFormatException e) {
+							buyPermissions.add(new DTOPermissionCardSelection(0));
+						}
+						
+						proposal = getProposal(buyList, 4);
+						if (proposal.get(proposal.size()-1).equals(-1)) {
+							System.out.println(cmdNotFound.toString());
+							break;
+						}
+						
+						DTOPoliticalContainer buyPoliticals = new DTOPoliticalContainer(proposal);
+
+						msg = new ClientMessage(new DTOSellAction(
+								sellCoins,
+								sellAssistants,
+								sellPermissions,
+								sellPoliticals,
+								buyCoins,
+								buyAssistants,
+								buyPermissions,
+								buyPoliticals));
 						sendMsg(msg);
 						break;
 					} else {
