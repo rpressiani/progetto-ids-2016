@@ -24,6 +24,7 @@ public class CanBuyState implements State {
 				
 				if(player==gameState.getPlayers().get(gameState.getPlayers().size()-1)){
 					gameState.getMarket().getContractSet().clear();
+					gameState.notifyObserver(new ChangeMsg("The market has finished"));
 				}
 			}
 		}
@@ -53,10 +54,7 @@ public class CanBuyState implements State {
 		if(player==null || gameState==null) {
 			throw new NullPointerException("player and state should not be null"); 
 		}
-		
-		if(player==gameState.getPlayers().get(gameState.getPlayers().size()-1)){
-			gameState.notifyObserver(new ChangeMsg("The market has finished"));
-		}
+	
 		gameState.nextPlayer(player);
 		gameState.notifyObserver(new ChangeMsg("Now it's time for "+gameState.getCurrentPlayer().getNickname()+" to play"));
 	}
