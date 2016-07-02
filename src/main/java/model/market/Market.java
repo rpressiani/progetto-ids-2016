@@ -4,15 +4,10 @@
 package model.market;
 
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Set;
 
 import model.player.Player;
 
-/**
- * @author Riccardo Pressiani
- *
- */
 public class Market {
 	
 	private Set<Contract> contractSet;
@@ -54,16 +49,6 @@ public class Market {
 		if(buyer==null) {
 			throw new NullPointerException("buyer cannot be null"); 
 		}
-		
-		/*Iterator<Marketable> sellBagItr = contract.getSellBag().iterator();
-		while(sellBagItr.hasNext()){
-			sellBagItr.next().makeExchange(contract.getSeller(), buyer);
-		}
-		
-		Iterator<Marketable> buyBagItr = contract.getBuyBag().iterator();
-		while(buyBagItr.hasNext()){
-			buyBagItr.next().makeExchange(buyer, contract.getSeller());
-		}*/
 		
 		for(Marketable m : contract.getSellBag()){
 			m.makeExchange(m, contract.getSeller(), buyer);
