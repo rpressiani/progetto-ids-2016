@@ -41,19 +41,18 @@ public class PoliticalContainer extends PoliticalDeck implements Marketable {
 
 	
 	@Override
-	public void makeExchange(Player fromPlayer, Player toPlayer) {
+	public void makeExchange(Marketable m, Player fromPlayer, Player toPlayer) {
 		if(fromPlayer==null || toPlayer==null) {
 			throw new NullPointerException("both players should not be null"); 
 		}
-		int i = 0;
-		for (PoliticalCard card : fromPlayer.getPoliticalHand().getDeck()) {
-			card.removeCards(this.getDeck().get(i).getNumCards());
+		
+		PoliticalContainer proposal=(PoliticalContainer) m;
+	
+		for(int i=0; i<proposal.getDeck().size(); i++){
+			fromPlayer.getPoliticalHand().getDeck().get(i).removeCards(proposal.getDeck().get(i).getNumCards());
+			toPlayer.getPoliticalHand().getDeck().get(i).addCards(proposal.getDeck().get(i).getNumCards());
 		}
-		i = 0;
-		for (PoliticalCard card : toPlayer.getPoliticalHand().getDeck()) {
-			card.addCards(this.getDeck().get(i).getNumCards());
-		}
-
+		
 	}
 
 }

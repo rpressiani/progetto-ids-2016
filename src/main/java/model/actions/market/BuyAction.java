@@ -21,22 +21,22 @@ public class BuyAction implements GeneralAction {
 	 * @throws NullPointerException if contract is null
 	 */
 	public BuyAction(Contract contract) {
-		if(contract==null) {
-			throw new NullPointerException(); 
-		}
 		this.contract=contract;
+		System.out.println("creata azione");
 	}
 	
 	@Override
 	public void doAction(Player player, GameState gameState) {
+		System.out.println("entrato in doAction");
 		gameState.getMarket().acceptContract(contract, player);
-		
+		System.out.println("contratto accettato");
 		gameState.notifyObserver(contract.getSeller(), new ChangeMsg(player.getNickname()+" accepted your contract"));
 		gameState.notifyAllExceptPlayer(contract.getSeller(), new ChangeMsg(player.getNickname()+" accepted a contract from "+contract.getSeller().getNickname()));
 	}
 
 	@Override
 	public boolean checkCondition(Player player, GameState gameState) {
+		System.out.println("entrato in checkCondition");
 		if(contract==null){
 			gameState.notifyObserver(player, new ChangeMsg(player.getNickname()+", the player you want to buy from has no contracts in the market or someone already accepted his contract"));
 			return false;
@@ -89,6 +89,7 @@ public class BuyAction implements GeneralAction {
 				
 		}
 		
+		System.out.println("uscito da checkCondition");
 		return true;
 	}
 

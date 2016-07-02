@@ -47,10 +47,11 @@ public class TestPermissionCard {
 		ArrayList<BonusItem> bonuses = new ArrayList<BonusItem>(); 
 		HashSet<City> cities = new HashSet<City>();
 		PermissionCard card = new PermissionCard(bonuses, cities); 
+		
 		try {
 			Player player = null; 
 			Player player2 = new Player(); 
-			card.makeExchange(player, player2);
+			card.makeExchange(card, player, player2);
 		} catch(NullPointerException e) {
 			thrown = true; 
 		}
@@ -64,7 +65,7 @@ public class TestPermissionCard {
 		Player player = new Player(); 
 		Player player2 = new Player(); 
 		player.getPermissionHand().add(card); 
-		card.makeExchange(player, player2);
+		card.makeExchange(card, player, player2);
 		assertTrue(player2.getPermissionHand().contains(card) && !player.getPermissionHand().contains(card)); 
 	}
 	

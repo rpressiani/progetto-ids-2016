@@ -40,10 +40,16 @@ public class Coins extends SimpleItem implements Marketable {
 	}
 
 	@Override
-	public void makeExchange(Player fromPlayer, Player toPlayer) {
-		int temp = fromPlayer.getCoins().getItems(); 
-		fromPlayer.getCoins().sub(temp);
-		toPlayer.getCoins().add(temp);
+	public void makeExchange(Marketable m, Player fromPlayer, Player toPlayer) {
+		if(fromPlayer==null || toPlayer==null) {
+			throw new NullPointerException("both these two players should not be null"); 
+		}
+		
+		Coins coins=(Coins) m;
+		
+		fromPlayer.getCoins().sub(coins.getItems());
+		toPlayer.getCoins().add(coins.getItems());
+		
 	}
 
 }

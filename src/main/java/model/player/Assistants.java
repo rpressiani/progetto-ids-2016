@@ -38,9 +38,16 @@ public class Assistants extends SimpleItem implements Marketable {
 	}
 
 	@Override
-	public void makeExchange(Player fromPlayer, Player toPlayer) {
-		fromPlayer.getCoins().sub(this.getItems());
-		toPlayer.getCoins().add(this.getItems());	
+	public void makeExchange(Marketable m, Player fromPlayer, Player toPlayer) {
+		if(fromPlayer==null || toPlayer==null) {
+			throw new NullPointerException("both these two players should not be null"); 
+		}
+		
+		Assistants assistants=(Assistants) m;
+		
+		fromPlayer.getAssistants().sub(assistants.getItems());
+		toPlayer.getAssistants().add(assistants.getItems());	
+	
 	}
 
 }

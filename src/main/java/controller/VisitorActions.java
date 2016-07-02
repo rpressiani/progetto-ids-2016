@@ -183,7 +183,7 @@ public class VisitorActions {
 		List<Contract> contractList= new ArrayList<Contract>(gameState.getMarket().getContractSet());
 
 		for(int i=0; i<contractList.size(); i++){
-			if(DTOAction.getPlayerName().equals(contractList.get(i).getSeller())) contract=contractList.get(i);
+			if(DTOAction.getPlayerName().equals(contractList.get(i).getSeller().getNickname())) contract=contractList.get(i);
 		}
 		
 		return new BuyAction(contract);

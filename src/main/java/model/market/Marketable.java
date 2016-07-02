@@ -11,6 +11,6 @@ import model.player.Player;
  */
 public interface Marketable {
 	
-	public void makeExchange(Player fromPlayer, Player toPlayer);
+	public void makeExchange(Marketable m, Player fromPlayer, Player toPlayer);
 
 }

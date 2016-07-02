@@ -34,12 +34,15 @@ public class PermissionCard extends Bonusable implements Marketable {
 	}
 	
 	@Override
-	public void makeExchange(Player fromPlayer, Player toPlayer) {
+	public void makeExchange(Marketable m, Player fromPlayer, Player toPlayer) {
 		if(fromPlayer==null || toPlayer==null) {
 			throw new NullPointerException("both these two players should not be null"); 
 		}
-		fromPlayer.getPermissionHand().remove(this);
-		toPlayer.getPermissionHand().add(this);
+		
+		PermissionCard card=(PermissionCard) m;
+		
+		fromPlayer.getPermissionHand().remove(card);
+		toPlayer.getPermissionHand().add(card);
 	}
 
 	/**

@@ -55,7 +55,7 @@ public class Market {
 			throw new NullPointerException("buyer cannot be null"); 
 		}
 		
-		Iterator<Marketable> sellBagItr = contract.getSellBag().iterator();
+		/*Iterator<Marketable> sellBagItr = contract.getSellBag().iterator();
 		while(sellBagItr.hasNext()){
 			sellBagItr.next().makeExchange(contract.getSeller(), buyer);
 		}
@@ -63,6 +63,14 @@ public class Market {
 		Iterator<Marketable> buyBagItr = contract.getBuyBag().iterator();
 		while(buyBagItr.hasNext()){
 			buyBagItr.next().makeExchange(buyer, contract.getSeller());
+		}*/
+		
+		for(Marketable m : contract.getSellBag()){
+			m.makeExchange(m, contract.getSeller(), buyer);
+		}
+		
+		for(Marketable m : contract.getBuyBag()){
+			m.makeExchange(m, buyer, contract.getSeller());
 		}
 	}
 

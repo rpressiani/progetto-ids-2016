@@ -73,6 +73,7 @@ public class SellAction implements GeneralAction {
 			if(m instanceof Coins) coins=(Coins) m;
 		}
 		System.out.println(coins.getItems());
+		System.out.println(contract.getSeller().getNickname());
 	}
 
 	@Override
