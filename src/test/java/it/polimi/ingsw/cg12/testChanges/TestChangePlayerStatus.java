@@ -18,6 +18,7 @@ public class TestChangePlayerStatus {
 		boolean thrown = false; 
 		Player player = null; 
 		try {
+			@SuppressWarnings("unused")
 			ChangePlayerStatus change = new ChangePlayerStatus(player); 
 		} catch(NullPointerException e) {
 			thrown = true; 

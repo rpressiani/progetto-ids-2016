@@ -18,6 +18,7 @@ public class TestColorCard {
 		ArrayList<BonusItem> bonuses = null;
 		Color color = new Color("red"); 
 		try {
+			@SuppressWarnings("unused")
 			ColorCard card = new ColorCard(bonuses, color); 
 		} catch(NullPointerException e) {
 			thrown = true; 
@@ -30,6 +31,7 @@ public class TestColorCard {
 		ArrayList<BonusItem> bonuses = new ArrayList<BonusItem>(); 
 		Color color = null; 
 		try {
+			@SuppressWarnings("unused")
 			ColorCard card = new ColorCard(bonuses, color); 
 		} catch(NullPointerException e) {
 			thrown = true; 

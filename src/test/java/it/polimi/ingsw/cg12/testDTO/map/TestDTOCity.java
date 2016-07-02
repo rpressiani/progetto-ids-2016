@@ -13,6 +13,7 @@ public class TestDTOCity {
 		boolean thrown = false; 
 		String name = null; 
 		try {
+			@SuppressWarnings("unused")
 			DTOCity city = new DTOCity(name); 
 		} catch(NullPointerException e) {
 			thrown = true; 
@@ -24,6 +25,7 @@ public class TestDTOCity {
 		boolean thrown = false; 
 		String name = "Napoli"; 
 		try {
+			@SuppressWarnings("unused")
 			DTOCity city = new DTOCity(name); 
 		} catch(NullPointerException e) {
 			thrown = true; 

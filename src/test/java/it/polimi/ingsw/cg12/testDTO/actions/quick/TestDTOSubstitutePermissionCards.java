@@ -14,6 +14,7 @@ public class TestDTOSubstitutePermissionCards {
 		boolean thrown = false; 
 		DTORegion region = null;
 		try {
+			@SuppressWarnings("unused")
 			DTOSubstitutePermissionCards action = new DTOSubstitutePermissionCards(region); 
 		} catch(NullPointerException e) {
 			thrown = true; 

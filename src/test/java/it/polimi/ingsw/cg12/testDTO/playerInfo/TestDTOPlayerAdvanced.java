@@ -35,6 +35,7 @@ public class TestDTOPlayerAdvanced {
 		ArrayList<DTOPermissionCard> permissionCards = new ArrayList<DTOPermissionCard>(); 
 		ArrayList<DTOCity> builtCities = new ArrayList<DTOCity>(); 
 		try {
+			@SuppressWarnings("unused")
 			DTOPlayerAdvanced player = new DTOPlayerAdvanced(id, nickname, color, coins, 
 					assistants, nobilityLevel, score, 
 						politicalHand, permissionCards, builtCities); 
@@ -58,6 +59,7 @@ public class TestDTOPlayerAdvanced {
 		ArrayList<DTOPermissionCard> permissionCards = null; 
 		ArrayList<DTOCity> builtCities = new ArrayList<DTOCity>(); 
 		try {
+			@SuppressWarnings("unused")
 			DTOPlayerAdvanced player = new DTOPlayerAdvanced(id, nickname, color, coins, 
 					assistants, nobilityLevel, score, 
 						politicalHand, permissionCards, builtCities); 
@@ -81,6 +83,7 @@ public class TestDTOPlayerAdvanced {
 		ArrayList<DTOPermissionCard> permissionCards = new ArrayList<DTOPermissionCard>(); 
 		ArrayList<DTOCity> builtCities = null; 
 		try {
+			@SuppressWarnings("unused")
 			DTOPlayerAdvanced player = new DTOPlayerAdvanced(id, nickname, color, coins, 
 					assistants, nobilityLevel, score, 
 						politicalHand, permissionCards, builtCities); 

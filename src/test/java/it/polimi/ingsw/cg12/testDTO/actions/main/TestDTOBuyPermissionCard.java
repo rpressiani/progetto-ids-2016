@@ -19,6 +19,7 @@ public class TestDTOBuyPermissionCard {
 		ArrayList<Integer> structure = new ArrayList<Integer>(); 
 		DTOPoliticalContainer proposal = new DTOPoliticalContainer(structure); 
 		try {
+			@SuppressWarnings("unused")
 			DTOBuyPermissionCard action = new DTOBuyPermissionCard(region, proposal, 3); 
 		} catch(NullPointerException e) {
 			thrown = true; 
@@ -31,6 +32,7 @@ public class TestDTOBuyPermissionCard {
 		DTORegion region = new DTORegion("Campania"); 
 		DTOPoliticalContainer proposal = null; 
 		try {
+			@SuppressWarnings("unused")
 			DTOBuyPermissionCard action = new DTOBuyPermissionCard(region, proposal, 3); 
 		} catch(NullPointerException e) {
 			thrown = true; 
@@ -44,6 +46,7 @@ public class TestDTOBuyPermissionCard {
 		ArrayList<Integer> structure = new ArrayList<Integer>(); 
 		DTOPoliticalContainer proposal = new DTOPoliticalContainer(structure); 
 		try {
+			@SuppressWarnings("unused")
 			DTOBuyPermissionCard action = new DTOBuyPermissionCard(region, proposal, -1); 
 		} catch(IllegalArgumentException e) {
 			thrown = true; 

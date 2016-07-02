@@ -13,16 +13,19 @@ public class TestDTONobilityLevel {
 		boolean thrown = false; 
 		int level = -2; 
 		try {
+			@SuppressWarnings("unused")
 			DTONobilityLevel nobilityLevel = new DTONobilityLevel(level); 
 		} catch(IllegalArgumentException e) {
 			thrown = true; 
 		}
+		assertTrue(thrown); 
 	}
 	@Test
 	public void testIfConstructorWorks() {
 		boolean thrown = false; 
 		int level = 0; 
 		try {
+			@SuppressWarnings("unused")
 			DTONobilityLevel nobilityLevel = new DTONobilityLevel(level); 
 		} catch(IllegalArgumentException e) {
 			thrown = true; 

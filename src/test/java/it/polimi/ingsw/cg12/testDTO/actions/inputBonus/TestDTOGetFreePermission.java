@@ -14,6 +14,7 @@ public class TestDTOGetFreePermission {
 		boolean thrown = false; 
 		DTORegion region = null; 
 		try {
+			@SuppressWarnings("unused")
 			DTOGetFreePermission action = new DTOGetFreePermission(region, 1); 
 		} catch(NullPointerException e) {
 			thrown = true; 
@@ -25,6 +26,7 @@ public class TestDTOGetFreePermission {
 		boolean thrown = false; 
 		DTORegion region = new DTORegion("Ohio"); 
 		try {
+			@SuppressWarnings("unused")
 			DTOGetFreePermission action = new DTOGetFreePermission(region, -1); 
 		} catch(IllegalArgumentException e) {
 			thrown = true; 

@@ -18,6 +18,7 @@ public class TestDTOChangeBuildEmporiumWithCard {
 		DTOCity city = new DTOCity("Miami"); 
 		DTOPermissionCardSelection card = new DTOPermissionCardSelection(3); 
 		try {
+			@SuppressWarnings("unused")
 			DTOChangeBuildEmporiumWithCard change = 
 					new DTOChangeBuildEmporiumWithCard(assistants, city, card); 
 		} catch(NullPointerException e) {
@@ -32,6 +33,7 @@ public class TestDTOChangeBuildEmporiumWithCard {
 		DTOCity city = null; 
 		DTOPermissionCardSelection card = new DTOPermissionCardSelection(3); 
 		try {
+			@SuppressWarnings("unused")
 			DTOChangeBuildEmporiumWithCard change = 
 					new DTOChangeBuildEmporiumWithCard(assistants, city, card); 
 		} catch(NullPointerException e) {
@@ -46,6 +48,7 @@ public class TestDTOChangeBuildEmporiumWithCard {
 		DTOCity city = new DTOCity("Miami"); 
 		DTOPermissionCardSelection card = null; 
 		try {
+			@SuppressWarnings("unused")
 			DTOChangeBuildEmporiumWithCard change = 
 					new DTOChangeBuildEmporiumWithCard(assistants, city, card); 
 		} catch(NullPointerException e) {

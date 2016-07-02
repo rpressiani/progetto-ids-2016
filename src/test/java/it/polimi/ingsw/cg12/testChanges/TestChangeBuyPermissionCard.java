@@ -28,6 +28,7 @@ public class TestChangeBuyPermissionCard {
 		Region region = null; 
 		PermissionCard card=new PermissionCard(bonuses, cities);
 		try {
+			@SuppressWarnings("unused")
 			ChangeBuyPermissionCard change = new ChangeBuyPermissionCard(coins, region, card); 
 		} catch(NullPointerException e) {
 			thrown = true; 
@@ -48,6 +49,7 @@ public class TestChangeBuyPermissionCard {
 		GameState gameState = new GameState(parser, players);
 		Region region = gameState.getMap().getRegions().get("seaside"); 
 		try {
+			@SuppressWarnings("unused")
 			ChangeBuyPermissionCard change = new ChangeBuyPermissionCard(coins, region, card); 
 		} catch(NullPointerException e) {
 			thrown = true; 

@@ -16,6 +16,7 @@ public class TestDTOElectCounsellorWithAssistant {
 		DTORegion region = null; 
 		DTOColor color = new DTOColor("red"); 
 		try {
+			@SuppressWarnings("unused")
 			DTOElectCounsellorWithAssistant action = new DTOElectCounsellorWithAssistant(region, color); 
 		} catch(NullPointerException e) {
 			thrown = true; 
@@ -28,6 +29,7 @@ public class TestDTOElectCounsellorWithAssistant {
 		DTORegion region = new DTORegion("California"); 
 		DTOColor color = null; 
 		try {
+			@SuppressWarnings("unused")
 			DTOElectCounsellorWithAssistant action = new DTOElectCounsellorWithAssistant(region, color); 
 		} catch(NullPointerException e) {
 			thrown = true; 

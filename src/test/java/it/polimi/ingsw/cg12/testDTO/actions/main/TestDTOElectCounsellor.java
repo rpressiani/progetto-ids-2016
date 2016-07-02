@@ -16,6 +16,7 @@ public class TestDTOElectCounsellor {
 		DTORegion region = null; 
 		DTOColor color = new DTOColor("ciao"); 
 		try {
+			@SuppressWarnings("unused")
 			DTOElectCounsellor action = new DTOElectCounsellor(region, color); 
 		} catch(NullPointerException e) {
 			thrown = true; 
@@ -28,6 +29,7 @@ public class TestDTOElectCounsellor {
 		DTORegion region = new DTORegion("Lombardia"); 
 		DTOColor color = null; 
 		try {
+			@SuppressWarnings("unused")
 			DTOElectCounsellor action = new DTOElectCounsellor(region, color); 
 		} catch(NullPointerException e) {
 			thrown = true; 

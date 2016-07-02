@@ -14,6 +14,7 @@ public class TestCounsellor {
 		boolean thrown = false; 
 		Color color = null; 
 		try {
+			@SuppressWarnings("unused")
 			Counsellor counsellor = new Counsellor(color); 
 		} catch(NullPointerException e) {
 			thrown = true; 

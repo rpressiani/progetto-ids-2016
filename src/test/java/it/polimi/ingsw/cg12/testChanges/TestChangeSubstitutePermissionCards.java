@@ -21,6 +21,7 @@ public class TestChangeSubstitutePermissionCards {
 		Assistants assistants = new Assistants(); 
 		Region region = null; 
 		try {
+			@SuppressWarnings("unused")
 			ChangeSubstitutePermissionCards change = new ChangeSubstitutePermissionCards(assistants, region); 
 		} catch(NullPointerException e) {
 			thrown = true; 
@@ -38,6 +39,7 @@ public class TestChangeSubstitutePermissionCards {
 		GameState gameState = new GameState(parser, players);
 		Region region = gameState.getMap().getRegions().get("seaside"); 
 		try {
+			@SuppressWarnings("unused")
 			ChangeSubstitutePermissionCards change = new ChangeSubstitutePermissionCards(assistants, region); 
 		} catch(NullPointerException e) {
 			thrown = true; 

@@ -2,14 +2,11 @@ package it.polimi.ingsw.cg12.testController;
 
 import static org.junit.Assert.*;
 
-import java.util.ArrayList;
 
 import org.junit.Test;
 
 import controller.Controller;
 import model.GameState;
-import model.player.Player;
-import parser.Parser;
 
 public class TestController {
 
@@ -18,6 +15,7 @@ public class TestController {
 		boolean thrown = false; 
 		GameState gameState = null; 
 		try {
+			@SuppressWarnings("unused")
 			Controller controller = new Controller(gameState); 
 		} catch(NullPointerException e) {
 			thrown = true; 

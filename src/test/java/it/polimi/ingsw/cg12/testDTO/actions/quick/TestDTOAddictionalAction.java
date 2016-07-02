@@ -17,6 +17,7 @@ public class TestDTOAddictionalAction {
 		boolean thrown = false; 
 		DTOMainAction mainAction = null;
 		try {
+			@SuppressWarnings("unused")
 			DTOAddictionalAction action = new DTOAddictionalAction(mainAction); 
 		} catch(NullPointerException e) {
 			thrown = true; 
