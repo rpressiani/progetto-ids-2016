@@ -1,4 +1,4 @@
-package dto.utilities;
+package dto.queries;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -6,6 +6,8 @@ import java.util.Set;
 import dto.DTOObject;
 import dto.playerInfo.DTOAssistants;
 import dto.playerInfo.DTOCoins;
+import dto.utilities.DTOColorCounter;
+import dto.utilities.DTOPermissionCard;
 
 public class DTOContract implements DTOObject {
 
@@ -13,28 +15,17 @@ public class DTOContract implements DTOObject {
 	 * 
 	 */
 	private static final long serialVersionUID = 8698606138965181943L;
-	
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		return "DTOContract [seller=" + seller + ", sellCoins=" + sellCoins + ", sellAssistants=" + sellAssistants
-				+ ", sellPermissions=" + sellPermissions + ", sellPoliticals=" + sellPoliticals + ", buyCoins="
-				+ buyCoins + ", buyAssistants=" + buyAssistants + ", buyPermissions=" + buyPermissions
-				+ ", buyPoliticals=" + buyPoliticals + "]";
-	}
 
 	private final String seller;
 	private DTOCoins sellCoins = new DTOCoins(0);
 	private DTOAssistants sellAssistants = new DTOAssistants(0);
 	private Set<DTOPermissionCard> sellPermissions = new HashSet<DTOPermissionCard>();
-	private DTOPoliticalContainer sellPoliticals;
+	private DTOColorCounter sellPoliticals;
 	
 	private DTOCoins buyCoins = new DTOCoins(0);
 	private DTOAssistants buyAssistants = new DTOAssistants(0);
 	private Set<DTOPermissionCard> buyPermissions = new HashSet<DTOPermissionCard>();
-	private DTOPoliticalContainer buyPoliticals;
+	private DTOColorCounter buyPoliticals;
 	
 	public DTOContract(String seller) {
 		this.seller = seller;
@@ -57,7 +48,7 @@ public class DTOContract implements DTOObject {
 	/**
 	 * @param sellCoins the sellCoins to set
 	 */
-	public void setSellCoins(DTOCoins sellCoins) {
+	protected void setSellCoins(DTOCoins sellCoins) {
 		this.sellCoins = sellCoins;
 	}
 
@@ -71,7 +62,7 @@ public class DTOContract implements DTOObject {
 	/**
 	 * @param sellAssistants the sellAssistants to set
 	 */
-	public void setSellAssistants(DTOAssistants sellAssistants) {
+	protected void setSellAssistants(DTOAssistants sellAssistants) {
 		this.sellAssistants = sellAssistants;
 	}
 
@@ -85,21 +76,21 @@ public class DTOContract implements DTOObject {
 	/**
 	 * @param sellPermissions the sellPermissions to set
 	 */
-	public void setSellPermissions(Set<DTOPermissionCard> sellPermissions) {
+	protected void setSellPermissions(Set<DTOPermissionCard> sellPermissions) {
 		this.sellPermissions = sellPermissions;
 	}
 
 	/**
 	 * @return the sellPoliticals
 	 */
-	public DTOPoliticalContainer getSellPoliticals() {
+	public DTOColorCounter getSellPoliticals() {
 		return sellPoliticals;
 	}
 
 	/**
 	 * @param sellPoliticals the sellPoliticals to set
 	 */
-	public void setSellPoliticals(DTOPoliticalContainer sellPoliticals) {
+	protected void setSellPoliticals(DTOColorCounter sellPoliticals) {
 		this.sellPoliticals = sellPoliticals;
 	}
 
@@ -113,7 +104,7 @@ public class DTOContract implements DTOObject {
 	/**
 	 * @param buyCoins the buyCoins to set
 	 */
-	public void setBuyCoins(DTOCoins buyCoins) {
+	protected void setBuyCoins(DTOCoins buyCoins) {
 		this.buyCoins = buyCoins;
 	}
 
@@ -127,7 +118,7 @@ public class DTOContract implements DTOObject {
 	/**
 	 * @param buyAssistants the buyAssistants to set
 	 */
-	public void setBuyAssistants(DTOAssistants buyAssistants) {
+	protected void setBuyAssistants(DTOAssistants buyAssistants) {
 		this.buyAssistants = buyAssistants;
 	}
 
@@ -141,22 +132,50 @@ public class DTOContract implements DTOObject {
 	/**
 	 * @param buyPermissions the buyPermissions to set
 	 */
-	public void setBuyPermissions(Set<DTOPermissionCard> buyPermissions) {
+	protected void setBuyPermissions(Set<DTOPermissionCard> buyPermissions) {
 		this.buyPermissions = buyPermissions;
 	}
 
 	/**
 	 * @return the buyPoliticals
 	 */
-	public DTOPoliticalContainer getBuyPoliticals() {
+	public DTOColorCounter getBuyPoliticals() {
 		return buyPoliticals;
 	}
 
 	/**
 	 * @param buyPoliticals the buyPoliticals to set
 	 */
-	public void setBuyPoliticals(DTOPoliticalContainer buyPoliticals) {
+	protected void setBuyPoliticals(DTOColorCounter buyPoliticals) {
 		this.buyPoliticals = buyPoliticals;
+	}
+	
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		StringBuilder msg = new StringBuilder();
+		msg.append("[SERVER] Items to sell:\n");
+		msg.append("[SERVER]\t Coins: " + sellCoins.getQuantity() + "\n");
+		msg.append("[SERVER]\t Assistants: " + sellAssistants.getQuantity() + "\n");
+		msg.append("[SERVER]\t Permission cards:\n");
+		for (DTOPermissionCard dtoPermissionCard : sellPermissions) {
+			msg.append("[SERVER]\t\t " + dtoPermissionCard + "\n");
+		}
+		msg.append(sellPoliticals);
+		
+		msg.append("[SERVER] Items to buy:\n");
+		msg.append("[SERVER]\t Coins: " + buyCoins.getQuantity() + "\n");
+		msg.append("[SERVER]\t Assistants: " + buyAssistants.getQuantity() + "\n");
+		msg.append("[SERVER]\t Permission cards:\n");
+		for (DTOPermissionCard dtoPermissionCard : buyPermissions) {
+			msg.append("[SERVER]\t\t " + dtoPermissionCard + "\n");
+		}
+		msg.append(buyPoliticals);
+		
+		return msg.toString();
 	}
 
 }

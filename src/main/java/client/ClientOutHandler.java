@@ -317,12 +317,12 @@ public abstract class ClientOutHandler implements Runnable {
 					if (inputList.size() == 1) {
 						
 						System.out.println("Now insert what you want to sell following the order below:");
-						System.out.println("<coins> <assistants> <permissionCard1> <permissionCard2> <politicalProposal>");
-						System.out.println("If you don't want to sell something insert 0 (zero) in that field.\n");
+						System.out.println("<coins> <assistants> p<cardId(1)> ... p<cardId(n)> <politicalProposal>");
+						System.out.println("If you don't want to sell coins, assistants or political cards insert 0 (zero) in that field.\n");
 						String sellLine = stdIn.nextLine();
 						ArrayList<String> sellList = new ArrayList<String>(Arrays.asList(sellLine.split(" ")));
 						
-						if (sellList.size() <= 4) {
+						if (sellList.size() <= 2) {
 							System.out.println(cmdNotFound.toString());
 							break;
 						}
@@ -360,12 +360,12 @@ public abstract class ClientOutHandler implements Runnable {
 						DTOPoliticalContainer sellPoliticals = new DTOPoliticalContainer(proposal);
 						
 						System.out.println("Now insert what you want to buy following the order below:");
-						System.out.println("<coins> <assistants> <permissionCard1> <permissionCard2> <politicalProposal>");
-						System.out.println("If you don't want to buy something insert 0 (zero) in that field.\n");
+						System.out.println("<coins> <assistants> p<cardId(1)> ... p<cardId(n)> <politicalProposal>");
+						System.out.println("If you don't want to sell coins, assistants or political cards insert 0 (zero) in that field.\n");
 						String buyLine = stdIn.nextLine();
 						ArrayList<String> buyList = new ArrayList<String>(Arrays.asList(buyLine.split(" ")));
 						
-						if (buyList.size() <= 4) {
+						if (buyList.size() <= 2) {
 							System.out.println(cmdNotFound.toString());
 							break;
 						}

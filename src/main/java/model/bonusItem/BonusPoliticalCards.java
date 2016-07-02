@@ -34,4 +34,9 @@ public class BonusPoliticalCards implements BonusItem {
 		
 		gameState.notifyObserver(player, new ChangeMsg("You drawed "+n+" bonus political cards"));
 	}
+	
+	@Override
+	public int getQuantity(){
+		return this.timesToDraw;
+	}
 }

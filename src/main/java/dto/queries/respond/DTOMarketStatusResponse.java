@@ -3,7 +3,7 @@ package dto.queries.respond;
 import java.util.Map;
 
 import dto.DTOObject;
-import dto.utilities.DTOContract;
+import dto.queries.DTOContract;
 
 public class DTOMarketStatusResponse implements DTOObject {
 
