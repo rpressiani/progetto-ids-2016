@@ -31,8 +31,8 @@ public class ClientInHandler implements Runnable {
 				}
 				
 			} catch (ClassNotFoundException | IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				System.out.println("SERVER IS DOWN");
+				break;
 			} 
 		}
 	}

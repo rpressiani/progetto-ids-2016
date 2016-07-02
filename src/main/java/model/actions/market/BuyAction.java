@@ -2,12 +2,14 @@ package model.actions.market;
 
 import model.GameState;
 import model.actions.GeneralAction;
+import model.bonusable.PermissionCard;
 import model.changes.ChangeMsg;
 import model.market.Contract;
 import model.market.Marketable;
 import model.player.Assistants;
 import model.player.Coins;
 import model.player.Player;
+import model.politicalDeck.PoliticalContainer;
 
 public class BuyAction implements GeneralAction {
 
@@ -69,10 +71,29 @@ public class BuyAction implements GeneralAction {
 			return false;
 		}
 		
+		PoliticalContainer proposal=null;
 		for(Marketable m : contract.getBuyBag()){
-			if(m instanceof Assistants){
-				
+			if(m instanceof PoliticalContainer){
+				proposal=(PoliticalContainer) m;
 			}
+		}
+		for(int i=0; i<player.getPoliticalHand().getDeck().size(); i++){
+			if(player.getPoliticalHand().getDeck().get(i).getNumCards()<proposal.getDeck().get(i).getNumCards()){
+				gameState.notifyObserver(player, new ChangeMsg("You don't have enough political cards to accept this contract"));
+				return false;
+			}
+		}
+		
+		for(Marketable m : contract.getBuyBag()){
+			if(m instanceof PermissionCard){
+				PermissionCard card=(PermissionCard) m;
+				
+				if(!player.getPermissionHand().contains(card)){
+					gameState.notifyObserver(player, new ChangeMsg("You don't have enough permission cards to accept this contract"));
+					return false;
+				}
+			}
+				
 		}
 		
 		return true;
