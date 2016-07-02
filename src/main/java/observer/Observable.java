@@ -29,6 +29,10 @@ public abstract class Observable<C> {
 		this.observers.add(o);
 	}
 
+	/**
+	 * @param player
+	 * @param o
+	 */
 	public void registerObserver(Player player, Observer<C> o){
 		if(o==null) {
 			throw new NullPointerException("Observers cannot be null"); 
@@ -64,6 +68,11 @@ public abstract class Observable<C> {
 		}
 	}
 	
+	/**
+	 * @param player
+	 * @param c
+	 * notifies not null observers
+	 */
 	public void notifyObserver(Player player, C c){
 		if(c==null) {
 			throw new NullPointerException("Change cannot be null"); 
@@ -73,6 +82,10 @@ public abstract class Observable<C> {
 		}
 	}
 	
+	/**
+	 * @param player
+	 * @param c
+	 */
 	public void notifyAllExceptPlayer(Player player, C c){
 		if(c==null) {
 			throw new NullPointerException("Change cannot be null"); 

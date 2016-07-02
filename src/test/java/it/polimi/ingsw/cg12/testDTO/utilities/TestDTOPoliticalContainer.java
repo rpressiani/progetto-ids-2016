@@ -15,6 +15,7 @@ public class TestDTOPoliticalContainer {
 		boolean thrown = false; 
 		ArrayList<Integer> structure = null; 
 		try {
+			@SuppressWarnings("unused")
 			DTOPoliticalContainer container = new DTOPoliticalContainer(structure); 
 		} catch(NullPointerException e) {
 			thrown = true; 

@@ -13,6 +13,7 @@ public class TestDTOAssistants {
 		boolean thrown = false; 
 		int quantity = -3; 
 		try {
+			@SuppressWarnings("unused")
 			DTOAssistants assistants = new DTOAssistants(quantity); 
 		} catch(IllegalArgumentException e) {
 			thrown = true; 
@@ -24,6 +25,7 @@ public class TestDTOAssistants {
 		boolean thrown = false;
 		int quantity = 0; 
 		try {
+			@SuppressWarnings("unused")
 			DTOAssistants assistants = new DTOAssistants(quantity); 
 		} catch(IllegalArgumentException e) {
 			thrown = true; 

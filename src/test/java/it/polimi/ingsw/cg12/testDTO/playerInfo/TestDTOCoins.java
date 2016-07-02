@@ -13,6 +13,7 @@ public class TestDTOCoins {
 		boolean thrown = false; 
 		int quantity = -1; 
 		try {
+			@SuppressWarnings("unused")
 			DTOCoins coins = new DTOCoins(quantity); 
 		} catch(IllegalArgumentException e) {
 			thrown = true; 
@@ -24,6 +25,7 @@ public class TestDTOCoins {
 		boolean thrown = false; 
 		int quantity = 2; 
 		try {
+			@SuppressWarnings("unused")
 			DTOCoins coins = new DTOCoins(quantity); 
 		} catch(IllegalArgumentException e) {
 			thrown = true; 

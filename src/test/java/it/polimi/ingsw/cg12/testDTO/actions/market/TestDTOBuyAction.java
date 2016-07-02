@@ -13,11 +13,18 @@ public class TestDTOBuyAction {
 		boolean thrown = false; 
 		String name = null; 
 		try {
+			@SuppressWarnings("unused")
 			DTOBuyAction action = new DTOBuyAction(name); 
 		} catch(NullPointerException e) {
 			thrown = true; 
 		}
 		assertTrue(thrown); 
+	}
+	@Test
+	public void testGetPlayerName() {
+		String name = "Sergio"; 
+		DTOBuyAction action = new DTOBuyAction(name); 
+		assertEquals(name, action.getPlayerName()); 
 	}
 
 }

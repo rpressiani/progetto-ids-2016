@@ -15,6 +15,7 @@ public class TestDTOCurrentPlayerResponse {
 		boolean thrown = false; 
 		DTOPlayerBasic player = null;
 		try {
+			@SuppressWarnings("unused")
 			DTOCurrentPlayerResponse response = new DTOCurrentPlayerResponse(player); 
 		} catch(NullPointerException e) {
 			thrown = true; 

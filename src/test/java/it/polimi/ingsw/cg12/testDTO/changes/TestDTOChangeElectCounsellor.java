@@ -18,6 +18,7 @@ public class TestDTOChangeElectCounsellor {
 		DTOColor color = new DTOColor("red"); 
 		DTORegion region = new DTORegion("Campania"); 
 		try {
+			@SuppressWarnings("unused")
 			DTOChangeElectCounsellor change = 
 					new DTOChangeElectCounsellor(coins, color, region); 
 		} catch(NullPointerException e) {
@@ -32,6 +33,7 @@ public class TestDTOChangeElectCounsellor {
 		DTOColor color = null; 
 		DTORegion region = new DTORegion("Campania"); 
 		try {
+			@SuppressWarnings("unused")
 			DTOChangeElectCounsellor change = 
 					new DTOChangeElectCounsellor(coins, color, region); 
 		} catch(NullPointerException e) {
@@ -46,6 +48,7 @@ public class TestDTOChangeElectCounsellor {
 		DTOColor color = new DTOColor("red"); 
 		DTORegion region = null; 
 		try {
+			@SuppressWarnings("unused")
 			DTOChangeElectCounsellor change = 
 					new DTOChangeElectCounsellor(coins, color, region); 
 		} catch(NullPointerException e) {

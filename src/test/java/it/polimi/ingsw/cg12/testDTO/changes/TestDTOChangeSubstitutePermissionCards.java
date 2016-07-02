@@ -16,6 +16,7 @@ public class TestDTOChangeSubstitutePermissionCards {
 		DTOAssistants assistants = null; 
 		DTORegion region = new DTORegion("Ohio"); 
 		try {
+			@SuppressWarnings("unused")
 			DTOChangeSubstitutePermissionCards change = 
 					new DTOChangeSubstitutePermissionCards(assistants,region); 
 		} catch(NullPointerException e) {
@@ -29,6 +30,7 @@ public class TestDTOChangeSubstitutePermissionCards {
 		DTOAssistants assistants = new DTOAssistants(3); 
 		DTORegion region = null; 
 		try {
+			@SuppressWarnings("unused")
 			DTOChangeSubstitutePermissionCards change = 
 					new DTOChangeSubstitutePermissionCards(assistants,region); 
 		} catch(NullPointerException e) {

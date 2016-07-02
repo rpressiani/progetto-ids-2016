@@ -24,6 +24,7 @@ public class TestDTOPlayer {
 		DTONobilityLevel nobilityLevel = new DTONobilityLevel(2);
 		DTOScore score = new DTOScore(2);
 		try {
+			@SuppressWarnings("unused")
 			DTOPlayer player = new DTOPlayer(id, nickname, color, coins, assistants, nobilityLevel, score); 
 		} catch(NullPointerException e) {
 			thrown = true; 
@@ -41,6 +42,7 @@ public class TestDTOPlayer {
 		DTONobilityLevel nobilityLevel = new DTONobilityLevel(2);
 		DTOScore score = new DTOScore(2);
 		try {
+			@SuppressWarnings("unused")
 			DTOPlayer player = new DTOPlayer(id, nickname, color, coins, assistants, nobilityLevel, score); 
 		} catch(NullPointerException e) {
 			thrown = true; 
@@ -58,6 +60,7 @@ public class TestDTOPlayer {
 		DTONobilityLevel nobilityLevel = null;
 		DTOScore score = new DTOScore(2);
 		try {
+			@SuppressWarnings("unused")
 			DTOPlayer player = new DTOPlayer(id, nickname, color, coins, assistants, nobilityLevel, score); 
 		} catch(NullPointerException e) {
 			thrown = true; 
@@ -75,6 +78,7 @@ public class TestDTOPlayer {
 		DTONobilityLevel nobilityLevel = new DTONobilityLevel(2);
 		DTOScore score = null;
 		try {
+			@SuppressWarnings("unused")
 			DTOPlayer player = new DTOPlayer(id, nickname, color, coins, assistants, nobilityLevel, score); 
 		} catch(NullPointerException e) {
 			thrown = true; 

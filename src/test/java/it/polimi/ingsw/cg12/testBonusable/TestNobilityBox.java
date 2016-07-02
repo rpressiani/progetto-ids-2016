@@ -17,6 +17,7 @@ public class TestNobilityBox {
 		ArrayList<BonusItem> bonuses = new ArrayList<BonusItem>();
 		int level = -1; 
 		try {
+			@SuppressWarnings("unused")
 			NobilityBox box = new NobilityBox(bonuses, level); 
 		} catch(IllegalArgumentException e) {
 			thrown = true; 

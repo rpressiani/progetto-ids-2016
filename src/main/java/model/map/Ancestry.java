@@ -16,6 +16,13 @@ public class Ancestry {
 	private Set<City> colorCities;
 	private ColorCard colorBonus;
 	
+	/**
+	 * Constructor
+	 * @param color
+	 * @param parser
+	 * @param map
+	 * @throws NullPointerException if one of the parameters is null
+	 */
 	public Ancestry(Color color, Parser parser, Map map) {
 		if(color==null) {
 			throw new NullPointerException("color cannot be null"); 
@@ -51,14 +58,22 @@ public class Ancestry {
 		this.colorCities = new HashSet<City>();
 	}
 	
-	public Ancestry(){
+	/**
+	 * Constructor
+	 */
+	public Ancestry() {
 		this.color = new Color("king");
 		this.colorCities = new HashSet<City>();
 		this.colorBonus = new ColorCard(new ArrayList<BonusItem>(), this.color);
 		
 	}
 	
-	public void initAncestry(List<City> cities, String kingInitLoc){
+	/**
+	 * @param cities
+	 * @param kingInitLoc
+	 * initializes the ancestries with parameters from file
+	 */
+	public void initAncestry(List<City> cities, String kingInitLoc) {
 		
 		for (City city : cities) {
 			if (city.getName().equals(kingInitLoc)) {

@@ -16,6 +16,7 @@ public class TestDTOChangeHireAssistants {
 		DTOAssistants assistants = null; 
 		DTOCoins coins = new DTOCoins(3); 
 		try {
+			@SuppressWarnings("unused")
 			DTOChangeHireAssistants change = 
 					new DTOChangeHireAssistants(assistants, coins); 
 		} catch(NullPointerException e) {
@@ -29,6 +30,7 @@ public class TestDTOChangeHireAssistants {
 		DTOAssistants assistants = new DTOAssistants(4); 
 		DTOCoins coins = null; 
 		try {
+			@SuppressWarnings("unused")
 			DTOChangeHireAssistants change = 
 					new DTOChangeHireAssistants(assistants, coins); 
 		} catch(NullPointerException e) {

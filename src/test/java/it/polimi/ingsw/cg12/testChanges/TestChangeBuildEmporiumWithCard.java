@@ -36,6 +36,7 @@ public class TestChangeBuildEmporiumWithCard {
 		PermissionCard card = new PermissionCard(bonuses, cities); 
 		try {
 			Assistants assistants = null; 
+			@SuppressWarnings("unused")
 			ChangeBuildEmporiumWithCard change = new ChangeBuildEmporiumWithCard(assistants, city, card); 
 		} catch(NullPointerException e) {
 			thrown = true; 
@@ -59,6 +60,7 @@ public class TestChangeBuildEmporiumWithCard {
 		PermissionCard card = new PermissionCard(bonuses, cities); 
 		try {
 			City city2 = null; 
+			@SuppressWarnings("unused")
 			ChangeBuildEmporiumWithCard change = new ChangeBuildEmporiumWithCard(player.getAssistants(), city2, card); 
 		} catch(NullPointerException e) {
 			thrown = true; 
@@ -75,13 +77,12 @@ public class TestChangeBuildEmporiumWithCard {
 		ArrayList<Player> players = new ArrayList<Player>(); 
 		players.add(player); 
 		GameState gameState = new GameState(parser, players); 
-		ArrayList<BonusItem> bonuses = new ArrayList<BonusItem>();
 		City city = gameState.getMap().getAllCitiesHashMap().get("A");
 		HashSet<City> cities = new HashSet<City>();
 		cities.add(city); 
-		PermissionCard card = new PermissionCard(bonuses, cities); 
 		try {
 			PermissionCard card2 = null; 
+			@SuppressWarnings("unused")
 			ChangeBuildEmporiumWithCard change = new ChangeBuildEmporiumWithCard(player.getAssistants(), city, card2); 
 		} catch(NullPointerException e) {
 			thrown = true; 

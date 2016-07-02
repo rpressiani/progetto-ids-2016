@@ -16,6 +16,7 @@ public class TestChangeHireAssistants {
 		Assistants assistants = null; 
 		Coins coins = new Coins(); 
 		try {
+			@SuppressWarnings("unused")
 			ChangeHireAssistants change = new ChangeHireAssistants(assistants, coins); 
 		} catch(NullPointerException e) {
 			thrown = true; 
@@ -28,6 +29,7 @@ public class TestChangeHireAssistants {
 		Assistants assistants = new Assistants(); 
 		Coins coins = null; 
 		try {
+			@SuppressWarnings("unused")
 			ChangeHireAssistants change = new ChangeHireAssistants(assistants, coins);
 		} catch(NullPointerException e) {
 			thrown = true; 

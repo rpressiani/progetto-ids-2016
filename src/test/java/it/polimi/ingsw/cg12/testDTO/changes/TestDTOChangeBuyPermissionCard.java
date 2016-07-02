@@ -18,6 +18,7 @@ public class TestDTOChangeBuyPermissionCard {
 		DTORegion region = new DTORegion("Ohio"); 
 		DTOPermissionCardSelection card=new DTOPermissionCardSelection(1);
 		try {
+			@SuppressWarnings("unused")
 			DTOChangeBuyPermissionCard change = 
 					new DTOChangeBuyPermissionCard(coins, region,card); 
 		} catch(NullPointerException e) {
@@ -32,6 +33,7 @@ public class TestDTOChangeBuyPermissionCard {
 		DTORegion region = null; 
 		DTOPermissionCardSelection card=new DTOPermissionCardSelection(1);
 		try {
+			@SuppressWarnings("unused")
 			DTOChangeBuyPermissionCard change = 
 					new DTOChangeBuyPermissionCard(coins, region, card); 
 		} catch(NullPointerException e) {

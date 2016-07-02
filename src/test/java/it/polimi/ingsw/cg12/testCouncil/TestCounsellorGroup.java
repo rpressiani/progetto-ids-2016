@@ -14,6 +14,7 @@ public class TestCounsellorGroup {
 		boolean thrown = false; 
 		Color color = null; 
 		try {
+			@SuppressWarnings("unused")
 			CounsellorGroup group = new CounsellorGroup(color, 3); 
 		} catch(NullPointerException e) {
 			thrown = true; 

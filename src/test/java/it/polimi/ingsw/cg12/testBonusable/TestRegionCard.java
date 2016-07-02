@@ -21,6 +21,7 @@ public class TestRegionCard {
 		Region region = null; 
 		ArrayList<BonusItem> bonuses = new ArrayList<BonusItem>();
 		try {
+			@SuppressWarnings("unused")
 			RegionCard card = new RegionCard(bonuses, region); 
 		} catch(NullPointerException e) {
 			thrown = true; 
@@ -38,6 +39,7 @@ public class TestRegionCard {
 		GameState gameState = new GameState(parser, players);
 		Region region = gameState.getMap().getRegions().get("seaside");
 		try {
+			@SuppressWarnings("unused")
 			RegionCard card = new RegionCard(bonuses, region); 
 		} catch(NullPointerException e) {
 			thrown = true; 

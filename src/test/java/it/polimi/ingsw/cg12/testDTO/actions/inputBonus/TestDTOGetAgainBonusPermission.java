@@ -14,6 +14,7 @@ public class TestDTOGetAgainBonusPermission {
 		boolean thrown = false; 
 		DTOPermissionCardSelection card = null; 
 		try {
+			@SuppressWarnings("unused")
 			DTOGetAgainBonusPermission action = new DTOGetAgainBonusPermission(card); 
 		} catch(NullPointerException e) {
 			thrown = true; 

@@ -147,7 +147,7 @@ public class Server {
 			
 			playerMatch.get(player).getGameState().unregisterObserver(player, playerMatch.get(player).getPlayersSocket().get(player));
 
-			playerMatch.get(player).getGameState().notifyObserver(new ChangeMsg(player.getNickname().toUpperCase() + "has disconnected, hope you won't miss him/her too much!"));
+			playerMatch.get(player).getGameState().notifyObserver(new ChangeMsg(player.getNickname().toUpperCase() + " has disconnected, hope you won't miss him/her too much!"));
 			playerMatch.get(player).getGameState().notifyObserver(new ChangeMsg("Now it's time for " +playerMatch.get(player).getGameState().getCurrentPlayer().getNickname().toUpperCase() + " to play"));
 			
 			playerMatch.remove(player);

@@ -1,6 +1,6 @@
 package it.polimi.ingsw.cg12.testMap;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -18,7 +18,6 @@ import model.map.Map;
 import model.map.Region;
 import model.player.Player;
 import parser.Parser;
-import utilities.Color;
 
 public class TestMap {
 
@@ -29,6 +28,7 @@ public class TestMap {
 		Parser parser2 = new Parser(); 
 		GarbageState garbage = new GarbageState(parser2);
 		try {
+			@SuppressWarnings("unused")
 			Map map = new Map(parser, garbage); 
 		} catch(NullPointerException e) {
 			thrown = true; 
@@ -41,6 +41,7 @@ public class TestMap {
 		Parser parser = new Parser(); 
 		GarbageState garbage = null; 
 		try {
+			@SuppressWarnings("unused")
 			Map map = new Map(parser, garbage); 
 		} catch(NullPointerException e) {
 			thrown = true; 

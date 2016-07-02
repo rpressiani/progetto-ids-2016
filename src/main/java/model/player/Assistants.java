@@ -16,6 +16,11 @@ public class Assistants extends SimpleItem implements Marketable {
 		super();
 	}
 	
+	/**
+	 * Constructor
+	 * @param assistants
+	 * @throws IllegalArgumentException if assistants <0 
+	 */
 	public Assistants(Integer assistants){
 		if (assistants < 0) throw new IllegalArgumentException("Argument must be greater than zero");
 		this.items = assistants;

@@ -12,6 +12,11 @@ import utilities.Color;
  */
 public class BalconyState extends CouncilState {
 
+	/**
+	 * Constructor
+	 * @param parser
+	 * @throws NullPointerException if parser is null
+	 */
 	public BalconyState(Parser parser) {
 		super(parser);
 		for (int i = 0; i < this.getnColors(); i++) {

@@ -338,18 +338,18 @@ public abstract class ClientOutHandler implements Runnable {
 							sellAssistants = new DTOAssistants(0);
 						}
 						Set<DTOPermissionCardSelection> sellPermissions = new HashSet<DTOPermissionCardSelection>();
-						try {
-							sellPermissions.add(new DTOPermissionCardSelection(Integer.parseInt(sellList.get(2))));
-						} catch (NumberFormatException e) {
-							sellPermissions.add(new DTOPermissionCardSelection(0));
-						}
-						try {
-							sellPermissions.add(new DTOPermissionCardSelection(Integer.parseInt(sellList.get(3))));
-						} catch (NumberFormatException e) {
-							sellPermissions.add(new DTOPermissionCardSelection(0));
+						int index = 2;
+						while (sellList.get(index).charAt(0) == 'p') {
+							Integer cardId = Integer.parseInt(sellList.get(index).substring(1));
+							try {
+								sellPermissions.add(new DTOPermissionCardSelection(cardId));
+							} catch (NumberFormatException e) {
+								sellPermissions.add(new DTOPermissionCardSelection(0));
+							}
+							index++;
 						}
 						
-						proposal = getProposal(sellList, 4);
+						proposal = getProposal(sellList, index);
 						if (proposal.get(proposal.size()-1).equals(-1)) {
 							System.out.println(cmdNotFound.toString());
 							break;
@@ -381,18 +381,18 @@ public abstract class ClientOutHandler implements Runnable {
 							buyAssistants = new DTOAssistants(0);
 						}
 						Set<DTOPermissionCardSelection> buyPermissions = new HashSet<DTOPermissionCardSelection>();
-						try {
-							buyPermissions.add(new DTOPermissionCardSelection(Integer.parseInt(buyList.get(2))));
-						} catch (NumberFormatException e) {
-							buyPermissions.add(new DTOPermissionCardSelection(0));
-						}
-						try {
-							buyPermissions.add(new DTOPermissionCardSelection(Integer.parseInt(buyList.get(3))));
-						} catch (NumberFormatException e) {
-							buyPermissions.add(new DTOPermissionCardSelection(0));
+						index = 2;
+						while (buyList.get(index).charAt(0) == 'p') {
+							Integer cardId = Integer.parseInt(buyList.get(index).substring(1));
+							try {
+								buyPermissions.add(new DTOPermissionCardSelection(cardId));
+							} catch (NumberFormatException e) {
+								buyPermissions.add(new DTOPermissionCardSelection(0));
+							}
+							index++;
 						}
 						
-						proposal = getProposal(buyList, 4);
+						proposal = getProposal(buyList, index);
 						if (proposal.get(proposal.size()-1).equals(-1)) {
 							System.out.println(cmdNotFound.toString());
 							break;

@@ -7,6 +7,9 @@ import jaxb.CFGPoliticalCard;
 
 public class PoliticalHand extends PoliticalDeck {
 	
+	/**
+	 * @param deck
+	 */
 	public PoliticalHand(PoliticalRealDeck deck) {
 		super(PoliticalHand.getParser());
 		for (Iterator<CFGPoliticalCard> iterator = PoliticalDeck.getParser().getCFGPoliticalDeck().getPoliticalCard().iterator(); iterator.hasNext();) {

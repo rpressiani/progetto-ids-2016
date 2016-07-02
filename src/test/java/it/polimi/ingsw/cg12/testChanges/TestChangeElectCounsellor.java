@@ -23,6 +23,7 @@ public class TestChangeElectCounsellor {
 		Color color = new Color("red"); 
 		Region region = null; 
 		try {
+			@SuppressWarnings("unused")
 			ChangeElectCounsellor change = new ChangeElectCounsellor(coins, color, region); 
 		} catch(NullPointerException e) {
 			thrown = true; 
@@ -41,6 +42,7 @@ public class TestChangeElectCounsellor {
 		Color color = new Color("red"); 
 		Region region = gameState.getMap().getRegions().get("seaside"); 
 		try {
+			@SuppressWarnings("unused")
 			ChangeElectCounsellor change = new ChangeElectCounsellor(coins, color, region); 
 		} catch(NullPointerException e) {
 			thrown = true; 
@@ -59,6 +61,7 @@ public class TestChangeElectCounsellor {
 		Color color = null; 
 		Region region = gameState.getMap().getRegions().get("seaside"); 
 		try {
+			@SuppressWarnings("unused")
 			ChangeElectCounsellor change = new ChangeElectCounsellor(coins, color, region); 
 		} catch(NullPointerException e) {
 			thrown = true; 
@@ -67,7 +70,6 @@ public class TestChangeElectCounsellor {
 	}
 	@Test
 	public void testGetCoinsWorks() {
-		boolean thrown = false; 
 		Parser parser = new Parser(); 
 		Player player = new Player(); 
 		ArrayList<Player> players = new ArrayList<Player>(); 
@@ -82,7 +84,6 @@ public class TestChangeElectCounsellor {
 	}
 	@Test
 	public void testGetColorWorks() {
-		boolean thrown = false; 
 		Parser parser = new Parser(); 
 		Player player = new Player(); 
 		ArrayList<Player> players = new ArrayList<Player>(); 
@@ -97,7 +98,6 @@ public class TestChangeElectCounsellor {
 	}
 	@Test
 	public void testGetRegionWorks() {
-		boolean thrown = false; 
 		Parser parser = new Parser(); 
 		Player player = new Player(); 
 		ArrayList<Player> players = new ArrayList<Player>(); 

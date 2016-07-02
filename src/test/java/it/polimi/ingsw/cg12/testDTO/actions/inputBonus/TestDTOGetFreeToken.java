@@ -17,6 +17,7 @@ public class TestDTOGetFreeToken {
 		boolean thrown = false;
 		Set<DTOCity> cities = null; 
 		try {
+			@SuppressWarnings("unused")
 			DTOGetFreeToken action = new DTOGetFreeToken(cities); 
 		} catch(NullPointerException e) {
 			thrown = true; 

@@ -23,6 +23,7 @@ public class TestChangeElectCounsellorWithAssistant {
 		Color color = new Color("red"); 
 		Region region = null; 
 		try {
+			@SuppressWarnings("unused")
 			ChangeElectCounsellorWithAssistant change = new ChangeElectCounsellorWithAssistant(assistants, color, region); 
 		} catch(NullPointerException e) {
 			thrown = true; 
@@ -41,6 +42,7 @@ public class TestChangeElectCounsellorWithAssistant {
 		Assistants assistants = null; 
 		Color color = new Color("Red"); 
 		try {
+			@SuppressWarnings("unused")
 			ChangeElectCounsellorWithAssistant change = new ChangeElectCounsellorWithAssistant(assistants, color, region); 
 		} catch(NullPointerException e) {
 			thrown = true; 
@@ -59,6 +61,7 @@ public class TestChangeElectCounsellorWithAssistant {
 		Assistants assistants = new Assistants(); 
 		Color color = null;
 		try {
+			@SuppressWarnings("unused")
 			ChangeElectCounsellorWithAssistant change = new ChangeElectCounsellorWithAssistant(assistants, color, region); 
 		} catch(NullPointerException e) {
 			thrown = true; 

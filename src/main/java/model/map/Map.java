@@ -40,6 +40,7 @@ public class Map {
 	
 	/**
 	 * constructor for Map
+	 * @throws NullPointerException if parser or garbage is null
 	 */
 	public Map(Parser parser, GarbageState garbage) {
 		if(parser==null) {

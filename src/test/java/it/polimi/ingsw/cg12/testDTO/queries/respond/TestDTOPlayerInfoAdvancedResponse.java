@@ -26,6 +26,7 @@ public class TestDTOPlayerInfoAdvancedResponse {
 		boolean thrown = false; 
 		DTOPlayerAdvanced player = null;
 		try {
+			@SuppressWarnings("unused")
 			DTOPlayerInfoAdvancedResponse response = 
 					new DTOPlayerInfoAdvancedResponse(player); 
 		} catch(NullPointerException e) {

@@ -28,6 +28,7 @@ public class TestAncestry {
 		GarbageState garbage = new GarbageState(parser); 
 		Map map = new Map(parser, garbage); 
 		try {
+			@SuppressWarnings("unused")
 			Ancestry ancestry = new Ancestry(color, parser2, map);
 		} catch(NullPointerException e) {
 			thrown = true; 
@@ -39,9 +40,9 @@ public class TestAncestry {
 		boolean thrown = false; 
 		Parser parser = new Parser(); 
 		Color color = new Color("gold"); 
-		GarbageState garbage = new GarbageState(parser); 
 		Map map = null; 
 		try {
+			@SuppressWarnings("unused")
 			Ancestry ancestry = new Ancestry(color, parser, map);
 		} catch(NullPointerException e) {
 			thrown = true; 
@@ -64,6 +65,7 @@ public class TestAncestry {
 		players.add(player4); 
 		GameState gameState = new GameState(parser, players); 
 		try {
+			@SuppressWarnings("unused")
 			Ancestry ancestry = new Ancestry(color, parser, gameState.getMap()); 
 		} catch(NullPointerException e) {
 			thrown = true; 

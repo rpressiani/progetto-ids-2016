@@ -15,7 +15,14 @@ public class GetFreeToken implements InputBonusAction {
 
 	private Set<City> citiesToChoose;
 	
-	public GetFreeToken(Set<City> citiesToChoose){
+	/**
+	 * @param citiesToChoose
+	 * @throws NullPointerException if citiesToChoose is null
+	 */
+	public GetFreeToken(Set<City> citiesToChoose) {
+		if(citiesToChoose==null) {
+			throw new NullPointerException("citiesToChoose cannot be null"); 
+		}
 		this.citiesToChoose=citiesToChoose;
 	}
 	
