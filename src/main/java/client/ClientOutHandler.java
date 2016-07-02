@@ -322,7 +322,7 @@ public abstract class ClientOutHandler implements Runnable {
 						String sellLine = stdIn.nextLine();
 						ArrayList<String> sellList = new ArrayList<String>(Arrays.asList(sellLine.split(" ")));
 						
-						if (sellList.size() <= 4) {
+						if (sellList.size() <= 2) {
 							System.out.println(cmdNotFound.toString());
 							break;
 						}
@@ -365,7 +365,7 @@ public abstract class ClientOutHandler implements Runnable {
 						String buyLine = stdIn.nextLine();
 						ArrayList<String> buyList = new ArrayList<String>(Arrays.asList(buyLine.split(" ")));
 						
-						if (buyList.size() <= 4) {
+						if (buyList.size() <= 2) {
 							System.out.println(cmdNotFound.toString());
 							break;
 						}
