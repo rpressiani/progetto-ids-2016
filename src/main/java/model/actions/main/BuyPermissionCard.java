@@ -156,7 +156,7 @@ public class BuyPermissionCard implements MainAction {
 			return false;
 		}
 		
-		if(index!=0 || index!=1){
+		if(index!=0 && index!=1){
 			gameState.notifyObserver(player, new ChangeMsg("You have to choose 0 or 1 as the index of permission card to buy"));
 			return false;
 		}
