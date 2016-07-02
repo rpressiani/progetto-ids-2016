@@ -13,6 +13,7 @@ public class TestDTOColor {
 		boolean thrown = false; 
 		String string = null; 
 		try {
+			@SuppressWarnings("unused")
 			DTOColor color = new DTOColor(string); 
 		} catch(NullPointerException e) {
 			thrown = true; 

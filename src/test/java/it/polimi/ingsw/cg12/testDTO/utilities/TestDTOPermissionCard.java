@@ -13,6 +13,7 @@ public class TestDTOPermissionCard {
 		boolean thrown = false; 
 		int id = -1; 
 		try {
+			@SuppressWarnings("unused")
 			DTOPermissionCardSelection card = new DTOPermissionCardSelection(id); 
 		} catch(IllegalArgumentException e) {
 			thrown = true; 

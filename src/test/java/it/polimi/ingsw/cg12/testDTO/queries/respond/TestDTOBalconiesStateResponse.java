@@ -17,6 +17,7 @@ public class TestDTOBalconiesStateResponse {
 		boolean thrown = false; 
 		Map<String, DTOBalcony> balconies = null; 
 		try {
+			@SuppressWarnings("unused")
 			DTOBalconiesStateResponse response = new DTOBalconiesStateResponse(balconies); 
 		} catch(NullPointerException e) {
 			thrown = true; 

@@ -20,6 +20,7 @@ public class TestVisitorQueries {
 		GameState gameState = null;
 		Player player = new Player();
 		try {
+			@SuppressWarnings("unused")
 			VisitorQueries query = new VisitorQueries(gameState, player); 
 		} catch(NullPointerException e) {
 			thrown = true; 
@@ -36,6 +37,7 @@ public class TestVisitorQueries {
 		players.add(player); 
 		GameState gameState = new GameState(parser, players); 
 		try {
+			@SuppressWarnings("unused")
 			VisitorQueries query = new VisitorQueries(gameState, player2); 
 		} catch(NullPointerException e) {
 			thrown = true; 

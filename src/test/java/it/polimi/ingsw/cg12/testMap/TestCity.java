@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Set;
 
 import org.junit.Test;
 
@@ -38,6 +39,7 @@ public class TestCity {
 		Region region = gameState.getMap().getRegions().get("seaside"); 
 		Ancestry ancestry = gameState.getMap().getAncestries().get("gold"); 
 		try {
+			@SuppressWarnings("unused")
 			City city = new City("NA", "Napoli", bonuses, region, ancestry); 
 		} catch(NullPointerException e) {
 			thrown = true; 
@@ -78,6 +80,29 @@ public class TestCity {
 		BuildEmporiumWithCard action = new BuildEmporiumWithCard(card, city);
 		action.doAction(player2, gameState);
 		assertTrue(city.hasBuiltHere(player2)); 
+	}
+	@Test
+	public void testLinkedCitiesWorks() {
+		Parser parser = new Parser(); 
+		Player player = new Player(); 
+		player.setNickname("Ale");
+		player.setColor(new Color("red"));
+		ArrayList<Player> players = new ArrayList<Player>();
+		players.add(player); 
+		GameState gameState = new GameState(parser, players);
+		int id = 0; 
+		for(Player p : players) {
+			p.initPlayer(gameState.getPoliticalDeck(), id, parser);
+			id++; 
+		}
+		City a = gameState.getMap().getAllCitiesHashMap().get("A"); 
+		City b = gameState.getMap().getAllCitiesHashMap().get("B"); 
+		City c = gameState.getMap().getAllCitiesHashMap().get("C");
+		player.getBuiltCities().add(a); 
+		player.getBuiltCities().add(b); 
+		player.getBuiltCities().add(c); 
+		Set<City> returnCities = a.linkedCities(gameState.getMap(), player); 
+		assertTrue(returnCities.contains(a) && returnCities.contains(b) && returnCities.contains(c)); 
 	}
 	@Test
 	public void testIfGetAncestryWorks() {

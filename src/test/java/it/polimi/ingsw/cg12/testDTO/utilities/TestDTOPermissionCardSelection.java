@@ -12,6 +12,7 @@ public class TestDTOPermissionCardSelection {
 	public void testNegativeIdInConstructorThrowsException() {
 		boolean thrown = false; 
 		try {
+			@SuppressWarnings("unused")
 			DTOPermissionCardSelection selection = 
 					new DTOPermissionCardSelection(-2); 
 		} catch(IllegalArgumentException e) {
