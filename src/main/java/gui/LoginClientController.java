@@ -95,5 +95,7 @@ public class LoginClientController {
     		
     	});
     }
-    
+    public String getNickname() {
+    	return nicknameArea.getText(); 
+    }
 }

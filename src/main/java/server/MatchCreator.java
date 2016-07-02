@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.rmi.AlreadyBoundException;
 import java.rmi.NotBoundException;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Map;
@@ -31,12 +30,13 @@ public class MatchCreator implements Runnable {
 	 * 
 	 * @param tmpViewSocket
 	 */
-	public MatchCreator(Map<Player, ServerSocketView> tmpViewSocket, Map<Player, RMIView> tmpViewRMI, Map<Player, Match> playerMatch) {
+	public MatchCreator(Map<Player, ServerSocketView> tmpViewSocket, Map<Player, RMIView> tmpViewRMI,
+			Map<Player, Match> playerMatch, Set<Match> runningMatches) {
 		if(tmpViewSocket==null){
 			throw new NullPointerException("tmpViewSocket can't be null");
 		}
 		
-		this.runningMatches = new HashSet<Match>();
+		this.runningMatches = runningMatches;
 		this.tmpViewSocket = tmpViewSocket;
 		this.tmpViewRMI = tmpViewRMI;
 		this.playerMatch = playerMatch;
@@ -83,8 +83,9 @@ public class MatchCreator implements Runnable {
 			try {
 				Thread.sleep(this.pauseTime);
 			} catch (InterruptedException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
+				
+				System.out.println("Match creator closed!");
+				break;
 			}
 			
 			try {
@@ -140,8 +141,8 @@ public class MatchCreator implements Runnable {
 				}
 				
 			} catch (IOException | InterruptedException | AlreadyBoundException | NotBoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				System.out.println("Match creator closed!");
+				break;
 			}
 			
 		}

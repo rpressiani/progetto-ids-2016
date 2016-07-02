@@ -104,6 +104,7 @@ public class TestPlayer {
 		player.setColor(new Color("green"));
 		ArrayList<Player> players = new ArrayList<Player>();
 		players.add(player); 
+		@SuppressWarnings("unused")
 		GameState gameState = new GameState(parser, players); 
 		try {
 			PoliticalRealDeck deck = null;  
@@ -140,7 +141,6 @@ public class TestPlayer {
 	}
 	@Test
 	public void testInitPlayerWorks() {
-		boolean thrown = false; 
 		Parser parser = new Parser(); 
 		Player player = new Player(); 
 		player.setNickname("peter");

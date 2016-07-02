@@ -17,11 +17,23 @@ public class NullAction implements GeneralAction {
 	 * pass the turn
 	 */
 	public void doAction(Player player, GameState gameState) {
+		if(player==null) {
+			throw new NullPointerException("player cannot be null");
+		}
+		if(gameState==null) {
+			throw new NullPointerException("gameState cannot be null"); 
+		}
 		
 	}
 
 	@Override
 	public boolean checkCondition(Player player, GameState gameState) {
+		if(player==null) {
+			throw new NullPointerException("player cannot be null");
+		}
+		if(gameState==null) {
+			throw new NullPointerException("gameState cannot be null"); 
+		}
 		return true;
 	}
 

@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ContextMenu?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+
+<AnchorPane prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.72" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.MapOverviewController">
+   <children>
+      <SplitPane dividerPositions="0.678391959798995" layoutX="113.0" layoutY="14.0" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <SplitPane dividerPositions="0.7030201342281879" layoutX="291.0" layoutY="53.0" prefHeight="302.0" prefWidth="598.0" AnchorPane.bottomAnchor="-36.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <items>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="126.0" prefWidth="178.0">
+                           <children>
+                              <HBox layoutY="-1.0" prefHeight="334.0" prefWidth="485.0">
+                                 <children>
+                                    <AnchorPane maxHeight="1.7976931348623157E308" prefHeight="246.0" prefWidth="150.0">
+                                       <children>
+                                          <ImageView fitHeight="313.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@photo_2016-06-22_16-50-28.jpg" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                    </AnchorPane>
+                                    <AnchorPane prefHeight="357.0" prefWidth="138.0">
+                                       <children>
+                                          <ImageView fitHeight="295.0" fitWidth="138.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@photo_2016-06-22_16-50-31.jpg" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                    </AnchorPane>
+                                    <AnchorPane prefHeight="357.0" prefWidth="204.0">
+                                       <children>
+                                          <ImageView fitHeight="297.0" fitWidth="171.0" layoutX="26.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@photo_2016-06-22_16-50-36.jpg" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                    </AnchorPane>
+                                 </children>
+                              </HBox>
+                           </children></AnchorPane>
+                        <SplitPane>
+                           <items>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="250.0" prefWidth="203.0">
+                                 <children>
+                                    <Label layoutX="7.0" layoutY="6.0" prefHeight="32.0" prefWidth="164.0" text="Player Menu" />
+                                    <MenuButton layoutX="7.0" layoutY="46.0" mnemonicParsing="false" text="Main Actions">
+                                      <items>
+                                        <MenuItem mnemonicParsing="false" onAction="#handleBuildEmporium" text="Build Emporium With Card" />
+                                          <MenuItem mnemonicParsing="false" text="Elect Counsellor" />
+                                          <MenuItem mnemonicParsing="false" text="Buy Permission Card" />
+                                        <MenuItem mnemonicParsing="false" onAction="#handleBuildWithKing" text="Build Emporium With King" />
+                                      </items>
+                                       <contextMenu>
+                                          <ContextMenu>
+                                            <items>
+                                              <MenuItem mnemonicParsing="false" text="Unspecified Action" />
+                                            </items>
+                                          </ContextMenu>
+                                       </contextMenu>
+                                    </MenuButton>
+                                    <MenuButton layoutX="9.0" layoutY="106.0" mnemonicParsing="false" text="Quick Actions">
+                                      <items>
+                                        <MenuItem mnemonicParsing="false" text="Addictional Action" />
+                                          <MenuItem mnemonicParsing="false" text="Substitute Permission Card" />
+                                          <MenuItem mnemonicParsing="false" text="Elect Counsellor With Assistant" />
+                                          <MenuItem mnemonicParsing="false" text="NullAction" />
+                                        <MenuItem mnemonicParsing="false" text="Hire Assistant " />
+                                      </items>
+                                       <contextMenu>
+                                          <ContextMenu>
+                                            <items>
+                                              <MenuItem mnemonicParsing="false" text="Unspecified Action" />
+                                            </items>
+                                          </ContextMenu>
+                                       </contextMenu>
+                                    </MenuButton>
+                                 </children>
+                              </AnchorPane>
+                           </items>
+                        </SplitPane>
+                    </items>
+                  </SplitPane>
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <FlowPane layoutX="418.0" prefHeight="124.0" prefWidth="180.0" />
+                  <MenuButton layoutX="7.0" layoutY="1.0" mnemonicParsing="false" text="Check Councils">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Council 1 ">
+                           <graphic>
+                              <HBox prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@purple.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@pink.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@purple.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@red.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </HBox>
+                           </graphic>
+                        </MenuItem>
+                      <MenuItem mnemonicParsing="false" text="Council 2">
+                           <graphic>
+                              <HBox prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@white.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@pink.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@red.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@yellow.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </HBox>
+                           </graphic>
+                        </MenuItem>
+                      <MenuItem mnemonicParsing="false" text="Council 3">
+                           <graphic>
+                              <HBox prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                                 </children>
+                              </HBox>
+                           </graphic>
+                        </MenuItem>
+                        <MenuItem mnemonicParsing="false" text="Council 4">
+                           <graphic>
+                              <HBox prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                                 </children>
+                              </HBox>
+                           </graphic>
+                        </MenuItem>
+                    </items>
+                  </MenuButton>
+                  <MenuButton layoutX="7.0" layoutY="27.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="135.0" text="Free Counsellors">
+                    <items>
+                      <MenuItem mnemonicParsing="false" text="Action 1" />
+                      <MenuItem mnemonicParsing="false" text="Action 2" />
+                    </items>
+                  </MenuButton>
+               </children></AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>

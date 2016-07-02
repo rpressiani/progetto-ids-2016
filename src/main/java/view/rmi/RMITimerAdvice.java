@@ -5,7 +5,6 @@ import java.util.TimerTask;
 
 import client.rmi.ClientViewRemote;
 import model.player.Player;
-import server.RMIServer;
 
 public class RMITimerAdvice extends TimerTask {
 	

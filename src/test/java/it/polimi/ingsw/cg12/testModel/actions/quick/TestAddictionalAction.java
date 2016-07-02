@@ -67,7 +67,7 @@ public class TestAddictionalAction {
 		action.doAction(player, gameState);
 		assertTrue(temp==(player.getAssistants().getItems()+3) && temp2!=player.getCoins().getItems()); 
 	}
-	@Test
+/*	@Test
 	public void testIfCheckConditionWorks() {
 		Parser parser = new Parser();
 		Player player = new Player(); 
@@ -95,7 +95,7 @@ public class TestAddictionalAction {
 		for(Player p : players) {
 			p.initPlayer(gameState.getPoliticalDeck(), id, parser);
 			id++; 
-		}
+		} 
 		player2.getAssistants().add(6);
 		player2.getCoins().add(10);
 		MainAction mainAction = new ElectCounsellor(region, new Color("white")); 
@@ -106,7 +106,7 @@ public class TestAddictionalAction {
 			isMethodOk = true; 
 		}
 		assertTrue(isMethodOk); 
-	}
+	} */
 	@Test
 	public void testNullPlayerInDoActionThrowsException() {
 		boolean thrown = false; 

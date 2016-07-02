@@ -18,21 +18,6 @@ import utilities.Color;
 public class TestElectCounsellorWithAssistant {
 
 	@Test
-	public void testNullRegionThrowsException() {
-		boolean thrown = false; 
-		Region region = null; 
-		Parser parser = new Parser();
-		GarbageState garbageState = new GarbageState(parser); 
-		ElectCounsellorWithAssistant action; 
-		Color color = new Color("red"); 
-		try {
-			action = new ElectCounsellorWithAssistant(region, color); 
-		} catch(NullPointerException e) {
-			thrown = true; 
-		}
-		assertTrue(thrown); 
-	}
-	@Test
 	public void testNullColorThrowsException() {
 		boolean thrown = false; 
 		Parser parser = new Parser();
@@ -90,7 +75,7 @@ public class TestElectCounsellorWithAssistant {
 		assertTrue(temp!=player3.getAssistants().getItems());  
 	}*/
 
-	@Test
+	/*@Test
 	public void testIfCheckConditionWorks() {
 		Parser parser = new Parser();
 		Player player = new Player();
@@ -126,7 +111,7 @@ public class TestElectCounsellorWithAssistant {
 			isMethodOk = true; 
 		}
 		assertTrue(isMethodOk); 
-	}
+	}*/
 	@Test 
 	public void testNullPlayerInDoActionThrowsException() {
 		boolean thrown = false; 

@@ -8,15 +8,19 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import model.GameState;
 
 public class MainApp extends Application {
 
 	private Stage primaryStage; 
 	private BorderPane rootLayout; 
+	//how 
+	private GameState gameState; 
 	
 	public MainApp() {
 		
 	}
+	
 	@Override
 	public void start(Stage primaryStage) {
 		try {
@@ -32,7 +36,7 @@ public class MainApp extends Application {
 		}
 	}
 	public static void main(String[] args) {
-		launch(args);
+		launch(args); 
 	}
 	private void initRootLayout() {
 		try {
@@ -80,16 +84,22 @@ public class MainApp extends Application {
 			e.printStackTrace();
 		}
 	}
-	/*public void showMapOverview() {
+	public void showGameScene() {
 		try {
 			FXMLLoader loader = new FXMLLoader(); 
-			loader.setLocation(MainApp.class.getResource("/MapOverview.fxml"));
+			loader.setLocation(MainApp.class.getResource("/GameScene.fxml"));
+			//which gameState?
+			loader.setControllerFactory(t -> new MainGameController(gameState));			
 			AnchorPane mapOverview = (AnchorPane) loader.load();
-			//rootLayout.setCenter(mapOverview);
+			rootLayout.setCenter(mapOverview);
+			
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} */
+		} 
+	}
+	public GameState getGameState() {
+		return gameState; 
+	}
 }
-

@@ -4,14 +4,22 @@ import java.util.ArrayList;
 
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.SplitPane;
-import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import model.GameState;
+import model.actions.main.BuildEmporiumWithCard;
+import model.actions.main.ElectCounsellor;
+import model.bonusItem.BonusItem;
+import model.bonusable.PermissionCard;
+import model.map.City;
+import model.map.Region;
 import model.player.Player;
+import utilities.Color;
 
 public class MapOverviewController {
 	
@@ -39,19 +47,40 @@ public class MapOverviewController {
 	private MenuItem hire; 
 	@FXML
 	private MenuItem nullAction; 
-	
+	//if we want to load regions from configuration file
+	@FXML
+	private ImageView region1; 
+	@FXML
+	private ImageView region2; 
+	@FXML
+	private ImageView region3; 
+	@FXML
+	private ArrayList<Button> cities; 
+
+	private MainApp mainApp; 
 	private boolean doneMain = false; 
 	private boolean doneQuick = false; 
 	private boolean isTurnOver = false; 
 	//private ArrayList<MenuItem> mainActionsList; 
 	
+	public void setMainApp(MainApp mainApp) {
+		this.mainApp = mainApp; 
+	}
+	
 	@FXML
 	private void initialize() {
-		buildAction.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+		//initialize cities?
+		buildAction.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {		
 			@Override
 			public void handle(MouseEvent event) {
-				// TODO Auto-generated method stub
-				
+				City city = mainApp.getGameState().getMap().getAllCitiesHashMap().get("A"); 
+				PermissionCard card = 
+						mainApp.getGameState().getMap().getRegions().get("seaside").getPermissionDeck().getDeck().get(0);
+				//TODO: choose clicked city
+				BuildEmporiumWithCard action = new BuildEmporiumWithCard(card, city); 
+				action.doAction(mainApp.getGameState().getCurrentPlayer(), mainApp.getGameState());
+				doneMain = true; 
+				//TODO: implement end of turn
 			}
 			
 		});
@@ -59,7 +88,10 @@ public class MapOverviewController {
 
 			@Override
 			public void handle(MouseEvent event) {
-				// TODO Auto-generated method stub
+				if(!mainApp.getGameState().getCurrentPlayer().isEnabled()) {
+					System.out.println("can't do this action now");
+				}
+				
 				
 			}
 			
@@ -77,16 +109,87 @@ public class MapOverviewController {
 
 			@Override
 			public void handle(MouseEvent event) {
+				if(!mainApp.getGameState().getCurrentPlayer().isEnabled()) {
+					System.out.println("can't do this action now");
+				}
+				Region region = mainApp.getGameState().getMap().getRegions().get("seaside");
+				Color color = new Color("red"); 
+				ElectCounsellor action = new ElectCounsellor(region, color);
+				action.doAction(mainApp.getGameState().getCurrentPlayer(), mainApp.getGameState());
+				doneMain = true; 
+				
+			}
+			
+		});
+		addictional.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>(){
+
+			@Override
+			public void handle(MouseEvent event) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
+		substitute.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>(){
+
+			@Override
+			public void handle(MouseEvent event) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
+		elect2.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>(){
+
+			@Override
+			public void handle(MouseEvent event) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
+		hire.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>(){
+
+			@Override
+			public void handle(MouseEvent event) {
 				// TODO Auto-generated method stub
 				
 			}
 			
 		});
 	}
-	public void handleMainAction() {
-		
+	@FXML
+	public void handleBuildEmporium(MouseEvent mouseEvent) {
+		if(!mainApp.getGameState().getCurrentPlayer().isEnabled()) {
+			System.out.println("can't do it now");
+		}
 	}
-	public void handleQuickAction() {
+	@FXML
+	public void handleElectCounsellor(MouseEvent mouseEvent) {
+		if(!mainApp.getGameState().getCurrentPlayer().isEnabled()) {
+			System.out.println("can't do it now");
+		}
+	}
+	@FXML
+	public void handleBuildWithKing() {
+		if(!mainApp.getGameState().getCurrentPlayer().isEnabled()) {
+			System.out.println("can't do it now");
+		}
+	}
+	@FXML
+	public void handleSubstitute() {
+		if(!mainApp.getGameState().getCurrentPlayer().isEnabled()) {
+			System.out.println("can't do it now");
+		}
+	}
+	@FXML
+	public void handleElectWithAssistant() {
+		if(!mainApp.getGameState().getCurrentPlayer().isEnabled()) {
+			System.out.println("can't do it now");
+		}
+	}
+	@FXML
+	public void handleNullAction() {
 		
 	}
 	public void endTurn() {
@@ -99,5 +202,15 @@ public class MapOverviewController {
 	}
 	public boolean getDoneQuick() {
 		return doneQuick; 
+	}
+	public void waitForActionClick(Player player, MenuItem actionToDo) {
+		final EventHandler<MouseEvent> mouseEventHandler =
+		        new EventHandler<MouseEvent>() {
+		            public void handle(final MouseEvent mouseEvent) {
+		                if (mouseEvent.getEventType() == MouseEvent.MOUSE_CLICKED) {
+		                    mouseEvent.consume();
+		                }
+		            }
+		        };
 	}
 }

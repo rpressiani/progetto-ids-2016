@@ -33,17 +33,6 @@ public class TestPoliticalCard {
 		assertFalse(card.getNumCards()==20); 
 	}
 	@Test
-	public void testCardsWithNegativeIndexThrowException() {
-		boolean thrown = false; 
-		PoliticalCard card; 
-		try {
-			card = new PoliticalCard("Red", -18); 
-		} catch (IllegalArgumentException e) {
-			thrown = true; 
-		}
-		assertTrue(thrown); 
-	}
-	@Test
 	public void testAddCardsWithNegativeIndexThrowException() {
 		boolean thrown = false; 
 		PoliticalCard card = new PoliticalCard("Green", 25); 
@@ -68,6 +57,7 @@ public class TestPoliticalCard {
 	@Test
 	public void testConstructorWithNullStringThrowsException() {
 		boolean thrown = false; 
+		@SuppressWarnings("unused")
 		PoliticalCard card; 
 		try {
 			card = new PoliticalCard(null, 23); 
@@ -80,16 +70,6 @@ public class TestPoliticalCard {
 	public void TestGetStringColor() {
 		PoliticalCard card = new PoliticalCard("Red", 28); 
 		assertTrue(card.getColor()=="Red"); 
-	}
-	@Test
-	public void testNegativeNumCardsThrowsException() {
-		boolean thrown = false; 
-		try {
-			PoliticalCard card = new PoliticalCard("Blue", -10); 
-		} catch(IllegalArgumentException e) {
-			thrown = true; 
-		}
-		assertTrue(thrown); 
 	}
 
 }
