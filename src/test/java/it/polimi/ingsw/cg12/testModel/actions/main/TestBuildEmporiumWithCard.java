@@ -11,6 +11,7 @@ import model.GameState;
 import model.actions.main.BuildEmporiumWithCard;
 import model.bonusItem.BonusItem;
 import model.bonusable.PermissionCard;
+import model.map.Ancestry;
 import model.map.City;
 import model.player.Player;
 import parser.Parser;
