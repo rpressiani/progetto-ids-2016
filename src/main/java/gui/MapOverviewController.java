@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
@@ -56,6 +58,11 @@ public class MapOverviewController {
 	private ImageView region3; 
 	@FXML
 	private ArrayList<Button> cities; 
+	
+	private ArrayList<ImageView> council1 = new ArrayList<ImageView>(); 
+	private ArrayList<ImageView> council2 = new ArrayList<ImageView>(); 
+	private ArrayList<ImageView> council3 = new ArrayList<ImageView>(); 
+	private ArrayList<ImageView> kingCouncil = new ArrayList<ImageView>(); 
 
 	private MainApp mainApp; 
 	private boolean doneMain = false; 
@@ -161,31 +168,46 @@ public class MapOverviewController {
 	@FXML
 	public void handleBuildEmporium(MouseEvent mouseEvent) {
 		if(!mainApp.getGameState().getCurrentPlayer().isEnabled()) {
-			System.out.println("can't do it now");
+			Alert alert = new Alert(AlertType.INFORMATION); 
+			alert.setTitle("Error");
+			alert.setHeaderText("You'd better change your mind");
+			alert.setContentText("Can't do this action now");
 		}
 	}
 	@FXML
 	public void handleElectCounsellor(MouseEvent mouseEvent) {
 		if(!mainApp.getGameState().getCurrentPlayer().isEnabled()) {
-			System.out.println("can't do it now");
+			Alert alert = new Alert(AlertType.INFORMATION); 
+			alert.setTitle("Error");
+			alert.setHeaderText("You'd better change your mind");
+			alert.setContentText("Can't do this action now");
 		}
 	}
 	@FXML
 	public void handleBuildWithKing() {
 		if(!mainApp.getGameState().getCurrentPlayer().isEnabled()) {
-			System.out.println("can't do it now");
+			Alert alert = new Alert(AlertType.INFORMATION); 
+			alert.setTitle("Error");
+			alert.setHeaderText("You'd better change your mind");
+			alert.setContentText("Can't do this action now");
 		}
 	}
 	@FXML
 	public void handleSubstitute() {
 		if(!mainApp.getGameState().getCurrentPlayer().isEnabled()) {
-			System.out.println("can't do it now");
+			Alert alert = new Alert(AlertType.INFORMATION); 
+			alert.setTitle("Error");
+			alert.setHeaderText("You'd better change your mind");
+			alert.setContentText("Can't do this action now");
 		}
 	}
 	@FXML
 	public void handleElectWithAssistant() {
 		if(!mainApp.getGameState().getCurrentPlayer().isEnabled()) {
-			System.out.println("can't do it now");
+			Alert alert = new Alert(AlertType.INFORMATION); 
+			alert.setTitle("Error");
+			alert.setHeaderText("You'd better change your mind");
+			alert.setContentText("Can't do this action now");
 		}
 	}
 	@FXML

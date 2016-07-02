@@ -15,6 +15,7 @@ public class TestContract {
 		boolean thrown = false; 
 		Player player = null; 
 		try {
+			@SuppressWarnings("unused")
 			Contract contract = new Contract(player); 
 		} catch(NullPointerException e) {
 			thrown = true; 
