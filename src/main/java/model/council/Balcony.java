@@ -23,6 +23,9 @@ public class Balcony {
 	private final Integer nColors;
 	
 	/**
+	 * Balcony constructor
+	 * creates a new balcony
+	 * 
 	 * @param garbage
 	 * @param parser
 	 * @throws NullPointerException if garbage or parser are null
@@ -50,6 +53,8 @@ public class Balcony {
 	
 
 	/**
+	 * Insert a new counsellor in the balcony
+	 * 
 	 * @param color of the garbage
 	 * @param garbage counsellors not in the game 
 	 * @throws NullPointerException if color is null
@@ -71,6 +76,8 @@ public class Balcony {
 	}
 	
 	/**
+	 * Return the color of a random free counsellor
+	 * 
 	 * @param garbage
 	 * @return Color of the counsellor
 	 * @throws NullPointerException if garbage is null
@@ -81,29 +88,15 @@ public class Balcony {
 		}
 		Random rn = new Random();
 		int selectedIndex = rn.nextInt(this.nColors);
-//		for (int i = 0; i < nColors; i++) {
-//			int groupCounter = garbage.getState().get(selectedIndex).getCounter();
-////			System.out.println(groupCounter);
-//			if (groupCounter > 0) {
-//				break;
-//			}
-//			else selectedIndex = (selectedIndex++) % nColors;
-//		
-//		
-//		}
 		
 		for (int i = 0; i < nColors; i++) {
 			int groupCounter = garbage.getState().get(selectedIndex).getCounter().intValue();
-			System.out.println("counter: "+ groupCounter);
 			if (groupCounter>0) {
-				System.out.println("break");
 				break;
 			} else {
-				System.out.println("index++");
 				selectedIndex++;
 			}
 			if (selectedIndex >= nColors.intValue()) {
-				System.out.println("index over");
 				selectedIndex = 0;
 			}
 		}
@@ -111,6 +104,9 @@ public class Balcony {
 		return garbage.getState().get(selectedIndex).getColor();
 	}
 	
+	/**
+	 * Initialize the balcony
+	 */
 	private void initBalconyState(){
 		Iterator<Counsellor> itr = balcony.iterator();
 		while(itr.hasNext()){
@@ -150,7 +146,7 @@ public class Balcony {
 		return nColors;
 	}
 
-	/* (non-Javadoc)
+	/**
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
