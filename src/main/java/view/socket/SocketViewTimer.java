@@ -15,6 +15,14 @@ public class SocketViewTimer implements Runnable {
 	private boolean active = false;
 	
 	
+	/**
+	 * Constructor of SocketViewTimer
+	 * Creates timers for players connected via socket
+	 * 
+	 * @param client	player's ServerSocketView
+	 * @param server	server on which the match is running, in order to disconnect the player if it is necessary
+	 * @param player	one of the player in the match
+	 */
 	public SocketViewTimer(ServerSocketView client, Server server, Player player) {
 		this.client = client;
 		this.timer1 = new Timer();
@@ -23,11 +31,17 @@ public class SocketViewTimer implements Runnable {
 		this.player = player;
 	}
 
+	/**
+	 * @see java.lang.Runnable#run()
+	 */
 	@Override
 	public void run() {
 
 	}
 	
+	/**
+	 * Stops timers and creates two new ones.
+	 */
 	public void reset(){
 		this.timer1.cancel();
 		this.timer2.cancel();
@@ -38,6 +52,9 @@ public class SocketViewTimer implements Runnable {
 		System.out.println("Timer reset");
 	}
 	
+	/**
+	 * Stops timers and set active false
+	 */
 	public void stop(){
 		this.timer1.cancel();
 		this.timer2.cancel();
@@ -45,6 +62,9 @@ public class SocketViewTimer implements Runnable {
 		System.out.println("Timer stop");
 	}
 	
+	/**
+	 * Creates two new timers and set active true
+	 */
 	public void start(){
 		this.timer1 = new Timer();
 		this.timer2 = new Timer();
@@ -55,7 +75,7 @@ public class SocketViewTimer implements Runnable {
 	}
 
 	/**
-	 * @return the active
+	 * @return if timers are active or not
 	 */
 	public boolean isActive() {
 		return active;

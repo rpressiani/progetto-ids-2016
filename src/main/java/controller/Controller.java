@@ -5,7 +5,7 @@ import dto.actions.DTOAction;
 import model.GameState;
 import model.player.Player;
 import observer.Observer;
-//import player.Player;
+
 
 public class Controller implements Observer<ClientMessage> {
 	private final GameState gameState;
@@ -24,6 +24,9 @@ public class Controller implements Observer<ClientMessage> {
 		this.visitor = new VisitorActions(gameState);
 	}
 	
+	/**
+	 * @see observer.Observer#update(java.lang.Object)
+	 */
 	@Override
 	public void update(ClientMessage msg){
 		Observer.super.update(msg);

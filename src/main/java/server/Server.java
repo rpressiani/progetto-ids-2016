@@ -67,6 +67,12 @@ public class Server {
 		}
 	}
 	
+	/**
+	 * Starts RMI server and allows RMI connections
+	 * 
+	 * @throws RemoteException
+	 * @throws AlreadyBoundException
+	 */
 	private void startRMI() throws RemoteException, AlreadyBoundException{
 		Registry registry = LocateRegistry.createRegistry(RMI_PORT);
 		System.out.println("Constructing the RMI registry");
@@ -77,6 +83,11 @@ public class Server {
 		registry.bind(NAME, serverView);
 	}
 	
+	/**
+	 * Close and disconnect the server. MatchExecutor and serverSocket are now closed.
+	 * 
+	 * @throws IOException
+	 */
 	protected void closeServer() throws IOException{
 		this.setRunning(false);
 		this.matchExecutor.shutdownNow();
@@ -84,6 +95,11 @@ public class Server {
 		System.out.println("\n !!! SERVER DISCONNECTED !!!\n");
 	}
 	
+	/**
+	 * Disconnect a player connected via RMI
+	 * 
+	 * @param player	player that has to be disconnected
+	 */
 	public void disconnectRMI(Player player){
 		if (tmpViewRMI.containsKey(player)) {
 			tmpViewRMI.remove(player);
@@ -121,6 +137,11 @@ public class Server {
 	}
 	
 
+	/**
+	 * Disconnect a player connected via socket
+	 * 
+	 * @param player	player that has to be disconnected
+	 */
 	public void disconnectSocket(Player player){
 		if (tmpViewSocket.containsKey(player)) {
 			tmpViewSocket.remove(player);
@@ -177,6 +198,7 @@ public class Server {
 	}
 
 	/**
+	 * Starts the server and the matchCreator
 	 * 
 	 * @param args
 	 * @throws IOException
