@@ -47,6 +47,7 @@ public class Match {
 		
 		this.parser = new Parser();
 		this.gameState = new GameState(this.parser, players);
+		this.gameState.checkNotOnePlayer();
 		this.controller = new Controller(this.gameState);
 		
 		this.serialID = serialIDGenerator;
