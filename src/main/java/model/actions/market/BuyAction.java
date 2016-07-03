@@ -4,6 +4,7 @@ import model.GameState;
 import model.actions.GeneralAction;
 import model.bonusable.PermissionCard;
 import model.changes.ChangeMsg;
+import model.changes.ChangePlayerStatus;
 import model.market.Contract;
 import model.market.Marketable;
 import model.player.Assistants;
@@ -29,6 +30,7 @@ public class BuyAction implements GeneralAction {
 		gameState.getMarket().acceptContract(contract, player);
 		gameState.notifyObserver(contract.getSeller(), new ChangeMsg(player.getNickname()+" accepted your contract"));
 		gameState.notifyAllExceptPlayer(contract.getSeller(), new ChangeMsg(player.getNickname()+" accepted a contract from "+contract.getSeller().getNickname()));
+		gameState.notifyObserver(player, new ChangePlayerStatus(player));
 	}
 
 	@Override
