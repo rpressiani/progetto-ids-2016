@@ -169,9 +169,8 @@ public class VisitorChanges {
 		
 		DTOAssistants assistants=new DTOAssistants(change.getAssistants().getItems());
 		DTOColor color=new DTOColor(change.getColor().getStringID());
-		DTORegion region=new DTORegion(change.getRegion().getName());
 		
-		return new DTOChangeElectCounsellorWithAssistant(assistants, color, region);
+		return new DTOChangeElectCounsellorWithAssistant(assistants, color);
 	}
 	
 	/**
@@ -187,9 +186,8 @@ public class VisitorChanges {
 		
 		DTOCoins coins=new DTOCoins(change.getCoins().getItems());
 		DTOColor color=new DTOColor(change.getColor().getStringID());
-		DTORegion region=new DTORegion(change.getRegion().getName());
 		
-		return new DTOChangeElectCounsellor(coins, color, region);
+		return new DTOChangeElectCounsellor(coins, color);
 	}
 	
 	/**

@@ -49,7 +49,7 @@ public class TestElectCounsellor {
 		GameState gameState = new GameState(parser, players); 
 		GarbageState garbageState = new GarbageState(parser); 
 		Map map = new Map(parser, garbageState); 
-		ElectCounsellor action = new ElectCounsellor(map.getRegions().get("seaside"), new Color("white"));
+		ElectCounsellor action = new ElectCounsellor(map.getRegions().get("seaside").getBalcony(), new Color("white"));
 		action.doAction(player, gameState);
 		assertTrue(temp==(player.getCoins().getItems()-4)); 
 	}

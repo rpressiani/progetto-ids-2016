@@ -60,7 +60,7 @@ public class TestAddictionalAction {
 			p.initPlayer(gameState.getPoliticalDeck(), id, parser);
 			id++; 
 		}
-		MainAction mainAction = new ElectCounsellor(region, new Color("white")); 
+		MainAction mainAction = new ElectCounsellor(region.getBalcony(), new Color("white")); 
 		AddictionalAction action = new AddictionalAction(mainAction); 
 		player.getAssistants().add(3);
 		int temp = player.getAssistants().getItems(); 
@@ -138,7 +138,7 @@ public class TestAddictionalAction {
 			p.initPlayer(gameState.getPoliticalDeck(), id, parser);
 			id++; 
 		}
-		MainAction mainAction = new ElectCounsellor(region, new Color("white")); 
+		MainAction mainAction = new ElectCounsellor(region.getBalcony(), new Color("white")); 
 		AddictionalAction action = new AddictionalAction(mainAction);
 		try {
 			Player pl = null; 
@@ -178,7 +178,7 @@ public class TestAddictionalAction {
 			p.initPlayer(gameState.getPoliticalDeck(), id, parser);
 			id++; 
 		}
-		MainAction mainAction = new ElectCounsellor(region, new Color("white")); 
+		MainAction mainAction = new ElectCounsellor(region.getBalcony(), new Color("white")); 
 		AddictionalAction action = new AddictionalAction(mainAction);
 		try {
 			GameState gameState2 = null; 
