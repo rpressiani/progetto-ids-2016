@@ -2,11 +2,13 @@ package gui;
 
 import java.io.IOException;
 
+import client.gui.GUIClientOutHandlerSocket;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import model.GameState;
 
@@ -17,10 +19,28 @@ public class MainApp extends Application {
 	//how 
 	private GameState gameState; 
 	
-	public MainApp() {
-		
+	private static GUIClientOutHandlerSocket outHandler;
+	
+
+	
+	public static void print(String message){
+		System.out.println(message);
 	}
 	
+	/**
+	 * @return the myOutHandler
+	 */
+	public static GUIClientOutHandlerSocket getOutHandler() {
+		return outHandler;
+	}
+
+	/**
+	 * @param myOutHandler the myOutHandler to set
+	 */
+	public static void setOutHandler(GUIClientOutHandlerSocket myOutHandler) {
+		MainApp.outHandler = myOutHandler;
+	}
+
 	@Override
 	public void start(Stage primaryStage) {
 		try {
@@ -63,7 +83,7 @@ public class MainApp extends Application {
 		try {
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(getClass().getResource("/LoginClient.fxml"));
-			AnchorPane loginClient = (AnchorPane) loader.load();
+			StackPane loginClient = (StackPane) loader.load();
 			rootLayout.setCenter(loginClient);
 			LoginClientController controller = loader.getController(); 
 			controller.setMainApp(this); 
@@ -72,28 +92,15 @@ public class MainApp extends Application {
 			e.printStackTrace();
 		}
 	}
-	public void showConnectionChoice() {
-		try {
-			FXMLLoader loader = new FXMLLoader(); 
-			loader.setLocation(getClass().getResource("/ChooseConnection.fxml"));
-			AnchorPane connectionChoice = (AnchorPane) loader.load();
-			rootLayout.setCenter(connectionChoice);
-			ChooseConnectionController controller = loader.getController(); 
-			controller.setMainApp(this);
-		} catch(IOException e) {
-			e.printStackTrace();
-		}
-	}
 	public void showGameScene() {
 		try {
 			FXMLLoader loader = new FXMLLoader(); 
 			loader.setLocation(MainApp.class.getResource("/GameScene.fxml"));
 			//which gameState?
-			loader.setControllerFactory(t -> new MainGameController(gameState));			
-			AnchorPane mapOverview = (AnchorPane) loader.load();
-			rootLayout.setCenter(mapOverview);
-			
-			
+			AnchorPane gameScene = (AnchorPane) loader.load(); 
+			rootLayout.setCenter(gameScene);
+			MapOverviewController controller = loader.getController(); 
+			controller.setMainApp(this);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

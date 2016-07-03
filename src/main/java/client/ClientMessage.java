@@ -1,7 +1,7 @@
 /**
  * 
  */
-package client.cli.socket;
+package client;
 
 import java.io.Serializable;
 

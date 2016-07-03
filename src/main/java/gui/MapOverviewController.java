@@ -28,27 +28,27 @@ public class MapOverviewController {
 	@FXML
 	private AnchorPane layout; 
 	@FXML
-	private MenuButton mainActions; 
+	private MenuButton mainActions = new MenuButton(); 
 	@FXML
-	private MenuItem buildAction; 
+	private MenuItem buildAction = new MenuItem(); 
 	@FXML
-	private MenuItem buy; 
+	private MenuItem buy = new MenuItem(); 
 	@FXML
-	private MenuItem buildWithKing; 
+	private MenuItem buildWithKing = new MenuItem(); 
 	@FXML
-	private MenuItem elect; 
+	private MenuItem elect = new MenuItem(); 
 	@FXML
-	private MenuButton quickActions; 
+	private MenuButton quickActions = new MenuButton(); 
 	@FXML
-	private MenuItem addictional; 
+	private MenuItem addictional = new MenuItem(); 
 	@FXML
-	private MenuItem substitute; 
+	private MenuItem substitute = new MenuItem(); 
 	@FXML
-	private MenuItem elect2; 
+	private MenuItem elect2 = new MenuItem(); 
 	@FXML 
-	private MenuItem hire; 
+	private MenuItem hire = new MenuItem(); 
 	@FXML
-	private MenuItem nullAction; 
+	private MenuItem nullAction = new MenuItem(); 
 	//if we want to load regions from configuration file
 	@FXML
 	private ImageView region1; 

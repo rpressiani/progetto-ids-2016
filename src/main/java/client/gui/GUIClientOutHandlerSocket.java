@@ -1,22 +1,20 @@
-package client.cli.socket;
+package client.gui;
 
 import java.io.IOException;
 import java.io.ObjectOutputStream;
-import java.util.Scanner;
 
 import client.ClientMessage;
-import client.cli.CLIClientOutHandler;
+import client.ClientOutHandler;
 
-public class CLIClientOutHandlerSocket extends CLIClientOutHandler {
+public class GUIClientOutHandlerSocket extends ClientOutHandler {
 	
-	private ObjectOutputStream socketOut; 
+private ObjectOutputStream socketOut; 
 	
 	/**
 	 * @param socketOut
 	 * @param in
 	 */
-	public CLIClientOutHandlerSocket(ObjectOutputStream socketOut, Scanner in) {
-		super(in);
+	public GUIClientOutHandlerSocket(ObjectOutputStream socketOut) {
 		if(socketOut==null) {
 			throw new IllegalArgumentException("socketOut cannot be null"); 
 		}
@@ -31,6 +29,18 @@ public class CLIClientOutHandlerSocket extends CLIClientOutHandler {
 		} catch (IOException e) {
 			System.out.println("SERVER IS DOWN");
 		}
+	}
+
+	@Override
+	public void notifyCmdNotFound() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void sellCommand() {
+		// TODO Auto-generated method stub
+
 	}
 
 }

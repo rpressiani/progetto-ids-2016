@@ -5,8 +5,9 @@ import java.net.UnknownHostException;
 import java.rmi.NotBoundException;
 import java.util.Scanner;
 
-import client.cli.rmi.ClientRMI;
-import client.cli.socket.ClientSocket;
+import client.cli.rmi.CLIClientRMI;
+import client.cli.socket.CLIClientSocket;
+import client.gui.GUIClientSocket;
 
 public class Client {
 
@@ -43,15 +44,17 @@ public class Client {
 			if (connection.equals("1")) {
 				if (view.equals("1")) {
 					System.out.println("\n[CLIENT] Starting new SOCKET CLI");
-					ClientSocket socketCLI = new ClientSocket(in);
+					CLIClientSocket socketCLI = new CLIClientSocket(in);
 					socketCLI.startClient();
 				} else {
-					System.out.println("\n[CLIENT] SOCKET GUI still need to be implemented\n\n\n");
+					System.out.println("\n[CLIENT] Starting new SOCKET GUI");
+					GUIClientSocket socketCLI = new GUIClientSocket();
+					socketCLI.startClient();
 				}
 			} else {
 				if (view.equals("1")) {
 					System.out.println("\n[CLIENT] Starting new RMI CLI");
-					ClientRMI clientRMI = new ClientRMI(in);
+					CLIClientRMI clientRMI = new CLIClientRMI(in);
 					clientRMI.startClient();
 				} else {
 					System.out.println("\n[CLIENT] RMI GUI still need to be implemented\n\n\n");
