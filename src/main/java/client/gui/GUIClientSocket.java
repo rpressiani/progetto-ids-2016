@@ -16,12 +16,16 @@ import javafx.stage.Stage;
 
 public class GUIClientSocket {
 	private final static int PORT = 29999;
-	private final static String IP = "127.0.0.1";
+	private static String IP;
 	private Socket socket;
 	
 	private LoginClientController loginController; 
 	
 	private GUIClientOutHandlerSocket outHandler;
+	
+	public GUIClientSocket(String IP) {
+		GUIClientSocket.IP = IP;
+	}
 	
 	/**
 	 * starts client
@@ -62,7 +66,7 @@ public class GUIClientSocket {
 	 * @throws IOException
 	 */
 	public static void main(String[] args) throws UnknownHostException, IOException {
-		GUIClientSocket client = new GUIClientSocket(); 
+		GUIClientSocket client = new GUIClientSocket("127.0.0.1"); 
 		client.startClient();
 		
 	}
