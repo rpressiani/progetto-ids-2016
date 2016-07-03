@@ -10,7 +10,6 @@ import model.GameState;
 import model.actions.main.BuildEmporiumWithCard;
 import model.actions.main.ElectCounsellor;
 import model.bonusable.PermissionCard;
-import model.council.CounsellorGroup;
 import model.map.City;
 import model.map.Region;
 import model.player.Player;
@@ -95,8 +94,13 @@ public class TestCanMainState {
 		GameState gameState = new GameState(parser, players); 
 		player.initPlayer(gameState.getPoliticalDeck(), 0, parser);
 		Region region = gameState.getMap().getRegions().get("seaside"); 
-		CounsellorGroup counsellorGroup = gameState.getCounsellorGarbage().getState().get(0);
-		Color color = counsellorGroup.getColor(); 
+		Color color = null;
+		for(int i=0; i<gameState.getCounsellorGarbage().getState().size();i++){
+			if(gameState.getCounsellorGarbage().getState().get(i).getCounter()!=0){
+				color=gameState.getCounsellorGarbage().getState().get(i).getColor();
+				break;
+			}
+		}
 		ElectCounsellor action = new ElectCounsellor(region.getBalcony(), color); 
 		player.setState(new CanMainState());
 		player.move(action, gameState);

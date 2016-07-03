@@ -139,6 +139,23 @@ public class MainApp extends Application {
 		} 
 	}
 	
+	public void showElectCounsellorWithAssistant(){
+		try {
+			FXMLLoader loader = new FXMLLoader(); 
+			loader.setLocation(getClass().getResource("/ElectWithAssistantScene.fxml"));
+			Scene gameScene = new Scene((AnchorPane) loader.load());
+			this.tempStage = new Stage();
+			this.tempStage.setScene(gameScene);
+			ElectCounsellorController controller = loader.getController();
+			controller.setMainApp(this);
+			this.tempStage.show();
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+	}
+	
 	public static void print(String message){
 		System.out.println(message);
 	}
