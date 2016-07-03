@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 import client.CLIClientOutHandler;
 
-public class ClientOutHandlerSocket extends CLIClientOutHandler {
+public class CLIClientOutHandlerSocket extends CLIClientOutHandler {
 	
 	private ObjectOutputStream socketOut; 
 	
@@ -14,7 +14,7 @@ public class ClientOutHandlerSocket extends CLIClientOutHandler {
 	 * @param socketOut
 	 * @param in
 	 */
-	public ClientOutHandlerSocket(ObjectOutputStream socketOut, Scanner in) {
+	public CLIClientOutHandlerSocket(ObjectOutputStream socketOut, Scanner in) {
 		super(in);
 		if(socketOut==null) {
 			throw new IllegalArgumentException("socketOut cannot be null"); 
@@ -30,17 +30,6 @@ public class ClientOutHandlerSocket extends CLIClientOutHandler {
 		} catch (IOException e) {
 			System.out.println("SERVER IS DOWN");
 		}
-	}
-
-	@Override
-	public void notifyCmdNotFound() {
-		StringBuilder cmdNotFound = new StringBuilder();
-		cmdNotFound.append("\n[ERROR] Command not found!\n");
-		cmdNotFound.append("[ERROR] Insert legal commands\n");
-		cmdNotFound.append("[ERROR] Enter help for command list\n");
-		
-		System.out.println(cmdNotFound.toString());
-		
 	}
 
 }

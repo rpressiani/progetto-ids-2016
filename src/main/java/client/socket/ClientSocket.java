@@ -33,7 +33,7 @@ public class ClientSocket {
 		this.socket = new Socket(IP, PORT); 
 		System.out.println("[CLIENT] Connection Created");
 		ExecutorService executor = Executors.newFixedThreadPool(2);
-		executor.submit(new ClientOutHandlerSocket(new ObjectOutputStream(socket.getOutputStream()), in));
+		executor.submit(new CLIClientOutHandlerSocket(new ObjectOutputStream(socket.getOutputStream()), in));
 		executor.submit(new ClientInHandler(new ObjectInputStream(socket.getInputStream())));
 	}
 	
