@@ -54,7 +54,7 @@ public class CLIClientRMI {
 	 */
 	public static void main(String[] args) throws RemoteException, NotBoundException, AlreadyBoundException {
 		Scanner in = new Scanner(System.in);
-		String localhost = new String("127.0.0.1");
+		String localhost = "127.0.0.1";
 		CLIClientRMI client = new CLIClientRMI(in, localhost);
 		client.startClient();
 	}

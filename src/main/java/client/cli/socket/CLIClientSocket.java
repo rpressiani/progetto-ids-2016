@@ -53,7 +53,7 @@ public class CLIClientSocket {
 	 */
 	public static void main(String[] args) throws UnknownHostException, IOException {
 		Scanner in = new Scanner(System.in);
-		String localhost = new String("127.0.0.1");
+		String localhost = "127.0.0.1";
 		CLIClientSocket client = new CLIClientSocket(in, localhost); 
 		client.startClient();
 		
