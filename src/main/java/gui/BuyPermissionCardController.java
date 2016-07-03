@@ -1,5 +1,7 @@
 package gui;
 
+import java.util.ArrayList;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
@@ -34,11 +36,23 @@ public class BuyPermissionCardController {
 	}
 	@FXML
 	private void handleOk() {
-		
+		ArrayList<String> inputList = new ArrayList<String>();
+		inputList.add("buypermissioncard");
+		inputList.add(region.getText());
+//		inputList.add(index.getText());
+		inputList.add(blackCards.getText());
+		inputList.add(orangeCards.getText());
+		inputList.add(blueCards.getText());
+		inputList.add(pinkCards.getText());
+		inputList.add(whiteCards.getText());
+		inputList.add(purpleCards.getText());
+		inputList.add(jolly.getText());
+		MainApp.getOutHandler().activate(inputList);
+		mainApp.getTempStage().close();
 	}
 	@FXML
 	private void handleCancel() {
-		
+		mainApp.getTempStage().close();
 	}
 
 }

@@ -116,7 +116,7 @@ public class MapOverviewController {
 	}
 	@FXML
 	public void handleBuyPermissionCard() {
-		
+		mainApp.showBuyPermissionCard();
 	}
 	@FXML
 	public void handleBuildWithKing() {
