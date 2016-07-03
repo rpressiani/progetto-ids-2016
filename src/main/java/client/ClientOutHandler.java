@@ -309,11 +309,11 @@ public abstract class ClientOutHandler implements Runnable {
 						break;
 					}
 					
-					/*----- BONUS -----*/
+					/*----- MARKET -----*/
 					
 				case "buy":
 					if (inputList.size() == 2) {
-						msg = new ClientMessage(new DTOBuyAction(inputList.get(1)));
+						msg = new ClientMessage(new DTOBuyAction(Integer.parseInt(inputList.get(1))));
 						sendMsg(msg);
 						break;
 					} else {

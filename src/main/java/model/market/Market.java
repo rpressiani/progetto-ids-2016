@@ -57,6 +57,8 @@ public class Market {
 		for(Marketable m : contract.getBuyBag()){
 			m.makeExchange(m, buyer, contract.getSeller());
 		}
+		
+		this.getContractSet().remove(contract);
 	}
 
 }
