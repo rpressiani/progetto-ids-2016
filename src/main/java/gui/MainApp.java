@@ -6,9 +6,12 @@ import client.gui.GUIClientOutHandlerSocket;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.GameState;
 
@@ -20,6 +23,8 @@ public class MainApp extends Application {
 	private GameState gameState; 
 	
 	private static GUIClientOutHandlerSocket outHandler;
+	
+	private static MapOverviewController controller;
 
 	@Override
 	public void start(Stage primaryStage) {
@@ -81,7 +86,7 @@ public class MainApp extends Application {
 			//which gameState?
 			AnchorPane gameScene = (AnchorPane) loader.load(); 
 			rootLayout.setCenter(gameScene);
-			MapOverviewController controller = loader.getController(); 
+			controller = loader.getController(); 
 			controller.setMainApp(this);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -111,5 +116,14 @@ public class MainApp extends Application {
 	 */
 	public static void setOutHandler(GUIClientOutHandlerSocket myOutHandler) {
 		MainApp.outHandler = myOutHandler;
+	}
+	
+	public static void alert(String msg){
+		System.out.println("alert pre");
+		if (controller != null) {
+			System.out.println(controller);
+			controller.alert(msg);
+		}
+		
 	}
 }

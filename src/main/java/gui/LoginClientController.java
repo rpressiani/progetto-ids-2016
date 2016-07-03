@@ -34,6 +34,12 @@ public class LoginClientController {
 	public LoginClientController() {
 		
 	}
+	/**
+	 * @return the dialogStage
+	 */
+	public Stage getDialogStage() {
+		return dialogStage;
+	}
 	public void setMainApp(MainApp mainApp) {
 		this.mainApp = mainApp; 
 	}
@@ -95,6 +101,7 @@ public class LoginClientController {
     public String getNickname() {
     	return nicknameArea.getText(); 
     }
+
     public MainApp getMainApp() {
     	return mainApp; 
     }
