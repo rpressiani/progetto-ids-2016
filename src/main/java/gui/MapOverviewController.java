@@ -80,7 +80,8 @@ public class MapOverviewController {
 	
 	@FXML
 	private ArrayList<Button> cities;
-	@FXML private TextArea textArea = new TextArea();
+	@FXML 
+	private TextArea textArea = new TextArea();
 
 	
 	private ArrayList<ImageView> council1 = new ArrayList<ImageView>(); 
