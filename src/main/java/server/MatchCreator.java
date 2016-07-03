@@ -92,7 +92,7 @@ public class MatchCreator implements Runnable {
 			try {
 				Thread.sleep(this.pauseTime);
 			} catch (InterruptedException e1) {
-				
+				Thread.currentThread().interrupt();
 				System.out.println("Match creator closed!");
 				break;
 			}
