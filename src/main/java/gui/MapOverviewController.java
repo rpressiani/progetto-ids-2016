@@ -18,6 +18,7 @@ import model.actions.main.BuildEmporiumWithCard;
 import model.actions.main.ElectCounsellor;
 import model.bonusItem.BonusItem;
 import model.bonusable.PermissionCard;
+import model.council.Balcony;
 import model.map.City;
 import model.map.Region;
 import model.player.Player;
@@ -44,20 +45,18 @@ public class MapOverviewController {
 	@FXML
 	private MenuItem substitute = new MenuItem(); 
 	@FXML
-	private MenuItem elect2 = new MenuItem(); 
+	private MenuItem electWithAssistant = new MenuItem(); 
 	@FXML 
 	private MenuItem hire = new MenuItem(); 
 	@FXML
 	private MenuItem nullAction = new MenuItem(); 
 	//if we want to load regions from configuration file
 	@FXML
-	private ImageView region1; 
+	private ImageView region1 = new ImageView(); 
 	@FXML
-	private ImageView region2; 
+	private ImageView region2 = new ImageView(); 
 	@FXML
-	private ImageView region3; 
-	@FXML
-	private ArrayList<Button> cities; 
+	private ImageView region3 = new ImageView(); 
 	
 	private ArrayList<ImageView> council1 = new ArrayList<ImageView>(); 
 	private ArrayList<ImageView> council2 = new ArrayList<ImageView>(); 
@@ -80,27 +79,33 @@ public class MapOverviewController {
 	}
 	@FXML
 	public void handleBuildEmporium(MouseEvent mouseEvent) {
-		
+		GameState gameState = mainApp.getGameState();
+		Player player = gameState.getCurrentPlayer(); 
+		PermissionCard card = gameState.getMap().getRegions().get("seaside").getPermissionDeck().getVisibleCards().get(0);
+		City city = gameState.getMap().getAllCitiesHashMap().get("A"); 
+		BuildEmporiumWithCard action = new BuildEmporiumWithCard(card, city);
+		action.doAction(player, gameState);
+		//TODO: GUI correspondence
 	}
 	@FXML
 	public void handleElectCounsellor(MouseEvent mouseEvent) {
-		if(!mainApp.getGameState().getCurrentPlayer().isEnabled()) {
-			Alert alert = new Alert(AlertType.INFORMATION); 
-			alert.setTitle("Error");
-			alert.setHeaderText("You'd better change your mind");
-			alert.setContentText("Can't do this action now");
-			alert.showAndWait(); 
-		}
+		GameState gameState = mainApp.getGameState();
+		Player player = gameState.getCurrentPlayer(); 
+		Balcony balcony = 
+				gameState.getMap().getRegions().get("seaside").getBalcony(); 
+		Color color = new Color("red"); 
+		ElectCounsellor action = new ElectCounsellor(balcony, color);
+		action.doAction(player, gameState);
+		//TODO: GUI corrspondence
+	}
+	@FXML
+	public void handleBuyPermissionCard() {
+		GameState gameState = mainApp.getGameState(); 
+		Player player = gameState.getCurrentPlayer(); 
 	}
 	@FXML
 	public void handleBuildWithKing() {
-		if(!mainApp.getGameState().getCurrentPlayer().isEnabled()) {
-			Alert alert = new Alert(AlertType.INFORMATION); 
-			alert.setTitle("Error");
-			alert.setHeaderText("You'd better change your mind");
-			alert.setContentText("Can't do this action now");
-			alert.showAndWait(); 
-		}
+		
 	}
 	@FXML
 	public void handleSubstitute() {
