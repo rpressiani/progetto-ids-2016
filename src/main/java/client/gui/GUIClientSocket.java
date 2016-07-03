@@ -66,7 +66,8 @@ public class GUIClientSocket {
 	 * @throws IOException
 	 */
 	public static void main(String[] args) throws UnknownHostException, IOException {
-		GUIClientSocket client = new GUIClientSocket("127.0.0.1"); 
+		String localhost = new String("127.0.0.1");
+		GUIClientSocket client = new GUIClientSocket(localhost); 
 		client.startClient();
 		
 	}

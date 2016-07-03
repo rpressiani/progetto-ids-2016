@@ -40,10 +40,10 @@ public class CLIClientRMI {
 		
 		this.clientRMIView=new ClientRMIView();
 		
-		ExecutorService executor = Executors.newFixedThreadPool(2); //load from file
+		ExecutorService executor = Executors.newFixedThreadPool(2);
 		executor.submit(new CLIClientOutHandlerRMI(serverStub, clientRMIView, this.in));
 		
-		this.serverStub.registerClient(clientRMIView); //before or after executor?
+		this.serverStub.registerClient(clientRMIView);
 	}
 	
 	/**
@@ -54,7 +54,8 @@ public class CLIClientRMI {
 	 */
 	public static void main(String[] args) throws RemoteException, NotBoundException, AlreadyBoundException {
 		Scanner in = new Scanner(System.in);
-		CLIClientRMI client = new CLIClientRMI(in, "127.0.0.1");
+		String localhost = new String("127.0.0.1");
+		CLIClientRMI client = new CLIClientRMI(in, localhost);
 		client.startClient();
 	}
 	

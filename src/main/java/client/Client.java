@@ -35,7 +35,8 @@ public class Client {
 			String IP;
 			while (true) {
 				 IP = new String(in.nextLine());
-				 if (IP.equals("127.0.0.1")) break;
+				 String localhost = new String("127.0.0.1");
+				 if (IP.equals(localhost)) break;
 				 System.out.println("\n[CLIENT] Input not valid");
 				 System.out.println("[CLIENT] Co4 works only on localhost (127.0.0.1)\n");
 			}
