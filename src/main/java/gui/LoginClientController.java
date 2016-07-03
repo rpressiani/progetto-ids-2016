@@ -14,13 +14,13 @@ import javafx.stage.Stage;
 public class LoginClientController {
 
 	@FXML
-	private TextArea nicknameArea; 
+	private TextArea nicknameArea = new TextArea(); 
 	@FXML
-	private TextArea colorArea; 
+	private TextArea colorArea = new TextArea(); 
 	@FXML
-	private Button ok; 
+	private Button ok = new Button(); 
 	@FXML
-	private Button decline; 
+	private Button decline = new Button(); 
 	private Stage dialogStage; 
 	//private Player player; //?
 	private boolean okClicked = false; 
