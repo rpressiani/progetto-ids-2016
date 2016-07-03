@@ -11,10 +11,11 @@ public class CanQuickOrNullState implements State {
 
 	@Override
 	public void transition(Player player, QuickAction action, GameState gameState){
+		if(player==null || action==null || gameState==null) {
+			throw new NullPointerException("player, action and gameState should all be !=null"); 
+		}
+		
 		if(player.getBonusInputs().isEmpty()){
-			if(player==null || action==null || gameState==null) {
-				throw new NullPointerException("player, action and gameState should all be !=null"); 
-			}
 			
 			if(action.acceptMove(player, gameState)==true){
 				if(action.checkCondition(player, gameState)==true){

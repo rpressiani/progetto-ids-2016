@@ -12,7 +12,7 @@ import java.util.concurrent.Executors;
 public class CLIClientSocket {
 	
 	private final static int PORT = 29999;
-	private final static String IP = "127.0.0.1";
+	private static String IP;
 	private Socket socket;
 	
 	private Scanner in;
@@ -20,8 +20,9 @@ public class CLIClientSocket {
 	/**
 	 * @param in
 	 */
-	public CLIClientSocket(Scanner in) {
+	public CLIClientSocket(Scanner in, String IP) {
 		this.in = in;
+		CLIClientSocket.IP = IP;
 	}
 	
 	/**
@@ -52,7 +53,8 @@ public class CLIClientSocket {
 	 */
 	public static void main(String[] args) throws UnknownHostException, IOException {
 		Scanner in = new Scanner(System.in);
-		CLIClientSocket client = new CLIClientSocket(in); 
+		String localhost = "127.0.0.1";
+		CLIClientSocket client = new CLIClientSocket(in, localhost); 
 		client.startClient();
 		
 	}

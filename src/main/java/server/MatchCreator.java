@@ -23,7 +23,7 @@ public class MatchCreator implements Runnable {
 	
 	private final int pauseTime = 5000;
 	private final int matchReadyPauseTime = 5000;
-	private static int counter = 0;
+	private int counter = 0;
 	private Set<Match> runningMatches;
 	
 	/**
@@ -92,7 +92,7 @@ public class MatchCreator implements Runnable {
 			try {
 				Thread.sleep(this.pauseTime);
 			} catch (InterruptedException e1) {
-				
+				Thread.currentThread().interrupt();
 				System.out.println("Match creator closed!");
 				break;
 			}
