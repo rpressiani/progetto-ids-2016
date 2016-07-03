@@ -150,10 +150,11 @@ public class VisitorActions {
 	
 	/**
 	 * @param DTOAction
-	 * @return
+	 * @return 
 	 */
 	public SubstitutePermissionCards visit(DTOSubstitutePermissionCards DTOAction){
 		Region region=gameState.getMap().getRegions().get(DTOAction.getRegion().getName());
+		
 		return new SubstitutePermissionCards(region);	
 	}
 	

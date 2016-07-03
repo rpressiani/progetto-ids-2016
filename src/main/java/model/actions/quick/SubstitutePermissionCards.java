@@ -14,12 +14,8 @@ public class SubstitutePermissionCards implements QuickAction {
 	
 	/**
 	 * @param region
-	 * @throws NullPointerException if region is null
 	 */
 	public SubstitutePermissionCards(Region region) {
-		if(region==null) {
-			throw new NullPointerException("region cannot be null"); 
-		}
 		this.region=region;
 	}
 	
@@ -46,6 +42,11 @@ public class SubstitutePermissionCards implements QuickAction {
 		}
 		if(gameState==null) {
 			throw new NullPointerException("player cannot be null"); 
+		}
+		
+		if(region==null){
+			gameState.notifyObserver(player, new ChangeMsg("The region you selected doesn't exist"));
+			return false;
 		}
 		
 		if(player.getAssistants().getItems()<1){
