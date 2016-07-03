@@ -81,7 +81,7 @@ public class MapOverviewController {
 	private MenuItem marketQuery = new MenuItem(); 
 	
 	@FXML
-	private ArrayList<Button> cities;
+	private Button send = new Button(); 
 	@FXML 
 	private TextArea textArea = new TextArea();
 
