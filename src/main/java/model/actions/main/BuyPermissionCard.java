@@ -30,7 +30,7 @@ public class BuyPermissionCard implements MainAction {
 		if(proposal==null) {
 			throw new NullPointerException("proposal cannot be null"); 
 		}
-		
+		//black orange blue pink white purple jolly
 		this.region=region;
 		this.proposal=proposal;
 		this.index=index;

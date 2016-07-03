@@ -108,13 +108,13 @@ public class MapOverviewController {
 	}
 	@FXML
 	public void handleBuildEmporium(MouseEvent mouseEvent) {
-		GameState gameState = mainApp.getGameState();
-		Player player = gameState.getCurrentPlayer(); 
-		PermissionCard card = gameState.getMap().getRegions().get("seaside").getPermissionDeck().getVisibleCards().get(0);
-		City city = gameState.getMap().getAllCitiesHashMap().get("A"); 
-		BuildEmporiumWithCard action = new BuildEmporiumWithCard(card, city);
-		action.doAction(player, gameState);
-		//TODO: GUI correspondence
+//		GameState gameState = mainApp.getGameState();
+//		Player player = gameState.getCurrentPlayer(); 
+//		PermissionCard card = gameState.getMap().getRegions().get("seaside").getPermissionDeck().getVisibleCards().get(0);
+//		City city = gameState.getMap().getAllCitiesHashMap().get("A"); 
+//		BuildEmporiumWithCard action = new BuildEmporiumWithCard(card, city);
+//		action.doAction(player, gameState);
+//		//TODO: GUI correspondence
 	}
 	@FXML
 	public void handleElectCounsellor() {
@@ -130,23 +130,23 @@ public class MapOverviewController {
 	}
 	@FXML
 	public void handleSubstitute() {
-		if(!mainApp.getGameState().getCurrentPlayer().isEnabled()) {
-			Alert alert = new Alert(AlertType.INFORMATION); 
-			alert.setTitle("Error");
-			alert.setHeaderText("You'd better change your mind");
-			alert.setContentText("Can't do this action now");
-			alert.showAndWait(); 
-		}
+//		if(!mainApp.getGameState().getCurrentPlayer().isEnabled()) {
+//			Alert alert = new Alert(AlertType.INFORMATION); 
+//			alert.setTitle("Error");
+//			alert.setHeaderText("You'd better change your mind");
+//			alert.setContentText("Can't do this action now");
+//			alert.showAndWait(); 
+//		}
 	}
 	@FXML
 	public void handleElectWithAssistant() {
-		if(!mainApp.getGameState().getCurrentPlayer().isEnabled()) {
-			Alert alert = new Alert(AlertType.INFORMATION); 
-			alert.setTitle("Error");
-			alert.setHeaderText("You'd better change your mind");
-			alert.setContentText("Can't do this action now");
-			alert.showAndWait();
-		}
+//		if(!mainApp.getGameState().getCurrentPlayer().isEnabled()) {
+//			Alert alert = new Alert(AlertType.INFORMATION); 
+//			alert.setTitle("Error");
+//			alert.setHeaderText("You'd better change your mind");
+//			alert.setContentText("Can't do this action now");
+//			alert.showAndWait();
+//		}
 	}
 	@FXML
 	public void handleHireAssistant(){

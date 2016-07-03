@@ -15,13 +15,14 @@ import model.GameState;
 public class MainApp extends Application {
 
 	private Stage primaryStage; 
-	private BorderPane rootLayout; 
-	//how 
-	private GameState gameState; 
+	private BorderPane rootLayout;
 	
 	private static GUIClientOutHandlerSocket outHandler;
 	
 	private static MapOverviewController controller;
+	
+	private Stage tempStage;
+	private AnchorPane gameScene;
 
 	@Override
 	public void start(Stage primaryStage) {
@@ -81,7 +82,7 @@ public class MainApp extends Application {
 			FXMLLoader loader = new FXMLLoader(); 
 			loader.setLocation(getClass().getResource("/GameScene.fxml"));
 			//which gameState?
-			AnchorPane gameScene = (AnchorPane) loader.load(); 
+			this.gameScene = (AnchorPane) loader.load(); 
 			rootLayout.setCenter(gameScene);
 			controller = loader.getController(); 
 			controller.setMainApp(this);
@@ -92,12 +93,40 @@ public class MainApp extends Application {
 	}
 	public void showElectCounsellor() {
 		try {
+			
+			
+			
 			FXMLLoader loader = new FXMLLoader(); 
 			loader.setLocation(getClass().getResource("/ElectCounsellorScene.fxml"));
-			AnchorPane actionScene = (AnchorPane) loader.load();
-			rootLayout.setCenter(actionScene);
+//			this.tempStage = new Stage(); 
+////			AnchorPane actionScene = (AnchorPane) loader.load();
+//			this.gameScene.getChildren().setAll(FXMLLoader.load(getClass().getResource("/ElectCounsellorScene.fxml")));
+//			rootLayout.setCenter(this.gameScene);
+//
+//			FXMLLoader loader = new FXMLLoader(); 
+//			loader.setLocation(getClass().getResource("/ElectCounsellorScene.fxml"));
+			Scene gameScene = new Scene((AnchorPane) loader.load());
+//			Scene scene = new Scene(this.gameScene); 
+//
+//			ElectCounsellorController controller = loader.getController();
+//		    controller.setMainApp(this);
+//
+//			this.tempStage.setScene(scene);
+//			this.tempStage.show();
+//			System.out.println(this.tempStage);
+			
+			this.tempStage = new Stage();
+			this.tempStage.setScene(gameScene);
 			ElectCounsellorController controller = loader.getController();
-		    controller.setMainApp(this);
+			controller.setMainApp(this);
+//			Stage t = new Stage();
+//			t.setScene(gameScene);
+//			this.tempStage = t;
+			this.tempStage.show();
+			
+			
+			
+
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -117,12 +146,6 @@ public class MainApp extends Application {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} 
-	}
-	/**
-	 * @return gameState
-	 */
-	public GameState getGameState() {
-		return gameState; 
 	}
 	
 	public static void print(String message){
@@ -149,5 +172,12 @@ public class MainApp extends Application {
 			controller.alert(msg);
 		}
 		
+	}
+
+	/**
+	 * @return the tempStage
+	 */
+	public Stage getTempStage() {
+		return tempStage;
 	}
 }
