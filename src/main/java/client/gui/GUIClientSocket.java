@@ -5,11 +5,9 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.net.UnknownHostException;
-import java.util.Scanner;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import client.cli.socket.CLIClientOutHandlerSocket;
 import client.cli.socket.ClientInHandler;
 import gui.ChooseConnectionController;
 import gui.LoginClientController;
@@ -22,11 +20,7 @@ public class GUIClientSocket {
 	private LoginClientController loginController; 
 	private ChooseConnectionController connectionController;
 	
-	private Scanner in;
-	
-	public GUIClientSocket(Scanner in) {
-		this.in = in;
-	}
+	private GUIClientOutHandlerSocket outHandler;
 	
 	/**
 	 * starts client
@@ -34,13 +28,20 @@ public class GUIClientSocket {
 	 * @throws IOException
 	 */
 	public void startClient() throws UnknownHostException, IOException {
-		this.socket = new Socket(IP, PORT); 
+		this.socket = new Socket(IP, PORT);
+		this.outHandler = new GUIClientOutHandlerSocket(new ObjectOutputStream(socket.getOutputStream()));
 		System.out.println("[CLIENT] Connection Created");
 		ExecutorService executor = Executors.newFixedThreadPool(2);
-		executor.submit(new CLIClientOutHandlerSocket(new ObjectOutputStream(socket.getOutputStream()), in));
 		executor.submit(new ClientInHandler(new ObjectInputStream(socket.getInputStream())));
 	}
 	
+	/**
+	 * @return the ClientOutHandler
+	 */
+	public GUIClientOutHandlerSocket getOutHandler() {
+		return outHandler;
+	}
+
 	/**
 	 * closes client socket
 	 * @throws IOException
@@ -55,8 +56,7 @@ public class GUIClientSocket {
 	 * @throws IOException
 	 */
 	public static void main(String[] args) throws UnknownHostException, IOException {
-		Scanner in = new Scanner(System.in);
-		GUIClientSocket client = new GUIClientSocket(in); 
+		GUIClientSocket client = new GUIClientSocket(); 
 		client.startClient();
 		
 	}

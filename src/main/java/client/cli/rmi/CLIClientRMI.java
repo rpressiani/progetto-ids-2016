@@ -13,7 +13,7 @@ import server.RMIServerInterface;
 
 
 
-public class ClientRMI {
+public class CLIClientRMI {
 
 	private final static String HOST = "127.0.0.1";
 	private final static int PORT = 29998;
@@ -29,7 +29,7 @@ public class ClientRMI {
 	 * @throws RemoteException
 	 * @throws NotBoundException
 	 */
-	public ClientRMI(Scanner in) throws RemoteException, NotBoundException {
+	public CLIClientRMI(Scanner in) throws RemoteException, NotBoundException {
 		this.in = in;
 	}
 	
@@ -53,7 +53,7 @@ public class ClientRMI {
 	 */
 	public static void main(String[] args) throws RemoteException, NotBoundException, AlreadyBoundException {
 		Scanner in = new Scanner(System.in);
-		ClientRMI client = new ClientRMI(in);
+		CLIClientRMI client = new CLIClientRMI(in);
 		client.startClient();
 	}
 	

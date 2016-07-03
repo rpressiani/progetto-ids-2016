@@ -5,8 +5,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import client.ClientMessage;
 import client.cli.rmi.ClientViewRemote;
-import client.cli.socket.ClientMessage;
 import dto.DTOObject;
 import dto.actions.DTOAction;
 import dto.queries.DTOQuery;
@@ -66,7 +66,7 @@ public class RMIServer implements RMIServerInterface {
 	}
 	
 	/**
-	 * @see server.RMIServerInterface#receiveMessage(client.cli.socket.ClientMessage)
+	 * @see server.RMIServerInterface#receiveMessage(client.ClientMessage)
 	 */
 	@Override
 	public void receiveMessage(ClientMessage msgIn) throws RemoteException {

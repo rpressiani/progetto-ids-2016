@@ -3,8 +3,8 @@ package client.cli.rmi;
 import java.rmi.RemoteException;
 import java.util.Scanner;
 
+import client.ClientMessage;
 import client.cli.CLIClientOutHandler;
-import client.cli.socket.ClientMessage;
 import server.RMIServerInterface;
 
 public class CLIClientOutHandlerRMI extends CLIClientOutHandler {

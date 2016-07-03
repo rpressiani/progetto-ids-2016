@@ -10,7 +10,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import client.cli.rmi.CLIClientOutHandlerRMI;
-import client.cli.rmi.ClientRMI;
+import client.cli.rmi.CLIClientRMI;
 import client.cli.rmi.ClientRMIView;
 import gui.LoginClientController;
 import gui.MainApp;
@@ -50,7 +50,7 @@ public class GUIClientRMI {
 	}
 	public static void main(String[] args) throws RemoteException, NotBoundException, AlreadyBoundException {
 		Scanner in = new Scanner(System.in); //have to fix it
-		ClientRMI client = new ClientRMI(in);
+		CLIClientRMI client = new CLIClientRMI(in);
 		client.startClient();
 	}
 }
