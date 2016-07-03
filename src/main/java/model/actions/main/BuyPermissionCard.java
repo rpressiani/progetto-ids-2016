@@ -92,7 +92,7 @@ public class BuyPermissionCard implements MainAction {
 	 * @return true if proposal is ok
 	 * @throws NullPointerException if proposal or balcony are null
 	 */
-	public boolean checkProposal(PoliticalContainer proposal, Balcony balcony){
+	public boolean checkProposal(PoliticalContainer proposal, Balcony balcony) {
 		if(proposal==null) {
 			throw new NullPointerException("proposal cannot be null"); 
 		}

@@ -12,6 +12,11 @@ public class ClientOutHandlerRMI extends ClientOutHandler {
 	private RMIServerInterface serverStub;
 	private ClientViewRemote clientRMI;
 	
+	/**
+	 * @param serverStub
+	 * @param clientRMI
+	 * @param in
+	 */
 	public ClientOutHandlerRMI(RMIServerInterface serverStub, ClientViewRemote clientRMI, Scanner in) {
 		super(in);
 		this.serverStub = serverStub;

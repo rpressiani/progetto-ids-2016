@@ -10,6 +10,9 @@ public class ClientInHandler implements Runnable {
 	
 	private ObjectInputStream socketIn;
 	
+	/**
+	 * @param socketIn
+	 */
 	public ClientInHandler(ObjectInputStream socketIn) {
 		if(socketIn==null) {
 			throw new IllegalArgumentException("socketIn cannot be null"); 

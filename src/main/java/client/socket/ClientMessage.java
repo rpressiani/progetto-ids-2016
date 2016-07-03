@@ -25,16 +25,28 @@ public class ClientMessage implements Serializable {
 	private ClientViewRemote clientRMI;
 	
 
+	/**
+	 * Constructor
+	 * @param player
+	 * @param message
+	 */
 	public ClientMessage(Player player, DTOObject message){
 		this.player = player;
 		this.message = message;
 	}
 	
+	/**
+	 * @param clientRMI
+	 * @param message
+	 */
 	public ClientMessage(ClientViewRemote clientRMI, DTOObject message){
 		this.clientRMI = clientRMI;
 		this.message = message;
 	}
 	
+	/**
+	 * @param message
+	 */
 	public ClientMessage(DTOObject message){
 		this.message = message;
 	}

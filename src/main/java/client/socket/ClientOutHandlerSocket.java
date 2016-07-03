@@ -10,6 +10,10 @@ public class ClientOutHandlerSocket extends ClientOutHandler {
 	
 	private ObjectOutputStream socketOut; 
 	
+	/**
+	 * @param socketOut
+	 * @param in
+	 */
 	public ClientOutHandlerSocket(ObjectOutputStream socketOut, Scanner in) {
 		super(in);
 		if(socketOut==null) {

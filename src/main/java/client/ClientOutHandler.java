@@ -47,10 +47,17 @@ public abstract class ClientOutHandler implements Runnable {
 	
 	private Scanner stdIn;
 	
+	/**
+	 * @param in
+	 * Constructor
+	 */
 	public ClientOutHandler(Scanner in) {
 		this.stdIn = in;
 	}
 	
+	/**
+	 * @param msg
+	 */
 	public abstract void sendMsg(ClientMessage msg);
 	
 	public void run() {
