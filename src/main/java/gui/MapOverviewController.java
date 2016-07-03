@@ -1,25 +1,17 @@
 package gui;
 
 import java.util.ArrayList;
-import java.util.Optional;
 
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
-import javafx.scene.control.TextInputDialog;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import model.GameState;
-import model.actions.main.BuildEmporiumWithCard;
-import model.bonusable.PermissionCard;
-import model.map.City;
 import model.player.Player;
 
 public class MapOverviewController {

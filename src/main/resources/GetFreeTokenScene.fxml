@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+
+<AnchorPane prefHeight="334.0" prefWidth="423.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.72" fx:controller="gui.GetFreeTokenController">
+   <children>
+      <TitledPane animated="false" layoutX="-15.0" prefHeight="334.0" prefWidth="423.0" text="Get Free Token" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="ok" layoutX="67.0" layoutY="228.0" mnemonicParsing="false" onAction="#handleOk" prefHeight="26.0" prefWidth="117.0" text="Ok" />
+                  <Button fx:id="cancel" layoutX="211.0" layoutY="228.0" mnemonicParsing="false" onAction="#handleCancel" prefHeight="26.0" prefWidth="120.0" text="Cancel" />
+                  <GridPane layoutX="59.0" layoutY="65.0" prefHeight="84.0" prefWidth="285.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <TextArea fx:id="cities" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" />
+                        <Label prefHeight="106.0" prefWidth="143.0" text="Enter cities " />
+                     </children>
+                  </GridPane>
+               </children>
+            </AnchorPane>
+        </content>
+      </TitledPane>
+   </children>
+</AnchorPane>
