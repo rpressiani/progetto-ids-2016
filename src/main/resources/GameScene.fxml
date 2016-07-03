@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.MapOverviewController">
+<AnchorPane prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.72" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.MapOverviewController">
    <children>
       <SplitPane dividerPositions="0.678391959798995" layoutX="113.0" layoutY="14.0" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
@@ -66,7 +66,7 @@
                                           </ContextMenu>
                                        </contextMenu>
                                     </MenuButton>
-                                    <MenuButton layoutX="9.0" layoutY="171.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="125.0" text="Queries">
+                                    <MenuButton layoutX="9.0" layoutY="286.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="125.0" text="Queries">
                                       <items>
                                         <MenuItem fx:id="scoresQuery" mnemonicParsing="false" onAction="#handleScoresQuery" text="Get Scores" />
                                         <MenuItem fx:id="currentPlayerQuery" mnemonicParsing="false" onAction="#handleCurrentPlayerQuery" text="Get Current Player" />
@@ -78,6 +78,18 @@
                                           <MenuItem fx:id="availablePermissionsQuery" mnemonicParsing="false" onAction="#handleAvailablePermissionsQuery" text="Get Permissions" />
                                           <MenuItem fx:id="mapQuery" mnemonicParsing="false" onAction="#handleMapQuery" text="Get Map" />
                                           <MenuItem fx:id="marketQuery" mnemonicParsing="false" onAction="#handleMarketQuery" text="Get Market" />
+                                      </items>
+                                    </MenuButton>
+                                    <MenuButton layoutX="9.0" layoutY="171.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="125.0" text="Input Bonus Actions">
+                                      <items>
+                                        <MenuItem mnemonicParsing="false" text="Action 1" />
+                                        <MenuItem mnemonicParsing="false" text="Action 2" />
+                                      </items>
+                                    </MenuButton>
+                                    <MenuButton layoutX="9.0" layoutY="229.0" mnemonicParsing="false" text="Market">
+                                      <items>
+                                        <MenuItem mnemonicParsing="false" text="Buy Action" />
+                                        <MenuItem mnemonicParsing="false" text="Sell Action" />
                                       </items>
                                     </MenuButton>
                                  </children>
