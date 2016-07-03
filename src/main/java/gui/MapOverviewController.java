@@ -118,13 +118,6 @@ public class MapOverviewController {
 	}
 	@FXML
 	public void handleElectCounsellor() {
-		TextInputDialog dialog = new TextInputDialog();
-		dialog.setTitle("Elect Counsellor");
-		dialog.setHeaderText("Choose Council and color");
-		dialog.setContentText("Please enter council: ");
-		dialog.setContentText("Please enter color: ");
-		Optional<String> council; 
-		Optional<String> color; 
 		
 	}
 	@FXML

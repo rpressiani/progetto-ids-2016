@@ -93,6 +93,20 @@ public class MainApp extends Application {
 			e.printStackTrace();
 		} 
 	}
+	public void showElectCounsellor() {
+		try {
+			FXMLLoader loader = new FXMLLoader(); 
+			loader.setLocation(getClass().getResource("/ElectCounsellorScene.fxml"));
+			AnchorPane actionScene = (AnchorPane) loader.load();
+			rootLayout.setCenter(actionScene);
+			controller = loader.getController(); 
+			controller.setMainApp(this);
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+	}	
 	/**
 	 * @return gameState
 	 */
