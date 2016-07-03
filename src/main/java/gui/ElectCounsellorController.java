@@ -31,8 +31,6 @@ public class ElectCounsellorController {
 	private void handleOk() {
 		ArrayList<String> inputList = new ArrayList<String>();
 		inputList.add("electCounsellor");
-		System.out.println(region.getText());
-		System.out.println(color.getText());
 		inputList.add(region.getText());
 		inputList.add(color.getText());
 		MainApp.getOutHandler().activate(inputList);

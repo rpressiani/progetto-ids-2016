@@ -218,7 +218,7 @@ public abstract class ClientOutHandler {
 				}
 				break;
 				
-			case "buildmpcard":
+			case "buildempcard":
 				if (inputList.size() == 3) {
 					msg = new ClientMessage(new DTOBuildEmporiumWithCard(
 							new DTOPermissionCardSelection(Integer.parseInt(inputList.get(1))),
