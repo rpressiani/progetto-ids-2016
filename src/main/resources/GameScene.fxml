@@ -82,8 +82,10 @@
                                     </MenuButton>
                                     <MenuButton layoutX="9.0" layoutY="171.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="125.0" text="Input Bonus Actions">
                                       <items>
-                                        <MenuItem mnemonicParsing="false" text="Action 1" />
-                                        <MenuItem mnemonicParsing="false" text="Action 2" />
+                                        <MenuItem fx:id="doAgain" mnemonicParsing="false" onAction="#handleDoAgain" text="DoAgainAction" />
+                                        <MenuItem fx:id="getAgainBonus" mnemonicParsing="false" onAction="#handleGetAgainBonus" text="GetAgainBonusPermission" />
+                                          <MenuItem fx:id="getFreePermission" mnemonicParsing="false" onAction="#handleGetFreePermission" text="GetFreePermission" />
+                                          <MenuItem fx:id="getFreeToken" mnemonicParsing="false" onAction="#handleGetFreeToken" text="GetFreeToken" />
                                       </items>
                                     </MenuButton>
                                     <MenuButton layoutX="9.0" layoutY="229.0" mnemonicParsing="false" text="Market">
