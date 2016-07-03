@@ -50,6 +50,10 @@ public class MapOverviewController {
 	private MenuItem nullAction = new MenuItem(); 
 	//if we want to load regions from configuration file
 	@FXML
+	private MenuItem buyAction = new MenuItem(); 
+	@FXML
+	private MenuItem sellAction = new MenuItem(); 
+	@FXML
 	private ImageView region1 = new ImageView(); 
 	@FXML
 	private ImageView region2 = new ImageView(); 
@@ -116,31 +120,31 @@ public class MapOverviewController {
 	}
 	@FXML
 	public void handleBuyPermissionCard() {
-		
+		mainApp.showBuyPermissionCard();
 	}
 	@FXML
 	public void handleBuildWithKing() {
 		
 	}
 	@FXML
+	public void handleAddictionalAction() {
+		
+	}
+	@FXML
 	public void handleSubstitute() {
-//		if(!mainApp.getGameState().getCurrentPlayer().isEnabled()) {
-//			Alert alert = new Alert(AlertType.INFORMATION); 
-//			alert.setTitle("Error");
-//			alert.setHeaderText("You'd better change your mind");
-//			alert.setContentText("Can't do this action now");
-//			alert.showAndWait(); 
-//		}
+		mainApp.showSubstitute();
+	}
+	@FXML
+	private void handleBuyAction() {
+		
+	}
+	@FXML
+	private void handleSellAction() {
+		
 	}
 	@FXML
 	public void handleElectWithAssistant() {
-//		if(!mainApp.getGameState().getCurrentPlayer().isEnabled()) {
-//			Alert alert = new Alert(AlertType.INFORMATION); 
-//			alert.setTitle("Error");
-//			alert.setHeaderText("You'd better change your mind");
-//			alert.setContentText("Can't do this action now");
-//			alert.showAndWait();
-//		}
+		mainApp.showElectCounsellorWithAssistant();
 	}
 	@FXML
 	public void handleHireAssistant(){

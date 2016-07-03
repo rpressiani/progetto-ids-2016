@@ -25,7 +25,7 @@ public class BuildWithCardController {
 	@FXML
 	private void handleOk() {
 		ArrayList<String> inputList = new ArrayList<String>();
-		inputList.add("electCounsellor");
+		inputList.add("buildempcard");
 		inputList.add(card.getText());
 		inputList.add(city.getText());
 		MainApp.getOutHandler().activate(inputList);

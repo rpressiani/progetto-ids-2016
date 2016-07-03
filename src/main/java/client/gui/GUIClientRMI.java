@@ -50,7 +50,7 @@ public class GUIClientRMI {
 	}
 	public static void main(String[] args) throws RemoteException, NotBoundException, AlreadyBoundException {
 		Scanner in = new Scanner(System.in); //have to fix it
-		CLIClientRMI client = new CLIClientRMI(in);
+		CLIClientRMI client = new CLIClientRMI(in,null);
 		client.startClient();
 	}
 }

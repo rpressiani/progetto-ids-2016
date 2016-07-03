@@ -23,7 +23,7 @@ public class MatchCreator implements Runnable {
 	
 	private final int pauseTime = 5000;
 	private final int matchReadyPauseTime = 5000;
-	private static int counter = 0;
+	private int counter = 0;
 	private Set<Match> runningMatches;
 	
 	/**

@@ -37,7 +37,7 @@ public class RMIView extends View {
 		this.player.setView(this);
 		this.visitorChanges = new VisitorChanges();
 		this.timer = new RMIViewTimer(this.client, this.server, this.player);
-		(new Thread(this.timer)).run();
+		(new Thread(this.timer)).start();
 	}
 
 	/**

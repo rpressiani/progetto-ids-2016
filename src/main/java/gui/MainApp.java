@@ -10,7 +10,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-import model.GameState;
 
 public class MainApp extends Application {
 
@@ -126,6 +125,57 @@ public class MainApp extends Application {
 		try {
 			FXMLLoader loader = new FXMLLoader(); 
 			loader.setLocation(getClass().getResource("/BuildEmporiumWithCardScene.fxml"));
+			Scene gameScene = new Scene((AnchorPane) loader.load());
+			this.tempStage = new Stage();
+			this.tempStage.setScene(gameScene);
+			ElectCounsellorController controller = loader.getController();
+			controller.setMainApp(this);
+			this.tempStage.show();
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+	}
+	
+	public void showElectCounsellorWithAssistant(){
+		try {
+			FXMLLoader loader = new FXMLLoader(); 
+			loader.setLocation(getClass().getResource("/ElectWithAssistantScene.fxml"));
+			Scene gameScene = new Scene((AnchorPane) loader.load());
+			this.tempStage = new Stage();
+			this.tempStage.setScene(gameScene);
+			ElectCounsellorController controller = loader.getController();
+			controller.setMainApp(this);
+			this.tempStage.show();
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+	}
+	
+	public void showSubstitute(){
+		try {
+			FXMLLoader loader = new FXMLLoader(); 
+			loader.setLocation(getClass().getResource("/SubstitutePermissionCardScene.fxml"));
+			Scene gameScene = new Scene((AnchorPane) loader.load());
+			this.tempStage = new Stage();
+			this.tempStage.setScene(gameScene);
+			ElectCounsellorController controller = loader.getController();
+			controller.setMainApp(this);
+			this.tempStage.show();
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+	}
+	
+	public void showBuyPermissionCard(){
+		try {
+			FXMLLoader loader = new FXMLLoader(); 
+			loader.setLocation(getClass().getResource("/BuyPermissionCardScene.fxml"));
 			Scene gameScene = new Scene((AnchorPane) loader.load());
 			this.tempStage = new Stage();
 			this.tempStage.setScene(gameScene);
