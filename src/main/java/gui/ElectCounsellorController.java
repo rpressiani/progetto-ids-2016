@@ -17,6 +17,11 @@ public class ElectCounsellorController {
 	@FXML
 	private Button cancel = new Button(); 
 	
+	@FXML
+	private void intialize(){
+		
+	}
+	
 	public void setMainApp(MainApp mainApp) {
 		this.mainApp = mainApp; 
 	}

@@ -118,7 +118,7 @@ public class MapOverviewController {
 	}
 	@FXML
 	public void handleElectCounsellor() {
-		
+		mainApp.showElectCounsellor();
 	}
 	@FXML
 	public void handleBuyPermissionCard() {

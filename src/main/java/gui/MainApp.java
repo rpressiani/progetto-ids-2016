@@ -97,11 +97,18 @@ public class MainApp extends Application {
 			Stage stage = new Stage(); 
 			AnchorPane actionScene = (AnchorPane) loader.load();
 			rootLayout.setCenter(actionScene);
-			controller = loader.getController(); 
-			controller.setMainApp(this);
 			Scene scene = new Scene(actionScene); 
+
+//			controller = loader.getController(); 
+//			controller.setMainApp(this);
+			ElectCounsellorController controller = loader.getController();
+//			System.out.println("!!!");
+//			System.out.println(controller);
+		    controller.setMainApp(this);
+
 			primaryStage.setScene(scene);
 			primaryStage.show();
+
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

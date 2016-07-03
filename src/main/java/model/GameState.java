@@ -20,6 +20,7 @@ import model.sharedObjects.Nobility;
 import model.stateMachine.FinishedBuildingState;
 import observer.Observable;
 import parser.Parser;
+import server.CheckDisconnections;
 
 public class GameState extends Observable<Change> {
 	private Map map;
@@ -73,6 +74,7 @@ public class GameState extends Observable<Change> {
 
 		this.currentPlayer = this.players.get(0);
 		
+		new Thread(new CheckDisconnections(this)).start();
 	}
 
 	/**
@@ -208,10 +210,6 @@ public class GameState extends Observable<Change> {
 			throw new NullPointerException("player should not be null"); 
 		}
 		
-		if(this.getPlayers().size()==1){
-			this.finishMatch();
-		}
-		
 		if(player==this.getCurrentPlayer()){
 			int i=this.getPlayers().indexOf(player);
 			if((i+1)!=this.getPlayers().size()) this.setCurrentPlayer(this.getPlayers().get(i+1));
@@ -333,7 +331,13 @@ public class GameState extends Observable<Change> {
 		
 		this.notifyObserver(new ChangeMsg("CONGRATULATIONS, "+winner.getNickname()+" WON THE GAME!!!"));
 		
+		ArrayList<Player> temp=new ArrayList<Player>();
+		
 		for(Player p : this.getPlayers()){
+			temp.add(p);
+		}
+		
+		for(Player p : temp){
 			p.getView().disconnect();
 		}
 	}
