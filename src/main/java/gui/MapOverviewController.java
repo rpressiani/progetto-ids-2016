@@ -134,13 +134,7 @@ public class MapOverviewController {
 	}
 	@FXML
 	public void handleElectWithAssistant() {
-//		if(!mainApp.getGameState().getCurrentPlayer().isEnabled()) {
-//			Alert alert = new Alert(AlertType.INFORMATION); 
-//			alert.setTitle("Error");
-//			alert.setHeaderText("You'd better change your mind");
-//			alert.setContentText("Can't do this action now");
-//			alert.showAndWait();
-//		}
+		mainApp.showElectCounsellorWithAssistant();
 	}
 	@FXML
 	public void handleHireAssistant(){
