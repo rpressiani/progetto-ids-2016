@@ -82,7 +82,7 @@ public class LoginClientController {
     		
     		okClicked = true; 
     		
-    		mainApp.showConnectionChoice();
+    		mainApp.showGameScene();
     	}
     }
     @FXML

@@ -9,7 +9,6 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import client.cli.socket.ClientInHandler;
-import gui.ChooseConnectionController;
 import gui.LoginClientController;
 import gui.MainApp;
 import javafx.application.Application;
@@ -21,7 +20,6 @@ public class GUIClientSocket {
 	private Socket socket;
 	
 	private LoginClientController loginController; 
-	private ChooseConnectionController connectionController;
 	
 	private GUIClientOutHandlerSocket outHandler;
 	
