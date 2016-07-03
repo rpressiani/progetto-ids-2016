@@ -108,40 +108,14 @@ public class MainApp extends Application {
 	}
 	public void showElectCounsellor() {
 		try {
-			
-			
-			
 			FXMLLoader loader = new FXMLLoader(); 
 			loader.setLocation(getClass().getResource("/ElectCounsellorScene.fxml"));
-//			this.tempStage = new Stage(); 
-////			AnchorPane actionScene = (AnchorPane) loader.load();
-//			this.gameScene.getChildren().setAll(FXMLLoader.load(getClass().getResource("/ElectCounsellorScene.fxml")));
-//			rootLayout.setCenter(this.gameScene);
-//
-//			FXMLLoader loader = new FXMLLoader(); 
-//			loader.setLocation(getClass().getResource("/ElectCounsellorScene.fxml"));
 			Scene gameScene = new Scene((AnchorPane) loader.load());
-//			Scene scene = new Scene(this.gameScene); 
-//
-//			ElectCounsellorController controller = loader.getController();
-//		    controller.setMainApp(this);
-//
-//			this.tempStage.setScene(scene);
-//			this.tempStage.show();
-//			System.out.println(this.tempStage);
-			
 			this.tempStage = new Stage();
 			this.tempStage.setScene(gameScene);
 			ElectCounsellorController controller = loader.getController();
 			controller.setMainApp(this);
-//			Stage t = new Stage();
-//			t.setScene(gameScene);
-//			this.tempStage = t;
 			this.tempStage.show();
-			
-			
-			
-
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -149,14 +123,16 @@ public class MainApp extends Application {
 		} 
 	}	
 	public void showBuildWithCard() {
-		AnchorPane actionScene;
 		try {
-			FXMLLoader loader = new FXMLLoader();
+			FXMLLoader loader = new FXMLLoader(); 
 			loader.setLocation(getClass().getResource("/BuildEmporiumWithCardScene.fxml"));
-			actionScene = (AnchorPane) loader.load();
-			rootLayout.setCenter(actionScene);
-			BuildWithCardController controller = loader.getController();
+			Scene gameScene = new Scene((AnchorPane) loader.load());
+			this.tempStage = new Stage();
+			this.tempStage.setScene(gameScene);
+			ElectCounsellorController controller = loader.getController();
 			controller.setMainApp(this);
+			this.tempStage.show();
+			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

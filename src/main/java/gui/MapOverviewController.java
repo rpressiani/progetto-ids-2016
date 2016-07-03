@@ -107,14 +107,8 @@ public class MapOverviewController {
 		
 	}
 	@FXML
-	public void handleBuildEmporium(MouseEvent mouseEvent) {
-//		GameState gameState = mainApp.getGameState();
-//		Player player = gameState.getCurrentPlayer(); 
-//		PermissionCard card = gameState.getMap().getRegions().get("seaside").getPermissionDeck().getVisibleCards().get(0);
-//		City city = gameState.getMap().getAllCitiesHashMap().get("A"); 
-//		BuildEmporiumWithCard action = new BuildEmporiumWithCard(card, city);
-//		action.doAction(player, gameState);
-//		//TODO: GUI correspondence
+	public void handleBuildEmporium() {
+		mainApp.showBuildWithCard();
 	}
 	@FXML
 	public void handleElectCounsellor() {

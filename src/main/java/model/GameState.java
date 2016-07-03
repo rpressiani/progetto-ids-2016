@@ -73,8 +73,7 @@ public class GameState extends Observable<Change> {
 		}
 
 		this.currentPlayer = this.players.get(0);
-		
-		new Thread(new CheckDisconnections(this)).start();
+	
 	}
 
 	/**
@@ -340,6 +339,10 @@ public class GameState extends Observable<Change> {
 		for(Player p : temp){
 			p.getView().disconnect();
 		}
+	}
+	
+	public void checkNotOnePlayer(){
+		new Thread(new CheckDisconnections(this)).start();
 	}
 	
 	/**
