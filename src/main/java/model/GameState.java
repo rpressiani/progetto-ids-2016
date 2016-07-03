@@ -19,7 +19,7 @@ import model.sharedObjects.Nobility;
 import observer.Observable;
 import parser.Parser;
 
-public class GameState extends Observable<Change>{
+public class GameState extends Observable<Change> {
 	private Map map;
 	private Nobility nobility;
 	private PoliticalRealDeck politicalDeck;
@@ -204,6 +204,10 @@ public class GameState extends Observable<Change>{
 		}
 	}
 
+	/**
+	 * @param players
+	 * @return winner player
+	 */
 	public Player calculateWinner(ArrayList<Player> players){
 	
 		int maxPermissions=players.get(0).getPermissionHand().size();
@@ -268,6 +272,10 @@ public class GameState extends Observable<Change>{
 		
 	}
 	
+	/**
+	 * @param player
+	 * removes player from the game
+	 */
 	public void removePlayer(Player player){
 		
 	}

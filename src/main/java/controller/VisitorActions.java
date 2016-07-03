@@ -67,6 +67,11 @@ public class VisitorActions {
 		this.gameState = gameState;
 	}
 	
+	/**
+	 * @param DTOAction
+	 * @param player
+	 * @return
+	 */
 	public BuyPermissionCard visit(DTOBuyPermissionCard DTOAction, Player player){
 		Region region=gameState.getMap().getRegions().get(DTOAction.getRegion().getName());
 		ArrayList<Integer> structure=DTOAction.getProposal().getStructure();
@@ -75,6 +80,11 @@ public class VisitorActions {
 		return new BuyPermissionCard(region, proposal, DTOAction.getIndex());
 	}
 	
+	/**
+	 * @param DTOAction
+	 * @param player
+	 * @return
+	 */
 	public BuildEmporiumWithKing visit(DTOBuildEmporiumWithKing DTOAction, Player player){
 		ArrayList<Integer> structure=DTOAction.getProposal().getStructure();
 		PoliticalContainer proposal=new PoliticalContainer(gameState.getParser(), structure);
@@ -83,6 +93,11 @@ public class VisitorActions {
 		return new BuildEmporiumWithKing(proposal, city);
 	}
 	
+	/**
+	 * @param DTOAction
+	 * @param player
+	 * @return
+	 */
 	public BuildEmporiumWithCard visit(DTOBuildEmporiumWithCard DTOAction, Player player){
 		int idCard=DTOAction.getPermissionCard().getIdCard();
 		City city=gameState.getMap().getAllCitiesHashMap().get(DTOAction.getCity().getName());
@@ -96,6 +111,10 @@ public class VisitorActions {
 		return new BuildEmporiumWithCard(card, city);
 	}
 	
+	/**
+	 * @param DTOAction
+	 * @return
+	 */
 	public ElectCounsellor visit(DTOElectCounsellor DTOAction){
 		String colorString=DTOAction.getColor().getColorString();
 		
@@ -105,6 +124,11 @@ public class VisitorActions {
 		return new ElectCounsellor(region, color);
 	}
 	
+	/**
+	 * @param DTOAction
+	 * @param player
+	 * @return
+	 */
 	public AddictionalAction visit(DTOAddictionalAction DTOAction, Player player){
 		DTOMainAction action=DTOAction.getAction();
 		MainAction realAction=null;
@@ -117,11 +141,19 @@ public class VisitorActions {
 		return new AddictionalAction(realAction);
 	}
 	
+	/**
+	 * @param DTOAction
+	 * @return
+	 */
 	public SubstitutePermissionCards visit(DTOSubstitutePermissionCards DTOAction){
 		Region region=gameState.getMap().getRegions().get(DTOAction.getRegion().getName());
 		return new SubstitutePermissionCards(region);	
 	}
 	
+	/**
+	 * @param DTOAction
+	 * @return
+	 */
 	public ElectCounsellorWithAssistant visit(DTOElectCounsellorWithAssistant DTOAction){
 		Region region=gameState.getMap().getRegions().get(DTOAction.getRegion().getName());
 		String colorString=DTOAction.getColor().getColorString();
@@ -131,14 +163,27 @@ public class VisitorActions {
 		return new ElectCounsellorWithAssistant(region, color);
 	}
 	
+	/**
+	 * @param DTOAction
+	 * @return
+	 */
 	public HireAssistant visit(DTOHireAssistant DTOAction){
 		return new HireAssistant();
 	}
 	
+	/**
+	 * @param DTOAction
+	 * @return
+	 */
 	public NullAction visit(DTONullAction DTOAction){
 		return new NullAction();
 	}
 	
+	/**
+	 * @param DTOAction
+	 * @param player
+	 * @return
+	 */
 	public SellAction visit(DTOSellAction DTOAction, Player player){
 		Coins sellCoins=new Coins(DTOAction.getSellCoins().getQuantity());
 		Coins buyCoins=new Coins(DTOAction.getBuyCoins().getQuantity());
@@ -178,6 +223,10 @@ public class VisitorActions {
 		return new SellAction(sellCoins, sellAssistants, sellPermissions, sellPoliticals, buyCoins, buyAssistants, buyPermissions, buyPoliticals);
 	}
 	
+	/**
+	 * @param DTOAction
+	 * @return
+	 */
 	public BuyAction visit(DTOBuyAction DTOAction){
 		Contract contract=null;
 		List<Contract> contractList= new ArrayList<Contract>(gameState.getMarket().getContractSet());
@@ -189,12 +238,21 @@ public class VisitorActions {
 		return new BuyAction(contract);
 	}
 	
+	/**
+	 * @param DTOAction
+	 * @return
+	 */
 	public GetFreePermission visit(DTOGetFreePermission DTOAction){
 		Region region=gameState.getMap().getRegions().get(DTOAction.getRegion().getName());
 		
 		return new GetFreePermission(region, DTOAction.getIndex());
 	}
 	
+	/**
+	 * @param DTOAction
+	 * @param player
+	 * @return
+	 */
 	public GetFreeToken visit(DTOGetFreeToken DTOAction, Player player){
 		Set<City> cities=new HashSet<City>();
 		
@@ -205,6 +263,11 @@ public class VisitorActions {
 		return new GetFreeToken(cities);
 	}
 	
+	/**
+	 * @param DTOAction
+	 * @param player
+	 * @return
+	 */
 	public GetAgainBonusPermission visit(DTOGetAgainBonusPermission DTOAction, Player player){
 		int idCard=DTOAction.getCard().getIdCard();
 		PermissionCard card=null;
@@ -217,6 +280,11 @@ public class VisitorActions {
 		return new GetAgainBonusPermission(card);
 	}
 	
+	/**
+	 * @param DTOAction
+	 * @param player
+	 * @return
+	 */
 	public DoAgainAction visit(DTODoAgainAction DTOAction, Player player){
 		DTOMainAction action=DTOAction.getAction();
 		MainAction realAction=null;
@@ -229,6 +297,10 @@ public class VisitorActions {
 		return new DoAgainAction(realAction);
 	}
 	
+	/**
+	 * @param DTOAction
+	 * @return
+	 */
 	public QuitAction visit(DTOQuitAction DTOAction){
 		return new QuitAction();
 	}

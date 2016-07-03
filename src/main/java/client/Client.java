@@ -10,6 +10,12 @@ import client.socket.ClientSocket;
 
 public class Client {
 
+	/**
+	 * @param args
+	 * @throws UnknownHostException
+	 * @throws IOException
+	 * @throws NotBoundException
+	 */
 	public static void main(String[] args) throws UnknownHostException, IOException, NotBoundException {
 		Scanner in = new Scanner(System.in);
 		

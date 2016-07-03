@@ -24,6 +24,11 @@ public class ClientRMI {
 	private RMIServerInterface serverStub;
 	private ClientRMIView clientRMIView;
 	
+	/**
+	 * @param in
+	 * @throws RemoteException
+	 * @throws NotBoundException
+	 */
 	public ClientRMI(Scanner in) throws RemoteException, NotBoundException {
 		this.in = in;
 	}
@@ -40,6 +45,12 @@ public class ClientRMI {
 		this.serverStub.registerClient(clientRMIView); //before or after executor?
 	}
 	
+	/**
+	 * @param args
+	 * @throws RemoteException
+	 * @throws NotBoundException
+	 * @throws AlreadyBoundException
+	 */
 	public static void main(String[] args) throws RemoteException, NotBoundException, AlreadyBoundException {
 		Scanner in = new Scanner(System.in);
 		ClientRMI client = new ClientRMI(in);

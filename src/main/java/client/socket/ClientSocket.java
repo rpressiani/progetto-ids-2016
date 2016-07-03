@@ -38,10 +38,19 @@ public class ClientSocket {
 		executor.submit(new ClientInHandler(new ObjectInputStream(socket.getInputStream())));
 	}
 	
+	/**
+	 * @throws IOException
+	 * closes client socket
+	 */
 	public void closeClient() throws IOException{
 		this.socket.close();
 	}
 	
+	/**
+	 * @param args
+	 * @throws UnknownHostException
+	 * @throws IOException
+	 */
 	public static void main(String[] args) throws UnknownHostException, IOException {
 		Scanner in = new Scanner(System.in);
 		ClientSocket client = new ClientSocket(in); 
