@@ -12,25 +12,25 @@ public class DTOBuyAction implements DTOAction {
 	 */
 	private static final long serialVersionUID = 4077745546664700273L;
 
-	private final String playerName;
+	private final int idContract;
 	
 	/**
 	 * @param playerName
 	 * @throws NullPointerException if playerName is null
 	 */
-	public DTOBuyAction(String playerName) {
-		if(playerName==null) {
-			throw new NullPointerException("playerName cannot be null"); 
+	public DTOBuyAction(int idContract) {
+		if(idContract<=0) {
+			throw new IllegalArgumentException("idContract must be >0"); 
 		}
-		this.playerName=playerName;
+		this.idContract=idContract;
 	}
 
 	/**
 	 * 
 	 * @return playerName
 	 */
-	public String getPlayerName() {
-		return playerName;
+	public int getIdContract() {
+		return idContract;
 	}
 	
 	@Override
