@@ -141,4 +141,8 @@ public interface State {
 		
 	}
 	
+	public default boolean checkFinished(Player player, GameState gameState){
+		if(player.getState() instanceof FinishedBuildingState) return true;
+		else return false;
+	}
 }

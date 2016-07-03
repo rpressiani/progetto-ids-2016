@@ -16,18 +16,6 @@ import utilities.Color;
 public class TestSubstitutePermissionCards {
 
 	@Test
-	public void testNullRegionInConstructorThrowsException() {
-		boolean thrown = false; 
-		Region region = null; 
-		try {
-			@SuppressWarnings("unused")
-			SubstitutePermissionCards action = new SubstitutePermissionCards(region); 
-		} catch(NullPointerException e) {
-			thrown = true; 
-		}
-		assertTrue(thrown); 
-	}
-	@Test
 	public void testNullPlayerInDoActionThrowsException() {
 		boolean thrown = false; 
 		Parser parser = new Parser(); 
