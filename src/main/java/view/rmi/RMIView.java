@@ -23,6 +23,13 @@ public class RMIView extends View {
 	private RMIViewTimer timer;
 	
 	
+	/**
+	 * Constructor of RMIView
+	 * Creates an RMIView linked to a specific ClientViewRemote
+	 * 
+	 * @param client	ClientViewRemote of the player connected
+	 * @param server	RMIServer on which the player is connected
+	 */
 	public RMIView(ClientViewRemote client, server.RMIServer server) {
 		this.client = client;
 		this.server = server;
@@ -32,6 +39,9 @@ public class RMIView extends View {
 		(new Thread(this.timer)).run();
 	}
 
+	/**
+	 * @see view.View#resetTimer()
+	 */
 	@Override
 	public void resetTimer() {
 		try {
@@ -43,6 +53,9 @@ public class RMIView extends View {
 		System.out.println("new timer started");
 	}
 	
+	/**
+	 * @see view.View#startTimer()
+	 */
 	@Override
 	public void startTimer(){
 		try {
@@ -54,6 +67,9 @@ public class RMIView extends View {
 	}
 	
 	
+	/**
+	 * @see view.View#stopTimer()
+	 */
 	@Override
 	public void stopTimer(){
 		try {
@@ -85,7 +101,13 @@ public class RMIView extends View {
 		return this.player.isEnabled();
 	}
 	
-	public void initServerSocketView(GameState game) throws IOException{
+	/**
+	 * Once the match is started, the RMIView is linked with the GameState of that match
+	 * 
+	 * @param game
+	 * @throws IOException
+	 */
+	public void initRMIView(GameState game) throws IOException{
 		this.game = game;
 		this.visitorQueries = new VisitorQueries(this.game, this.player);
 	}
@@ -97,8 +119,10 @@ public class RMIView extends View {
 		return visitorQueries;
 	}
 	
+	
 	/**
 	 * communicate to the client the notify received
+	 * @see view.View#update(model.changes.Change)
 	 */
 	public void update(Change change) {
 		

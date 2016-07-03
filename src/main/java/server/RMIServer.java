@@ -21,12 +21,22 @@ public class RMIServer implements RMIServerInterface {
 	private Map<Player, RMIView> tmpViewRMI;
 	private Server server;
 	
+	/**
+	 * RMIServer constructor
+	 * Creates the RMI section of the server
+	 * 
+	 * @param tmpViewRMI	players connected via RMI with their view
+	 * @param server		server on which the RMIServer is created
+	 */
 	public RMIServer(Map<Player, RMIView> tmpViewRMI, Server server) {
 		this.clients = new HashMap<ClientViewRemote, RMIView>();
 		this.tmpViewRMI = tmpViewRMI;
 		this.server = server;
 	}
 	
+	/**
+	 * @see server.RMIServerInterface#registerClient(client.rmi.ClientViewRemote)
+	 */
 	@Override
 	public void registerClient(ClientViewRemote clientStub) throws RemoteException{
 		System.out.println("NEW CLIENT_RMI ACCEPTED");
@@ -39,15 +49,25 @@ public class RMIServer implements RMIServerInterface {
 		clientStub.print(initString.toString());
 	}
 	
+	/**
+	 * Disconnect a player from the server
+	 * @param player
+	 */
 	public void disconnect(Player player){
 		this.server.disconnectRMI(player);
 	}
 	
+	/**
+	 * @see server.RMIServerInterface#unregisterClient(client.rmi.ClientViewRemote)
+	 */
 	@Override
 	public void unregisterClient(ClientViewRemote clientStub) throws RemoteException {
 		this.clients.remove(clientStub);
 	}
 	
+	/**
+	 * @see server.RMIServerInterface#receiveMessage(client.socket.ClientMessage)
+	 */
 	@Override
 	public void receiveMessage(ClientMessage msgIn) throws RemoteException {
 		System.out.println("MSG received: " + msgIn.getMessage());
@@ -130,48 +150,6 @@ public class RMIServer implements RMIServerInterface {
 			}
 		}
 		
-//		ClientMessage msgOut;
-//		
-//		if (msgIn.getMessage() instanceof DTOSetup) {
-//			System.out.println("MSG RMI RECEIVED 3");
-//			
-//			DTOSetup setup = (DTOSetup) msgIn.getMessage();
-//			
-//			if (!player.isEnabled()) {
-//				player.setNickname(new String(setup.getNickname()));
-//				player.setColor(new Color(setup.getColor().getColorString()));
-//				player.setEnabled(true);
-//				
-//				StringBuilder playerEnabled = new StringBuilder();
-//				playerEnabled.append("\n[SERVER] Setup completed\n");
-//				playerEnabled.append("[SERVER] player.enabled == " + player.isEnabled() + "\n");
-//				playerEnabled.append("[SERVER] Waiting for a match to start...\n");
-//			}
-//		}
-//		
-//		System.out.println("prova");
-		
-//		if (msgIn.getMessage() instanceof DTOAction) {
-//			DTOAction action = (DTOAction) msgIn.getMessage();
-//			System.out.println("SERVER VIEW: received DTOAction " + action);
-//			
-//			msgOut = new ClientMessage(player, action);
-//			System.out.println("RMIVIEW: " + this);
-////			this.notifyObserver(msgOut);
-//			System.out.println("Notify sent");
-//		}
-		
-//		if (msgIn.getMessage() instanceof DTOQuery) {
-			
-//			DTOQuery request = (DTOQuery) msgIn.getMessage();
-//			DTOObject respond = request.accept(this.visitorQueries);
-//			System.out.println("SERVER VIEW: received DTOQuery " + request);
-			
-			//SEND RESPONSE BACK
-
-//		}
-		
-//		System.out.println(msg.getMessage());
 		
 	}
 }

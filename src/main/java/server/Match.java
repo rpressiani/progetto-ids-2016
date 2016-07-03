@@ -26,13 +26,17 @@ public class Match {
 	private Map<Player, RMIView> playersRMI = new HashMap<Player, RMIView>();
 	private Map<Player, ServerSocketView> playersSocket = new HashMap<Player, ServerSocketView>();
 	
+
 	/**
+	 * Constructor of the Match
+	 * Creates a new match based on a list of players that will join it.
 	 * 
-	 * @param players
-	 * @param tmpViewSocket
+	 * @param players					players that will join the match
+	 * @param tmpViewSocket				map of players connected via socket with their ServerSocketView
+	 * @param tmpViewRMI				map of players connected via RMI with their RMIView
 	 * @throws IOException
-	 * @throws AlreadyBoundException 
-	 * @throws NotBoundException 
+	 * @throws AlreadyBoundException
+	 * @throws NotBoundException
 	 */
 	public Match(ArrayList<Player> players, Map<Player,ServerSocketView> tmpViewSocket,
 			Map<Player, RMIView> tmpViewRMI) throws IOException, AlreadyBoundException, NotBoundException {
@@ -65,7 +69,7 @@ public class Match {
 				playersRMI.put(player, view);
 				view.getPlayer().initPlayer(this.gameState.getPoliticalDeck(), k, this.parser);
 				k++;
-				view.initServerSocketView(this.gameState);
+				view.initRMIView(this.gameState);
 				System.out.println(view.getPlayer());
 				this.gameState.registerObserver(view.getPlayer(), view);
 				view.registerObserver(this.controller);
@@ -81,14 +85,14 @@ public class Match {
 	}
 
 	/**
-	 * @return the playersRMI
+	 * @return the playersRMI map
 	 */
 	public Map<Player, RMIView> getPlayersRMI() {
 		return playersRMI;
 	}
 
 	/**
-	 * @return the playersSocket
+	 * @return the playersSocket map
 	 */
 	public Map<Player, ServerSocketView> getPlayersSocket() {
 		return playersSocket;
@@ -108,7 +112,7 @@ public class Match {
 		return controller;
 	}
 
-	/* (non-Javadoc)
+	/**
 	 * @see java.lang.Object#hashCode()
 	 */
 	@Override
@@ -119,7 +123,7 @@ public class Match {
 		return result;
 	}
 
-	/* (non-Javadoc)
+	/**
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
 	@Override
