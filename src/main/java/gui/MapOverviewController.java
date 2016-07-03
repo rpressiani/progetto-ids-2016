@@ -57,6 +57,26 @@ public class MapOverviewController {
 	private ImageView region2 = new ImageView(); 
 	@FXML
 	private ImageView region3 = new ImageView(); 
+	@FXML 
+	private MenuItem scoresQuery = new MenuItem(); 
+	@FXML 
+	private MenuItem currentPlayerQuery = new MenuItem(); 
+	@FXML
+	private MenuItem infoQuery = new MenuItem(); 
+	@FXML
+	private MenuItem playerInfoQuery = new MenuItem();
+	@FXML
+	private MenuItem otherPlayersQuery = new MenuItem(); 
+	@FXML
+	private MenuItem freeCounsellorsQuery = new MenuItem(); 
+	@FXML
+	private MenuItem balconiesQuery = new MenuItem(); 
+	@FXML
+	private MenuItem availablePermissionsQuery = new MenuItem(); 
+	@FXML
+	private MenuItem mapQuery = new MenuItem(); 
+	@FXML
+	private MenuItem marketQuery = new MenuItem(); 
 	
 	private ArrayList<ImageView> council1 = new ArrayList<ImageView>(); 
 	private ArrayList<ImageView> council2 = new ArrayList<ImageView>(); 
@@ -96,7 +116,7 @@ public class MapOverviewController {
 		Color color = new Color("red"); 
 		ElectCounsellor action = new ElectCounsellor(balcony, color);
 		action.doAction(player, gameState);
-		//TODO: GUI corrspondence
+		//TODO: GUI correspondence
 	}
 	@FXML
 	public void handleBuyPermissionCard() {
@@ -129,6 +149,46 @@ public class MapOverviewController {
 	}
 	@FXML
 	public void handleNullAction() {
+		
+	}
+	@FXML
+	public void handleScoresQuery() {
+		
+	}
+	@FXML
+	public void handleCurrentPlayerQuery() {
+		
+	}
+	@FXML
+	public void handleInformationQuery() {
+		
+	}
+	@FXML
+	public void handlePlayerInformation() {
+		
+	}
+	@FXML
+	public void handleOtherPlayersQuery() {
+		
+	}
+	@FXML
+	public void handleFreeCounsellorsQuery() {
+		
+	}
+	@FXML
+	public void handlebalconiesQuery() {
+		
+	}
+	@FXML
+	public void handleAvailablePermissionsQuery() {
+		
+	}
+	@FXML
+	public void handleMapQuery() {
+		
+	}
+	@FXML
+	public void handleMarketQuery() {
 		
 	}
 	public void endTurn() {
