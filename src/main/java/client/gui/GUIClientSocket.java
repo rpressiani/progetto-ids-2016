@@ -1,4 +1,4 @@
-package client.socket;
+package client.gui;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -9,18 +9,22 @@ import java.util.Scanner;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class ClientSocket {
-	
+import client.cli.socket.CLIClientOutHandlerSocket;
+import client.cli.socket.ClientInHandler;
+import gui.ChooseConnectionController;
+import gui.LoginClientController;
+
+public class GUIClientSocket {
 	private final static int PORT = 29999;
 	private final static String IP = "127.0.0.1";
 	private Socket socket;
 	
+	private LoginClientController loginController; 
+	private ChooseConnectionController connectionController;
+	
 	private Scanner in;
 	
-	/**
-	 * @param in
-	 */
-	public ClientSocket(Scanner in) {
+	public GUIClientSocket(Scanner in) {
 		this.in = in;
 	}
 	
@@ -38,8 +42,8 @@ public class ClientSocket {
 	}
 	
 	/**
-	 * @throws IOException
 	 * closes client socket
+	 * @throws IOException
 	 */
 	public void closeClient() throws IOException{
 		this.socket.close();
@@ -52,8 +56,9 @@ public class ClientSocket {
 	 */
 	public static void main(String[] args) throws UnknownHostException, IOException {
 		Scanner in = new Scanner(System.in);
-		ClientSocket client = new ClientSocket(in); 
+		GUIClientSocket client = new GUIClientSocket(in); 
 		client.startClient();
 		
 	}
+	
 }

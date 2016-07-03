@@ -1,10 +1,10 @@
-package client.socket;
+package client.cli.socket;
 
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.Scanner;
 
-import client.CLIClientOutHandler;
+import client.cli.CLIClientOutHandler;
 
 public class CLIClientOutHandlerSocket extends CLIClientOutHandler {
 	

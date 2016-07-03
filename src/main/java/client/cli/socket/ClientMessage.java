@@ -1,11 +1,11 @@
 /**
  * 
  */
-package client.socket;
+package client.cli.socket;
 
 import java.io.Serializable;
 
-import client.rmi.ClientViewRemote;
+import client.cli.rmi.ClientViewRemote;
 import dto.DTOObject;
 import model.player.Player;
 

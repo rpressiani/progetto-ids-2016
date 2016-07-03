@@ -5,7 +5,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 
-import client.socket.ClientMessage;
+import client.cli.socket.ClientMessage;
 import dto.DTOObject;
 import dto.actions.DTOAction;
 import dto.changes.DTOChange;

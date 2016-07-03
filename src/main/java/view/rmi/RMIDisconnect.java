@@ -3,7 +3,7 @@ package view.rmi;
 import java.rmi.RemoteException;
 import java.util.TimerTask;
 
-import client.rmi.ClientViewRemote;
+import client.cli.rmi.ClientViewRemote;
 import model.player.Player;
 
 public class RMIDisconnect extends TimerTask {

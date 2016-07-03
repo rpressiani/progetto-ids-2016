@@ -5,8 +5,8 @@ import java.net.UnknownHostException;
 import java.rmi.NotBoundException;
 import java.util.Scanner;
 
-import client.rmi.ClientRMI;
-import client.socket.ClientSocket;
+import client.cli.rmi.ClientRMI;
+import client.cli.socket.ClientSocket;
 
 public class Client {
 
