@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
+import dto.actions.DTOChatAction;
 import dto.actions.DTONullAction;
 import dto.actions.inputBonus.DTODoAgainAction;
 import dto.actions.inputBonus.DTOGetAgainBonusPermission;
@@ -95,6 +96,7 @@ public abstract class ClientOutHandler {
 			help.append("[CLI] *\tOther Commands \n");
 			help.append("[CLI] \t\tpass\n");
 			help.append("[CLI] \t\tping\n");
+			help.append("[CLI] \t\tchat <message>\n");
 			help.append("[CLI] \n");
 			help.append("[CLI] Remember that the order for the card proposal is the one written below:");
 			msg = new ClientMessage(new DTOProposalOrderRequest());
@@ -106,7 +108,7 @@ public abstract class ClientOutHandler {
 			sendMsg(msg);
 		} else {
 			
-			switch (inputList.get(0)) {
+			switch (inputList.get(0).toLowerCase()) {
 				
 				/*----- GENERAL-----*/
 			case "ping":
@@ -124,7 +126,7 @@ public abstract class ClientOutHandler {
 					notifyCmdNotFound();
 					break;
 				}
-			case "hireAssistant":
+			case "hireassistant":
 				if (inputList.size() == 1) {
 					msg = new ClientMessage(new DTOHireAssistant());
 					sendMsg(msg);
@@ -133,7 +135,7 @@ public abstract class ClientOutHandler {
 					notifyCmdNotFound();
 					break;
 				}
-			case "electCounsellorAssistant":
+			case "electcounsellorassistant":
 				if (inputList.size() == 3) {
 					msg = new ClientMessage(new DTOElectCounsellorWithAssistant(
 							new String(inputList.get(1)),
@@ -144,7 +146,7 @@ public abstract class ClientOutHandler {
 					notifyCmdNotFound();
 					break;
 				}
-			case "addAction":
+			case "addaction":
 				switch (inputList.get(1)) {
 				case "buildEmpCard":
 					if (inputList.size() == 4) {
@@ -157,7 +159,7 @@ public abstract class ClientOutHandler {
 						notifyCmdNotFound();
 						break;
 					}
-				case "buildEmpKing":
+				case "buildempking":
 					if (inputList.size() >= 4) {
 						proposal = getProposal(inputList, 3);
 						msg = new ClientMessage(new DTOAddictionalAction(new DTOBuildEmporiumWithKing(
@@ -175,7 +177,7 @@ public abstract class ClientOutHandler {
 						notifyCmdNotFound();
 						break;
 					}
-				case "buyPermissionCard":
+				case "buypermissioncard":
 					if (inputList.size() >= 4) {
 						proposal = getProposal(inputList, 4);
 						msg = new ClientMessage(new DTOAddictionalAction(new DTOBuyPermissionCard(
@@ -193,8 +195,7 @@ public abstract class ClientOutHandler {
 						notifyCmdNotFound();
 						break;
 					}
-				case "electCounsellor":
-					System.out.println("electDetected");
+				case "electcounsellor":
 					System.out.println(inputList.size());
 					if (inputList.size() == 4) {
 						System.out.println("inside if");
@@ -215,7 +216,7 @@ public abstract class ClientOutHandler {
 				}
 				break;
 				
-			case "buildEmpCard":
+			case "buildmpcard":
 				if (inputList.size() == 3) {
 					msg = new ClientMessage(new DTOBuildEmporiumWithCard(
 							new DTOPermissionCardSelection(Integer.parseInt(inputList.get(1))),
@@ -226,7 +227,7 @@ public abstract class ClientOutHandler {
 					notifyCmdNotFound();
 					break;
 				}
-			case "buildEmpKing":
+			case "buildempking":
 				if (inputList.size() >= 3) {
 					proposal = getProposal(inputList, 2);
 					msg = new ClientMessage(new DTOBuildEmporiumWithKing(
@@ -244,7 +245,7 @@ public abstract class ClientOutHandler {
 					notifyCmdNotFound();
 					break;
 				}
-			case "buyPermissionCard":
+			case "buypermissioncard":
 				if (inputList.size() >= 3) {
 					proposal = getProposal(inputList, 3);
 					msg = new ClientMessage(new DTOBuyPermissionCard(
@@ -262,7 +263,7 @@ public abstract class ClientOutHandler {
 					notifyCmdNotFound();
 					break;
 				}
-			case "electCounsellor":
+			case "electcounsellor":
 				if (inputList.size() == 3) {
 					msg = new ClientMessage(new DTOElectCounsellor(
 							new String(inputList.get(1)),
@@ -305,7 +306,7 @@ public abstract class ClientOutHandler {
 				
 				/*----- BONUS -----*/
 				
-			case "bonusToken":
+			case "bonustoken":
 				if (inputList.size() >= 2) {
 					Set<DTOCity> cities = new HashSet<DTOCity>();
 					for (int i = 1; i < inputList.size(); i++) {
@@ -318,7 +319,7 @@ public abstract class ClientOutHandler {
 					notifyCmdNotFound();
 					break;
 				}
-			case "bonusFreePermission":
+			case "bonusfreepermission":
 				if (inputList.size() == 3) {
 					DTORegion region = new DTORegion(inputList.get(1));
 					int index = Integer.parseInt(inputList.get(2));
@@ -329,7 +330,7 @@ public abstract class ClientOutHandler {
 					notifyCmdNotFound();
 					break;
 				}
-			case "bonusPermissionGift":
+			case "bonuspermissiongift":
 				if (inputList.size() == 2) {
 					DTOPermissionCardSelection card = new DTOPermissionCardSelection(Integer.parseInt(inputList.get(1)));
 					msg = new ClientMessage(new DTOGetAgainBonusPermission(card));
@@ -339,7 +340,7 @@ public abstract class ClientOutHandler {
 					notifyCmdNotFound();
 					break;
 				}
-			case "bonusDoActionAgain":
+			case "bonusdoactionagain":
 				switch (inputList.get(1)) {
 					case "buildEmpCard":
 						if (inputList.size() == 4) {
@@ -352,7 +353,7 @@ public abstract class ClientOutHandler {
 							notifyCmdNotFound();
 							break;
 						}
-					case "buildEmpKing":
+					case "buildempking":
 						if (inputList.size() >= 4) {
 							proposal = getProposal(inputList, 3);
 							msg = new ClientMessage(new DTODoAgainAction(new DTOBuildEmporiumWithKing(
@@ -370,7 +371,7 @@ public abstract class ClientOutHandler {
 							notifyCmdNotFound();
 							break;
 						}
-					case "buyPermissionCard":
+					case "buypermissioncard":
 						if (inputList.size() >= 4) {
 							proposal = getProposal(inputList, 4);
 							msg = new ClientMessage(new DTODoAgainAction(new DTOBuyPermissionCard(
@@ -388,7 +389,7 @@ public abstract class ClientOutHandler {
 							notifyCmdNotFound();
 							break;
 						}
-					case "electCounsellor":
+					case "electcounsellor":
 						System.out.println("electDetected");
 						System.out.println(inputList.size());
 						if (inputList.size() == 4) {
@@ -411,7 +412,10 @@ public abstract class ClientOutHandler {
 					break;
 				
 				/*----- SPECIAL -----*/
-			
+			case "chat":
+				msg = new ClientMessage(new DTOChatAction(inputList.get(1)));
+				sendMsg(msg);
+				break;
 				
 				/*----- QUERIES -----*/
 				

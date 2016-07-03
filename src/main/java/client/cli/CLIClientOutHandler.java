@@ -46,6 +46,12 @@ public abstract class CLIClientOutHandler extends ClientOutHandler implements Ru
 			String inputLine = stdIn.nextLine();
 			ArrayList<String> inputList = new ArrayList<String>(Arrays.asList(inputLine.split(" ")));
 			
+			if (inputList.get(0).equals("chat")) {
+				inputList = new ArrayList<String>();
+				inputList.add("chat");
+				inputList.add(inputLine.substring(5));
+			}
+			
 			
 			
 			activate(inputList);

@@ -9,10 +9,11 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
-import javafx.scene.control.SplitPane;
+import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+
 import model.GameState;
 import model.actions.main.BuildEmporiumWithCard;
 import model.actions.main.ElectCounsellor;
@@ -22,7 +23,6 @@ import model.council.Balcony;
 import model.map.City;
 import model.map.Region;
 import model.player.Player;
-import utilities.Color;
 
 public class MapOverviewController {
 	
@@ -78,6 +78,11 @@ public class MapOverviewController {
 	@FXML
 	private MenuItem marketQuery = new MenuItem(); 
 	
+	@FXML
+	private ArrayList<Button> cities;
+	@FXML private TextArea textArea = new TextArea();
+
+	
 	private ArrayList<ImageView> council1 = new ArrayList<ImageView>(); 
 	private ArrayList<ImageView> council2 = new ArrayList<ImageView>(); 
 	private ArrayList<ImageView> council3 = new ArrayList<ImageView>(); 
@@ -96,6 +101,18 @@ public class MapOverviewController {
 	@FXML
 	private void initialize() {
 		
+//		 dataPane.setEditable(false);
+//        dataPane.prefWidthProperty().bind(hbox.widthProperty());
+//
+//        dataPane.setWrapText(true);     // New line of the text exceeds the text area
+//        dataPane.setPrefRowCount(10);
+//        dataPane.setText("Testdata");
+//        dataPane.appendText("\ndata");
+		
+		this.textArea.setWrapText(true);
+		this.textArea.setEditable(false);
+		this.textArea.setText("TextArea TEST\n");
+		
 	}
 	@FXML
 	public void handleBuildEmporium(MouseEvent mouseEvent) {
@@ -113,10 +130,12 @@ public class MapOverviewController {
 		Player player = gameState.getCurrentPlayer(); 
 		Balcony balcony = 
 				gameState.getMap().getRegions().get("seaside").getBalcony(); 
-		Color color = new Color("red"); 
-		ElectCounsellor action = new ElectCounsellor(balcony, color);
-		action.doAction(player, gameState);
-		//TODO: GUI correspondence
+
+//		Color color = new Color("red"); 
+//		ElectCounsellor action = new ElectCounsellor(balcony, color);
+//		action.doAction(player, gameState);
+		//TODO: GUI corrspondence
+
 	}
 	@FXML
 	public void handleBuyPermissionCard() {
@@ -229,6 +248,12 @@ public class MapOverviewController {
 //	        alert.showAndWait();
 		 
 		 
+
+		 
+		 
+		 System.out.println("append1");
+		 textArea.appendText(msg);
+		 System.out.println("append2");
 		 
 		}
 }
