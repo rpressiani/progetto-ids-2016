@@ -52,9 +52,9 @@
                                     </MenuButton>
                                     <MenuButton layoutX="9.0" layoutY="106.0" mnemonicParsing="false" text="Quick Actions">
                                       <items>
-                                        <MenuItem fx:id="addictional" mnemonicParsing="false" text="Addictional Action" />
-                                          <MenuItem fx:id="substitute" mnemonicParsing="false" text="Substitute Permission Card" />
-                                          <MenuItem fx:id="electWithAssistant" mnemonicParsing="false" text="Elect Counsellor With Assistant" />
+                                        <MenuItem fx:id="addictional" mnemonicParsing="false" onAction="#handleAddictionalAction" text="Addictional Action" />
+                                          <MenuItem fx:id="substitute" mnemonicParsing="false" onAction="#handleSubstitute" text="Substitute Permission Card" />
+                                          <MenuItem fx:id="electWithAssistant" mnemonicParsing="false" onAction="#handleElectWithAssistant" text="Elect Counsellor With Assistant" />
                                           <MenuItem fx:id="nullAction" mnemonicParsing="false" text="Pass turn" />
                                         <MenuItem fx:id="hire" mnemonicParsing="false" onAction="#handleHireAssistant" text="Hire Assistant " />
                                       </items>
@@ -88,8 +88,8 @@
                                     </MenuButton>
                                     <MenuButton layoutX="9.0" layoutY="229.0" mnemonicParsing="false" text="Market">
                                       <items>
-                                        <MenuItem mnemonicParsing="false" text="Buy Action" />
-                                        <MenuItem mnemonicParsing="false" text="Sell Action" />
+                                        <MenuItem fx:id="buyAction" mnemonicParsing="false" text="Buy Action" />
+                                        <MenuItem fx:id="sellAction" mnemonicParsing="false" text="Sell Action" />
                                       </items>
                                     </MenuButton>
                                  </children>
