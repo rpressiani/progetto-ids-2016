@@ -65,6 +65,9 @@ public class CanSellState implements State {
 					action.doAction(player, gameState);
 					System.out.println(player.getNickname()+" chosed his bonus");
 					gameState.notifyAllExceptPlayer(player, new ChangeMsg(player.getNickname()+" chosed his bonus"));
+					if(gameState.checkEmporiums(player)==true && gameState.checkAlreadyFinished(player)==false){
+						player.setState(new FinishedBuildingState());
+					}
 					player.getState().checkTurn(player, gameState);
 				}
 			}
