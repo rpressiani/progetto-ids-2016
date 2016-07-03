@@ -145,7 +145,6 @@ public abstract class ClientOutHandler {
 					break;
 				}
 			case "addAction":
-				System.out.println("addAction detected");
 				switch (inputList.get(1)) {
 				case "buildEmpCard":
 					if (inputList.size() == 4) {
