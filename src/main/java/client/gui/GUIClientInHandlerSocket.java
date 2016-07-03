@@ -25,17 +25,12 @@ public class GUIClientInHandlerSocket implements Runnable {
 		while(true) {
 			try {
 				Object obj = socketIn.readObject();
-				System.out.println("msg");
 				
 				if (obj instanceof DTOChange) {
 					DTOChange change = (DTOChange) obj;
-					System.out.println("run1");
 					MainApp.alert(change.toString());
-					System.out.println("run2");
 				} else {
-					System.out.println("run3");
 					MainApp.alert(obj.toString());
-					System.out.println("run4");
 				}
 				
 			} catch (ClassNotFoundException | IOException e) {

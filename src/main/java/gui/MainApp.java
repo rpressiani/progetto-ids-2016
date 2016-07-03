@@ -119,7 +119,6 @@ public class MainApp extends Application {
 	}
 	
 	public static void alert(String msg){
-		System.out.println("alert pre");
 		if (controller != null) {
 			System.out.println(controller);
 			controller.alert(msg);

@@ -156,11 +156,25 @@ public class MapOverviewController {
 		}
 	}
 	@FXML
+	public void handleHireAssistant(){
+		ArrayList<String> inputList = new ArrayList<String>();
+		inputList.add("hireAssistant");
+		MainApp.getOutHandler().activate(inputList);
+	}
+	
+	@FXML
 	public void handleNullAction() {
 		ArrayList<String> inputList = new ArrayList<String>();
 		inputList.add("pass");
 		MainApp.getOutHandler().activate(inputList);
 	}
+	@FXML
+	public void handleQuit(){
+		ArrayList<String> inputList = new ArrayList<String>();
+		inputList.add("quit");
+		MainApp.getOutHandler().activate(inputList);
+	}
+	
 	@FXML
 	public void handleScoresQuery() {
 		ArrayList<String> inputList = new ArrayList<String>();
