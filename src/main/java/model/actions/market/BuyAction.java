@@ -51,20 +51,26 @@ public class BuyAction implements GeneralAction {
 				coins=(Coins) m;
 			}
 		}
-		if(player.getCoins().getItems()<coins.getItems()){
-			gameState.notifyObserver(player, new ChangeMsg("You don't have enough coins to accept this contract"));
-			return false;
+		if(coins==null) throw new NullPointerException();
+		else {
+			if(player.getCoins().getItems()<coins.getItems()){
+				gameState.notifyObserver(player, new ChangeMsg("You don't have enough coins to accept this contract"));
+				return false;
+			}
 		}
 		
-		Assistants assistants=null;
+		Assistants assistants = null;
 		for(Marketable m : contract.getBuyBag()){
 			if(m instanceof Assistants){
 				assistants=(Assistants) m;
 			}
 		}
-		if(player.getAssistants().getItems()<assistants.getItems()){
-			gameState.notifyObserver(player, new ChangeMsg("You don't have enough assistants to accept this contract"));
-			return false;
+		if(assistants==null) throw new NullPointerException();
+		else{	
+			if(player.getAssistants().getItems()<assistants.getItems()){
+				gameState.notifyObserver(player, new ChangeMsg("You don't have enough assistants to accept this contract"));
+				return false;
+			}
 		}
 		
 		PoliticalContainer proposal=null;
@@ -73,10 +79,13 @@ public class BuyAction implements GeneralAction {
 				proposal=(PoliticalContainer) m;
 			}
 		}
-		for(int i=0; i<player.getPoliticalHand().getDeck().size(); i++){
-			if(player.getPoliticalHand().getDeck().get(i).getNumCards()<proposal.getDeck().get(i).getNumCards()){
-				gameState.notifyObserver(player, new ChangeMsg("You don't have enough political cards to accept this contract"));
-				return false;
+		if(proposal==null) throw new NullPointerException();
+		else{
+			for(int i=0; i<player.getPoliticalHand().getDeck().size(); i++){
+				if(player.getPoliticalHand().getDeck().get(i).getNumCards()<proposal.getDeck().get(i).getNumCards()){
+					gameState.notifyObserver(player, new ChangeMsg("You don't have enough political cards to accept this contract"));
+					return false;
+				}
 			}
 		}
 		

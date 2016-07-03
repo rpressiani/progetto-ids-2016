@@ -83,7 +83,10 @@ public class RMIServer implements RMIServerInterface {
 			}
 		}
 		
-		if (view.getTimer().isActive()) view.resetTimer();
+		if(view==null) throw new NullPointerException();
+		else{
+			if (view.getTimer().isActive()) view.resetTimer();
+		}
 		
 		System.out.println(player);
 		

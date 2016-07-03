@@ -22,7 +22,7 @@ public class ClientMessage implements Serializable {
 	
 	private transient Player player;
 	private final DTOObject message;
-	private ClientViewRemote clientRMI;
+	private transient ClientViewRemote clientRMI;
 	
 
 	/**
