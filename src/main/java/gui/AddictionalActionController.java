@@ -22,17 +22,21 @@ public class AddictionalActionController {
 	@FXML
 	private void handleBuildWithCard() {
 		mainApp.showAddActionBuildWithCard();
+		mainApp.getTempStage().close();
 	}
 	@FXML
 	private void handleBuildWithKing() {
 		mainApp.showAddActionBuildWithKing();
+		mainApp.getTempStage().close();
 	}
 	@FXML
 	private void handleElectCounsellor() {
 		mainApp.showAddActionElectCounsellor();
+		mainApp.getTempStage().close();
 	}
 	@FXML
 	private void handleBuyPermissionCard() {
 		mainApp.showAddActionBuyPermissionCard();
+		mainApp.getTempStage().close();
 	}
 }
