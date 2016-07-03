@@ -6,12 +6,9 @@ import client.gui.GUIClientOutHandlerSocket;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.GameState;
 
@@ -93,6 +90,38 @@ public class MainApp extends Application {
 			e.printStackTrace();
 		} 
 	}
+	public void showElectCounsellor() {
+		try {
+			FXMLLoader loader = new FXMLLoader(); 
+			loader.setLocation(getClass().getResource("/ElectCounsellorScene.fxml"));
+			AnchorPane actionScene = (AnchorPane) loader.load();
+			rootLayout.setCenter(actionScene);
+//			controller = loader.getController(); 
+//			controller.setMainApp(this);
+			ElectCounsellorController controller = loader.getController();
+//			System.out.println("!!!");
+//			System.out.println(controller);
+		    controller.setMainApp(this);
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+	}	
+	public void showBuildWithCard() {
+		AnchorPane actionScene;
+		try {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(getClass().getResource("/BuildEmporiumWithCardScene.fxml"));
+			actionScene = (AnchorPane) loader.load();
+			rootLayout.setCenter(actionScene);
+			BuildWithCardController controller = loader.getController();
+			controller.setMainApp(this);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+	}
 	/**
 	 * @return gameState
 	 */
@@ -119,7 +148,6 @@ public class MainApp extends Application {
 	}
 	
 	public static void alert(String msg){
-		System.out.println("alert pre");
 		if (controller != null) {
 			System.out.println(controller);
 			controller.alert(msg);

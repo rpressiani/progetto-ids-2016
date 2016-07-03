@@ -118,14 +118,7 @@ public class MapOverviewController {
 	}
 	@FXML
 	public void handleElectCounsellor() {
-		TextInputDialog dialog = new TextInputDialog();
-		dialog.setTitle("Elect Counsellor");
-		dialog.setHeaderText("Choose Council and color");
-		dialog.setContentText("Please enter council: ");
-		dialog.setContentText("Please enter color: ");
-		Optional<String> council; 
-		Optional<String> color; 
-		
+		mainApp.showElectCounsellor();
 	}
 	@FXML
 	public void handleBuyPermissionCard() {
@@ -156,11 +149,25 @@ public class MapOverviewController {
 		}
 	}
 	@FXML
+	public void handleHireAssistant(){
+		ArrayList<String> inputList = new ArrayList<String>();
+		inputList.add("hireAssistant");
+		MainApp.getOutHandler().activate(inputList);
+	}
+	
+	@FXML
 	public void handleNullAction() {
 		ArrayList<String> inputList = new ArrayList<String>();
 		inputList.add("pass");
 		MainApp.getOutHandler().activate(inputList);
 	}
+	@FXML
+	public void handleQuit(){
+		ArrayList<String> inputList = new ArrayList<String>();
+		inputList.add("quit");
+		MainApp.getOutHandler().activate(inputList);
+	}
+	
 	@FXML
 	public void handleScoresQuery() {
 		ArrayList<String> inputList = new ArrayList<String>();
