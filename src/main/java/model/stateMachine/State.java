@@ -1,6 +1,7 @@
 package model.stateMachine;
 
 import model.GameState;
+import model.actions.ChatAction;
 import model.actions.NullAction;
 import model.actions.QuitAction;
 import model.actions.inputBonus.InputBonusAction;
@@ -119,7 +120,21 @@ public interface State {
 		if(player==null || gameState==null) throw new NullPointerException("player/gameState cannot be null");
 		
 		System.out.println(player.getNickname()+" has disconnected");
-		gameState.notifyObserver(new ChangeMsg(player.getNickname()+" has disconnected, hope you won't miss him/her too much"));
+		gameState.notifyAllExceptPlayer(player, new ChangeMsg(player.getNickname()+" has disconnected, hope you won't miss him/her too much"));
+	}
+	
+	/**
+	 * 
+	 * @param player
+	 * @param action
+	 * @param gameState
+	 * @throws NullPointerException if one(or more) of the parameters is null
+	 */
+	public default void transition(Player player, ChatAction action, GameState gameState){
+		if(player==null || gameState==null) throw new NullPointerException("player/gameState cannot be null");
+		
+		action.doAction(player, gameState);
+		System.out.println(player.getNickname()+" wrote a message");
 	}
 	
 	public default void checkTurn(Player player, GameState gameState){
