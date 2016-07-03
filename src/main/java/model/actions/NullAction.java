@@ -23,7 +23,6 @@ public class NullAction implements GeneralAction {
 		if(gameState==null) {
 			throw new NullPointerException("gameState cannot be null"); 
 		}
-		
 	}
 
 	@Override

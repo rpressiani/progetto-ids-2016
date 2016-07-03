@@ -61,7 +61,7 @@ public class BuildEmporiumWithCard implements MainAction {
 			}
 		}
 		
-		if(player.getBuiltCities().containsAll(gameState.getMap().getAncestries().get(cityChosed.getAncestry()).getColorCities())){
+		if(player.getBuiltCities().containsAll(gameState.getMap().getAncestries().get(cityChosed.getAncestry().getColor().getStringID()).getColorCities())){
 			ColorCard card=gameState.getMap().getAncestries().get(cityChosed.getAncestry()).getColorCard();
 			
 			if(card.isAssigned()==false){
