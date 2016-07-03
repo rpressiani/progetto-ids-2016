@@ -96,11 +96,7 @@ public class MainApp extends Application {
 			loader.setLocation(getClass().getResource("/ElectCounsellorScene.fxml"));
 			AnchorPane actionScene = (AnchorPane) loader.load();
 			rootLayout.setCenter(actionScene);
-//			controller = loader.getController(); 
-//			controller.setMainApp(this);
 			ElectCounsellorController controller = loader.getController();
-//			System.out.println("!!!");
-//			System.out.println(controller);
 		    controller.setMainApp(this);
 			
 		} catch (IOException e) {
