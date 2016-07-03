@@ -18,6 +18,9 @@ import model.politicalDeck.PoliticalContainer;
  */
 public class Contract {
 	
+	private static int counter = 1;
+	private final int id;
+	
 	private Set<Marketable> sellBag;
 	private Set<Marketable> buyBag;
 	
@@ -32,6 +35,8 @@ public class Contract {
 		if(seller==null) {
 			throw new NullPointerException("seller cannot be null"); 
 		}
+		
+		this.id = counter++;
 		
 		this.sellBag = new HashSet<Marketable>();
 		this.buyBag = new HashSet<Marketable>();
@@ -134,6 +139,13 @@ public class Contract {
 	 */
 	public Player getSeller() {
 		return seller;
+	}
+
+	/**
+	 * @return the id
+	 */
+	public int getId() {
+		return id;
 	}
 	
 
