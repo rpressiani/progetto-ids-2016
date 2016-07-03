@@ -25,9 +25,9 @@
                            <children>
                               <HBox layoutY="-1.0" prefHeight="334.0" prefWidth="109.0">
                                  <children>
-                                    <ImageView fitHeight="335.0" fitWidth="162.0" pickOnBounds="true" preserveRatio="true" />
-                                    <ImageView fitHeight="334.0" fitWidth="169.0" pickOnBounds="true" preserveRatio="true" />
-                                    <ImageView fitHeight="335.0" fitWidth="153.0" pickOnBounds="true" preserveRatio="true" />
+                                    <ImageView fx:id="region1" fitHeight="335.0" fitWidth="162.0" pickOnBounds="true" preserveRatio="true" />
+                                    <ImageView fx:id="region2" fitHeight="334.0" fitWidth="169.0" pickOnBounds="true" preserveRatio="true" />
+                                    <ImageView fx:id="region3" fitHeight="335.0" fitWidth="153.0" pickOnBounds="true" preserveRatio="true" />
                                  </children>
                               </HBox>
                            </children></AnchorPane>
@@ -38,10 +38,10 @@
                                     <Label layoutX="7.0" layoutY="6.0" prefHeight="32.0" prefWidth="164.0" text="Player Menu" />
                                     <MenuButton layoutX="7.0" layoutY="46.0" mnemonicParsing="false" text="Main Actions">
                                       <items>
-                                        <MenuItem mnemonicParsing="false" onAction="#handleBuildEmporium" text="Build Emporium With Card" />
-                                          <MenuItem mnemonicParsing="false" text="Elect Counsellor" />
-                                          <MenuItem mnemonicParsing="false" text="Buy Permission Card" />
-                                        <MenuItem mnemonicParsing="false" onAction="#handleBuildWithKing" text="Build Emporium With King" />
+                                        <MenuItem fx:id="buildAction" mnemonicParsing="false" onAction="#handleBuildEmporium" text="Build Emporium With Card" />
+                                          <MenuItem fx:id="elect" mnemonicParsing="false" text="Elect Counsellor" />
+                                          <MenuItem fx:id="buy" mnemonicParsing="false" text="Buy Permission Card" />
+                                        <MenuItem fx:id="buildWithKing" mnemonicParsing="false" onAction="#handleBuildWithKing" text="Build Emporium With King" />
                                       </items>
                                        <contextMenu>
                                           <ContextMenu>
@@ -53,11 +53,11 @@
                                     </MenuButton>
                                     <MenuButton layoutX="9.0" layoutY="106.0" mnemonicParsing="false" text="Quick Actions">
                                       <items>
-                                        <MenuItem mnemonicParsing="false" text="Addictional Action" />
-                                          <MenuItem mnemonicParsing="false" text="Substitute Permission Card" />
-                                          <MenuItem mnemonicParsing="false" text="Elect Counsellor With Assistant" />
-                                          <MenuItem mnemonicParsing="false" text="NullAction" />
-                                        <MenuItem mnemonicParsing="false" text="Hire Assistant " />
+                                        <MenuItem fx:id="addictional" mnemonicParsing="false" text="Addictional Action" />
+                                          <MenuItem fx:id="substitute" mnemonicParsing="false" text="Substitute Permission Card" />
+                                          <MenuItem fx:id="electWithAssistant" mnemonicParsing="false" text="Elect Counsellor With Assistant" />
+                                          <MenuItem fx:id="nullAction" mnemonicParsing="false" text="NullAction" />
+                                        <MenuItem fx:id="hire" mnemonicParsing="false" text="Hire Assistant " />
                                       </items>
                                        <contextMenu>
                                           <ContextMenu>
