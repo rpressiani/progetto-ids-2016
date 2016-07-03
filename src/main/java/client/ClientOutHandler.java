@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
+import dto.actions.DTOChatAction;
 import dto.actions.DTONullAction;
 import dto.actions.inputBonus.DTODoAgainAction;
 import dto.actions.inputBonus.DTOGetAgainBonusPermission;
@@ -95,6 +96,7 @@ public abstract class ClientOutHandler {
 			help.append("[CLI] *\tOther Commands \n");
 			help.append("[CLI] \t\tpass\n");
 			help.append("[CLI] \t\tping\n");
+			help.append("[CLI] \t\tchat <message>\n");
 			help.append("[CLI] \n");
 			help.append("[CLI] Remember that the order for the card proposal is the one written below:");
 			msg = new ClientMessage(new DTOProposalOrderRequest());
@@ -411,7 +413,10 @@ public abstract class ClientOutHandler {
 					break;
 				
 				/*----- SPECIAL -----*/
-			
+			case "chat":
+				msg = new ClientMessage(new DTOChatAction(inputList.get(1)));
+				sendMsg(msg);
+				break;
 				
 				/*----- QUERIES -----*/
 				
