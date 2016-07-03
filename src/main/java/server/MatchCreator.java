@@ -27,8 +27,13 @@ public class MatchCreator implements Runnable {
 	private Set<Match> runningMatches;
 	
 	/**
+	 * MatchCreator constructor
+	 * Creates new matches based on players connected and enabled
 	 * 
-	 * @param tmpViewSocket
+	 * @param tmpViewSocket		map of players connected via socket
+	 * @param tmpViewRMI		map of players connected via RMI
+	 * @param playerMatch		map of players that have joined a match with that match as value
+	 * @param runningMatches	set of matches running
 	 */
 	public MatchCreator(Map<Player, ServerSocketView> tmpViewSocket, Map<Player, RMIView> tmpViewRMI,
 			Map<Player, Match> playerMatch, Set<Match> runningMatches) {
@@ -74,6 +79,10 @@ public class MatchCreator implements Runnable {
 		return enabledPlayers;
 	}
 
+	/**
+	 * Check every this.pauseTime is there are enough players connected and enabled to start a new match
+	 * @see java.lang.Runnable#run()
+	 */
 	@Override
 	public void run() {
 		System.out.println("[MATCH CREATOR] Start MatchCreator");
@@ -99,7 +108,7 @@ public class MatchCreator implements Runnable {
 				int playersInLobby = this.tmpViewSocket.size() + this.tmpViewRMI.size();
 				log.append("[MATCH CREATOR] There are " + playersInLobby + " players connected in the lobby\n");
 				log.append("[MATCH CREATOR] There are " + this.runningMatches.size() + " matches running\n");
-//				System.out.println(log);
+				System.out.println(log);
 				
 				if (this.enabledPlayers.size() >= 2) {
 					
@@ -109,8 +118,6 @@ public class MatchCreator implements Runnable {
 					this.findEnabledPlayers();
 
 					ArrayList<Player> matchPlayers = new ArrayList<Player>();
-					
-					//players enabled ----> match players
 					
 					for (Player player : this.enabledPlayers) {
 						matchPlayers.add(player);

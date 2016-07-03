@@ -14,6 +14,12 @@ public class DTOMarketStatusResponse implements DTOObject {
 	
 	private final Map<String, DTOContract> contracts;
 	
+	/**
+	 * DTOMarketStatusResponse constructor
+	 * Creates a DTO to aware the players of the contracts that are in the market
+	 * 
+	 * @param contracts
+	 */
 	public DTOMarketStatusResponse(Map<String, DTOContract> contracts) {
 		this.contracts = contracts;
 	}
@@ -25,7 +31,7 @@ public class DTOMarketStatusResponse implements DTOObject {
 		return contracts;
 	}
 
-	/* (non-Javadoc)
+	/**
 	 * @see java.lang.Object#toString()
 	 */
 	@Override

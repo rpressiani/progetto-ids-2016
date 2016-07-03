@@ -34,7 +34,7 @@ public class ServerSocketView extends View implements Runnable {
 	private Server server;
 	
 	/**
-	 * 
+	 * @param server
 	 * @param socket
 	 * @throws IOException
 	 * @throws ClassNotFoundException
@@ -62,8 +62,9 @@ public class ServerSocketView extends View implements Runnable {
 		this.visitorQueries = new VisitorQueries(this.game, this.player);
 	}
 	
+	
 	/**
-	 * communicate to the client the notify received
+	 * @see view.View#update(model.changes.Change)
 	 */
 	public void update(Change change) {
 		
@@ -80,6 +81,12 @@ public class ServerSocketView extends View implements Runnable {
 		}
 	}
 	
+	
+	
+	/**
+	 * Loops on socketIn.readObject() waiting for a message to be received.
+	 * @see java.lang.Runnable#run()
+	 */
 	@Override
 	public void run() {
 		
@@ -182,19 +189,29 @@ public class ServerSocketView extends View implements Runnable {
 	public boolean isEnabled() {
 		return this.player.isEnabled();
 	}
-
+	
+	
+	/**
+	 * @see view.View#startTimer()
+	 */
 	@Override
 	public void startTimer() {
 		this.timer.start();
 		
 	}
 
+	/**
+	 * @see view.View#stopTimer()
+	 */
 	@Override
 	public void stopTimer() {
 		this.timer.stop();
 		
 	}
 
+	/**
+	 * @see view.View#resetTimer()
+	 */
 	@Override
 	public void resetTimer() {
 		this.timer.reset();
