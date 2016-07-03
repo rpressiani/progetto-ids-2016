@@ -15,6 +15,11 @@ public class BuildWithCardController {
 	@FXML
 	private Button cancel = new Button(); 
 	
+	private MainApp mainApp; 
+	
+	public void setMainApp(MainApp mainApp) {
+		this.mainApp = mainApp; 
+	}
 	@FXML
 	private void handleOk() {
 		

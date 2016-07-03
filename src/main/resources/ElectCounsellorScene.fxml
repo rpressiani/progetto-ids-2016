@@ -31,8 +31,8 @@
                         <TextArea prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                      </children>
                   </GridPane>
-                  <Button fx:id="ok" layoutX="90.0" layoutY="225.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="99.0" text="Ok" />
-                  <Button fx:id="cancel" layoutX="224.0" layoutY="225.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="115.0" text="Cancel" />
+                  <Button fx:id="ok" layoutX="90.0" layoutY="225.0" mnemonicParsing="false" onAction="#handleOk" prefHeight="26.0" prefWidth="99.0" text="Ok" />
+                  <Button fx:id="cancel" layoutX="224.0" layoutY="225.0" mnemonicParsing="false" onAction="#handleCancel" prefHeight="26.0" prefWidth="115.0" text="Cancel" />
                </children>
             </AnchorPane>
         </content>

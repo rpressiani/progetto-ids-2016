@@ -107,6 +107,20 @@ public class MainApp extends Application {
 			e.printStackTrace();
 		} 
 	}	
+	public void showBuildWithCard() {
+		AnchorPane actionScene;
+		try {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(getClass().getResource("/BuildEmporiumWithCardScene.fxml"));
+			actionScene = (AnchorPane) loader.load();
+			rootLayout.setCenter(actionScene);
+			BuildWithCardController controller = loader.getController();
+			controller.setMainApp(this);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+	}
 	/**
 	 * @return gameState
 	 */
