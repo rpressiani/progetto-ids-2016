@@ -1,6 +1,6 @@
 package view;
 
-import client.socket.ClientMessage;
+import client.cli.socket.ClientMessage;
 import model.changes.Change;
 import observer.Observable;
 import observer.Observer;

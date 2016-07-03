@@ -1,4 +1,4 @@
-package client.rmi;
+package client.cli.rmi;
 
 import java.io.Serializable;
 import java.rmi.RemoteException;

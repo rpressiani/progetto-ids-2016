@@ -1,10 +1,10 @@
-package client.rmi;
+package client.cli.rmi;
 
 import java.rmi.RemoteException;
 import java.util.Scanner;
 
-import client.CLIClientOutHandler;
-import client.socket.ClientMessage;
+import client.cli.CLIClientOutHandler;
+import client.cli.socket.ClientMessage;
 import server.RMIServerInterface;
 
 public class CLIClientOutHandlerRMI extends CLIClientOutHandler {

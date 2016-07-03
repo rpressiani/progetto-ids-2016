@@ -1,6 +1,6 @@
 package controller;
 
-import client.socket.ClientMessage;
+import client.cli.socket.ClientMessage;
 import dto.actions.DTOAction;
 import model.GameState;
 import model.player.Player;

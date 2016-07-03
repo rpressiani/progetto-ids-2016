@@ -1,4 +1,4 @@
-package client.rmi;
+package client.cli.rmi;
 
 import java.rmi.AlreadyBoundException;
 import java.rmi.NotBoundException;

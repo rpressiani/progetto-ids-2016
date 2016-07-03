@@ -1,4 +1,4 @@
-package client;
+package client.cli;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -6,7 +6,8 @@ import java.util.HashSet;
 import java.util.Scanner;
 import java.util.Set;
 
-import client.socket.ClientMessage;
+import client.ClientOutHandler;
+import client.cli.socket.ClientMessage;
 import dto.actions.market.DTOSellAction;
 import dto.playerInfo.DTOAssistants;
 import dto.playerInfo.DTOCoins;

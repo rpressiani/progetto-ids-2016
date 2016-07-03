@@ -1,4 +1,4 @@
-package gui.client;
+package client.gui;
 
 import java.rmi.AlreadyBoundException;
 import java.rmi.NotBoundException;
@@ -9,15 +9,15 @@ import java.util.Scanner;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import client.rmi.ClientOutHandlerRMI;
-import client.rmi.ClientRMI;
-import client.rmi.ClientRMIView;
+import client.cli.rmi.CLIClientOutHandlerRMI;
+import client.cli.rmi.ClientRMI;
+import client.cli.rmi.ClientRMIView;
 import gui.LoginClientController;
 import gui.MainApp;
 import model.GameState;
 import server.RMIServerInterface;
 
-public class GUIClientRMI extends GUIClient {
+public class GUIClientRMI {
 
 	private static String HOST;
 	private static int PORT;
