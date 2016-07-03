@@ -20,6 +20,7 @@ public class TestPoliticalRealDeck {
 		}
 		assertTrue(deck.isEmpty()); 
 	}
+	@SuppressWarnings("null")
 	@Test
 	public void testIfNullDeckThrowsException() {
 		boolean thrown = false; 
@@ -38,6 +39,7 @@ public class TestPoliticalRealDeck {
 		Parser parser2 = new Parser(); 
 		PoliticalGarbage garbage = new PoliticalGarbage(parser2);
 		try {
+			@SuppressWarnings("unused")
 			PoliticalRealDeck deck = new PoliticalRealDeck(parser, garbage); 
 		} catch(NullPointerException e) {
 			thrown = true; 
@@ -76,6 +78,7 @@ public class TestPoliticalRealDeck {
 		deck.refill();
 		assertFalse(deck.isEmpty()); 
 	}
+	@SuppressWarnings("null")
 	@Test
 	public void testNullDeckInRefillThrowsException() {
 		boolean thrown = false; 

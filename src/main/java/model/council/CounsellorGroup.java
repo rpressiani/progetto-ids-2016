@@ -18,7 +18,7 @@ public class CounsellorGroup {
 	 * @param color
 	 * @param counter
 	 * @throws NullPointerException is color is null
-	 * @throws IllegalArgumentException if counter<=0
+	 * @throws IllegalArgumentException if counter<0
 	 */
 	public CounsellorGroup(Color color, Integer counter){
 		if(color==null) {
