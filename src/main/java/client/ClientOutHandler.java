@@ -41,13 +41,13 @@ public abstract class ClientOutHandler {
 	/**
 	 * @param msg
 	 */
-	public abstract void sendMsg(ClientMessage msg);
+	protected abstract void sendMsg(ClientMessage msg);
 	
-	public abstract void notifyCmdNotFound();
+	protected abstract void notifyCmdNotFound();
 	
-	public abstract void sellCommand();
+	protected abstract void sellCommand();
 	
-	protected void activate(ArrayList<String> inputList){
+	public void activate(ArrayList<String> inputList){
 		
 		ClientMessage msg;
 		ArrayList<Integer> proposal;

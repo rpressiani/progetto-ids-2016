@@ -11,6 +11,9 @@ import java.util.concurrent.Executors;
 import client.cli.socket.ClientInHandler;
 import gui.ChooseConnectionController;
 import gui.LoginClientController;
+import gui.MainApp;
+import javafx.application.Application;
+import javafx.stage.Stage;
 
 public class GUIClientSocket {
 	private final static int PORT = 29999;
@@ -33,6 +36,10 @@ public class GUIClientSocket {
 		System.out.println("[CLIENT] Connection Created");
 		ExecutorService executor = Executors.newFixedThreadPool(2);
 		executor.submit(new ClientInHandler(new ObjectInputStream(socket.getInputStream())));
+		String[] args = null;
+		MainApp.print("Starting GUI");
+		Application.launch(MainApp.class, args);
+		
 	}
 	
 	/**

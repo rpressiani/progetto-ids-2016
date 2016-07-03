@@ -2,11 +2,14 @@ package gui;
 
 import java.io.IOException;
 
+import client.ClientOutHandler;
+import client.gui.GUIClientOutHandlerSocket;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import model.GameState;
 
@@ -17,8 +20,14 @@ public class MainApp extends Application {
 	//how 
 	private GameState gameState; 
 	
-	public MainApp() {
-		
+	private static GUIClientOutHandlerSocket myOutHandler;
+	
+	public static void setClientOutHandler(GUIClientOutHandlerSocket outHandler){
+		myOutHandler = outHandler;
+	}
+	
+	public static void print(String message){
+		System.out.println(message);
 	}
 	
 	@Override
@@ -63,7 +72,7 @@ public class MainApp extends Application {
 		try {
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(getClass().getResource("/LoginClient.fxml"));
-			AnchorPane loginClient = (AnchorPane) loader.load();
+			StackPane loginClient = (StackPane) loader.load();
 			rootLayout.setCenter(loginClient);
 			LoginClientController controller = loader.getController(); 
 			controller.setMainApp(this); 
