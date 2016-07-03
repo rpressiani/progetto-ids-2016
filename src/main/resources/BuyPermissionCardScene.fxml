@@ -9,8 +9,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="552.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.72" fx:controller="gui.BuyPermissionCardController">
+<AnchorPane prefHeight="400.0" prefWidth="552.0" xmlns="http://javafx.com/javafx/8.0.72" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.BuyPermissionCardController">
    <children>
       <TitledPane layoutX="54.0" layoutY="7.0" prefHeight="400.0" prefWidth="552.0" text="Buy Permission Card" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <content>
@@ -51,7 +50,7 @@
                   <Label prefHeight="39.0" prefWidth="422.0" text="Number of Purple Cards" GridPane.rowIndex="6" />
                   <Label prefHeight="49.0" prefWidth="265.0" text="Number of Jolly" GridPane.rowIndex="7" />
                   <Label prefHeight="63.0" prefWidth="265.0" text="Enter Index (0-1): " GridPane.rowIndex="8" />
-                  <TextArea prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                  <TextArea fx:id="index" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="8" />
                </children>
             </GridPane>
          </content>

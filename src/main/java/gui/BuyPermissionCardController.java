@@ -25,10 +25,12 @@ public class BuyPermissionCardController {
 	@FXML
 	private TextArea jolly = new TextArea(); 
 	@FXML
+	private TextArea index = new TextArea(); 
+	@FXML
 	private Button ok = new Button(); 
 	@FXML
 	private Button cancel = new Button(); 
-	
+		
 	public void setMainApp(MainApp mainApp) {
 		this.mainApp = mainApp; 
 	}
