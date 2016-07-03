@@ -77,7 +77,7 @@ public class MainApp extends Application {
 	public void showGameScene() {
 		try {
 			FXMLLoader loader = new FXMLLoader(); 
-			loader.setLocation(MainApp.class.getResource("/GameScene.fxml"));
+			loader.setLocation(getClass().getResource("/GameScene.fxml"));
 			//which gameState?
 			AnchorPane gameScene = (AnchorPane) loader.load(); 
 			rootLayout.setCenter(gameScene);

@@ -75,7 +75,7 @@ public class LoginClientController {
     		inputList.add("setup");
     		inputList.add(nicknameArea.getText());
     		inputList.add(colorArea.getText());
-    		MainApp.getOutHandler().activate(inputList);
+			MainApp.getOutHandler().activate(inputList);
     		
     		okClicked = true; 
     		
@@ -94,5 +94,8 @@ public class LoginClientController {
     }
     public String getNickname() {
     	return nicknameArea.getText(); 
+    }
+    public MainApp getMainApp() {
+    	return mainApp; 
     }
 }

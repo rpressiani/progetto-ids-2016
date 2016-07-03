@@ -165,6 +165,7 @@ public class MapOverviewController {
 			alert.setTitle("Error");
 			alert.setHeaderText("You'd better change your mind");
 			alert.setContentText("Can't do this action now");
+			alert.showAndWait(); 
 		}
 	}
 	@FXML
@@ -174,6 +175,7 @@ public class MapOverviewController {
 			alert.setTitle("Error");
 			alert.setHeaderText("You'd better change your mind");
 			alert.setContentText("Can't do this action now");
+			alert.showAndWait(); 
 		}
 	}
 	@FXML
@@ -183,6 +185,7 @@ public class MapOverviewController {
 			alert.setTitle("Error");
 			alert.setHeaderText("You'd better change your mind");
 			alert.setContentText("Can't do this action now");
+			alert.showAndWait(); 
 		}
 	}
 	@FXML
@@ -192,6 +195,7 @@ public class MapOverviewController {
 			alert.setTitle("Error");
 			alert.setHeaderText("You'd better change your mind");
 			alert.setContentText("Can't do this action now");
+			alert.showAndWait(); 
 		}
 	}
 	@FXML
@@ -201,6 +205,7 @@ public class MapOverviewController {
 			alert.setTitle("Error");
 			alert.setHeaderText("You'd better change your mind");
 			alert.setContentText("Can't do this action now");
+			alert.showAndWait();
 		}
 	}
 	@FXML
