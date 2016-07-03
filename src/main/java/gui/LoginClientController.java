@@ -71,9 +71,6 @@ public class LoginClientController {
     @FXML
     private void handleOk() {
     	if(isInputOk()) {
-//    		Player player = new Player(); 
-//    		player.setNickname(nicknameArea.getText());
-//    		player.setColor(new Color(colorArea.getText()));
     		ArrayList<String> inputList = new ArrayList<String>();
     		inputList.add("setup");
     		inputList.add(nicknameArea.getText());

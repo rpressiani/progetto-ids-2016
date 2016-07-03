@@ -20,26 +20,6 @@ public class MainApp extends Application {
 	private GameState gameState; 
 	
 	private static GUIClientOutHandlerSocket outHandler;
-	
-
-	
-	public static void print(String message){
-		System.out.println(message);
-	}
-	
-	/**
-	 * @return the myOutHandler
-	 */
-	public static GUIClientOutHandlerSocket getOutHandler() {
-		return outHandler;
-	}
-
-	/**
-	 * @param myOutHandler the myOutHandler to set
-	 */
-	public static void setOutHandler(GUIClientOutHandlerSocket myOutHandler) {
-		MainApp.outHandler = myOutHandler;
-	}
 
 	@Override
 	public void start(Stage primaryStage) {
@@ -55,9 +35,11 @@ public class MainApp extends Application {
 			e.printStackTrace();
 		}
 	}
+	
 	public static void main(String[] args) {
 		launch(args); 
 	}
+	
 	private void initRootLayout() {
 		try {
 			FXMLLoader loader = new FXMLLoader();
@@ -106,7 +88,28 @@ public class MainApp extends Application {
 			e.printStackTrace();
 		} 
 	}
+	/**
+	 * @return gameState
+	 */
 	public GameState getGameState() {
 		return gameState; 
+	}
+	
+	public static void print(String message){
+		System.out.println(message);
+	}
+	
+	/**
+	 * @return the myOutHandler
+	 */
+	public static GUIClientOutHandlerSocket getOutHandler() {
+		return outHandler;
+	}
+
+	/**
+	 * @param myOutHandler the myOutHandler to set
+	 */
+	public static void setOutHandler(GUIClientOutHandlerSocket myOutHandler) {
+		MainApp.outHandler = myOutHandler;
 	}
 }

@@ -69,7 +69,7 @@ public class BuildEmporiumWithKing implements MainAction {
 		
 		gameState.notifyObserver(player, new ChangeBuildEmporiumWithKing(new Coins(sumToPay), new Assistants(assistantsToPay), cityChosed));
 		gameState.notifyObserver(player, new ChangePlayerStatus(player));
-		gameState.notifyObserver(new ChangeMsg("The king has been moved to "+cityChosed));
+		gameState.notifyObserver(new ChangeMsg("The king has been moved to "+cityChosed.getName()));
 		
 		for(City c : cityChosed.linkedCities(gameState.getMap(), player)){
 			c.assignBonuses(player, gameState);
@@ -95,7 +95,7 @@ public class BuildEmporiumWithKing implements MainAction {
 			}
 		}
 		
-		if(player.getBuiltCities().containsAll(gameState.getMap().getAncestries().get(cityChosed.getAncestry()).getColorCities())){
+		if(player.getBuiltCities().containsAll(gameState.getMap().getAncestries().get(cityChosed.getAncestry().getColor().getStringID()).getColorCities())){
 			ColorCard card=gameState.getMap().getAncestries().get(cityChosed.getAncestry()).getColorCard();
 			
 			if(card.isAssigned()==false){

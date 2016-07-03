@@ -23,10 +23,6 @@ import model.sharedObjects.King;
 import parser.Parser;
 import utilities.Color;
 
-/**
- * @author Alessandro Pezzotta
- *
- */
 public class Map {
 	
 	private UndirectedGraph<City, DefaultEdge> map;
@@ -222,7 +218,7 @@ public class Map {
 		int distance = (int) pathFinder.getPathLength();
 		return distance; 
 	}
-
+	
 	/**
 	 * @return all the cities on the map
 	 */

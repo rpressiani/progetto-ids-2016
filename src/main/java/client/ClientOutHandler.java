@@ -117,7 +117,7 @@ public abstract class ClientOutHandler {
 				/*----- ACTIONS -----*/
 			case "subPermissionCards":
 				if (inputList.size() == 2) {
-					msg = new ClientMessage(new DTOSubstitutePermissionCards(new DTORegion(inputList.get(2))));
+					msg = new ClientMessage(new DTOSubstitutePermissionCards(new DTORegion(inputList.get(1))));
 					sendMsg(msg);
 					break;
 				} else {
@@ -133,7 +133,7 @@ public abstract class ClientOutHandler {
 					notifyCmdNotFound();
 					break;
 				}
-			case "electCounsellorAss":
+			case "electCounsellorAssistant":
 				if (inputList.size() == 3) {
 					msg = new ClientMessage(new DTOElectCounsellorWithAssistant(
 							new String(inputList.get(1)),
