@@ -28,7 +28,7 @@ public class TestElectCounsellorWithAssistant {
 		@SuppressWarnings("unused")
 		ElectCounsellorWithAssistant action; 
 		try {
-			action = new ElectCounsellorWithAssistant(region, color); 
+			action = new ElectCounsellorWithAssistant(region.getBalcony(), color); 
 		} catch(NullPointerException e) {
 			thrown = true; 
 		}
@@ -144,7 +144,7 @@ public class TestElectCounsellorWithAssistant {
 			id++; 
 		}
 		ElectCounsellorWithAssistant action = 
-				new ElectCounsellorWithAssistant(region, new Color("yellow")); 
+				new ElectCounsellorWithAssistant(region.getBalcony(), new Color("yellow")); 
 		try {
 			Player pl = null; 
 			action.doAction(pl, gameState);
@@ -184,7 +184,7 @@ public class TestElectCounsellorWithAssistant {
 			id++; 
 		}
 		ElectCounsellorWithAssistant action = 
-				new ElectCounsellorWithAssistant(region, new Color("yellow")); 
+				new ElectCounsellorWithAssistant(region.getBalcony(), new Color("yellow")); 
 		try {
 			GameState gameState2 = null; 
 			action.doAction(player, gameState2);
@@ -224,7 +224,7 @@ public class TestElectCounsellorWithAssistant {
 			id++; 
 		}
 		ElectCounsellorWithAssistant action = 
-				new ElectCounsellorWithAssistant(region, new Color("yellow")); 
+				new ElectCounsellorWithAssistant(region.getBalcony(), new Color("yellow")); 
 		try {
 			Player pl = null; 
 			action.checkCondition(pl, gameState); 
@@ -264,7 +264,7 @@ public class TestElectCounsellorWithAssistant {
 			id++; 
 		}
 		ElectCounsellorWithAssistant action = 
-				new ElectCounsellorWithAssistant(region, new Color("yellow")); 
+				new ElectCounsellorWithAssistant(region.getBalcony(), new Color("yellow")); 
 		try {
 			GameState gameState2 = null; 
 			action.checkCondition(player3, gameState2); 

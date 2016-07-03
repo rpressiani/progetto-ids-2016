@@ -97,7 +97,7 @@ public class TestCanMainState {
 		Region region = gameState.getMap().getRegions().get("seaside"); 
 		CounsellorGroup counsellorGroup = gameState.getCounsellorGarbage().getState().get(0);
 		Color color = counsellorGroup.getColor(); 
-		ElectCounsellor action = new ElectCounsellor(region, color); 
+		ElectCounsellor action = new ElectCounsellor(region.getBalcony(), color); 
 		CanMainState state = new CanMainState();
 		state.transition(player, action, gameState);
 		assertTrue(player.getState() instanceof CanSellState);  

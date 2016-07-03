@@ -6,7 +6,6 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
 import dto.changes.DTOChangeElectCounsellorWithAssistant;
-import dto.map.DTORegion;
 import dto.playerInfo.DTOAssistants;
 import dto.utilities.DTOColor;
 
@@ -18,11 +17,10 @@ public class TestDTOChangeElectCounsellorWithAssistant {
 		boolean thrown = false; 
 		DTOAssistants assistants = null;  
 		DTOColor color = new DTOColor("red"); 
-		DTORegion region = new DTORegion("Campania"); 
 		try {
 			@SuppressWarnings("unused")
 			DTOChangeElectCounsellorWithAssistant change = 
-					new DTOChangeElectCounsellorWithAssistant(assistants, color, region); 
+					new DTOChangeElectCounsellorWithAssistant(assistants, color); 
 		} catch(NullPointerException e) {
 			thrown = true; 
 		}
@@ -33,26 +31,10 @@ public class TestDTOChangeElectCounsellorWithAssistant {
 		boolean thrown = false; 
 		DTOAssistants assistants = new DTOAssistants(2);  
 		DTOColor color = null; 
-		DTORegion region = new DTORegion("Campania"); 
 		try {
 			@SuppressWarnings("unused")
 			DTOChangeElectCounsellorWithAssistant change = 
-					new DTOChangeElectCounsellorWithAssistant(assistants, color, region); 
-		} catch(NullPointerException e) {
-			thrown = true; 
-		}
-		assertTrue(thrown); 
-	}
-	@Test
-	public void testNullRegionInConstructorThrowsException() {
-		boolean thrown = false; 
-		DTOAssistants assistants = new DTOAssistants(23); 
-		DTOColor color = new DTOColor("red"); 
-		DTORegion region = null; 
-		try {
-			@SuppressWarnings("unused")
-			DTOChangeElectCounsellorWithAssistant change = 
-					new DTOChangeElectCounsellorWithAssistant(assistants, color, region); 
+					new DTOChangeElectCounsellorWithAssistant(assistants, color); 
 		} catch(NullPointerException e) {
 			thrown = true; 
 		}
@@ -62,27 +44,16 @@ public class TestDTOChangeElectCounsellorWithAssistant {
 	public void testGetAssistants() {
 		DTOAssistants assistants = new DTOAssistants(2);  
 		DTOColor color = new DTOColor("red"); 
-		DTORegion region = new DTORegion("Campania"); 
 		DTOChangeElectCounsellorWithAssistant change = 
-				new DTOChangeElectCounsellorWithAssistant(assistants, color, region); 
+				new DTOChangeElectCounsellorWithAssistant(assistants, color); 
 		assertEquals(assistants, change.getAssistants()); 
 	}
 	@Test
 	public void testGetColor() {
 		DTOAssistants assistants = new DTOAssistants(3); 
 		DTOColor color = new DTOColor("red"); 
-		DTORegion region = new DTORegion("Campania"); 
 		DTOChangeElectCounsellorWithAssistant change = 
-				new DTOChangeElectCounsellorWithAssistant(assistants, color, region); 
+				new DTOChangeElectCounsellorWithAssistant(assistants, color); 
 		assertEquals(color, change.getColor()); 
-	}
-	@Test
-	public void testGetRegion() {
-		DTOAssistants assistants = new DTOAssistants(2); 
-		DTOColor color = new DTOColor("red"); 
-		DTORegion region = new DTORegion("Campania"); 
-		DTOChangeElectCounsellorWithAssistant change = 
-				new DTOChangeElectCounsellorWithAssistant(assistants, color, region); 
-		assertEquals(region, change.getRegion()); 
 	}
 }
