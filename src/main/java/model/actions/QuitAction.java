@@ -13,9 +13,14 @@ public class QuitAction implements GeneralAction {
 		if(gameState==null) {
 			throw new NullPointerException("gameState cannot be null"); 
 		}
-		
-		gameState.getPlayers().remove(player);
-		gameState.getPlayersDisconnected().add(player);
+		System.out.println("!!!");
+//		System.out.println(gameState.getPlayers());
+//		gameState.getPlayers().remove(player);
+//		System.out.println(gameState.getPlayers());
+//		System.out.println(gameState.getPlayersDisconnected());
+//		gameState.getPlayersDisconnected().add(player);
+//		System.out.println(gameState.getPlayersDisconnected());
+		player.getView().disconnect();
 	}
 	
 	@Override

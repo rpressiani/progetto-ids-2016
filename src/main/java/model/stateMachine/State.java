@@ -119,8 +119,9 @@ public interface State {
 	public default void transition(Player player, QuitAction action, GameState gameState){
 		if(player==null || gameState==null) throw new NullPointerException("player/gameState cannot be null");
 		
+		action.doAction(player, gameState);
+		
 		System.out.println(player.getNickname()+" has disconnected");
-		gameState.notifyAllExceptPlayer(player, new ChangeMsg(player.getNickname()+" has disconnected, hope you won't miss him/her too much"));
 	}
 	
 	/**
