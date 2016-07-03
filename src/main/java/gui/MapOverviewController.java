@@ -114,8 +114,8 @@ public class MapOverviewController {
 			public void handle(MouseEvent event) {
 				Region region = mainApp.getGameState().getMap().getRegions().get("seaside");
 				Color color = new Color("red"); 
-				ElectCounsellor action = new ElectCounsellor(region, color);
-				action.doAction(mainApp.getGameState().getCurrentPlayer(), mainApp.getGameState());
+				//ElectCounsellor action = new ElectCounsellor(region, color);
+				//action.doAction(mainApp.getGameState().getCurrentPlayer(), mainApp.getGameState());
 				doneMain = true; 
 				
 			}

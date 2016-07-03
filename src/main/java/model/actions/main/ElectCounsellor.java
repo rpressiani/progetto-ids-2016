@@ -4,37 +4,37 @@ import model.GameState;
 import model.changes.ChangeElectCounsellor;
 import model.changes.ChangeMsg;
 import model.changes.ChangePlayerStatus;
+import model.council.Balcony;
 import model.council.CounsellorGroup;
-import model.map.Region;
 import model.player.Coins;
 import model.player.Player;
 import utilities.Color;
 
 public class ElectCounsellor implements MainAction {
 	
-	private Region region;
+	private Balcony balcony;
 	private Color color;
 	
 	/**
-	 * @param region
+	 * @param balcony
 	 * @param color
 	 * @throws NullPointerException if region or color are null
 	 */
-	public ElectCounsellor(Region region, Color color) {
+	public ElectCounsellor(Balcony balcony, Color color) {
 		if(color==null) {
 			throw new NullPointerException("color cannot be null"); 
 		}
 		
-		this.region=region;
+		this.balcony=balcony;
 		this.color=color;
 	}
 	
 	@Override
 	public void doAction(Player player, GameState gameState) {
-		region.getBalcony().putCounsellor(color, gameState.getCounsellorGarbage());
+		balcony.putCounsellor(color, gameState.getCounsellorGarbage());
 		player.getCoins().add(4);
 		
-		gameState.notifyObserver(player, new ChangeElectCounsellor(new Coins(4), color, region));
+		gameState.notifyObserver(player, new ChangeElectCounsellor(new Coins(4), color));
 		gameState.notifyObserver(player, new ChangePlayerStatus(player));
 	}
 
@@ -47,7 +47,7 @@ public class ElectCounsellor implements MainAction {
 				el=gameState.getCounsellorGarbage().getState().get(i);
 		}
 		
-		if(region==null){
+		if(balcony==null){
 			gameState.notifyObserver(player, new ChangeMsg("The region you selected doesn't exist"));
 			return false;
 		}

@@ -161,7 +161,7 @@ public abstract class ClientOutHandler implements Runnable {
 				case "electCounsellorAss":
 					if (inputList.size() == 3) {
 						msg = new ClientMessage(new DTOElectCounsellorWithAssistant(
-								new DTORegion(inputList.get(1)),
+								new String(inputList.get(1)),
 								new DTOColor(inputList.get(2))));
 						sendMsg(msg);
 						break;
@@ -225,7 +225,7 @@ public abstract class ClientOutHandler implements Runnable {
 						if (inputList.size() == 4) {
 							System.out.println("inside if");
 							msg = new ClientMessage(new DTOAddictionalAction(new DTOElectCounsellor(
-									new DTORegion(inputList.get(2)),
+									new String(inputList.get(2)),
 									new DTOColor(inputList.get(3)))));
 							sendMsg(msg);
 							System.out.println("msg sent");
@@ -291,7 +291,7 @@ public abstract class ClientOutHandler implements Runnable {
 				case "electCounsellor":
 					if (inputList.size() == 3) {
 						msg = new ClientMessage(new DTOElectCounsellor(
-								new DTORegion(inputList.get(1)),
+								new String(inputList.get(1)),
 								new DTOColor(inputList.get(2))));
 						sendMsg(msg);
 						break;
@@ -516,7 +516,7 @@ public abstract class ClientOutHandler implements Runnable {
 							if (inputList.size() == 4) {
 								System.out.println("inside if");
 								msg = new ClientMessage(new DTODoAgainAction(new DTOElectCounsellor(
-										new DTORegion(inputList.get(2)),
+										new String(inputList.get(2)),
 										new DTOColor(inputList.get(3)))));
 								sendMsg(msg);
 								System.out.println("msg sent");

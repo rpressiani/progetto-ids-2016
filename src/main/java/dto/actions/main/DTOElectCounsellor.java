@@ -1,7 +1,6 @@
 package dto.actions.main;
 
 import controller.VisitorActions;
-import dto.map.DTORegion;
 import dto.utilities.DTOColor;
 import model.actions.main.ElectCounsellor;
 import model.player.Player;
@@ -12,30 +11,30 @@ public class DTOElectCounsellor implements DTOMainAction {
 	 * 
 	 */
 	private static final long serialVersionUID = 8997763321000061932L;
-	private final DTORegion region;
+	private final String balcony;
 	private final DTOColor color;
 	
 	/**
-	 * @param region
+	 * @param balcony
 	 * @param color
 	 * @throws NullPointerException if region or color are null
 	 */
-	public DTOElectCounsellor(DTORegion region, DTOColor color) {
-		if(region==null) {
-			throw new NullPointerException("region cannot be null"); 
+	public DTOElectCounsellor(String balcony, DTOColor color) {
+		if(balcony==null) {
+			throw new NullPointerException("balcony cannot be null"); 
 		}
 		if(color==null) {
 			throw new NullPointerException("color cannot be null"); 
 		}
-		this.region = region;
+		this.balcony = balcony;
 		this.color = color;
 	}
 
 	/**
-	 * @return the region
+	 * @return the balcony
 	 */
-	public DTORegion getRegion() {
-		return region;
+	public String getBalcony() {
+		return balcony;
 	}
 
 	/**

@@ -43,6 +43,7 @@ import model.actions.quick.SubstitutePermissionCards;
 import model.actions.quick.ElectCounsellorWithAssistant;
 import model.actions.quick.HireAssistant;
 import model.bonusable.PermissionCard;
+import model.council.Balcony;
 import model.map.City;
 import model.map.Region;
 import model.market.Contract;
@@ -117,11 +118,17 @@ public class VisitorActions {
 	 */
 	public ElectCounsellor visit(DTOElectCounsellor DTOAction){
 		String colorString=DTOAction.getColor().getColorString();
-		
-		Region region=gameState.getMap().getRegions().get(DTOAction.getRegion().getName());
+		String balconyName=DTOAction.getBalcony();
 		Color color = new Color(colorString);
 		
-		return new ElectCounsellor(region, color);
+		if(balconyName.equals("king")) return new ElectCounsellor(gameState.getKingBalcony(), color);
+		
+		else{
+			Balcony balcony=null;
+			if(gameState.getMap().getRegions().get(balconyName)!=null) balcony=gameState.getMap().getRegions().get(balconyName).getBalcony();
+			return new ElectCounsellor(balcony, color);
+		}
+		
 	}
 	
 	/**
@@ -155,12 +162,17 @@ public class VisitorActions {
 	 * @return
 	 */
 	public ElectCounsellorWithAssistant visit(DTOElectCounsellorWithAssistant DTOAction){
-		Region region=gameState.getMap().getRegions().get(DTOAction.getRegion().getName());
 		String colorString=DTOAction.getColor().getColorString();
-		
+		String balconyName=DTOAction.getBalcony();
 		Color color = new Color(colorString);
 		
-		return new ElectCounsellorWithAssistant(region, color);
+		if(balconyName.equals("king")) return new ElectCounsellorWithAssistant(gameState.getKingBalcony(), color);
+		
+		else{
+			Balcony balcony=null;
+			if(gameState.getMap().getRegions().get(balconyName)!=null) balcony=gameState.getMap().getRegions().get(balconyName).getBalcony();
+			return new ElectCounsellorWithAssistant(balcony, color);
+		}
 	}
 	
 	/**
