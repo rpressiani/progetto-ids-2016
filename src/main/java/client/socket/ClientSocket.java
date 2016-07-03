@@ -11,9 +11,8 @@ import java.util.concurrent.Executors;
 
 public class ClientSocket {
 	
-	private final static int PORT = 29999; //file!
+	private final static int PORT = 29999;
 	private final static String IP = "127.0.0.1";
-	private String nickname;
 	private Socket socket;
 	
 	private Scanner in;
@@ -33,7 +32,7 @@ public class ClientSocket {
 	public void startClient() throws UnknownHostException, IOException {
 		this.socket = new Socket(IP, PORT); 
 		System.out.println("[CLIENT] Connection Created");
-		ExecutorService executor = Executors.newFixedThreadPool(2); //load from file
+		ExecutorService executor = Executors.newFixedThreadPool(2);
 		executor.submit(new ClientOutHandlerSocket(new ObjectOutputStream(socket.getOutputStream()), in));
 		executor.submit(new ClientInHandler(new ObjectInputStream(socket.getInputStream())));
 	}
@@ -56,12 +55,5 @@ public class ClientSocket {
 		ClientSocket client = new ClientSocket(in); 
 		client.startClient();
 		
-	}
-	
-	/**
-	 * @return the nickname
-	 */
-	public String getNickname() {
-		return nickname;
 	}
 }

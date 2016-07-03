@@ -4,9 +4,9 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.Scanner;
 
-import client.ClientOutHandler;
+import client.CLIClientOutHandler;
 
-public class ClientOutHandlerSocket extends ClientOutHandler {
+public class ClientOutHandlerSocket extends CLIClientOutHandler {
 	
 	private ObjectOutputStream socketOut; 
 	
@@ -30,6 +30,17 @@ public class ClientOutHandlerSocket extends ClientOutHandler {
 		} catch (IOException e) {
 			System.out.println("SERVER IS DOWN");
 		}
+	}
+
+	@Override
+	public void notifyCmdNotFound() {
+		StringBuilder cmdNotFound = new StringBuilder();
+		cmdNotFound.append("\n[ERROR] Command not found!\n");
+		cmdNotFound.append("[ERROR] Insert legal commands\n");
+		cmdNotFound.append("[ERROR] Enter help for command list\n");
+		
+		System.out.println(cmdNotFound.toString());
+		
 	}
 
 }
