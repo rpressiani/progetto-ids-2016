@@ -137,7 +137,7 @@ public abstract class ClientOutHandler {
 			case "electCounsellorAss":
 				if (inputList.size() == 3) {
 					msg = new ClientMessage(new DTOElectCounsellorWithAssistant(
-							new DTORegion(inputList.get(1)),
+							new String(inputList.get(1)),
 							new DTOColor(inputList.get(2))));
 					sendMsg(msg);
 					break;
@@ -201,7 +201,7 @@ public abstract class ClientOutHandler {
 					if (inputList.size() == 4) {
 						System.out.println("inside if");
 						msg = new ClientMessage(new DTOAddictionalAction(new DTOElectCounsellor(
-								new DTORegion(inputList.get(2)),
+								new String(inputList.get(2)),
 								new DTOColor(inputList.get(3)))));
 						sendMsg(msg);
 						System.out.println("msg sent");
@@ -267,7 +267,7 @@ public abstract class ClientOutHandler {
 			case "electCounsellor":
 				if (inputList.size() == 3) {
 					msg = new ClientMessage(new DTOElectCounsellor(
-							new DTORegion(inputList.get(1)),
+							new String(inputList.get(1)),
 							new DTOColor(inputList.get(2))));
 					sendMsg(msg);
 					break;
@@ -396,7 +396,7 @@ public abstract class ClientOutHandler {
 						if (inputList.size() == 4) {
 							System.out.println("inside if");
 							msg = new ClientMessage(new DTODoAgainAction(new DTOElectCounsellor(
-									new DTORegion(inputList.get(2)),
+									new String(inputList.get(2)),
 									new DTOColor(inputList.get(3)))));
 							sendMsg(msg);
 							System.out.println("msg sent");
@@ -514,10 +514,11 @@ public abstract class ClientOutHandler {
 	/**
 	 * returns the player political card proposal as an ArrayList of Integer
 	 * 
+	 * 
 	 * @param	inputList				list of Strings that contains the command and the parameters retrieved from the client
-
+	 * 
 	 * @param	inputList				List of String that contains the command and the parameters retrieved from the client
-
+	 * 
 	 * @param	from					index from which the player political card proposal starts
 	 * 
 	 * @throws	NumberFormatException	if a NaN is passed by the player in the card proposal
