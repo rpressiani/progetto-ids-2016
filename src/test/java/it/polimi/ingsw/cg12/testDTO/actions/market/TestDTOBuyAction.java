@@ -8,23 +8,23 @@ import dto.actions.market.DTOBuyAction;
 
 public class TestDTOBuyAction {
 
-	/*@Test
-	public void testNullStringInConstructorThrowsException() {
-		boolean thrown = false; 
-		String name = null; 
+	@Test
+	public void testNegativeIntegerInConstructorThrowsException() {
+		boolean thrown = false;  
 		try {
 			@SuppressWarnings("unused")
-			DTOBuyAction action = new DTOBuyAction(name); 
-		} catch(NullPointerException e) {
+			DTOBuyAction action = new DTOBuyAction(-1); 
+		} catch(IllegalArgumentException e) {
 			thrown = true; 
 		}
 		assertTrue(thrown); 
 	}
+	
 	@Test
-	public void testGetPlayerName() {
-		String name = "Sergio"; 
-		DTOBuyAction action = new DTOBuyAction(name); 
-		assertEquals(name, action.getPlayerName()); 
-	}*/
+	public void testGetIdContract() {
+		int i=1; 
+		DTOBuyAction action = new DTOBuyAction(i); 
+		assertEquals(i, action.getIdContract()); 
+	}
 
 }

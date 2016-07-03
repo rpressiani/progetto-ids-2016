@@ -36,6 +36,11 @@ public class BuyAction implements GeneralAction {
 	@Override
 	public boolean checkCondition(Player player, GameState gameState) {
 
+		if(player.equals(contract.getSeller())){
+			gameState.notifyObserver(player, new ChangeMsg("You can't buy your own contract"));
+			return false;
+		}
+		
 		if(contract==null){
 			gameState.notifyObserver(player, new ChangeMsg(player.getNickname()+", the player you want to buy from has no contracts in the market or someone already accepted his contract"));
 			return false;

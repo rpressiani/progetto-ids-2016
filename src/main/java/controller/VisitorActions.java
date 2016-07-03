@@ -232,7 +232,7 @@ public class VisitorActions {
 		List<Contract> contractList= new ArrayList<Contract>(gameState.getMarket().getContractSet());
 
 		for(int i=0; i<contractList.size(); i++){
-			//if(DTOAction.getIdContract())==(contractList.get(i))) contract=contractList.get(i);
+			if(DTOAction.getIdContract()==(contractList.get(i).getId())) contract=contractList.get(i);
 		}
 		
 		return new BuyAction(contract);
