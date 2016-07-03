@@ -10,6 +10,11 @@ public class ChangeSubstitutePermissionCards implements Change {
 	private Assistants assistants;
 	private Region region;
 
+	/**
+	 * @param assistants
+	 * @param region
+	 * @throws NullPointerException if assistants or region are null
+	 */
 	public ChangeSubstitutePermissionCards(Assistants assistants, Region region){
 		if(assistants==null) {
 			throw new NullPointerException("assistants cannot be null"); 

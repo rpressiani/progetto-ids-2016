@@ -10,6 +10,11 @@ public class ChangeElectCounsellorWithAssistant implements Change {
 	private Assistants assistants;
 	private Color color;
 	
+	/**
+	 * @param assistants
+	 * @param color
+	 * @throws NullPointerException if one(or more) of the parameters is null
+	 */
 	public ChangeElectCounsellorWithAssistant(Assistants assistants, Color color) {
 		if(color==null) {
 			throw new NullPointerException("coins cannot be null"); 

@@ -13,6 +13,12 @@ public class ChangeBuyPermissionCard implements Change {
 	private Region region;
 	private PermissionCard card;
 	
+	/**
+	 * @param coins
+	 * @param region
+	 * @param card
+	 * @throws NullPointerException if one(or more) of the parameters are null
+	 */
 	public ChangeBuyPermissionCard(Coins coins, Region region, PermissionCard card) {
 		if(coins==null) {
 			throw new NullPointerException("coins cannot be null"); 
