@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane prefHeight="300.0" prefWidth="419.0" xmlns="http://javafx.com/javafx/8.0.72" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ElectCounsellorController">
+<AnchorPane prefHeight="300.0" prefWidth="419.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ElectCounsellorController">
    <children>
       <TitledPane animated="false" layoutX="34.0" layoutY="25.0" prefHeight="300.0" prefWidth="419.0" text="Elect Counsellor" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <content>
@@ -27,8 +27,8 @@
                      <children>
                         <Label prefHeight="83.0" prefWidth="139.0" text="Enter Region" />
                         <Label prefHeight="77.0" prefWidth="136.0" text="Choose Color" GridPane.rowIndex="1" />
-                        <TextArea prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" />
-                        <TextArea prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <TextArea fx:id="region" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" />
+                        <TextArea fx:id="color" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                      </children>
                   </GridPane>
                   <Button fx:id="ok" layoutX="90.0" layoutY="225.0" mnemonicParsing="false" onAction="#handleOk" prefHeight="26.0" prefWidth="99.0" text="Ok" />

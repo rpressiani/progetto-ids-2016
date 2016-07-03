@@ -1,5 +1,7 @@
 package gui;
 
+import java.util.ArrayList;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
@@ -27,10 +29,17 @@ public class ElectCounsellorController {
 	}
 	@FXML
 	private void handleOk() {
-		
+		ArrayList<String> inputList = new ArrayList<String>();
+		inputList.add("electCounsellor");
+		System.out.println(region.getText());
+		System.out.println(color.getText());
+		inputList.add(region.getText());
+		inputList.add(color.getText());
+		MainApp.getOutHandler().activate(inputList);
+		mainApp.getTempStage().close();
 	}
 	@FXML
 	private void handleCancel() {
-		
+		mainApp.getTempStage().close();
 	}
 }
