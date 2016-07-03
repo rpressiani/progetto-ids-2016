@@ -14,13 +14,13 @@ import javafx.stage.Stage;
 public class LoginClientController {
 
 	@FXML
-	private TextArea nicknameArea; 
+	private TextArea nicknameArea = new TextArea(); 
 	@FXML
-	private TextArea colorArea; 
+	private TextArea colorArea = new TextArea(); 
 	@FXML
-	private Button ok; 
+	private Button ok = new Button(); 
 	@FXML
-	private Button decline; 
+	private Button decline = new Button(); 
 	private Stage dialogStage; 
 	//private Player player; //?
 	private boolean okClicked = false; 
@@ -81,7 +81,7 @@ public class LoginClientController {
     		inputList.add("setup");
     		inputList.add(nicknameArea.getText());
     		inputList.add(colorArea.getText());
-    		MainApp.getOutHandler().activate(inputList);
+			MainApp.getOutHandler().activate(inputList);
     		
     		okClicked = true; 
     		
@@ -101,20 +101,8 @@ public class LoginClientController {
     public String getNickname() {
     	return nicknameArea.getText(); 
     }
-    
-    public void alert(String msg){
-    	System.out.println("alert1");
-    	Alert alert = new Alert(AlertType.ERROR);
-    	System.out.println("alert2");
-        alert.initOwner(dialogStage);
-        System.out.println("alert3");
-        alert.setTitle("Invalid Fields");
-        System.out.println("alert4");
-        alert.setHeaderText("Please correct invalid fields");
-        System.out.println("alert5");
-        alert.setContentText(msg);
-        System.out.println("alert6");
 
-        alert.showAndWait();
-	}
+    public MainApp getMainApp() {
+    	return mainApp; 
+    }
 }

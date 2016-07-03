@@ -5,7 +5,7 @@
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.SplitPane?>
-<?import javafx.scene.image.Image?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -21,43 +21,19 @@
                <children>
                   <SplitPane dividerPositions="0.7030201342281879" layoutX="291.0" layoutY="53.0" prefHeight="302.0" prefWidth="598.0" AnchorPane.bottomAnchor="-36.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <items>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="126.0" prefWidth="178.0">
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="333.0" prefWidth="485.0">
                            <children>
-                              <HBox layoutY="-1.0" prefHeight="334.0" prefWidth="485.0">
+                              <HBox layoutY="-1.0" prefHeight="334.0" prefWidth="109.0">
                                  <children>
-                                    <AnchorPane maxHeight="1.7976931348623157E308" prefHeight="246.0" prefWidth="150.0">
-                                       <children>
-                                          <ImageView fitHeight="334.0" fitWidth="138.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@photo_2016-06-22_16-50-28.jpg" />
-                                             </image>
-                                          </ImageView>
-                                       </children>
-                                    </AnchorPane>
-                                    <AnchorPane prefHeight="334.0" prefWidth="819.0">
-                                       <children>
-                                          <ImageView fitHeight="303.0" fitWidth="138.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@photo_2016-06-22_16-50-31.jpg" />
-                                             </image>
-                                          </ImageView>
-                                       </children>
-                                    </AnchorPane>
-                                    <AnchorPane prefHeight="357.0" prefWidth="204.0">
-                                       <children>
-                                          <ImageView fitHeight="258.0" fitWidth="150.0" layoutX="47.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@photo_2016-06-22_16-50-36.jpg" />
-                                             </image>
-                                          </ImageView>
-                                       </children>
-                                    </AnchorPane>
+                                    <ImageView fitHeight="335.0" fitWidth="162.0" pickOnBounds="true" preserveRatio="true" />
+                                    <ImageView fitHeight="334.0" fitWidth="169.0" pickOnBounds="true" preserveRatio="true" />
+                                    <ImageView fitHeight="335.0" fitWidth="153.0" pickOnBounds="true" preserveRatio="true" />
                                  </children>
                               </HBox>
                            </children></AnchorPane>
                         <SplitPane>
                            <items>
-                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="250.0" prefWidth="203.0">
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="168.0" prefWidth="417.0">
                                  <children>
                                     <Label layoutX="7.0" layoutY="6.0" prefHeight="32.0" prefWidth="164.0" text="Player Menu" />
                                     <MenuButton layoutX="7.0" layoutY="46.0" mnemonicParsing="false" text="Main Actions">
@@ -115,7 +91,7 @@
                   </SplitPane>
                </children>
             </AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="378.0" prefWidth="698.0">
                <children>
                   <MenuButton layoutX="7.0" layoutY="1.0" mnemonicParsing="false" text="Check Councils">
                     <items>
@@ -215,6 +191,7 @@
                       <MenuItem mnemonicParsing="false" text="Action 2" />
                     </items>
                   </MenuButton>
+                  <TextArea layoutX="157.0" prefHeight="156.0" prefWidth="230.0" />
                </children></AnchorPane>
         </items>
       </SplitPane>
