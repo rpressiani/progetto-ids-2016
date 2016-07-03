@@ -329,7 +329,7 @@ public class VisitorQueries {
 	public DTOMarketStatusResponse visit(DTOMarketStatusRequest dto){
 		Map<String, DTOContract> contracts = new HashMap<String, DTOContract>();
 		for (Contract contract : this.gameState.getMarket().getContractSet()) {
-			DTOContract dtoContract = new DTOContract(contract.getSeller().getNickname());
+			DTOContract dtoContract = new DTOContract(contract.getSeller().getNickname(), contract.getId());
 			Set<DTOPermissionCard> sellPermissions = new HashSet<DTOPermissionCard>();
 			for (Marketable item : contract.getSellBag()) {
 				if (item instanceof Coins) {
