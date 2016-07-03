@@ -102,7 +102,7 @@ public class BuyPermissionCard implements MainAction {
 		
 		int sum=calculateNumCards(proposal);
 		
-		if (sum>=balcony.getnCounsellorsPerBalcony() || sum==0) return false;
+		if (sum>balcony.getnCounsellorsPerBalcony() || sum==0) return false;
 		
 		for(int i=0; i<proposal.getDeck().size()-1; i++){
 				if(proposal.getDeck().get(i).getNumCards() > balcony.getBalconyState().getState().get(i).getCounter()) 

@@ -19,7 +19,6 @@ public class BuyAction implements GeneralAction {
 	/**
 	 * Constructor
 	 * @param contract
-	 * @throws NullPointerException if contract is null
 	 */
 	public BuyAction(Contract contract) {
 		this.contract=contract;
