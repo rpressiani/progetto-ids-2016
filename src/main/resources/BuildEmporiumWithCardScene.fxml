@@ -8,8 +8,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-
-<AnchorPane prefHeight="300.0" prefWidth="400.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.72" fx:controller="gui.BuildWithCardController">
+<AnchorPane prefHeight="300.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.72" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.BuildWithCardController">
    <children>
       <Label prefHeight="37.0" prefWidth="400.0" text="Build Emporium With Card" />
       <GridPane layoutX="51.0" layoutY="51.0" prefHeight="147.0" prefWidth="301.0">
@@ -24,11 +23,11 @@
          <children>
             <Label prefHeight="76.0" prefWidth="150.0" text="Choose Card" />
             <Label prefHeight="70.0" prefWidth="151.0" text="Choose City" GridPane.rowIndex="1" />
-            <TextArea prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" />
-            <TextArea prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextArea fx:id="card" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" />
+            <TextArea fx:id="city" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
          </children>
       </GridPane>
-      <Button layoutX="66.0" layoutY="239.0" mnemonicParsing="false" onAction="#handleOk" prefHeight="26.0" prefWidth="101.0" text="Ok" />
-      <Button layoutX="218.0" layoutY="239.0" mnemonicParsing="false" onAction="#handleCancel" prefHeight="26.0" prefWidth="101.0" text="Cancel" />
+      <Button fx:id="ok" layoutX="66.0" layoutY="239.0" mnemonicParsing="false" onAction="#handleOk" prefHeight="26.0" prefWidth="101.0" text="Ok" />
+      <Button fx:id="cancel" layoutX="218.0" layoutY="239.0" mnemonicParsing="false" onAction="#handleCancel" prefHeight="26.0" prefWidth="101.0" text="Cancel" />
    </children>
 </AnchorPane>
