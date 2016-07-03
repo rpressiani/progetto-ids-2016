@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import utilities.Color;
+import view.View;
 import model.GameState;
 import model.actions.ChatAction;
 import model.actions.GeneralAction;
@@ -47,6 +48,7 @@ public class Player {
 	private Set<City> builtCities; 
 	private ArrayList<BonusInputItem> bonusInputs;
 	private State state;
+	private View view;
 	
 	/**
 	 * Constructor
@@ -70,6 +72,20 @@ public class Player {
 	}
 	
 	/**
+	 * @param view the view to set
+	 */
+	public void setView(View view) {
+		this.view = view;
+	}
+
+	/**
+	 * @return the view
+	 */
+	public View getView() {
+		return view;
+	}
+
+	/**
 	 * initPlayer conclude the setting of the player after he has joined a specific match. An ID is set, coins and assistants
 	 * are set based on the content of the configuration file and the PoliticalHand of the player is instantiated.
 	 * 
@@ -88,8 +104,8 @@ public class Player {
 		this.id = id;	//as a player register to a match this ID attribute has to increment, basically it'll represent the order
 						//of the players in a match
 		this.politicalHand = new PoliticalHand(deck);
-		this.coins = new Coins(parser.getCFGRoot().getPlayers().getPlayer().get(this.id).getCoins().intValue());
-		this.assistants = new Assistants(parser.getCFGRoot().getPlayers().getPlayer().get(this.id).getAssistants().intValue());
+		this.coins = new Coins(parser.getCFGRoot().getPlayers().getPlayer().get(0).getCoins().intValue()+this.id);
+		this.assistants = new Assistants(parser.getCFGRoot().getPlayers().getPlayer().get(0).getAssistants().intValue()+this.id);
 		this.state = new StartState();
 		
 	}

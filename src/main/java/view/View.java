@@ -26,8 +26,10 @@ public abstract class View extends Observable<ClientMessage> implements Observer
 	public abstract void stopTimer();
 	
 	/**
-	 * Restart player's timers from the begninning
+	 * Restart player's timers from the beginning
 	 */
 	public abstract void resetTimer();
+	
+	public abstract void disconnect();
 
 }

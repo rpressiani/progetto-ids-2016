@@ -45,19 +45,7 @@ public class TestQuitAction {
 		}
 		assertTrue(thrown); 
 	}
-	@Test
-	public void testDoActionWorks() {
-		Parser parser = new Parser(); 
-		Player player = new Player(); 
-		Player player2 = new Player(); 
-		ArrayList<Player> players = new ArrayList<Player>(); 
-		players.add(player); 
-		players.add(player2); 
-		GameState gameState = new GameState(parser, players); 
-		QuitAction action = new QuitAction(); 
-		action.doAction(player, gameState);
-		assertTrue(!gameState.getPlayers().contains(player)); 
-	}
+	
 	@Test
 	public void testNullPlayerInCheckConditionThrowsException() {
 		boolean thrown = false; 

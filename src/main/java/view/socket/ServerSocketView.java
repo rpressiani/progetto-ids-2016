@@ -50,6 +50,7 @@ public class ServerSocketView extends View implements Runnable {
 		(new Thread(this.timer)).run();
 
 		this.player = new Player();
+		this.player.setView(this);
 	}
 	
 	/**
@@ -223,6 +224,12 @@ public class ServerSocketView extends View implements Runnable {
 	 */
 	public SocketViewTimer getTimer() {
 		return timer;
+	}
+
+	@Override
+	public void disconnect() {
+		this.server.disconnectSocket(this.player);
+		
 	}
 
 }

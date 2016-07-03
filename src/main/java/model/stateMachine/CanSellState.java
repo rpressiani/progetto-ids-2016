@@ -84,7 +84,9 @@ public class CanSellState implements State {
 			if(player==gameState.getPlayers().get(gameState.getPlayers().size()-1)){
 				gameState.notifyObserver(new ChangeMsg("The market has started"));
 			}
+			System.out.println("prima di next");
 			gameState.nextPlayer(player);
+			System.out.println("dopo next");
 			gameState.notifyObserver(new ChangeMsg("Now it's time for "+gameState.getCurrentPlayer().getNickname()+" to play"));
 		}
 		

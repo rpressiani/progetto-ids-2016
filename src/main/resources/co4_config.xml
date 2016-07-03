@@ -1229,20 +1229,5 @@
             <coins>10</coins>
             <assistants>1</assistants>
         </player>
-        <player>
-            <id>1</id>
-            <coins>11</coins>
-            <assistants>2</assistants>
-        </player>
-        <player>
-            <id>2</id>
-            <coins>12</coins>
-            <assistants>3</assistants>
-        </player>
-        <player>
-            <id>3</id>
-            <coins>13</coins>
-            <assistants>4</assistants>
-        </player>
     </players>
 </x:root>

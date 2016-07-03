@@ -34,6 +34,7 @@ public class RMIView extends View {
 		this.client = client;
 		this.server = server;
 		this.player = new Player();
+		this.player.setView(this);
 		this.visitorChanges = new VisitorChanges();
 		this.timer = new RMIViewTimer(this.client, this.server, this.player);
 		(new Thread(this.timer)).run();
@@ -143,5 +144,11 @@ public class RMIView extends View {
 	 */
 	public RMIViewTimer getTimer() {
 		return timer;
+	}
+
+	@Override
+	public void disconnect() {
+		this.server.disconnect(this.player);
+		
 	}
 }
