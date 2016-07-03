@@ -208,31 +208,19 @@ public class GameState extends Observable<Change> {
 			throw new NullPointerException("player should not be null"); 
 		}
 		
+		if(this.getPlayers().size()==1){
+			this.finishMatch();
+		}
+		
 		if(player==this.getCurrentPlayer()){
 			int i=this.getPlayers().indexOf(player);
 			if((i+1)!=this.getPlayers().size()) this.setCurrentPlayer(this.getPlayers().get(i+1));
 			else this.setCurrentPlayer(this.getPlayers().get(0));
 		}
 		
-		System.out.println("controllo stato");
 		if(this.getCurrentPlayer().getState() instanceof FinishedBuildingState){
-			for(Player p : this.getPlayers()){
-				this.getPotentialWinners().add(p);
-			}
-			System.out.println("step 1");
-			for(Player p : this.getPlayersDisconnected()){
-				this.getPotentialWinners().add(p);
-			}
-			System.out.println("step 2");
-			for(Player p : this.getPotentialWinners()){
-				System.out.println(p);
-			}
-			Player winner=this.calculateWinner(potentialWinners);
-			System.out.println("calcolato vincitore");
-			this.notifyObserver(new ChangeMsg("CONGRATULATIONS, "+winner.getNickname()+" WON THE GAME!!!"));
-			//ora occorre disconnettere tutti
+			this.finishMatch();
 		}
-		System.out.println("uscito da nextPlayer");
 	}
 
 	public boolean checkEmporiums(Player player){
@@ -330,6 +318,24 @@ public class GameState extends Observable<Change> {
 			return players.get(0);
 		}
 		
+	}
+	
+	public void finishMatch(){
+		for(Player p : this.getPlayers()){
+			this.getPotentialWinners().add(p);
+		}
+	
+		for(Player p : this.getPlayersDisconnected()){
+			this.getPotentialWinners().add(p);
+		}
+		
+		Player winner=this.calculateWinner(potentialWinners);
+		
+		this.notifyObserver(new ChangeMsg("CONGRATULATIONS, "+winner.getNickname()+" WON THE GAME!!!"));
+		
+		for(Player p : this.getPlayers()){
+			p.getView().disconnect();
+		}
 	}
 	
 	/**
