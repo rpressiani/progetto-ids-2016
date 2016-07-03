@@ -36,6 +36,7 @@ public class GUIClientSocket {
 		executor.submit(new ClientInHandler(new ObjectInputStream(socket.getInputStream())));
 		String[] args = null;
 		MainApp.print("Starting GUI");
+		MainApp.setOutHandler(this.outHandler);
 		Application.launch(MainApp.class, args);
 		
 	}
