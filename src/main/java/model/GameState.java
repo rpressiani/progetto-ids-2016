@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.Map.Entry;
 
 import model.changes.Change;
+import model.changes.ChangeMsg;
 import model.council.Balcony;
 import model.council.GarbageState;
 import model.map.Map;
@@ -16,6 +17,7 @@ import model.politicalDeck.PoliticalRealDeck;
 import model.sharedObjects.King;
 import model.sharedObjects.KingBonuses;
 import model.sharedObjects.Nobility;
+import model.stateMachine.FinishedBuildingState;
 import observer.Observable;
 import parser.Parser;
 
@@ -30,6 +32,7 @@ public class GameState extends Observable<Change> {
 	private King king;
 	private ArrayList<Player> players;
 	private ArrayList<Player> playersDisconnected;
+	private ArrayList<Player> potentialWinners;
 	private HashMap<String, Player> playersHashMap;
 	private Player currentPlayer;
 	private Market market;
@@ -58,6 +61,7 @@ public class GameState extends Observable<Change> {
 		this.politicalGarbage = new PoliticalGarbage(parser);
 		this.politicalDeck = new PoliticalRealDeck(parser, this.politicalGarbage);
 		this.playersDisconnected = new ArrayList<Player>();
+		this.potentialWinners = new ArrayList<Player>();
 		this.players = players;
 		this.parser=parser;
 
@@ -169,8 +173,20 @@ public class GameState extends Observable<Change> {
 
 	}
 	
+	/**
+	 * 
+	 * @return players disconnected
+	 */
 	public ArrayList<Player> getPlayersDisconnected() {
 		return playersDisconnected;
+	}
+	
+	/**
+	 * 
+	 * @return potential winners
+	 */
+	public ArrayList<Player> getPotentialWinners(){
+		return potentialWinners;
 	}
 	
 	/**
@@ -191,13 +207,58 @@ public class GameState extends Observable<Change> {
 		if(player==null) {
 			throw new NullPointerException("player should not be null"); 
 		}
+		
 		if(player==this.getCurrentPlayer()){
 			int i=this.getPlayers().indexOf(player);
 			if((i+1)!=this.getPlayers().size()) this.setCurrentPlayer(this.getPlayers().get(i+1));
 			else this.setCurrentPlayer(this.getPlayers().get(0));
 		}
+		
+		if(this.getCurrentPlayer().getState() instanceof FinishedBuildingState){
+			for(Player p : this.getPlayers()){
+				this.getPotentialWinners().add(p);
+			}
+			
+			for(Player p : this.getPlayersDisconnected()){
+				this.getPotentialWinners().add(p);
+			}
+			
+			Player winner=this.calculateWinner(potentialWinners);
+			this.notifyObserver(new ChangeMsg("CONGRATULATIONS, "+winner.getNickname()+" WON THE GAME!!!"));
+			//ora occorre disconnettere tutti
+		}
 	}
 
+	public boolean checkEmporiums(Player player){
+		/*if(player.getBuiltCities().containsAll(this.getMap().getAllCitiesHashMap().values())){
+			this.notifyObserver(new ChangeMsg(player.getNickname()+" finished to build all emporiums, so... LAST LAP!!!"));
+			return true;
+		}*/
+		
+		if(!player.getBuiltCities().isEmpty()){
+			this.notifyObserver(new ChangeMsg(player.getNickname()+" finished to build all emporiums, so... LAST LAP!!!"));
+			return true;
+		}
+		
+		else return false;
+	}
+	
+	public boolean checkAlreadyFinished(Player player){
+		for(Player p : this.getPlayers()){
+			if(p!=player){
+				if(checkEmporiums(p)==true) return true;
+			}
+		}
+		
+		for(Player p : this.getPlayersDisconnected()){
+			if(p!=player){
+				if(checkEmporiums(p)==true) return true;
+			}
+		}
+		
+		return false;
+	}
+	
 	/**
 	 * @param players
 	 * @return winner player
