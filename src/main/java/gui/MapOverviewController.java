@@ -1,6 +1,7 @@
 package gui;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -10,18 +11,15 @@ import javafx.scene.control.Button;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-
+import javafx.stage.Stage;
 import model.GameState;
 import model.actions.main.BuildEmporiumWithCard;
-import model.actions.main.ElectCounsellor;
-import model.bonusItem.BonusItem;
 import model.bonusable.PermissionCard;
-import model.council.Balcony;
 import model.map.City;
-import model.map.Region;
 import model.player.Player;
 
 public class MapOverviewController {
@@ -83,7 +81,7 @@ public class MapOverviewController {
 	@FXML 
 	private TextArea textArea = new TextArea();
 
-	
+	private Stage dialogStage; 
 	private ArrayList<ImageView> council1 = new ArrayList<ImageView>(); 
 	private ArrayList<ImageView> council2 = new ArrayList<ImageView>(); 
 	private ArrayList<ImageView> council3 = new ArrayList<ImageView>(); 
@@ -126,22 +124,19 @@ public class MapOverviewController {
 		//TODO: GUI correspondence
 	}
 	@FXML
-	public void handleElectCounsellor(MouseEvent mouseEvent) {
-		GameState gameState = mainApp.getGameState();
-		Player player = gameState.getCurrentPlayer(); 
-		Balcony balcony = 
-				gameState.getMap().getRegions().get("seaside").getBalcony(); 
-
-//		Color color = new Color("red"); 
-//		ElectCounsellor action = new ElectCounsellor(balcony, color);
-//		action.doAction(player, gameState);
-		//TODO: GUI corrspondence
-
+	public void handleElectCounsellor() {
+		TextInputDialog dialog = new TextInputDialog();
+		dialog.setTitle("Elect Counsellor");
+		dialog.setHeaderText("Choose Council and color");
+		dialog.setContentText("Please enter council: ");
+		dialog.setContentText("Please enter color: ");
+		Optional<String> council; 
+		Optional<String> color; 
+		
 	}
 	@FXML
 	public void handleBuyPermissionCard() {
-		GameState gameState = mainApp.getGameState(); 
-		Player player = gameState.getCurrentPlayer(); 
+		
 	}
 	@FXML
 	public void handleBuildWithKing() {
