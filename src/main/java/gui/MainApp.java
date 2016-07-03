@@ -2,6 +2,7 @@ package gui;
 
 import java.io.IOException;
 
+import client.gui.GUIClientOutHandlerSocket;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -18,10 +19,28 @@ public class MainApp extends Application {
 	//how 
 	private GameState gameState; 
 	
-	public MainApp() {
-		
+	private static GUIClientOutHandlerSocket outHandler;
+	
+
+	
+	public static void print(String message){
+		System.out.println(message);
 	}
 	
+	/**
+	 * @return the myOutHandler
+	 */
+	public static GUIClientOutHandlerSocket getOutHandler() {
+		return outHandler;
+	}
+
+	/**
+	 * @param myOutHandler the myOutHandler to set
+	 */
+	public static void setOutHandler(GUIClientOutHandlerSocket myOutHandler) {
+		MainApp.outHandler = myOutHandler;
+	}
+
 	@Override
 	public void start(Stage primaryStage) {
 		try {

@@ -1,20 +1,15 @@
 package gui;
 
-import java.io.IOException;
+import java.util.ArrayList;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.TextArea;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
-import model.player.Player;
-import utilities.Color;
 
 public class LoginClientController {
 
@@ -76,9 +71,14 @@ public class LoginClientController {
     @FXML
     private void handleOk() {
     	if(isInputOk()) {
-    		Player player = new Player(); 
-    		player.setNickname(nicknameArea.getText());
-    		player.setColor(new Color(colorArea.getText()));
+//    		Player player = new Player(); 
+//    		player.setNickname(nicknameArea.getText());
+//    		player.setColor(new Color(colorArea.getText()));
+    		ArrayList<String> inputList = new ArrayList<String>();
+    		inputList.add("setup");
+    		inputList.add(nicknameArea.getText());
+    		inputList.add(colorArea.getText());
+    		MainApp.getOutHandler().activate(inputList);
     		
     		okClicked = true; 
     		
