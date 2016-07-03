@@ -7,13 +7,13 @@ import javafx.scene.control.TextArea;
 public class BuildWithCardController {
 
 	@FXML
-	private TextArea card; 
+	private TextArea card = new TextArea(); 
 	@FXML
-	private TextArea city;
+	private TextArea city = new TextArea();
 	@FXML
-	private Button ok; 
+	private Button ok = new Button(); 
 	@FXML
-	private Button cancel; 
+	private Button cancel = new Button(); 
 	
 	@FXML
 	private void handleOk() {
