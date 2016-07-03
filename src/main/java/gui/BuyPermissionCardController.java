@@ -41,7 +41,7 @@ public class BuyPermissionCardController {
 		ArrayList<String> inputList = new ArrayList<String>();
 		inputList.add("buypermissioncard");
 		inputList.add(region.getText());
-//		inputList.add(index.getText());
+		inputList.add(index.getText());
 		inputList.add(blackCards.getText());
 		inputList.add(orangeCards.getText());
 		inputList.add(blueCards.getText());
