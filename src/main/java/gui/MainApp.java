@@ -43,6 +43,9 @@ public class MainApp extends Application {
 		launch(args); 
 	}
 	
+	/**
+	 * initializes root layout
+	 */
 	private void initRootLayout() {
 		try {
 			FXMLLoader loader = new FXMLLoader();
@@ -56,14 +59,23 @@ public class MainApp extends Application {
 			e.printStackTrace();
 		} 
 	}
+	/**
+	 * @return rootLayout
+	 */
 	public BorderPane getRootLayout() {
 		return rootLayout; 
 	}
 	
+	/**
+	 * @return primaryStage
+	 */
 	public Stage getPrimaryStage() {
 		return primaryStage; 
 	}
 	
+	/**
+	 * shows login 
+	 */
 	public void showLoginClient() {
 		try {
 			FXMLLoader loader = new FXMLLoader();
@@ -77,6 +89,9 @@ public class MainApp extends Application {
 			e.printStackTrace();
 		}
 	}
+	/**
+	 * shows main game scene
+	 */
 	public void showGameScene() {
 		try {
 			FXMLLoader loader = new FXMLLoader(); 
