@@ -142,7 +142,7 @@ public class BuildEmporiumWithKing implements MainAction {
 		
 		int sum=calculateNumCards(proposal);
 		
-		if (sum>=balcony.getnCounsellorsPerBalcony() && sum!=0) return false;
+		if (sum>balcony.getnCounsellorsPerBalcony() || sum==0) return false;
 		
 		else{
 			for(int i=0; i<proposal.getDeck().size()-1; i++){

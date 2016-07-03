@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
-import client.cli.socket.ClientMessage;
 import dto.actions.DTONullAction;
 import dto.actions.inputBonus.DTODoAgainAction;
 import dto.actions.inputBonus.DTOGetAgainBonusPermission;
@@ -146,7 +145,6 @@ public abstract class ClientOutHandler {
 					break;
 				}
 			case "addAction":
-				System.out.println("addAction detected");
 				switch (inputList.get(1)) {
 				case "buildEmpCard":
 					if (inputList.size() == 4) {

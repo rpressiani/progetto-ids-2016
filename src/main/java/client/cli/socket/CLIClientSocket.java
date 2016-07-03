@@ -9,7 +9,7 @@ import java.util.Scanner;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class ClientSocket {
+public class CLIClientSocket {
 	
 	private final static int PORT = 29999;
 	private final static String IP = "127.0.0.1";
@@ -20,7 +20,7 @@ public class ClientSocket {
 	/**
 	 * @param in
 	 */
-	public ClientSocket(Scanner in) {
+	public CLIClientSocket(Scanner in) {
 		this.in = in;
 	}
 	
@@ -52,7 +52,7 @@ public class ClientSocket {
 	 */
 	public static void main(String[] args) throws UnknownHostException, IOException {
 		Scanner in = new Scanner(System.in);
-		ClientSocket client = new ClientSocket(in); 
+		CLIClientSocket client = new CLIClientSocket(in); 
 		client.startClient();
 		
 	}

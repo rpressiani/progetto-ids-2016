@@ -3,8 +3,8 @@ package server;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 
+import client.ClientMessage;
 import client.cli.rmi.ClientViewRemote;
-import client.cli.socket.ClientMessage;
 
 public interface RMIServerInterface extends Remote {
 	/**
