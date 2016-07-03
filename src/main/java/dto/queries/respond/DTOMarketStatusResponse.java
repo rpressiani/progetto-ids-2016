@@ -39,7 +39,7 @@ public class DTOMarketStatusResponse implements DTOObject {
 		StringBuilder msg = new StringBuilder();
 		msg.append("\n[SERVER] Market status:\n");
 		for (Map.Entry<String, DTOContract> entry : this.contracts.entrySet()) {
-			msg.append("[SERVER] Player: " + entry.getKey() + "\n");
+			msg.append("[SERVER] Contract #" + entry.getValue().getId() + " - Player: " + entry.getKey() + "\n");
 			msg.append(entry.getValue());
 		}
 		

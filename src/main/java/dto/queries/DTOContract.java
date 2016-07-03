@@ -16,7 +16,9 @@ public class DTOContract implements DTOObject {
 	 */
 	private static final long serialVersionUID = 8698606138965181943L;
 
+	private final int id;
 	private final String seller;
+	
 	private DTOCoins sellCoins = new DTOCoins(0);
 	private DTOAssistants sellAssistants = new DTOAssistants(0);
 	private Set<DTOPermissionCard> sellPermissions = new HashSet<DTOPermissionCard>();
@@ -27,8 +29,9 @@ public class DTOContract implements DTOObject {
 	private Set<DTOPermissionCard> buyPermissions = new HashSet<DTOPermissionCard>();
 	private DTOColorCounter buyPoliticals;
 	
-	public DTOContract(String seller) {
+	public DTOContract(String seller, int id) {
 		this.seller = seller;
+		this.id = id;
 	}
 
 	/**
@@ -36,6 +39,13 @@ public class DTOContract implements DTOObject {
 	 */
 	public String getSeller() {
 		return seller;
+	}
+
+	/**
+	 * @return the id
+	 */
+	public int getId() {
+		return id;
 	}
 
 	/**
