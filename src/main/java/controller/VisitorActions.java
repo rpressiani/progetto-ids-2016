@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import dto.actions.DTOChatAction;
 import dto.actions.DTONullAction;
 import dto.actions.DTOQuitAction;
 import dto.actions.inputBonus.DTODoAgainAction;
@@ -25,6 +26,7 @@ import dto.actions.quick.DTOElectCounsellorWithAssistant;
 import dto.actions.quick.DTOHireAssistant;
 import dto.utilities.DTOPermissionCardSelection;
 import model.GameState;
+import model.actions.ChatAction;
 import model.actions.NullAction;
 import model.actions.QuitAction;
 import model.actions.inputBonus.DoAgainAction;
@@ -316,5 +318,9 @@ public class VisitorActions {
 	 */
 	public QuitAction visit(DTOQuitAction DTOAction){
 		return new QuitAction();
+	}
+	
+	public ChatAction visit(DTOChatAction DTOAction){
+		return new ChatAction(DTOAction.getMsg());
 	}
 }

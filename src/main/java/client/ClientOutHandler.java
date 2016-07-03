@@ -410,6 +410,9 @@ public abstract class ClientOutHandler {
 					}
 					break;
 				
+				/*----- SPECIAL -----*/
+			
+				
 				/*----- QUERIES -----*/
 				
 			case "getcurrentplayer":

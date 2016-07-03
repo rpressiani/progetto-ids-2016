@@ -6,6 +6,7 @@ import java.util.Set;
 
 import utilities.Color;
 import model.GameState;
+import model.actions.ChatAction;
 import model.actions.GeneralAction;
 import model.actions.NullAction;
 import model.actions.QuitAction;
@@ -131,6 +132,10 @@ public class Player {
 		
 		if(action instanceof QuitAction){
 			this.getState().transition(this, (QuitAction)action, gameState);
+		}
+		
+		if(action instanceof ChatAction){
+			this.getState().transition(this, (ChatAction)action, gameState);
 		}
 	}
 	
