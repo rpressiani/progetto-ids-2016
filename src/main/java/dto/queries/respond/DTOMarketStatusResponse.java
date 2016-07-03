@@ -37,6 +37,10 @@ public class DTOMarketStatusResponse implements DTOObject {
 	@Override
 	public String toString() {
 		StringBuilder msg = new StringBuilder();
+		if (this.contracts.isEmpty()) {
+			msg.append("No contracts in the market right now");
+			return msg.toString();
+		}
 		msg.append("\n[SERVER] Market status:\n");
 		for (Map.Entry<String, DTOContract> entry : this.contracts.entrySet()) {
 			msg.append("[SERVER] Contract #" + entry.getValue().getId() + " - Player: " + entry.getKey() + "\n");

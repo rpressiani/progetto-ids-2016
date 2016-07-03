@@ -98,8 +98,8 @@ public class TestCanMainState {
 		CounsellorGroup counsellorGroup = gameState.getCounsellorGarbage().getState().get(0);
 		Color color = counsellorGroup.getColor(); 
 		ElectCounsellor action = new ElectCounsellor(region.getBalcony(), color); 
-		CanMainState state = new CanMainState();
-		state.transition(player, action, gameState);
+		player.setState(new CanMainState());
+		player.move(action, gameState);
 		assertTrue(player.getState() instanceof CanSellState);  
 	}
 }
