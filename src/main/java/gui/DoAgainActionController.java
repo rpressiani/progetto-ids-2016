@@ -18,19 +18,25 @@ public class DoAgainActionController {
 	
 	@FXML
 	private void handleBuildWithCard() {
-		
+		mainApp.showBonusBuildWithCard();
 	}
 	@FXML
 	private void handleBuildWithKing() {
-		
+		mainApp.showBonusBuildWithKing();
 	}
 	@FXML
 	private void handleElectCounsellor() {
-		
+		mainApp.showBonusElectCounsellor();
 	}
 	@FXML
 	private void handleBuyPermissionCard() {
-		
+		mainApp.showBonusBuyPermissionCard();
+	}
+	/**
+	 * @param mainApp the mainApp to set
+	 */
+	public void setMainApp(MainApp mainApp) {
+		this.mainApp = mainApp;
 	}
 
 }
