@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="300.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.72" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.DoAgainActionController">
+   <children>
+      <TitledPane animated="false" layoutX="122.0" layoutY="47.0" prefHeight="300.0" prefWidth="400.0" text="Do Again Action" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <ImageView fitHeight="275.0" fitWidth="400.0" layoutY="-1.0">
+                     <image>
+                        <Image url="@images/image" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="buildWithCard" layoutX="136.0" layoutY="25.0" mnemonicParsing="false" onAction="#handleBuildWithCard" prefHeight="50.0" prefWidth="129.0" text="Build w/Card" />
+                  <Button fx:id="buildWithKing" layoutX="14.0" layoutY="126.0" mnemonicParsing="false" onAction="#handleBuildWithKing" prefHeight="44.0" prefWidth="132.0" text="Build w/King" />
+                  <Button fx:id="buyPermission" layoutX="253.0" layoutY="123.0" mnemonicParsing="false" onAction="#handleBuyPermission" prefHeight="51.0" prefWidth="131.0" text="Buy Permission" />
+                  <Button fx:id="electCounsellor" layoutX="134.0" layoutY="209.0" mnemonicParsing="false" onAction="#handleElectCounsellor" prefHeight="43.0" prefWidth="133.0" text="Elect Counsellor" />
+               </children>
+            </AnchorPane>
+        </content>
+      </TitledPane>
+   </children>
+</AnchorPane>
