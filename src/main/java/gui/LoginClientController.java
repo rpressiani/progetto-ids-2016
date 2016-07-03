@@ -34,6 +34,12 @@ public class LoginClientController {
 	public LoginClientController() {
 		
 	}
+	/**
+	 * @return the dialogStage
+	 */
+	public Stage getDialogStage() {
+		return dialogStage;
+	}
 	public void setMainApp(MainApp mainApp) {
 		this.mainApp = mainApp; 
 	}
@@ -95,4 +101,20 @@ public class LoginClientController {
     public String getNickname() {
     	return nicknameArea.getText(); 
     }
+    
+    public void alert(String msg){
+    	System.out.println("alert1");
+    	Alert alert = new Alert(AlertType.ERROR);
+    	System.out.println("alert2");
+        alert.initOwner(dialogStage);
+        System.out.println("alert3");
+        alert.setTitle("Invalid Fields");
+        System.out.println("alert4");
+        alert.setHeaderText("Please correct invalid fields");
+        System.out.println("alert5");
+        alert.setContentText(msg);
+        System.out.println("alert6");
+
+        alert.showAndWait();
+	}
 }

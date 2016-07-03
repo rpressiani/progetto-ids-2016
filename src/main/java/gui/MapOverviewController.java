@@ -228,4 +228,23 @@ public class MapOverviewController {
 		            }
 		        };
 	}
+	
+	 public void alert(String msg){
+//	    	System.out.println("alert1");
+//	    	Alert alert = new Alert(AlertType.INFORMATION);
+//	    	System.out.println("alert2");
+////	        alert.initOwner(dialogStage);
+//	        System.out.println("alert3");
+//	        alert.setTitle("Invalid Fields");
+//	        System.out.println("alert4");
+//	        alert.setHeaderText("Please correct invalid fields");
+//	        System.out.println("alert5");
+//	        alert.setContentText(msg);
+//	        System.out.println("alert6");
+//
+//	        alert.showAndWait();
+		 
+		 
+		 
+		}
 }
