@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.MapOverviewController">
+<AnchorPane prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.72" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.MapOverviewController">
    <children>
       <SplitPane dividerPositions="0.678391959798995" layoutX="113.0" layoutY="14.0" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
@@ -37,7 +37,7 @@
                                     <MenuButton layoutX="7.0" layoutY="46.0" mnemonicParsing="false" text="Main Actions">
                                       <items>
                                         <MenuItem fx:id="buildAction" mnemonicParsing="false" onAction="#handleBuildEmporium" text="Build Emporium With Card" />
-                                          <MenuItem fx:id="elect" mnemonicParsing="false" text="Elect Counsellor" />
+                                          <MenuItem fx:id="elect" mnemonicParsing="false" onAction="#handleElectCounsellor" text="Elect Counsellor" />
                                           <MenuItem fx:id="buy" mnemonicParsing="false" text="Buy Permission Card" />
                                         <MenuItem fx:id="buildWithKing" mnemonicParsing="false" onAction="#handleBuildWithKing" text="Build Emporium With King" />
                                       </items>
