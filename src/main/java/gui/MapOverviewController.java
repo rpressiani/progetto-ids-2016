@@ -101,17 +101,10 @@ public class MapOverviewController {
 	@FXML
 	private void initialize() {
 		
-//		 dataPane.setEditable(false);
-//        dataPane.prefWidthProperty().bind(hbox.widthProperty());
-//
-//        dataPane.setWrapText(true);     // New line of the text exceeds the text area
-//        dataPane.setPrefRowCount(10);
-//        dataPane.setText("Testdata");
-//        dataPane.appendText("\ndata");
-		
 		this.textArea.setWrapText(true);
 		this.textArea.setEditable(false);
 		this.textArea.setText("TextArea TEST\n");
+		textArea.setScrollTop(Double.MAX_VALUE);
 		
 	}
 	@FXML
@@ -168,47 +161,69 @@ public class MapOverviewController {
 	}
 	@FXML
 	public void handleNullAction() {
-		
+		ArrayList<String> inputList = new ArrayList<String>();
+		inputList.add("pass");
+		MainApp.getOutHandler().activate(inputList);
 	}
 	@FXML
 	public void handleScoresQuery() {
-		
+		ArrayList<String> inputList = new ArrayList<String>();
+		inputList.add("getscores");
+		MainApp.getOutHandler().activate(inputList);
 	}
 	@FXML
 	public void handleCurrentPlayerQuery() {
-		
+		ArrayList<String> inputList = new ArrayList<String>();
+		inputList.add("getcurrentplayer");
+		MainApp.getOutHandler().activate(inputList);
 	}
 	@FXML
 	public void handleInformationQuery() {
-		
+		ArrayList<String> inputList = new ArrayList<String>();
+		inputList.add("getinfo");
+		MainApp.getOutHandler().activate(inputList);
 	}
 	@FXML
 	public void handlePlayerInformation() {
-		
+//		ArrayList<String> inputList = new ArrayList<String>();
+//		inputList.add("getplayerinfo");
+//		MainApp.getOutHandler().activate(inputList);
 	}
 	@FXML
 	public void handleOtherPlayersQuery() {
-		
+		ArrayList<String> inputList = new ArrayList<String>();
+		inputList.add("getplayers");
+		MainApp.getOutHandler().activate(inputList);
 	}
 	@FXML
 	public void handleFreeCounsellorsQuery() {
-		
+		ArrayList<String> inputList = new ArrayList<String>();
+		inputList.add("getfreecounsellors");
+		MainApp.getOutHandler().activate(inputList);
 	}
 	@FXML
-	public void handlebalconiesQuery() {
-		
+	public void handleBalconiesQuery() {
+		ArrayList<String> inputList = new ArrayList<String>();
+		inputList.add("getbalconies");
+		MainApp.getOutHandler().activate(inputList);
 	}
 	@FXML
 	public void handleAvailablePermissionsQuery() {
-		
+		ArrayList<String> inputList = new ArrayList<String>();
+		inputList.add("getpermissionavailable");
+		MainApp.getOutHandler().activate(inputList);
 	}
 	@FXML
 	public void handleMapQuery() {
-		
+		ArrayList<String> inputList = new ArrayList<String>();
+		inputList.add("getmap");
+		MainApp.getOutHandler().activate(inputList);
 	}
 	@FXML
 	public void handleMarketQuery() {
-		
+		ArrayList<String> inputList = new ArrayList<String>();
+		inputList.add("getmarket");
+		MainApp.getOutHandler().activate(inputList);
 	}
 	public void endTurn() {
 		if(doneMain && doneQuick) {
@@ -233,27 +248,7 @@ public class MapOverviewController {
 	}
 	
 	 public void alert(String msg){
-//	    	System.out.println("alert1");
-//	    	Alert alert = new Alert(AlertType.INFORMATION);
-//	    	System.out.println("alert2");
-////	        alert.initOwner(dialogStage);
-//	        System.out.println("alert3");
-//	        alert.setTitle("Invalid Fields");
-//	        System.out.println("alert4");
-//	        alert.setHeaderText("Please correct invalid fields");
-//	        System.out.println("alert5");
-//	        alert.setContentText(msg);
-//	        System.out.println("alert6");
-//
-//	        alert.showAndWait();
-		 
-		 
-
-		 
-		 
-		 System.out.println("append1");
 		 textArea.appendText(msg);
-		 System.out.println("append2");
-		 
+		 textArea.setScrollTop(Double.MAX_VALUE);
 		}
 }
