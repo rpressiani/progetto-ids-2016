@@ -35,7 +35,6 @@ public class BuildEmporiumWithCard implements MainAction {
 		cardChosed.setUsed(true);
 		
 		gameState.notifyObserver(player, new ChangeBuildEmporiumWithCard(new Assistants(assistantsToPay), cityChosed, cardChosed));
-		gameState.notifyObserver(player, new ChangePlayerStatus(player));
 		
 		for(City c : cityChosed.linkedCities(gameState.getMap(), player)){
 			c.assignBonuses(player, gameState);
@@ -80,6 +79,7 @@ public class BuildEmporiumWithCard implements MainAction {
 		}
 		
 		gameState.getNobility().checkNobility(player, gameState);
+		gameState.notifyObserver(player, new ChangePlayerStatus(player));
 	}
 	
 	/**

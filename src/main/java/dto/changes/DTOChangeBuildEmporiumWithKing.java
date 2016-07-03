@@ -60,7 +60,7 @@ public class DTOChangeBuildEmporiumWithKing implements DTOChange {
 	 */
 	@Override
 	public String toString() {
-		return "Thanks to the help of king you built in "+city+", spending "+coins+" coins and using "+assistants+" assistants";
+		return "Thanks to the help of king you built an emporium in "+city+", spending "+coins+" coins and using "+assistants+" assistants";
 	}
 	
 	

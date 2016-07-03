@@ -68,7 +68,6 @@ public class BuildEmporiumWithKing implements MainAction {
 		player.getBuiltCities().add(cityChosed);
 		
 		gameState.notifyObserver(player, new ChangeBuildEmporiumWithKing(new Coins(sumToPay), new Assistants(assistantsToPay), cityChosed));
-		gameState.notifyObserver(player, new ChangePlayerStatus(player));
 		gameState.notifyObserver(new ChangeMsg("The king has been moved to "+cityChosed.getName()));
 		
 		for(City c : cityChosed.linkedCities(gameState.getMap(), player)){
@@ -76,7 +75,7 @@ public class BuildEmporiumWithKing implements MainAction {
 		}
 		
 		gameState.getNobility().checkNobility(player, gameState);
-		
+	
 		if(player.getBuiltCities().containsAll(gameState.getMap().getRegions().get(cityChosed.getRegion().getName()).getRegionCities())){
 			RegionCard card=gameState.getMap().getRegions().get(cityChosed.getRegion().getName()).getRegionBonus();
 			
@@ -95,7 +94,8 @@ public class BuildEmporiumWithKing implements MainAction {
 			}
 		}
 		
-		if(player.getBuiltCities().containsAll(gameState.getMap().getAncestries().get(cityChosed.getAncestry().getColor().getStringID()).getColorCities())){
+		if(cityChosed!=gameState.getMap().getAllCitiesHashMap().get("J") && 
+				player.getBuiltCities().containsAll(gameState.getMap().getAncestries().get(cityChosed.getAncestry().getColor().getStringID()).getColorCities())){
 			ColorCard card=gameState.getMap().getAncestries().get(cityChosed.getAncestry()).getColorCard();
 			
 			if(card.isAssigned()==false){
@@ -114,6 +114,8 @@ public class BuildEmporiumWithKing implements MainAction {
 		}
 		
 		gameState.getNobility().checkNobility(player, gameState);
+		
+		gameState.notifyObserver(player, new ChangePlayerStatus(player));
 	}
 	
 	/**
@@ -207,6 +209,7 @@ public class BuildEmporiumWithKing implements MainAction {
 		else if(numCards==3) sumToPay=4;
 		
 		sumToPay=sumToPay+sumJolly;
+		sumToPay=sumToPay+2*gameState.getMap().numericDistance(gameState.getKing().getKingCity(), cityChosed);
 		
 		if(sumToPay>player.getCoins().getItems()){
 			gameState.notifyObserver(player, new ChangeMsg("You don't have enough coins to satisfy King's balcony"));

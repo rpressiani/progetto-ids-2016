@@ -214,19 +214,25 @@ public class GameState extends Observable<Change> {
 			else this.setCurrentPlayer(this.getPlayers().get(0));
 		}
 		
+		System.out.println("controllo stato");
 		if(this.getCurrentPlayer().getState() instanceof FinishedBuildingState){
 			for(Player p : this.getPlayers()){
 				this.getPotentialWinners().add(p);
 			}
-			
+			System.out.println("step 1");
 			for(Player p : this.getPlayersDisconnected()){
 				this.getPotentialWinners().add(p);
 			}
-			
+			System.out.println("step 2");
+			for(Player p : this.getPotentialWinners()){
+				System.out.println(p);
+			}
 			Player winner=this.calculateWinner(potentialWinners);
+			System.out.println("calcolato vincitore");
 			this.notifyObserver(new ChangeMsg("CONGRATULATIONS, "+winner.getNickname()+" WON THE GAME!!!"));
 			//ora occorre disconnettere tutti
 		}
+		System.out.println("uscito da nextPlayer");
 	}
 
 	public boolean checkEmporiums(Player player){
@@ -275,19 +281,19 @@ public class GameState extends Observable<Change> {
 			if(p.getPermissionHand().size()==maxPermissions) p.getScore().add(3);
 		}
 		
-		
+	
 		Collections.sort(players, new NobilityComparator());
 		
 		int i;
 		int maxNobility=players.get(0).getNobilityLevel().getItems();
 		
-		for(i=0 ; maxNobility==players.get(i).getNobilityLevel().getItems(); i++){
+		for(i=0 ; i<players.size() && maxNobility==players.get(i).getNobilityLevel().getItems(); i++){
 			players.get(i).getScore().add(5);
 		}
 		
 		if(i==1){
 			maxNobility=players.get(i).getNobilityLevel().getItems();
-			for(i=1; maxNobility==players.get(i).getNobilityLevel().getItems(); i++){
+			for(i=1; i<players.size() && maxNobility==players.get(i).getNobilityLevel().getItems(); i++){
 				players.get(i).getScore().add(2);
 			}
 		}
@@ -298,7 +304,7 @@ public class GameState extends Observable<Change> {
 		i=0;
 		int maxScore=players.get(0).getScore().getItems();
 		
-		while(maxScore==players.get(i).getScore().getItems()){
+		while(i<players.size() && maxScore==players.get(i).getScore().getItems()){
 			i++;
 		}
 		
@@ -313,7 +319,6 @@ public class GameState extends Observable<Change> {
 				
 				if(players.get(j).getAssistantsPlusPoliticals()>maxAssistantsPlusPoliticals) maxAssistantsPlusPoliticals=
 						players.get(j).getAssistantsPlusPoliticals();
-				
 			}
 			
 			for(Entry<Player,Integer> entry : result.entrySet()){
