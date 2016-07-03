@@ -120,7 +120,6 @@ public interface State {
 		if(player==null || gameState==null) throw new NullPointerException("player/gameState cannot be null");
 		
 		action.doAction(player, gameState);
-		
 		System.out.println(player.getNickname()+" has disconnected");
 	}
 	
