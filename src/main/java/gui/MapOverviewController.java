@@ -124,11 +124,11 @@ public class MapOverviewController {
 	}
 	@FXML
 	public void handleBuildWithKing() {
-		
+		mainApp.showBuildWithKing();
 	}
 	@FXML
 	public void handleAddictionalAction() {
-		
+		mainApp.showAddAction();
 	}
 	@FXML
 	public void handleSubstitute() {

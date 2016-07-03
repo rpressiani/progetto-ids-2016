@@ -6,8 +6,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="350.0" prefWidth="450.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.72" fx:controller="gui.AddictionalActionController">
+<AnchorPane prefHeight="350.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AddictionalActionController">
    <children>
       <TitledPane animated="false" layoutX="98.0" layoutY="37.0" prefHeight="350.0" prefWidth="450.0" text="Addictional Action" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <content>
@@ -21,7 +20,7 @@
                   <Button fx:id="buildWithCard" layoutX="58.0" layoutY="54.0" mnemonicParsing="false" onAction="#handleBuildWithCard" prefHeight="49.0" prefWidth="121.0" text="Build w/Card" />
                   <Button fx:id="buildWithKing" layoutX="257.0" layoutY="51.0" mnemonicParsing="false" onAction="#handleBuildWithKing" prefHeight="50.0" prefWidth="121.0" text="Build w/King" />
                   <Button fx:id="electCounsellor" layoutX="58.0" layoutY="182.0" mnemonicParsing="false" onAction="#handleElectCounsellor" prefHeight="48.0" prefWidth="119.0" text="Elect Counsellor" />
-                  <Button fx:id="buyPermission" layoutX="257.0" layoutY="182.0" mnemonicParsing="false" onAction="#handleBuyPermission" prefHeight="47.0" prefWidth="122.0" text="Buy Permission" />
+                  <Button fx:id="buyPermissionCard" layoutX="257.0" layoutY="182.0" mnemonicParsing="false" onAction="#handleBuyPermissionCard" prefHeight="47.0" prefWidth="122.0" text="Buy Permission" />
                </children>
             </AnchorPane>
         </content>

@@ -1,5 +1,7 @@
 package gui;
 
+import java.util.ArrayList;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
@@ -7,6 +9,7 @@ import javafx.scene.control.TextArea;
 public class BuildWithKingController {
 	
 	private MainApp mainApp; 
+	private String state;
 	
 	@FXML
 	private Button ok = new Button(); 
@@ -34,11 +37,34 @@ public class BuildWithKingController {
 	}
 	@FXML
 	private void handleOk() {
-		
+		ArrayList<String> inputList = new ArrayList<String>();
+		if (state.equals("addaction")) {
+			inputList.add("addaction");
+		}
+		if (state.equals("bonus")) {
+			inputList.add("bonusdoactionagain");
+		}
+		inputList.add("buildempking");
+		inputList.add(city.getText());
+		inputList.add(blackCards.getText());
+		inputList.add(orangeCards.getText());
+		inputList.add(blueCards.getText());
+		inputList.add(pinkCards.getText());
+		inputList.add(whiteCards.getText());
+		inputList.add(purpleCards.getText());
+		inputList.add(jolly.getText());
+		MainApp.getOutHandler().activate(inputList);
+		mainApp.getTempStage().close();
 	}
 	@FXML
 	private void handleCancel() {
-		
+		mainApp.getTempStage().close();
+	}
+	/**
+	 * @param state the state to set
+	 */
+	public void setState(String state) {
+		this.state = state;
 	}
 	
 

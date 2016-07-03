@@ -7,6 +7,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 
 public class BuildWithCardController {
+	
+	private String state;
 
 	@FXML
 	private TextArea card = new TextArea(); 
@@ -25,6 +27,12 @@ public class BuildWithCardController {
 	@FXML
 	private void handleOk() {
 		ArrayList<String> inputList = new ArrayList<String>();
+		if (state.equals("addaction")) {
+			inputList.add("addaction");
+		}
+		if (state.equals("bonus")) {
+			inputList.add("bonusdoactionagain");
+		}
 		inputList.add("buildempcard");
 		inputList.add(card.getText());
 		inputList.add(city.getText());
@@ -34,6 +42,13 @@ public class BuildWithCardController {
 	@FXML
 	private void handleCancel() {
 		mainApp.getTempStage().close();
+	}
+	
+	/**
+	 * @param state the state to set
+	 */
+	public void setState(String state) {
+		this.state = state;
 	}
 	
 }

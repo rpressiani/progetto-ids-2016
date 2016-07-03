@@ -21,18 +21,18 @@ public class AddictionalActionController {
 	
 	@FXML
 	private void handleBuildWithCard() {
-		
+		mainApp.showAddActionBuildWithCard();
 	}
 	@FXML
 	private void handleBuildWithKing() {
-		
+		mainApp.showAddActionBuildWithKing();
 	}
 	@FXML
 	private void handleElectCounsellor() {
-		
+		mainApp.showAddActionElectCounsellor();
 	}
 	@FXML
 	private void handleBuyPermissionCard() {
-		
+		mainApp.showAddActionBuyPermissionCard();
 	}
 }
