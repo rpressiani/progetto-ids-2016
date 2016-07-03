@@ -8,6 +8,10 @@ public class ChangePlayerStatus implements Change {
 
 	private Player player;
 
+	/**
+	 * @param player
+	 * @throws NullPointerException if player is null
+	 */
 	public ChangePlayerStatus(Player player) {
 		if(player==null) {
 			throw new NullPointerException("player cannot be null"); 

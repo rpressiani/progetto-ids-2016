@@ -3,7 +3,7 @@ package view.rmi;
 import java.io.IOException;
 import java.rmi.RemoteException;
 
-import client.rmi.ClientViewRemote;
+import client.cli.rmi.ClientViewRemote;
 import dto.changes.DTOChange;
 import dto.queries.VisitorQueries;
 import model.GameState;

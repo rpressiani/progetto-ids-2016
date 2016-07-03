@@ -14,6 +14,11 @@ public class GetFreePermission implements InputBonusAction {
 	private Region region;
 	private int index;
 	
+	/**
+	 * Constructor
+	 * @param region
+	 * @param index
+	 */
 	public GetFreePermission(Region region, int index) {
 		this.region=region;
 		this.index=index;

@@ -1,4 +1,4 @@
-package client.rmi;
+package client.cli.rmi;
 
 import java.rmi.AlreadyBoundException;
 import java.rmi.NotBoundException;
@@ -40,7 +40,7 @@ public class ClientRMI {
 		this.clientRMIView=new ClientRMIView();
 		
 		ExecutorService executor = Executors.newFixedThreadPool(2); //load from file
-		executor.submit(new ClientOutHandlerRMI(serverStub, clientRMIView, this.in));
+		executor.submit(new CLIClientOutHandlerRMI(serverStub, clientRMIView, this.in));
 		
 		this.serverStub.registerClient(clientRMIView); //before or after executor?
 	}

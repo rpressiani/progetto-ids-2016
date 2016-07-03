@@ -10,6 +10,11 @@ public class ChangeHireAssistants implements Change {
 	private Assistants assistants;
 	private Coins coins;
 	
+	/**
+	 * @param assistants
+	 * @param coins
+	 * @throws NullPointerException if assistants or coins are null
+	 */
 	public ChangeHireAssistants(Assistants assistants, Coins coins) {
 		if(assistants==null) {
 			throw new NullPointerException("assistants cannot be null"); 

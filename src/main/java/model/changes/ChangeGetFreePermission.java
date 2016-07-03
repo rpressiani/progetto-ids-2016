@@ -10,6 +10,11 @@ public class ChangeGetFreePermission implements Change {
 	private Region region;
 	private PermissionCard card;
 	
+	/**
+	 * @param region
+	 * @param card
+	 * @throws NullPointerException if region or card are null
+	 */
 	public ChangeGetFreePermission(Region region, PermissionCard card) {
 		if(region==null || card==null) throw new NullPointerException("region/card can't be null");
 		

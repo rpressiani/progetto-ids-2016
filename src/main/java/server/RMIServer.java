@@ -5,8 +5,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import client.rmi.ClientViewRemote;
-import client.socket.ClientMessage;
+import client.cli.rmi.ClientViewRemote;
+import client.cli.socket.ClientMessage;
 import dto.DTOObject;
 import dto.actions.DTOAction;
 import dto.queries.DTOQuery;
@@ -35,7 +35,7 @@ public class RMIServer implements RMIServerInterface {
 	}
 	
 	/**
-	 * @see server.RMIServerInterface#registerClient(client.rmi.ClientViewRemote)
+	 * @see server.RMIServerInterface#registerClient(client.cli.rmi.ClientViewRemote)
 	 */
 	@Override
 	public void registerClient(ClientViewRemote clientStub) throws RemoteException{
@@ -58,7 +58,7 @@ public class RMIServer implements RMIServerInterface {
 	}
 	
 	/**
-	 * @see server.RMIServerInterface#unregisterClient(client.rmi.ClientViewRemote)
+	 * @see server.RMIServerInterface#unregisterClient(client.cli.rmi.ClientViewRemote)
 	 */
 	@Override
 	public void unregisterClient(ClientViewRemote clientStub) throws RemoteException {
@@ -66,7 +66,7 @@ public class RMIServer implements RMIServerInterface {
 	}
 	
 	/**
-	 * @see server.RMIServerInterface#receiveMessage(client.socket.ClientMessage)
+	 * @see server.RMIServerInterface#receiveMessage(client.cli.socket.ClientMessage)
 	 */
 	@Override
 	public void receiveMessage(ClientMessage msgIn) throws RemoteException {

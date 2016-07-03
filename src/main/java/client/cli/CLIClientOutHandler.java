@@ -1,4 +1,4 @@
-package client;
+package client.cli;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -6,7 +6,8 @@ import java.util.HashSet;
 import java.util.Scanner;
 import java.util.Set;
 
-import client.socket.ClientMessage;
+import client.ClientOutHandler;
+import client.cli.socket.ClientMessage;
 import dto.actions.market.DTOSellAction;
 import dto.playerInfo.DTOAssistants;
 import dto.playerInfo.DTOCoins;
@@ -24,6 +25,17 @@ public abstract class CLIClientOutHandler extends ClientOutHandler implements Ru
 	 */
 	public CLIClientOutHandler(Scanner in) {
 		this.stdIn = in;
+	}
+	
+	@Override
+	public void notifyCmdNotFound() {
+		StringBuilder cmdNotFound = new StringBuilder();
+		cmdNotFound.append("\n[ERROR] Command not found!\n");
+		cmdNotFound.append("[ERROR] Insert legal commands\n");
+		cmdNotFound.append("[ERROR] Enter help for command list\n");
+		
+		System.out.println(cmdNotFound.toString());
+		
 	}
 	
 	public void run() {

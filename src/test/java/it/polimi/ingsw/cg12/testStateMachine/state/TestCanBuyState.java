@@ -1,6 +1,6 @@
 package it.polimi.ingsw.cg12.testStateMachine.state;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 
@@ -11,9 +11,7 @@ import model.actions.market.BuyAction;
 import model.market.Contract;
 import model.player.Player;
 import model.stateMachine.CanBuyState;
-import model.stateMachine.State;
 import parser.Parser;
-import utilities.Color;
 
 public class TestCanBuyState {
 
@@ -57,11 +55,9 @@ public class TestCanBuyState {
 	public void testNullGameStateInTransitionThrowsException() {
 		boolean thrown = false; 
 		CanBuyState state = new CanBuyState(); 
-		Parser parser = new Parser(); 
 		Player player = new Player();
 		ArrayList<Player> players = new ArrayList<Player>(); 
 		players.add(player); 
-		GameState gameState = new GameState(parser, players); 
 		Contract contract = new Contract(player); 
 		BuyAction action = new BuyAction(contract); 
 		try {
