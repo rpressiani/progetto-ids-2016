@@ -6,12 +6,9 @@ import client.gui.GUIClientOutHandlerSocket;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.GameState;
 
@@ -97,10 +94,14 @@ public class MainApp extends Application {
 		try {
 			FXMLLoader loader = new FXMLLoader(); 
 			loader.setLocation(getClass().getResource("/ElectCounsellorScene.fxml"));
+			Stage stage = new Stage(); 
 			AnchorPane actionScene = (AnchorPane) loader.load();
 			rootLayout.setCenter(actionScene);
 			controller = loader.getController(); 
 			controller.setMainApp(this);
+			Scene scene = new Scene(actionScene); 
+			primaryStage.setScene(scene);
+			primaryStage.show();
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
