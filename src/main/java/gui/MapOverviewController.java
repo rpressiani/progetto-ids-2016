@@ -76,97 +76,11 @@ public class MapOverviewController {
 	
 	@FXML
 	private void initialize() {
-		//initialize cities?
-		buildAction.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {		
-			@Override
-			public void handle(MouseEvent event) {
-				City city = mainApp.getGameState().getMap().getAllCitiesHashMap().get("A"); 
-				PermissionCard card = 
-						mainApp.getGameState().getMap().getRegions().get("seaside").getPermissionDeck().getDeck().get(0);
-				//TODO: choose clicked city
-				BuildEmporiumWithCard action = new BuildEmporiumWithCard(card, city); 
-				action.doAction(mainApp.getGameState().getCurrentPlayer(), mainApp.getGameState());
-				doneMain = true; 
-				//TODO: implement end of turn
-			}
-			
-		});
-		buy.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
-
-			@Override
-			public void handle(MouseEvent event) {
-				
-			}
-			
-		});
-		buildWithKing.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
-
-			@Override
-			public void handle(MouseEvent event) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-		});
-		elect.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
-
-			@Override
-			public void handle(MouseEvent event) {
-				Region region = mainApp.getGameState().getMap().getRegions().get("seaside");
-				Color color = new Color("red"); 
-				//ElectCounsellor action = new ElectCounsellor(region, color);
-				//action.doAction(mainApp.getGameState().getCurrentPlayer(), mainApp.getGameState());
-				doneMain = true; 
-				
-			}
-			
-		});
-		addictional.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>(){
-
-			@Override
-			public void handle(MouseEvent event) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-		});
-		substitute.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>(){
-
-			@Override
-			public void handle(MouseEvent event) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-		});
-		elect2.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>(){
-
-			@Override
-			public void handle(MouseEvent event) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-		});
-		hire.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>(){
-
-			@Override
-			public void handle(MouseEvent event) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-		});
+		
 	}
 	@FXML
 	public void handleBuildEmporium(MouseEvent mouseEvent) {
-		if(!mainApp.getGameState().getCurrentPlayer().isEnabled()) {
-			Alert alert = new Alert(AlertType.INFORMATION); 
-			alert.setTitle("Error");
-			alert.setHeaderText("You'd better change your mind");
-			alert.setContentText("Can't do this action now");
-			alert.showAndWait(); 
-		}
+		
 	}
 	@FXML
 	public void handleElectCounsellor(MouseEvent mouseEvent) {
