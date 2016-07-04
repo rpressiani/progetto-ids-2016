@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane prefHeight="403.0" prefWidth="508.0" xmlns="http://javafx.com/javafx/8.0.72" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.SellActionController">
+<AnchorPane prefHeight="403.0" prefWidth="508.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.SellActionController">
    <children>
       <TitledPane animated="false" layoutX="91.0" layoutY="34.0" prefHeight="403.0" prefWidth="508.0" text="SellAction" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <content>
@@ -33,10 +33,10 @@
                      <children>
                         <Label prefHeight="37.0" prefWidth="195.0" text="N° COINS to sell" />
                         <Label prefHeight="66.0" prefWidth="195.0" text="N° ASSISTANTS to sell" GridPane.rowIndex="1" />
-                        <Label prefHeight="76.0" prefWidth="195.0" text="Index of Permission to sell" GridPane.rowIndex="2" />
+                        <Label prefHeight="76.0" prefWidth="195.0" text="Permission to sell" GridPane.rowIndex="2" />
                         <Label prefHeight="36.0" prefWidth="212.0" text="N° POLITICAL CARDS to sell" GridPane.rowIndex="3" />
                         <Label prefHeight="67.0" prefWidth="195.0" text="N° COINS to buy" GridPane.rowIndex="4" />
-                        <Label prefHeight="53.0" prefWidth="195.0" text="Index of Permission to buy" GridPane.rowIndex="6" />
+                        <Label prefHeight="53.0" prefWidth="195.0" text="Permission to buy" GridPane.rowIndex="6" />
                         <Label prefHeight="79.0" prefWidth="195.0" text="N° ASSISTANTS to buy" GridPane.rowIndex="5" />
                         <Label prefHeight="62.0" prefWidth="195.0" text="N° POLITICAL CARDS to buy" GridPane.rowIndex="7" />
                         <TextArea fx:id="sellCoins" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" />
@@ -51,7 +51,7 @@
                   </GridPane>
                   <Button fx:id="ok" layoutX="112.0" layoutY="329.0" mnemonicParsing="false" onAction="#handleOk" prefHeight="26.0" prefWidth="101.0" text="Ok" />
                   <Button fx:id="cancel" layoutX="281.0" layoutY="329.0" mnemonicParsing="false" onAction="#handleCancel" prefHeight="26.0" prefWidth="94.0" text="Cancel" />
-                  <Label layoutX="61.0" layoutY="14.0" prefHeight="16.0" prefWidth="388.0" text="For politicals cards, write numbers like this: &quot;0 1 2 3 1 2 3 &quot;" />
+                  <Label layoutX="61.0" layoutY="14.0" prefHeight="16.0" prefWidth="388.0" text="For politicals cards,&quot;black orange blue pink white purple jolly&quot;" />
                </children>
             </AnchorPane>
         </content>

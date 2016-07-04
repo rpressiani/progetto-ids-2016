@@ -12,7 +12,7 @@
                <children>
                   <Button fx:id="buildWithCard" layoutX="136.0" layoutY="25.0" mnemonicParsing="false" onAction="#handleBuildWithCard" prefHeight="50.0" prefWidth="129.0" text="Build w/Card" />
                   <Button fx:id="buildWithKing" layoutX="14.0" layoutY="126.0" mnemonicParsing="false" onAction="#handleBuildWithKing" prefHeight="44.0" prefWidth="132.0" text="Build w/King" />
-                  <Button fx:id="buyPermission" layoutX="253.0" layoutY="123.0" mnemonicParsing="false" onAction="#handleBuyPermission" prefHeight="51.0" prefWidth="131.0" text="Buy Permission" />
+                  <Button fx:id="buyPermissionCard" layoutX="253.0" layoutY="123.0" mnemonicParsing="false" onAction="#handleBuyPermissionCard" prefHeight="51.0" prefWidth="131.0" text="Buy Permission" />
                   <Button fx:id="electCounsellor" layoutX="134.0" layoutY="209.0" mnemonicParsing="false" onAction="#handleElectCounsellor" prefHeight="43.0" prefWidth="133.0" text="Elect Counsellor" />
                </children>
             </AnchorPane>

@@ -298,7 +298,7 @@ public class MainApp extends Application {
 	public void showDoActionAgain(){
 		try {
 			FXMLLoader loader = new FXMLLoader(); 
-			loader.setLocation(getClass().getResource("/DoActionAgainScene.fxml"));
+			loader.setLocation(getClass().getResource("/DoAgainActionScene.fxml"));
 			Scene gameScene = new Scene((AnchorPane) loader.load());
 			this.tempStage = new Stage();
 			this.tempStage.setScene(gameScene);
