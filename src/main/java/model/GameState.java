@@ -18,6 +18,7 @@ import model.sharedObjects.King;
 import model.sharedObjects.KingBonuses;
 import model.sharedObjects.Nobility;
 import model.stateMachine.FinishedBuildingState;
+import model.stateMachine.StartState;
 import observer.Observable;
 import parser.Parser;
 import server.CheckDisconnections;
@@ -218,7 +219,10 @@ public class GameState extends Observable<Change> {
 			this.finishMatch();
 		}
 		
-		//this.getCurrentPlayer().getView().startTimer();
+		if(this.getCurrentPlayer().getState() instanceof StartState){
+			this.getCurrentPlayer().getPoliticalHand().drawCard(this.getPoliticalDeck());
+		}
+		
 	}
 
 	public boolean checkEmporiums(Player player){

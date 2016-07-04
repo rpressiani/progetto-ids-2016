@@ -83,6 +83,7 @@ public class Match {
 		this.gameState.notifyObserver(new ChangeMsg("[SERVER] New match started. The first player is " +
 				this.gameState.getCurrentPlayer().getNickname() + ". Let's go!"));
 		
+		this.gameState.getCurrentPlayer().getPoliticalHand().drawCard(this.gameState.getPoliticalDeck());
 		this.gameState.getCurrentPlayer().getView().startTimer();
 	}
 
