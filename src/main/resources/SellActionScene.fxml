@@ -9,8 +9,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-
-<AnchorPane prefHeight="403.0" prefWidth="508.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.72" fx:controller="gui.SellActionController">
+<AnchorPane prefHeight="403.0" prefWidth="508.0" xmlns="http://javafx.com/javafx/8.0.72" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.SellActionController">
    <children>
       <TitledPane animated="false" layoutX="91.0" layoutY="34.0" prefHeight="403.0" prefWidth="508.0" text="SellAction" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <content>
@@ -52,6 +51,7 @@
                   </GridPane>
                   <Button fx:id="ok" layoutX="112.0" layoutY="329.0" mnemonicParsing="false" onAction="#handleOk" prefHeight="26.0" prefWidth="101.0" text="Ok" />
                   <Button fx:id="cancel" layoutX="281.0" layoutY="329.0" mnemonicParsing="false" onAction="#handleCancel" prefHeight="26.0" prefWidth="94.0" text="Cancel" />
+                  <Label layoutX="61.0" layoutY="14.0" prefHeight="16.0" prefWidth="388.0" text="For politicals cards, write numbers like this: &quot;0 1 2 3 1 2 3 &quot;" />
                </children>
             </AnchorPane>
         </content>

@@ -38,6 +38,14 @@ public class MapOverviewController {
 	private MenuItem nullAction = new MenuItem(); 
 	//if we want to load regions from configuration file
 	@FXML
+	private MenuItem doAgain = new MenuItem();
+	@FXML
+	private MenuItem getAgainBonus = new MenuItem(); 
+	@FXML
+	private MenuItem getFreePermission = new MenuItem();
+	@FXML
+	private MenuItem getFreeToken = new MenuItem(); 
+	@FXML
 	private MenuItem buyAction = new MenuItem(); 
 	@FXML
 	private MenuItem sellAction = new MenuItem(); 
@@ -69,7 +77,7 @@ public class MapOverviewController {
 	private MenuItem marketQuery = new MenuItem(); 
 	
 	@FXML
-	private ArrayList<Button> cities;
+	private Button send = new Button(); 
 	@FXML 
 	private TextArea textArea = new TextArea(); 
 
@@ -143,7 +151,22 @@ public class MapOverviewController {
 		inputList.add("quit");
 		MainApp.getOutHandler().activate(inputList);
 	}
-	
+	@FXML
+	private void handleDoAgain() {
+		
+	}
+	@FXML
+	private void handleGetAgainBonus() {
+		
+	}
+	@FXML
+	private void handleGetFreePermission() {
+		
+	}
+	@FXML
+	private void handleGetFreeToken() {
+		
+	}
 	@FXML
 	public void handleScoresQuery() {
 		ArrayList<String> inputList = new ArrayList<String>();
