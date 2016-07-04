@@ -2,17 +2,13 @@ package gui;
 
 import java.util.ArrayList;
 
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
-import model.player.Player;
 
 public class MapOverviewController {
 	
@@ -75,19 +71,9 @@ public class MapOverviewController {
 	@FXML
 	private ArrayList<Button> cities;
 	@FXML 
-	private TextArea textArea = new TextArea();
+	private TextArea textArea = new TextArea(); 
 
-	private Stage dialogStage; 
-	private ArrayList<ImageView> council1 = new ArrayList<ImageView>(); 
-	private ArrayList<ImageView> council2 = new ArrayList<ImageView>(); 
-	private ArrayList<ImageView> council3 = new ArrayList<ImageView>(); 
-	private ArrayList<ImageView> kingCouncil = new ArrayList<ImageView>(); 
-
-	private MainApp mainApp; 
-	private boolean doneMain = false; 
-	private boolean doneQuick = false; 
-	private boolean isTurnOver = false; 
-	//private ArrayList<MenuItem> mainActionsList; 
+	private MainApp mainApp;  
 	
 	public void setMainApp(MainApp mainApp) {
 		this.mainApp = mainApp; 
@@ -128,11 +114,11 @@ public class MapOverviewController {
 	}
 	@FXML
 	private void handleBuyAction() {
-		
+		mainApp.showBuyAction();
 	}
 	@FXML
 	private void handleSellAction() {
-		
+		mainApp.showSellAction();
 	}
 	@FXML
 	public void handleElectWithAssistant() {
@@ -218,27 +204,27 @@ public class MapOverviewController {
 		inputList.add("getmarket");
 		MainApp.getOutHandler().activate(inputList);
 	}
-	public void endTurn() {
-		if(doneMain && doneQuick) {
-			isTurnOver = true; 
-		}
-	}
-	public boolean getDoneMain() {
-		return doneMain; 
-	}
-	public boolean getDoneQuick() {
-		return doneQuick; 
-	}
-	public void waitForActionClick(Player player, MenuItem actionToDo) {
-		final EventHandler<MouseEvent> mouseEventHandler =
-		        new EventHandler<MouseEvent>() {
-		            public void handle(final MouseEvent mouseEvent) {
-		                if (mouseEvent.getEventType() == MouseEvent.MOUSE_CLICKED) {
-		                    mouseEvent.consume();
-		                }
-		            }
-		        };
-	}
+//	public void endTurn() {
+//		if(doneMain && doneQuick) {
+//			isTurnOver = true; 
+//		}
+//	}
+//	public boolean getDoneMain() {
+//		return doneMain; 
+//	}
+//	public boolean getDoneQuick() {
+//		return doneQuick; 
+//	}
+//	public void waitForActionClick(Player player, MenuItem actionToDo) {
+//		final EventHandler<MouseEvent> mouseEventHandler =
+//		        new EventHandler<MouseEvent>() {
+//		            public void handle(final MouseEvent mouseEvent) {
+//		                if (mouseEvent.getEventType() == MouseEvent.MOUSE_CLICKED) {
+//		                    mouseEvent.consume();
+//		                }
+//		            }
+//		        };
+//	}
 	
 	 public void alert(String msg){
 		 textArea.appendText(msg);

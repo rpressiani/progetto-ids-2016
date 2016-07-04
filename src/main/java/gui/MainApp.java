@@ -384,6 +384,40 @@ public class MainApp extends Application {
 		} 
 	}
 	
+	public void showBuyAction(){
+		try {
+			FXMLLoader loader = new FXMLLoader(); 
+			loader.setLocation(getClass().getResource("/BuyActionScene.fxml"));
+			Scene gameScene = new Scene((AnchorPane) loader.load());
+			this.tempStage = new Stage();
+			this.tempStage.setScene(gameScene);
+			BuyActionController controller = loader.getController();
+			controller.setMainApp(this);
+			this.tempStage.show();
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void showSellAction(){
+		try {
+			FXMLLoader loader = new FXMLLoader(); 
+			loader.setLocation(getClass().getResource("/SellActionScene.fxml"));
+			Scene gameScene = new Scene((AnchorPane) loader.load());
+			this.tempStage = new Stage();
+			this.tempStage.setScene(gameScene);
+			SellActionController controller = loader.getController();
+			controller.setMainApp(this);
+			this.tempStage.show();
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 	public static void print(String message){
 		System.out.println(message);
 	}
