@@ -21,6 +21,7 @@ public class SocketTimerDisconnect extends TimerTask {
 	@Override
 	public void run() {
 		this.client.update(new ChangeMsg("[SERVER] Client timeout! You've been disconnected.\n"));
+		this.player.getView().stopTimer();
 		this.server.disconnectSocket(this.player);
 	}
 

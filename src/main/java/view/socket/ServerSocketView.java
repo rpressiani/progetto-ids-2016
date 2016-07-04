@@ -78,7 +78,7 @@ public class ServerSocketView extends View implements Runnable {
 			System.out.println("DTOChange sent");
 			
 		} catch(IOException e) {
-			e.printStackTrace();
+			System.out.println("disconnected");
 		}
 	}
 	

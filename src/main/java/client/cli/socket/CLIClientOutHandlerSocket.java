@@ -29,7 +29,7 @@ public class CLIClientOutHandlerSocket extends CLIClientOutHandler {
 			this.socketOut.writeObject(msg);
 			this.socketOut.flush();
 		} catch (IOException e) {
-			System.out.println("SERVER IS DOWN");
+			System.out.println("CONNECTION IS CLOSED");
 		}
 	}
 

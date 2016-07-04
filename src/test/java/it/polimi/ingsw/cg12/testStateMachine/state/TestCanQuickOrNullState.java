@@ -72,36 +72,5 @@ public class TestCanQuickOrNullState {
 		}
 		assertTrue(thrown); 
 	}
-	@Test
-	public void testTransition() {
-		Parser parser = new Parser();
-		Player player = new Player(); 
-		player.setNickname("ale");
-		player.setColor(new Color("red"));
-		ArrayList<Player> players = new ArrayList<Player>(); 
-		players.add(player); 
-		GameState gameState = new GameState(parser, players); 
-		player.initPlayer(gameState.getPoliticalDeck(), 0, parser);
-		CanQuickOrNullState state = new CanQuickOrNullState(); 
-		HireAssistant action = new HireAssistant(); 
-		player.getCoins().add(10);
-		player.getAssistants().add(10);
-		state.transition(player, action, gameState);
-		assertTrue(player.getState() instanceof CanSellState); 
-	}
-	@Test
-	public void testTransitionWithNullAction() {
-		Parser parser = new Parser();
-		Player player = new Player(); 
-		player.setNickname("ale");
-		player.setColor(new Color("red"));
-		ArrayList<Player> players = new ArrayList<Player>(); 
-		players.add(player); 
-		GameState gameState = new GameState(parser, players); 
-		player.initPlayer(gameState.getPoliticalDeck(), 0, parser);
-		CanQuickOrNullState state = new CanQuickOrNullState(); 
-		NullAction action = new NullAction(); 
-		state.transition(player, action, gameState);
-		assertTrue(player.getState() instanceof CanSellState); 
-	}
+
 }

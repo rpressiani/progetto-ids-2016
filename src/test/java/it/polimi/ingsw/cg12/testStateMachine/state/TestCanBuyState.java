@@ -68,19 +68,7 @@ public class TestCanBuyState {
 		}
 		assertTrue(thrown); 
 	}
-	@Test
-	public void testCheckTurn() {
-		Parser parser = new Parser(); 
-		Player player = new Player();
-		Player player2 = new Player(); 
-		ArrayList<Player> players = new ArrayList<Player>();
-		players.add(player); 
-		players.add(player2); 
-		GameState gameState = new GameState(parser, players);
-		CanBuyState state = new CanBuyState();
-		state.checkTurn(player, gameState);
-		assertTrue(gameState.getCurrentPlayer()==player2); 
-	}
+
 	@Test
 	public void testTransition() {
 		

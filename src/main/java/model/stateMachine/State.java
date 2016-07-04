@@ -138,7 +138,7 @@ public interface State {
 	}
 	
 	public default void checkTurn(Player player, GameState gameState){
-		
+		player.getView().startTimer();
 	}
 	
 	public default boolean checkFinished(Player player, GameState gameState){

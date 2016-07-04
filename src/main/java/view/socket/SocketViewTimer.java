@@ -8,8 +8,7 @@ import server.Server;
 public class SocketViewTimer implements Runnable {
 	
 	private ServerSocketView client;
-	private Timer timer1;
-	private Timer timer2;
+	private Timer timer;
 	private Server server;
 	private Player player;
 	private boolean active = false;
@@ -25,8 +24,7 @@ public class SocketViewTimer implements Runnable {
 	 */
 	public SocketViewTimer(ServerSocketView client, Server server, Player player) {
 		this.client = client;
-		this.timer1 = new Timer();
-		this.timer2 = new Timer();
+		this.timer = new Timer();
 		this.server = server; 
 		this.player = player;
 	}
@@ -43,12 +41,9 @@ public class SocketViewTimer implements Runnable {
 	 * Stops timers and creates two new ones.
 	 */
 	public void reset(){
-		this.timer1.cancel();
-		this.timer2.cancel();
-		this.timer1 = new Timer();
-		this.timer2 = new Timer();
-		this.timer1.schedule(new SocketTimerAdvice(this.client), (long)10*1000);
-		this.timer2.schedule(new SocketTimerDisconnect(this.client, this.server, this.player), (long)20*1000);
+		this.timer.cancel();
+		this.timer = new Timer();
+		this.timer.schedule(new SocketTimerDisconnect(this.client, this.server, this.player), (long)20*1000);
 		System.out.println("Timer reset");
 	}
 	
@@ -56,8 +51,7 @@ public class SocketViewTimer implements Runnable {
 	 * Stops timers and set active false
 	 */
 	public void stop(){
-		this.timer1.cancel();
-		this.timer2.cancel();
+		this.timer.cancel();
 		this.active = false;
 		System.out.println("Timer stop");
 	}
@@ -66,10 +60,8 @@ public class SocketViewTimer implements Runnable {
 	 * Creates two new timers and set active true
 	 */
 	public void start(){
-		this.timer1 = new Timer();
-		this.timer2 = new Timer();
-		this.timer1.schedule(new SocketTimerAdvice(this.client), (long)10*1000);
-		this.timer2.schedule(new SocketTimerDisconnect(this.client, this.server, this.player), (long)20*1000);
+		this.timer = new Timer();
+		this.timer.schedule(new SocketTimerDisconnect(this.client, this.server, this.player), (long)20*1000);
 		this.active = true;
 		System.out.println("Timer start");
 	}
@@ -80,7 +72,5 @@ public class SocketViewTimer implements Runnable {
 	public boolean isActive() {
 		return active;
 	}
-	
-	
 
 }

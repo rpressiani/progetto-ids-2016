@@ -21,6 +21,7 @@ public class CanSellState implements State {
 					action.doAction(player, gameState);
 					System.out.println(player.getNickname()+" decided what to sell");
 					gameState.notifyAllExceptPlayer(player, new ChangeMsg(player.getNickname()+" decided what to sell"));
+					player.getView().stopTimer();
 					player.setState(new CanBuyState());
 					player.getState().checkTurn(player, gameState);
 				}
@@ -42,6 +43,7 @@ public class CanSellState implements State {
 					action.doAction(player, gameState);
 					System.out.println(player.getNickname()+" passed the turn");
 					gameState.notifyAllExceptPlayer(player, new ChangeMsg(player.getNickname()+" passed the turn"));
+					player.getView().stopTimer();
 					player.setState(new CanBuyState());
 					player.getState().checkTurn(player, gameState);
 				}
@@ -65,6 +67,7 @@ public class CanSellState implements State {
 					action.doAction(player, gameState);
 					System.out.println(player.getNickname()+" chosed his bonus");
 					gameState.notifyAllExceptPlayer(player, new ChangeMsg(player.getNickname()+" chosed his bonus"));
+					player.getView().stopTimer();
 					if(gameState.checkEmporiums(player)==true && gameState.checkAlreadyFinished(player)==false){
 						player.setState(new FinishedBuildingState());
 					}
@@ -84,9 +87,9 @@ public class CanSellState implements State {
 			if(player==gameState.getPlayers().get(gameState.getPlayers().size()-1)){
 				gameState.notifyObserver(new ChangeMsg("The market has started"));
 			}
-			System.out.println("prima di next");
+			player.getView().stopTimer();
 			gameState.nextPlayer(player);
-			System.out.println("dopo next");
+			gameState.getCurrentPlayer().getView().startTimer();
 			gameState.notifyObserver(new ChangeMsg("Now it's time for "+gameState.getCurrentPlayer().getNickname()+" to play"));
 		}
 		
