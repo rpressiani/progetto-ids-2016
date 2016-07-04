@@ -224,16 +224,11 @@ public class GameState extends Observable<Change> {
 	}
 
 	public boolean checkEmporiums(Player player){
-		/*if(player.getBuiltCities().containsAll(this.getMap().getAllCitiesHashMap().values())){
-			this.notifyObserver(new ChangeMsg(player.getNickname()+" finished to build all emporiums, so... LAST LAP!!!"));
-			return true;
-		}*/
-		
-		if(!player.getBuiltCities().isEmpty()){
+		if(player.getBuiltCities().containsAll(this.getMap().getAllCitiesHashMap().values())){
 			this.notifyObserver(new ChangeMsg(player.getNickname()+" finished to build all emporiums, so... LAST LAP!!!"));
 			return true;
 		}
-		
+
 		else return false;
 	}
 	
@@ -331,7 +326,7 @@ public class GameState extends Observable<Change> {
 		
 		Player winner=this.calculateWinner(potentialWinners);
 		
-		this.notifyObserver(new ChangeMsg("CONGRATULATIONS, "+winner.getNickname()+" WON THE GAME!!!"));
+		this.notifyObserver(new ChangeMsg("CONGRATULATIONS, "+winner.getNickname().toUpperCase()+" WON THE GAME!!!"));
 		
 		ArrayList<Player> temp=new ArrayList<Player>();
 		
@@ -340,7 +335,6 @@ public class GameState extends Observable<Change> {
 		}
 		
 		for(Player p : temp){
-			System.out.println(p);
 			p.getView().disconnect();
 		}
 	}
