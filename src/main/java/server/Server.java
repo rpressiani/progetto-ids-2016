@@ -172,7 +172,12 @@ public class Server {
 
 			playerMatch.get(player).getGameState().notifyObserver(new ChangeMsg(player.getNickname() + " has disconnected, hope you won't miss him/her too much!"));
 			playerMatch.get(player).getGameState().notifyObserver(new ChangeMsg("Now it's time for " +playerMatch.get(player).getGameState().getCurrentPlayer().getNickname()+ " to play"));
-			
+			try {
+				((ServerSocketView)player.getView()).getSocket().close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			playerMatch.remove(player);
 			
 		}

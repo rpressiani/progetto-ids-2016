@@ -232,4 +232,11 @@ public class ServerSocketView extends View implements Runnable {
 		
 	}
 
+	/**
+	 * @return the socket
+	 */
+	public Socket getSocket() {
+		return socket;
+	}
+
 }

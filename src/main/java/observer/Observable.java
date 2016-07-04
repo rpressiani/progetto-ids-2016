@@ -50,7 +50,8 @@ public abstract class Observable<C> {
 	
 	public void unregisterObserver(Player player, Observer<C> o ){
 		this.observers.remove(o);
-		this.observersMap.remove(player, this.observersMap.get(player));
+		this.observersMap.remove(player);
+		System.out.println(this.observers);
 	}
 	
 	/**
