@@ -8,7 +8,9 @@ import javafx.scene.control.TextArea;
 
 public class BuildWithCardController {
 	
-	private String state;
+	private String state = new String();
+	
+	private boolean error = false;
 
 	@FXML
 	private TextArea card = new TextArea(); 
@@ -36,7 +38,16 @@ public class BuildWithCardController {
 		inputList.add("buildempcard");
 		inputList.add(card.getText());
 		inputList.add(city.getText());
-		MainApp.getOutHandler().activate(inputList);
+		for (String string : inputList) {
+			if (string.equals("")) {
+				mainApp.getTempStage().close();
+				this.error = true;
+				break;
+			}
+		}
+		if (this.error == false) {
+			MainApp.getOutHandler().activate(inputList);
+		}
 		mainApp.getTempStage().close();
 	}
 	@FXML

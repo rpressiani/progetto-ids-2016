@@ -6,7 +6,6 @@
 
 
 <AnchorPane prefHeight="350.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AddictionalActionController">
->>>>>>> branch 'master' of https://alessandro_pezzotta@bitbucket.org/rpressiani/progetto-ids2016.git
    <children>
       <TitledPane animated="false" layoutX="98.0" layoutY="37.0" prefHeight="350.0" prefWidth="450.0" text="Addictional Action" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <content>

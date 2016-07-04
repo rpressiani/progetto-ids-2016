@@ -8,7 +8,8 @@ import javafx.scene.control.TextArea;
 
 public class BuyActionController {
 	
-	private MainApp mainApp; 
+	private MainApp mainApp;
+	private boolean error;
 	
 	@FXML
 	private Button ok = new Button(); 
@@ -27,7 +28,16 @@ public class BuyActionController {
 		
 		inputList.add("buy");
 		inputList.add(contractNumber.getText());
-		MainApp.getOutHandler().activate(inputList);
+		for (String string : inputList) {
+			if (string.equals("")) {
+				mainApp.getTempStage().close();
+				this.error = true;
+				break;
+			}
+		}
+		if (this.error == false) {
+			MainApp.getOutHandler().activate(inputList);
+		}
 		mainApp.getTempStage().close();
 	}
 	@FXML
