@@ -10,6 +10,8 @@ public class GetAgainBonusPermissionController {
 	
 	private MainApp mainApp; 
 	
+	private boolean error = false;
+	
 	@FXML
 	private Button ok = new Button(); 
 	@FXML
@@ -25,8 +27,16 @@ public class GetAgainBonusPermissionController {
 		ArrayList<String> inputList = new ArrayList<String>();
 		inputList.add("bonuspermissiongift");
 		inputList.add(card.getText());
-		MainApp.getOutHandler().activate(inputList);
-		mainApp.getTempStage().close();
+		for (String string : inputList) {
+			if (string.equals("")) {
+				mainApp.getTempStage().close();
+				this.error = true;
+				break;
+			}
+		}
+		if (this.error == false) {
+			MainApp.getOutHandler().activate(inputList);
+		}		mainApp.getTempStage().close();
 	}
 	@FXML
 	private void handleCancel() {

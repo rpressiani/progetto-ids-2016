@@ -173,8 +173,7 @@ public class Server {
 			try {
 				((ServerSocketView)player.getView()).getSocket().close();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				System.out.println("disconnected");
 			}
 			playerMatch.remove(player);
 			

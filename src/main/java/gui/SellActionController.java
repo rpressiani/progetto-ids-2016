@@ -9,7 +9,9 @@ import javafx.scene.control.TextArea;
 
 public class SellActionController {
 	
-	private MainApp mainApp; 
+	private MainApp mainApp;
+	
+	private boolean error = false;
 	
 	@FXML
 	private Button ok; 
@@ -37,6 +39,12 @@ public class SellActionController {
 	}
 	
 	@FXML
+	private void initialize(){
+		sellPermissions.setText("e.g. p12 p34");
+		buyPermissions.setText("e.g. p12 p34");
+	}
+	
+	@FXML
 	private void handleOk() {
 		ArrayList<String> inputList = new ArrayList<String>();
 		inputList.add("sell");
@@ -48,6 +56,7 @@ public class SellActionController {
 		}
 		ArrayList<String> sellPoliticalsArray = new ArrayList<String>(Arrays.asList(sellPoliticals.getText().split(" ")));
 		if (sellPoliticalsArray.size()!=7) {
+			mainApp.getTempStage().close();
 			return;
 		}
 		for (String string : sellPoliticalsArray) {
@@ -62,6 +71,7 @@ public class SellActionController {
 		}
 		ArrayList<String> buyPoliticalsArray = new ArrayList<String>(Arrays.asList(buyPoliticals.getText().split(" ")));
 		if (buyPoliticalsArray.size()!=7) {
+			mainApp.getTempStage().close();
 			return;
 		}
 		for (String string : buyPoliticalsArray) {
@@ -69,8 +79,16 @@ public class SellActionController {
 		}
 		
 		
-		MainApp.getOutHandler().activate(inputList);
-		mainApp.getTempStage().close();
+		for (String string : inputList) {
+			if (string.equals("")) {
+				mainApp.getTempStage().close();
+				this.error = true;
+				break;
+			}
+		}
+		if (this.error == false) {
+			MainApp.getOutHandler().activate(inputList);
+		}		mainApp.getTempStage().close();
 	}
 	@FXML
 	private void handleCancel() {

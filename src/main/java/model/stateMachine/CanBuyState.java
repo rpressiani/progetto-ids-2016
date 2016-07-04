@@ -19,7 +19,7 @@ public class CanBuyState implements State {
 				action.doAction(player, gameState);
 				System.out.println(player.getNickname()+" decided what to buy");
 				gameState.notifyAllExceptPlayer(player, new ChangeMsg(player.getNickname()+" decided what to buy"));
-				
+				player.getView().stopTimer();
 				if(player==gameState.getPlayers().get(gameState.getPlayers().size()-1)){
 					gameState.getMarket().getContractSet().clear();
 					gameState.notifyObserver(new ChangeMsg("The market has finished"));
@@ -43,7 +43,7 @@ public class CanBuyState implements State {
 				action.doAction(player, gameState);
 				System.out.println(player.getNickname()+" passed the turn");
 				gameState.notifyAllExceptPlayer(player, new ChangeMsg(player.getNickname()+" passed the turn"));
-				
+				player.getView().stopTimer();
 				if(player==gameState.getPlayers().get(gameState.getPlayers().size()-1)){
 					gameState.getMarket().getContractSet().clear();
 					gameState.notifyObserver(new ChangeMsg("The market has finished"));
@@ -61,8 +61,9 @@ public class CanBuyState implements State {
 		if(player==null || gameState==null) {
 			throw new NullPointerException("player and state should not be null"); 
 		}
-	
+		player.getView().stopTimer();
 		gameState.nextPlayer(player);
+		gameState.getCurrentPlayer().getView().startTimer();
 		gameState.notifyObserver(new ChangeMsg("Now it's time for "+gameState.getCurrentPlayer().getNickname()+" to play"));
 	}
 }

@@ -83,27 +83,5 @@ public class TestCanMainState {
 		}
 		assertTrue(thrown);
 	}
-	@Test
-	public void testTransitionWithMainActionWorks() {
-		Parser parser = new Parser(); 
-		Player player = new Player(); 
-		player.setNickname("ale");
-		player.setColor(new Color("red"));
-		ArrayList<Player> players = new ArrayList<Player>(); 
-		players.add(player); 
-		GameState gameState = new GameState(parser, players); 
-		player.initPlayer(gameState.getPoliticalDeck(), 0, parser);
-		Region region = gameState.getMap().getRegions().get("seaside"); 
-		Color color = null;
-		for(int i=0; i<gameState.getCounsellorGarbage().getState().size();i++){
-			if(gameState.getCounsellorGarbage().getState().get(i).getCounter()!=0){
-				color=gameState.getCounsellorGarbage().getState().get(i).getColor();
-				break;
-			}
-		}
-		ElectCounsellor action = new ElectCounsellor(region.getBalcony(), color); 
-		player.setState(new CanMainState());
-		player.move(action, gameState);
-		assertTrue(player.getState() instanceof CanSellState);  
-	}
+
 }

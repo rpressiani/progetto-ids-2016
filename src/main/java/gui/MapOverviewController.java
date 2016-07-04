@@ -86,7 +86,7 @@ public class MapOverviewController {
 		
 		this.textArea.setWrapText(true);
 		this.textArea.setEditable(false);
-		this.textArea.setText("TextArea TEST\n");
+		this.textArea.setText("Welcome to Co4! Wait for a match to start...\n");
 		textArea.setScrollTop(Double.MAX_VALUE);
 		
 		this.chat.setWrapText(true);

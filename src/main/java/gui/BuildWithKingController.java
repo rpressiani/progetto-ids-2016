@@ -9,7 +9,9 @@ import javafx.scene.control.TextArea;
 public class BuildWithKingController {
 	
 	private MainApp mainApp; 
-	private String state;
+	private String state = new String();
+	
+	private boolean error = false;
 	
 	@FXML
 	private Button ok = new Button(); 
@@ -53,7 +55,16 @@ public class BuildWithKingController {
 		inputList.add(whiteCards.getText());
 		inputList.add(purpleCards.getText());
 		inputList.add(jolly.getText());
-		MainApp.getOutHandler().activate(inputList);
+		for (String string : inputList) {
+			if (string.equals("")) {
+				mainApp.getTempStage().close();
+				this.error = true;
+				break;
+			}
+		}
+		if (this.error == false) {
+			MainApp.getOutHandler().activate(inputList);
+		}
 		mainApp.getTempStage().close();
 	}
 	@FXML
