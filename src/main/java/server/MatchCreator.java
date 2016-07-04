@@ -23,7 +23,7 @@ public class MatchCreator implements Runnable {
 	private Queue<Player> enabledPlayers;
 	
 	private final int pauseTime = 5000;
-	private final int matchReadyPauseTime = 5000;
+	private final int matchReadyPauseTime = 20000;
 	private int counter = 0;
 	private Set<Match> runningMatches;
 	

@@ -32,7 +32,6 @@ public class RMIDisconnect extends TimerTask {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-			System.out.println("ciao2");
 		}
 
 	}
