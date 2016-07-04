@@ -47,7 +47,7 @@ public abstract class ClientOutHandler {
 	
 	protected abstract void notifyCmdNotFound();
 	
-	protected abstract void sellCommand();
+	protected abstract void sellCommand(ArrayList<String> inputList);
 	
 	public void activate(ArrayList<String> inputList){
 		
@@ -298,13 +298,8 @@ public abstract class ClientOutHandler {
 					break;
 				}
 			case "sell":
-				if (inputList.size() == 1) {
-					sellCommand();
-					break;
-				} else {
-					notifyCmdNotFound();
-					break;
-				}
+				sellCommand(inputList);
+				break;
 				
 				/*----- BONUS -----*/
 				

@@ -60,7 +60,7 @@ public abstract class CLIClientOutHandler extends ClientOutHandler implements Ru
 
 	}
 	
-	public void sellCommand(){
+	public void sellCommand(ArrayList<String> inputList){
 		ArrayList<Integer> proposal;
 		ClientMessage msg;
 		
