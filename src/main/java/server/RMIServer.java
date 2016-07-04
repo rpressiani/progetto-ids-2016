@@ -71,7 +71,7 @@ public class RMIServer implements RMIServerInterface {
 	@Override
 	public void receiveMessage(ClientMessage msgIn) throws RemoteException {
 		System.out.println("MSG received: " + msgIn.getMessage());
-		System.out.println("MSG RMI RECEIVED");
+//		System.out.println("MSG RMI RECEIVED");
 		
 		Player player = null;
 		RMIView view = null;
@@ -83,14 +83,14 @@ public class RMIServer implements RMIServerInterface {
 			}
 		}
 		
-		if(view==null) throw new NullPointerException();
-		else{
-			if (view.getTimer().isActive()) view.resetTimer();
-		}
+//		if(view==null) throw new NullPointerException();
+//		else{
+//			if (view.getTimer().isActive()) view.resetTimer();
+//		}
 		
-		System.out.println(player);
-		
-		System.out.println("MSG RMI RECEIVED 2");
+//		System.out.println(player);
+//		
+//		System.out.println("MSG RMI RECEIVED 2");
 		
 //		if (player == null) throw new NullPointerException("[CRITICAL] Player not found");
 		

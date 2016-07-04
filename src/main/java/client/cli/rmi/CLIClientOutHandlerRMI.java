@@ -21,6 +21,7 @@ public class CLIClientOutHandlerRMI extends CLIClientOutHandler {
 		super(in);
 		this.serverStub = serverStub;
 		this.clientRMI = clientRMI;
+		System.out.println(this.clientRMI);
 	}
 
 	@Override
@@ -32,6 +33,5 @@ public class CLIClientOutHandlerRMI extends CLIClientOutHandler {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
 	}
 }

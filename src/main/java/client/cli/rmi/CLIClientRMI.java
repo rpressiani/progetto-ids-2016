@@ -35,13 +35,13 @@ public class CLIClientRMI {
 	}
 	
 	public void startClient() throws RemoteException, NotBoundException{
-		Registry registry = LocateRegistry.getRegistry(HOST, PORT);
+		Registry registry = LocateRegistry.getRegistry(CLIClientRMI.HOST, PORT);
 		this.serverStub = (RMIServerInterface) registry.lookup(NAME);
 		
 		this.clientRMIView=new ClientRMIView();
 		
 		ExecutorService executor = Executors.newFixedThreadPool(2);
-		executor.submit(new CLIClientOutHandlerRMI(serverStub, clientRMIView, this.in));
+		executor.submit(new CLIClientOutHandlerRMI(serverStub, this.clientRMIView, this.in));
 		
 		this.serverStub.registerClient(clientRMIView);
 	}
