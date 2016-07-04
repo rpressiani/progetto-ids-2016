@@ -8,11 +8,9 @@ import java.net.UnknownHostException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import client.cli.socket.ClientInHandler;
 import gui.LoginClientController;
 import gui.MainApp;
 import javafx.application.Application;
-import javafx.stage.Stage;
 
 public class GUIClientSocket {
 	private final static int PORT = 29999;
