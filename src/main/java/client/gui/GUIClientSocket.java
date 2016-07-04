@@ -17,9 +17,7 @@ import javafx.stage.Stage;
 public class GUIClientSocket {
 	private final static int PORT = 29999;
 	private static String IP;
-	private Socket socket;
-	
-	private LoginClientController loginController; 
+	private Socket socket; 
 	
 	private GUIClientOutHandlerSocket outHandler;
 	

@@ -5,42 +5,44 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
-import java.util.Scanner;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
-import client.cli.rmi.CLIClientOutHandlerRMI;
-import client.cli.rmi.CLIClientRMI;
-import client.cli.rmi.ClientRMIView;
-import gui.LoginClientController;
 import gui.MainApp;
-import model.GameState;
+import javafx.application.Application;
 import server.RMIServerInterface;
 
 public class GUIClientRMI {
 
 	private static String HOST;
-	private static int PORT;
-	private static String NAME;
-	//reference to the controller
-	private LoginClientController loginController; 
-	//
-	private MainApp mainApp; 
-	private GameState gameState; 
-	private RMIServerInterface serverStub;
-	private ClientRMIView clientRMIView;
+	private final static int PORT = 29998;
+	private static final String NAME = "co4";
 	
-	/* public void startClient() {
-		Registry registry = LocateRegistry.getRegistry(HOST, PORT);
-		this.serverStub = (RMIServerInterface) registry.lookup(loginController.getNickname());
+	private RMIServerInterface serverStub;
+	private GUIClientRMIView clientRMIView;
+	
+	private GUIClientOutHandlerRMI outHandler;
+	
+	public GUIClientRMI(String HOST) {
+		GUIClientRMI.HOST = HOST;
+	}
+	
+	public void startClient() throws RemoteException, NotBoundException{
+		Registry registry = LocateRegistry.getRegistry(GUIClientRMI.HOST, PORT);
+		this.serverStub = (RMIServerInterface) registry.lookup(NAME);
 		
-		this.clientRMIView=new ClientRMIView();
+		this.clientRMIView=new GUIClientRMIView();
 		
-		ExecutorService executor = Executors.newFixedThreadPool(2); //load from file
-		executor.submit(new ClientOutHandlerRMI(serverStub, clientRMIView, this.in));
+//		ExecutorService executor = Executors.newFixedThreadPool(2);
+//		executor.submit(new GUIClientOutHandlerRMI(serverStub, this.clientRMIView));
+		
+		this.outHandler = new GUIClientOutHandlerRMI(serverStub, this.clientRMIView);
 		
 		this.serverStub.registerClient(clientRMIView);
-	}*/ 
+		
+		String[] args = null;
+		MainApp.print("Starting GUI");
+		MainApp.setOutHandler(this.outHandler);
+		Application.launch(MainApp.class, args);
+	}
 	
 	public String getHost() {
 		return HOST; 
@@ -49,8 +51,7 @@ public class GUIClientRMI {
 		return PORT; 
 	}
 	public static void main(String[] args) throws RemoteException, NotBoundException, AlreadyBoundException {
-		Scanner in = new Scanner(System.in); //have to fix it
-		CLIClientRMI client = new CLIClientRMI(in,null);
+		GUIClientRMI client = new GUIClientRMI("127.0.0.1");
 		client.startClient();
 	}
 }
