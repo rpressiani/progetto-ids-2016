@@ -8,6 +8,8 @@ import javafx.scene.control.TextArea;
 
 public class ElectWithAssistantController {
 	
+	private boolean error = false;
+	
 	@FXML
 	private Button ok = new Button(); 
 	@FXML
@@ -29,8 +31,16 @@ public class ElectWithAssistantController {
 		inputList.add("electcounsellorassistant");
 		inputList.add(balcony.getText());
 		inputList.add(color.getText());
-		MainApp.getOutHandler().activate(inputList);
-		mainApp.getTempStage().close();
+		for (String string : inputList) {
+			if (string.equals("")) {
+				mainApp.getTempStage().close();
+				this.error = true;
+				break;
+			}
+		}
+		if (this.error == false) {
+			MainApp.getOutHandler().activate(inputList);
+		}		mainApp.getTempStage().close();
 	}
 	@FXML
 	private void handleCancel() {

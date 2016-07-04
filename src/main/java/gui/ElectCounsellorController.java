@@ -10,7 +10,9 @@ public class ElectCounsellorController {
 
 	private MainApp mainApp;
 	
-	private String state;
+	private String state = new String();
+	
+	private boolean error = false;
 	
 	@FXML
 	private TextArea region = new TextArea(); 
@@ -41,7 +43,16 @@ public class ElectCounsellorController {
 		inputList.add("electCounsellor");
 		inputList.add(region.getText());
 		inputList.add(color.getText());
-		MainApp.getOutHandler().activate(inputList);
+		for (String string : inputList) {
+			if (string.equals("")) {
+				mainApp.getTempStage().close();
+				this.error = true;
+				break;
+			}
+		}
+		if (this.error == false) {
+			MainApp.getOutHandler().activate(inputList);
+		}
 		mainApp.getTempStage().close();
 	}
 	@FXML
