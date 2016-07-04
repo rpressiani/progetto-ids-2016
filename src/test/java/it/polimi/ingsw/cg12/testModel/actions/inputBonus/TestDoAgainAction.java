@@ -49,22 +49,6 @@ public class TestDoAgainAction {
 		action.doAction(player, gameState);
 		assertTrue(player.getBuiltCities().contains(city)); 
 	} 
-	@Test
-	public void testCheckConditionWorks() {
-		Parser parser = new Parser(); 
-		Player player = new Player(); 
-		player.setNickname("Ale");
-		player.setColor(new Color("red"));
-		ArrayList<Player> players = new ArrayList<Player>();
-		players.add(player); 
-		GameState gameState = new GameState(parser, players);
-		player.initPlayer(gameState.getPoliticalDeck(), 0, parser);	
-		player.getBonusInputs().add(new BonusAddictionalAction()); 
-		PermissionCard card = gameState.getMap().getRegions().get("seaside").getPermissionDeck().getVisibleCards().get(0);
-		City city = gameState.getMap().getAllCitiesHashMap().get("A"); 
-		MainAction mainAction = new BuildEmporiumWithCard(card, city);
-		DoAgainAction action = new DoAgainAction(mainAction); 
-		assertTrue(!action.checkCondition(player, gameState)); 
-	}
+
 
 }
