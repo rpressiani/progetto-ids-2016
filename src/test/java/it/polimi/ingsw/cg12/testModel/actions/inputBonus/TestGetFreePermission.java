@@ -1,33 +1,22 @@
 package it.polimi.ingsw.cg12.testModel.actions.inputBonus;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 
 import org.junit.Test;
 
 import model.GameState;
-import model.actions.inputBonus.GetAgainBonusPermission;
-import model.bonusItem.BonusAgainPermission;
+import model.actions.inputBonus.GetFreePermission;
+import model.bonusItem.BonusFreePermission;
 import model.bonusable.PermissionCard;
+import model.map.Region;
 import model.player.Player;
 import parser.Parser;
 import utilities.Color;
 
-public class TestGetAgainBonusPermission {
+public class TestGetFreePermission {
 
-	@Test
-	public void testNullCardInConstructorThrowsException() {
-		boolean thrown = false; 
-		PermissionCard card = null; 
-		try {
-			@SuppressWarnings("unused")
-			GetAgainBonusPermission bonus = new GetAgainBonusPermission(card); 
-		} catch(NullPointerException e) {
-			thrown = true; 
-		}
-		assertTrue(thrown); 
-	}
 	@Test
 	public void testDoAction() {
 		Parser parser = new Parser(); 
@@ -39,11 +28,12 @@ public class TestGetAgainBonusPermission {
 		GameState gameState = new GameState(parser, players); 
 		int id = 0; 
 		player.initPlayer(gameState.getPoliticalDeck(), id, parser);
-		player.getBonusInputs().add(new BonusAgainPermission()); 
+		player.getBonusInputs().add(new BonusFreePermission()); 
+		Region region = gameState.getMap().getRegions().get("seaside"); 
+		GetFreePermission bonus = new GetFreePermission(region, 0);
 		PermissionCard card = gameState.getMap().getRegions().get("seaside").getPermissionDeck().getVisibleCards().get(0);
-		GetAgainBonusPermission bonus = new GetAgainBonusPermission(card);
 		bonus.doAction(player, gameState);
-		assertTrue(player.getBonusInputs().isEmpty()); 
+		assertTrue(player.getPermissionHand().contains(card)); 
 	}
 	@Test
 	public void testCheckCondition() {
@@ -56,9 +46,9 @@ public class TestGetAgainBonusPermission {
 		GameState gameState = new GameState(parser, players); 
 		int id = 0; 
 		player.initPlayer(gameState.getPoliticalDeck(), id, parser);
-		player.getBonusInputs().add(new BonusAgainPermission()); 
-		PermissionCard card = gameState.getMap().getRegions().get("seaside").getPermissionDeck().getVisibleCards().get(0);
-		GetAgainBonusPermission bonus = new GetAgainBonusPermission(card);
+		player.getBonusInputs().add(new BonusFreePermission()); 
+		Region region = gameState.getMap().getRegions().get("seaside"); 
+		GetFreePermission bonus = new GetFreePermission(region, 0);
 		assertTrue(bonus.checkCondition(player, gameState)); 
 	}
 
