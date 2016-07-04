@@ -36,7 +36,6 @@ public class MapOverviewController {
 	private MenuItem hire = new MenuItem(); 
 	@FXML
 	private MenuItem nullAction = new MenuItem(); 
-	//if we want to load regions from configuration file
 	@FXML
 	private MenuItem doAgain = new MenuItem();
 	@FXML
@@ -49,12 +48,6 @@ public class MapOverviewController {
 	private MenuItem buyAction = new MenuItem(); 
 	@FXML
 	private MenuItem sellAction = new MenuItem(); 
-	@FXML
-	private ImageView region1 = new ImageView(); 
-	@FXML
-	private ImageView region2 = new ImageView(); 
-	@FXML
-	private ImageView region3 = new ImageView(); 
 	@FXML 
 	private MenuItem scoresQuery = new MenuItem(); 
 	@FXML 
@@ -153,19 +146,19 @@ public class MapOverviewController {
 	}
 	@FXML
 	private void handleDoAgain() {
-		
+		mainApp.showDoActionAgain();
 	}
 	@FXML
 	private void handleGetAgainBonus() {
-		
+		mainApp.showGetAgainBonus();
 	}
 	@FXML
 	private void handleGetFreePermission() {
-		
+		mainApp.showGetFreePermission();
 	}
 	@FXML
 	private void handleGetFreeToken() {
-		
+		mainApp.showGetFreeToken();
 	}
 	@FXML
 	public void handleScoresQuery() {

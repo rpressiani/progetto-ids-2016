@@ -1,5 +1,8 @@
 package gui;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
@@ -21,11 +24,18 @@ public class GetFreeTokenController {
 	
 	@FXML
 	private void handleOk() {
-		
+		ArrayList<String> inputList = new ArrayList<String>();
+		inputList.add("bonustoken");
+		ArrayList<String> citiesArray = new ArrayList<String>(Arrays.asList(cities.getText().split(" ")));
+		for (String string : citiesArray) {
+			inputList.add(string);
+		}
+		MainApp.getOutHandler().activate(inputList);
+		mainApp.getTempStage().close();
 	}
 	@FXML
 	private void handleCancel() {
-		
+		mainApp.getTempStage().close();
 	}
 	
 

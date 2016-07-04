@@ -1,5 +1,7 @@
 package gui;
 
+import java.util.ArrayList;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
@@ -20,11 +22,15 @@ public class GetAgainBonusPermissionController {
 	}
 	@FXML
 	private void handleOk() {
-		
+		ArrayList<String> inputList = new ArrayList<String>();
+		inputList.add("bonuspermissiongift");
+		inputList.add(card.getText());
+		MainApp.getOutHandler().activate(inputList);
+		mainApp.getTempStage().close();
 	}
 	@FXML
 	private void handleCancel() {
-		
+		mainApp.getTempStage().close();
 	}
 
 }

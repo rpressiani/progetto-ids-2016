@@ -418,6 +418,58 @@ public class MainApp extends Application {
 		}
 	}
 	
+	public void showGetAgainBonus(){
+		try {
+			FXMLLoader loader = new FXMLLoader(); 
+			loader.setLocation(getClass().getResource("/GetAgainBonusPermissionScene.fxml"));
+			Scene gameScene = new Scene((AnchorPane) loader.load());
+			this.tempStage = new Stage();
+			this.tempStage.setScene(gameScene);
+			GetAgainBonusPermissionController controller = loader.getController();
+			controller.setMainApp(this);
+			this.tempStage.show();
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void showGetFreePermission(){
+		try {
+			FXMLLoader loader = new FXMLLoader(); 
+			loader.setLocation(getClass().getResource("/GetFreePermissionScene.fxml"));
+			Scene gameScene = new Scene((AnchorPane) loader.load());
+			this.tempStage = new Stage();
+			this.tempStage.setScene(gameScene);
+			GetFreePermissionController controller = loader.getController();
+			controller.setMainApp(this);
+			this.tempStage.show();
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void showGetFreeToken(){
+		try {
+			FXMLLoader loader = new FXMLLoader(); 
+			loader.setLocation(getClass().getResource("/GetFreeTokenScene.fxml"));
+			Scene gameScene = new Scene((AnchorPane) loader.load());
+			this.tempStage = new Stage();
+			this.tempStage.setScene(gameScene);
+			GetFreeTokenController controller = loader.getController();
+			controller.setMainApp(this);
+			this.tempStage.show();
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	
 	public static void print(String message){
 		System.out.println(message);
 	}
