@@ -22,13 +22,4 @@ public class TestController {
 		}
 		assertTrue(thrown); 
 	}
-	/*@Test
-	public void testIfUpdateWorks() {
-		Parser parser = new Parser(); 
-		Player player = new Player(); 
-		ArrayList<Player> players = new ArrayList<Player>();
-		players.add(player); 
-		GameState gameState = new GameState(parser, players); 
-		Controller controller = new Controller(gameState); 
-	} */
 }

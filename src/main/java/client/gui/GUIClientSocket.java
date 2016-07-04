@@ -8,7 +8,6 @@ import java.net.UnknownHostException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import gui.LoginClientController;
 import gui.MainApp;
 import javafx.application.Application;
 

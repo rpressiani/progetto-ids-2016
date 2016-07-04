@@ -3,7 +3,6 @@ package gui;
 import java.io.IOException;
 
 import client.ClientOutHandler;
-import client.gui.GUIClientOutHandlerSocket;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
