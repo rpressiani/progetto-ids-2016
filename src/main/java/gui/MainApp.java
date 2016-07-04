@@ -2,7 +2,7 @@ package gui;
 
 import java.io.IOException;
 
-import client.gui.GUIClientOutHandlerSocket;
+import client.ClientOutHandler;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -16,7 +16,7 @@ public class MainApp extends Application {
 	private Stage primaryStage; 
 	private BorderPane rootLayout;
 	
-	private static GUIClientOutHandlerSocket outHandler;
+	private static ClientOutHandler outHandler;
 	
 	private static MapOverviewController controller;
 	
@@ -477,14 +477,14 @@ public class MainApp extends Application {
 	/**
 	 * @return the myOutHandler
 	 */
-	public static GUIClientOutHandlerSocket getOutHandler() {
+	public static ClientOutHandler getOutHandler() {
 		return outHandler;
 	}
 
 	/**
 	 * @param myOutHandler the myOutHandler to set
 	 */
-	public static void setOutHandler(GUIClientOutHandlerSocket myOutHandler) {
+	public static void setOutHandler(ClientOutHandler myOutHandler) {
 		MainApp.outHandler = myOutHandler;
 	}
 	

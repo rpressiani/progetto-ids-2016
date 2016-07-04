@@ -29,7 +29,7 @@ public class RMIViewTimer implements Runnable {
 	public void reset() throws RemoteException{
 		this.timer.cancel();
 		this.timer = new Timer();
-		this.timer.schedule(new RMIDisconnect(this.client, this.server, this.player), (long)20*1000);
+		this.timer.schedule(new RMIDisconnect(this.client, this.server, this.player), (long)40*1000);
 		System.out.println("Timer reset");
 	}
 	
@@ -41,7 +41,7 @@ public class RMIViewTimer implements Runnable {
 	
 	public void start() throws RemoteException{
 		this.timer = new Timer();
-		this.timer.schedule(new RMIDisconnect(this.client, this.server, this.player), (long)20*1000);
+		this.timer.schedule(new RMIDisconnect(this.client, this.server, this.player), (long)40*1000);
 		this.active = true;
 		System.out.println("Timer start");
 	}

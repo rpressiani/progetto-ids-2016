@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 
 import dto.changes.DTOChange;
-import gui.MainApp;
 
 
 public class ClientInHandler implements Runnable {

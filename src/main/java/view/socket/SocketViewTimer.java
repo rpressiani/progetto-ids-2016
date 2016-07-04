@@ -43,7 +43,7 @@ public class SocketViewTimer implements Runnable {
 	public void reset(){
 		this.timer.cancel();
 		this.timer = new Timer();
-		this.timer.schedule(new SocketTimerDisconnect(this.client, this.server, this.player), (long)20*1000);
+		this.timer.schedule(new SocketTimerDisconnect(this.client, this.server, this.player), (long)40*1000);
 		System.out.println("Timer reset");
 	}
 	
@@ -61,7 +61,7 @@ public class SocketViewTimer implements Runnable {
 	 */
 	public void start(){
 		this.timer = new Timer();
-		this.timer.schedule(new SocketTimerDisconnect(this.client, this.server, this.player), (long)20*1000);
+		this.timer.schedule(new SocketTimerDisconnect(this.client, this.server, this.player), (long)40*1000);
 		this.active = true;
 		System.out.println("Timer start");
 	}

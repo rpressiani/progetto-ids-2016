@@ -7,6 +7,7 @@ import java.util.Scanner;
 
 import client.cli.rmi.CLIClientRMI;
 import client.cli.socket.CLIClientSocket;
+import client.gui.GUIClientRMI;
 import client.gui.GUIClientSocket;
 
 public class Client {
@@ -67,7 +68,9 @@ public class Client {
 					CLIClientRMI clientRMI = new CLIClientRMI(in, IP);
 					clientRMI.startClient();
 				} else {
-					System.out.println("\n[CLIENT] RMI GUI still need to be implemented\n\n\n");
+					System.out.println("\n[CLIENT] Starting new RMI GUI");
+					GUIClientRMI clientRMI = new GUIClientRMI(IP);
+					clientRMI.startClient();
 				}
 			}
 	
