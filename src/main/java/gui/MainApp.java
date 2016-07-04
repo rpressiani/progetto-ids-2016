@@ -128,7 +128,7 @@ public class MainApp extends Application {
 			Scene gameScene = new Scene((AnchorPane) loader.load());
 			this.tempStage = new Stage();
 			this.tempStage.setScene(gameScene);
-			ElectCounsellorController controller = loader.getController();
+			BuildWithCardController controller = loader.getController();
 			controller.setMainApp(this);
 			this.tempStage.show();
 			
@@ -145,7 +145,7 @@ public class MainApp extends Application {
 			Scene gameScene = new Scene((AnchorPane) loader.load());
 			this.tempStage = new Stage();
 			this.tempStage.setScene(gameScene);
-			ElectCounsellorController controller = loader.getController();
+			ElectWithAssistantController controller = loader.getController();
 			controller.setMainApp(this);
 			this.tempStage.show();
 			
@@ -162,7 +162,7 @@ public class MainApp extends Application {
 			Scene gameScene = new Scene((AnchorPane) loader.load());
 			this.tempStage = new Stage();
 			this.tempStage.setScene(gameScene);
-			ElectCounsellorController controller = loader.getController();
+			SubstituteController controller = loader.getController();
 			controller.setMainApp(this);
 			this.tempStage.show();
 			
@@ -179,7 +179,7 @@ public class MainApp extends Application {
 			Scene gameScene = new Scene((AnchorPane) loader.load());
 			this.tempStage = new Stage();
 			this.tempStage.setScene(gameScene);
-			ElectCounsellorController controller = loader.getController();
+			BuyPermissionCardController controller = loader.getController();
 			controller.setMainApp(this);
 			this.tempStage.show();
 			
@@ -188,6 +188,287 @@ public class MainApp extends Application {
 			e.printStackTrace();
 		} 
 	}
+	
+	public void showBuildWithKing(){
+		try {
+			FXMLLoader loader = new FXMLLoader(); 
+			loader.setLocation(getClass().getResource("/BuildWithKingScene.fxml"));
+			Scene gameScene = new Scene((AnchorPane) loader.load());
+			this.tempStage = new Stage();
+			this.tempStage.setScene(gameScene);
+			BuildWithKingController controller = loader.getController();
+			controller.setMainApp(this);
+			this.tempStage.show();
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+	}
+	
+	public void showAddAction(){
+		try {
+			FXMLLoader loader = new FXMLLoader(); 
+			loader.setLocation(getClass().getResource("/AddictionalActionScene.fxml"));
+			Scene gameScene = new Scene((AnchorPane) loader.load());
+			this.tempStage = new Stage();
+			this.tempStage.setScene(gameScene);
+			AddictionalActionController controller = loader.getController();
+			controller.setMainApp(this);
+			this.tempStage.show();
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+	}
+	
+	public void showAddActionBuildWithCard() {
+		try {
+			FXMLLoader loader = new FXMLLoader(); 
+			loader.setLocation(getClass().getResource("/BuildEmporiumWithCardScene.fxml"));
+			Scene gameScene = new Scene((AnchorPane) loader.load());
+			this.tempStage = new Stage();
+			this.tempStage.setScene(gameScene);
+			BuildWithCardController controller = loader.getController();
+			controller.setMainApp(this);
+			controller.setState("addaction");
+			this.tempStage.show();
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+	}
+	
+	public void showAddActionElectCounsellor() {
+		try {
+			FXMLLoader loader = new FXMLLoader(); 
+			loader.setLocation(getClass().getResource("/ElectCounsellorScene.fxml"));
+			Scene gameScene = new Scene((AnchorPane) loader.load());
+			this.tempStage = new Stage();
+			this.tempStage.setScene(gameScene);
+			ElectCounsellorController controller = loader.getController();
+			controller.setMainApp(this);
+			controller.setState("addaction");
+			this.tempStage.show();
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+	}
+	
+	public void showAddActionBuyPermissionCard(){
+		try {
+			FXMLLoader loader = new FXMLLoader(); 
+			loader.setLocation(getClass().getResource("/BuyPermissionCardScene.fxml"));
+			Scene gameScene = new Scene((AnchorPane) loader.load());
+			this.tempStage = new Stage();
+			this.tempStage.setScene(gameScene);
+			BuyPermissionCardController controller = loader.getController();
+			controller.setMainApp(this);
+			controller.setState("addaction");
+			this.tempStage.show();
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+	}
+	
+	public void showAddActionBuildWithKing(){
+		try {
+			FXMLLoader loader = new FXMLLoader(); 
+			loader.setLocation(getClass().getResource("/BuildWithKingScene.fxml"));
+			Scene gameScene = new Scene((AnchorPane) loader.load());
+			this.tempStage = new Stage();
+			this.tempStage.setScene(gameScene);
+			BuildWithKingController controller = loader.getController();
+			controller.setMainApp(this);
+			controller.setState("addaction");
+			this.tempStage.show();
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+	}
+	
+	public void showDoActionAgain(){
+		try {
+			FXMLLoader loader = new FXMLLoader(); 
+			loader.setLocation(getClass().getResource("/DoActionAgainScene.fxml"));
+			Scene gameScene = new Scene((AnchorPane) loader.load());
+			this.tempStage = new Stage();
+			this.tempStage.setScene(gameScene);
+			DoAgainActionController controller = loader.getController();
+			controller.setMainApp(this);
+			this.tempStage.show();
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+	}
+	
+	public void showBonusBuildWithCard() {
+		try {
+			FXMLLoader loader = new FXMLLoader(); 
+			loader.setLocation(getClass().getResource("/BuildEmporiumWithCardScene.fxml"));
+			Scene gameScene = new Scene((AnchorPane) loader.load());
+			this.tempStage = new Stage();
+			this.tempStage.setScene(gameScene);
+			BuildWithCardController controller = loader.getController();
+			controller.setMainApp(this);
+			controller.setState("bonus");
+			this.tempStage.show();
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+	}
+	
+	public void showBonusElectCounsellor() {
+		try {
+			FXMLLoader loader = new FXMLLoader(); 
+			loader.setLocation(getClass().getResource("/ElectCounsellorScene.fxml"));
+			Scene gameScene = new Scene((AnchorPane) loader.load());
+			this.tempStage = new Stage();
+			this.tempStage.setScene(gameScene);
+			ElectCounsellorController controller = loader.getController();
+			controller.setMainApp(this);
+			controller.setState("bonus");
+			this.tempStage.show();
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+	}
+	
+	public void showBonusBuyPermissionCard(){
+		try {
+			FXMLLoader loader = new FXMLLoader(); 
+			loader.setLocation(getClass().getResource("/BuyPermissionCardScene.fxml"));
+			Scene gameScene = new Scene((AnchorPane) loader.load());
+			this.tempStage = new Stage();
+			this.tempStage.setScene(gameScene);
+			BuyPermissionCardController controller = loader.getController();
+			controller.setMainApp(this);
+			controller.setState("bonus");
+			this.tempStage.show();
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+	}
+	
+	public void showBonusBuildWithKing(){
+		try {
+			FXMLLoader loader = new FXMLLoader(); 
+			loader.setLocation(getClass().getResource("/BuildWithKingScene.fxml"));
+			Scene gameScene = new Scene((AnchorPane) loader.load());
+			this.tempStage = new Stage();
+			this.tempStage.setScene(gameScene);
+			BuildWithKingController controller = loader.getController();
+			controller.setMainApp(this);
+			controller.setState("bonus");
+			this.tempStage.show();
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+	}
+	
+	public void showBuyAction(){
+		try {
+			FXMLLoader loader = new FXMLLoader(); 
+			loader.setLocation(getClass().getResource("/BuyActionScene.fxml"));
+			Scene gameScene = new Scene((AnchorPane) loader.load());
+			this.tempStage = new Stage();
+			this.tempStage.setScene(gameScene);
+			BuyActionController controller = loader.getController();
+			controller.setMainApp(this);
+			this.tempStage.show();
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void showSellAction(){
+		try {
+			FXMLLoader loader = new FXMLLoader(); 
+			loader.setLocation(getClass().getResource("/SellActionScene.fxml"));
+			Scene gameScene = new Scene((AnchorPane) loader.load());
+			this.tempStage = new Stage();
+			this.tempStage.setScene(gameScene);
+			SellActionController controller = loader.getController();
+			controller.setMainApp(this);
+			this.tempStage.show();
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void showGetAgainBonus(){
+		try {
+			FXMLLoader loader = new FXMLLoader(); 
+			loader.setLocation(getClass().getResource("/GetAgainBonusPermissionScene.fxml"));
+			Scene gameScene = new Scene((AnchorPane) loader.load());
+			this.tempStage = new Stage();
+			this.tempStage.setScene(gameScene);
+			GetAgainBonusPermissionController controller = loader.getController();
+			controller.setMainApp(this);
+			this.tempStage.show();
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void showGetFreePermission(){
+		try {
+			FXMLLoader loader = new FXMLLoader(); 
+			loader.setLocation(getClass().getResource("/GetFreePermissionScene.fxml"));
+			Scene gameScene = new Scene((AnchorPane) loader.load());
+			this.tempStage = new Stage();
+			this.tempStage.setScene(gameScene);
+			GetFreePermissionController controller = loader.getController();
+			controller.setMainApp(this);
+			this.tempStage.show();
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void showGetFreeToken(){
+		try {
+			FXMLLoader loader = new FXMLLoader(); 
+			loader.setLocation(getClass().getResource("/GetFreeTokenScene.fxml"));
+			Scene gameScene = new Scene((AnchorPane) loader.load());
+			this.tempStage = new Stage();
+			this.tempStage.setScene(gameScene);
+			GetFreeTokenController controller = loader.getController();
+			controller.setMainApp(this);
+			this.tempStage.show();
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 	
 	public static void print(String message){
 		System.out.println(message);

@@ -8,7 +8,9 @@ import javafx.scene.control.TextArea;
 
 public class ElectCounsellorController {
 
-	private MainApp mainApp; 
+	private MainApp mainApp;
+	
+	private String state;
 	
 	@FXML
 	private TextArea region = new TextArea(); 
@@ -30,6 +32,12 @@ public class ElectCounsellorController {
 	@FXML
 	private void handleOk() {
 		ArrayList<String> inputList = new ArrayList<String>();
+		if (state.equals("addaction")) {
+			inputList.add("addaction");
+		}
+		if (state.equals("bonus")) {
+			inputList.add("bonusdoactionagain");
+		}
 		inputList.add("electCounsellor");
 		inputList.add(region.getText());
 		inputList.add(color.getText());
@@ -39,5 +47,12 @@ public class ElectCounsellorController {
 	@FXML
 	private void handleCancel() {
 		mainApp.getTempStage().close();
+	}
+
+	/**
+	 * @param state the state to set
+	 */
+	public void setState(String state) {
+		this.state = state;
 	}
 }

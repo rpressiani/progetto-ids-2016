@@ -3,9 +3,10 @@ package gui;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
-public class AddictionalActionController {
+public class DoAgainActionController {
 	
 	private MainApp mainApp; 
+	
 	@FXML
 	private Button buildWithCard = new Button(); 
 	@FXML
@@ -15,28 +16,31 @@ public class AddictionalActionController {
 	@FXML
 	private Button buyPermissionCard = new Button(); 
 	
-	public void setMainApp(MainApp mainApp) {
-		this.mainApp = mainApp; 
-	}
-	
 	@FXML
 	private void handleBuildWithCard() {
-		mainApp.showAddActionBuildWithCard();
+		mainApp.showBonusBuildWithCard();
 		mainApp.getTempStage().close();
 	}
 	@FXML
 	private void handleBuildWithKing() {
-		mainApp.showAddActionBuildWithKing();
+		mainApp.showBonusBuildWithKing();
 		mainApp.getTempStage().close();
 	}
 	@FXML
 	private void handleElectCounsellor() {
-		mainApp.showAddActionElectCounsellor();
+		mainApp.showBonusElectCounsellor();
 		mainApp.getTempStage().close();
 	}
 	@FXML
 	private void handleBuyPermissionCard() {
-		mainApp.showAddActionBuyPermissionCard();
+		mainApp.showBonusBuyPermissionCard();
 		mainApp.getTempStage().close();
 	}
+	/**
+	 * @param mainApp the mainApp to set
+	 */
+	public void setMainApp(MainApp mainApp) {
+		this.mainApp = mainApp;
+	}
+
 }

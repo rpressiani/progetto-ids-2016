@@ -1,21 +1,22 @@
 package gui;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 
-public class BuyActionController {
+public class GetFreeTokenController {
 	
 	private MainApp mainApp; 
 	
 	@FXML
 	private Button ok = new Button(); 
 	@FXML
-	private Button cancel = new Button();
+	private Button cancel = new Button(); 
 	@FXML
-	private TextArea contractNumber = new TextArea(); 
+	private TextArea cities = new TextArea(); 
 	
 	public void setMainApp(MainApp mainApp) {
 		this.mainApp = mainApp; 
@@ -24,9 +25,11 @@ public class BuyActionController {
 	@FXML
 	private void handleOk() {
 		ArrayList<String> inputList = new ArrayList<String>();
-		
-		inputList.add("buy");
-		inputList.add(contractNumber.getText());
+		inputList.add("bonustoken");
+		ArrayList<String> citiesArray = new ArrayList<String>(Arrays.asList(cities.getText().split(" ")));
+		for (String string : citiesArray) {
+			inputList.add(string);
+		}
 		MainApp.getOutHandler().activate(inputList);
 		mainApp.getTempStage().close();
 	}
@@ -34,5 +37,6 @@ public class BuyActionController {
 	private void handleCancel() {
 		mainApp.getTempStage().close();
 	}
+	
 
 }

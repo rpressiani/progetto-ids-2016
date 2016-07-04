@@ -1,26 +1,14 @@
 package gui;
 
 import java.util.ArrayList;
-import java.util.Optional;
 
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
-import javafx.scene.control.TextInputDialog;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
-import model.GameState;
-import model.actions.main.BuildEmporiumWithCard;
-import model.bonusable.PermissionCard;
-import model.map.City;
-import model.player.Player;
 
 public class MapOverviewController {
 	
@@ -48,17 +36,18 @@ public class MapOverviewController {
 	private MenuItem hire = new MenuItem(); 
 	@FXML
 	private MenuItem nullAction = new MenuItem(); 
-	//if we want to load regions from configuration file
+	@FXML
+	private MenuItem doAgain = new MenuItem();
+	@FXML
+	private MenuItem getAgainBonus = new MenuItem(); 
+	@FXML
+	private MenuItem getFreePermission = new MenuItem();
+	@FXML
+	private MenuItem getFreeToken = new MenuItem(); 
 	@FXML
 	private MenuItem buyAction = new MenuItem(); 
 	@FXML
 	private MenuItem sellAction = new MenuItem(); 
-	@FXML
-	private ImageView region1 = new ImageView(); 
-	@FXML
-	private ImageView region2 = new ImageView(); 
-	@FXML
-	private ImageView region3 = new ImageView(); 
 	@FXML 
 	private MenuItem scoresQuery = new MenuItem(); 
 	@FXML 
@@ -81,21 +70,11 @@ public class MapOverviewController {
 	private MenuItem marketQuery = new MenuItem(); 
 	
 	@FXML
-	private ArrayList<Button> cities;
+	private Button send = new Button(); 
 	@FXML 
-	private TextArea textArea = new TextArea();
+	private TextArea textArea = new TextArea(); 
 
-	private Stage dialogStage; 
-	private ArrayList<ImageView> council1 = new ArrayList<ImageView>(); 
-	private ArrayList<ImageView> council2 = new ArrayList<ImageView>(); 
-	private ArrayList<ImageView> council3 = new ArrayList<ImageView>(); 
-	private ArrayList<ImageView> kingCouncil = new ArrayList<ImageView>(); 
-
-	private MainApp mainApp; 
-	private boolean doneMain = false; 
-	private boolean doneQuick = false; 
-	private boolean isTurnOver = false; 
-	//private ArrayList<MenuItem> mainActionsList; 
+	private MainApp mainApp;  
 	
 	public void setMainApp(MainApp mainApp) {
 		this.mainApp = mainApp; 
@@ -124,11 +103,11 @@ public class MapOverviewController {
 	}
 	@FXML
 	public void handleBuildWithKing() {
-		
+		mainApp.showBuildWithKing();
 	}
 	@FXML
 	public void handleAddictionalAction() {
-		
+		mainApp.showAddAction();
 	}
 	@FXML
 	public void handleSubstitute() {
@@ -136,11 +115,11 @@ public class MapOverviewController {
 	}
 	@FXML
 	private void handleBuyAction() {
-		
+		mainApp.showBuyAction();
 	}
 	@FXML
 	private void handleSellAction() {
-		
+		mainApp.showSellAction();
 	}
 	@FXML
 	public void handleElectWithAssistant() {
@@ -165,7 +144,22 @@ public class MapOverviewController {
 		inputList.add("quit");
 		MainApp.getOutHandler().activate(inputList);
 	}
-	
+	@FXML
+	private void handleDoAgain() {
+		mainApp.showDoActionAgain();
+	}
+	@FXML
+	private void handleGetAgainBonus() {
+		mainApp.showGetAgainBonus();
+	}
+	@FXML
+	private void handleGetFreePermission() {
+		mainApp.showGetFreePermission();
+	}
+	@FXML
+	private void handleGetFreeToken() {
+		mainApp.showGetFreeToken();
+	}
 	@FXML
 	public void handleScoresQuery() {
 		ArrayList<String> inputList = new ArrayList<String>();
@@ -226,27 +220,27 @@ public class MapOverviewController {
 		inputList.add("getmarket");
 		MainApp.getOutHandler().activate(inputList);
 	}
-	public void endTurn() {
-		if(doneMain && doneQuick) {
-			isTurnOver = true; 
-		}
-	}
-	public boolean getDoneMain() {
-		return doneMain; 
-	}
-	public boolean getDoneQuick() {
-		return doneQuick; 
-	}
-	public void waitForActionClick(Player player, MenuItem actionToDo) {
-		final EventHandler<MouseEvent> mouseEventHandler =
-		        new EventHandler<MouseEvent>() {
-		            public void handle(final MouseEvent mouseEvent) {
-		                if (mouseEvent.getEventType() == MouseEvent.MOUSE_CLICKED) {
-		                    mouseEvent.consume();
-		                }
-		            }
-		        };
-	}
+//	public void endTurn() {
+//		if(doneMain && doneQuick) {
+//			isTurnOver = true; 
+//		}
+//	}
+//	public boolean getDoneMain() {
+//		return doneMain; 
+//	}
+//	public boolean getDoneQuick() {
+//		return doneQuick; 
+//	}
+//	public void waitForActionClick(Player player, MenuItem actionToDo) {
+//		final EventHandler<MouseEvent> mouseEventHandler =
+//		        new EventHandler<MouseEvent>() {
+//		            public void handle(final MouseEvent mouseEvent) {
+//		                if (mouseEvent.getEventType() == MouseEvent.MOUSE_CLICKED) {
+//		                    mouseEvent.consume();
+//		                }
+//		            }
+//		        };
+//	}
 	
 	 public void alert(String msg){
 		 textArea.appendText(msg);

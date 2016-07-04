@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.72" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.MapOverviewController">
+<AnchorPane prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.MapOverviewController">
    <children>
       <SplitPane dividerPositions="0.678391959798995" layoutX="113.0" layoutY="14.0" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
@@ -39,7 +39,7 @@
                                       <items>
                                         <MenuItem fx:id="buildAction" mnemonicParsing="false" onAction="#handleBuildEmporium" text="Build Emporium With Card" />
                                           <MenuItem fx:id="elect" mnemonicParsing="false" onAction="#handleElectCounsellor" text="Elect Counsellor" />
-                                          <MenuItem fx:id="buy" mnemonicParsing="false" text="Buy Permission Card" />
+                                          <MenuItem fx:id="buy" mnemonicParsing="false" onAction="#handleBuyPermissionCard" text="Buy Permission Card" />
                                         <MenuItem fx:id="buildWithKing" mnemonicParsing="false" onAction="#handleBuildWithKing" text="Build Emporium With King" />
                                       </items>
                                        <contextMenu>
@@ -52,9 +52,9 @@
                                     </MenuButton>
                                     <MenuButton layoutX="9.0" layoutY="106.0" mnemonicParsing="false" text="Quick Actions">
                                       <items>
-                                        <MenuItem fx:id="addictional" mnemonicParsing="false" text="Addictional Action" />
-                                          <MenuItem fx:id="substitute" mnemonicParsing="false" text="Substitute Permission Card" />
-                                          <MenuItem fx:id="electWithAssistant" mnemonicParsing="false" text="Elect Counsellor With Assistant" />
+                                        <MenuItem fx:id="addictional" mnemonicParsing="false" onAction="#handleAddictionalAction" text="Addictional Action" />
+                                          <MenuItem fx:id="substitute" mnemonicParsing="false" onAction="#handleSubstitute" text="Substitute Permission Card" />
+                                          <MenuItem fx:id="electWithAssistant" mnemonicParsing="false" onAction="#handleElectWithAssistant" text="Elect Counsellor With Assistant" />
                                           <MenuItem fx:id="nullAction" mnemonicParsing="false" text="Pass turn" />
                                         <MenuItem fx:id="hire" mnemonicParsing="false" onAction="#handleHireAssistant" text="Hire Assistant " />
                                       </items>
@@ -82,14 +82,16 @@
                                     </MenuButton>
                                     <MenuButton layoutX="9.0" layoutY="171.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="125.0" text="Input Bonus Actions">
                                       <items>
-                                        <MenuItem mnemonicParsing="false" text="Action 1" />
-                                        <MenuItem mnemonicParsing="false" text="Action 2" />
+                                        <MenuItem fx:id="doAgain" mnemonicParsing="false" onAction="#handleDoAgain" text="DoAgainAction" />
+                                        <MenuItem fx:id="getAgainBonus" mnemonicParsing="false" onAction="#handleGetAgainBonus" text="GetAgainBonusPermission" />
+                                          <MenuItem fx:id="getFreePermission" mnemonicParsing="false" onAction="#handleGetFreePermission" text="GetFreePermission" />
+                                          <MenuItem fx:id="getFreeToken" mnemonicParsing="false" onAction="#handleGetFreeToken" text="GetFreeToken" />
                                       </items>
                                     </MenuButton>
                                     <MenuButton layoutX="9.0" layoutY="229.0" mnemonicParsing="false" text="Market">
                                       <items>
-                                        <MenuItem mnemonicParsing="false" text="Buy Action" />
-                                        <MenuItem mnemonicParsing="false" text="Sell Action" />
+                                        <MenuItem fx:id="buyAction" mnemonicParsing="false" text="Buy Action" />
+                                        <MenuItem fx:id="sellAction" mnemonicParsing="false" text="Sell Action" />
                                       </items>
                                     </MenuButton>
                                  </children>

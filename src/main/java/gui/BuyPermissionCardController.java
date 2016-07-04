@@ -10,6 +10,8 @@ public class BuyPermissionCardController {
 	
 	private MainApp mainApp; 
 	
+	private String state;
+	
 	@FXML
 	private TextArea region = new TextArea(); 
 	@FXML
@@ -39,6 +41,12 @@ public class BuyPermissionCardController {
 	@FXML
 	private void handleOk() {
 		ArrayList<String> inputList = new ArrayList<String>();
+		if (state.equals("addaction")) {
+			inputList.add("addaction");
+		}
+		if (state.equals("bonus")) {
+			inputList.add("bonusdoactionagain");
+		}
 		inputList.add("buypermissioncard");
 		inputList.add(region.getText());
 		inputList.add(index.getText());
@@ -55,6 +63,12 @@ public class BuyPermissionCardController {
 	@FXML
 	private void handleCancel() {
 		mainApp.getTempStage().close();
+	}
+	/**
+	 * @param state the state to set
+	 */
+	public void setState(String state) {
+		this.state = state;
 	}
 
 }
