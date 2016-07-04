@@ -7,7 +7,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
 public class MapOverviewController {
@@ -70,7 +69,9 @@ public class MapOverviewController {
 	private MenuItem marketQuery = new MenuItem(); 
 	
 	@FXML
-	private Button send = new Button(); 
+	private Button send = new Button();
+	@FXML
+	private TextArea chat = new TextArea();
 	@FXML 
 	private TextArea textArea = new TextArea(); 
 
@@ -88,6 +89,17 @@ public class MapOverviewController {
 		this.textArea.setText("TextArea TEST\n");
 		textArea.setScrollTop(Double.MAX_VALUE);
 		
+		this.chat.setWrapText(true);
+		this.chat.setEditable(true);
+		
+	}
+	@FXML
+	public void handleChatSend(){
+		ArrayList<String> inputList = new ArrayList<String>();
+		inputList.add("chat");
+		inputList.add(chat.getText());
+		this.chat.clear();
+		MainApp.getOutHandler().activate(inputList);
 	}
 	@FXML
 	public void handleBuildEmporium() {

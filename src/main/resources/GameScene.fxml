@@ -104,109 +104,13 @@
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="378.0" prefWidth="698.0">
                <children>
-                  <MenuButton layoutX="7.0" layoutY="1.0" mnemonicParsing="false" text="Check Councils">
-                    <items>
-                        <MenuItem mnemonicParsing="false" text="Council 1 ">
-                           <graphic>
-                              <HBox prefHeight="100.0" prefWidth="200.0">
-                                 <children>
-                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                                 </children>
-                              </HBox>
-                           </graphic>
-                        </MenuItem>
-                      <MenuItem mnemonicParsing="false" text="Council 2">
-                           <graphic>
-                              <HBox prefHeight="100.0" prefWidth="200.0">
-                                 <children>
-                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                                 </children>
-                              </HBox>
-                           </graphic>
-                        </MenuItem>
-                      <MenuItem mnemonicParsing="false" text="Council 3">
-                           <graphic>
-                              <HBox prefHeight="100.0" prefWidth="200.0">
-                                 <children>
-                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                                 </children>
-                              </HBox>
-                           </graphic>
-                        </MenuItem>
-                        <MenuItem mnemonicParsing="false" text="Council 4">
-                           <graphic>
-                              <HBox prefHeight="100.0" prefWidth="200.0">
-                                 <children>
-                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                                 </children>
-                              </HBox>
-                           </graphic>
-                        </MenuItem>
-                    </items>
-                  </MenuButton>
-                  <MenuButton layoutX="7.0" layoutY="27.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="135.0" text="Free Counsellors">
-                    <items>
-                      <MenuItem mnemonicParsing="false" text="Action 1" />
-                      <MenuItem mnemonicParsing="false" text="Action 2" />
-                    </items>
-                  </MenuButton>
-                  <MenuButton layoutX="7.0" layoutY="53.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="135.0" text="Bonus per Region">
-                    <items>
-                      <MenuItem mnemonicParsing="false" text="seaside">
-                           <graphic>
-                              <HBox prefHeight="100.0" prefWidth="200.0">
-                                 <children>
-                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                                 </children>
-                              </HBox>
-                           </graphic>
-                        </MenuItem>
-                      <MenuItem mnemonicParsing="false" text="hill">
-                           <graphic>
-                              <HBox prefHeight="100.0" prefWidth="200.0">
-                                 <children>
-                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                                 </children>
-                              </HBox>
-                           </graphic>
-                        </MenuItem>
-                        <MenuItem mnemonicParsing="false" text="mountain">
-                           <graphic>
-                              <HBox prefHeight="100.0" prefWidth="200.0">
-                                 <children>
-                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                                 </children>
-                              </HBox>
-                           </graphic>
-                        </MenuItem>
-                    </items>
-                  </MenuButton>
-                  <MenuButton layoutX="7.0" layoutY="78.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="135.0" text="Bonuses">
-                    <items>
-                      <MenuItem mnemonicParsing="false" text="Action 1" />
-                      <MenuItem mnemonicParsing="false" text="Action 2" />
-                    </items>
-                  </MenuButton>
-                  <TextArea fx:id="textArea" layoutX="157.0" prefHeight="130.0" prefWidth="400.0">
+                  <TextArea fx:id="textArea" layoutX="14.0" prefHeight="130.0" prefWidth="400.0">
                      <font>
                         <Font size="11.0" />
                      </font></TextArea>
-                  <Button layoutX="14.0" layoutY="117.0" mnemonicParsing="false" onAction="#handleQuit" text="QUIT" />
+                  <Button layoutX="634.0" layoutY="103.0" mnemonicParsing="false" onAction="#handleQuit" text="QUIT" />
+                  <TextArea fx:id="chat" layoutX="437.0" prefHeight="42.0" prefWidth="181.0" />
+                  <Button fx:id="send" layoutX="630.0" layoutY="8.0" mnemonicParsing="false" onAction="#handleChatSend" text="SEND" />
                </children></AnchorPane>
         </items>
       </SplitPane>

@@ -28,9 +28,9 @@ public class GUIClientInHandlerSocket implements Runnable {
 				
 				if (obj instanceof DTOChange) {
 					DTOChange change = (DTOChange) obj;
-					MainApp.alert(change.toString());
+					MainApp.alert("\n" + change.toString());
 				} else {
-					MainApp.alert(obj.toString());
+					MainApp.alert("\n" + obj.toString());
 				}
 				
 			} catch (ClassNotFoundException | IOException e) {
