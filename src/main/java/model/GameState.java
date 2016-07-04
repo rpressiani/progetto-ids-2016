@@ -73,8 +73,6 @@ public class GameState extends Observable<Change> {
 		}
 
 		this.currentPlayer = this.players.get(0);
-		//this.getCurrentPlayer().getView().startTimer();
-	
 	}
 
 	/**

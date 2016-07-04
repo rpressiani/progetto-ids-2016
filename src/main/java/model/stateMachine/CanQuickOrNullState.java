@@ -21,6 +21,7 @@ public class CanQuickOrNullState implements State {
 				if(action.checkCondition(player, gameState)==true){
 					action.doAction(player, gameState);
 					System.out.println(player.getNickname()+" did a QuickAction");
+					player.getView().stopTimer();
 					gameState.notifyAllExceptPlayer(player, new ChangeMsg(player.getNickname()+" did a QuickAction"));
 					if(gameState.checkEmporiums(player)==true && gameState.checkAlreadyFinished(player)==false){
 						player.setState(new FinishedBuildingState());
@@ -49,6 +50,7 @@ public class CanQuickOrNullState implements State {
 					action.doAction(player, gameState);
 					System.out.println(player.getNickname()+" passed the turn");
 					gameState.notifyAllExceptPlayer(player, new ChangeMsg(player.getNickname()+" passed the turn"));
+					player.getView().stopTimer();
 					player.setState(new CanSellState());
 					player.getState().checkTurn(player, gameState);
 				}
@@ -74,6 +76,7 @@ public class CanQuickOrNullState implements State {
 					action.doAction(player, gameState);
 					System.out.println(player.getNickname()+" chosed his bonus");
 					gameState.notifyAllExceptPlayer(player, new ChangeMsg(player.getNickname()+" chosed his bonus"));
+					player.getView().stopTimer();
 					if(gameState.checkEmporiums(player)==true && gameState.checkAlreadyFinished(player)==false){
 						player.setState(new FinishedBuildingState());
 						player.getState().checkTurn(player, gameState);
