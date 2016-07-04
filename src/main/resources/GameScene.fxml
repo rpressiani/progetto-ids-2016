@@ -90,8 +90,8 @@
                                     </MenuButton>
                                     <MenuButton layoutX="9.0" layoutY="229.0" mnemonicParsing="false" text="Market">
                                       <items>
-                                        <MenuItem fx:id="buyAction" mnemonicParsing="false" text="Buy Action" />
-                                        <MenuItem fx:id="sellAction" mnemonicParsing="false" text="Sell Action" />
+                                        <MenuItem fx:id="buyAction" mnemonicParsing="false" onAction="#handleBuyAction" text="Buy Action" />
+                                        <MenuItem fx:id="sellAction" mnemonicParsing="false" onAction="#handleSellAction" text="Sell Action" />
                                       </items>
                                     </MenuButton>
                                  </children>

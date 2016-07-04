@@ -18,23 +18,23 @@ public class DoAgainActionController {
 	
 	@FXML
 	private void handleBuildWithCard() {
-		mainApp.showBonusBuildWithCard();
 		mainApp.getTempStage().close();
+		mainApp.showBonusBuildWithCard();
 	}
 	@FXML
 	private void handleBuildWithKing() {
-		mainApp.showBonusBuildWithKing();
 		mainApp.getTempStage().close();
+		mainApp.showBonusBuildWithKing();
 	}
 	@FXML
 	private void handleElectCounsellor() {
-		mainApp.showBonusElectCounsellor();
 		mainApp.getTempStage().close();
+		mainApp.showBonusElectCounsellor();
 	}
 	@FXML
 	private void handleBuyPermissionCard() {
-		mainApp.showBonusBuyPermissionCard();
 		mainApp.getTempStage().close();
+		mainApp.showBonusBuyPermissionCard();
 	}
 	/**
 	 * @param mainApp the mainApp to set

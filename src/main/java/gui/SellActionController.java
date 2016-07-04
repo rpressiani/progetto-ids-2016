@@ -39,6 +39,12 @@ public class SellActionController {
 	}
 	
 	@FXML
+	private void initialize(){
+		sellPermissions.setText("e.g. p12 p34");
+		buyPermissions.setText("e.g. p12 p34");
+	}
+	
+	@FXML
 	private void handleOk() {
 		ArrayList<String> inputList = new ArrayList<String>();
 		inputList.add("sell");
@@ -50,6 +56,7 @@ public class SellActionController {
 		}
 		ArrayList<String> sellPoliticalsArray = new ArrayList<String>(Arrays.asList(sellPoliticals.getText().split(" ")));
 		if (sellPoliticalsArray.size()!=7) {
+			mainApp.getTempStage().close();
 			return;
 		}
 		for (String string : sellPoliticalsArray) {
@@ -64,6 +71,7 @@ public class SellActionController {
 		}
 		ArrayList<String> buyPoliticalsArray = new ArrayList<String>(Arrays.asList(buyPoliticals.getText().split(" ")));
 		if (buyPoliticalsArray.size()!=7) {
+			mainApp.getTempStage().close();
 			return;
 		}
 		for (String string : buyPoliticalsArray) {
