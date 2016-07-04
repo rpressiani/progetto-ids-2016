@@ -19,12 +19,14 @@ public class StartState implements State {
 				action.doAction(player, gameState);
 				System.out.println(player.getNickname()+" did a MainAction");
 				gameState.notifyAllExceptPlayer(player ,new ChangeMsg(player.getNickname()+" did a MainAction"));
+				//player.getView().stopTimer();
 				if(gameState.checkEmporiums(player)==true && gameState.checkAlreadyFinished(player)==false){
 					player.setState(new FinishedBuildingState());
 					player.getState().checkTurn(player, gameState);
 				}
 				else{
 					player.setState(new CanQuickOrNullState());
+					//player.getView().startTimer();
 					player.getState().checkTurn(player, gameState);
 				}
 			}
@@ -42,12 +44,14 @@ public class StartState implements State {
 				action.doAction(player, gameState);
 				System.out.println(player.getNickname()+" did a QuickAction");
 				gameState.notifyAllExceptPlayer(player, new ChangeMsg(player.getNickname()+" did a QuickAction"));
+				//player.getView().stopTimer();
 				if(gameState.checkEmporiums(player)==true && gameState.checkAlreadyFinished(player)==false){
 					player.setState(new FinishedBuildingState());
 					player.getState().checkTurn(player, gameState);
 				}
 				else{
 					player.setState(new CanMainState());
+					//player.getView().startTimer();
 					player.getState().checkTurn(player, gameState);
 				}
 			}

@@ -73,6 +73,7 @@ public class GameState extends Observable<Change> {
 		}
 
 		this.currentPlayer = this.players.get(0);
+		//this.getCurrentPlayer().getView().startTimer();
 	
 	}
 
@@ -218,6 +219,8 @@ public class GameState extends Observable<Change> {
 		if(this.getCurrentPlayer().getState() instanceof FinishedBuildingState){
 			this.finishMatch();
 		}
+		
+		//this.getCurrentPlayer().getView().startTimer();
 	}
 
 	public boolean checkEmporiums(Player player){
@@ -337,6 +340,7 @@ public class GameState extends Observable<Change> {
 		}
 		
 		for(Player p : temp){
+			System.out.println(p);
 			p.getView().disconnect();
 		}
 	}

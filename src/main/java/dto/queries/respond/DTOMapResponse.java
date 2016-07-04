@@ -21,7 +21,7 @@ public class DTOMapResponse implements DTOObject {
 	
 	private final String cliDisplay;
 	private final Set<DTOCity> builtCities;
-	private transient final Map<DTOCity, Set<DTOPlayerBasic>> citiesStatus;
+	private final Map<DTOCity, Set<DTOPlayerBasic>> citiesStatus;
 	
 	/**
 	 * @param cliDisplay

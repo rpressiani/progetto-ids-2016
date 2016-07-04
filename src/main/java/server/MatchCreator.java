@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.rmi.AlreadyBoundException;
 import java.rmi.NotBoundException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Map;
@@ -95,6 +96,16 @@ public class MatchCreator implements Runnable {
 				Thread.currentThread().interrupt();
 				System.out.println("Match creator closed!");
 				break;
+			}
+			
+			Set<Match> temp=new HashSet<Match>();
+			for(Match m : this.runningMatches){
+				temp.add(m);
+			}
+			for(Match m : temp){
+				if(m.getGameState().getPlayers().size()==0){
+					this.runningMatches.remove(m);
+				}
 			}
 			
 			try {

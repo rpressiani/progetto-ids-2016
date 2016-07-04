@@ -107,7 +107,9 @@ public class Server {
 		}
 		if (playerMatch.containsKey(player)) {
 			
-			playerMatch.get(player).getGameState().nextPlayer(player);
+			if(playerMatch.get(player).getGameState().getPlayers().size()!=1){
+				playerMatch.get(player).getGameState().nextPlayer(player);
+			}
 			
 			ArrayList<Player> players = playerMatch.get(player).getGameState().getPlayers();
 			int i;

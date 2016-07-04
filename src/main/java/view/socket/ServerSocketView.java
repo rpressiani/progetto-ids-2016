@@ -45,12 +45,12 @@ public class ServerSocketView extends View implements Runnable {
 		this.socketIn = new ObjectInputStream(this.socket.getInputStream()); 
 		this.socketOut = new ObjectOutputStream(this.socket.getOutputStream());
 		this.visitorChanges = new VisitorChanges();
-		
-		this.timer = new SocketViewTimer(this, this.server, this.player);
-		(new Thread(this.timer)).start();
 
 		this.player = new Player();
 		this.player.setView(this);
+		
+		this.timer = new SocketViewTimer(this, this.server, this.player);
+		(new Thread(this.timer)).start();
 	}
 	
 	/**

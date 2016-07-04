@@ -14,7 +14,7 @@ public class DTOPermissionAvailableResponse implements DTOObject {
 	 */
 	private static final long serialVersionUID = -3441019209674861132L;
 	
-	private transient final Map<String, Set<DTOPermissionCard>> permissionPerRegion;
+	private final Map<String, Set<DTOPermissionCard>> permissionPerRegion;
 	
 	/**
 	 * @param permissionPerRegion
