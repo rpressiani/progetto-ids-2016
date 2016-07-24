@@ -45,25 +45,24 @@ public class GUIClientOutHandlerRMI extends ClientOutHandler {
 	/**
 	 * @see client.ClientOutHandler#sellCommand()
 	 */
-	@Override
 	public void sellCommand(ArrayList<String> inputList) {
-		ArrayList<Integer> proposal;
+		ArrayList<Integer> proposal = new ArrayList<Integer>();
 		ClientMessage msg;
 		
 		DTOCoins sellCoins;
 		try {
-			sellCoins = new DTOCoins(Integer.parseInt(inputList.get(0)));
+			sellCoins = new DTOCoins(Integer.parseInt(inputList.get(1)));
 		} catch (NumberFormatException e) {
 			sellCoins = new DTOCoins(0);
 		}
 		DTOAssistants sellAssistants;
 		try {
-			sellAssistants = new DTOAssistants(Integer.parseInt(inputList.get(1)));
+			sellAssistants = new DTOAssistants(Integer.parseInt(inputList.get(2)));
 		} catch (NumberFormatException e) {
 			sellAssistants = new DTOAssistants(0);
 		}
 		Set<DTOPermissionCardSelection> sellPermissions = new HashSet<DTOPermissionCardSelection>();
-		int index = 2;
+		int index = 3;
 		while (inputList.get(index).charAt(0) == 'p') {
 			Integer cardId = Integer.parseInt(inputList.get(index).substring(1));
 			try {
@@ -73,8 +72,20 @@ public class GUIClientOutHandlerRMI extends ClientOutHandler {
 			}
 			index++;
 		}
-		
-		proposal = ClientOutHandler.getProposal(inputList, index);
+		boolean error = false;
+		for (int i = index; i < index+7; i++) {
+			try {
+				if (error) {
+					proposal.add(-1);
+				} else {
+					proposal.add(Integer.parseInt(inputList.get(i)));
+				}
+			} catch (NumberFormatException e) {
+				proposal.add(-1);
+				error = true;
+			}
+			
+		}
 		if (proposal.get(proposal.size()-1).equals(-1)) {
 			notifyCmdNotFound();
 			return;
@@ -106,7 +117,21 @@ public class GUIClientOutHandlerRMI extends ClientOutHandler {
 			index2++;
 		}
 		
-		proposal = ClientOutHandler.getProposal(inputList, index2);
+		error = false;
+		proposal = new ArrayList<Integer>();
+		for (int i = index2; i < index+7; i++) {
+			try {
+				if (error) {
+					proposal.add(-1);
+				} else {
+					proposal.add(Integer.parseInt(inputList.get(i)));
+				}
+			} catch (NumberFormatException e) {
+				proposal.add(-1);
+				error = true;
+			}
+			
+		}
 		if (proposal.get(proposal.size()-1).equals(-1)) {
 			notifyCmdNotFound();
 			return;
@@ -126,6 +151,7 @@ public class GUIClientOutHandlerRMI extends ClientOutHandler {
 		sendMsg(msg);
 		return;
 	}
+
 
 
 }

@@ -50,5 +50,4 @@ public class TestDoAgainAction {
 		assertTrue(player.getBuiltCities().contains(city)); 
 	} 
 
-
 }

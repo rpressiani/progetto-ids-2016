@@ -119,7 +119,7 @@ public abstract class ClientOutHandler {
 				break;
 				
 				/*----- ACTIONS -----*/
-			case "subPermissionCards":
+			case "subpermissioncards":
 				if (inputList.size() == 2) {
 					msg = new ClientMessage(new DTOSubstitutePermissionCards(new DTORegion(inputList.get(1))));
 					sendMsg(msg);
@@ -150,7 +150,7 @@ public abstract class ClientOutHandler {
 				}
 			case "addaction":
 				switch (inputList.get(1)) {
-				case "buildEmpCard":
+				case "buildempcard":
 					if (inputList.size() == 4) {
 						msg = new ClientMessage(new DTOAddictionalAction(new DTOBuildEmporiumWithCard(
 								new DTOPermissionCardSelection(Integer.parseInt(inputList.get(2))),
@@ -200,12 +200,10 @@ public abstract class ClientOutHandler {
 				case "electcounsellor":
 					System.out.println(inputList.size());
 					if (inputList.size() == 4) {
-						System.out.println("inside if");
 						msg = new ClientMessage(new DTOAddictionalAction(new DTOElectCounsellor(
 								new String(inputList.get(2)),
 								new DTOColor(inputList.get(3)))));
 						sendMsg(msg);
-						System.out.println("msg sent");
 						break;
 					} else {
 						notifyCmdNotFound();

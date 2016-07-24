@@ -51,8 +51,10 @@ public class SellActionController {
 		inputList.add(sellCoins.getText());
 		inputList.add(sellAssistants.getText());
 		ArrayList<String> sellPermissionsArray = new ArrayList<String>(Arrays.asList(sellPermissions.getText().split(" ")));
-		for (String string : sellPermissionsArray) {
-			inputList.add(string);
+		if (!sellPermissions.getText().isEmpty()) {
+			for (String string : sellPermissionsArray) {
+				inputList.add(string);
+			}
 		}
 		ArrayList<String> sellPoliticalsArray = new ArrayList<String>(Arrays.asList(sellPoliticals.getText().split(" ")));
 		if (sellPoliticalsArray.size()!=7) {
@@ -66,9 +68,12 @@ public class SellActionController {
 		inputList.add(buyCoins.getText());
 		inputList.add(buyAssistants.getText());
 		ArrayList<String> buyPermissionsArray = new ArrayList<String>(Arrays.asList(buyPermissions.getText().split(" ")));
-		for (String string : buyPermissionsArray) {
-			inputList.add(string);
+		if (!buyPermissions.getText().isEmpty()) {
+			for (String string : buyPermissionsArray) {
+				inputList.add(string);
+			}
 		}
+
 		ArrayList<String> buyPoliticalsArray = new ArrayList<String>(Arrays.asList(buyPoliticals.getText().split(" ")));
 		if (buyPoliticalsArray.size()!=7) {
 			mainApp.getTempStage().close();
@@ -79,14 +84,15 @@ public class SellActionController {
 		}
 		
 		
-		for (String string : inputList) {
+		/*for (String string : inputList) {
 			if (string.equals("")) {
 				mainApp.getTempStage().close();
 				this.error = true;
 				break;
 			}
-		}
+		}*/
 		if (this.error == false) {
+			System.out.println(inputList);
 			MainApp.getOutHandler().activate(inputList);
 		}		mainApp.getTempStage().close();
 	}

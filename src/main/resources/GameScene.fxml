@@ -55,7 +55,7 @@
                                         <MenuItem fx:id="addictional" mnemonicParsing="false" onAction="#handleAddictionalAction" text="Addictional Action" />
                                           <MenuItem fx:id="substitute" mnemonicParsing="false" onAction="#handleSubstitute" text="Substitute Permission Card" />
                                           <MenuItem fx:id="electWithAssistant" mnemonicParsing="false" onAction="#handleElectWithAssistant" text="Elect Counsellor With Assistant" />
-                                          <MenuItem fx:id="nullAction" mnemonicParsing="false" text="Pass turn" />
+                                          <MenuItem fx:id="nullAction" mnemonicParsing="false" onAction="#handleNullAction" text="Pass turn" />
                                         <MenuItem fx:id="hire" mnemonicParsing="false" onAction="#handleHireAssistant" text="Hire Assistant " />
                                       </items>
                                        <contextMenu>
